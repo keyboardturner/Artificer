@@ -1,0 +1,30 @@
+## Interface: 120000, 120001
+## Author: Keyboardturner
+## Version: 0.0.1
+## Title: Artificer
+## Notes: A personal workshop and collection of UI tweaks and adjustments
+## IconTexture: Interface/Addons/Artificer/Textures/ArtificerIcon_Small.blp
+## SavedVariables: Artificer_DB
+
+## Category: Other
+## Category-enUS: Other
+## Category-deDE: Anderes
+## Category-esES: Otros
+## Category-esMX: Otros
+## Category-frFR: Autre
+## Category-itIT: Altro
+## Category-koKR: 기타
+## Category-ptBR: Outro
+## Category-ruRU: Другое
+## Category-zhCN: 其它
+## Category-zhTW: 其他
+
+Localization.lua
+Core.lua
+
+Widgets/FishReelIn.lua
+Widgets/ChromieTimeIcon.lua
+Widgets/HideMacroText.lua
+Widgets/ArrowKeyEditbox.lua
+
+SettingsUI.lua
