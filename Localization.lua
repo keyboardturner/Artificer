@@ -38,6 +38,10 @@ if LOCALE == "enUS" then
 	L["Widget_HideMacroTextTT"] = "Hides the macro text on Action Bar buttons."
 	L["Widget_ArrowKeyEditbox"] = "Allow Arrow Keys in Chat Editbox"
 	L["Widget_ArrowKeyEditboxTT"] = "Allow using the arrow keys to move the cursor in the chat editbox without needing to press alt."
+	L["Widget_OutfitIcon"] = "Transmog Outfit Borders"
+	L["Widget_OutfitIconTT"] = "Display borders on transmog outfits that are placed on the action bar buttons."
+	L["Widget_ServerNotifications"] = "Server Notification Raid Warnings"
+	L["Widget_ServerNotificationsTT"] = "Display Server Notifications (such as realm restarts) displayed as a Raid Warning."
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Show All Minimap Trackables"

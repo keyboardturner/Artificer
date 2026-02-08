@@ -83,7 +83,7 @@ local function InitializeCheckbox(button, data)
 end
 
 local function InitializeDropdown(button, data)
-	button:SetHeight(40)
+	button:SetHeight(30)
 	
 	if not button.dropdown then
 		button.dropdown = CreateFrame("DropdownButton", nil, button, "WowStyle1DropdownTemplate")
@@ -91,7 +91,7 @@ local function InitializeDropdown(button, data)
 		button.dropdown:SetWidth(150)
 		
 		button.dropdownLabel = button:CreateFontString(nil, "OVERLAY", "GameTooltipText")
-		button.dropdownLabel:SetPoint("BOTTOMLEFT", button.dropdown, "TOPLEFT", 0, 2)
+		button.dropdownLabel:SetPoint("LEFT", button.dropdown, "RIGHT", 10, 0)
 		button.dropdownLabel:SetJustifyH("LEFT")
 	end
 	
@@ -139,7 +139,7 @@ local function InitializeDropdown(button, data)
 end
 
 local function InitializeSlider(button, data)
-	button:SetHeight(50)
+	button:SetHeight(30)
 	
 	if not button.slider then
 		local options = Settings.CreateSliderOptions(data.min, data.max, data.step)
@@ -147,11 +147,11 @@ local function InitializeSlider(button, data)
 		
 		button.slider = CreateFrame("Frame", nil, button, "MinimalSliderWithSteppersTemplate")
 		button.slider:SetPoint("LEFT", 10, -5)
-		button.slider:SetWidth(250)
+		button.slider:SetWidth(200)
 		button.slider:Init(GetDBValue(data.key) or data.defaultValue, options.minValue, options.maxValue, options.steps, options.formatters)
 		
 		button.sliderLabel = button:CreateFontString(nil, "OVERLAY", "GameTooltipText")
-		button.sliderLabel:SetPoint("BOTTOMLEFT", button.slider, "TOPLEFT", 0, 2)
+		button.sliderLabel:SetPoint("LEFT", button.slider, "RIGHT", 50, 0)
 		button.sliderLabel:SetTextColor(1, 1, 1)
 	end
 	
@@ -196,6 +196,10 @@ end
 function Artificer:BuildSettingsData()
 	allSettingsData = {}
 
+	local function GetSearchText(label, tooltip)
+		return (label .. " " .. (tooltip or "")):lower()
+	end
+
 	-- Widgets - FishReelIn
 	table.insert(allSettingsData, {
 		type = "checkbox",
@@ -203,7 +207,7 @@ function Artificer:BuildSettingsData()
 		key = "FishReelIn",
 		label = L["Widget_FishReelIn"],
 		tooltip = L["Widget_FishReelInTT"],
-		searchText = string.join(" ", L["Widget_FishReelIn"], L["Widget_FishReelInTT"] ),
+		searchText = GetSearchText(L["Widget_FishReelIn"], L["Widget_FishReelInTT"]),
 		callback = function(val)
 			-- print("Fish Reel In: " .. tostring(val))
 		end
@@ -216,7 +220,7 @@ function Artificer:BuildSettingsData()
 		key = "ChromieTimeIcon",
 		label = L["Widget_ChromieTimeIcon"],
 		tooltip = L["Widget_ChromieTimeIconTT"],
-		searchText = string.join(" ", L["Widget_ChromieTimeIcon"], L["Widget_ChromieTimeIconTT"] ),
+		searchText = GetSearchText(L["Widget_ChromieTimeIcon"], L["Widget_ChromieTimeIconTT"]),
 		callback = function(val)
 			if Artificer.Widgets.UpdateChromieTimeIcon then
 				Artificer.Widgets.UpdateChromieTimeIcon();
@@ -231,7 +235,7 @@ function Artificer:BuildSettingsData()
 		key = "HideMacroText",
 		label = L["Widget_HideMacroText"],
 		tooltip = L["Widget_HideMacroTextTT"],
-		searchText = string.join(" ", L["Widget_HideMacroText"], L["Widget_HideMacroTextTT"] ),
+		searchText = GetSearchText(L["Widget_HideMacroText"], L["Widget_HideMacroTextTT"]),
 		callback = function(val)
 			if Artificer.DetermineMacroText then
 				Artificer.DetermineMacroText();
@@ -246,11 +250,39 @@ function Artificer:BuildSettingsData()
 		key = "ArrowKeyEditbox",
 		label = L["Widget_ArrowKeyEditbox"],
 		tooltip = L["Widget_ArrowKeyEditboxTT"],
-		searchText = string.join(" ", L["Widget_ArrowKeyEditbox"], L["Widget_ArrowKeyEditbox"] ),
+		searchText = GetSearchText(L["Widget_ArrowKeyEditbox"], L["Widget_ArrowKeyEditboxTT"]),
 		callback = function(val)
 			if Artificer.ArrowKeySetting then
 				Artificer.ArrowKeySetting();
 			end
+		end
+	});
+
+	-- Widgets - OutfitIcon
+	table.insert(allSettingsData, {
+		type = "checkbox",
+		isWidget = true,
+		key = "OutfitIcon",
+		label = L["Widget_OutfitIcon"],
+		tooltip = L["Widget_OutfitIconTT"],
+		searchText = GetSearchText(L["Widget_OutfitIcon"], L["Widget_OutfitIconTT"]),
+		callback = function(val)
+			if Artificer.UpdateOutfitHighlighter then
+				Artificer.UpdateOutfitHighlighter();
+			end
+		end
+	});
+
+	-- Widgets - ServerNotifications
+	table.insert(allSettingsData, {
+		type = "checkbox",
+		isWidget = true,
+		key = "ServerNotifications",
+		label = L["Widget_ServerNotifications"],
+		tooltip = L["Widget_ServerNotificationsTT"],
+		searchText = GetSearchText(L["Widget_ServerNotifications"], L["Widget_ServerNotificationsTT"]),
+		callback = function(val)
+			-- print("Server Notifications: " .. tostring(val))
 		end
 	});
 
@@ -263,7 +295,7 @@ function Artificer:BuildSettingsData()
 				key = cvarName,
 				label = data.label,
 				tooltip = data.description,
-				searchText = (data.label .. " " .. (data.description or "")):lower(),
+				searchText = GetSearchText(data.label, data.description),
 				callback = function(val)
 					if data.settings == "checkbox" then
 						local cvarVal = val and "1" or "0"
@@ -409,7 +441,7 @@ function Artificer:CreateSettingsUI()
 	
 	ScrollView:SetElementInitializer("Button", SettingsRowInitializer)
 	
-	ScrollView:SetElementExtent(55)
+	ScrollView:SetElementExtent(30)
 	ScrollView:SetPadding(5, 5, 5, 5, 2)
 
 	local function FilterSettings()

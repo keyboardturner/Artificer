@@ -18,6 +18,8 @@ local Defaults = {
 		ChromieTimeIcon = true,
 		HideMacroText = false,
 		ArrowKeyEditbox = true,
+		OutfitIcon = true,
+		ServerNotifications = true,
 	},
 };
 

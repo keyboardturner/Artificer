@@ -26,5 +26,7 @@ Widgets/FishReelIn.lua
 Widgets/ChromieTimeIcon.lua
 Widgets/HideMacroText.lua
 Widgets/ArrowKeyEditbox.lua
+Widgets/OutfitIcon.lua
+Widgets/ServerNotifications.lua
 
 SettingsUI.lua
