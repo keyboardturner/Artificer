@@ -28,5 +28,9 @@ Widgets/HideMacroText.lua
 Widgets/ArrowKeyEditbox.lua
 Widgets/OutfitIcon.lua
 Widgets/ServerNotifications.lua
+Widgets/AutoLoot.lua
+Widgets/PetBattleMapFilter.lua
+Widgets/CooldownManagerEnabled.lua
+Widgets/PartySync.lua
 
 SettingsUI.lua

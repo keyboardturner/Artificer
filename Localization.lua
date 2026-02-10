@@ -28,6 +28,15 @@ if LOCALE == "enUS" then
 	L["UIScale"] = UI_SCALE
 	L["LockFrame"] = LOCK_FRAME
 
+	-- Headers
+	L["Header_Professions"] = TRADE_SKILLS
+	L["Header_Map"] = WORLD_MAP
+	L["Header_ActionBar"] = BINDING_HEADER_ACTIONBAR
+	L["Header_Chat"] = BINDING_HEADER_CHAT
+	L["Header_Misc"] = BINDING_HEADER_MISC
+	L["Header_AccountSettings"] = "Account Settings"
+	L["Header_CVars"] = "Console Variables (CVars)"
+
 	--Widgets
 	L["Widget_FishReelIn"] = "Fish Reel In"
 	L["Widget_FishReelInTT"] = "Plays a reel-in sound when your fishing cast finishes."
@@ -43,9 +52,23 @@ if LOCALE == "enUS" then
 	L["Widget_ServerNotifications"] = "Server Notification Raid Warnings"
 	L["Widget_ServerNotificationsTT"] = "Display Server Notifications (such as realm restarts) displayed as a Raid Warning."
 
+	--Widgets - Account-wide settings
+	L["Widget_AutoLoot"] = "Account Auto Loot"
+	L["Widget_AutoLootTT"] = "Enforces Auto Loot to be enabled on every character."
+	L["Widget_PetBattleMapFilter"] = "Account Pet Battle Map Filter"
+	L["Widget_PetBattleMapFilterTT"] = "Enforces Pet Battle Map Filter to be disabled on every character."
+	L["Widget_cooldownViewerEnabled"] = "Account Cooldown Manager Enabled"
+	L["Widget_cooldownViewerEnabledTT"] = "Enforces the Cooldown Manager to be enabled on every character."
+	L["Widget_PartySync"] = "Automatically Accept Party Sync"
+	L["Widget_PartySyncTT"] = "automatically accept the Party Sync confirm button when it is prompted."
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Show All Minimap Trackables"
 	L["CVar_minimapTrackingShowAllTT"] = "Toggle additional minimap tracking options."
+	L["CVar_weatherDensity"] = "Weather Density"
+	L["CVar_weatherDensityTT"] = "Control the weather density / intensity."
+	L["CVar_AutoPushSpellToActionBar"] = "Auto Push Spells to Action Bars"
+	L["CVar_AutoPushSpellToActionBarTT"] = "Whether spells should automatically be placed on your action bars."
 
 
 return end

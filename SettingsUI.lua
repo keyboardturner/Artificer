@@ -148,7 +148,9 @@ local function InitializeSlider(button, data)
 		button.slider = CreateFrame("Frame", nil, button, "MinimalSliderWithSteppersTemplate")
 		button.slider:SetPoint("LEFT", 10, -5)
 		button.slider:SetWidth(200)
-		button.slider:Init(GetDBValue(data.key) or data.defaultValue, options.minValue, options.maxValue, options.steps, options.formatters)
+		local currentVal = tonumber(GetDBValue(data.key)) or data.defaultValue
+		
+		button.slider:Init(currentVal, options.minValue, options.maxValue, options.steps, options.formatters)
 		
 		button.sliderLabel = button:CreateFontString(nil, "OVERLAY", "GameTooltipText")
 		button.sliderLabel:SetPoint("LEFT", button.slider, "RIGHT", 50, 0)
@@ -173,8 +175,41 @@ local function InitializeSlider(button, data)
 	button.slider:RegisterCallback("OnValueChanged", OnValueChanged, button.slider)
 
 	button.slider.isInitializing = true
-	button.slider:SetValue(GetDBValue(data.key) or data.defaultValue)
+	local currentVal = tonumber(GetDBValue(data.key)) or data.defaultValue
+	button.slider:SetValue(currentVal)
 	button.slider.isInitializing = false
+
+	if data.tooltip then
+		button.slider.Slider:SetScript("OnEnter", function(self)
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+			GameTooltip:SetText(data.label, 1, 1, 1);
+			GameTooltip:AddLine(data.tooltip, nil, nil, nil, true);
+			GameTooltip:Show();
+		end)
+		button.slider.Slider:SetScript("OnLeave", GameTooltip_Hide)
+		button.sliderLabel:SetScript("OnEnter", function(self)
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+			GameTooltip:SetText(data.label, 1, 1, 1);
+			GameTooltip:AddLine(data.tooltip, nil, nil, nil, true);
+			GameTooltip:Show();
+		end)
+		button.sliderLabel:SetScript("OnLeave", GameTooltip_Hide)
+	end
+end
+
+local function InitializeHeader(button, data)
+	button:SetHeight(30)
+	
+	if not button.headerLabel then
+		button.headerLabel = button:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
+		button.headerLabel:SetPoint("LEFT", 10, -5)
+		button.headerLabel:SetPoint("RIGHT", -10, -5)
+		button.headerLabel:SetJustifyH("LEFT")
+		button.headerLabel:SetTextColor(1, 0.82, 0) 
+	end
+	
+	button.headerLabel:Show()
+	button.headerLabel:SetText(data.label)
 end
 
 
@@ -182,6 +217,7 @@ local function SettingsRowInitializer(button, data)
 	if button.checkbox then button.checkbox:Hide(); button.label:Hide(); end
 	if button.dropdown then button.dropdown:Hide(); button.dropdownLabel:Hide(); end
 	if button.slider then button.slider:Hide(); button.sliderLabel:Hide(); end
+	if button.headerLabel then button.headerLabel:Hide(); end
 
 	if data.type == "checkbox" then
 		InitializeCheckbox(button, data);
@@ -189,6 +225,8 @@ local function SettingsRowInitializer(button, data)
 		InitializeDropdown(button, data);
 	elseif data.type == "slider" then
 		InitializeSlider(button, data);
+	elseif data.type == "header" then
+		InitializeHeader(button, data);
 	end
 end
 
@@ -199,6 +237,12 @@ function Artificer:BuildSettingsData()
 	local function GetSearchText(label, tooltip)
 		return (label .. " " .. (tooltip or "")):lower()
 	end
+
+	-- Header - Professions
+	table.insert(allSettingsData, {
+		type = "header",
+		label = L["Header_Professions"],
+	});
 
 	-- Widgets - FishReelIn
 	table.insert(allSettingsData, {
@@ -211,6 +255,13 @@ function Artificer:BuildSettingsData()
 		callback = function(val)
 			-- print("Fish Reel In: " .. tostring(val))
 		end
+	});
+
+
+	-- Header - Maps
+	table.insert(allSettingsData, {
+		type = "header",
+		label = L["Header_Map"],
 	});
 
 	-- Widgets - ChromieTimeIcon
@@ -228,6 +279,12 @@ function Artificer:BuildSettingsData()
 		end
 	});
 
+	-- Header - Action Bars
+	table.insert(allSettingsData, {
+		type = "header",
+		label = L["Header_ActionBar"],
+	});
+
 	-- Widgets - HideMacroText
 	table.insert(allSettingsData, {
 		type = "checkbox",
@@ -239,21 +296,6 @@ function Artificer:BuildSettingsData()
 		callback = function(val)
 			if Artificer.DetermineMacroText then
 				Artificer.DetermineMacroText();
-			end
-		end
-	});
-
-	-- Widgets - ArrowKeyEditbox
-	table.insert(allSettingsData, {
-		type = "checkbox",
-		isWidget = true,
-		key = "ArrowKeyEditbox",
-		label = L["Widget_ArrowKeyEditbox"],
-		tooltip = L["Widget_ArrowKeyEditboxTT"],
-		searchText = GetSearchText(L["Widget_ArrowKeyEditbox"], L["Widget_ArrowKeyEditboxTT"]),
-		callback = function(val)
-			if Artificer.ArrowKeySetting then
-				Artificer.ArrowKeySetting();
 			end
 		end
 	});
@@ -273,6 +315,27 @@ function Artificer:BuildSettingsData()
 		end
 	});
 
+	-- Header - Chat
+	table.insert(allSettingsData, {
+		type = "header",
+		label = L["Header_Chat"],
+	});
+
+	-- Widgets - ArrowKeyEditbox
+	table.insert(allSettingsData, {
+		type = "checkbox",
+		isWidget = true,
+		key = "ArrowKeyEditbox",
+		label = L["Widget_ArrowKeyEditbox"],
+		tooltip = L["Widget_ArrowKeyEditboxTT"],
+		searchText = GetSearchText(L["Widget_ArrowKeyEditbox"], L["Widget_ArrowKeyEditboxTT"]),
+		callback = function(val)
+			if Artificer.ArrowKeySetting then
+				Artificer.ArrowKeySetting();
+			end
+		end
+	});
+
 	-- Widgets - ServerNotifications
 	table.insert(allSettingsData, {
 		type = "checkbox",
@@ -286,11 +349,85 @@ function Artificer:BuildSettingsData()
 		end
 	});
 
-	
+	-- Header - Misc.
+	table.insert(allSettingsData, {
+		type = "header",
+		label = L["Header_Misc"],
+	});
+
+	-- Widgets - PartySync
+	table.insert(allSettingsData, {
+		type = "checkbox",
+		isWidget = true,
+		key = "PartySync",
+		label = L["Widget_PartySync"],
+		tooltip = L["Widget_PartySyncTT"],
+		searchText = GetSearchText(L["Widget_PartySync"], L["Widget_PartySyncTT"]),
+		callback = function(val)
+			-- print("Server Notifications: " .. tostring(val))
+		end
+	});
+
+	-- Header - Account Settings
+	table.insert(allSettingsData, {
+		type = "header",
+		label = L["Header_AccountSettings"],
+	});
+
+	-- Widgets - AutoLoot
+	table.insert(allSettingsData, {
+		type = "checkbox",
+		isWidget = true,
+		key = "AutoLoot",
+		label = L["Widget_AutoLoot"],
+		tooltip = L["Widget_AutoLootTT"],
+		searchText = GetSearchText(L["Widget_AutoLoot"], L["Widget_AutoLootTT"]),
+		callback = function(val)
+			if val and Artificer.Widgets.ApplyAutoLoot then
+				Artificer.Widgets.ApplyAutoLoot();
+			end
+		end
+	});
+
+	-- Widgets - PetBattleMapFilter
+	table.insert(allSettingsData, {
+		type = "checkbox",
+		isWidget = true,
+		key = "PetBattleMapFilter",
+		label = L["Widget_PetBattleMapFilter"],
+		tooltip = L["Widget_PetBattleMapFilterTT"],
+		searchText = GetSearchText(L["Widget_PetBattleMapFilter"], L["Widget_PetBattleMapFilterTT"]),
+		callback = function(val)
+			if val and Artificer.Widgets.ApplyPetBattleMapFilter then
+				Artificer.Widgets.ApplyPetBattleMapFilter();
+			end
+		end
+	});
+
+	-- Widgets - CooldownManagerEnabled
+	table.insert(allSettingsData, {
+		type = "checkbox",
+		isWidget = true,
+		key = "CooldownManagerEnabled",
+		label = L["Widget_cooldownViewerEnabled"],
+		tooltip = L["Widget_cooldownViewerEnabledTT"],
+		searchText = GetSearchText(L["Widget_cooldownViewerEnabled"], L["Widget_cooldownViewerEnabledTT"]),
+		callback = function(val)
+			if val and Artificer.Widgets.ApplyCooldownManagerEnabled then
+				Artificer.Widgets.ApplyCooldownManagerEnabled();
+			end
+		end
+	});
+
+	-- Header - Console Variables (CVars)
+	table.insert(allSettingsData, {
+		type = "header",
+		label = L["Header_CVars"],
+	});
 
 	if Artificer.CVars then
 		for cvarName, data in pairs(Artificer.CVars) do
-			table.insert(allSettingsData, {
+			local settingData = {
 				type = data.settings,
 				key = cvarName,
 				label = data.label,
@@ -304,7 +441,17 @@ function Artificer:BuildSettingsData()
 						C_CVar.SetCVar(cvarName, val);
 					end
 				end
-			});
+			};
+			
+			if data.settings == "slider" then
+				settingData.min = tonumber(data.min) or 0
+				settingData.max = tonumber(data.max) or 1
+				settingData.step = tonumber(data.step) or 1
+				settingData.defaultValue = tonumber(data.default)
+				settingData.formatter = function(value) return tostring(math.floor(value)) end
+			end
+			
+			table.insert(allSettingsData, settingData);
 		end
 	end
 

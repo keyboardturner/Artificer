@@ -1,7 +1,5 @@
 local addonName, Artificer = ...;
 
-ArtificerG = Artificer;
-
 local L = Artificer.L;
 
 Artificer.Widgets = {};
@@ -20,6 +18,10 @@ local Defaults = {
 		ArrowKeyEditbox = true,
 		OutfitIcon = true,
 		ServerNotifications = true,
+		AutoLoot = true,
+		PetBattleMapFilter = false,
+		CooldownManagerEnabled = false,
+		PartySync = true,
 	},
 };
 
@@ -29,6 +31,20 @@ Artificer.CVars = {
 		default = "0",
 		label = L["CVar_minimapTrackingShowAll"],
 		description = L["CVar_minimapTrackingShowAllTT"],
+	},
+	["weatherDensity"] = {
+		settings = "slider",
+		default = "2",
+		min = "0",
+		max = "3",
+		label = L["CVar_weatherDensity"],
+		description = L["CVar_weatherDensityTT"],
+	},
+	["AutoPushSpellToActionBar"] = {
+		settings = "checkbox",
+		default = "1",
+		label = L["CVar_AutoPushSpellToActionBar"],
+		description = L["CVar_AutoPushSpellToActionBarTT"],
 	},
 };
 
