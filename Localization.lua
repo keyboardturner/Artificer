@@ -62,6 +62,17 @@ if LOCALE == "enUS" then
 	L["Widget_PartySync"] = "Automatically Accept Party Sync"
 	L["Widget_PartySyncTT"] = "automatically accept the Party Sync confirm button when it is prompted."
 
+	--Widgets - CancelAura
+	L["CancelAuraManager"] = "Cancel Aura Manager"
+	L["CancelAuraManagerTT"] = "Automatically remove specific buffs out of combat"
+	L["Loading"] = LFG_LIST_LOADING
+	L["Remove"] = REMOVE
+	L["Add"] = ADD
+	L["InvalidSpell"] = SPELL_FAILED_SPELL_UNAVAILABLE
+	L["EnterSpellID"] = "Enter Spell ID"
+	L["CanceledAuras"] = "Canceled Auras"
+	L["AuraHistory"] = "Aura History"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Show All Minimap Trackables"
 	L["CVar_minimapTrackingShowAllTT"] = "Toggle additional minimap tracking options."

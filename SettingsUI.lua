@@ -513,6 +513,8 @@ function Artificer:CreateSettingsUI()
 	frame:SetPortraitTextureRaw("Interface\\AddOns\\Artificer\\Textures\\ArtificerIcon_BlackBG.png")
 	local Portrait = frame.PortraitContainer.portrait
 	Portrait:SetTexCoord(0.03, 1, 0.03, 1)
+
+	tinsert(UISpecialFrames, "ArtificerSettingsFrame")
 	
 	local savedScale = GetDBValue("uiScale")
 	if savedScale then

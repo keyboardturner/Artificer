@@ -32,5 +32,6 @@ Widgets/AutoLoot.lua
 Widgets/PetBattleMapFilter.lua
 Widgets/CooldownManagerEnabled.lua
 Widgets/PartySync.lua
+Widgets/CancelAura.lua
 
 SettingsUI.lua
