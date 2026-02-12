@@ -60,18 +60,26 @@ if LOCALE == "enUS" then
 	L["Widget_cooldownViewerEnabled"] = "Account Cooldown Manager Enabled"
 	L["Widget_cooldownViewerEnabledTT"] = "Enforces the Cooldown Manager to be enabled on every character."
 	L["Widget_PartySync"] = "Automatically Accept Party Sync"
-	L["Widget_PartySyncTT"] = "automatically accept the Party Sync confirm button when it is prompted."
+	L["Widget_PartySyncTT"] = "Automatically accept the Party Sync confirm button when it is prompted."
 
 	--Widgets - CancelAura
 	L["CancelAuraManager"] = "Cancel Aura Manager"
-	L["CancelAuraManagerTT"] = "Automatically remove specific buffs out of combat"
+	L["CancelAuraManagerTT"] = "Automatically remove specific buffs out of combat."
 	L["Loading"] = LFG_LIST_LOADING
 	L["Remove"] = REMOVE
 	L["Add"] = ADD
-	L["InvalidSpell"] = SPELL_FAILED_SPELL_UNAVAILABLE
+	L["InvalidSpell"] = "Invalid Spell ID"
 	L["EnterSpellID"] = "Enter Spell ID"
 	L["CanceledAuras"] = "Canceled Auras"
 	L["AuraHistory"] = "Aura History"
+
+	--Widgets - CancelAura
+	L["AbandonQuestManager"] = "Abandon Quest Manager"
+	L["AbandonQuestManagerTT"] = "Automatically remove specific quests you don't want to accept."
+	L["InvalidQuest"] = "Invalid Quest ID"
+	L["EnterQuestID"] = "Enter Quest ID"
+	L["AbandonedQuests"] = "Auto Abandoned Quests"
+	L["QuestHistory"] = "Quest History"
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Show All Minimap Trackables"
