@@ -80,6 +80,7 @@ if LOCALE == "enUS" then
 	L["EnterQuestID"] = "Enter Quest ID"
 	L["AbandonedQuests"] = "Auto Abandoned Quests"
 	L["QuestHistory"] = "Quest History"
+	L["QuestID"] = "Quest ID: %s"
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Show All Minimap Trackables"

@@ -104,7 +104,7 @@ local function CreateListRow(parent, data)
 		f.Text:SetText(questTitle)
 		f.SubText:SetText(data.questID)
 	else
-		f.Text:SetText("Quest " .. data.questID)
+		f.Text:SetText(string.format(L["QuestID"],data.questID))
 		f.SubText:SetText(data.questID)
 	end
 	
@@ -159,14 +159,13 @@ local function CreateListRow(parent, data)
 		local questTitle = C_QuestLog.GetTitleForQuestID(data.questID)
 		if questTitle and questTitle ~= "" then
 			GameTooltip:SetText(questTitle, 1, 1, 1)
-			GameTooltip:AddLine("Quest ID: " .. data.questID, 0.5, 0.5, 0.5)
+			GameTooltip:AddLine(string.format(L["QuestID"],data.questID), 0.5, 0.5, 0.5)
 			local questTagInfo = C_QuestLog.GetQuestTagInfo(data.questID)
 			if questTagInfo and questTagInfo.tagName then
 				GameTooltip:AddLine(questTagInfo.tagName, 1, 0.82, 0)
 			end
 		else
-			GameTooltip:SetText("Quest " .. data.questID, 1, 1, 1)
-			GameTooltip:AddLine("Quest ID: " .. data.questID, 0.5, 0.5, 0.5)
+			GameTooltip:SetText(string.format(L["QuestID"],data.questID), 1, 1, 1)
 		end
 		GameTooltip:Show();
 	end)
