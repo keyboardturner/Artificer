@@ -16,6 +16,15 @@ local presets = {
 	61781,		-- Turkey Feathers
 };
 
+local function InitializePresetHistory()
+	for _, spellID in ipairs(presets) do
+		if not HistoryList[spellID] then
+			HistoryList[spellID] = true;
+			table.insert(sessionHistory, spellID);
+		end
+	end
+end
+
 local function GetBlocklist()
 	if not Artificer_DB.Widgets.CancelAura then
 		Artificer_DB.Widgets.CancelAura = {};
@@ -303,6 +312,7 @@ local function CreateCancelAuraPanel()
 	rightFrame:SetWidth(270)
 	scrollBoxHistory = rightBox
 	
+	--[[
 	local prevPresetBtn
 	for _, spellID in ipairs(presets) do
 		local btn = CreateFrame("Button", nil, caFrame)
@@ -340,6 +350,7 @@ local function CreateCancelAuraPanel()
 		
 		prevPresetBtn = btn
 	end
+	]]
 	
 	return caFrame
 end
@@ -367,6 +378,8 @@ end
 local loader = CreateFrame("Frame")
 loader:RegisterEvent("PLAYER_LOGIN")
 loader:SetScript("OnEvent", function()
+	InitializePresetHistory()
+
 	if Artificer.CreateSettingsUI then
 		hooksecurefunc(Artificer, "CreateSettingsUI", function()
 			local parent = Artificer.SettingsFrame
