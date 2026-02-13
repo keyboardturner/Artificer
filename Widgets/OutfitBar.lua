@@ -531,18 +531,23 @@ local function CreateMainFrame()
 	
 	frame:SetTitle(string.join(" - ", L["TOC_Title"], L["OutfitSoundManager"]))
 	frame:SetSize(600, 500)
-	if Artificer.RestoreFramePosition then
-		Artificer:RestoreFramePosition(frame, "ArtificerOutfitPickerFrame");
+	frame:SetMovable(true)
+	if Artificer.RestoreFrameSettings then
+		Artificer:RestoreFrameSettings(frame, "ArtificerOutfitPickerFrame");
 	else
-		frame:SetPoint("CENTER");
+		if Artificer.RestoreFramePosition then
+			Artificer:RestoreFramePosition(frame, "ArtificerOutfitPickerFrame");
+		else
+			frame:SetPoint("CENTER");
+		end
 	end
 	frame:SetToplevel(true)
 	frame:EnableMouse(true)
-	frame:SetMovable(true)
+	if frame:IsMovable() == nil then frame:SetMovable(true) end
 	frame:SetClampedToScreen(true)
 	frame:SetScript("OnMouseDown", function(self, button)
 		self:StopMovingOrSizing();
-		if button == "LeftButton" then self:StartMoving() end
+		if button == "LeftButton" and self:IsMovable() then self:StartMoving() end
 		
 	end)
 	frame:SetScript("OnMouseUp", function(self, button)
@@ -554,7 +559,7 @@ local function CreateMainFrame()
 	if frame.TitleContainer then
 		frame.TitleContainer:SetHitRectInsets(0, 24, 0, 0)
 		frame.TitleContainer:EnableMouse(true)
-		frame.TitleContainer:SetMovable(true)
+		frame.TitleContainer:SetMovable(frame:IsMovable())
 		frame.TitleContainer:RegisterForDrag("LeftButton")
 		frame.TitleContainer:SetScript("OnMouseUp", function(self, button)
 			if button == "RightButton" then
@@ -563,7 +568,12 @@ local function CreateMainFrame()
 					
 					local function IsLocked() return not frame:IsMovable() end
 					local function ToggleLock()
-						frame:SetMovable(not frame:IsMovable())
+						local locked = not frame:IsMovable();
+						frame:SetMovable(locked);
+						frame.TitleContainer:SetMovable(locked);
+						if Artificer.SaveFrameSetting then
+							Artificer:SaveFrameSetting("ArtificerOutfitPickerFrame", "locked", not locked);
+						end
 					end
 					rootDescription:CreateCheckbox(L["LockFrame"], IsLocked, ToggleLock)
 					
@@ -582,6 +592,9 @@ local function CreateMainFrame()
 						local text = string.format("%d%%", scale * 100);
 						submenu:CreateRadio(text, function() return math.abs(frame:GetScale() - scale) < 0.01 end, function()
 							frame:SetScale(scale);
+							if Artificer.SaveFrameSetting then
+								Artificer:SaveFrameSetting("ArtificerOutfitPickerFrame", "scale", scale);
+							end
 						end)
 					end
 				end)

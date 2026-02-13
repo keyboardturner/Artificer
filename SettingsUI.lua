@@ -337,6 +337,34 @@ function Artificer:RestoreFramePosition(frame, key)
 	end
 end
 
+function Artificer:SaveFrameSetting(key, setting, value)
+	if not Artificer_DB then return end
+	if not Artificer_DB.FrameSettings then Artificer_DB.FrameSettings = {} end
+	if not Artificer_DB.FrameSettings[key] then Artificer_DB.FrameSettings[key] = {} end
+	
+	Artificer_DB.FrameSettings[key][setting] = value
+end
+
+function Artificer:RestoreFrameSettings(frame, key)
+	Artificer:RestoreFramePosition(frame, key)
+	
+	if Artificer_DB and Artificer_DB.FrameSettings and Artificer_DB.FrameSettings[key] then
+		local settings = Artificer_DB.FrameSettings[key]
+		
+		if settings.scale then
+			frame:SetScale(settings.scale);
+		end
+		
+		if settings.locked ~= nil then
+			local isLocked = settings.locked;
+			frame:SetMovable(not isLocked);
+			if frame.TitleContainer then
+				frame.TitleContainer:SetMovable(not isLocked);
+			end
+		end
+	end
+end
+
 function Artificer:BuildSettingsData()
 	allSettingsData = {}
 
@@ -655,17 +683,19 @@ end
 function Artificer:CreateSettingsUI()
 	local frame = CreateFrame("Frame", "ArtificerSettingsFrame", UIParent, "PortraitFrameTemplateMinimizable")
 	frame:SetSize(400, 500)
-	Artificer:RestoreFramePosition(frame, "SettingsFrame")
 	frame:SetMovable(true)
+	Artificer:RestoreFrameSettings(frame, "SettingsFrame")
 	frame:EnableMouse(true)
 	frame:RegisterForDrag("LeftButton")
 	frame:SetScript("OnDragStart", function(self)
 		frame:StopMovingOrSizing();
-		frame:StartMoving();
+		if frame:IsMovable() then
+			frame:StartMoving();
+		end
 	end)
 	frame:SetScript("OnDragStop", function(self)
-		self:StopMovingOrSizing()
-		Artificer:SaveFramePosition(self, "SettingsFrame")
+		self:StopMovingOrSizing();
+		Artificer:SaveFramePosition(self, "SettingsFrame");
 	end)
 	frame:SetToplevel(true)
 	frame:SetClampedToScreen(true)
@@ -676,10 +706,10 @@ function Artificer:CreateSettingsUI()
 
 	tinsert(UISpecialFrames, "ArtificerSettingsFrame")
 	
-	local savedScale = GetDBValue("uiScale")
-	if savedScale then
-		frame:SetScale(savedScale);
-	end
+	--local savedScale = GetDBValue("uiScale")
+	--if savedScale then
+	--	frame:SetScale(savedScale);
+	--end
 	
 	frame.TitleContainer:EnableMouse(true)
 	frame.TitleContainer:RegisterForDrag("LeftButton")
@@ -703,13 +733,16 @@ function Artificer:CreateSettingsUI()
 
 				local function IsLocked() return not frame:IsMovable() end
 				local function ToggleLock()
-					frame:SetMovable(not frame:IsMovable())
+					local locked = not frame:IsMovable();
+					frame:SetMovable(locked);
+					if frame.TitleContainer then frame.TitleContainer:SetMovable(locked) end;
+					Artificer:SaveFrameSetting("SettingsFrame", "locked", not locked);
 				end
 				rootDescription:CreateCheckbox(L["LockFrame"], IsLocked, ToggleLock)
 				rootDescription:CreateButton(L["ResetPosition"], function()
-					frame:ClearAllPoints()
-					frame:SetPoint("CENTER")
-					Artificer:SaveFramePosition(frame, "SettingsFrame")
+					frame:ClearAllPoints();
+					frame:SetPoint("CENTER");
+					Artificer:SaveFramePosition(frame, "SettingsFrame");
 				end)
 
 				local submenu = rootDescription:CreateButton(L["UIScale"])
@@ -719,7 +752,7 @@ function Artificer:CreateSettingsUI()
 					local text = string.format("%d%%", scale * 100)
 					submenu:CreateRadio(text, function() return math.abs(frame:GetScale() - scale) < 0.01 end, function()
 						frame:SetScale(scale);
-						SetDBValue("uiScale", scale);
+						Artificer:SaveFrameSetting("SettingsFrame", "scale", scale);
 					end)
 				end
 			end)

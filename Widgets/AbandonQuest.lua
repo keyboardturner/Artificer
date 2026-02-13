@@ -241,19 +241,26 @@ local function CreateAbandonQuestPanel()
 	aqFrame = CreateFrame("Frame", "ArtificerAbandonQuestFrame", UIParent, "ButtonFrameTemplate")
 	Artificer.AbandonQuestFrame = aqFrame
 	aqFrame:SetSize(600, 450)
-	if Artificer.RestoreFramePosition then
-		Artificer:RestoreFramePosition(aqFrame, "AbandonQuestFrame");
+	aqFrame:SetMovable(true)
+	if Artificer.RestoreFrameSettings then
+		Artificer:RestoreFrameSettings(aqFrame, "AbandonQuestFrame");
 	else
-		aqFrame:SetPoint("CENTER");
+		if Artificer.RestoreFramePosition then
+			Artificer:RestoreFramePosition(aqFrame, "AbandonQuestFrame");
+		else
+			aqFrame:SetPoint("CENTER");
+		end
 	end
 	aqFrame:SetToplevel(true)
 	aqFrame:EnableMouse(true)
-	aqFrame:SetMovable(true)
+	if aqFrame:IsMovable() == nil then aqFrame:SetMovable(true) end
 	aqFrame:SetClampedToScreen(true)
 	aqFrame:RegisterForDrag("LeftButton")
 	aqFrame:SetScript("OnDragStart", function(self) 
 		aqFrame:StopMovingOrSizing();
-		aqFrame:StartMoving();
+		if aqFrame:IsMovable() then
+			aqFrame:StartMoving();
+		end
 	end)
 	aqFrame:SetScript("OnDragStop", function(self)
 		self:StopMovingOrSizing()
@@ -265,7 +272,7 @@ local function CreateAbandonQuestPanel()
 	if aqFrame.TitleContainer then
 		aqFrame.TitleContainer:SetHitRectInsets(0, 24, 0, 0)
 		aqFrame.TitleContainer:EnableMouse(true)
-		aqFrame.TitleContainer:SetMovable(true)
+		aqFrame.TitleContainer:SetMovable(aqFrame:IsMovable())
 		aqFrame.TitleContainer:RegisterForDrag("LeftButton")
 		aqFrame.TitleContainer:SetScript("OnMouseUp", function(self, button)
 			if button == "RightButton" then
@@ -274,7 +281,12 @@ local function CreateAbandonQuestPanel()
 
 					local function IsLocked() return not aqFrame:IsMovable() end
 					local function ToggleLock()
-						aqFrame:SetMovable(not aqFrame:IsMovable());
+						local locked = not aqFrame:IsMovable();
+						aqFrame:SetMovable(locked);
+						aqFrame.TitleContainer:SetMovable(locked);
+						if Artificer.SaveFrameSetting then
+							Artificer:SaveFrameSetting("AbandonQuestFrame", "locked", not locked);
+						end
 					end
 					rootDescription:CreateCheckbox(L["LockFrame"], IsLocked, ToggleLock)
 					
@@ -293,6 +305,9 @@ local function CreateAbandonQuestPanel()
 						local text = string.format("%d%%", scale * 100)
 						submenu:CreateRadio(text, function() return math.abs(aqFrame:GetScale() - scale) < 0.01 end, function()
 							aqFrame:SetScale(scale);
+							if Artificer.SaveFrameSetting then
+								Artificer:SaveFrameSetting("AbandonQuestFrame", "scale", scale);
+							end
 						end)
 					end
 				end)

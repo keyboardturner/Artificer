@@ -228,19 +228,26 @@ local function CreateCancelAuraPanel()
 	caFrame = CreateFrame("Frame", "ArtificerCancelAuraFrame", UIParent, "ButtonFrameTemplate")
 	Artificer.CancelAuraFrame = caFrame
 	caFrame:SetSize(600, 450)
-	if Artificer.RestoreFramePosition then
-		Artificer:RestoreFramePosition(caFrame, "CancelAuraFrame");
+	caFrame:SetMovable(true)
+	if Artificer.RestoreFrameSettings then
+		Artificer:RestoreFrameSettings(caFrame, "CancelAuraFrame");
 	else
-		caFrame:SetPoint("CENTER");
+		if Artificer.RestoreFramePosition then
+			Artificer:RestoreFramePosition(caFrame, "CancelAuraFrame");
+		else
+			caFrame:SetPoint("CENTER");
+		end
 	end
 	caFrame:SetToplevel(true)
 	caFrame:EnableMouse(true)
-	caFrame:SetMovable(true)
+	if caFrame:IsMovable() == nil then caFrame:SetMovable(true) end
 	caFrame:SetClampedToScreen(true)
 	caFrame:RegisterForDrag("LeftButton")
 	caFrame:SetScript("OnDragStart", function(self) 
 		caFrame:StopMovingOrSizing();
-		caFrame:StartMoving();
+		if caFrame:IsMovable() then
+			caFrame:StartMoving();
+		end
 	end)
 	caFrame:SetScript("OnDragStop", function(self)
 		self:StopMovingOrSizing();
@@ -252,7 +259,7 @@ local function CreateCancelAuraPanel()
 	if caFrame.TitleContainer then
 		caFrame.TitleContainer:SetHitRectInsets(0, 24, 0, 0)
 		caFrame.TitleContainer:EnableMouse(true)
-		caFrame.TitleContainer:SetMovable(true)
+		caFrame.TitleContainer:SetMovable(caFrame:IsMovable())
 		caFrame.TitleContainer:RegisterForDrag("LeftButton")
 		caFrame.TitleContainer:SetScript("OnMouseUp", function(self, button)
 			if button == "RightButton" then
@@ -261,7 +268,12 @@ local function CreateCancelAuraPanel()
 					
 					local function IsLocked() return not caFrame:IsMovable() end
 					local function ToggleLock()
-						caFrame:SetMovable(not caFrame:IsMovable());
+						local locked = not caFrame:IsMovable();
+						caFrame:SetMovable(locked);
+						caFrame.TitleContainer:SetMovable(locked);
+						if Artificer.SaveFrameSetting then
+							Artificer:SaveFrameSetting("CancelAuraFrame", "locked", not locked);
+						end
 					end
 					rootDescription:CreateCheckbox(L["LockFrame"], IsLocked, ToggleLock)
 					
@@ -280,6 +292,9 @@ local function CreateCancelAuraPanel()
 						local text = string.format("%d%%", scale * 100)
 						submenu:CreateRadio(text, function() return math.abs(caFrame:GetScale() - scale) < 0.01 end, function()
 							caFrame:SetScale(scale);
+							if Artificer.SaveFrameSetting then
+								Artificer:SaveFrameSetting("CancelAuraFrame", "scale", scale);
+							end
 						end)
 					end
 				end)
