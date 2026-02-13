@@ -142,13 +142,13 @@ local function InitializeMultiCheckbox(button, data)
 	button:SetHeight(30)
 	
 	if not button.multicheckbox then
-		button.multicheckbox = CreateFrame("DropdownButton", nil, button, "WowStyle1FilterDropdownTemplate")
-		button.multicheckbox:SetPoint("LEFT", 10, -5)
-		button.multicheckbox:SetWidth(150)
+		button.multicheckbox = CreateFrame("DropdownButton", nil, button, "WowStyle1FilterDropdownTemplate");
+		button.multicheckbox:SetPoint("LEFT", 10, -5);
+		button.multicheckbox:SetWidth(150);
 		
-		button.multicheckboxLabel = button:CreateFontString(nil, "OVERLAY", "GameTooltipText")
-		button.multicheckboxLabel:SetPoint("LEFT", button.multicheckbox, "RIGHT", 10, 0)
-		button.multicheckboxLabel:SetJustifyH("LEFT")
+		button.multicheckboxLabel = button:CreateFontString(nil, "OVERLAY", "GameTooltipText");
+		button.multicheckboxLabel:SetPoint("LEFT", button.multicheckbox, "RIGHT", 10, 0);
+		button.multicheckboxLabel:SetJustifyH("LEFT");
 	end
 	
 	button.multicheckbox:Show()
@@ -179,11 +179,11 @@ local function InitializeMultiCheckbox(button, data)
 		end
 		
 		if #selected == 0 then
-			button.multicheckbox.Text:SetText("None")
+			button.multicheckbox.Text:SetText(L["None"]);
 		elseif #selected == #data.options then
-			button.multicheckbox.Text:SetText("All")
+			button.multicheckbox.Text:SetText(L["All"]);
 		else
-			button.multicheckbox.Text:SetText(table.concat(selected, ", "))
+			button.multicheckbox.Text:SetText(table.concat(selected, ", "));
 		end
 	end
 
@@ -196,10 +196,10 @@ local function InitializeMultiCheckbox(button, data)
 				option.text,
 				function() return values[option.key] end,
 				function()
-					values[option.key] = not values[option.key]
-					SetDBValue(data.key, values)
-					UpdateDropdownText()
-					if data.callback then data.callback(values) end
+					values[option.key] = not values[option.key];
+					SetDBValue(data.key, values);
+					UpdateDropdownText();
+					if data.callback then data.callback(values) end;
 				end
 			)
 		end
@@ -314,6 +314,28 @@ local function SettingsRowInitializer(button, data)
 	end
 end
 
+function Artificer:SaveFramePosition(frame, key)
+	if not Artificer_DB then return end
+	if not Artificer_DB.FramePositions then Artificer_DB.FramePositions = {} end
+	
+	local point, relativeTo, relativePoint, xOfs, yOfs = frame:GetPoint()
+	Artificer_DB.FramePositions[key] = {
+		point = point,
+		relativePoint = relativePoint,
+		x = xOfs,
+		y = yOfs
+	}
+end
+
+function Artificer:RestoreFramePosition(frame, key)
+	frame:ClearAllPoints()
+	if Artificer_DB and Artificer_DB.FramePositions and Artificer_DB.FramePositions[key] then
+		local pos = Artificer_DB.FramePositions[key];
+		frame:SetPoint(pos.point, UIParent, pos.relativePoint, pos.x, pos.y);
+	else
+		frame:SetPoint("CENTER");
+	end
+end
 
 function Artificer:BuildSettingsData()
 	allSettingsData = {}
@@ -619,12 +641,18 @@ end
 function Artificer:CreateSettingsUI()
 	local frame = CreateFrame("Frame", "ArtificerSettingsFrame", UIParent, "PortraitFrameTemplateMinimizable")
 	frame:SetSize(400, 500)
-	frame:SetPoint("CENTER")
+	Artificer:RestoreFramePosition(frame, "SettingsFrame")
 	frame:SetMovable(true)
 	frame:EnableMouse(true)
 	frame:RegisterForDrag("LeftButton")
-	frame:SetScript("OnDragStart", frame.StartMoving)
-	frame:SetScript("OnDragStop", frame.StopMovingOrSizing)
+	frame:SetScript("OnDragStart", function(self)
+		frame:StopMovingOrSizing();
+		frame:StartMoving();
+	end)
+	frame:SetScript("OnDragStop", function(self)
+		self:StopMovingOrSizing()
+		Artificer:SaveFramePosition(self, "SettingsFrame")
+	end)
 	frame:SetToplevel(true)
 	frame:SetClampedToScreen(true)
 	frame:SetTitle(L["TOC_Title"])
@@ -643,6 +671,7 @@ function Artificer:CreateSettingsUI()
 	frame.TitleContainer:RegisterForDrag("LeftButton")
 	
 	frame.TitleContainer:SetScript("OnDragStart", function(self)
+		frame:StopMovingOrSizing();
 		if frame:IsMovable() then
 			frame:StartMoving();
 		end
@@ -650,6 +679,7 @@ function Artificer:CreateSettingsUI()
 	
 	frame.TitleContainer:SetScript("OnDragStop", function(self)
 		frame:StopMovingOrSizing();
+		Artificer:SaveFramePosition(frame, "SettingsFrame");
 	end)
 
 	frame.TitleContainer:SetScript("OnMouseUp", function(self, button)
@@ -662,7 +692,12 @@ function Artificer:CreateSettingsUI()
 					frame:SetMovable(not frame:IsMovable())
 				end
 				rootDescription:CreateCheckbox(L["LockFrame"], IsLocked, ToggleLock)
-				
+				rootDescription:CreateButton(L["ResetPosition"], function()
+					frame:ClearAllPoints()
+					frame:SetPoint("CENTER")
+					Artificer:SaveFramePosition(frame, "SettingsFrame")
+				end)
+
 				local submenu = rootDescription:CreateButton(L["UIScale"])
 				local presets = {1.4, 1.2, 1.0, 0.8, 0.6};
 				

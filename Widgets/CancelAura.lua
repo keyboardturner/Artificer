@@ -228,14 +228,74 @@ local function CreateCancelAuraPanel()
 	caFrame = CreateFrame("Frame", "ArtificerCancelAuraFrame", UIParent, "ButtonFrameTemplate")
 	Artificer.CancelAuraFrame = caFrame
 	caFrame:SetSize(600, 450)
-	caFrame:SetPoint("CENTER")
+	if Artificer.RestoreFramePosition then
+		Artificer:RestoreFramePosition(caFrame, "CancelAuraFrame");
+	else
+		caFrame:SetPoint("CENTER");
+	end
 	caFrame:SetToplevel(true)
 	caFrame:EnableMouse(true)
 	caFrame:SetMovable(true)
 	caFrame:SetClampedToScreen(true)
 	caFrame:RegisterForDrag("LeftButton")
-	caFrame:SetScript("OnDragStart", caFrame.StartMoving)
-	caFrame:SetScript("OnDragStop", caFrame.StopMovingOrSizing)
+	caFrame:SetScript("OnDragStart", function(self) 
+		caFrame:StopMovingOrSizing();
+		caFrame:StartMoving();
+	end)
+	caFrame:SetScript("OnDragStop", function(self)
+		self:StopMovingOrSizing();
+		if Artificer.SaveFramePosition then
+			Artificer:SaveFramePosition(self, "CancelAuraFrame");
+		end
+	end)
+
+	if caFrame.TitleContainer then
+		caFrame.TitleContainer:SetHitRectInsets(0, 24, 0, 0)
+		caFrame.TitleContainer:EnableMouse(true)
+		caFrame.TitleContainer:SetMovable(true)
+		caFrame.TitleContainer:RegisterForDrag("LeftButton")
+		caFrame.TitleContainer:SetScript("OnMouseUp", function(self, button)
+			if button == "RightButton" then
+				MenuUtil.CreateContextMenu(self, function(owner, rootDescription)
+					rootDescription:CreateTitle(L["CancelAuraManager"])
+					
+					local function IsLocked() return not caFrame:IsMovable() end
+					local function ToggleLock()
+						caFrame:SetMovable(not caFrame:IsMovable());
+					end
+					rootDescription:CreateCheckbox(L["LockFrame"], IsLocked, ToggleLock)
+					
+					rootDescription:CreateButton(L["ResetPosition"], function()
+						caFrame:ClearAllPoints();
+						caFrame:SetPoint("CENTER");
+						if Artificer.SaveFramePosition then
+							Artificer:SaveFramePosition(caFrame, "CancelAuraFrame");
+						end
+					end)
+					
+					local submenu = rootDescription:CreateButton(L["UIScale"])
+					local presets = {1.4, 1.2, 1.0, 0.8, 0.6};
+					
+					for _, scale in ipairs(presets) do
+						local text = string.format("%d%%", scale * 100)
+						submenu:CreateRadio(text, function() return math.abs(caFrame:GetScale() - scale) < 0.01 end, function()
+							caFrame:SetScale(scale);
+						end)
+					end
+				end)
+			end
+		end)
+		caFrame.TitleContainer:SetScript("OnDragStart", function(self)
+			caFrame:StopMovingOrSizing();
+			if caFrame:IsMovable() then
+				caFrame:StartMoving();
+			end
+		end)
+		caFrame.TitleContainer:SetScript("OnDragStop", function(self)
+			caFrame:StopMovingOrSizing();
+			Artificer:SaveFramePosition(caFrame, "CancelAuraFrame");
+		end)
+	end
 
 	caFrame.BgIcon = caFrame:CreateTexture(nil, "BACKGROUND", nil, 1)
 	caFrame.BgIcon:SetPoint("CENTER", 0, 0)

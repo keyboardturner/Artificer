@@ -241,14 +241,74 @@ local function CreateAbandonQuestPanel()
 	aqFrame = CreateFrame("Frame", "ArtificerAbandonQuestFrame", UIParent, "ButtonFrameTemplate")
 	Artificer.AbandonQuestFrame = aqFrame
 	aqFrame:SetSize(600, 450)
-	aqFrame:SetPoint("CENTER")
+	if Artificer.RestoreFramePosition then
+		Artificer:RestoreFramePosition(aqFrame, "AbandonQuestFrame");
+	else
+		aqFrame:SetPoint("CENTER");
+	end
 	aqFrame:SetToplevel(true)
 	aqFrame:EnableMouse(true)
 	aqFrame:SetMovable(true)
 	aqFrame:SetClampedToScreen(true)
 	aqFrame:RegisterForDrag("LeftButton")
-	aqFrame:SetScript("OnDragStart", aqFrame.StartMoving)
-	aqFrame:SetScript("OnDragStop", aqFrame.StopMovingOrSizing)
+	aqFrame:SetScript("OnDragStart", function(self) 
+		aqFrame:StopMovingOrSizing();
+		aqFrame:StartMoving();
+	end)
+	aqFrame:SetScript("OnDragStop", function(self)
+		self:StopMovingOrSizing()
+		if Artificer.SaveFramePosition then
+			Artificer:SaveFramePosition(self, "AbandonQuestFrame");
+		end
+	end)
+
+	if aqFrame.TitleContainer then
+		aqFrame.TitleContainer:SetHitRectInsets(0, 24, 0, 0)
+		aqFrame.TitleContainer:EnableMouse(true)
+		aqFrame.TitleContainer:SetMovable(true)
+		aqFrame.TitleContainer:RegisterForDrag("LeftButton")
+		aqFrame.TitleContainer:SetScript("OnMouseUp", function(self, button)
+			if button == "RightButton" then
+				MenuUtil.CreateContextMenu(self, function(owner, rootDescription)
+					rootDescription:CreateTitle(L["AbandonQuestManager"]);
+
+					local function IsLocked() return not aqFrame:IsMovable() end
+					local function ToggleLock()
+						aqFrame:SetMovable(not aqFrame:IsMovable());
+					end
+					rootDescription:CreateCheckbox(L["LockFrame"], IsLocked, ToggleLock)
+					
+					rootDescription:CreateButton(L["ResetPosition"], function()
+						aqFrame:ClearAllPoints();
+						aqFrame:SetPoint("CENTER");
+						if Artificer.SaveFramePosition then
+							Artificer:SaveFramePosition(aqFrame, "AbandonQuestFrame");
+						end
+					end)
+
+					local submenu = rootDescription:CreateButton(L["UIScale"])
+					local presets = {1.4, 1.2, 1.0, 0.8, 0.6};
+					
+					for _, scale in ipairs(presets) do
+						local text = string.format("%d%%", scale * 100)
+						submenu:CreateRadio(text, function() return math.abs(aqFrame:GetScale() - scale) < 0.01 end, function()
+							aqFrame:SetScale(scale);
+						end)
+					end
+				end)
+			end
+		end)
+		aqFrame.TitleContainer:SetScript("OnDragStart", function(self)
+			aqFrame:StopMovingOrSizing();
+			if aqFrame:IsMovable() then
+				aqFrame:StartMoving();
+			end
+		end)
+		aqFrame.TitleContainer:SetScript("OnDragStop", function(self)
+			aqFrame:StopMovingOrSizing();
+			Artificer:SaveFramePosition(aqFrame, "AbandonQuestFrame");
+		end)
+	end
 
 	aqFrame.BgIcon = aqFrame:CreateTexture(nil, "BACKGROUND", nil, 1)
 	aqFrame.BgIcon:SetPoint("CENTER", 0, 0)

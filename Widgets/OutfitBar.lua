@@ -519,7 +519,7 @@ local function RefreshOutfits()
 end
 
 local function CreateMainFrame()
-	frame = CreateFrame("Frame", "OutfitPickerFrame", UIParent, "ButtonFrameTemplate")
+	frame = CreateFrame("Frame", "ArtificerOutfitPickerFrame", UIParent, "ButtonFrameTemplate")
 	tinsert(UISpecialFrames, frame:GetName())
 	
 	--local portrait = frame.PortraitContainer.portrait
@@ -531,16 +531,73 @@ local function CreateMainFrame()
 	
 	frame:SetTitle(string.join(" - ", L["TOC_Title"], L["OutfitSoundManager"]))
 	frame:SetSize(600, 500)
-	frame:SetPoint("CENTER")
+	if Artificer.RestoreFramePosition then
+		Artificer:RestoreFramePosition(frame, "ArtificerOutfitPickerFrame");
+	else
+		frame:SetPoint("CENTER");
+	end
+	frame:SetToplevel(true)
+	frame:EnableMouse(true)
 	frame:SetMovable(true)
 	frame:SetClampedToScreen(true)
 	frame:SetScript("OnMouseDown", function(self, button)
+		self:StopMovingOrSizing();
 		if button == "LeftButton" then self:StartMoving() end
+		
 	end)
 	frame:SetScript("OnMouseUp", function(self, button)
-		self:StopMovingOrSizing()
+		self:StopMovingOrSizing();
+		if Artificer.SaveFramePosition then
+			Artificer:SaveFramePosition(self, "ArtificerOutfitPickerFrame");
+		end
 	end)
-	frame:SetFrameStrata("HIGH")
+	if frame.TitleContainer then
+		frame.TitleContainer:SetHitRectInsets(0, 24, 0, 0)
+		frame.TitleContainer:EnableMouse(true)
+		frame.TitleContainer:SetMovable(true)
+		frame.TitleContainer:RegisterForDrag("LeftButton")
+		frame.TitleContainer:SetScript("OnMouseUp", function(self, button)
+			if button == "RightButton" then
+				MenuUtil.CreateContextMenu(self, function(owner, rootDescription)
+					rootDescription:CreateTitle(L["OutfitSoundManager"])
+					
+					local function IsLocked() return not frame:IsMovable() end
+					local function ToggleLock()
+						frame:SetMovable(not frame:IsMovable())
+					end
+					rootDescription:CreateCheckbox(L["LockFrame"], IsLocked, ToggleLock)
+					
+					rootDescription:CreateButton(L["ResetPosition"], function()
+						frame:ClearAllPoints();
+						frame:SetPoint("CENTER");
+						if Artificer.SaveFramePosition then
+							Artificer:SaveFramePosition(frame, "ArtificerOutfitPickerFrame");
+						end
+					end)
+					
+					local submenu = rootDescription:CreateButton(L["UIScale"])
+					local presets = {1.4, 1.2, 1.0, 0.8, 0.6};
+					
+					for _, scale in ipairs(presets) do
+						local text = string.format("%d%%", scale * 100);
+						submenu:CreateRadio(text, function() return math.abs(frame:GetScale() - scale) < 0.01 end, function()
+							frame:SetScale(scale);
+						end)
+					end
+				end)
+			end
+		end)
+		frame.TitleContainer:SetScript("OnDragStart", function(self)
+			frame:StopMovingOrSizing();
+			if frame:IsMovable() then
+				frame:StartMoving();
+			end
+		end)
+		frame.TitleContainer:SetScript("OnDragStop", function(self)
+			frame:StopMovingOrSizing();
+			Artificer:SaveFramePosition(frame, "ArtificerOutfitPickerFrame");
+		end)
+	end
 	frame:Hide()
 	local inset = frame.Inset
 	inset:SetPoint("TOPLEFT", frame, "TOPLEFT", 8, -28)
