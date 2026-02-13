@@ -58,6 +58,8 @@ if LOCALE == "enUS" then
 	L["Widget_OSS_STB"] = "Sound Type B"
 	L["Widget_OSS_STC"] = "Sound Type C"
 	L["Widget_OSS_STD"] = "Sound Type D"
+	L["Widget_HideCraftingResults"] = "Hide Crafting Results"
+	L["Widget_HideCraftingResultsTT"] = "Hide the Crafting Results frame when opening a profession tradeskill frame and crafting an item."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Account Auto Loot"

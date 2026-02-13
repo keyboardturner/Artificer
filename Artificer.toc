@@ -36,5 +36,6 @@ Widgets/CancelAura.lua
 Widgets/AbandonQuest.lua
 Widgets/OutfitBar.lua
 Widgets/OutfitSwapSounds.lua
+Widgets/HideCraftingResults.lua
 
 SettingsUI.lua

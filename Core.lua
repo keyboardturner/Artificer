@@ -22,6 +22,7 @@ local Defaults = {
 		PetBattleMapFilter = false,
 		CooldownManagerEnabled = false,
 		PartySync = true,
+		HideCraftingResults = false,
 	},
 
 	OutfitSwapSounds = {

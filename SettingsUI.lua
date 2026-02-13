@@ -341,6 +341,21 @@ function Artificer:BuildSettingsData()
 		end
 	});
 
+	-- Widgets - HideCraftingResults
+	table.insert(allSettingsData, {
+		type = "checkbox",
+		isWidget = true,
+		key = "HideCraftingResults",
+		label = L["Widget_HideCraftingResults"],
+		tooltip = L["Widget_HideCraftingResultsTT"],
+		searchText = GetSearchText(L["Widget_HideCraftingResults"], L["Widget_HideCraftingResultsTT"]),
+		callback = function(val)
+			if Artificer.Widgets.HideCraftingResults then
+				Artificer.Widgets.HideCraftingResults();
+			end
+		end
+	});
+
 
 	-- Header - Maps
 	table.insert(allSettingsData, {
