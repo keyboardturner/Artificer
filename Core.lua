@@ -23,6 +23,14 @@ local Defaults = {
 		CooldownManagerEnabled = false,
 		PartySync = true,
 	},
+
+	OutfitSwapSounds = {
+		impact = true,
+		A = true,
+		B = true,
+		C = true,
+		D = true,
+	},
 };
 
 Artificer.CVars = {
@@ -103,6 +111,13 @@ f:SetScript("OnEvent", function(self, event, ...)
 				for widgetKey, widgetValue in pairs(v) do
 					if Artificer_DB.Widgets[widgetKey] == nil then
 						Artificer_DB.Widgets[widgetKey] = widgetValue;
+					end
+				end
+			elseif k == "OutfitSwapSounds" then
+				if not Artificer_DB.OutfitSwapSounds then Artificer_DB.OutfitSwapSounds = {}; end
+				for soundKey, soundValue in pairs(v) do
+					if Artificer_DB.OutfitSwapSounds[soundKey] == nil then
+						Artificer_DB.OutfitSwapSounds[soundKey] = soundValue;
 					end
 				end
 			elseif Artificer_DB[k] == nil then

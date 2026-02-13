@@ -138,6 +138,87 @@ local function InitializeDropdown(button, data)
 	end
 end
 
+local function InitializeMultiCheckbox(button, data)
+	button:SetHeight(30)
+	
+	if not button.multicheckbox then
+		button.multicheckbox = CreateFrame("DropdownButton", nil, button, "WowStyle1FilterDropdownTemplate")
+		button.multicheckbox:SetPoint("LEFT", 10, -5)
+		button.multicheckbox:SetWidth(150)
+		
+		button.multicheckboxLabel = button:CreateFontString(nil, "OVERLAY", "GameTooltipText")
+		button.multicheckboxLabel:SetPoint("LEFT", button.multicheckbox, "RIGHT", 10, 0)
+		button.multicheckboxLabel:SetJustifyH("LEFT")
+	end
+	
+	button.multicheckbox:Show()
+	button.multicheckboxLabel:Show()
+	button.multicheckboxLabel:SetText(data.label)
+	
+	local function GetCurrentValues()
+		local values = GetDBValue(data.key)
+		if not values then
+			-- Initialize with defaults
+			values = {}
+			for _, opt in ipairs(data.options) do
+				values[opt.key] = opt.default ~= false
+			end
+			SetDBValue(data.key, values)
+		end
+		return values
+	end
+
+	local function UpdateDropdownText()
+		local values = GetCurrentValues()
+		local selected = {}
+		
+		for _, opt in ipairs(data.options) do
+			if values[opt.key] then
+				table.insert(selected, opt.text)
+			end
+		end
+		
+		if #selected == 0 then
+			button.multicheckbox.Text:SetText("None")
+		elseif #selected == #data.options then
+			button.multicheckbox.Text:SetText("All")
+		else
+			button.multicheckbox.Text:SetText(table.concat(selected, ", "))
+		end
+	end
+
+	local function GeneratorFunction(dropdown, rootDescription)
+		rootDescription:SetScrollMode(300)
+		local values = GetCurrentValues()
+		
+		for _, option in ipairs(data.options) do
+			local checkbox = rootDescription:CreateCheckbox(
+				option.text,
+				function() return values[option.key] end,
+				function()
+					values[option.key] = not values[option.key]
+					SetDBValue(data.key, values)
+					UpdateDropdownText()
+					if data.callback then data.callback(values) end
+				end
+			)
+		end
+	end
+	
+	button.multicheckbox:SetupMenu(GeneratorFunction)
+	UpdateDropdownText()
+	
+	if data.tooltip then
+		button.multicheckbox:SetScript("OnEnter", function(self)
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+			GameTooltip:SetText(data.label, 1, 1, 1);
+			GameTooltip:AddLine(data.tooltip, nil, nil, nil, true);
+			GameTooltip:Show();
+		end)
+		button.multicheckbox:SetScript("OnLeave", GameTooltip_Hide)
+	end
+end
+
 local function InitializeSlider(button, data)
 	button:SetHeight(30)
 	
@@ -216,6 +297,7 @@ end
 local function SettingsRowInitializer(button, data)
 	if button.checkbox then button.checkbox:Hide(); button.label:Hide(); end
 	if button.dropdown then button.dropdown:Hide(); button.dropdownLabel:Hide(); end
+	if button.multicheckbox then button.multicheckbox:Hide(); button.multicheckboxLabel:Hide(); end
 	if button.slider then button.slider:Hide(); button.sliderLabel:Hide(); end
 	if button.headerLabel then button.headerLabel:Hide(); end
 
@@ -223,6 +305,8 @@ local function SettingsRowInitializer(button, data)
 		InitializeCheckbox(button, data);
 	elseif data.type == "dropdown" then
 		InitializeDropdown(button, data);
+	elseif data.type == "multicheckbox" then
+		InitializeMultiCheckbox(button, data);
 	elseif data.type == "slider" then
 		InitializeSlider(button, data);
 	elseif data.type == "header" then
@@ -364,7 +448,26 @@ function Artificer:BuildSettingsData()
 		tooltip = L["Widget_PartySyncTT"],
 		searchText = GetSearchText(L["Widget_PartySync"], L["Widget_PartySyncTT"]),
 		callback = function(val)
-			-- print("Server Notifications: " .. tostring(val))
+			-- ...
+		end
+	});
+
+	-- Multi-checkbox dropdown - OutfitSwapSounds
+	table.insert(allSettingsData, {
+		type = "multicheckbox",
+		key = "OutfitSwapSounds",
+		label = L["Widget_OutfitSwapSounds"],
+		tooltip = L["Widget_OutfitSwapSoundsTT"],
+		options = {
+			{ key = "impact", text = L["Widget_OSS_Impact"], default = true },
+			{ key = "A", text = L["Widget_OSS_STA"], default = true },
+			{ key = "B", text = L["Widget_OSS_STB"], default = true },
+			{ key = "C", text = L["Widget_OSS_STC"], default = true },
+			{ key = "D", text = L["Widget_OSS_STD"], default = true },
+		},
+		searchText = GetSearchText(L["Widget_OutfitSwapSounds"], L["Widget_OutfitSwapSoundsTT"]),
+		callback = function(values)
+			-- ...
 		end
 	});
 

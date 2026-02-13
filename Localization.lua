@@ -51,6 +51,13 @@ if LOCALE == "enUS" then
 	L["Widget_OutfitIconTT"] = "Display borders on transmog outfits that are placed on the action bar buttons."
 	L["Widget_ServerNotifications"] = "Server Notification Raid Warnings"
 	L["Widget_ServerNotificationsTT"] = "Display Server Notifications (such as realm restarts) displayed as a Raid Warning."
+	L["Widget_OutfitSwapSounds"] = "Outfit Swap Sounds"
+	L["Widget_OutfitSwapSoundsTT"] = "Select which sounds to mute during outfit changes."
+	L["Widget_OSS_Impact"] = "Impact"
+	L["Widget_OSS_STA"] = "Sound Type A"
+	L["Widget_OSS_STB"] = "Sound Type B"
+	L["Widget_OSS_STC"] = "Sound Type C"
+	L["Widget_OSS_STD"] = "Sound Type D"
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Account Auto Loot"
@@ -81,6 +88,31 @@ if LOCALE == "enUS" then
 	L["AbandonedQuests"] = "Auto Abandoned Quests"
 	L["QuestHistory"] = "Quest History"
 	L["QuestID"] = "Quest ID: %s"
+
+	--Widgets - OutfitBar
+	L["OutfitSoundManager"] = "Outfit Sound Manager"
+	L["OutfitSoundManagerTT"] = "Configure gear movement sounds that can play for each outfit."
+	L["None"] = NONE
+	L["Leather"] = "Leather"
+	L["Chain"] = "Chain"
+	L["Plate"] = "Plate"
+	L["GearLight"] = "Gear Light"
+	L["GearHeavy"] = "Gear Heavy"
+	L["BucklesLight"] = "Buckles Light"
+	L["BucklesHeavy"] = "Buckles Heavy"
+	L["YakRun"] = "Yak Run"
+	L["YakWalk"] = "Yak Walk"
+	L["GrummleRun"] = "Grummle Run"
+	L["GrummleWalk"] = "Grummle Walk"
+	L["TreasureGoblin"] = "Treasure Goblin"
+	L["Outfit"] = TRANSMOG_OUTFIT_NAME_DEFAULT
+	L["SoundS"] = "Sound: %s"
+	L["Click"] = "Click: %s"
+	L["LeftClick"] = "Left-Click: %s"
+	L["RightClick"] = "Right-Click: %s"
+	L["ClickDrag"] = "Click-Drag: %s"
+	L["ConfigureSounds"] = "Configure Sounds"
+	L["PickUpOutfit"] = "Pick Up Outfit"
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Show All Minimap Trackables"
