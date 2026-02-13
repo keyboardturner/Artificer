@@ -27,6 +27,7 @@ if LOCALE == "enUS" then
 	-- Frame
 	L["UIScale"] = UI_SCALE
 	L["LockFrame"] = LOCK_FRAME
+	L["ResetPosition"] = RESET_POSITION
 
 	-- Headers
 	L["Header_Professions"] = TRADE_SKILLS
@@ -60,6 +61,8 @@ if LOCALE == "enUS" then
 	L["Widget_OSS_STD"] = "Sound Type D"
 	L["Widget_HideCraftingResults"] = "Hide Crafting Results"
 	L["Widget_HideCraftingResultsTT"] = "Hide the Crafting Results frame when opening a profession tradeskill frame and crafting an item."
+	L["Widget_MovableCurrencyTransfer"] = "Movable Currency Transfer"
+	L["Widget_MovableCurrencyTransferTT"] = "Allows the Currency Transfer window to be moved."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Account Auto Loot"
@@ -95,6 +98,7 @@ if LOCALE == "enUS" then
 	L["OutfitSoundManager"] = "Outfit Sound Manager"
 	L["OutfitSoundManagerTT"] = "Configure gear movement sounds that can play for each outfit."
 	L["None"] = NONE
+	L["All"] = ALL
 	L["Leather"] = "Leather"
 	L["Chain"] = "Chain"
 	L["Plate"] = "Plate"

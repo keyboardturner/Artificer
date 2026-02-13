@@ -489,6 +489,20 @@ function Artificer:BuildSettingsData()
 		end
 	});
 
+	table.insert(allSettingsData, {
+		type = "checkbox",
+		isWidget = true,
+		key = "MovableCurrencyTransfer",
+		label = L["Widget_MovableCurrencyTransfer"],
+		tooltip = L["Widget_MovableCurrencyTransferTT"],
+		searchText = GetSearchText(L["Widget_MovableCurrencyTransfer"], L["Widget_MovableCurrencyTransferTT"]),
+		callback = function(val)
+			if Artificer.Widgets.ApplyMovableCurrencyTransfer then
+				Artificer.Widgets.ApplyMovableCurrencyTransfer();
+			end
+		end
+	});
+
 	-- Multi-checkbox dropdown - OutfitSwapSounds
 	table.insert(allSettingsData, {
 		type = "multicheckbox",

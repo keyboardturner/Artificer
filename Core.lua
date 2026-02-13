@@ -23,6 +23,7 @@ local Defaults = {
 		CooldownManagerEnabled = false,
 		PartySync = true,
 		HideCraftingResults = false,
+		MovableCurrencyTransfer = false,
 	},
 
 	OutfitSwapSounds = {

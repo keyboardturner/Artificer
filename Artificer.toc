@@ -37,5 +37,6 @@ Widgets/AbandonQuest.lua
 Widgets/OutfitBar.lua
 Widgets/OutfitSwapSounds.lua
 Widgets/HideCraftingResults.lua
+Widgets/MovableCurrencyTransfer.lua
 
 SettingsUI.lua
