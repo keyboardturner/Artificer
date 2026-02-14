@@ -48,6 +48,59 @@ local function SetWidgetValue(key, value)
 	end
 end
 
+local MeowFrameMixin = {};
+
+MeowFrameMixin.SoundFileList = {
+	4075880, 4075882, 4075752, 4075754, 4075756,
+	4075758, 4075760, 4075762, 4075764, 4075766,
+	4075768, 4075770, 4075772, 4075774, 4075776,
+	4075778, 4075780, 4075782, 4075784, 4075786,
+	4075788, 4075790, 4075792, 4075794, 4075796,
+	4077153, 4077155, 4077157, 4077159, 4077161,
+	4077129, 4077131, 4077133, 4077135, 4077137,
+	4077139, 4077141, 4077143, 4077149,
+};
+
+function MeowFrameMixin:OnLoad()
+	self.clickCount = 0;
+	self.clickThreshold = 20;
+	self.timeFrame = .2;
+	self.lastClickTime = 0;
+
+	self:RegisterForClicks("AnyDown", "AnyUp");
+end
+
+function MeowFrameMixin:OnClick(button, down)
+	local portrait = self:GetParent().PortraitContainer.portrait;
+	local currentTime = GetTime();
+
+	if not down then
+		portrait:SetTexCoord(0.03, 1, 0.03, 1);
+	else
+		portrait:SetTexCoord(0.05, 0.98, 0.05, 0.98);
+	end
+
+	if currentTime - self.lastClickTime > self.timeFrame then
+		self:ResetClicks();
+	end
+
+	self.clickCount = self.clickCount + 1;
+	self.lastClickTime = currentTime;
+
+	if self.clickCount >= self.clickThreshold then
+		self:ResetClicks();
+		self:Mrow();
+	end
+end
+
+function MeowFrameMixin:ResetClicks()
+	self.clickCount = 0;
+end
+
+function MeowFrameMixin:Mrow()
+	local sound = self.SoundFileList[math.random(1, #self.SoundFileList)];
+	PlaySoundFile(sound, "SFX");
+end
 
 local function InitializeCheckbox(button, data)
 	button:SetHeight(30)
@@ -857,6 +910,22 @@ function Artificer:CreateSettingsUI()
 	Portrait:SetTexCoord(0.03, 1, 0.03, 1)
 
 	tinsert(UISpecialFrames, "ArtificerSettingsFrame")
+
+	local meowButton = CreateFrame("Button", nil, frame);
+	meowButton:SetAllPoints(Portrait);
+	
+	FrameUtil.SpecializeFrameWithMixins(meowButton, MeowFrameMixin);
+	
+	meowButton:OnLoad();
+	meowButton:SetScript("OnClick", meowButton.OnClick);
+	
+	--meowButton:SetScript("OnEnter", function(self)
+	--    GameTooltip:SetOwner(self, "ANCHOR_BOTTOM");
+	--    GameTooltip:AddLine("", 1, 1, 1, 1, true);
+	--    GameTooltip:Show();
+	--end);
+	--
+	--meowButton:SetScript("OnLeave", GameTooltip_Hide);
 	
 	--local savedScale = GetDBValue("uiScale")
 	--if savedScale then
