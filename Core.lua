@@ -2,6 +2,9 @@ local addonName, Artificer = ...;
 
 local L = Artificer.L;
 
+local LDB = LibStub("LibDataBroker-1.1")
+local LDBIcon = LibStub("LibDBIcon-1.0")
+
 Artificer.Widgets = {};
 
 local Defaults = {
@@ -24,6 +27,7 @@ local Defaults = {
 		PartySync = true,
 		HideCraftingResults = false,
 		MovableCurrencyTransfer = false,
+		AddonCompartmentMover = false,
 	},
 
 	OutfitSwapSounds = {
@@ -102,9 +106,27 @@ local function RestoreCVars()
 	Artificer_DB.StoredCVars = nil;
 end
 
+function Artificer_OnAddonCompartmentClick(addonName, buttonName, menuButtonFrame)
+	Artificer:ToggleSettings();
+end
+
+function Artificer_OnAddonCompartmentEnter(addonName, menuButtonFrame)
+	GameTooltip:SetOwner(menuButtonFrame, "ANCHOR_LEFT");
+	GameTooltip:AddLine(L["TOC_Title"]);
+	GameTooltip:AddLine(string.format(L["Click"],L["OpenSettings"]), .93, .65, .37);
+	GameTooltip:Show();
+end
+
+function Artificer_OnAddonCompartmentLeave(addonName, menuButtonFrame)
+	GameTooltip:Hide();
+end
+
 f:SetScript("OnEvent", function(self, event, ...)
 	if event == "ADDON_LOADED" and ... == addonName then
 		if not Artificer_DB then Artificer_DB = {}; end
+		if not Artificer_DB.MinimapIcon then 
+			Artificer_DB.MinimapIcon = { hide = false };
+		end
 		if not Artificer_DB.StoredCVars then Artificer_DB.StoredCVars = {}; end
 
 		for k, v in pairs(Defaults) do
@@ -126,6 +148,23 @@ f:SetScript("OnEvent", function(self, event, ...)
 				Artificer_DB[k] = v;
 			end
 		end
+
+		local artificerLDB = LDB:NewDataObject("Artificer", {
+			type = "launcher",
+			text = L["TOC_Title"],
+			icon = "Interface\\AddOns\\Artificer\\Textures\\ArtificerIcon_Small",
+			OnClick = function(clickedFrame, button)
+				Artificer:ToggleSettings();
+			end,
+			OnTooltipShow = function(tooltip)
+				tooltip:AddLine(L["TOC_Title"]);
+				tooltip:AddLine(string.format(L["Click"],L["OpenSettings"]), .93, .65, .37);
+			end,
+		})
+
+		LDBIcon:Register("Artificer", artificerLDB, Artificer_DB.MinimapIcon);
+		
+		Artificer.MinimapIconLib = LDBIcon;
 
 		if Artificer.CVars then
 			for cvarName, data in pairs(Artificer.CVars) do

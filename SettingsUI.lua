@@ -81,7 +81,9 @@ local function InitializeCheckbox(button, data)
 	button.checkbox:SetScript("OnLeave", GameTooltip_Hide)
 
 	local isChecked
-	if data.isWidget then
+	if data.get then
+		isChecked = data.get()
+	elseif data.isWidget then
 		isChecked = GetWidgetValue(data.key);
 	else
 		isChecked = GetDBValue(data.key);
@@ -91,11 +93,15 @@ local function InitializeCheckbox(button, data)
 	
 	button.checkbox:SetScript("OnClick", function(self)
 		local val = self:GetChecked()
-		if data.isWidget then
+		
+		if data.set then
+			data.set(val)
+		elseif data.isWidget then
 			SetWidgetValue(data.key, val)
 		else
 			SetDBValue(data.key, val)
 		end
+		
 		if data.callback then data.callback(val); end
 	end)
 end
@@ -545,6 +551,51 @@ function Artificer:BuildSettingsData()
 		label = L["Header_Misc"],
 	});
 
+	-- Widgets - AddonCompartmentMover
+	table.insert(allSettingsData, {
+		type = "checkbox",
+		isWidget = true,
+		key = "AddonCompartmentMover",
+		isNew = true,
+		label = L["Widget_AddonCompartmentMover"], 
+		tooltip = L["Widget_AddonCompartmentMoverTT"],
+		searchText = GetSearchText(L["Widget_AddonCompartmentMover"], L["Widget_AddonCompartmentMoverTT"]),
+		callback = function(val)
+			if Artificer.Widgets.ApplyAddonCompartmentMover then
+				Artificer.Widgets.ApplyAddonCompartmentMover()
+			end
+		end
+	});
+
+	-- Widgets - MinimapIcon
+	table.insert(allSettingsData, {
+		type = "checkbox",
+		isWidget = true,
+		key = "MinimapIcon",
+		isNew = true,
+		label = L["Widget_MinimapIcon"], 
+		tooltip = L["Widget_MinimapIconTT"],
+		searchText = GetSearchText(L["Widget_MinimapIcon"], L["Widget_MinimapIconTT"]),
+		get = function()
+			if Artificer_DB and Artificer_DB.MinimapIcon then
+				return not Artificer_DB.MinimapIcon.hide;
+			end
+			return true;
+		end,
+		
+		set = function(val)
+			if not Artificer.MinimapIconLib then return end;
+			
+			Artificer_DB.MinimapIcon.hide = not val;
+			
+			if val then
+				Artificer.MinimapIconLib:Show("Artificer");
+			else
+				Artificer.MinimapIconLib:Hide("Artificer");
+			end
+		end
+	});
+
 	-- Widgets - PartySync
 	table.insert(allSettingsData, {
 		type = "checkbox",
@@ -559,6 +610,7 @@ function Artificer:BuildSettingsData()
 		end
 	});
 
+	-- Widgets - MovableCurrencyTransfer
 	table.insert(allSettingsData, {
 		type = "checkbox",
 		isWidget = true,

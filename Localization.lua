@@ -23,6 +23,7 @@ if LOCALE == "enUS" then
 	L["SLASH_ARTI2"] = "/arti" -- english slash command - *Do Not Localize*
 	L["SLASH_ARTI3"] = "/artificer" -- localized slash command
 	L["SLASH_ARTI4"] = "/arti" -- localized slash command
+	L["OpenSettings"] = "Open Settings"
 
 	-- Frame
 	L["UIScale"] = UI_SCALE
@@ -63,6 +64,10 @@ if LOCALE == "enUS" then
 	L["Widget_HideCraftingResultsTT"] = "Hide the Crafting Results frame when opening a profession tradeskill frame and crafting an item."
 	L["Widget_MovableCurrencyTransfer"] = "Movable Currency Transfer"
 	L["Widget_MovableCurrencyTransferTT"] = "Allows the Currency Transfer window to be moved."
+	L["Widget_AddonCompartmentMover"] = "Move Addon Compartment Frame"
+	L["Widget_AddonCompartmentMoverTT"] = "Moves the Addon Compartment Frame to the top of the calendar button instead of the bottom."
+	L["Widget_MinimapIcon"] = "Minimap Icon"
+	L["Widget_MinimapIconTT"] = "Displays clickable icon button on Minimap to open settings."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Account Auto Loot"
