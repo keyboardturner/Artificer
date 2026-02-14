@@ -620,13 +620,13 @@ local function CreateMainFrame()
 		if Artificer and Artificer.SettingsFrame.OutfitBarTab then
 			Artificer.SettingsFrame.OutfitBarTab.SelectedTexture:Hide();
 		end
-		PlaySound(74423)
+		PlaySound(62543);
 	end)
 	frame:SetScript("OnShow", function()
 		if Artificer and Artificer.SettingsFrame.OutfitBarTab then
 			Artificer.SettingsFrame.OutfitBarTab.SelectedTexture:Show();
 		end
-		PlaySound(74421)
+		PlaySound(25738);
 	end)
 	
 	local scrollBorder = CreateFrame("Frame", nil, frame, "InsetFrameTemplate3")

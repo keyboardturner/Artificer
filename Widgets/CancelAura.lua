@@ -325,11 +325,13 @@ local function CreateCancelAuraPanel()
 		if Artificer.SettingsFrame.CancelAuraTab then
 			Artificer.SettingsFrame.CancelAuraTab.SelectedTexture:Show();
 		end
+		PlaySound(1196);
 	end)
 	caFrame:SetScript("OnHide", function()
 		if Artificer.SettingsFrame.CancelAuraTab then
 			Artificer.SettingsFrame.CancelAuraTab.SelectedTexture:Hide();
 		end
+		PlaySound(1214);
 	end)
 	
 	ButtonFrameTemplate_HidePortrait(caFrame)

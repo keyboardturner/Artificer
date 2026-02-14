@@ -4,6 +4,23 @@ local L = Artificer.L;
 local allSettingsData = {};
 local ScrollView;
 
+local function IsSettingSeen(key)
+	return Artificer_DB and Artificer_DB.SeenSettings and Artificer_DB.SeenSettings[key];
+end
+
+local function MarkSettingSeen(key)
+	if not Artificer_DB then return end
+	if not Artificer_DB.SeenSettings then Artificer_DB.SeenSettings = {}; end
+	Artificer_DB.SeenSettings[key] = true;
+end
+
+local function UpdateNewIndicator(button, data)
+	if data.isNew and not IsSettingSeen(data.key) then
+		MarkSettingSeen(data.key);
+		if button.NewIndicator then button.NewIndicator:Hide(); end
+	end
+end
+
 local function GetDBValue(key)
 	if Artificer_DB and Artificer_DB[key] ~= nil then
 		return Artificer_DB[key];
@@ -53,6 +70,7 @@ local function InitializeCheckbox(button, data)
 	button.label:SetText(data.label)
 	
 	button.checkbox:SetScript("OnEnter", function(self)
+		UpdateNewIndicator(button, data);
 		if data.tooltip then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
 			GameTooltip:SetText(data.label, 1, 1, 1);
@@ -127,12 +145,15 @@ local function InitializeDropdown(button, data)
 	button.dropdown:SetupMenu(GeneratorFunction)
 	UpdateDropdownText()
 	
-	if data.tooltip then
+	if data.tooltip or data.isNew then
 		button.dropdown:SetScript("OnEnter", function(self)
-			GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
-			GameTooltip:SetText(data.label, 1, 1, 1);
-			GameTooltip:AddLine(data.tooltip, nil, nil, nil, true);
-			GameTooltip:Show();
+			UpdateNewIndicator(button, data);
+			if data.tooltip then
+				GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+				GameTooltip:SetText(data.label, 1, 1, 1);
+				GameTooltip:AddLine(data.tooltip, nil, nil, nil, true);
+				GameTooltip:Show();
+			end
 		end)
 		button.dropdown:SetScript("OnLeave", GameTooltip_Hide)
 	end
@@ -301,6 +322,19 @@ local function SettingsRowInitializer(button, data)
 	if button.slider then button.slider:Hide(); button.sliderLabel:Hide(); end
 	if button.headerLabel then button.headerLabel:Hide(); end
 
+	if not button.NewIndicator then
+		button.NewIndicator = button:CreateTexture(nil, "OVERLAY");
+		button.NewIndicator:SetAtlas("plunderstorm-new-dot-lg");
+		button.NewIndicator:SetSize(18, 18);
+		button.NewIndicator:SetPoint("LEFT", button, "LEFT", -2, 0);
+	end
+
+	if data.isNew and not IsSettingSeen(data.key) then
+		button.NewIndicator:Show();
+	else
+		button.NewIndicator:Hide();
+	end
+
 	if data.type == "checkbox" then
 		InitializeCheckbox(button, data);
 	elseif data.type == "dropdown" then
@@ -383,6 +417,7 @@ function Artificer:BuildSettingsData()
 		type = "checkbox",
 		isWidget = true,
 		key = "FishReelIn",
+		isNew = true,
 		label = L["Widget_FishReelIn"],
 		tooltip = L["Widget_FishReelInTT"],
 		searchText = GetSearchText(L["Widget_FishReelIn"], L["Widget_FishReelInTT"]),
@@ -396,6 +431,7 @@ function Artificer:BuildSettingsData()
 		type = "checkbox",
 		isWidget = true,
 		key = "HideCraftingResults",
+		isNew = true,
 		label = L["Widget_HideCraftingResults"],
 		tooltip = L["Widget_HideCraftingResultsTT"],
 		searchText = GetSearchText(L["Widget_HideCraftingResults"], L["Widget_HideCraftingResultsTT"]),
@@ -418,6 +454,7 @@ function Artificer:BuildSettingsData()
 		type = "checkbox",
 		isWidget = true,
 		key = "ChromieTimeIcon",
+		isNew = true,
 		label = L["Widget_ChromieTimeIcon"],
 		tooltip = L["Widget_ChromieTimeIconTT"],
 		searchText = GetSearchText(L["Widget_ChromieTimeIcon"], L["Widget_ChromieTimeIconTT"]),
@@ -439,6 +476,7 @@ function Artificer:BuildSettingsData()
 		type = "checkbox",
 		isWidget = true,
 		key = "HideMacroText",
+		isNew = true,
 		label = L["Widget_HideMacroText"],
 		tooltip = L["Widget_HideMacroTextTT"],
 		searchText = GetSearchText(L["Widget_HideMacroText"], L["Widget_HideMacroTextTT"]),
@@ -454,6 +492,7 @@ function Artificer:BuildSettingsData()
 		type = "checkbox",
 		isWidget = true,
 		key = "OutfitIcon",
+		isNew = true,
 		label = L["Widget_OutfitIcon"],
 		tooltip = L["Widget_OutfitIconTT"],
 		searchText = GetSearchText(L["Widget_OutfitIcon"], L["Widget_OutfitIconTT"]),
@@ -475,6 +514,7 @@ function Artificer:BuildSettingsData()
 		type = "checkbox",
 		isWidget = true,
 		key = "ArrowKeyEditbox",
+		isNew = true,
 		label = L["Widget_ArrowKeyEditbox"],
 		tooltip = L["Widget_ArrowKeyEditboxTT"],
 		searchText = GetSearchText(L["Widget_ArrowKeyEditbox"], L["Widget_ArrowKeyEditboxTT"]),
@@ -490,6 +530,7 @@ function Artificer:BuildSettingsData()
 		type = "checkbox",
 		isWidget = true,
 		key = "ServerNotifications",
+		isNew = true,
 		label = L["Widget_ServerNotifications"],
 		tooltip = L["Widget_ServerNotificationsTT"],
 		searchText = GetSearchText(L["Widget_ServerNotifications"], L["Widget_ServerNotificationsTT"]),
@@ -509,6 +550,7 @@ function Artificer:BuildSettingsData()
 		type = "checkbox",
 		isWidget = true,
 		key = "PartySync",
+		isNew = true,
 		label = L["Widget_PartySync"],
 		tooltip = L["Widget_PartySyncTT"],
 		searchText = GetSearchText(L["Widget_PartySync"], L["Widget_PartySyncTT"]),
@@ -521,6 +563,7 @@ function Artificer:BuildSettingsData()
 		type = "checkbox",
 		isWidget = true,
 		key = "MovableCurrencyTransfer",
+		isNew = true,
 		label = L["Widget_MovableCurrencyTransfer"],
 		tooltip = L["Widget_MovableCurrencyTransferTT"],
 		searchText = GetSearchText(L["Widget_MovableCurrencyTransfer"], L["Widget_MovableCurrencyTransferTT"]),
@@ -535,6 +578,7 @@ function Artificer:BuildSettingsData()
 	table.insert(allSettingsData, {
 		type = "multicheckbox",
 		key = "OutfitSwapSounds",
+		isNew = true,
 		label = L["Widget_OutfitSwapSounds"],
 		tooltip = L["Widget_OutfitSwapSoundsTT"],
 		options = {
@@ -561,6 +605,7 @@ function Artificer:BuildSettingsData()
 		type = "checkbox",
 		isWidget = true,
 		key = "AutoLoot",
+		isNew = true,
 		label = L["Widget_AutoLoot"],
 		tooltip = L["Widget_AutoLootTT"],
 		searchText = GetSearchText(L["Widget_AutoLoot"], L["Widget_AutoLootTT"]),
@@ -576,6 +621,7 @@ function Artificer:BuildSettingsData()
 		type = "checkbox",
 		isWidget = true,
 		key = "PetBattleMapFilter",
+		isNew = true,
 		label = L["Widget_PetBattleMapFilter"],
 		tooltip = L["Widget_PetBattleMapFilterTT"],
 		searchText = GetSearchText(L["Widget_PetBattleMapFilter"], L["Widget_PetBattleMapFilterTT"]),
@@ -591,6 +637,7 @@ function Artificer:BuildSettingsData()
 		type = "checkbox",
 		isWidget = true,
 		key = "CooldownManagerEnabled",
+		isNew = true,
 		label = L["Widget_cooldownViewerEnabled"],
 		tooltip = L["Widget_cooldownViewerEnabledTT"],
 		searchText = GetSearchText(L["Widget_cooldownViewerEnabled"], L["Widget_cooldownViewerEnabledTT"]),
@@ -612,6 +659,7 @@ function Artificer:BuildSettingsData()
 			local settingData = {
 				type = data.settings,
 				key = cvarName,
+				isNew = true,
 				label = data.label,
 				tooltip = data.description,
 				searchText = GetSearchText(data.label, data.description),
@@ -697,6 +745,14 @@ function Artificer:CreateSettingsUI()
 		self:StopMovingOrSizing();
 		Artificer:SaveFramePosition(self, "SettingsFrame");
 	end)
+
+	frame:SetScript("OnShow", function()
+		PlaySound(279415);
+	end)
+	frame:SetScript("OnHide", function()
+		PlaySound(248166);
+	end)
+
 	frame:SetToplevel(true)
 	frame:SetClampedToScreen(true)
 	frame:SetTitle(L["TOC_Title"])

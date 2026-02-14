@@ -338,11 +338,13 @@ local function CreateAbandonQuestPanel()
 		if Artificer.SettingsFrame.AbandonQuestTab then
 			Artificer.SettingsFrame.AbandonQuestTab.SelectedTexture:Show();
 		end
+		PlaySound(844);
 	end)
 	aqFrame:SetScript("OnHide", function()
 		if Artificer.SettingsFrame.AbandonQuestTab then
 			Artificer.SettingsFrame.AbandonQuestTab.SelectedTexture:Hide();
 		end
+		PlaySound(879);
 	end)
 	
 	ButtonFrameTemplate_HidePortrait(aqFrame)

@@ -59,23 +59,23 @@ Artificer.CVars = {
 };
 
 --[[ -- other CVars to look at?
-    "titleBarShortName",
-    "titleBarShowAccountName",
-    "titleBarShowBuildInfo",
-    "titleBarShowCharacterName",
-    "titleBarShowConfigName",
-    "titleBarShowGxInfo",
-    "titleBarShowPID",
-    "titleBarShowRealmName",
-    "consoleShowSpamMessages",
-    "consoleShowDebugMessages",
-    "lfgDebug",
-    "EnableAirlockLogging",
-    "Errors",
-    "ErrorFileLog",
-    "persistMoveLogOnTransfer",
-    "PraiseTheSun",
-    "nameplateShowOnlyNameForFriendlyPlayerUnits"
+	"titleBarShortName",
+	"titleBarShowAccountName",
+	"titleBarShowBuildInfo",
+	"titleBarShowCharacterName",
+	"titleBarShowConfigName",
+	"titleBarShowGxInfo",
+	"titleBarShowPID",
+	"titleBarShowRealmName",
+	"consoleShowSpamMessages",
+	"consoleShowDebugMessages",
+	"lfgDebug",
+	"EnableAirlockLogging",
+	"Errors",
+	"ErrorFileLog",
+	"persistMoveLogOnTransfer",
+	"PraiseTheSun",
+	"nameplateShowOnlyNameForFriendlyPlayerUnits"
 ]]
 
 local f = CreateFrame("Frame")
