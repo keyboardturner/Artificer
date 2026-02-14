@@ -1,6 +1,6 @@
 ## Interface: 120000, 120001
 ## Author: Keyboardturner
-## Version: 0.0.1
+## Version: @project-version@
 ## Title: Artificer
 ## Notes: A personal workshop and collection of UI tweaks and adjustments
 ## IconTexture: Interface/Addons/Artificer/Textures/ArtificerIcon_Small.blp
@@ -8,6 +8,32 @@
 ## AddonCompartmentFunc: Artificer_OnAddonCompartmentClick
 ## AddonCompartmentFuncOnEnter: Artificer_OnAddonCompartmentEnter
 ## AddonCompartmentFuncOnLeave: Artificer_OnAddonCompartmentLeave
+## X-Curse-Project-ID: 1449040
+## X-WoWI-ID: 
+## X-Wago-ID: 
+
+## Title-enUS: Artificer
+## Notes-enUS: A personal workshop and collection of UI tweaks and adjustments
+## Title-esMX: Artificer
+## Notes-esMX: Un taller personal y colección de ajustes y mejoras de la interfaz
+## Title-esES: Artificer
+## Notes-esES: Un taller personal y colección de ajustes de la interfaz
+## Title-deDE: Artificer
+## Notes-deDE: Eine persönliche Werkstatt und Sammlung von UI-Anpassungen
+## Title-frFR: Artificer
+## Notes-frFR: Un atelier personnel et une collection d’ajustements de l’interface
+## Title-itIT: Artificer
+## Notes-itIT: Un laboratorio personale e una raccolta di modifiche e miglioramenti dell'interfaccia
+## Title-ptBR: Artificer
+## Notes-ptBR: Uma oficina pessoal e coleção de ajustes e melhorias de interface
+## Title-ruRU: ремесленник (Artificer)
+## Notes-ruRU: Личная мастерская и набор улучшений интерфейса
+## Title-koKR: 기술자 (Artificer)
+## Notes-koKR: 개인 작업실과 UI 조정 모음
+## Title-zhCN: 工匠 (Artificer)
+## Notes-zhCN: 个人工作室以及一系列界面调整和优化
+## Title-zhTW: 技師 (Artificer)
+## Notes-zhTW: 個人工作室以及一系列介面調整與優化
 
 ## Category: Other
 ## Category-enUS: Other
