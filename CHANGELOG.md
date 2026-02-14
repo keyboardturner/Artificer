@@ -1,5 +1,9 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.0.2
+
+Check for secret value in CancelAuras
+
 # 0.0.1
 
 Release version:
