@@ -110,13 +110,14 @@ local function InitializeDropdown(button, data)
 	button:SetHeight(30)
 	
 	if not button.dropdown then
-		button.dropdown = CreateFrame("DropdownButton", nil, button, "WowStyle1DropdownTemplate")
-		button.dropdown:SetPoint("LEFT", 10, -5)
-		button.dropdown:SetWidth(150)
+		button.dropdown = CreateFrame("DropdownButton", nil, button, "WowStyle1DropdownTemplate");
+		button.dropdown:SetPoint("RIGHT", button, "RIGHT", -10, 0);
+		button.dropdown:SetWidth(150);
 		
-		button.dropdownLabel = button:CreateFontString(nil, "OVERLAY", "GameTooltipText")
-		button.dropdownLabel:SetPoint("LEFT", button.dropdown, "RIGHT", 10, 0)
-		button.dropdownLabel:SetJustifyH("LEFT")
+		button.dropdownLabel = button:CreateFontString(nil, "OVERLAY", "GameTooltipText");
+		button.dropdownLabel:SetPoint("LEFT", button, "LEFT", 24+15, 0);
+		button.dropdownLabel:SetPoint("RIGHT", button.dropdown, "LEFT", -10, 0);
+		button.dropdownLabel:SetJustifyH("LEFT");
 	end
 	
 	button.dropdown:Show()
@@ -155,13 +156,24 @@ local function InitializeDropdown(button, data)
 		button.dropdown:SetScript("OnEnter", function(self)
 			UpdateNewIndicator(button, data);
 			if data.tooltip then
-				GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+				GameTooltip:SetOwner(button.dropdownLabel, "ANCHOR_TOPLEFT", -5, 5);
 				GameTooltip:SetText(data.label, 1, 1, 1);
 				GameTooltip:AddLine(data.tooltip, nil, nil, nil, true);
 				GameTooltip:Show();
 			end
 		end)
 		button.dropdown:SetScript("OnLeave", GameTooltip_Hide)
+
+		button.dropdownLabel:SetScript("OnEnter", function(self)
+			UpdateNewIndicator(button, data);
+			if data.tooltip then
+				GameTooltip:SetOwner(self, "ANCHOR_TOPLEFT", -5, 5);
+				GameTooltip:SetText(data.label, 1, 1, 1);
+				GameTooltip:AddLine(data.tooltip, nil, nil, nil, true);
+				GameTooltip:Show();
+			end
+		end)
+		button.dropdownLabel:SetScript("OnLeave", GameTooltip_Hide)
 	end
 end
 
@@ -169,12 +181,17 @@ local function InitializeMultiCheckbox(button, data)
 	button:SetHeight(30)
 	
 	if not button.multicheckbox then
-		button.multicheckbox = CreateFrame("DropdownButton", nil, button, "WowStyle1FilterDropdownTemplate");
-		button.multicheckbox:SetPoint("LEFT", 10, -5);
+		button.multicheckbox = CreateFrame("DropdownButton", nil, button, "WowStyle1DropdownTemplate");
+		button.multicheckbox:SetPoint("RIGHT", button, "RIGHT", -10, 0);
 		button.multicheckbox:SetWidth(150);
+
+		if button.multicheckbox.Text then
+			button.multicheckbox.Text:SetWordWrap(false);
+		end
 		
 		button.multicheckboxLabel = button:CreateFontString(nil, "OVERLAY", "GameTooltipText");
-		button.multicheckboxLabel:SetPoint("LEFT", button.multicheckbox, "RIGHT", 10, 0);
+		button.multicheckboxLabel:SetPoint("LEFT", button, "LEFT", 24+15, 0);
+		button.multicheckboxLabel:SetPoint("RIGHT", button.multicheckbox, "LEFT", -10, 0);
 		button.multicheckboxLabel:SetJustifyH("LEFT");
 	end
 	
@@ -235,14 +252,28 @@ local function InitializeMultiCheckbox(button, data)
 	button.multicheckbox:SetupMenu(GeneratorFunction)
 	UpdateDropdownText()
 	
-	if data.tooltip then
+	if data.tooltip or data.isNew then
 		button.multicheckbox:SetScript("OnEnter", function(self)
-			GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
-			GameTooltip:SetText(data.label, 1, 1, 1);
-			GameTooltip:AddLine(data.tooltip, nil, nil, nil, true);
-			GameTooltip:Show();
+			UpdateNewIndicator(button, data);
+			if data.tooltip then
+				GameTooltip:SetOwner(button.multicheckboxLabel, "ANCHOR_TOPLEFT", -5, 5);
+				GameTooltip:SetText(data.label, 1, 1, 1);
+				GameTooltip:AddLine(data.tooltip, nil, nil, nil, true);
+				GameTooltip:Show();
+			end
 		end)
 		button.multicheckbox:SetScript("OnLeave", GameTooltip_Hide)
+
+		button.multicheckboxLabel:SetScript("OnEnter", function(self)
+			UpdateNewIndicator(button, data);
+			if data.tooltip then
+				GameTooltip:SetOwner(self, "ANCHOR_TOPLEFT", -5, 5);
+				GameTooltip:SetText(data.label, 1, 1, 1);
+				GameTooltip:AddLine(data.tooltip, nil, nil, nil, true);
+				GameTooltip:Show();
+			end
+		end)
+		button.multicheckboxLabel:SetScript("OnLeave", GameTooltip_Hide)
 	end
 end
 
@@ -250,19 +281,21 @@ local function InitializeSlider(button, data)
 	button:SetHeight(30)
 	
 	if not button.slider then
-		local options = Settings.CreateSliderOptions(data.min, data.max, data.step)
-		options:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, data.formatter)
+		local options = Settings.CreateSliderOptions(data.min, data.max, data.step);
+		options:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, data.formatter);
 		
-		button.slider = CreateFrame("Frame", nil, button, "MinimalSliderWithSteppersTemplate")
-		button.slider:SetPoint("LEFT", 10, -5)
-		button.slider:SetWidth(200)
-		local currentVal = tonumber(GetDBValue(data.key)) or data.defaultValue
+		button.slider = CreateFrame("Frame", nil, button, "MinimalSliderWithSteppersTemplate");
+		button.slider:SetPoint("RIGHT", button, "RIGHT", -10, 0);
+		button.slider:SetWidth(150);
+		local currentVal = tonumber(GetDBValue(data.key)) or data.defaultValue;
 		
-		button.slider:Init(currentVal, options.minValue, options.maxValue, options.steps, options.formatters)
+		button.slider:Init(currentVal, options.minValue, options.maxValue, options.steps, options.formatters);
 		
-		button.sliderLabel = button:CreateFontString(nil, "OVERLAY", "GameTooltipText")
-		button.sliderLabel:SetPoint("LEFT", button.slider, "RIGHT", 50, 0)
-		button.sliderLabel:SetTextColor(1, 1, 1)
+		button.sliderLabel = button:CreateFontString(nil, "OVERLAY", "GameTooltipText");
+		button.sliderLabel:SetPoint("LEFT", button, "LEFT", 24+15, 0);
+		button.sliderLabel:SetPoint("RIGHT", button.slider, "LEFT", -10, 0);
+		button.sliderLabel:SetJustifyH("LEFT");
+		button.sliderLabel:SetTextColor(1, 1, 1);
 	end
 	
 	button.slider:Show()
@@ -287,19 +320,26 @@ local function InitializeSlider(button, data)
 	button.slider:SetValue(currentVal)
 	button.slider.isInitializing = false
 
-	if data.tooltip then
+	if data.tooltip or data.isNew then
 		button.slider.Slider:SetScript("OnEnter", function(self)
-			GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
-			GameTooltip:SetText(data.label, 1, 1, 1);
-			GameTooltip:AddLine(data.tooltip, nil, nil, nil, true);
-			GameTooltip:Show();
+			UpdateNewIndicator(button, data);
+			if data.tooltip then
+				GameTooltip:SetOwner(button.sliderLabel, "ANCHOR_TOPLEFT", -5, 5);
+				GameTooltip:SetText(data.label, 1, 1, 1);
+				GameTooltip:AddLine(data.tooltip, nil, nil, nil, true);
+				GameTooltip:Show();
+			end
 		end)
 		button.slider.Slider:SetScript("OnLeave", GameTooltip_Hide)
+
 		button.sliderLabel:SetScript("OnEnter", function(self)
-			GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
-			GameTooltip:SetText(data.label, 1, 1, 1);
-			GameTooltip:AddLine(data.tooltip, nil, nil, nil, true);
-			GameTooltip:Show();
+			UpdateNewIndicator(button, data);
+			if data.tooltip then
+				GameTooltip:SetOwner(self, "ANCHOR_TOPLEFT", -5, 5);
+				GameTooltip:SetText(data.label, 1, 1, 1);
+				GameTooltip:AddLine(data.tooltip, nil, nil, nil, true);
+				GameTooltip:Show();
+			end
 		end)
 		button.sliderLabel:SetScript("OnLeave", GameTooltip_Hide)
 	end
@@ -340,6 +380,10 @@ local function SettingsRowInitializer(button, data)
 	else
 		button.NewIndicator:Hide();
 	end
+
+	button:SetScript("OnEnter", function(self)
+		UpdateNewIndicator(button, data);
+	end)
 
 	if data.type == "checkbox" then
 		InitializeCheckbox(button, data);
