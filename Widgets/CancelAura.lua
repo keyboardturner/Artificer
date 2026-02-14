@@ -49,7 +49,7 @@ local frame = CreateFrame("Frame")
 frame:RegisterEvent("UNIT_AURA")
 
 frame:SetScript("OnEvent", function(self, event, unit, info)
-	if InCombatLockdown() then return end
+	if InCombatLockdown() or C_Secrets and C_Secrets.ShouldAurasBeSecret() then return; end
 	if info.addedAuras and not issecretvalue(unit) and not issecretvalue(info) and unit == "player" then
 		local db = GetBlocklist()
 		for _, v in pairs(info.addedAuras) do
