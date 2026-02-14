@@ -615,6 +615,13 @@ local function CreateMainFrame()
 	local inset = frame.Inset
 	inset:SetPoint("TOPLEFT", frame, "TOPLEFT", 8, -28)
 	inset:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -3, 3)
+
+	frame.BgIcon = frame:CreateTexture(nil, "BACKGROUND", nil, 1)
+	frame.BgIcon:SetPoint("CENTER", 0, 0)
+	frame.BgIcon:SetSize(inset:GetHeight()*.75, inset:GetHeight()*.75)
+	frame.BgIcon:SetTexture("Interface\\AddOns\\Artificer\\Textures\\ArtificerIcon_Small.blp")
+	frame.BgIcon:SetDesaturated(true)
+	frame.BgIcon:SetVertexColor(.99, .71, .96, 0.2)
 	
 	frame:SetScript("OnHide", function()
 		if Artificer and Artificer.SettingsFrame.OutfitBarTab then
