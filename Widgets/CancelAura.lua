@@ -53,6 +53,7 @@ frame:SetScript("OnEvent", function(self, event, unit, info)
 	if info.addedAuras and not issecretvalue(unit) and not issecretvalue(info) and unit == "player" then
 		local db = GetBlocklist()
 		for _, v in pairs(info.addedAuras) do
+			if issecretvalue(v) or issecretvalue(v.spellId) then return end
 			local aura = v.spellId;
 			if not HistoryList[aura] then
 				HistoryList[aura] = true;
