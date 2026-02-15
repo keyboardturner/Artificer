@@ -5,12 +5,12 @@ local L = Artificer.L;
 function Artificer.Widgets.ApplyPetBattleMapFilter()
 	local val = Artificer_DB.Widgets.PetBattleMapFilter;
 	if val == 2 then
-		if C_CVar.GetCVar("showTamers") ~= "0" then
-			C_CVar.SetCVar("showTamers", "0");
-		end
-	elseif val == 3 then
 		if C_CVar.GetCVar("showTamers") ~= "1" then
 			C_CVar.SetCVar("showTamers", "1");
+		end
+	elseif val == 3 then
+		if C_CVar.GetCVar("showTamers") ~= "0" then
+			C_CVar.SetCVar("showTamers", "0");
 		end
 	end
 end
