@@ -21,9 +21,9 @@ local Defaults = {
 		ArrowKeyEditbox = true,
 		OutfitIcon = true,
 		ServerNotifications = true,
-		AutoLoot = true,
-		PetBattleMapFilter = false,
-		CooldownManagerEnabled = false,
+		AutoLoot = 1,
+		PetBattleMapFilter = 1,
+		CooldownManagerEnabled = 1,
 		PartySync = true,
 		HideCraftingResults = false,
 		MovableCurrencyTransfer = false,
@@ -129,6 +129,15 @@ f:SetScript("OnEvent", function(self, event, ...)
 			Artificer_DB.MinimapIcon = { hide = false };
 		end
 		if not Artificer_DB.StoredCVars then Artificer_DB.StoredCVars = {}; end
+
+		if Artificer_DB.Widgets then
+			local legacyKeys = {"AutoLoot", "PetBattleMapFilter", "CooldownManagerEnabled"}
+			for _, key in ipairs(legacyKeys) do
+				if type(Artificer_DB.Widgets[key]) == "boolean" then
+					Artificer_DB.Widgets[key] = Artificer_DB.Widgets[key] and 2 or 1;
+				end
+			end
+		end
 
 		for k, v in pairs(Defaults) do
 			if k == "Widgets" then

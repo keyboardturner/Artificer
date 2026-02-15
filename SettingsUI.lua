@@ -178,7 +178,13 @@ local function InitializeDropdown(button, data)
 	button.dropdownLabel:SetText(data.label)
 	
 	local function GetCurrentValue()
-		return GetDBValue(data.key) or data.defaultValue or 1
+		if data.get then
+			return data.get()
+		elseif data.isWidget then
+			return GetWidgetValue(data.key) or data.defaultValue or 1
+		else
+			return GetDBValue(data.key) or data.defaultValue or 1
+		end
 	end
 
 	local function UpdateDropdownText()
@@ -195,7 +201,14 @@ local function InitializeDropdown(button, data)
 		rootDescription:SetScrollMode(300)
 		for _, option in ipairs(data.options) do
 			rootDescription:CreateRadio(option.text, function() return GetCurrentValue() == option.value end, function()
-				SetDBValue(data.key, option.value);
+				if data.set then
+					data.set(option.value)
+				elseif data.isWidget then
+					SetWidgetValue(data.key, option.value)
+				else
+					SetDBValue(data.key, option.value)
+				end
+				
 				UpdateDropdownText();
 				if data.callback then data.callback(option.value); end
 			end, option.value)
@@ -767,15 +780,20 @@ function Artificer:BuildSettingsData()
 
 	-- Widgets - AutoLoot
 	table.insert(allSettingsData, {
-		type = "checkbox",
+		type = "dropdown",
 		isWidget = true,
 		key = "AutoLoot",
 		isNew = true,
 		label = L["Widget_AutoLoot"],
 		tooltip = L["Widget_AutoLootTT"],
+		options = {
+			{ text = L["None"], value = 1 },
+			{ text = L["Account_On"], value = 2 },
+			{ text = L["Account_Off"], value = 3 },
+		},
 		searchText = GetSearchText(L["Widget_AutoLoot"], L["Widget_AutoLootTT"]),
 		callback = function(val)
-			if val and Artificer.Widgets.ApplyAutoLoot then
+			if Artificer.Widgets.ApplyAutoLoot then
 				Artificer.Widgets.ApplyAutoLoot();
 			end
 		end
@@ -783,15 +801,20 @@ function Artificer:BuildSettingsData()
 
 	-- Widgets - PetBattleMapFilter
 	table.insert(allSettingsData, {
-		type = "checkbox",
+		type = "dropdown",
 		isWidget = true,
 		key = "PetBattleMapFilter",
 		isNew = true,
 		label = L["Widget_PetBattleMapFilter"],
 		tooltip = L["Widget_PetBattleMapFilterTT"],
+		options = {
+			{ text = L["None"], value = 1 },
+			{ text = L["Account_On"], value = 2 },
+			{ text = L["Account_Off"], value = 3 },
+		},
 		searchText = GetSearchText(L["Widget_PetBattleMapFilter"], L["Widget_PetBattleMapFilterTT"]),
 		callback = function(val)
-			if val and Artificer.Widgets.ApplyPetBattleMapFilter then
+			if Artificer.Widgets.ApplyPetBattleMapFilter then
 				Artificer.Widgets.ApplyPetBattleMapFilter();
 			end
 		end
@@ -799,15 +822,20 @@ function Artificer:BuildSettingsData()
 
 	-- Widgets - CooldownManagerEnabled
 	table.insert(allSettingsData, {
-		type = "checkbox",
+		type = "dropdown",
 		isWidget = true,
 		key = "CooldownManagerEnabled",
 		isNew = true,
 		label = L["Widget_cooldownViewerEnabled"],
 		tooltip = L["Widget_cooldownViewerEnabledTT"],
+		options = {
+			{ text = L["None"], value = 1 },
+			{ text = L["Account_On"], value = 2 },
+			{ text = L["Account_Off"], value = 3 },
+		},
 		searchText = GetSearchText(L["Widget_cooldownViewerEnabled"], L["Widget_cooldownViewerEnabledTT"]),
 		callback = function(val)
-			if val and Artificer.Widgets.ApplyCooldownManagerEnabled then
+			if Artificer.Widgets.ApplyCooldownManagerEnabled then
 				Artificer.Widgets.ApplyCooldownManagerEnabled();
 			end
 		end

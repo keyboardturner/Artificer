@@ -60,16 +60,18 @@ if LOCALE == "enUS" then
 	L["Widget_MinimapIconTT"] = "Displays clickable icon button on Minimap to open settings."
 	L["Widget_CollapseBuffs"] = "Auto Collapse Buff Frame"
 	L["Widget_CollapseBuffsTT"] = "Automatically collapses the default Buff Frame."
-
-	--Widgets - Account-wide settings
-	L["Widget_AutoLoot"] = "Account Auto Loot"
-	L["Widget_AutoLootTT"] = "Enforces Auto Loot to be enabled on every character."
-	L["Widget_PetBattleMapFilter"] = "Account Pet Battle Map Filter"
-	L["Widget_PetBattleMapFilterTT"] = "Enforces Pet Battle Map Filter to be disabled on every character."
-	L["Widget_cooldownViewerEnabled"] = "Account Cooldown Manager Enabled"
-	L["Widget_cooldownViewerEnabledTT"] = "Enforces the Cooldown Manager to be enabled on every character."
 	L["Widget_PartySync"] = "Automatically Accept Party Sync"
 	L["Widget_PartySyncTT"] = "Automatically accept the Party Sync confirm button when it is prompted."
+
+	--Widgets - Account-wide settings
+	L["Widget_AutoLoot"] = "Account Auto Loot Toggle"
+	L["Widget_AutoLootTT"] = "Enforces account-wide settings for Auto Loot on every character."
+	L["Widget_PetBattleMapFilter"] = "Account Pet Battle Map Filter Toggle"
+	L["Widget_PetBattleMapFilterTT"] = "Enforces account-wide settings for Pet Battle Map Filter on every character."
+	L["Widget_cooldownViewerEnabled"] = "Account Cooldown Manager Toggle"
+	L["Widget_cooldownViewerEnabledTT"] = "Enforces account-wide settings for the Cooldown Manager on every character."
+	L["Account_On"] = "Account-Wide Enabled"
+	L["Account_Off"] = "Account-Wide Disabled"
 
 	--Widgets - CancelAura
 	L["CancelAuraManager"] = "Cancel Aura Manager"
@@ -185,16 +187,18 @@ if LOCALE == "esMX" then
 	L["Widget_MinimapIconTT"] = "Muestra un icono clicable en el minimapa."
 	L["Widget_CollapseBuffs"] = "Contraer automáticamente el marco de beneficios"
 	L["Widget_CollapseBuffsTT"] = "Contrae automáticamente el marco de beneficios predeterminado."
-
-	--Widgets - Account-wide settings
-	L["Widget_AutoLoot"] = "Botín automático de cuenta"
-	L["Widget_AutoLootTT"] = "Activa el botín automático en todos los personajes."
-	L["Widget_PetBattleMapFilter"] = "Filtro de mascotas de cuenta"
-	L["Widget_PetBattleMapFilterTT"] = "Desactiva el filtro de batallas de mascotas en todos los personajes."
-	L["Widget_cooldownViewerEnabled"] = "Administrador de CDs de cuenta"
-	L["Widget_cooldownViewerEnabledTT"] = "Activa el gestor de reutilización en todos los personajes."
 	L["Widget_PartySync"] = "Aceptar Sincronización de grupo automáticamente"
 	L["Widget_PartySyncTT"] = "Acepta automáticamente la sincronización de grupo."
+
+	--Widgets - Account-wide settings
+	L["Widget_AutoLoot"] = "Alternar botín automático de la cuenta"
+	L["Widget_AutoLootTT"] = "Aplica la configuración de botín automático a toda la cuenta en todos los personajes."
+	L["Widget_PetBattleMapFilter"] = "Alternar filtro del mapa de duelos de mascotas de la cuenta"
+	L["Widget_PetBattleMapFilterTT"] = "Aplica la configuración del filtro del mapa de duelos de mascotas a toda la cuenta."
+	L["Widget_cooldownViewerEnabled"] = "Alternar administrador de reutilización de la cuenta"
+	L["Widget_cooldownViewerEnabledTT"] = "Aplica la configuración del administrador de reutilización a toda la cuenta."
+	L["Account_On"] = "Activado en toda la cuenta"
+	L["Account_Off"] = "Desactivado en toda la cuenta"
 
 	--Widgets - CancelAura
 	L["CancelAuraManager"] = "Gestor de cancelación de auras"
@@ -309,16 +313,18 @@ if LOCALE == "esES" then
 	L["Widget_MinimapIconTT"] = "Muestra un icono clicable en el minimapa."
 	L["Widget_CollapseBuffs"] = "Contraer automáticamente el marco de beneficios"
 	L["Widget_CollapseBuffsTT"] = "Contrae automáticamente el marco de beneficios predeterminado."
-
-	--Widgets - Account-wide settings
-	L["Widget_AutoLoot"] = "Botín automático de cuenta"
-	L["Widget_AutoLootTT"] = "Activa el botín automático en todos los personajes."
-	L["Widget_PetBattleMapFilter"] = "Filtro de mascotas de cuenta"
-	L["Widget_PetBattleMapFilterTT"] = "Desactiva el filtro de batallas de mascotas en todos los personajes."
-	L["Widget_cooldownViewerEnabled"] = "Administrador de CDs de cuenta"
-	L["Widget_cooldownViewerEnabledTT"] = "Activa el gestor de reutilización en todos los personajes."
 	L["Widget_PartySync"] = "Aceptar Sincronización de grupo automáticamente"
 	L["Widget_PartySyncTT"] = "Acepta automáticamente la sincronización de grupo."
+
+	--Widgets - Account-wide settings
+	L["Widget_AutoLoot"] = "Alternar saqueo automático de la cuenta"
+	L["Widget_AutoLootTT"] = "Aplica la configuración de saqueo automático a toda la cuenta en todos los personajes."
+	L["Widget_PetBattleMapFilter"] = "Alternar filtro del mapa de duelos de mascotas de la cuenta"
+	L["Widget_PetBattleMapFilterTT"] = "Aplica la configuración del filtro del mapa de duelos de mascotas a toda la cuenta."
+	L["Widget_cooldownViewerEnabled"] = "Alternar gestor de reutilización de la cuenta"
+	L["Widget_cooldownViewerEnabledTT"] = "Aplica la configuración del gestor de reutilización a toda la cuenta."
+	L["Account_On"] = "Activado en toda la cuenta"
+	L["Account_Off"] = "Desactivado en toda la cuenta"
 
 	--Widgets - CancelAura
 	L["CancelAuraManager"] = "Gestor de cancelación de auras"
@@ -431,16 +437,18 @@ if LOCALE == "deDE" then
 	L["Widget_MinimapIconTT"] = "Zeigt ein klickbares Symbol auf der Minikarte zum Öffnen der Einstellungen."
 	L["Widget_CollapseBuffs"] = "Buff-Leiste automatisch einklappen"
 	L["Widget_CollapseBuffsTT"] = "Klappt die Standard-Buff-Leiste automatisch ein."
-
-	--Widgets - Account-wide settings
-	L["Widget_AutoLoot"] = "Automatisches Plündern (Account)"
-	L["Widget_AutoLootTT"] = "Aktiviert automatisches Plündern für alle Charaktere."
-	L["Widget_PetBattleMapFilter"] = "Haustierkampf-Kartenfilter (Account)"
-	L["Widget_PetBattleMapFilterTT"] = "Deaktiviert den Haustierkampf-Kartenfilter für alle Charaktere."
-	L["Widget_cooldownViewerEnabled"] = "Abklingzeit-Manager aktiviert (Account)"
-	L["Widget_cooldownViewerEnabledTT"] = "Aktiviert den Abklingzeit-Manager für alle Charaktere."
 	L["Widget_PartySync"] = "Gruppensynchronisierung automatisch akzeptieren"
 	L["Widget_PartySyncTT"] = "Akzeptiert automatisch die Bestätigung der Gruppensynchronisierung."
+
+	--Widgets - Account-wide settings
+	L["Widget_AutoLoot"] = "Account-Autoplünderung umschalten"
+	L["Widget_AutoLootTT"] = "Erzwingt kontoweite Einstellungen für Autoplünderung auf allen Charakteren."
+	L["Widget_PetBattleMapFilter"] = "Account-Haustierkampf-Kartenfilter umschalten"
+	L["Widget_PetBattleMapFilterTT"] = "Erzwingt kontoweite Einstellungen für den Haustierkampf-Kartenfilter auf allen Charakteren."
+	L["Widget_cooldownViewerEnabled"] = "Account-Abklingzeit-Manager umschalten"
+	L["Widget_cooldownViewerEnabledTT"] = "Erzwingt kontoweite Einstellungen für den Abklingzeit-Manager auf allen Charakteren."
+	L["Account_On"] = "Accountweit aktiviert"
+	L["Account_Off"] = "Accountweit deaktiviert"
 
 	--Widgets - CancelAura
 	L["CancelAuraManager"] = "Aura-Abbruch-Manager"
@@ -554,16 +562,18 @@ if LOCALE == "frFR" then
 	L["Widget_MinimapIconTT"] = "Affiche une icône cliquable sur la minicarte pour ouvrir les options."
 	L["Widget_CollapseBuffs"] = "Réduire automatiquement la fenêtre des améliorations"
 	L["Widget_CollapseBuffsTT"] = "Réduit automatiquement la fenêtre des améliorations par défaut."
-
-	--Widgets - Account-wide settings
-	L["Widget_AutoLoot"] = "Butin automatique (compte)"
-	L["Widget_AutoLootTT"] = "Active le butin automatique pour tous les personnages."
-	L["Widget_PetBattleMapFilter"] = "Filtre de carte des combats de mascottes (compte)"
-	L["Widget_PetBattleMapFilterTT"] = "Désactive le filtre de combats de mascottes pour tous les personnages."
-	L["Widget_cooldownViewerEnabled"] = "Gestionnaire de recharge activé (compte)"
-	L["Widget_cooldownViewerEnabledTT"] = "Active le gestionnaire de recharge pour tous les personnages."
 	L["Widget_PartySync"] = "Accepter automatiquement la synchronisation de groupe"
 	L["Widget_PartySyncTT"] = "Accepte automatiquement la confirmation de synchronisation de groupe."
+
+	--Widgets - Account-wide settings
+	L["Widget_AutoLoot"] = "Basculer le butin automatique du compte"
+	L["Widget_AutoLootTT"] = "Applique les paramètres de butin automatique à tout le compte sur chaque personnage."
+	L["Widget_PetBattleMapFilter"] = "Basculer le filtre de carte de combats de mascottes du compte"
+	L["Widget_PetBattleMapFilterTT"] = "Applique les paramètres du filtre de carte de combats de mascottes à tout le compte."
+	L["Widget_cooldownViewerEnabled"] = "Basculer le gestionnaire de temps de recharge du compte"
+	L["Widget_cooldownViewerEnabledTT"] = "Applique les paramètres du gestionnaire de temps de recharge à tout le compte."
+	L["Account_On"] = "Activé pour tout le compte"
+	L["Account_Off"] = "Désactivé pour tout le compte"
 
 	--Widgets - CancelAura
 	L["CancelAuraManager"] = "Gestionnaire d’annulation d’auras"
@@ -677,16 +687,18 @@ if LOCALE == "itIT" then
 	L["Widget_MinimapIconTT"] = "Mostra un'icona cliccabile sulla minimappa per aprire le impostazioni."
 	L["Widget_CollapseBuffs"] = "Riduci automaticamente la finestra dei potenziamenti"
 	L["Widget_CollapseBuffsTT"] = "Riduce automaticamente la finestra dei potenziamenti predefinita."
-
-	--Widgets - Account-wide settings
-	L["Widget_AutoLoot"] = "Auto bottino account"
-	L["Widget_AutoLootTT"] = "Attiva il bottino automatico per tutti i personaggi."
-	L["Widget_PetBattleMapFilter"] = "Filtro mappa mascotte account"
-	L["Widget_PetBattleMapFilterTT"] = "Disattiva il filtro battaglie mascotte per tutti i personaggi."
-	L["Widget_cooldownViewerEnabled"] = "Gestore ricariche account attivo"
-	L["Widget_cooldownViewerEnabledTT"] = "Attiva il gestore ricariche per tutti i personaggi."
 	L["Widget_PartySync"] = "Accetta automaticamente Sincronizzazione gruppo"
 	L["Widget_PartySyncTT"] = "Accetta automaticamente la sincronizzazione gruppo."
+
+	--Widgets - Account-wide settings
+	L["Widget_AutoLoot"] = "Attiva/disattiva raccolta automatica account"
+	L["Widget_AutoLootTT"] = "Applica le impostazioni di raccolta automatica a tutto l'account su ogni personaggio."
+	L["Widget_PetBattleMapFilter"] = "Attiva/disattiva filtro mappa Pet Battle account"
+	L["Widget_PetBattleMapFilterTT"] = "Applica le impostazioni del filtro mappa Pet Battle a tutto l'account."
+	L["Widget_cooldownViewerEnabled"] = "Attiva/disattiva Gestore tempi di recupero account"
+	L["Widget_cooldownViewerEnabledTT"] = "Applica le impostazioni del Gestore tempi di recupero a tutto l'account."
+	L["Account_On"] = "Attivo per tutto l'account"
+	L["Account_Off"] = "Disattivo per tutto l'account"
 
 	--Widgets - CancelAura
 	L["CancelAuraManager"] = "Gestore rimozione aure"
@@ -800,16 +812,18 @@ if LOCALE == "ptBR" then
 	L["Widget_MinimapIconTT"] = "Exibe um ícone clicável no minimapa para abrir as configurações."
 	L["Widget_CollapseBuffs"] = "Recolher automaticamente a janela de bônus"
 	L["Widget_CollapseBuffsTT"] = "Recolhe automaticamente a janela de bônus padrão."
-
-	--Widgets - Account-wide settings
-	L["Widget_AutoLoot"] = "Saque automático da conta"
-	L["Widget_AutoLootTT"] = "Ativa saque automático em todos os personagens."
-	L["Widget_PetBattleMapFilter"] = "Filtro de mapa de mascotes da conta"
-	L["Widget_PetBattleMapFilterTT"] = "Desativa o filtro de batalhas de mascotes em todos os personagens."
-	L["Widget_cooldownViewerEnabled"] = "Gerenciador de recargas da conta"
-	L["Widget_cooldownViewerEnabledTT"] = "Ativa o gerenciador de recargas em todos os personagens."
 	L["Widget_PartySync"] = "Aceitar Sincronização de Grupo automaticamente"
 	L["Widget_PartySyncTT"] = "Aceita automaticamente a confirmação de Sincronização de Grupo."
+
+	--Widgets - Account-wide settings
+	L["Widget_AutoLoot"] = "Alternar Saque Automático da Conta"
+	L["Widget_AutoLootTT"] = "Aplica as configurações de saque automático para toda a conta em todos os personagens."
+	L["Widget_PetBattleMapFilter"] = "Alternar Filtro de Batalha de Mascotes da Conta"
+	L["Widget_PetBattleMapFilterTT"] = "Aplica as configurações do filtro de batalha de mascotes para toda a conta."
+	L["Widget_cooldownViewerEnabled"] = "Alternar Gerenciador de Recarga da Conta"
+	L["Widget_cooldownViewerEnabledTT"] = "Aplica as configurações do Gerenciador de Recarga para toda a conta."
+	L["Account_On"] = "Ativado para toda a conta"
+	L["Account_Off"] = "Desativado para toda a conta"
 
 	--Widgets - CancelAura
 	L["CancelAuraManager"] = "Gerenciador de cancelamento de auras"
@@ -925,16 +939,18 @@ if LOCALE == "ruRU" then
 	L["Widget_MinimapIconTT"] = "Показывает кликабельный значок на миникарте для открытия настроек."
 	L["Widget_CollapseBuffs"] = "Автоматически сворачивать окно эффектов"
 	L["Widget_CollapseBuffsTT"] = "Автоматически сворачивает стандартное окно эффектов."
-
-	--Widgets - Account-wide settings
-	L["Widget_AutoLoot"] = "Автосбор добычи (аккаунт)"
-	L["Widget_AutoLootTT"] = "Включает автосбор добычи для всех персонажей."
-	L["Widget_PetBattleMapFilter"] = "Фильтр карты боёв питомцев (аккаунт)"
-	L["Widget_PetBattleMapFilterTT"] = "Отключает фильтр боёв питомцев для всех персонажей."
-	L["Widget_cooldownViewerEnabled"] = "Менеджер перезарядок (аккаунт)"
-	L["Widget_cooldownViewerEnabledTT"] = "Включает менеджер перезарядок для всех персонажей."
 	L["Widget_PartySync"] = "Автоматически принимать синхронизацию группы"
 	L["Widget_PartySyncTT"] = "Автоматически принимает подтверждение синхронизации группы."
+
+	--Widgets - Account-wide settings
+	L["Widget_AutoLoot"] = "Переключить автосбор добычи для аккаунта"
+	L["Widget_AutoLootTT"] = "Применяет настройки автосбора добычи ко всем персонажам аккаунта."
+	L["Widget_PetBattleMapFilter"] = "Переключить фильтр карты боёв питомцев для аккаунта"
+	L["Widget_PetBattleMapFilterTT"] = "Применяет настройки фильтра карты боёв питомцев ко всем персонажам аккаунта."
+	L["Widget_cooldownViewerEnabled"] = "Переключить менеджер восстановления для аккаунта"
+	L["Widget_cooldownViewerEnabledTT"] = "Применяет настройки менеджера восстановления ко всем персонажам аккаунта."
+	L["Account_On"] = "Включено для всего аккаунта"
+	L["Account_Off"] = "Отключено для всего аккаунта"
 
 	--Widgets - CancelAura
 	L["CancelAuraManager"] = "Менеджер отмены аур"
@@ -1048,16 +1064,18 @@ if LOCALE == "koKR" then
 	L["Widget_MinimapIconTT"] = "설정을 열 수 있는 미니맵 아이콘을 표시합니다."
 	L["Widget_CollapseBuffs"] = "버프 창 자동 축소"
 	L["Widget_CollapseBuffsTT"] = "기본 버프 창을 자동으로 축소합니다."
-
-	--Widgets - Account-wide settings
-	L["Widget_AutoLoot"] = "계정 자동 획득"
-	L["Widget_AutoLootTT"] = "모든 캐릭터에서 자동 획득을 활성화합니다."
-	L["Widget_PetBattleMapFilter"] = "계정 애완동물 대전 지도 필터"
-	L["Widget_PetBattleMapFilterTT"] = "모든 캐릭터에서 애완동물 대전 필터를 비활성화합니다."
-	L["Widget_cooldownViewerEnabled"] = "계정 재사용 대기시간 관리자 활성화"
-	L["Widget_cooldownViewerEnabledTT"] = "모든 캐릭터에서 재사용 대기시간 관리자를 활성화합니다."
 	L["Widget_PartySync"] = "파티 동기화 자동 수락"
 	L["Widget_PartySyncTT"] = "파티 동기화 확인을 자동으로 수락합니다."
+
+	--Widgets - Account-wide settings
+	L["Widget_AutoLoot"] = "계정 자동 전리품 전환"
+	L["Widget_AutoLootTT"] = "모든 캐릭터에 계정 전체 자동 전리품 설정을 적용합니다."
+	L["Widget_PetBattleMapFilter"] = "계정 애완동물 대전 지도 필터 전환"
+	L["Widget_PetBattleMapFilterTT"] = "모든 캐릭터에 계정 전체 애완동물 대전 지도 필터 설정을 적용합니다."
+	L["Widget_cooldownViewerEnabled"] = "계정 재사용 대기시간 관리자 전환"
+	L["Widget_cooldownViewerEnabledTT"] = "모든 캐릭터에 계정 전체 재사용 대기시간 관리자 설정을 적용합니다."
+	L["Account_On"] = "계정 전체 활성화"
+	L["Account_Off"] = "계정 전체 비활성화"
 
 	--Widgets - CancelAura
 	L["CancelAuraManager"] = "오라 해제 관리자"
@@ -1171,16 +1189,18 @@ if LOCALE == "zhCN" then
 	L["Widget_MinimapIconTT"] = "在小地图显示可点击图标以打开设置。"
 	L["Widget_CollapseBuffs"] = "自动折叠增益框体"
 	L["Widget_CollapseBuffsTT"] = "自动折叠默认的增益框体。"
-
-	--Widgets - Account-wide settings
-	L["Widget_AutoLoot"] = "账号自动拾取"
-	L["Widget_AutoLootTT"] = "强制在所有角色上启用自动拾取。"
-	L["Widget_PetBattleMapFilter"] = "账号宠物对战地图过滤"
-	L["Widget_PetBattleMapFilterTT"] = "强制在所有角色上禁用宠物对战地图过滤。"
-	L["Widget_cooldownViewerEnabled"] = "账号冷却管理器启用"
-	L["Widget_cooldownViewerEnabledTT"] = "强制在所有角色上启用冷却管理器。"
 	L["Widget_PartySync"] = "自动接受队伍同步"
 	L["Widget_PartySyncTT"] = "在出现队伍同步确认时自动接受。"
+
+	--Widgets - Account-wide settings
+	L["Widget_AutoLoot"] = "账号自动拾取切换"
+	L["Widget_AutoLootTT"] = "在所有角色上强制应用账号级自动拾取设置。"
+	L["Widget_PetBattleMapFilter"] = "账号宠物对战地图过滤切换"
+	L["Widget_PetBattleMapFilterTT"] = "在所有角色上强制应用账号级宠物对战地图过滤设置。"
+	L["Widget_cooldownViewerEnabled"] = "账号冷却管理器切换"
+	L["Widget_cooldownViewerEnabledTT"] = "在所有角色上强制应用账号级冷却管理器设置。"
+	L["Account_On"] = "账号范围已启用"
+	L["Account_Off"] = "账号范围已禁用"
 
 	--Widgets - CancelAura
 	L["CancelAuraManager"] = "光环取消管理器"
@@ -1292,16 +1312,18 @@ if LOCALE == "zhTW" then
 	L["Widget_MinimapIconTT"] = "在小地圖顯示可點擊圖示以開啟設定。"
 	L["Widget_CollapseBuffs"] = "自動收合增益框架"
 	L["Widget_CollapseBuffsTT"] = "自動收合預設的增益框架。"
-
-	--Widgets - Account-wide settings
-	L["Widget_AutoLoot"] = "帳號自動拾取"
-	L["Widget_AutoLootTT"] = "強制在所有角色啟用自動拾取。"
-	L["Widget_PetBattleMapFilter"] = "帳號寵物對戰地圖過濾"
-	L["Widget_PetBattleMapFilterTT"] = "強制在所有角色禁用寵物對戰地圖過濾。"
-	L["Widget_cooldownViewerEnabled"] = "帳號冷卻管理器啟用"
-	L["Widget_cooldownViewerEnabledTT"] = "強制在所有角色啟用冷卻管理器。"
 	L["Widget_PartySync"] = "自動接受隊伍同步"
 	L["Widget_PartySyncTT"] = "在出現隊伍同步確認時自動接受。"
+
+	--Widgets - Account-wide settings
+	L["Widget_AutoLoot"] = "帳號自動拾取切換"
+	L["Widget_AutoLootTT"] = "在所有角色上強制套用帳號層級的自動拾取設定。"
+	L["Widget_PetBattleMapFilter"] = "帳號寵物對戰地圖過濾切換"
+	L["Widget_PetBattleMapFilterTT"] = "在所有角色上強制套用帳號層級的寵物對戰地圖過濾設定。"
+	L["Widget_cooldownViewerEnabled"] = "帳號冷卻管理器切換"
+	L["Widget_cooldownViewerEnabledTT"] = "在所有角色上強制套用帳號層級的冷卻管理器設定。"
+	L["Account_On"] = "帳號範圍已啟用"
+	L["Account_Off"] = "帳號範圍已停用"
 
 	--Widgets - CancelAura
 	L["CancelAuraManager"] = "光環取消管理器"

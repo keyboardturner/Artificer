@@ -3,9 +3,14 @@ local addonName, Artificer = ...;
 local L = Artificer.L;
 
 function Artificer.Widgets.ApplyAutoLoot()
-	if Artificer_DB.Widgets.AutoLoot then
+	local val = Artificer_DB.Widgets.AutoLoot;
+	if val == 2 then
 		if C_CVar.GetCVar("autoLootDefault") ~= "1" then
 			C_CVar.SetCVar("autoLootDefault", "1");
+		end
+	elseif val == 3 then
+		if C_CVar.GetCVar("autoLootDefault") ~= "0" then
+			C_CVar.SetCVar("autoLootDefault", "0");
 		end
 	end
 end
