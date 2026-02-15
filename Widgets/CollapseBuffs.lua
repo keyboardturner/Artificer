@@ -6,11 +6,26 @@ local function SetBuffsCollapsed(shouldCollapse)
 	if not BuffFrame or not BuffFrame.CollapseAndExpandButton then 
 		return;
 	end
-	BuffFrame:SetBuffsExpandedState(not shouldCollapse)
+
+	local expandedState = not shouldCollapse;
+	local currentChecked = BuffFrame.CollapseAndExpandButton:GetChecked();
+	--[[
+		this seems to be the only sane way of clicking this button
+		so many other methods i tried would just cause a taint-fest upon opening
+	--]]
+	if currentChecked ~= expandedState then
+		BuffFrame.CollapseAndExpandButton:SetChecked(expandedState);
+		BuffFrame.CollapseAndExpandButton:UpdateOrientation();
+		BuffFrame:SetBuffsExpandedState(); 
+	end
 end
 
 function Artificer.Widgets.ApplyCollapsedBuffs()
-	local shouldCollapse = Artificer_DB.Widgets.CollapseBuffs or false;
+	if UnitAffectingCombat("player") then return end;  -- immense errors if executed in combat
+	
+	local shouldCollapse = Artificer_DB.Widgets.CollapseBuffs;
+	if shouldCollapse == nil then shouldCollapse = false; end
+
 	SetBuffsCollapsed(shouldCollapse);
 end
 
