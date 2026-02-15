@@ -179,11 +179,11 @@ local function InitializeDropdown(button, data)
 	
 	local function GetCurrentValue()
 		if data.get then
-			return data.get()
+			return data.get();
 		elseif data.isWidget then
-			return GetWidgetValue(data.key) or data.defaultValue or 1
+			return GetWidgetValue(data.key) or data.defaultValue or 1;
 		else
-			return GetDBValue(data.key) or data.defaultValue or 1
+			return GetDBValue(data.key) or data.defaultValue or 1;
 		end
 	end
 
@@ -202,11 +202,11 @@ local function InitializeDropdown(button, data)
 		for _, option in ipairs(data.options) do
 			rootDescription:CreateRadio(option.text, function() return GetCurrentValue() == option.value end, function()
 				if data.set then
-					data.set(option.value)
+					data.set(option.value);
 				elseif data.isWidget then
-					SetWidgetValue(data.key, option.value)
+					SetWidgetValue(data.key, option.value);
 				else
-					SetDBValue(data.key, option.value)
+					SetDBValue(data.key, option.value);
 				end
 				
 				UpdateDropdownText();
