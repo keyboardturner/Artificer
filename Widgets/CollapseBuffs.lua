@@ -11,7 +11,7 @@ local function SetBuffsCollapsed(shouldCollapse)
 	local currentChecked = BuffFrame.CollapseAndExpandButton:GetChecked();
 	--[[
 		this seems to be the only sane way of clicking this button
-		so many other methods i tried would just cause a taint-fest upon opening
+		so many other methods i tried would just cause a taint-fest upon opening edit mode
 	--]]
 	if currentChecked ~= expandedState then
 		BuffFrame.CollapseAndExpandButton:SetChecked(expandedState);
