@@ -743,6 +743,22 @@ function Artificer:BuildSettingsData()
 		end
 	});
 
+	-- Widgets - CollapseBuffs
+	table.insert(allSettingsData, {
+        type = "checkbox",
+        isWidget = true,
+        key = "CollapseBuffs",
+        isNew = true,
+        label = L["Widget_CollapseBuffs"],
+        tooltip = L["Widget_CollapseBuffsTT"],
+        searchText = GetSearchText(L["Widget_CollapseBuffs"], L["Widget_CollapseBuffsTT"]),
+        callback = function(val)
+            if Artificer.Widgets.ApplyCollapsedBuffs then
+                Artificer.Widgets.ApplyCollapsedBuffs();
+            end
+        end
+    });
+
 	-- Header - Account Settings
 	table.insert(allSettingsData, {
 		type = "header",

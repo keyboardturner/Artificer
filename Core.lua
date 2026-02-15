@@ -28,6 +28,7 @@ local Defaults = {
 		HideCraftingResults = false,
 		MovableCurrencyTransfer = false,
 		AddonCompartmentMover = false,
+		CollapseBuffs = false,
 	},
 
 	OutfitSwapSounds = {

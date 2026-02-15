@@ -76,5 +76,6 @@ Widgets/OutfitSwapSounds.lua
 Widgets/HideCraftingResults.lua
 Widgets/MovableCurrencyTransfer.lua
 Widgets/AddonCompartmentMover.lua
+Widgets/CollapseBuffs.lua
 
 SettingsUI.lua

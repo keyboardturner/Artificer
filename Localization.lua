@@ -58,6 +58,8 @@ if LOCALE == "enUS" then
 	L["Widget_AddonCompartmentMoverTT"] = "Moves the Addon Compartment Frame to the top of the calendar button instead of the bottom."
 	L["Widget_MinimapIcon"] = "Minimap Icon"
 	L["Widget_MinimapIconTT"] = "Displays clickable icon button on Minimap to open settings."
+	L["Widget_CollapseBuffs"] = "Auto Collapse Buff Frame"
+	L["Widget_CollapseBuffsTT"] = "Automatically collapses the default Buff Frame."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Account Auto Loot"
@@ -181,6 +183,8 @@ if LOCALE == "esMX" then
 	L["Widget_AddonCompartmentMoverTT"] = "Mueve el compartimento de addons encima del calendario."
 	L["Widget_MinimapIcon"] = "Icono del minimapa"
 	L["Widget_MinimapIconTT"] = "Muestra un icono clicable en el minimapa."
+	L["Widget_CollapseBuffs"] = "Contraer automáticamente el marco de beneficios"
+	L["Widget_CollapseBuffsTT"] = "Contrae automáticamente el marco de beneficios predeterminado."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Botín automático de cuenta"
@@ -303,6 +307,8 @@ if LOCALE == "esES" then
 	L["Widget_AddonCompartmentMoverTT"] = "Mueve el compartimento de addons encima del calendario."
 	L["Widget_MinimapIcon"] = "Icono del minimapa"
 	L["Widget_MinimapIconTT"] = "Muestra un icono clicable en el minimapa."
+	L["Widget_CollapseBuffs"] = "Contraer automáticamente el marco de beneficios"
+	L["Widget_CollapseBuffsTT"] = "Contrae automáticamente el marco de beneficios predeterminado."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Botín automático de cuenta"
@@ -423,6 +429,8 @@ if LOCALE == "deDE" then
 	L["Widget_AddonCompartmentMoverTT"] = "Verschiebt das Addon-Fach über den Kalender-Button statt darunter."
 	L["Widget_MinimapIcon"] = "Minikarten-Symbol"
 	L["Widget_MinimapIconTT"] = "Zeigt ein klickbares Symbol auf der Minikarte zum Öffnen der Einstellungen."
+	L["Widget_CollapseBuffs"] = "Buff-Leiste automatisch einklappen"
+	L["Widget_CollapseBuffsTT"] = "Klappt die Standard-Buff-Leiste automatisch ein."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Automatisches Plündern (Account)"
@@ -544,6 +552,8 @@ if LOCALE == "frFR" then
 	L["Widget_AddonCompartmentMoverTT"] = "Déplace le compartiment des addons au-dessus du bouton calendrier."
 	L["Widget_MinimapIcon"] = "Icône de la minicarte"
 	L["Widget_MinimapIconTT"] = "Affiche une icône cliquable sur la minicarte pour ouvrir les options."
+	L["Widget_CollapseBuffs"] = "Réduire automatiquement la fenêtre des améliorations"
+	L["Widget_CollapseBuffsTT"] = "Réduit automatiquement la fenêtre des améliorations par défaut."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Butin automatique (compte)"
@@ -665,6 +675,8 @@ if LOCALE == "itIT" then
 	L["Widget_AddonCompartmentMoverTT"] = "Sposta il compartimento addon sopra il calendario."
 	L["Widget_MinimapIcon"] = "Icona minimappa"
 	L["Widget_MinimapIconTT"] = "Mostra un'icona cliccabile sulla minimappa per aprire le impostazioni."
+	L["Widget_CollapseBuffs"] = "Riduci automaticamente la finestra dei potenziamenti"
+	L["Widget_CollapseBuffsTT"] = "Riduce automaticamente la finestra dei potenziamenti predefinita."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Auto bottino account"
@@ -786,6 +798,8 @@ if LOCALE == "ptBR" then
 	L["Widget_AddonCompartmentMoverTT"] = "Move o compartimento de addons para cima do calendário."
 	L["Widget_MinimapIcon"] = "Ícone do minimapa"
 	L["Widget_MinimapIconTT"] = "Exibe um ícone clicável no minimapa para abrir as configurações."
+	L["Widget_CollapseBuffs"] = "Recolher automaticamente a janela de bônus"
+	L["Widget_CollapseBuffsTT"] = "Recolhe automaticamente a janela de bônus padrão."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Saque automático da conta"
@@ -909,6 +923,8 @@ if LOCALE == "ruRU" then
 	L["Widget_AddonCompartmentMoverTT"] = "Перемещает отсек аддонов над кнопкой календаря."
 	L["Widget_MinimapIcon"] = "Значок миникарты"
 	L["Widget_MinimapIconTT"] = "Показывает кликабельный значок на миникарте для открытия настроек."
+	L["Widget_CollapseBuffs"] = "Автоматически сворачивать окно эффектов"
+	L["Widget_CollapseBuffsTT"] = "Автоматически сворачивает стандартное окно эффектов."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Автосбор добычи (аккаунт)"
@@ -1030,6 +1046,8 @@ if LOCALE == "koKR" then
 	L["Widget_AddonCompartmentMoverTT"] = "애드온 보관함을 달력 버튼 위로 이동합니다."
 	L["Widget_MinimapIcon"] = "미니맵 아이콘"
 	L["Widget_MinimapIconTT"] = "설정을 열 수 있는 미니맵 아이콘을 표시합니다."
+	L["Widget_CollapseBuffs"] = "버프 창 자동 축소"
+	L["Widget_CollapseBuffsTT"] = "기본 버프 창을 자동으로 축소합니다."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "계정 자동 획득"
@@ -1151,6 +1169,8 @@ if LOCALE == "zhCN" then
 	L["Widget_AddonCompartmentMoverTT"] = "将插件仓库框架移动到日历按钮顶部，而不是底部。"
 	L["Widget_MinimapIcon"] = "小地图图标"
 	L["Widget_MinimapIconTT"] = "在小地图显示可点击图标以打开设置。"
+	L["Widget_CollapseBuffs"] = "自动折叠增益框体"
+	L["Widget_CollapseBuffsTT"] = "自动折叠默认的增益框体。"
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "账号自动拾取"
@@ -1270,6 +1290,8 @@ if LOCALE == "zhTW" then
 	L["Widget_AddonCompartmentMoverTT"] = "將插件倉庫框架移動到日曆按鈕上方，而非底部。"
 	L["Widget_MinimapIcon"] = "小地圖圖示"
 	L["Widget_MinimapIconTT"] = "在小地圖顯示可點擊圖示以開啟設定。"
+	L["Widget_CollapseBuffs"] = "自動收合增益框架"
+	L["Widget_CollapseBuffsTT"] = "自動收合預設的增益框架。"
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "帳號自動拾取"
