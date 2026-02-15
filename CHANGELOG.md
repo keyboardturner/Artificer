@@ -2,7 +2,11 @@
 
 # 0.0.4
 
-Added new option to automatically collapse the Buff bar button
+Added new option to automatically collapse the Buff bar button (this was insanely prone to taint in almost every other iteration, it has the stability of tert-Butyllithium left alone in a room of air)
+
+Reworked the "Account Settings" checkboxes into dropdown menus. These now consist of 3 options: None, Account-wide on, and Account-wide off.
+
+Auto loot should no longer be enabled account wide by default.
 
 # 0.0.3
 
