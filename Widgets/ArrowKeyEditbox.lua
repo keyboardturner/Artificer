@@ -3,10 +3,13 @@ local addonName, Artificer = ...;
 local L = Artificer.L;
 
 local function ArrowKeySetting()
-	if Artificer_DB and Artificer_DB.Widgets.ArrowKeyEditbox then
-		DEFAULT_CHAT_FRAME.editBox:SetAltArrowKeyMode(false); -- no alt needed
-	else
-		DEFAULT_CHAT_FRAME.editBox:SetAltArrowKeyMode(true); -- alt is needed
+	local useAltKey = not (Artificer_DB and Artificer_DB.Widgets.ArrowKeyEditbox);
+
+	for i = 1, NUM_CHAT_WINDOWS do
+		local editBox = _G["ChatFrame" .. i .. "EditBox"];
+		if editBox then
+			editBox:SetAltArrowKeyMode(useAltKey);
+		end
 	end
 end
 
@@ -17,9 +20,7 @@ initialize:RegisterEvent("PLAYER_LOGIN");
 
 function initialize:Go(event)
 	if event == "PLAYER_LOGIN" then
-		if Artificer_DB and Artificer_DB.Widgets.ArrowKeyEditbox then
-			ArrowKeySetting();
-		end
+		ArrowKeySetting();
 	end
 end
 

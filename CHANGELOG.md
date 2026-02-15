@@ -1,5 +1,9 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.0.3
+
+Fix to Arrow Keys in Chat Editbox - now affects all chat windows, not just the main one
+
 # 0.0.2
 
 Check for secret value in CancelAuras
