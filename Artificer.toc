@@ -77,5 +77,6 @@ Widgets/HideCraftingResults.lua
 Widgets/MovableCurrencyTransfer.lua
 Widgets/AddonCompartmentMover.lua
 Widgets/CollapseBuffs.lua
+Widgets/NameplateTarget.lua
 
 SettingsUI.lua

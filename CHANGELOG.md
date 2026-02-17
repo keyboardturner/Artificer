@@ -1,5 +1,10 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.0.5
+
+Added new Nameplates option:
+ - Friendly Nameplate Target Indicator: Displays an icon on the nameplate of a friendly player targeting you. Currently available with 3 style options, a size slider, and color picker.
+
 # 0.0.4
 
 Added new option to automatically collapse the Buff bar button (this was insanely prone to taint in almost every other iteration, it has the stability of tert-Butyllithium left alone in a room of air)

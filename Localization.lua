@@ -113,6 +113,22 @@ if LOCALE == "enUS" then
 	L["ConfigureSounds"] = "Configure Sounds"
 	L["PickUpOutfit"] = "Pick Up Outfit"
 
+	--Widgets - NameplateTargetIndicator
+	L["FNP_TargetIndicator"] = "Friendly Nameplate Target Indicator"
+	L["FNP_TargetIndicatorTT"] = "Displays an icon on the nameplate of a friendly player targeting you."
+	L["FNP_HeroTalentRing"] = "Hero Talent Ring"
+	L["FNP_ArtificerEye"] = "Artificer Eye"
+	L["FNP_LFGEye"] = "LFG Eye"
+	L["FNP_DragIcon"] = "Drag Icon Relative to Nameplate"
+	L["FNP_IconStyle"] = "Icon Style"
+	L["FNP_IconSize"] = "Icon Size"
+	L["FNP_IconColor"] = "Icon Color"
+	L["LC_OpenColorPicker"] = "Left-Click: Open Color Picker"
+	L["RC_OpenDropdown"] = "Right-Click: Additional Settings"
+	L["ColorOptions"] = "Color Options"
+	L["CopyColor"] = "Copy Color"
+	L["PasteColor"] = "Paste Color"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Show All Minimap Trackables"
 	L["CVar_minimapTrackingShowAllTT"] = "Toggle additional minimap tracking options."
@@ -136,6 +152,8 @@ if LOCALE == "enUS" then
 	L["None"] = NONE
 	L["All"] = ALL
 	L["Outfit"] = TRANSMOG_OUTFIT_NAME_DEFAULT
+	L["AdvancedOptions"] = ADVANCED_OPTIONS
+	L["Header_Nameplates"] = NAMEPLATES_LABEL
 
 
 
@@ -240,6 +258,22 @@ if LOCALE == "esMX" then
 	L["ConfigureSounds"] = "Configurar sonidos"
 	L["PickUpOutfit"] = "Recoger atuendo"
 
+	--Widgets - NameplateTargetIndicator
+	L["FNP_TargetIndicator"] = "Indicador de objetivo en placas de nombre amistosas"
+	L["FNP_TargetIndicatorTT"] = "Muestra un ícono en la placa de nombre de un jugador amistoso que te está seleccionando."
+	L["FNP_HeroTalentRing"] = "Anillo de talento heroico"
+	L["FNP_ArtificerEye"] = "Ojo del Artífice"
+	L["FNP_LFGEye"] = "Ojo del Buscador de Grupo"
+	L["FNP_DragIcon"] = "Arrastrar ícono relativo a la placa de nombre"
+	L["FNP_IconStyle"] = "Estilo del ícono"
+	L["FNP_IconSize"] = "Tamaño del ícono"
+	L["FNP_IconColor"] = "Color del ícono"
+	L["LC_OpenColorPicker"] = "Clic izquierdo: Abrir selector de color"
+	L["RC_OpenDropdown"] = "Clic derecho: Configuración adicional"
+	L["ColorOptions"] = "Opciones de color"
+	L["CopyColor"] = "Copiar color"
+	L["PasteColor"] = "Pegar color"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Mostrar todo en el minimapa"
 	L["CVar_minimapTrackingShowAllTT"] = "Activa opciones adicionales del minimapa."
@@ -263,6 +297,8 @@ if LOCALE == "esMX" then
 	L["None"] = NONE
 	L["All"] = ALL
 	L["Outfit"] = TRANSMOG_OUTFIT_NAME_DEFAULT
+	L["AdvancedOptions"] = ADVANCED_OPTIONS
+	L["Header_Nameplates"] = NAMEPLATES_LABEL
 
 
 return end
@@ -366,6 +402,22 @@ if LOCALE == "esES" then
 	L["ConfigureSounds"] = "Configurar sonidos"
 	L["PickUpOutfit"] = "Recoger atuendo"
 
+	--Widgets - NameplateTargetIndicator
+	L["FNP_TargetIndicator"] = "Indicador de objetivo en placas de nombre amistosas"
+	L["FNP_TargetIndicatorTT"] = "Muestra un icono en la placa de nombre de un jugador amistoso que te está seleccionando."
+	L["FNP_HeroTalentRing"] = "Anillo de talento heroico"
+	L["FNP_ArtificerEye"] = "Ojo del Artífice"
+	L["FNP_LFGEye"] = "Ojo del Buscador de Grupo"
+	L["FNP_DragIcon"] = "Arrastrar icono relativo a la placa de nombre"
+	L["FNP_IconStyle"] = "Estilo del icono"
+	L["FNP_IconSize"] = "Tamaño del icono"
+	L["FNP_IconColor"] = "Color del icono"
+	L["LC_OpenColorPicker"] = "Clic izquierdo: Abrir selector de color"
+	L["RC_OpenDropdown"] = "Clic derecho: Configuración adicional"
+	L["ColorOptions"] = "Opciones de color"
+	L["CopyColor"] = "Copiar color"
+	L["PasteColor"] = "Pegar color"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Mostrar todo en el minimapa"
 	L["CVar_minimapTrackingShowAllTT"] = "Activa opciones adicionales del minimapa."
@@ -389,6 +441,8 @@ if LOCALE == "esES" then
 	L["None"] = NONE
 	L["All"] = ALL
 	L["Outfit"] = TRANSMOG_OUTFIT_NAME_DEFAULT
+	L["AdvancedOptions"] = ADVANCED_OPTIONS
+	L["Header_Nameplates"] = NAMEPLATES_LABEL
 
 return end
 
@@ -490,6 +544,22 @@ if LOCALE == "deDE" then
 	L["ConfigureSounds"] = "Sounds konfigurieren"
 	L["PickUpOutfit"] = "Outfit aufnehmen"
 
+	--Widgets - NameplateTargetIndicator
+	L["FNP_TargetIndicator"] = "Freundlicher Namensplaketten-Zielindikator"
+	L["FNP_TargetIndicatorTT"] = "Zeigt ein Symbol auf der Namensplakette eines freundlichen Spielers an, der dich anvisiert."
+	L["FNP_HeroTalentRing"] = "Helden-Talent-Ring"
+	L["FNP_ArtificerEye"] = "Artificer-Auge"
+	L["FNP_LFGEye"] = "LFG-Auge"
+	L["FNP_DragIcon"] = "Symbol relativ zur Namensplakette verschieben"
+	L["FNP_IconStyle"] = "Symbolstil"
+	L["FNP_IconSize"] = "Symbolgröße"
+	L["FNP_IconColor"] = "Symbolfarbe"
+	L["LC_OpenColorPicker"] = "Links-Klick: Farbwähler öffnen"
+	L["RC_OpenDropdown"] = "Rechts-Klick: Zusätzliche Einstellungen"
+	L["ColorOptions"] = "Farboptionen"
+	L["CopyColor"] = "Farbe kopieren"
+	L["PasteColor"] = "Farbe einfügen"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Alle Minikarten-Verfolgungen anzeigen"
 	L["CVar_minimapTrackingShowAllTT"] = "Aktiviert zusätzliche Minikarten-Verfolgungsoptionen."
@@ -513,6 +583,8 @@ if LOCALE == "deDE" then
 	L["None"] = NONE
 	L["All"] = ALL
 	L["Outfit"] = TRANSMOG_OUTFIT_NAME_DEFAULT
+	L["AdvancedOptions"] = ADVANCED_OPTIONS
+	L["Header_Nameplates"] = NAMEPLATES_LABEL
 
 return end
 
@@ -615,6 +687,22 @@ if LOCALE == "frFR" then
 	L["ConfigureSounds"] = "Configurer les sons"
 	L["PickUpOutfit"] = "Ramasser la tenue"
 
+	--Widgets - NameplateTargetIndicator
+	L["FNP_TargetIndicator"] = "Indicateur de ciblage des plaques de nom alliées"
+	L["FNP_TargetIndicatorTT"] = "Affiche une icône sur la plaque de nom d’un joueur allié qui vous cible."
+	L["FNP_HeroTalentRing"] = "Anneau de talent héroïque"
+	L["FNP_ArtificerEye"] = "Œil d’Artificier"
+	L["FNP_LFGEye"] = "Œil LFG"
+	L["FNP_DragIcon"] = "Déplacer l’icône par rapport à la plaque de nom"
+	L["FNP_IconStyle"] = "Style d’icône"
+	L["FNP_IconSize"] = "Taille de l’icône"
+	L["FNP_IconColor"] = "Couleur de l’icône"
+	L["LC_OpenColorPicker"] = "Clic gauche : Ouvrir le sélecteur de couleur"
+	L["RC_OpenDropdown"] = "Clic droit : Paramètres supplémentaires"
+	L["ColorOptions"] = "Options de couleur"
+	L["CopyColor"] = "Copier la couleur"
+	L["PasteColor"] = "Coller la couleur"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Afficher tous les suivis de la minicarte"
 	L["CVar_minimapTrackingShowAllTT"] = "Active des options supplémentaires de suivi sur la minicarte."
@@ -638,6 +726,8 @@ if LOCALE == "frFR" then
 	L["None"] = NONE
 	L["All"] = ALL
 	L["Outfit"] = TRANSMOG_OUTFIT_NAME_DEFAULT
+	L["AdvancedOptions"] = ADVANCED_OPTIONS
+	L["Header_Nameplates"] = NAMEPLATES_LABEL
 
 return end
 
@@ -740,6 +830,22 @@ if LOCALE == "itIT" then
 	L["ConfigureSounds"] = "Configura suoni"
 	L["PickUpOutfit"] = "Raccogli abito"
 
+	--Widgets - NameplateTargetIndicator
+	L["FNP_TargetIndicator"] = "Indicatore bersaglio targhe amichevoli"
+	L["FNP_TargetIndicatorTT"] = "Mostra un’icona sulla targhetta di un giocatore amichevole che ti sta bersagliando."
+	L["FNP_HeroTalentRing"] = "Anello Talenti Eroici"
+	L["FNP_ArtificerEye"] = "Occhio dell’Artificiere"
+	L["FNP_LFGEye"] = "Occhio LFG"
+	L["FNP_DragIcon"] = "Trascina icona relativa alla targhetta"
+	L["FNP_IconStyle"] = "Stile icona"
+	L["FNP_IconSize"] = "Dimensione icona"
+	L["FNP_IconColor"] = "Colore icona"
+	L["LC_OpenColorPicker"] = "Clic sinistro: Apri selettore colore"
+	L["RC_OpenDropdown"] = "Clic destro: Impostazioni aggiuntive"
+	L["ColorOptions"] = "Opzioni colore"
+	L["CopyColor"] = "Copia colore"
+	L["PasteColor"] = "Incolla colore"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Mostra tutti i tracciamenti minimappa"
 	L["CVar_minimapTrackingShowAllTT"] = "Attiva opzioni aggiuntive di tracciamento minimappa."
@@ -763,6 +869,8 @@ if LOCALE == "itIT" then
 	L["None"] = NONE
 	L["All"] = ALL
 	L["Outfit"] = TRANSMOG_OUTFIT_NAME_DEFAULT
+	L["AdvancedOptions"] = ADVANCED_OPTIONS
+	L["Header_Nameplates"] = NAMEPLATES_LABEL
 
 return end
 
@@ -865,6 +973,22 @@ if LOCALE == "ptBR" then
 	L["ConfigureSounds"] = "Configurar sons"
 	L["PickUpOutfit"] = "Pegar traje"
 
+	--Widgets - NameplateTargetIndicator
+	L["FNP_TargetIndicator"] = "Indicador de alvo em placas de nome amigáveis"
+	L["FNP_TargetIndicatorTT"] = "Exibe um ícone na placa de nome de um jogador amigável que está mirando em você."
+	L["FNP_HeroTalentRing"] = "Anel de Talento Heroico"
+	L["FNP_ArtificerEye"] = "Olho do Artífice"
+	L["FNP_LFGEye"] = "Olho do LFG"
+	L["FNP_DragIcon"] = "Arrastar ícone relativo à placa de nome"
+	L["FNP_IconStyle"] = "Estilo do ícone"
+	L["FNP_IconSize"] = "Tamanho do ícone"
+	L["FNP_IconColor"] = "Cor do ícone"
+	L["LC_OpenColorPicker"] = "Clique esquerdo: Abrir seletor de cores"
+	L["RC_OpenDropdown"] = "Clique direito: Configurações adicionais"
+	L["ColorOptions"] = "Opções de cor"
+	L["CopyColor"] = "Copiar cor"
+	L["PasteColor"] = "Colar cor"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Mostrar todos os rastreamentos do minimapa"
 	L["CVar_minimapTrackingShowAllTT"] = "Ativa opções adicionais de rastreamento do minimapa."
@@ -888,6 +1012,8 @@ if LOCALE == "ptBR" then
 	L["None"] = NONE
 	L["All"] = ALL
 	L["Outfit"] = TRANSMOG_OUTFIT_NAME_DEFAULT
+	L["AdvancedOptions"] = ADVANCED_OPTIONS
+	L["Header_Nameplates"] = NAMEPLATES_LABEL
 
 -- Note that the EU Portuguese WoW client also
 -- uses the Brazilian Portuguese locale code.
@@ -992,6 +1118,22 @@ if LOCALE == "ruRU" then
 	L["ConfigureSounds"] = "Настроить звуки"
 	L["PickUpOutfit"] = "Взять набор"
 
+	--Widgets - NameplateTargetIndicator
+	L["FNP_TargetIndicator"] = "Индикатор цели на дружественных неймплейтах"
+	L["FNP_TargetIndicatorTT"] = "Отображает значок на неймплейте дружественного игрока, который нацелился на вас."
+	L["FNP_HeroTalentRing"] = "Кольцо героических талантов"
+	L["FNP_ArtificerEye"] = "Глаз Артификера"
+	L["FNP_LFGEye"] = "Глаз поиска группы"
+	L["FNP_DragIcon"] = "Перемещение значка относительно неймплейта"
+	L["FNP_IconStyle"] = "Стиль значка"
+	L["FNP_IconSize"] = "Размер значка"
+	L["FNP_IconColor"] = "Цвет значка"
+	L["LC_OpenColorPicker"] = "ЛКМ: Открыть палитру цветов"
+	L["RC_OpenDropdown"] = "ПКМ: Дополнительные настройки"
+	L["ColorOptions"] = "Параметры цвета"
+	L["CopyColor"] = "Копировать цвет"
+	L["PasteColor"] = "Вставить цвет"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Показать все отслеживания миникарты"
 	L["CVar_minimapTrackingShowAllTT"] = "Включает дополнительные параметры отслеживания миникарты."
@@ -1015,6 +1157,8 @@ if LOCALE == "ruRU" then
 	L["None"] = NONE
 	L["All"] = ALL
 	L["Outfit"] = TRANSMOG_OUTFIT_NAME_DEFAULT
+	L["AdvancedOptions"] = ADVANCED_OPTIONS
+	L["Header_Nameplates"] = NAMEPLATES_LABEL
 
 return end
 
@@ -1117,6 +1261,22 @@ if LOCALE == "koKR" then
 	L["ConfigureSounds"] = "소리 설정"
 	L["PickUpOutfit"] = "의상 집기"
 
+	--Widgets - NameplateTargetIndicator
+	L["FNP_TargetIndicator"] = "아군 이름표 대상 표시기"
+	L["FNP_TargetIndicatorTT"] = "당신을 대상으로 하는 아군 플레이어의 이름표에 아이콘을 표시합니다."
+	L["FNP_HeroTalentRing"] = "영웅 특성 반지"
+	L["FNP_ArtificerEye"] = "아티피서의 눈"
+	L["FNP_LFGEye"] = "파티 찾기 눈"
+	L["FNP_DragIcon"] = "이름표 기준 아이콘 드래그"
+	L["FNP_IconStyle"] = "아이콘 스타일"
+	L["FNP_IconSize"] = "아이콘 크기"
+	L["FNP_IconColor"] = "아이콘 색상"
+	L["LC_OpenColorPicker"] = "좌클릭: 색상 선택기 열기"
+	L["RC_OpenDropdown"] = "우클릭: 추가 설정"
+	L["ColorOptions"] = "색상 옵션"
+	L["CopyColor"] = "색상 복사"
+	L["PasteColor"] = "색상 붙여넣기"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "미니맵 추적 모두 표시"
 	L["CVar_minimapTrackingShowAllTT"] = "추가 미니맵 추적 옵션을 활성화합니다."
@@ -1140,6 +1300,8 @@ if LOCALE == "koKR" then
 	L["None"] = NONE
 	L["All"] = ALL
 	L["Outfit"] = TRANSMOG_OUTFIT_NAME_DEFAULT
+	L["AdvancedOptions"] = ADVANCED_OPTIONS
+	L["Header_Nameplates"] = NAMEPLATES_LABEL
 
 return end
 
@@ -1242,6 +1404,22 @@ if LOCALE == "zhCN" then
 	L["ConfigureSounds"] = "配置音效"
 	L["PickUpOutfit"] = "拾取套装"
 
+	--Widgets - NameplateTargetIndicator
+	L["FNP_TargetIndicator"] = "友方姓名板目标指示器"
+	L["FNP_TargetIndicatorTT"] = "在正在以你为目标的友方玩家姓名板上显示图标。"
+	L["FNP_HeroTalentRing"] = "英雄天赋光环"
+	L["FNP_ArtificerEye"] = "工匠之眼"
+	L["FNP_LFGEye"] = "寻求组队之眼"
+	L["FNP_DragIcon"] = "相对于姓名板拖动图标"
+	L["FNP_IconStyle"] = "图标样式"
+	L["FNP_IconSize"] = "图标大小"
+	L["FNP_IconColor"] = "图标颜色"
+	L["LC_OpenColorPicker"] = "左键：打开颜色选择器"
+	L["RC_OpenDropdown"] = "右键：更多设置"
+	L["ColorOptions"] = "颜色选项"
+	L["CopyColor"] = "复制颜色"
+	L["PasteColor"] = "粘贴颜色"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "显示所有小地图追踪"
 	L["CVar_minimapTrackingShowAllTT"] = "切换额外的小地图追踪选项。"
@@ -1265,6 +1443,8 @@ if LOCALE == "zhCN" then
 	L["None"] = NONE
 	L["All"] = ALL
 	L["Outfit"] = TRANSMOG_OUTFIT_NAME_DEFAULT
+	L["AdvancedOptions"] = ADVANCED_OPTIONS
+	L["Header_Nameplates"] = NAMEPLATES_LABEL
 
 return end
 
@@ -1365,6 +1545,22 @@ if LOCALE == "zhTW" then
 	L["ConfigureSounds"] = "設定音效"
 	L["PickUpOutfit"] = "拾取套裝"
 
+	--Widgets - NameplateTargetIndicator
+	L["FNP_TargetIndicator"] = "友方姓名板目標指示器"
+	L["FNP_TargetIndicatorTT"] = "在正在以你為目標的友方玩家姓名板上顯示圖示。"
+	L["FNP_HeroTalentRing"] = "英雄天賦光環"
+	L["FNP_ArtificerEye"] = "工匠之眼"
+	L["FNP_LFGEye"] = "尋求組隊之眼"
+	L["FNP_DragIcon"] = "相對於姓名板拖動圖示"
+	L["FNP_IconStyle"] = "圖示樣式"
+	L["FNP_IconSize"] = "圖示大小"
+	L["FNP_IconColor"] = "圖示顏色"
+	L["LC_OpenColorPicker"] = "左鍵：開啟顏色選擇器"
+	L["RC_OpenDropdown"] = "右鍵：其他設定"
+	L["ColorOptions"] = "顏色選項"
+	L["CopyColor"] = "複製顏色"
+	L["PasteColor"] = "貼上顏色"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "顯示所有小地圖追蹤"
 	L["CVar_minimapTrackingShowAllTT"] = "切換額外的小地圖追蹤選項。"
@@ -1388,5 +1584,7 @@ if LOCALE == "zhTW" then
 	L["None"] = NONE
 	L["All"] = ALL
 	L["Outfit"] = TRANSMOG_OUTFIT_NAME_DEFAULT
+	L["AdvancedOptions"] = ADVANCED_OPTIONS
+	L["Header_Nameplates"] = NAMEPLATES_LABEL
 
 return end

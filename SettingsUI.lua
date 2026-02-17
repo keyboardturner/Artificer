@@ -435,16 +435,44 @@ local function SettingsRowInitializer(button, data)
 	if button.headerLabel then button.headerLabel:Hide(); end
 
 	if not button.NewIndicator then
-		button.NewIndicator = button:CreateTexture(nil, "OVERLAY");
+		button.NewIndicator = button:CreateTexture(nil, "OVERLAY", nil, 5);
 		button.NewIndicator:SetAtlas("plunderstorm-new-dot-lg");
 		button.NewIndicator:SetSize(18, 18);
 		button.NewIndicator:SetPoint("LEFT", button, "LEFT", -2, 0);
+	end
+
+	if not button.AdvancedSettingsButton then
+		button.AdvancedSettingsButton = CreateFrame("Button", nil, button)
+		button.AdvancedSettingsButton:SetSize(16, 16)
+		button.AdvancedSettingsButton:SetPoint("LEFT", button, "LEFT", -4, 0)
+		
+		button.AdvancedSettingsButton.tex = button.AdvancedSettingsButton:CreateTexture(nil, "ARTWORK", nil, 1)
+		button.AdvancedSettingsButton.tex:SetAllPoints()
+		button.AdvancedSettingsButton.tex:SetAtlas("QuestLog-icon-setting")
+		
+		button.AdvancedSettingsButton:SetScript("OnEnter", function(self)
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+			GameTooltip:SetText(L["AdvancedOptions"], 1, 1, 1);
+			GameTooltip:Show();
+		end)
+		button.AdvancedSettingsButton:SetScript("OnLeave", GameTooltip_Hide)
 	end
 
 	if data.isNew and not IsSettingSeen(data.key) then
 		button.NewIndicator:Show();
 	else
 		button.NewIndicator:Hide();
+	end
+
+	if data.hasAdvancedSettings then
+		button.AdvancedSettingsButton:Show()
+		button.AdvancedSettingsButton:SetScript("OnClick", function()
+			if data.onAdvancedClick then
+				data.onAdvancedClick();
+			end
+		end);
+	else
+		button.AdvancedSettingsButton:Hide();
 	end
 
 	button:SetScript("OnEnter", function(self)
@@ -652,6 +680,32 @@ function Artificer:BuildSettingsData()
 		searchText = GetSearchText(L["Widget_ServerNotifications"], L["Widget_ServerNotificationsTT"]),
 		callback = function(val)
 			-- print("Server Notifications: " .. tostring(val))
+		end
+	});
+
+	--Header - Nameplates
+	table.insert(allSettingsData, {
+		type = "header",
+		label = L["Header_Nameplates"],
+	});
+
+	-- Widgets - NameplateTargetIndicator
+	table.insert(allSettingsData, {
+		type = "checkbox",
+		isWidget = true,
+		key = "NameplateTargetIndicator",
+		isNew = true,
+		label = L["FNP_TargetIndicator"],
+		tooltip = L["FNP_TargetIndicatorTT"],
+		searchText = GetSearchText(L["FNP_TargetIndicator"], L["FNP_TargetIndicatorTT"]),
+		callback = function(val)
+			if Artificer.RefreshNameplateTargetIndicator then
+				Artificer.RefreshNameplateTargetIndicator();
+			end
+		end,
+		hasAdvancedSettings = true,
+		onAdvancedClick = function()
+			Artificer:OpenNameplateAdvancedSettings();
 		end
 	});
 

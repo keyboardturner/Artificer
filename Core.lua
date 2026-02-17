@@ -21,14 +21,22 @@ local Defaults = {
 		ArrowKeyEditbox = true,
 		OutfitIcon = true,
 		ServerNotifications = true,
-		AutoLoot = 1,
-		PetBattleMapFilter = 1,
-		CooldownManagerEnabled = 1,
+		AutoLoot = 1, -- changed from true
+		PetBattleMapFilter = 1, -- changed from false
+		CooldownManagerEnabled = 1, -- changed from false
 		PartySync = true,
 		HideCraftingResults = false,
 		MovableCurrencyTransfer = false,
 		AddonCompartmentMover = false,
 		CollapseBuffs = false,
+		NameplateTargetIndicator = false,
+	},
+
+	NameplateTargetPos = {
+		point = "RIGHT",
+		relativePoint = "LEFT",
+		x = 0,
+		y = 0,
 	},
 
 	OutfitSwapSounds = {
