@@ -435,10 +435,13 @@ local function SettingsRowInitializer(button, data)
 	if button.headerLabel then button.headerLabel:Hide(); end
 
 	if not button.NewIndicator then
-		button.NewIndicator = button:CreateTexture(nil, "OVERLAY", nil, 5);
-		button.NewIndicator:SetAtlas("plunderstorm-new-dot-lg");
+		button.NewIndicator = CreateFrame("Frame", nil, button);
 		button.NewIndicator:SetSize(18, 18);
 		button.NewIndicator:SetPoint("LEFT", button, "LEFT", -2, 0);
+
+		button.NewIndicator.Tex = button.NewIndicator:CreateTexture(nil, "OVERLAY", nil, 5);
+		button.NewIndicator.Tex:SetAtlas("plunderstorm-new-dot-lg");
+		button.NewIndicator.Tex:SetAllPoints(button.NewIndicator);
 	end
 
 	if not button.AdvancedSettingsButton then
