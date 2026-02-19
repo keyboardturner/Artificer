@@ -1,5 +1,9 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.0.6
+
+Bug fixes / adjustments to Nameplate Target indicator, CancelAuras, and Collapse Buff Button options.
+
 # 0.0.5
 
 Added new Nameplates option:

@@ -48,11 +48,13 @@ end
 local frame = CreateFrame("Frame")
 frame:RegisterEvent("UNIT_AURA")
 frame:RegisterEvent("PLAYER_ENTERING_WORLD")
+frame:RegisterEvent("PLAYER_STARTED_MOVING")
+frame:RegisterEvent("PLAYER_STOPPED_MOVING")
 
 frame:SetScript("OnEvent", function(self, event, unit, info)
 	if InCombatLockdown() or C_Secrets and C_Secrets.ShouldAurasBeSecret() then return; end
 
-	if event == "PLAYER_ENTERING_WORLD" then
+	if event == "PLAYER_ENTERING_WORLD" or event == "PLAYER_STARTED_MOVING" or event == "PLAYER_STOPPED_MOVING" then
 		local db = GetBlocklist()
 		for spellID in pairs(db) do
 			if C_UnitAuras.GetPlayerAuraBySpellID(spellID) then
