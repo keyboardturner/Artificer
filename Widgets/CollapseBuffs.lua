@@ -21,7 +21,11 @@ local function SetBuffsCollapsed(shouldCollapse)
 end
 
 function Artificer.Widgets.ApplyCollapsedBuffs()
-	if UnitAffectingCombat("player") or C_Secrets.ShouldAurasBeSecret() or C_Secrets.ShouldCooldownsBeSecret() or IsInInstance() then return end;  -- immense errors if executed in combat (and weirdly "shouldaurasbesecret" prevents it)
+	local inInstance, instanceType = IsInInstance()
+
+	if UnitAffectingCombat("player") or C_Secrets.ShouldAurasBeSecret() or C_Secrets.ShouldCooldownsBeSecret() or (inInstance and instanceType ~= "neighborhood" and instanceType ~= "interior") then
+		return;
+	end  -- immense errors if executed in combat (and weirdly "shouldaurasbesecret" prevents it)
 	
 	local shouldCollapse = Artificer_DB.Widgets.CollapseBuffs;
 	if shouldCollapse == nil then shouldCollapse = false; end
