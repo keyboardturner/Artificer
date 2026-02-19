@@ -404,7 +404,7 @@ local function onNamePlateEvent(self, event, unitToken)
 	elseif event == "NAME_PLATE_UNIT_ADDED" then
 		local targetToken = unitToken .. "target";
 		if issecretvalue(targetToken) or issecretvalue(UnitExists(targetToken)) or issecretvalue(UnitName(targetToken)) or issecretvalue(UnitName("player")) then return end
-		if UnitExists(targetToken) and UnitName(targetToken) == UnitName("player") then
+		if UnitExists(targetToken) and UnitIsPlayer(unitToken) and UnitName(targetToken) == UnitName("player") then
 			SetTargetIconPosition(NamePlateTextures[unitFrame], _G[unitFrame]);
 			NamePlateTextures[unitFrame]:Show();
 		end

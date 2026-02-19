@@ -47,10 +47,22 @@ end
 
 local frame = CreateFrame("Frame")
 frame:RegisterEvent("UNIT_AURA")
+frame:RegisterEvent("PLAYER_ENTERING_WORLD")
 
 frame:SetScript("OnEvent", function(self, event, unit, info)
 	if InCombatLockdown() or C_Secrets and C_Secrets.ShouldAurasBeSecret() then return; end
-	if info.addedAuras and not issecretvalue(unit) and not issecretvalue(info) and unit == "player" then
+
+	if event == "PLAYER_ENTERING_WORLD" then
+		local db = GetBlocklist()
+		for spellID in pairs(db) do
+			if C_UnitAuras.GetPlayerAuraBySpellID(spellID) then
+				C_Spell.CancelSpellByID(spellID);
+			end
+		end
+		return
+	end
+
+	if event == "UNIT_AURA" and info and info.addedAuras and not issecretvalue(unit) and not issecretvalue(info) and unit == "player" then
 		local db = GetBlocklist()
 		for _, v in pairs(info.addedAuras) do
 			if issecretvalue(v) or issecretvalue(v.spellId) then return end
