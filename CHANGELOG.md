@@ -1,5 +1,9 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.0.7
+
+Temporarily removed the option to collapse the buff frame, as it caused unavoidable random errant taint issues
+
 # 0.0.6
 
 Bug fixes / adjustments to Nameplate Target indicator, CancelAuras, and Collapse Buff Button options.
