@@ -1,3 +1,5 @@
+--[[
+
 local addonName, Artificer = ...;
 
 local L = Artificer.L;
@@ -9,10 +11,8 @@ local function SetBuffsCollapsed(shouldCollapse)
 
 	local expandedState = not shouldCollapse;
 	local currentChecked = BuffFrame.CollapseAndExpandButton:GetChecked();
-	--[[
-		this seems to be the only sane way of clicking this button
-		so many other methods i tried would just cause a taint-fest upon opening edit mode
-	--]]
+		--this seems to be the only sane way of clicking this button
+		--so many other methods i tried would just cause a taint-fest upon opening edit mode
 	if currentChecked ~= expandedState then
 		BuffFrame.CollapseAndExpandButton:SetChecked(expandedState);
 		BuffFrame.CollapseAndExpandButton:UpdateOrientation();
@@ -40,3 +40,5 @@ f:SetScript("OnEvent", function(self, event)
 		Artificer.Widgets.ApplyCollapsedBuffs();
 	end
 end)
+
+]]

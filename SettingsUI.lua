@@ -814,6 +814,7 @@ function Artificer:BuildSettingsData()
 	});
 
 	-- Widgets - CollapseBuffs
+	--[[ -- unfortunately still causes random errant taint
 	table.insert(allSettingsData, {
         type = "checkbox",
         isWidget = true,
@@ -828,6 +829,7 @@ function Artificer:BuildSettingsData()
             end
         end
     });
+    ]]
 
 	-- Header - Account Settings
 	table.insert(allSettingsData, {
