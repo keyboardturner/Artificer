@@ -5,9 +5,9 @@ local L = Artificer.L;
 local HistoryList = {};
 local sessionHistory = {};
 local presets = {
-	301893,		-- Paintbot Blue
-	301894,		-- Paintbot Green
-	301892,		-- Paintbot Orange
+	294249,		-- Painted Blue
+	294250,		-- Painted Green
+	294248,		-- Painted Orange
 	44212,		-- Jack-o'-Lanterned!
 	399502,		-- Atomically Recalibrated
 	1215363,	-- Atomically Regoblinated
@@ -337,13 +337,13 @@ local function CreateCancelAuraPanel()
 	caFrame:Hide()
 
 	caFrame:SetScript("OnShow", function()
-		if Artificer.SettingsFrame.CancelAuraTab then
+		if Artificer and Artificer.SettingsFrame and Artificer.SettingsFrame.CancelAuraTab then
 			Artificer.SettingsFrame.CancelAuraTab.SelectedTexture:Show();
 		end
 		PlaySound(1196);
 	end)
 	caFrame:SetScript("OnHide", function()
-		if Artificer.SettingsFrame.CancelAuraTab then
+		if Artificer and Artificer.SettingsFrame and Artificer.SettingsFrame.CancelAuraTab then
 			Artificer.SettingsFrame.CancelAuraTab.SelectedTexture:Hide();
 		end
 		PlaySound(1214);

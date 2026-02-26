@@ -335,13 +335,13 @@ local function CreateAbandonQuestPanel()
 	aqFrame:Hide()
 
 	aqFrame:SetScript("OnShow", function()
-		if Artificer.SettingsFrame.AbandonQuestTab then
+		if Artificer and Artificer.SettingsFrame and Artificer.SettingsFrame.AbandonQuestTab then
 			Artificer.SettingsFrame.AbandonQuestTab.SelectedTexture:Show();
 		end
 		PlaySound(844);
 	end)
 	aqFrame:SetScript("OnHide", function()
-		if Artificer.SettingsFrame.AbandonQuestTab then
+		if Artificer and Artificer.SettingsFrame and Artificer.SettingsFrame.AbandonQuestTab then
 			Artificer.SettingsFrame.AbandonQuestTab.SelectedTexture:Hide();
 		end
 		PlaySound(879);

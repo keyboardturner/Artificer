@@ -112,6 +112,24 @@ if LOCALE == "enUS" then
 	L["ClickDrag"] = "Click-Drag: %s"
 	L["ConfigureSounds"] = "Configure Sounds"
 	L["PickUpOutfit"] = "Pick Up Outfit"
+	L["OutfitManager"] = "Outfit Manager"
+	L["OutfitManagerTT"] = "Choose an outfit to wear and configure gear movement sounds that can play for each outfit."
+	L["EquipOutfit"] = "Equip Outfit"
+	L["Widget_MinimapRightClick"] = "Minimap Right-Click"
+	L["Widget_MinimapRightClickTT"] = "Set the Minimap right-click functionality"
+	L["LockAppearance"] = "Lock Appearance"
+
+	--Widgets - Loot History Visibility
+	L["Widget_LootHistoryVisibility"] = "Loot History Visibility"
+	L["Widget_LootHistoryVisibilityTT"] = "Automatically hide the loot history based on the selected option."
+	L["Widget_LHV_None"] = NONE
+	L["Widget_LHV_Solo"] = SOLO
+	L["Widget_LHV_NotFull"] = "Non-Full Group"
+	L["Widget_LHV_Always"] = ALWAYS
+
+	--Widgets - Hide Tutorials
+	L["Widget_HideTutorials"] = "Hide Tutorials"
+	L["Widget_HideTutorialsTT"] = "Enforces hiding tutorials for the entire account."
 
 	--Widgets - NameplateTargetIndicator
 	L["FNP_TargetIndicator"] = "Friendly Nameplate Target Indicator"
@@ -257,6 +275,24 @@ if LOCALE == "esMX" then
 	L["ClickDrag"] = "Clic-arrastrar: %s"
 	L["ConfigureSounds"] = "Configurar sonidos"
 	L["PickUpOutfit"] = "Recoger atuendo"
+	L["OutfitManager"] = "Administrador de atuendos"
+	L["OutfitManagerTT"] = "Elige un atuendo para equipar y configura los sonidos de movimiento del equipo que pueden reproducirse para cada atuendo."
+	L["EquipOutfit"] = "Equipar atuendo"
+	L["Widget_MinimapRightClick"] = "Clic derecho en el minimapa"
+	L["Widget_MinimapRightClickTT"] = "Configurar la función del clic derecho en el minimapa"
+	L["LockAppearance"] = "Bloquear apariencia"
+
+	--Widgets - Loot History Visibility
+	L["Widget_LootHistoryVisibility"] = "Visibilidad del historial de botín"
+	L["Widget_LootHistoryVisibilityTT"] = "Oculta automáticamente el historial de botín según la opción seleccionada."
+	L["Widget_LHV_None"] = NONE
+	L["Widget_LHV_Solo"] = SOLO
+	L["Widget_LHV_NotFull"] = "Grupo no completo"
+	L["Widget_LHV_Always"] = ALWAYS
+
+	--Widgets - Hide Tutorials
+	L["Widget_HideTutorials"] = "Ocultar tutoriales"
+	L["Widget_HideTutorialsTT"] = "Fuerza la ocultación de los tutoriales en toda la cuenta."
 
 	--Widgets - NameplateTargetIndicator
 	L["FNP_TargetIndicator"] = "Indicador de objetivo en placas de nombre amistosas"
@@ -401,6 +437,24 @@ if LOCALE == "esES" then
 	L["ClickDrag"] = "Clic-arrastrar: %s"
 	L["ConfigureSounds"] = "Configurar sonidos"
 	L["PickUpOutfit"] = "Recoger atuendo"
+	L["OutfitManager"] = "Gestor de atuendos"
+	L["OutfitManagerTT"] = "Elige un atuendo para equipar y configura los sonidos de movimiento del equipo que pueden reproducirse para cada atuendo."
+	L["EquipOutfit"] = "Equipar atuendo"
+	L["Widget_MinimapRightClick"] = "Clic derecho en el minimapa"
+	L["Widget_MinimapRightClickTT"] = "Configurar la función del clic derecho en el minimapa"
+	L["LockAppearance"] = "Mantener apariencia"
+
+	--Widgets - Loot History Visibility
+	L["Widget_LootHistoryVisibility"] = "Visibilidad del historial de botín"
+	L["Widget_LootHistoryVisibilityTT"] = "Oculta automáticamente el historial de botín según la opción seleccionada."
+	L["Widget_LHV_None"] = NONE
+	L["Widget_LHV_Solo"] = SOLO
+	L["Widget_LHV_NotFull"] = "Grupo no completo"
+	L["Widget_LHV_Always"] = ALWAYS
+
+	--Widgets - Hide Tutorials
+	L["Widget_HideTutorials"] = "Ocultar tutoriales"
+	L["Widget_HideTutorialsTT"] = "Fuerza la ocultación de los tutoriales en toda la cuenta."
 
 	--Widgets - NameplateTargetIndicator
 	L["FNP_TargetIndicator"] = "Indicador de objetivo en placas de nombre amistosas"
@@ -543,6 +597,24 @@ if LOCALE == "deDE" then
 	L["ClickDrag"] = "Klicken & Ziehen: %s"
 	L["ConfigureSounds"] = "Sounds konfigurieren"
 	L["PickUpOutfit"] = "Outfit aufnehmen"
+	L["OutfitManager"] = "Outfit-Manager"
+	L["OutfitManagerTT"] = "Wähle ein Outfit zum Anlegen und konfiguriere Ausrüstungsbewegungsgeräusche, die für jedes Outfit abgespielt werden können."
+	L["EquipOutfit"] = "Outfit anlegen"
+	L["Widget_MinimapRightClick"] = "Minikarten-Rechtsklick"
+	L["Widget_MinimapRightClickTT"] = "Lege die Funktion des Rechtsklicks auf die Minikarte fest"
+	L["LockAppearance"] = "Aussehen fixieren"
+
+	--Widgets - Loot History Visibility
+	L["Widget_LootHistoryVisibility"] = "Sichtbarkeit des Beuteverlaufs"
+	L["Widget_LootHistoryVisibilityTT"] = "Blendet den Beuteverlauf automatisch basierend auf der ausgewählten Option aus."
+	L["Widget_LHV_None"] = NONE
+	L["Widget_LHV_Solo"] = SOLO
+	L["Widget_LHV_NotFull"] = "Keine volle Gruppe"
+	L["Widget_LHV_Always"] = ALWAYS
+
+	--Widgets - Hide Tutorials
+	L["Widget_HideTutorials"] = "Tutorials ausblenden"
+	L["Widget_HideTutorialsTT"] = "Blendet Tutorials für den gesamten Account dauerhaft aus."
 
 	--Widgets - NameplateTargetIndicator
 	L["FNP_TargetIndicator"] = "Freundlicher Namensplaketten-Zielindikator"
@@ -686,6 +758,24 @@ if LOCALE == "frFR" then
 	L["ClickDrag"] = "Cliquer-glisser : %s"
 	L["ConfigureSounds"] = "Configurer les sons"
 	L["PickUpOutfit"] = "Ramasser la tenue"
+	L["OutfitManager"] = "Gestionnaire de tenues"
+	L["OutfitManagerTT"] = "Choisissez une tenue à porter et configurez les sons de mouvement d’équipement pouvant être joués pour chaque tenue."
+	L["EquipOutfit"] = "Équiper la tenue"
+	L["Widget_MinimapRightClick"] = "Clic droit sur la minicarte"
+	L["Widget_MinimapRightClickTT"] = "Définir la fonction du clic droit sur la minicarte"
+	L["LockAppearance"] = "Verrouiller l’apparence"
+
+	--Widgets - Loot History Visibility
+	L["Widget_LootHistoryVisibility"] = "Visibilité de l’historique du butin"
+	L["Widget_LootHistoryVisibilityTT"] = "Masque automatiquement l’historique du butin selon l’option sélectionnée."
+	L["Widget_LHV_None"] = NONE
+	L["Widget_LHV_Solo"] = SOLO
+	L["Widget_LHV_NotFull"] = "Groupe non complet"
+	L["Widget_LHV_Always"] = ALWAYS
+
+	--Widgets - Hide Tutorials
+	L["Widget_HideTutorials"] = "Masquer les tutoriels"
+	L["Widget_HideTutorialsTT"] = "Force le masquage des tutoriels pour tout le compte."
 
 	--Widgets - NameplateTargetIndicator
 	L["FNP_TargetIndicator"] = "Indicateur de ciblage des plaques de nom alliées"
@@ -829,6 +919,24 @@ if LOCALE == "itIT" then
 	L["ClickDrag"] = "Clic-trascina: %s"
 	L["ConfigureSounds"] = "Configura suoni"
 	L["PickUpOutfit"] = "Raccogli abito"
+	L["OutfitManager"] = "Gestore completi"
+	L["OutfitManagerTT"] = "Scegli un completo da indossare e configura i suoni di movimento dell’equipaggiamento che possono essere riprodotti per ogni completo."
+	L["EquipOutfit"] = "Indossa completo"
+	L["Widget_MinimapRightClick"] = "Clic destro sulla minimappa"
+	L["Widget_MinimapRightClickTT"] = "Imposta la funzione del clic destro sulla minimappa"
+	L["LockAppearance"] = "Blocco aspetto"
+
+	--Widgets - Loot History Visibility
+	L["Widget_LootHistoryVisibility"] = "Visibilità cronologia bottino"
+	L["Widget_LootHistoryVisibilityTT"] = "Nasconde automaticamente la cronologia del bottino in base all’opzione selezionata."
+	L["Widget_LHV_None"] = NONE
+	L["Widget_LHV_Solo"] = SOLO
+	L["Widget_LHV_NotFull"] = "Gruppo non completo"
+	L["Widget_LHV_Always"] = ALWAYS
+
+	--Widgets - Hide Tutorials
+	L["Widget_HideTutorials"] = "Nascondi tutorial"
+	L["Widget_HideTutorialsTT"] = "Forza la disattivazione dei tutorial per l’intero account."
 
 	--Widgets - NameplateTargetIndicator
 	L["FNP_TargetIndicator"] = "Indicatore bersaglio targhe amichevoli"
@@ -972,6 +1080,24 @@ if LOCALE == "ptBR" then
 	L["ClickDrag"] = "Clique-arrastar: %s"
 	L["ConfigureSounds"] = "Configurar sons"
 	L["PickUpOutfit"] = "Pegar traje"
+	L["OutfitManager"] = "Gerenciador de Trajes"
+	L["OutfitManagerTT"] = "Escolha um traje para vestir e configure os sons de movimento do equipamento que podem tocar para cada traje."
+	L["EquipOutfit"] = "Vestir traje"
+	L["Widget_MinimapRightClick"] = "Clique direito no minimapa"
+	L["Widget_MinimapRightClickTT"] = "Definir a função do clique direito no minimapa"
+	L["LockAppearance"] = "Travar aparência"
+
+	--Widgets - Loot History Visibility
+	L["Widget_LootHistoryVisibility"] = "Visibilidade do histórico de saque"
+	L["Widget_LootHistoryVisibilityTT"] = "Oculta automaticamente o histórico de saque com base na opção selecionada."
+	L["Widget_LHV_None"] = NONE
+	L["Widget_LHV_Solo"] = SOLO
+	L["Widget_LHV_NotFull"] = "Grupo incompleto"
+	L["Widget_LHV_Always"] = ALWAYS
+
+	--Widgets - Hide Tutorials
+	L["Widget_HideTutorials"] = "Ocultar tutoriais"
+	L["Widget_HideTutorialsTT"] = "Força a ocultação dos tutoriais para toda a conta."
 
 	--Widgets - NameplateTargetIndicator
 	L["FNP_TargetIndicator"] = "Indicador de alvo em placas de nome amigáveis"
@@ -1117,6 +1243,24 @@ if LOCALE == "ruRU" then
 	L["ClickDrag"] = "Клик и перетаскивание: %s"
 	L["ConfigureSounds"] = "Настроить звуки"
 	L["PickUpOutfit"] = "Взять набор"
+	L["OutfitManager"] = "Менеджер нарядов"
+	L["OutfitManagerTT"] = "Выберите наряд для экипировки и настройте звуки движения снаряжения, которые могут воспроизводиться для каждого наряда."
+	L["EquipOutfit"] = "Надеть наряд"
+	L["Widget_MinimapRightClick"] = "Правый клик по миникарте"
+	L["Widget_MinimapRightClickTT"] = "Настроить функцию правого клика по миникарте"
+	L["LockAppearance"] = "Закрепить внешний вид"
+
+	--Widgets - Loot History Visibility
+	L["Widget_LootHistoryVisibility"] = "Видимость истории добычи"
+	L["Widget_LootHistoryVisibilityTT"] = "Автоматически скрывать историю добычи в зависимости от выбранной опции."
+	L["Widget_LHV_None"] = NONE
+	L["Widget_LHV_Solo"] = SOLO
+	L["Widget_LHV_NotFull"] = "Неполная группа"
+	L["Widget_LHV_Always"] = ALWAYS
+
+	--Widgets - Hide Tutorials
+	L["Widget_HideTutorials"] = "Скрыть обучение"
+	L["Widget_HideTutorialsTT"] = "Принудительно скрывает обучение для всей учетной записи."
 
 	--Widgets - NameplateTargetIndicator
 	L["FNP_TargetIndicator"] = "Индикатор цели на дружественных неймплейтах"
@@ -1260,6 +1404,24 @@ if LOCALE == "koKR" then
 	L["ClickDrag"] = "클릭 후 드래그: %s"
 	L["ConfigureSounds"] = "소리 설정"
 	L["PickUpOutfit"] = "의상 집기"
+	L["OutfitManager"] = "의상 관리"
+	L["OutfitManagerTT"] = "착용할 의상을 선택하고 각 의상에 대해 재생될 수 있는 장비 움직임 소리를 설정합니다."
+	L["EquipOutfit"] = "의상 착용"
+	L["Widget_MinimapRightClick"] = "미니맵 오른쪽 클릭"
+	L["Widget_MinimapRightClickTT"] = "미니맵 오른쪽 클릭 기능 설정"
+	L["LockAppearance"] = "형상 고정"
+
+	--Widgets - Loot History Visibility
+	L["Widget_LootHistoryVisibility"] = "전리품 기록 표시"
+	L["Widget_LootHistoryVisibilityTT"] = "선택한 옵션에 따라 전리품 기록을 자동으로 숨깁니다."
+	L["Widget_LHV_None"] = NONE
+	L["Widget_LHV_Solo"] = SOLO
+	L["Widget_LHV_NotFull"] = "전체 인원 아님"
+	L["Widget_LHV_Always"] = ALWAYS
+
+	--Widgets - Hide Tutorials
+	L["Widget_HideTutorials"] = "튜토리얼 숨기기"
+	L["Widget_HideTutorialsTT"] = "계정 전체에서 튜토리얼을 숨기도록 강제합니다."
 
 	--Widgets - NameplateTargetIndicator
 	L["FNP_TargetIndicator"] = "아군 이름표 대상 표시기"
@@ -1403,6 +1565,24 @@ if LOCALE == "zhCN" then
 	L["ClickDrag"] = "点击拖动: %s"
 	L["ConfigureSounds"] = "配置音效"
 	L["PickUpOutfit"] = "拾取套装"
+	L["OutfitManager"] = "套装管理"
+	L["OutfitManagerTT"] = "选择要穿戴的套装，并为每个套装配置可播放的装备移动音效。"
+	L["EquipOutfit"] = "穿戴套装"
+	L["Widget_MinimapRightClick"] = "小地图右键"
+	L["Widget_MinimapRightClickTT"] = "设置小地图右键功能"
+	L["LockAppearance"] = "锁定外观"
+
+	--Widgets - Loot History Visibility
+	L["Widget_LootHistoryVisibility"] = "拾取记录可见性"
+	L["Widget_LootHistoryVisibilityTT"] = "根据所选选项自动隐藏拾取记录。"
+	L["Widget_LHV_None"] = NONE
+	L["Widget_LHV_Solo"] = SOLO
+	L["Widget_LHV_NotFull"] = "非满队伍"
+	L["Widget_LHV_Always"] = ALWAYS
+
+	--Widgets - Hide Tutorials
+	L["Widget_HideTutorials"] = "隐藏教程"
+	L["Widget_HideTutorialsTT"] = "在整个账号范围内强制隐藏教程。"
 
 	--Widgets - NameplateTargetIndicator
 	L["FNP_TargetIndicator"] = "友方姓名板目标指示器"
@@ -1544,6 +1724,24 @@ if LOCALE == "zhTW" then
 	L["ClickDrag"] = "點擊拖動: %s"
 	L["ConfigureSounds"] = "設定音效"
 	L["PickUpOutfit"] = "拾取套裝"
+	L["OutfitManager"] = "套裝管理"
+	L["OutfitManagerTT"] = "選擇要穿戴的套裝，並為每個套裝設定可播放的裝備移動音效。"
+	L["EquipOutfit"] = "穿戴套裝"
+	L["Widget_MinimapRightClick"] = "小地圖右鍵"
+	L["Widget_MinimapRightClickTT"] = "設定小地圖右鍵功能"
+	L["LockAppearance"] = "鎖定外觀"
+
+	--Widgets - Loot History Visibility
+	L["Widget_LootHistoryVisibility"] = "拾取紀錄可見性"
+	L["Widget_LootHistoryVisibilityTT"] = "根據所選選項自動隱藏拾取紀錄。"
+	L["Widget_LHV_None"] = NONE
+	L["Widget_LHV_Solo"] = SOLO
+	L["Widget_LHV_NotFull"] = "非滿隊伍"
+	L["Widget_LHV_Always"] = ALWAYS
+
+	--Widgets - Hide Tutorials
+	L["Widget_HideTutorials"] = "Ocultar tutoriales"
+	L["Widget_HideTutorialsTT"] = "Fuerza la ocultación de los tutoriales en toda la cuenta."
 
 	--Widgets - NameplateTargetIndicator
 	L["FNP_TargetIndicator"] = "友方姓名板目標指示器"

@@ -6,6 +6,65 @@ local FOLEY_EVENT_ID = 8; -- apparently isn't used by anything atm so can probab
 -- if this interferes with anything, blame Meo. he told me thjis event ID was safe
 local FOLEY_TRIGGER_ID = 0;
 local lastPlayedFileID = nil;
+local outfitSpellID = 1247613;
+
+--[[
+Action Bar 1 (page 1)					ActionButton[1-12]					001 - 012
+Action Bar 1 (page 2, unused?)			ActionButton[1-12]					013 - 024
+Action Bar 4							MultiBarRightButton[1-12]			025 - 036
+Action Bar 5							MultiBarLeftButton[1-12]			037 - 048
+Action Bar 3							MultiBarBottomRightButton[1-12]		049 - 060
+Action Bar 2							MultiBarBottomLeftButton[1-12]		061 - 072
+Class specific																073 - 120
+
+	73 - 84 - warrior battle stance
+	85 - 96 - warrior battle stance
+	97 - 108 - warrior battle stance
+
+	73 - 84 - druid cat
+	85 - 96 - druid prowl
+	97 - 108 - druid bear
+	109 - 120 - druid moonkin
+
+	73 - 84 - rogue stealth
+	85 - 96 - rogue shadow dance
+
+	73 - 84 - priest shadowform
+
+	121 - 132 - target possessed
+
+Action Bar 1 (page 1, skyriding)		ActionButton[1-12]					121 - 132
+Unknown (complains about totems?)											133 - 144
+
+	133 - "fire totem slot"
+	134 - "earth totem slot"
+	135 - "water totem slot"
+	136 - "air totem slot"
+	137 - "fire totem slot"
+	138 - "earth totem slot"
+	139 - "water totem slot"
+	140 - "air totem slot"
+	141 - "fire totem slot"
+	142 - "earth totem slot"
+	143 - "water totem slot"
+	144 - "air totem slot"
+
+Action Bar 6							MultiBar5Button[1-12]				145 - 156
+Action Bar 7							MultiBar6Button[1-12]				157 - 168
+Action Bar 8							MultiBar7Button[1-12]				169 - 180
+]]
+
+local _, CLASS = UnitClass("player");
+local OUTFIT_SLOT = (CLASS == "DRUID" and 130 or 118); -- use what OPie does for this so it doesn't just nuke their stuff
+
+local function YeetCursorSounds()
+	MuteSoundFile(567489)
+	MuteSoundFile(567524)
+	RunNextFrame(function()
+		UnmuteSoundFile(567489);
+		UnmuteSoundFile(567524);
+	end)
+end
 
 local function GetFoleyDB()
 	if not Artificer.GetCharDB then return nil end
@@ -188,12 +247,13 @@ for _, def in ipairs(SoundDefinitions) do
 	SoundVolumeLookup[def.key] = def.volume or 1.0;
 end
 
-local frame;
+local ArtiOFFrame;
 local soundPanel;
 local selectedOutfitID = nil;
 
 local UpdateSoundPanelSelection;
 local RefreshOutfitListVisuals;
+local UpdateOutfitCooldowns;
 
 
 local function CreateSoundOptionButton(parent, data)
@@ -253,7 +313,7 @@ local function CreateSoundOptionButton(parent, data)
 			local defaultVol = SoundVolumeLookup[self.key] or 1.0;
 			volumeDB[selectedOutfitID] = defaultVol;
 			
-			PlaySound(SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_ON);
+			--PlaySound(SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_ON);
 			
 			UpdateSoundPanelSelection();
 			RefreshOutfitListVisuals();
@@ -391,17 +451,24 @@ local function CreateSoundPanel(parent)
 end
 
 RefreshOutfitListVisuals = function()
-	if not frame or not frame.buttons then return end
+	if not ArtiOFFrame or not ArtiOFFrame.buttons then return end
 	
 	local foleyDB = GetFoleyDB()
+	local activeOutfitID = C_TransmogOutfitInfo.GetActiveOutfitID()
 	
-	for _, button in ipairs(frame.buttons) do
+	for _, button in ipairs(ArtiOFFrame.buttons) do
 		if button.outfitID == selectedOutfitID then
 			button.selectionTexture:Show();
 			button.border:Hide();
 		else
 			button.selectionTexture:Hide();
 			button.border:Show();
+		end
+
+		if button.outfitID == activeOutfitID then
+			button.activeHighlight:Show();
+		else
+			button.activeHighlight:Hide();
 		end
 
 		if foleyDB then
@@ -415,31 +482,56 @@ RefreshOutfitListVisuals = function()
 				button.soundStatusIcon:Show();
 			end
 		end
+
+		if button.lockOverlay then
+			local isLocked = C_TransmogOutfitInfo.IsLockedOutfit(button.outfitID)
+			if isLocked then
+				button.lockOverlay.Shine:Show();
+				if not button.lockOverlay.Anim:IsPlaying() then
+					button.lockOverlay.Anim:Play();
+				end
+				button.lockOverlay:Show();
+			else
+				button.lockOverlay.Anim:Stop();
+				button.lockOverlay.Shine:Hide();
+				button.lockOverlay:Hide();
+			end
+		end
 	end
 end
 
+UpdateOutfitCooldowns = function()
+	if InCombatLockdown() or not ArtiOFFrame or not ArtiOFFrame.buttons then return end
 
-local function OnOutfitClick(self)
-	selectedOutfitID = self.outfitID;
-	PlaySound(SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_ON);
-	RefreshOutfitListVisuals();
-	UpdateSoundPanelSelection();
+	local SCDI = C_Spell.GetSpellCooldown(outfitSpellID)
+	if issecretvalue(SCDI) or issecretvalue(SCDI.startTime) or issecretvalue(SCDI.duration) then return end
+
+
+	for _, button in ipairs(ArtiOFFrame.buttons) do
+		if button.cooldown then
+			if SCDI.startTime and SCDI.startTime > 0 and SCDI.duration and SCDI.duration > 0 then
+				button.cooldown:SetCooldown(SCDI.startTime, SCDI.duration);
+			else
+				button.cooldown:Clear();
+			end
+		end
+	end
 end
 
 local function CreateOutfitButton(parent, outfit, index)
-	local button = CreateFrame("Button", nil, parent)
+	local button = CreateFrame("Button", nil, parent, "SecureActionButtonTemplate")
 	local buttonSize = 55
 	local spacing = buttonSize + 10
 	button:SetSize(buttonSize, buttonSize)
-	
+
 	local col = (index - 1) % 5
 	local row = math.floor((index - 1) / 5)
 	button:SetPoint("TOPLEFT", 7 + (col * spacing), -7 - (row * spacing))
-	
+
 	button.icon = button:CreateTexture(nil, "BACKGROUND")
 	button.icon:SetAllPoints()
 	button.icon:SetTexture(outfit.icon)
-	
+
 	button.selectionTexture = button:CreateTexture(nil, "OVERLAY", nil, 2)
 	button.selectionTexture:SetAllPoints()
 	button.selectionTexture:SetAtlas("UI-HUD-RotationHelper-SpellbookGlow")
@@ -455,27 +547,137 @@ local function CreateOutfitButton(parent, outfit, index)
 	button.soundStatusIcon:SetSize(20, 20)
 	button.soundStatusIcon:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", 0, 0)
 	button.soundStatusIcon:Hide()
+
+	button.activeHighlight = button:CreateTexture(nil, "OVERLAY", nil, 6)
+	button.activeHighlight:SetAllPoints()
+	button.activeHighlight:SetAtlas("transmog-gearSlot-transmogrified-HL")
+	button.activeHighlight:SetAlpha(0.75)
+	button.activeHighlight:SetTexCoord(.825,.175,.825,.175)
+	button.activeHighlight:Hide()
+
+	button.cooldown = CreateFrame("Cooldown", nil, button, "CooldownFrameTemplate")
+	button.cooldown:SetAllPoints()
+	button.cooldown:SetDrawEdge(true)
+	button.cooldown:SetHideCountdownNumbers(true)
+	button.cooldown:SetFrameLevel(button:GetFrameLevel() + 5)
+
+	local lockOverlay = CreateFrame("Frame", nil, button)
+	lockOverlay:SetAllPoints()
+	lockOverlay:SetFrameLevel(button:GetFrameLevel() + 6)
+
+	local shine = lockOverlay:CreateTexture(nil, "OVERLAY", nil, 0)
+	shine:SetAtlas("UI-HUD-ActionBar-PetAutoCast-Ants", false)
+	shine:SetBlendMode("BLEND")
+	shine:SetPoint("TOPLEFT", lockOverlay, "TOPLEFT", -10, 10)
+	shine:SetPoint("BOTTOMRIGHT", lockOverlay, "BOTTOMRIGHT", 10, -10)
+
+	local mask = lockOverlay:CreateMaskTexture(nil, "OVERLAY")
+	mask:SetAtlas("UI-HUD-ActionBar-PetAutoCast-Mask")
+	mask:SetPoint("TOPLEFT", lockOverlay, "TOPLEFT", 4, -4)
+	mask:SetPoint("BOTTOMRIGHT", lockOverlay, "BOTTOMRIGHT", -4, 4)
+	shine:AddMaskTexture(mask)
+
+	mask.t = lockOverlay:CreateMaskTexture(nil, "OVERLAY", nil, 0)
+	mask.t:SetPoint("TOPLEFT", lockOverlay, "TOPLEFT", 4, -4)
+	mask.t:SetPoint("BOTTOMRIGHT", lockOverlay, "BOTTOMRIGHT", -4, 4)
+	mask.t:SetTexture(4733159, "CLAMPTOBLACKADDITIVE", "CLAMPTOBLACKADDITIVE")
+	shine:AddMaskTexture(mask.t)
+
+	local anim = shine:CreateAnimationGroup()
+	anim:SetLooping("REPEAT")
+	local rotation = anim:CreateAnimation("Rotation")
+	rotation:SetDuration(4)
+	rotation:SetOrder(1)
+	rotation:SetDegrees(-360)
+	rotation:SetOrigin("CENTER", 0, 0)
+
+	local corners = lockOverlay:CreateTexture(nil, "OVERLAY", nil, 1)
+	corners:SetAtlas("UI-HUD-ActionBar-PetAutoCast-Corners", false)
+	corners:SetAllPoints()
+
+	lockOverlay.Shine = shine
+	lockOverlay.Anim = anim
+	lockOverlay.Corners = corners
+	lockOverlay:Hide()
+
+	button.lockOverlay = lockOverlay
+
 	
+	RunNextFrame(function()
+		if button and button:GetParent() then
+			local base = button:GetFrameLevel();
+			button.cooldown:SetFrameLevel(base + 5);
+			button.lockOverlay:SetFrameLevel(base + 6);
+		end
+	end)
+
 	button:SetHighlightTexture("Interface\\Buttons\\ButtonHilight-Square", "ADD")
-	
-	button.outfitID = outfit.outfitID
+
+	button.outfitID  = outfit.outfitID
 	button.outfitName = outfit.name
-	
-	button:RegisterForClicks("LeftButtonUp", "LeftButtonDown")
-	button:SetScript("OnClick", OnOutfitClick)
+
+	button:SetAttribute("outfit-id", outfit.outfitID)
+	button:SetAttribute("action", OUTFIT_SLOT)
+	button:SetAttribute("useOnKeyDown", false)
+	button:RegisterForClicks("LeftButtonUp", "RightButtonUp")
+
+	SecureHandlerWrapScript(button, "OnClick", button, 'return button')
+
+	local bingus_
+
+	button:SetScript("PreClick", function(self)
+		local att_outfitID = self:GetAttribute("outfit-id")
+		if InCombatLockdown() or not att_outfitID then return; end
+
+		YeetCursorSounds()
+		ClearCursor()
+		C_TransmogOutfitInfo.PickupOutfit(att_outfitID)
+
+		local cursorType, cursorID = GetCursorInfo()
+		if cursorType == "outfit" and cursorID == att_outfitID then
+			bingus_ = (GetActionInfo(OUTFIT_SLOT) == nil);
+			PlaceAction(OUTFIT_SLOT);
+			local actionType, actionID = GetActionInfo(OUTFIT_SLOT);
+			if actionType == "outfit" and actionID == att_outfitID then
+				self:SetAttribute("type", "action");
+			end
+		else
+			ClearCursor();
+		end
+	end)
+
+	button:SetScript("PostClick", function(self)
+		self:SetAttribute("type", nil)
+		if InCombatLockdown() or bingus_ == nil then return end
+
+		if bingus_ == true then
+			ClearCursor();
+			PickupAction(OUTFIT_SLOT);
+			ClearCursor();
+		else
+			PlaceAction(OUTFIT_SLOT);
+			ClearCursor();
+		end
+		bingus_ = nil
+
+		selectedOutfitID = self:GetAttribute("outfit-id")
+		--PlaySound(SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_ON)
+		RefreshOutfitListVisuals()
+		UpdateSoundPanelSelection()
+	end)
 
 	button:RegisterForDrag("LeftButton")
 	button:SetScript("OnDragStart", function(self)
 		C_TransmogOutfitInfo.PickupOutfit(self.outfitID);
 	end)
-	
+
 	button:SetScript("OnEnter", function(self)
 		GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 		GameTooltip:SetText(self.outfitName, 1, 1, 1)
-		
+
 		local foleyDB = GetFoleyDB()
 		local currentKey = (foleyDB and foleyDB[self.outfitID]) or "None"
-		
+
 		local displayName = currentKey
 		for _, def in ipairs(SoundDefinitions) do
 			if def.key == currentKey then
@@ -483,31 +685,32 @@ local function CreateOutfitButton(parent, outfit, index)
 				break;
 			end
 		end
-		
-		GameTooltip:AddLine(string.format(L["SoundS"],WrapTextInColorCode(displayName, "ffffffff")), 1, 0.82, 0)
-		GameTooltip:AddLine(string.format(L["Click"], L["ConfigureSounds"]), 0.5, 0.5, 0.5)
-		GameTooltip:AddLine(string.format(L["ClickDrag"], L["PickUpOutfit"]), 0.5, 0.5, 0.5)
+
+		GameTooltip:AddLine(string.format(L["SoundS"], WrapTextInColorCode(displayName, "ffffffff")), 1, 0.82, 0)
+		GameTooltip:AddLine(string.format(L["LeftClick"], L["EquipOutfit"]), 0, 1, 0)
+		GameTooltip:AddLine(string.format(L["RightClick"], L["LockAppearance"]), 0, 1, 0)
+		GameTooltip:AddLine(string.format(L["ClickDrag"], L["PickUpOutfit"]), 0, 1, 0)
 		GameTooltip:Show()
 	end)
-	
+
 	button:SetScript("OnLeave", GameTooltip_Hide)
-	
+
 	return button
 end
 
 local function RefreshOutfits()
-	if not frame then return end
+	if not ArtiOFFrame then return end
 	
-	for _, button in ipairs(frame.buttons) do button:Hide() end
-	frame.buttons = {}
+	for _, button in ipairs(ArtiOFFrame.buttons) do button:Hide() end
+	ArtiOFFrame.buttons = {}
 	
 	local outfits = C_TransmogOutfitInfo.GetOutfitsInfo()
 	
 	if not outfits then return end
 	
 	for i, outfit in ipairs(outfits) do
-		local button = CreateOutfitButton(frame.content, outfit, i);
-		table.insert(frame.buttons, button);
+		local button = CreateOutfitButton(ArtiOFFrame.content, outfit, i);
+		table.insert(ArtiOFFrame.buttons, button);
 	end
 	
 	if not selectedOutfitID then
@@ -519,58 +722,58 @@ local function RefreshOutfits()
 end
 
 local function CreateMainFrame()
-	frame = CreateFrame("Frame", "ArtificerOutfitPickerFrame", UIParent, "ButtonFrameTemplate")
-	tinsert(UISpecialFrames, frame:GetName())
+	ArtiOFFrame = CreateFrame("Frame", "ArtificerOutfitPickerFrame", UIParent, "ButtonFrameTemplate")
+	tinsert(UISpecialFrames, ArtiOFFrame:GetName())
 	
-	--local portrait = frame.PortraitContainer.portrait
+	--local portrait = ArtiOFFrame.PortraitContainer.portrait
 	--portrait:SetTexCoord(0.03, 1, 0.03, 1)
 	--portrait:SetAtlas("transmog-icon-UI")
 
-	ButtonFrameTemplate_HidePortrait(frame)
-	ButtonFrameTemplate_HideButtonBar(frame)
+	ButtonFrameTemplate_HidePortrait(ArtiOFFrame)
+	ButtonFrameTemplate_HideButtonBar(ArtiOFFrame)
 	
-	frame:SetTitle(string.join(" - ", L["TOC_Title"], L["OutfitSoundManager"]))
-	frame:SetSize(600, 500)
-	frame:SetMovable(true)
+	ArtiOFFrame:SetTitle(string.join(" - ", L["TOC_Title"], L["OutfitManager"]))
+	ArtiOFFrame:SetSize(600, 500)
+	ArtiOFFrame:SetMovable(true)
 	if Artificer.RestoreFrameSettings then
-		Artificer:RestoreFrameSettings(frame, "ArtificerOutfitPickerFrame");
+		Artificer:RestoreFrameSettings(ArtiOFFrame, "ArtificerOutfitPickerFrame");
 	else
 		if Artificer.RestoreFramePosition then
-			Artificer:RestoreFramePosition(frame, "ArtificerOutfitPickerFrame");
+			Artificer:RestoreFramePosition(ArtiOFFrame, "ArtificerOutfitPickerFrame");
 		else
-			frame:SetPoint("CENTER");
+			ArtiOFFrame:SetPoint("CENTER");
 		end
 	end
-	frame:SetToplevel(true)
-	frame:EnableMouse(true)
-	if frame:IsMovable() == nil then frame:SetMovable(true) end
-	frame:SetClampedToScreen(true)
-	frame:SetScript("OnMouseDown", function(self, button)
+	ArtiOFFrame:SetToplevel(true)
+	ArtiOFFrame:EnableMouse(true)
+	if ArtiOFFrame:IsMovable() == nil then ArtiOFFrame:SetMovable(true) end
+	ArtiOFFrame:SetClampedToScreen(true)
+	ArtiOFFrame:SetScript("OnMouseDown", function(self, button)
 		self:StopMovingOrSizing();
 		if button == "LeftButton" and self:IsMovable() then self:StartMoving() end
 		
 	end)
-	frame:SetScript("OnMouseUp", function(self, button)
+	ArtiOFFrame:SetScript("OnMouseUp", function(self, button)
 		self:StopMovingOrSizing();
 		if Artificer.SaveFramePosition then
 			Artificer:SaveFramePosition(self, "ArtificerOutfitPickerFrame");
 		end
 	end)
-	if frame.TitleContainer then
-		frame.TitleContainer:SetHitRectInsets(0, 24, 0, 0)
-		frame.TitleContainer:EnableMouse(true)
-		frame.TitleContainer:SetMovable(frame:IsMovable())
-		frame.TitleContainer:RegisterForDrag("LeftButton")
-		frame.TitleContainer:SetScript("OnMouseUp", function(self, button)
+	if ArtiOFFrame.TitleContainer then
+		ArtiOFFrame.TitleContainer:SetHitRectInsets(0, 24, 0, 0)
+		ArtiOFFrame.TitleContainer:EnableMouse(true)
+		ArtiOFFrame.TitleContainer:SetMovable(ArtiOFFrame:IsMovable())
+		ArtiOFFrame.TitleContainer:RegisterForDrag("LeftButton")
+		ArtiOFFrame.TitleContainer:SetScript("OnMouseUp", function(self, button)
 			if button == "RightButton" then
 				MenuUtil.CreateContextMenu(self, function(owner, rootDescription)
 					rootDescription:CreateTitle(L["OutfitSoundManager"])
 					
-					local function IsLocked() return not frame:IsMovable() end
+					local function IsLocked() return not ArtiOFFrame:IsMovable() end
 					local function ToggleLock()
-						local locked = not frame:IsMovable();
-						frame:SetMovable(locked);
-						frame.TitleContainer:SetMovable(locked);
+						local locked = not ArtiOFFrame:IsMovable();
+						ArtiOFFrame:SetMovable(locked);
+						ArtiOFFrame.TitleContainer:SetMovable(locked);
 						if Artificer.SaveFrameSetting then
 							Artificer:SaveFrameSetting("ArtificerOutfitPickerFrame", "locked", not locked);
 						end
@@ -578,10 +781,10 @@ local function CreateMainFrame()
 					rootDescription:CreateCheckbox(L["LockFrame"], IsLocked, ToggleLock)
 					
 					rootDescription:CreateButton(L["ResetPosition"], function()
-						frame:ClearAllPoints();
-						frame:SetPoint("CENTER");
+						ArtiOFFrame:ClearAllPoints();
+						ArtiOFFrame:SetPoint("CENTER");
 						if Artificer.SaveFramePosition then
-							Artificer:SaveFramePosition(frame, "ArtificerOutfitPickerFrame");
+							Artificer:SaveFramePosition(ArtiOFFrame, "ArtificerOutfitPickerFrame");
 						end
 					end)
 					
@@ -590,8 +793,8 @@ local function CreateMainFrame()
 					
 					for _, scale in ipairs(presets) do
 						local text = string.format("%d%%", scale * 100);
-						submenu:CreateRadio(text, function() return math.abs(frame:GetScale() - scale) < 0.01 end, function()
-							frame:SetScale(scale);
+						submenu:CreateRadio(text, function() return math.abs(ArtiOFFrame:GetScale() - scale) < 0.01 end, function()
+							ArtiOFFrame:SetScale(scale);
 							if Artificer.SaveFrameSetting then
 								Artificer:SaveFrameSetting("ArtificerOutfitPickerFrame", "scale", scale);
 							end
@@ -600,49 +803,50 @@ local function CreateMainFrame()
 				end)
 			end
 		end)
-		frame.TitleContainer:SetScript("OnDragStart", function(self)
-			frame:StopMovingOrSizing();
-			if frame:IsMovable() then
-				frame:StartMoving();
+		ArtiOFFrame.TitleContainer:SetScript("OnDragStart", function(self)
+			ArtiOFFrame:StopMovingOrSizing();
+			if ArtiOFFrame:IsMovable() then
+				ArtiOFFrame:StartMoving();
 			end
 		end)
-		frame.TitleContainer:SetScript("OnDragStop", function(self)
-			frame:StopMovingOrSizing();
-			Artificer:SaveFramePosition(frame, "ArtificerOutfitPickerFrame");
+		ArtiOFFrame.TitleContainer:SetScript("OnDragStop", function(self)
+			ArtiOFFrame:StopMovingOrSizing();
+			Artificer:SaveFramePosition(ArtiOFFrame, "ArtificerOutfitPickerFrame");
 		end)
 	end
-	frame:Hide()
-	local inset = frame.Inset
-	inset:SetPoint("TOPLEFT", frame, "TOPLEFT", 8, -28)
-	inset:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -3, 3)
+	ArtiOFFrame:Hide()
+	local inset = ArtiOFFrame.Inset
+	inset:SetPoint("TOPLEFT", ArtiOFFrame, "TOPLEFT", 8, -28)
+	inset:SetPoint("BOTTOMRIGHT", ArtiOFFrame, "BOTTOMRIGHT", -3, 3)
 
-	frame.BgIcon = frame:CreateTexture(nil, "BACKGROUND", nil, 1)
-	frame.BgIcon:SetPoint("CENTER", 0, 0)
-	frame.BgIcon:SetSize(inset:GetHeight()*.75, inset:GetHeight()*.75)
-	frame.BgIcon:SetTexture("Interface\\AddOns\\Artificer\\Textures\\ArtificerIcon_Small.blp")
-	frame.BgIcon:SetDesaturated(true)
-	frame.BgIcon:SetVertexColor(.99, .71, .96, 0.2)
+	ArtiOFFrame.BgIcon = ArtiOFFrame:CreateTexture(nil, "BACKGROUND", nil, 1)
+	ArtiOFFrame.BgIcon:SetPoint("CENTER", 0, 0)
+	ArtiOFFrame.BgIcon:SetSize(inset:GetHeight()*.75, inset:GetHeight()*.75)
+	ArtiOFFrame.BgIcon:SetTexture("Interface\\AddOns\\Artificer\\Textures\\ArtificerIcon_Small.blp")
+	ArtiOFFrame.BgIcon:SetDesaturated(true)
+	ArtiOFFrame.BgIcon:SetVertexColor(.99, .71, .96, 0.2)
 	
-	frame:SetScript("OnHide", function()
-		if Artificer and Artificer.SettingsFrame.OutfitBarTab then
+	ArtiOFFrame:SetScript("OnHide", function()
+		if Artificer and Artificer.SettingsFrame and Artificer.SettingsFrame.OutfitBarTab then
 			Artificer.SettingsFrame.OutfitBarTab.SelectedTexture:Hide();
 		end
 		PlaySound(62543);
 	end)
-	frame:SetScript("OnShow", function()
-		if Artificer and Artificer.SettingsFrame.OutfitBarTab then
+	ArtiOFFrame:SetScript("OnShow", function()
+		if Artificer and Artificer.SettingsFrame and Artificer.SettingsFrame.OutfitBarTab then
 			Artificer.SettingsFrame.OutfitBarTab.SelectedTexture:Show();
 		end
+		RefreshOutfitListVisuals();
 		PlaySound(25738);
 	end)
 	
-	local scrollBorder = CreateFrame("Frame", nil, frame, "InsetFrameTemplate3")
+	local scrollBorder = CreateFrame("Frame", nil, ArtiOFFrame, "InsetFrameTemplate3")
 	scrollBorder:SetPoint("TOPLEFT", inset, "TOPLEFT", 0, 0)
 	scrollBorder:SetPoint("BOTTOMLEFT", inset, "BOTTOMLEFT", 0, 0)
 	scrollBorder:SetWidth(360)
-	frame.ScrollBorder = scrollBorder
+	ArtiOFFrame.ScrollBorder = scrollBorder
 	
-	local scrollFrame = CreateFrame("ScrollFrame", nil, frame, "ScrollFrameTemplate")
+	local scrollFrame = CreateFrame("ScrollFrame", nil, ArtiOFFrame, "ScrollFrameTemplate")
 	scrollFrame:SetPoint("TOPLEFT", scrollBorder, "TOPLEFT", 6, -8)
 	scrollFrame:SetPoint("BOTTOMRIGHT", scrollBorder, "BOTTOMRIGHT", -28, 3)
 	
@@ -650,24 +854,55 @@ local function CreateMainFrame()
 	content:SetSize(330, 1)
 	scrollFrame:SetScrollChild(content)
 	
-	frame.scrollFrame = scrollFrame
-	frame.content = content
-	frame.buttons = {}
+	ArtiOFFrame.scrollFrame = scrollFrame
+	ArtiOFFrame.content = content
+	ArtiOFFrame.buttons = {}
 	
-	soundPanel = CreateSoundPanel(frame)
+	soundPanel = CreateSoundPanel(ArtiOFFrame)
 	
-	frame:RegisterEvent("PLAYER_ENTERING_WORLD")
-	frame:RegisterEvent("TRANSMOG_DISPLAYED_OUTFIT_CHANGED")
-	frame:SetScript("OnEvent", function()
-		local activeID = C_TransmogOutfitInfo.GetActiveOutfitID()
-		if activeID then
-			selectedOutfitID = activeID;
-			RefreshOutfitListVisuals();
-			UpdateSoundPanelSelection();
+	ArtiOFFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
+	ArtiOFFrame:RegisterEvent("TRANSMOG_DISPLAYED_OUTFIT_CHANGED")
+	ArtiOFFrame:RegisterEvent("UNIT_PORTRAIT_UPDATE")
+	ArtiOFFrame:SetScript("OnEvent", function()
+		if ArtiOFFrame:IsVisible() then
+			local activeID = C_TransmogOutfitInfo.GetActiveOutfitID();
+			if activeID then
+				selectedOutfitID = activeID;
+				RefreshOutfitListVisuals();
+				UpdateSoundPanelSelection();
+			end
 		end
 	end)
 	
-	return frame
+	return ArtiOFFrame
+end
+--[[
+	-- this event can be so unbelievably taxing and quite frankly isn't necessary to show the CDs properly. leaving a note here because Mistakes Were Made(tm)
+EventRegistry:RegisterFrameEventAndCallback("UNIT_SPELLCAST_SUCCEEDED", function(event, unitTarget, _, spellID)
+	if ArtiOFFrame and ArtiOFFrame:IsVisible() and not issecretvalue(unitTarget) and unitTarget == "player" and not issecretvalue(spellID) and spellID == outfitSpellID then
+		UpdateOutfitCooldowns();
+		return;
+	end
+end)
+--]]
+
+EventRegistry:RegisterFrameEventAndCallback("SPELL_UPDATE_COOLDOWN", function(event, spellID)
+	if ArtiOFFrame and ArtiOFFrame:IsVisible() and not issecretvalue(spellID) and spellID == outfitSpellID then
+		UpdateOutfitCooldowns();
+		return;
+	end
+end)
+
+
+function Artificer:ToggleOutfitSoundUI()
+	if not ArtiOFFrame then ArtiOFFrame = CreateMainFrame() end
+	if ArtiOFFrame:IsVisible() then
+		ArtiOFFrame:Hide();
+	else
+		if InCombatLockdown() then return end
+		RefreshOutfits();
+		ArtiOFFrame:Show();
+	end
 end
 
 local function SoundSelector()
@@ -781,19 +1016,23 @@ loader:SetScript("OnEvent", function()
 			tab.Icon:SetSize(tab:GetWidth()-10, tab:GetWidth()-10)
 
 			tab:SetScript("OnClick", function(self)
-				if not frame then frame = CreateMainFrame() end
-				if frame and frame:IsVisible() then
-					frame:Hide();
+				if not ArtiOFFrame then ArtiOFFrame = CreateMainFrame() end
+				if ArtiOFFrame and ArtiOFFrame:IsVisible() then
+					ArtiOFFrame:Hide();
 				else
-					RefreshOutfits();
-					frame:Show();
+					if InCombatLockdown() then
+						return;
+					else
+						RefreshOutfits();
+						ArtiOFFrame:Show();
+					end
 				end
 			end)
 
 			tab:SetScript("OnEnter", function(self)
 				GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
-				GameTooltip:SetText(L["OutfitSoundManager"]);
-				GameTooltip:AddLine(L["OutfitSoundManagerTT"], 1, 1, 1, true);
+				GameTooltip:SetText(L["OutfitManager"]);
+				GameTooltip:AddLine(L["OutfitManagerTT"], 1, 1, 1, true);
 				GameTooltip:Show();
 			end)
 			tab:SetScript("OnLeave", GameTooltip_Hide)
@@ -802,5 +1041,11 @@ loader:SetScript("OnEvent", function()
 
 			parent.OutfitBarTab = tab
 		end)
+	end
+end)
+
+EventRegistry:RegisterFrameEventAndCallback("PLAYER_REGEN_DISABLED", function()
+	if ArtiOFFrame and ArtiOFFrame:IsVisible() then
+		ArtiOFFrame:Hide();
 	end
 end)

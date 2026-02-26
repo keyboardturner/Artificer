@@ -1,5 +1,16 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.0.8
+
+Added ability to equip outfits from the Outfit Manager (previously named Outfit Sound Manager)
+ - this comes at the slight detriment to some druids not having one of their skyriding action bar slots due to action bar button limitations
+
+Added a Loot History Visibility option to hide the loot history frame under certain conditions
+
+Added option to hide tutorials
+
+Fixed the Paint Bot aura IDs in the presets for the Cancel Aura Manager
+
 # 0.0.7
 
 Temporarily removed the option to collapse the buff frame, as it caused unavoidable random errant taint issues

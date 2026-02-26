@@ -30,6 +30,8 @@ local Defaults = {
 		AddonCompartmentMover = false,
 		CollapseBuffs = false,
 		NameplateTargetIndicator = false,
+		MinimapRightClick = "outfitsound",
+		HideTutorials = false,
 	},
 
 	NameplateTargetPos = {
@@ -115,19 +117,46 @@ local function RestoreCVars()
 	Artificer_DB.StoredCVars = nil;
 end
 
+local settingLabelTT = {
+	["cancelaura"] = L["CancelAuraManager"],
+	["outfitsound"] = L["OutfitSoundManager"],
+	["abandonquest"] = L["AbandonQuestManager"],
+	["none"] = L["None"],
+};
+
 function Artificer_OnAddonCompartmentClick(addonName, buttonName, menuButtonFrame)
-	Artificer:ToggleSettings();
+	if buttonName == "RightButton" then
+		Artificer:MinimapRightClickAction();
+	else
+		Artificer:ToggleSettings();
+	end
 end
 
 function Artificer_OnAddonCompartmentEnter(addonName, menuButtonFrame)
+	local setting = Artificer_DB and Artificer_DB.Widgets and Artificer_DB.Widgets.MinimapRightClick or "outfitsound";
 	GameTooltip:SetOwner(menuButtonFrame, "ANCHOR_LEFT");
 	GameTooltip:AddLine(L["TOC_Title"]);
-	GameTooltip:AddLine(string.format(L["Click"],L["OpenSettings"]), .93, .65, .37);
+	GameTooltip:AddLine(string.format(L["LeftClick"], L["OpenSettings"]), .93, .65, .37);
+	if setting then
+		local settingAction = settingLabelTT[setting]
+		GameTooltip:AddLine(string.format(L["RightClick"], settingAction), .93, .65, .37);
+	end
 	GameTooltip:Show();
 end
 
 function Artificer_OnAddonCompartmentLeave(addonName, menuButtonFrame)
 	GameTooltip:Hide();
+end
+
+function Artificer:MinimapRightClickAction()
+	local setting = Artificer_DB and Artificer_DB.Widgets and Artificer_DB.Widgets.MinimapRightClick or "outfitsound";
+	if setting == "cancelaura" then
+		if Artificer.ToggleCancelAuraUI then Artificer:ToggleCancelAuraUI(); end
+	elseif setting == "outfitsound" then
+		if Artificer.ToggleOutfitSoundUI then Artificer:ToggleOutfitSoundUI(); end
+	elseif setting == "abandonquest" then
+		if Artificer.ToggleAbandonQuestUI then Artificer:ToggleAbandonQuestUI(); end
+	end
 end
 
 f:SetScript("OnEvent", function(self, event, ...)
@@ -172,11 +201,20 @@ f:SetScript("OnEvent", function(self, event, ...)
 			text = L["TOC_Title"],
 			icon = "Interface\\AddOns\\Artificer\\Textures\\ArtificerIcon_Small",
 			OnClick = function(clickedFrame, button)
-				Artificer:ToggleSettings();
+				if button == "RightButton" then
+					Artificer:MinimapRightClickAction();
+				else
+					Artificer:ToggleSettings();
+				end
 			end,
 			OnTooltipShow = function(tooltip)
+				local setting = Artificer_DB and Artificer_DB.Widgets and Artificer_DB.Widgets.MinimapRightClick or "outfitsound";
 				tooltip:AddLine(L["TOC_Title"]);
-				tooltip:AddLine(string.format(L["Click"],L["OpenSettings"]), .93, .65, .37);
+				tooltip:AddLine(string.format(L["LeftClick"], L["OpenSettings"]), .93, .65, .37);
+				if setting then
+					local settingAction = settingLabelTT[setting];
+					tooltip:AddLine(string.format(L["RightClick"], settingAction), .93, .65, .37);
+				end
 			end,
 		})
 

@@ -266,14 +266,17 @@ local function InitializeMultiCheckbox(button, data)
 	button.multicheckboxLabel:SetText(data.label)
 	
 	local function GetCurrentValues()
-		local values = GetDBValue(data.key)
-		if not values then
-			-- Initialize with defaults
+		local values = data.isWidget and GetWidgetValue(data.key) or GetDBValue(data.key)
+		if type(values) ~= "table" then
 			values = {}
 			for _, opt in ipairs(data.options) do
-				values[opt.key] = opt.default ~= false
+				values[opt.key] = opt.default ~= false;
 			end
-			SetDBValue(data.key, values)
+			if data.isWidget then
+				SetWidgetValue(data.key, values);
+			else
+				SetDBValue(data.key, values);
+			end
 		end
 		return values
 	end
@@ -307,7 +310,11 @@ local function InitializeMultiCheckbox(button, data)
 				function() return values[option.key] end,
 				function()
 					values[option.key] = not values[option.key];
-					SetDBValue(data.key, values);
+					if data.isWidget then
+						SetWidgetValue(data.key, values);
+					else
+						SetDBValue(data.key, values);
+					end;
 					UpdateDropdownText();
 					if data.callback then data.callback(values) end;
 				end
@@ -763,6 +770,24 @@ function Artificer:BuildSettingsData()
 		end
 	});
 
+	-- Minimap Right Click
+	table.insert(allSettingsData, {
+		type = "dropdown",
+		isWidget = true,
+		key = "MinimapRightClick",
+		isNew = true,
+		label = L["Widget_MinimapRightClick"],
+		tooltip = L["Widget_MinimapRightClickTT"],
+		defaultValue = "outfitsound",
+		options = {
+			{ text = L["None"], value = "none" },
+			{ text = L["CancelAuraManager"], value = "cancelaura" },
+			{ text = L["OutfitManager"], value = "outfitsound" },
+			{ text = L["AbandonQuestManager"], value = "abandonquest" },
+		},
+		searchText = GetSearchText(L["Widget_MinimapRightClick"], L["Widget_MinimapRightClickTT"]),
+	});
+
 	-- Widgets - PartySync
 	table.insert(allSettingsData, {
 		type = "checkbox",
@@ -816,20 +841,40 @@ function Artificer:BuildSettingsData()
 	-- Widgets - CollapseBuffs
 	--[[ -- unfortunately still causes random errant taint
 	table.insert(allSettingsData, {
-        type = "checkbox",
-        isWidget = true,
-        key = "CollapseBuffs",
-        isNew = true,
-        label = L["Widget_CollapseBuffs"],
-        tooltip = L["Widget_CollapseBuffsTT"],
-        searchText = GetSearchText(L["Widget_CollapseBuffs"], L["Widget_CollapseBuffsTT"]),
-        callback = function(val)
-            if Artificer.Widgets.ApplyCollapsedBuffs then
-                Artificer.Widgets.ApplyCollapsedBuffs();
-            end
-        end
-    });
-    ]]
+		type = "checkbox",
+		isWidget = true,
+		key = "CollapseBuffs",
+		isNew = true,
+		label = L["Widget_CollapseBuffs"],
+		tooltip = L["Widget_CollapseBuffsTT"],
+		searchText = GetSearchText(L["Widget_CollapseBuffs"], L["Widget_CollapseBuffsTT"]),
+		callback = function(val)
+			if Artificer.Widgets.ApplyCollapsedBuffs then
+				Artificer.Widgets.ApplyCollapsedBuffs();
+			end
+		end
+	});
+	]]
+
+	-- Widgets - LootHistoryVisibility
+	table.insert(allSettingsData, {
+		type = "multicheckbox",
+		isWidget = true,
+		key = "LootHistoryVisibility",
+		label = L["Widget_LootHistoryVisibility"],
+		tooltip = L["Widget_LootHistoryVisibilityTT"],
+		options = {
+			{ key = "solo", text = L["Widget_LHV_Solo"], default = false },
+			{ key = "notFull", text = L["Widget_LHV_NotFull"], default = false },
+			{ key = "always", text = L["Widget_LHV_Always"], default = false },
+		},
+		searchText = GetSearchText(L["Widget_LootHistoryVisibility"], L["Widget_LootHistoryVisibilityTT"]),
+		callback = function(values)
+			if Artificer.Widgets.ApplyLootHistoryVisibility then
+				Artificer.Widgets.ApplyLootHistoryVisibility();
+			end
+		end
+	});
 
 	-- Header - Account Settings
 	table.insert(allSettingsData, {
@@ -896,6 +941,22 @@ function Artificer:BuildSettingsData()
 		callback = function(val)
 			if Artificer.Widgets.ApplyCooldownManagerEnabled then
 				Artificer.Widgets.ApplyCooldownManagerEnabled();
+			end
+		end
+	});
+
+	-- Widgets - HideTutorials
+	table.insert(allSettingsData, {
+		type = "checkbox",
+		isWidget = true,
+		key = "HideTutorials",
+		isNew = true,
+		label = L["Widget_HideTutorials"],
+		tooltip = L["Widget_HideTutorialsTT"],
+		searchText = GetSearchText(L["Widget_HideTutorials"], L["Widget_HideTutorialsTT"]),
+		callback = function(val)
+			if Artificer.Widgets.ApplyHideTutorials then
+				Artificer.Widgets.ApplyHideTutorials();
 			end
 		end
 	});
