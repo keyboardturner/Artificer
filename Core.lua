@@ -32,6 +32,7 @@ local Defaults = {
 		NameplateTargetIndicator = false,
 		MinimapRightClick = "outfitsound",
 		HideTutorials = false,
+		PreyBarEnabled = true,
 	},
 
 	NameplateTargetPos = {
@@ -47,6 +48,11 @@ local Defaults = {
 		B = true,
 		C = true,
 		D = true,
+	},
+
+	PreyBar = {
+		PreyBarStyle = "statusbar",
+		PreyBarPosition = "bottom",
 	},
 };
 
@@ -189,6 +195,13 @@ f:SetScript("OnEvent", function(self, event, ...)
 				for soundKey, soundValue in pairs(v) do
 					if Artificer_DB.OutfitSwapSounds[soundKey] == nil then
 						Artificer_DB.OutfitSwapSounds[soundKey] = soundValue;
+					end
+				end
+			elseif k == "PreyBar" then
+				if not Artificer_DB.PreyBar then Artificer_DB.PreyBar = {}; end
+				for pbKey, pbValue in pairs(v) do
+					if Artificer_DB.PreyBar[pbKey] == nil then
+						Artificer_DB.PreyBar[pbKey] = pbValue;
 					end
 				end
 			elseif Artificer_DB[k] == nil then

@@ -73,9 +73,8 @@ function Artificer:OpenNameplateAdvancedSettings()
 
 		tinsert(UISpecialFrames, "ArtificerNameplateAdvancedFrame")
 
-		f:SetScript("OnShow", function()
-			PlaySound(839);
-		end)
+		f.previewScale = 1
+
 		f:SetScript("OnHide", function()
 			PlaySound(840);
 		end)
@@ -110,7 +109,7 @@ function Artificer:OpenNameplateAdvancedSettings()
 		dummyBounds:SetBackdrop(backdropInfo)
 		dummyBounds:SetSize(350,200)
 		dummyBounds:SetPoint("TOP", f, "TOP", 0, -12.5)
-		
+
 		local width, height = C_NamePlate.GetNamePlateSize()
 		if not width or width == 0 then width, height = 110, 45 end
 		
@@ -126,6 +125,29 @@ function Artificer:OpenNameplateAdvancedSettings()
 		icon:SetSize(32, 32)
 		icon.tex = icon:CreateTexture(nil, "ARTWORK")
 		icon.tex:SetAllPoints()
+
+		local function UpdateDummyPlate()
+			local w, h = C_NamePlate.GetNamePlateSize()
+			if not w or w == 0 then
+				w, h = 110, 45;
+			end
+
+			local maxW = dummyBounds:GetWidth()  - 20;
+			local maxH = dummyBounds:GetHeight() - 20;
+			local scale = math.min(maxW / w, maxH / h, 1);
+			f.previewScale = scale;
+
+			dummyPlate:SetSize(w * scale, h * scale);
+			dummyPlate:SetPoint("CENTER", dummyBounds, "CENTER", 0, 0);
+		end
+
+		f:SetScript("OnShow", function()
+			PlaySound(839);
+			UpdateDummyPlate();
+			local pos = Artificer_DB and Artificer_DB.NameplateTargetPos or { point = "CENTER", relativePoint = "CENTER", x = 0, y = 0 };
+			icon:ClearAllPoints();
+			icon:SetPoint(pos.point, dummyPlate, pos.relativePoint, pos.x * f.previewScale, pos.y * f.previewScale);
+		end)
 		
 		--icon:SetMovable(false)
 		icon:EnableMouse(true)
@@ -169,11 +191,14 @@ function Artificer:OpenNameplateAdvancedSettings()
 			local dX = icX - dpX;
 			local dY = icY - dpY;
 
+			local realX = dX / f.previewScale;
+			local realY = dY / f.previewScale;
+
 			if not Artificer_DB.NameplateTargetPos then Artificer_DB.NameplateTargetPos = {}; end
 			Artificer_DB.NameplateTargetPos.point = "CENTER";
 			Artificer_DB.NameplateTargetPos.relativePoint = "CENTER";
-			Artificer_DB.NameplateTargetPos.x = dX;
-			Artificer_DB.NameplateTargetPos.y = dY;
+			Artificer_DB.NameplateTargetPos.x = realX;
+			Artificer_DB.NameplateTargetPos.y = realY;
 
 			self:ClearAllPoints();
 			self:SetPoint("CENTER", dummyPlate, "CENTER", dX, dY);
@@ -322,8 +347,9 @@ function Artificer:OpenNameplateAdvancedSettings()
 	end
 	
 	local pos = Artificer_DB.NameplateTargetPos or { point = "RIGHT", relativePoint = "LEFT", x = 0, y = 0 }
+	local scale = self.NameplateAdvancedFrame.previewScale or 1
 	self.NameplateAdvancedFrame.Icon:ClearAllPoints()
-	self.NameplateAdvancedFrame.Icon:SetPoint(pos.point, self.NameplateAdvancedFrame.DummyPlate, pos.relativePoint, pos.x, pos.y)
+	self.NameplateAdvancedFrame.Icon:SetPoint(pos.point, self.NameplateAdvancedFrame.DummyPlate, pos.relativePoint, pos.x * scale, pos.y * scale)
 
 	local c = self.NameplateAdvancedFrame.GetCurrentColor()
 	self.NameplateAdvancedFrame.ColorSwatch.Color:SetVertexColor(c.r, c.g, c.b, c.a)
@@ -333,6 +359,8 @@ function Artificer:OpenNameplateAdvancedSettings()
 	if self.NameplateAdvancedFrame:IsVisible() then
 		self.NameplateAdvancedFrame:Hide();
 	else
+		Artificer:CloseAllAdvancedFrames();
+		
 		self.NameplateAdvancedFrame:Show();
 	end
 end

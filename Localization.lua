@@ -147,6 +147,22 @@ if LOCALE == "enUS" then
 	L["CopyColor"] = "Copy Color"
 	L["PasteColor"] = "Paste Color"
 
+	--Widgets - PreyBar
+	L["Widget_PreyBar"] = "Prey Progress Indicators"
+	L["Widget_PreyBarTT"] = "Displays alternate Prey Progress alongside the Prey Hunt widget."
+	L["PreyBar_Style_Row"] = "Row"
+	L["PreyBar_Style_Statusbar"] = "Status Bar"
+	L["PreyBar_Position"] = "Position"
+	L["PreyBar_PositionTT"] = "Which side of the widget to attach to."
+	L["PreyBar_Style"] = UNIT_NAMEPLATES_STYLE
+	L["PreyBar_Style_Corner"] = RAID_TARGET_4
+	L["PreyBar_Position_Top"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_TOP
+	L["PreyBar_Position_Bottom"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_BOTTOM
+	L["PreyBar_Position_Left"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_LEFT
+	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
+
+	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Show All Minimap Trackables"
 	L["CVar_minimapTrackingShowAllTT"] = "Toggle additional minimap tracking options."
@@ -310,6 +326,22 @@ if LOCALE == "esMX" then
 	L["CopyColor"] = "Copiar color"
 	L["PasteColor"] = "Pegar color"
 
+	--Widgets - PreyBar
+	L["Widget_PreyBar"] = "Indicadores de progreso de presa"
+	L["Widget_PreyBarTT"] = "Muestra progreso alternativo de presa junto al widget Cacería de Presa."
+	L["PreyBar_Style_Row"] = "Fila"
+	L["PreyBar_Style_Statusbar"] = "Barra de estado"
+	L["PreyBar_Position"] = "Posición"
+	L["PreyBar_PositionTT"] = "A qué lado del widget adjuntarlo."
+	L["PreyBar_Style"] = UNIT_NAMEPLATES_STYLE
+	L["PreyBar_Style_Corner"] = RAID_TARGET_4
+	L["PreyBar_Position_Top"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_TOP
+	L["PreyBar_Position_Bottom"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_BOTTOM
+	L["PreyBar_Position_Left"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_LEFT
+	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
+
+	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Mostrar todo en el minimapa"
 	L["CVar_minimapTrackingShowAllTT"] = "Activa opciones adicionales del minimapa."
@@ -472,6 +504,22 @@ if LOCALE == "esES" then
 	L["CopyColor"] = "Copiar color"
 	L["PasteColor"] = "Pegar color"
 
+	--Widgets - PreyBar
+	L["Widget_PreyBar"] = "Indicadores de progreso de presa"
+	L["Widget_PreyBarTT"] = "Muestra un progreso alternativo de presa junto al widget Caza de Presa."
+	L["PreyBar_Style_Row"] = "Fila"
+	L["PreyBar_Style_Statusbar"] = "Barra de estado"
+	L["PreyBar_Position"] = "Posición"
+	L["PreyBar_PositionTT"] = "A qué lado del widget adjuntarlo."
+	L["PreyBar_Style"] = UNIT_NAMEPLATES_STYLE
+	L["PreyBar_Style_Corner"] = RAID_TARGET_4
+	L["PreyBar_Position_Top"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_TOP
+	L["PreyBar_Position_Bottom"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_BOTTOM
+	L["PreyBar_Position_Left"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_LEFT
+	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
+
+	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Mostrar todo en el minimapa"
 	L["CVar_minimapTrackingShowAllTT"] = "Activa opciones adicionales del minimapa."
@@ -631,6 +679,22 @@ if LOCALE == "deDE" then
 	L["ColorOptions"] = "Farboptionen"
 	L["CopyColor"] = "Farbe kopieren"
 	L["PasteColor"] = "Farbe einfügen"
+
+	--Widgets - PreyBar
+	L["Widget_PreyBar"] = "Beute-Fortschrittsanzeigen"
+	L["Widget_PreyBarTT"] = "Zeigt alternativen Beute-Fortschritt neben dem Beutejagd-Widget an."
+	L["PreyBar_Style_Row"] = "Reihe"
+	L["PreyBar_Style_Statusbar"] = "Statusleiste"
+	L["PreyBar_Position"] = "Position"
+	L["PreyBar_PositionTT"] = "An welcher Seite des Widgets es befestigt werden soll."
+	L["PreyBar_Style"] = UNIT_NAMEPLATES_STYLE
+	L["PreyBar_Style_Corner"] = RAID_TARGET_4
+	L["PreyBar_Position_Top"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_TOP
+	L["PreyBar_Position_Bottom"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_BOTTOM
+	L["PreyBar_Position_Left"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_LEFT
+	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
+
+	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Alle Minikarten-Verfolgungen anzeigen"
@@ -793,6 +857,22 @@ if LOCALE == "frFR" then
 	L["CopyColor"] = "Copier la couleur"
 	L["PasteColor"] = "Coller la couleur"
 
+	--Widgets - PreyBar
+	L["Widget_PreyBar"] = "Indicateurs de progression de proie"
+	L["Widget_PreyBarTT"] = "Affiche une progression alternative de proie à côté du widget Chasse à la proie."
+	L["PreyBar_Style_Row"] = "Ligne"
+	L["PreyBar_Style_Statusbar"] = "Barre d’état"
+	L["PreyBar_Position"] = "Position"
+	L["PreyBar_PositionTT"] = "De quel côté du widget l’attacher."
+	L["PreyBar_Style"] = UNIT_NAMEPLATES_STYLE
+	L["PreyBar_Style_Corner"] = RAID_TARGET_4
+	L["PreyBar_Position_Top"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_TOP
+	L["PreyBar_Position_Bottom"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_BOTTOM
+	L["PreyBar_Position_Left"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_LEFT
+	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
+
+	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Afficher tous les suivis de la minicarte"
 	L["CVar_minimapTrackingShowAllTT"] = "Active des options supplémentaires de suivi sur la minicarte."
@@ -954,6 +1034,22 @@ if LOCALE == "itIT" then
 	L["CopyColor"] = "Copia colore"
 	L["PasteColor"] = "Incolla colore"
 
+	--Widgets - PreyBar
+	L["Widget_PreyBar"] = "Indicatori progresso preda"
+	L["Widget_PreyBarTT"] = "Mostra un progresso alternativo della preda accanto al widget Caccia alla preda."
+	L["PreyBar_Style_Row"] = "Riga"
+	L["PreyBar_Style_Statusbar"] = "Barra di stato"
+	L["PreyBar_Position"] = "Posizione"
+	L["PreyBar_PositionTT"] = "A quale lato del widget agganciarlo."
+	L["PreyBar_Style"] = UNIT_NAMEPLATES_STYLE
+	L["PreyBar_Style_Corner"] = RAID_TARGET_4
+	L["PreyBar_Position_Top"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_TOP
+	L["PreyBar_Position_Bottom"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_BOTTOM
+	L["PreyBar_Position_Left"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_LEFT
+	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
+
+	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Mostra tutti i tracciamenti minimappa"
 	L["CVar_minimapTrackingShowAllTT"] = "Attiva opzioni aggiuntive di tracciamento minimappa."
@@ -1114,6 +1210,22 @@ if LOCALE == "ptBR" then
 	L["ColorOptions"] = "Opções de cor"
 	L["CopyColor"] = "Copiar cor"
 	L["PasteColor"] = "Colar cor"
+
+	--Widgets - PreyBar
+	L["Widget_PreyBar"] = "Indicadores de progresso da presa"
+	L["Widget_PreyBarTT"] = "Exibe progresso alternativo da presa ao lado do widget Caçada da Presa."
+	L["PreyBar_Style_Row"] = "Linha"
+	L["PreyBar_Style_Statusbar"] = "Barra de status"
+	L["PreyBar_Position"] = "Posição"
+	L["PreyBar_PositionTT"] = "A qual lado do widget anexar."
+	L["PreyBar_Style"] = UNIT_NAMEPLATES_STYLE
+	L["PreyBar_Style_Corner"] = RAID_TARGET_4
+	L["PreyBar_Position_Top"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_TOP
+	L["PreyBar_Position_Bottom"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_BOTTOM
+	L["PreyBar_Position_Left"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_LEFT
+	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
+
+	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Mostrar todos os rastreamentos do minimapa"
@@ -1278,6 +1390,22 @@ if LOCALE == "ruRU" then
 	L["CopyColor"] = "Копировать цвет"
 	L["PasteColor"] = "Вставить цвет"
 
+	--Widgets - PreyBar
+	L["Widget_PreyBar"] = "Индикаторы прогресса добычи"
+	L["Widget_PreyBarTT"] = "Отображает альтернативный прогресс добычи рядом с виджетом Охота на добычу."
+	L["PreyBar_Style_Row"] = "Ряд"
+	L["PreyBar_Style_Statusbar"] = "Полоса состояния"
+	L["PreyBar_Position"] = "Позиция"
+	L["PreyBar_PositionTT"] = "К какой стороне виджета прикрепить."
+	L["PreyBar_Style"] = UNIT_NAMEPLATES_STYLE
+	L["PreyBar_Style_Corner"] = RAID_TARGET_4
+	L["PreyBar_Position_Top"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_TOP
+	L["PreyBar_Position_Bottom"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_BOTTOM
+	L["PreyBar_Position_Left"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_LEFT
+	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
+
+	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Показать все отслеживания миникарты"
 	L["CVar_minimapTrackingShowAllTT"] = "Включает дополнительные параметры отслеживания миникарты."
@@ -1438,6 +1566,22 @@ if LOCALE == "koKR" then
 	L["ColorOptions"] = "색상 옵션"
 	L["CopyColor"] = "색상 복사"
 	L["PasteColor"] = "색상 붙여넣기"
+
+	--Widgets - PreyBar
+	L["Widget_PreyBar"] = "먹이 진행 표시기"
+	L["Widget_PreyBarTT"] = "먹이 사냥 위젯 옆에 대체 먹이 진행 상황을 표시합니다."
+	L["PreyBar_Style_Row"] = "행"
+	L["PreyBar_Style_Statusbar"] = "상태 바"
+	L["PreyBar_Position"] = "위치"
+	L["PreyBar_PositionTT"] = "위젯의 어느 쪽에 부착할지 선택합니다."
+	L["PreyBar_Style"] = UNIT_NAMEPLATES_STYLE
+	L["PreyBar_Style_Corner"] = RAID_TARGET_4
+	L["PreyBar_Position_Top"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_TOP
+	L["PreyBar_Position_Bottom"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_BOTTOM
+	L["PreyBar_Position_Left"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_LEFT
+	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
+
+	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "미니맵 추적 모두 표시"
@@ -1600,6 +1744,22 @@ if LOCALE == "zhCN" then
 	L["CopyColor"] = "复制颜色"
 	L["PasteColor"] = "粘贴颜色"
 
+	--Widgets - PreyBar
+	L["Widget_PreyBar"] = "猎物进度指示器"
+	L["Widget_PreyBarTT"] = "在猎物狩猎组件旁显示替代的猎物进度。"
+	L["PreyBar_Style_Row"] = "行"
+	L["PreyBar_Style_Statusbar"] = "状态条"
+	L["PreyBar_Position"] = "位置"
+	L["PreyBar_PositionTT"] = "附加到组件的哪一侧。"
+	L["PreyBar_Style"] = UNIT_NAMEPLATES_STYLE
+	L["PreyBar_Style_Corner"] = RAID_TARGET_4
+	L["PreyBar_Position_Top"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_TOP
+	L["PreyBar_Position_Bottom"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_BOTTOM
+	L["PreyBar_Position_Left"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_LEFT
+	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
+
+	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "显示所有小地图追踪"
 	L["CVar_minimapTrackingShowAllTT"] = "切换额外的小地图追踪选项。"
@@ -1758,6 +1918,22 @@ if LOCALE == "zhTW" then
 	L["ColorOptions"] = "顏色選項"
 	L["CopyColor"] = "複製顏色"
 	L["PasteColor"] = "貼上顏色"
+
+	--Widgets - PreyBar
+	L["Widget_PreyBar"] = "獵物進度指示器"
+	L["Widget_PreyBarTT"] = "在獵物狩獵元件旁顯示替代的獵物進度。"
+	L["PreyBar_Style_Row"] = "列"
+	L["PreyBar_Style_Statusbar"] = "狀態列"
+	L["PreyBar_Position"] = "位置"
+	L["PreyBar_PositionTT"] = "附加到元件的哪一側。"
+	L["PreyBar_Style"] = UNIT_NAMEPLATES_STYLE
+	L["PreyBar_Style_Corner"] = RAID_TARGET_4
+	L["PreyBar_Position_Top"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_TOP
+	L["PreyBar_Position_Bottom"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_BOTTOM
+	L["PreyBar_Position_Left"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_LEFT
+	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
+
+	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "顯示所有小地圖追蹤"

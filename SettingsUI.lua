@@ -657,6 +657,32 @@ function Artificer:BuildSettingsData()
 		end
 	});
 
+	-- Header - Encounter Bar
+	table.insert(allSettingsData, {
+		type = "header",
+		label = L["EncounterBar"],
+	});
+
+	-- Widgets - PreyBarEnabled
+	table.insert(allSettingsData, {
+		type = "checkbox",
+		isWidget = true,
+		key = "PreyBarEnabled",
+		isNew = true,
+		label = L["Widget_PreyBar"],
+		tooltip = L["Widget_PreyBarTT"],
+		searchText = GetSearchText(L["Widget_PreyBar"], L["Widget_PreyBarTT"]),
+		callback = function(val)
+			if Artificer.Widgets.ApplyPreyBarSettings then
+				Artificer.Widgets.ApplyPreyBarSettings();
+			end
+		end,
+		hasAdvancedSettings = true,
+		onAdvancedClick = function()
+			Artificer:OpenPreyBarAdvancedSettings();
+		end
+	});
+
 	-- Header - Chat
 	table.insert(allSettingsData, {
 		type = "header",
@@ -861,6 +887,7 @@ function Artificer:BuildSettingsData()
 		type = "multicheckbox",
 		isWidget = true,
 		key = "LootHistoryVisibility",
+		isNew = true,
 		label = L["Widget_LootHistoryVisibility"],
 		tooltip = L["Widget_LootHistoryVisibilityTT"],
 		options = {
@@ -1209,6 +1236,11 @@ function Artificer:CreateSettingsUI()
 
 	Artificer.SettingsFrame = frame;
 	frame:Hide();
+end
+
+function Artificer:CloseAllAdvancedFrames()
+	if self.NameplateAdvancedFrame then self.NameplateAdvancedFrame:Hide() end
+	if self.PreyBarAdvancedFrame then self.PreyBarAdvancedFrame:Hide() end
 end
 
 function Artificer:ToggleSettings()
