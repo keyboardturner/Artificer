@@ -163,6 +163,10 @@ if LOCALE == "enUS" then
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
+	--Widgets - BlockTrades
+	L["Widget_BlockTrades"] = "Block Trading While Transmogging"
+	L["Widget_BlockTradesTT"] = "Blocks all trading while the transmog frame is open"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Show All Minimap Trackables"
 	L["CVar_minimapTrackingShowAllTT"] = "Toggle additional minimap tracking options."
@@ -342,6 +346,10 @@ if LOCALE == "esMX" then
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
+	--Widgets - BlockTrades
+	L["Widget_BlockTrades"] = "Bloquear intercambios durante la transfiguración"
+	L["Widget_BlockTradesTT"] = "Bloquea todos los intercambios mientras la ventana de transfiguración esté abierta."
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Mostrar todo en el minimapa"
 	L["CVar_minimapTrackingShowAllTT"] = "Activa opciones adicionales del minimapa."
@@ -520,6 +528,10 @@ if LOCALE == "esES" then
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
+	--Widgets - BlockTrades
+	L["Widget_BlockTrades"] = "Bloquear intercambios durante la transfiguración"
+	L["Widget_BlockTradesTT"] = "Bloquea todos los intercambios mientras la ventana de transfiguración esté abierta."
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Mostrar todo en el minimapa"
 	L["CVar_minimapTrackingShowAllTT"] = "Activa opciones adicionales del minimapa."
@@ -695,6 +707,10 @@ if LOCALE == "deDE" then
 	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
+
+	--Widgets - BlockTrades
+	L["Widget_BlockTrades"] = "Handel während der Transmogrifikation blockieren"
+	L["Widget_BlockTradesTT"] = "Blockiert jeglichen Handel, solange das Transmogrifikationsfenster geöffnet ist."
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Alle Minikarten-Verfolgungen anzeigen"
@@ -872,6 +888,9 @@ if LOCALE == "frFR" then
 	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
+	--Widgets - BlockTrades
+	L["Widget_BlockTrades"] = "Bloquer les échanges pendant la transmogrification"
+	L["Widget_BlockTradesTT"] = "Bloque tous les échanges tant que la fenêtre de transmogrification est ouverte."
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Afficher tous les suivis de la minicarte"
@@ -1050,6 +1069,10 @@ if LOCALE == "itIT" then
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
+	--Widgets - BlockTrades
+	L["Widget_BlockTrades"] = "Blocca gli scambi durante la trasmogrificazione"
+	L["Widget_BlockTradesTT"] = "Blocca tutti gli scambi mentre la finestra di trasmogrificazione è aperta."
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Mostra tutti i tracciamenti minimappa"
 	L["CVar_minimapTrackingShowAllTT"] = "Attiva opzioni aggiuntive di tracciamento minimappa."
@@ -1226,6 +1249,10 @@ if LOCALE == "ptBR" then
 	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
+
+	--Widgets - BlockTrades
+	L["Widget_BlockTrades"] = "Bloquear trocas durante a transmogrificação"
+	L["Widget_BlockTradesTT"] = "Bloqueia todas as trocas enquanto a janela de transmogrificação estiver aberta."
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Mostrar todos os rastreamentos do minimapa"
@@ -1406,6 +1433,10 @@ if LOCALE == "ruRU" then
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
+	--Widgets - BlockTrades
+	L["Widget_BlockTrades"] = "Блокировать обмен во время трансмогрификации"
+	L["Widget_BlockTradesTT"] = "Блокирует любой обмен, пока открыто окно трансмогрификации."
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Показать все отслеживания миникарты"
 	L["CVar_minimapTrackingShowAllTT"] = "Включает дополнительные параметры отслеживания миникарты."
@@ -1582,6 +1613,10 @@ if LOCALE == "koKR" then
 	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
+
+	--Widgets - BlockTrades
+	L["Widget_BlockTrades"] = "형상변환 중 거래 차단"
+	L["Widget_BlockTradesTT"] = "형상변환 창이 열려 있는 동안 모든 거래를 차단합니다."
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "미니맵 추적 모두 표시"
@@ -1760,6 +1795,10 @@ if LOCALE == "zhCN" then
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
+	--Widgets - BlockTrades
+	L["Widget_BlockTrades"] = "幻化期间阻止交易"
+	L["Widget_BlockTradesTT"] = "在幻化界面打开时阻止所有交易。"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "显示所有小地图追踪"
 	L["CVar_minimapTrackingShowAllTT"] = "切换额外的小地图追踪选项。"
@@ -1934,6 +1973,10 @@ if LOCALE == "zhTW" then
 	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
+
+	--Widgets - BlockTrades
+	L["Widget_BlockTrades"] = "幻化期間阻止交易"
+	L["Widget_BlockTradesTT"] = "在幻化視窗開啟時阻止所有交易。"
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "顯示所有小地圖追蹤"

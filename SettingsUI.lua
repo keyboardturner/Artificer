@@ -903,6 +903,20 @@ function Artificer:BuildSettingsData()
 		end
 	});
 
+	-- Widgets - BlockTrades
+	table.insert(allSettingsData, {
+		type = "checkbox",
+		isWidget = true,
+		key = "BlockTrades",
+		isNew = true,
+		label = L["Widget_BlockTrades"],
+		tooltip = L["Widget_BlockTradesTT"],
+		searchText = GetSearchText(L["Widget_BlockTrades"], L["Widget_BlockTradesTT"]),
+		callback = function(val)
+			-- print("block trades enabled for thingy")
+		end
+	});
+
 	-- Header - Account Settings
 	table.insert(allSettingsData, {
 		type = "header",

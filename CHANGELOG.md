@@ -1,5 +1,14 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.0.9
+
+Added a Prey progress bar indicator
+- this comes in a few different styles and positions
+
+Added an option to block trades while the transmog frame is open
+
+Adjusted the dummy nameplate target indicator scaling slightly
+
 # 0.0.8
 
 Added ability to equip outfits from the Outfit Manager (previously named Outfit Sound Manager)

@@ -33,6 +33,7 @@ local Defaults = {
 		MinimapRightClick = "outfitsound",
 		HideTutorials = false,
 		PreyBarEnabled = true,
+		BlockTrades = true,
 	},
 
 	NameplateTargetPos = {
