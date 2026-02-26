@@ -29,9 +29,15 @@ end
 
 blocky:RegisterEvent("PLAYER_LOGIN")
 blocky:RegisterEvent("ADDON_LOADED")
+blocky:RegisterEvent("PLAYER_LOGOUT")
 
 blocky:SetScript("OnEvent", function(self, event, ...)
-	if not self.hooked then
+	if event == "PLAYER_LOGOUT" then
+		if Artificer_DB.Widgets.BlockTrades and originalBlockTradesState then
+			C_CVar.SetCVar("blockTrades", originalBlockTradesState);
+			originalBlockTradesState = nil;
+		end
+	elseif not self.hooked then
 		TryHookTransmogFrame();
 	end
 end)
