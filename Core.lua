@@ -34,6 +34,7 @@ local Defaults = {
 		HideTutorials = false,
 		PreyBarEnabled = true,
 		BlockTrades = true,
+		MapAmbience = 25,
 	},
 
 	NameplateTargetPos = {
@@ -78,6 +79,12 @@ Artificer.CVars = {
 		label = L["CVar_AutoPushSpellToActionBar"],
 		description = L["CVar_AutoPushSpellToActionBarTT"],
 	},
+	["minimapTrackingClosestOnly"] = {
+		settings = "checkbox",
+		default = "1",
+		label = L["CVar_minimapTrackingClosestOnly"],
+		description = L["CVar_minimapTrackingClosestOnlyTT"]
+	}
 };
 
 --[[ -- other CVars to look at?

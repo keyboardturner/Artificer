@@ -167,6 +167,10 @@ if LOCALE == "enUS" then
 	L["Widget_BlockTrades"] = "Block Trading While Transmogging"
 	L["Widget_BlockTradesTT"] = "Blocks all trading while the transmog frame is open"
 
+	--Widgets - MapAmbience
+	L["Widget_MapAmbience_QD"] = "Reduce Quel'danas Ambience Volume"
+	L["Widget_MapAmbience_QDTT"] = "Reduces the ambience volume in Quel'danas by roughly 25% of your existing ambience volume."
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Show All Minimap Trackables"
 	L["CVar_minimapTrackingShowAllTT"] = "Toggle additional minimap tracking options."
@@ -174,6 +178,8 @@ if LOCALE == "enUS" then
 	L["CVar_weatherDensityTT"] = "Control the weather density / intensity."
 	L["CVar_AutoPushSpellToActionBar"] = "Auto Push Spells to Action Bars"
 	L["CVar_AutoPushSpellToActionBarTT"] = "Whether spells should automatically be placed on your action bars."
+	L["CVar_minimapTrackingClosestOnly"] = "Minimap Tracking Closest Only"
+	L["CVar_minimapTrackingClosestOnlyTT"] = "Show only the closest tracked icon for certain minimap icon types."
 
 	-- Global Strings
 	L["UIScale"] = UI_SCALE
@@ -349,6 +355,10 @@ if LOCALE == "esMX" then
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "Bloquear intercambios durante la transfiguración"
 	L["Widget_BlockTradesTT"] = "Bloquea todos los intercambios mientras la ventana de transfiguración esté abierta."
+
+	--Widgets - MapAmbience
+	L["Widget_MapAmbience_QD"] = "Reducir volumen ambiental en Quel'danas"
+	L["Widget_MapAmbience_QDTT"] = "Reduce el volumen ambiental en Quel'danas aproximadamente un 25% de tu volumen ambiental actual."
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Mostrar todo en el minimapa"
@@ -532,6 +542,10 @@ if LOCALE == "esES" then
 	L["Widget_BlockTrades"] = "Bloquear intercambios durante la transfiguración"
 	L["Widget_BlockTradesTT"] = "Bloquea todos los intercambios mientras la ventana de transfiguración esté abierta."
 
+	--Widgets - MapAmbience
+	L["Widget_MapAmbience_QD"] = "Reducir volumen ambiental en Quel'danas"
+	L["Widget_MapAmbience_QDTT"] = "Reduce el volumen ambiental en Quel'danas aproximadamente un 25% de tu volumen ambiental actual."
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Mostrar todo en el minimapa"
 	L["CVar_minimapTrackingShowAllTT"] = "Activa opciones adicionales del minimapa."
@@ -712,6 +726,10 @@ if LOCALE == "deDE" then
 	L["Widget_BlockTrades"] = "Handel während der Transmogrifikation blockieren"
 	L["Widget_BlockTradesTT"] = "Blockiert jeglichen Handel, solange das Transmogrifikationsfenster geöffnet ist."
 
+	--Widgets - MapAmbience
+	L["Widget_MapAmbience_QD"] = "Umgebungslautstärke in Quel'danas reduzieren"
+	L["Widget_MapAmbience_QDTT"] = "Reduziert die Umgebungslautstärke in Quel'danas um etwa 25 % deiner aktuellen Umgebungslautstärke."
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Alle Minikarten-Verfolgungen anzeigen"
 	L["CVar_minimapTrackingShowAllTT"] = "Aktiviert zusätzliche Minikarten-Verfolgungsoptionen."
@@ -891,6 +909,10 @@ if LOCALE == "frFR" then
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "Bloquer les échanges pendant la transmogrification"
 	L["Widget_BlockTradesTT"] = "Bloque tous les échanges tant que la fenêtre de transmogrification est ouverte."
+
+	--Widgets - MapAmbience
+	L["Widget_MapAmbience_QD"] = "Réduire le volume d’ambiance à Quel'danas"
+	L["Widget_MapAmbience_QDTT"] = "Réduit le volume d’ambiance à Quel'danas d’environ 25 % de votre volume d’ambiance actuel."
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Afficher tous les suivis de la minicarte"
@@ -1073,6 +1095,10 @@ if LOCALE == "itIT" then
 	L["Widget_BlockTrades"] = "Blocca gli scambi durante la trasmogrificazione"
 	L["Widget_BlockTradesTT"] = "Blocca tutti gli scambi mentre la finestra di trasmogrificazione è aperta."
 
+	--Widgets - MapAmbience
+	L["Widget_MapAmbience_QD"] = "Riduci volume ambientale a Quel'danas"
+	L["Widget_MapAmbience_QDTT"] = "Riduce il volume ambientale a Quel'danas di circa il 25% del volume ambientale attuale."
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Mostra tutti i tracciamenti minimappa"
 	L["CVar_minimapTrackingShowAllTT"] = "Attiva opzioni aggiuntive di tracciamento minimappa."
@@ -1253,6 +1279,10 @@ if LOCALE == "ptBR" then
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "Bloquear trocas durante a transmogrificação"
 	L["Widget_BlockTradesTT"] = "Bloqueia todas as trocas enquanto a janela de transmogrificação estiver aberta."
+
+	--Widgets - MapAmbience
+	L["Widget_MapAmbience_QD"] = "Reduzir volume ambiente em Quel'danas"
+	L["Widget_MapAmbience_QDTT"] = "Reduz o volume ambiente em Quel'danas em aproximadamente 25% do volume ambiente atual."
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Mostrar todos os rastreamentos do minimapa"
@@ -1437,6 +1467,10 @@ if LOCALE == "ruRU" then
 	L["Widget_BlockTrades"] = "Блокировать обмен во время трансмогрификации"
 	L["Widget_BlockTradesTT"] = "Блокирует любой обмен, пока открыто окно трансмогрификации."
 
+	--Widgets - MapAmbience
+	L["Widget_MapAmbience_QD"] = "Снизить громкость окружения в Кель'Данасе"
+	L["Widget_MapAmbience_QDTT"] = "Снижает громкость окружения в Кель'Данасе примерно на 25% от текущего уровня громкости окружения."
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Показать все отслеживания миникарты"
 	L["CVar_minimapTrackingShowAllTT"] = "Включает дополнительные параметры отслеживания миникарты."
@@ -1617,6 +1651,10 @@ if LOCALE == "koKR" then
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "형상변환 중 거래 차단"
 	L["Widget_BlockTradesTT"] = "형상변환 창이 열려 있는 동안 모든 거래를 차단합니다."
+
+	--Widgets - MapAmbience
+	L["Widget_MapAmbience_QD"] = "쿠엘다나스 환경음 감소"
+	L["Widget_MapAmbience_QDTT"] = "쿠엘다나스의 환경음 볼륨을 현재 환경음 볼륨의 약 25%만큼 줄입니다."
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "미니맵 추적 모두 표시"
@@ -1799,6 +1837,10 @@ if LOCALE == "zhCN" then
 	L["Widget_BlockTrades"] = "幻化期间阻止交易"
 	L["Widget_BlockTradesTT"] = "在幻化界面打开时阻止所有交易。"
 
+	--Widgets - MapAmbience
+	L["Widget_MapAmbience_QD"] = "降低奎尔丹纳斯环境音量"
+	L["Widget_MapAmbience_QDTT"] = "将奎尔丹纳斯的环境音量降低约当前环境音量的25%。"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "显示所有小地图追踪"
 	L["CVar_minimapTrackingShowAllTT"] = "切换额外的小地图追踪选项。"
@@ -1977,6 +2019,10 @@ if LOCALE == "zhTW" then
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "幻化期間阻止交易"
 	L["Widget_BlockTradesTT"] = "在幻化視窗開啟時阻止所有交易。"
+
+	--Widgets - MapAmbience
+	L["Widget_MapAmbience_QD"] = "降低奎爾達納斯環境音量"
+	L["Widget_MapAmbience_QDTT"] = "將奎爾達納斯的環境音量降低約目前環境音量的25%。"
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "顯示所有小地圖追蹤"

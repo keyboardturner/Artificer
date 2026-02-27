@@ -81,5 +81,7 @@ Widgets/NameplateTarget.lua
 Widgets/LootHistoryVisibility.lua
 Widgets/HideTutorials.lua
 Widgets/PreyBar.lua
+Widgets/BlockTrades.lua
+Widgets/MapAmbience.lua
 
 SettingsUI.lua

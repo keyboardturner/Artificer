@@ -352,32 +352,36 @@ end
 
 local function InitializeSlider(button, data)
 	button:SetHeight(30)
-	
+
+	local options = Settings.CreateSliderOptions(data.min, data.max, data.step);
+	options:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, data.formatter);
+
 	if not button.slider then
-		local options = Settings.CreateSliderOptions(data.min, data.max, data.step);
-		options:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, data.formatter);
-		
 		button.slider = CreateFrame("Frame", nil, button, "MinimalSliderWithSteppersTemplate");
 		button.slider:SetPoint("RIGHT", button, "RIGHT", -10, 0);
 		button.slider:SetWidth(150);
-		local currentVal = tonumber(GetDBValue(data.key)) or data.defaultValue;
-		
-		button.slider:Init(currentVal, options.minValue, options.maxValue, options.steps, options.formatters);
-		
+		button.slider.RightText:ClearAllPoints();
+		button.slider.RightText:SetPoint("TOP", button.slider, "TOP", 0, 0);
+
 		button.sliderLabel = button:CreateFontString(nil, "OVERLAY", "GameTooltipText");
 		button.sliderLabel:SetPoint("LEFT", button, "LEFT", 24+15, 0);
 		button.sliderLabel:SetPoint("RIGHT", button.slider, "LEFT", -10, 0);
 		button.sliderLabel:SetJustifyH("LEFT");
 		button.sliderLabel:SetTextColor(1, 1, 1);
 	end
-	
+
 	button.slider:Show()
 	button.sliderLabel:Show()
 	button.sliderLabel:SetText(data.label)
-	
+
 	if button.slider.OnValueChangedCallback then
 		button.slider:UnregisterCallback("OnValueChanged", button.slider.OnValueChangedCallback);
+		button.slider.OnValueChangedCallback = nil;
 	end
+
+	button.slider.isInitializing = true
+	local currentVal = tonumber(GetDBValue(data.key)) or data.defaultValue;
+	button.slider:Init(currentVal, options.minValue, options.maxValue, options.steps, options.formatters);
 
 	local function OnValueChanged(self, value)
 		if button.slider.isInitializing then return end
@@ -388,8 +392,6 @@ local function InitializeSlider(button, data)
 	button.slider.OnValueChangedCallback = OnValueChanged
 	button.slider:RegisterCallback("OnValueChanged", OnValueChanged, button.slider)
 
-	button.slider.isInitializing = true
-	local currentVal = tonumber(GetDBValue(data.key)) or data.defaultValue
 	button.slider:SetValue(currentVal)
 	button.slider.isInitializing = false
 
@@ -914,6 +916,27 @@ function Artificer:BuildSettingsData()
 		searchText = GetSearchText(L["Widget_BlockTrades"], L["Widget_BlockTradesTT"]),
 		callback = function(val)
 			-- print("block trades enabled for thingy")
+		end
+	});
+
+	-- Widgets - MapAmbience
+	table.insert(allSettingsData, {
+		type = "slider",
+		isWidget = true,
+		key = "MapAmbience",
+		isNew = true,
+		label = L["Widget_MapAmbience_QD"],
+		tooltip = L["Widget_MapAmbience_QDTT"],
+		min = 0, 
+		max = 100, 
+		step = 1,
+		defaultValue = 25,
+		formatter = function(value) return math.floor(value + 0.5) .. "%" end,
+		searchText = GetSearchText(L["Widget_MapAmbience_QD"], L["Widget_MapAmbience_QDTT"]),
+		callback = function(val)
+			if Artificer.UpdateMapAmbience then
+				Artificer:UpdateMapAmbience(val);
+			end
 		end
 	});
 

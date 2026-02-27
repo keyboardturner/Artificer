@@ -1,5 +1,15 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.1.0
+
+Added option to automatically adjust Quel'Danas ambience volume to lower the Sunwell ambience sounds
+
+Added CVar option to toggle "Minimap Tracking Closest Only"
+
+Fixed a minor catastrophic issue that could potentially blow up slider variables if multiple sliders were present
+
+Fixed other small cataclysmic issue where Block Trades file was not included in the toc file
+
 # 0.0.9
 
 Added a Prey progress bar indicator
