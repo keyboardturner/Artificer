@@ -2,14 +2,12 @@ local addonName, Artificer = ...;
 
 local L = Artificer.L;
 
-local yeehaw = CreateFrame("Frame")
-
-yeehaw:RegisterEvent("QUEST_SESSION_CREATED")
-
-local function Cowboy()
-    if Artificer_DB.Widgets.PartySync then
-		QuestSessionManager.StartDialog:Confirm()
+local function Cowboy(self)
+	if Artificer_DB and Artificer_DB.Widgets and Artificer_DB.Widgets.PartySync then
+		if self:IsShown() and self.ButtonContainer.Confirm:IsEnabled() then
+			self:Confirm();
+		end
 	end
 end
 
-yeehaw:SetScript("OnEvent", Cowboy)
+hooksecurefunc(QuestSessionManager.StartDialog, "CheckShow", Cowboy)
