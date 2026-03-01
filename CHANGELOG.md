@@ -1,5 +1,9 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.1.1
+
+Fix party sync automation option which caused an error for the one who engages party sync
+
 # 0.1.0
 
 Added option to automatically adjust Quel'Danas ambience volume to lower the Sunwell ambience sounds
