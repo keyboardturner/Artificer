@@ -919,6 +919,20 @@ function Artificer:BuildSettingsData()
 		end
 	});
 
+	-- Widgets - OutfitLinkOnClose
+	table.insert(allSettingsData, {
+		type = "checkbox",
+		isWidget = true,
+		key = "OutfitLinkOnClose",
+		isNew = true,
+		label = L["Widget_OutfitLinkOnClose"], 
+		tooltip = L["Widget_OutfitLinkOnCloseTT"],
+		searchText = GetSearchText(L["Widget_OutfitLinkOnClose"], L["Widget_OutfitLinkOnCloseTT"]),
+		callback = function(val)
+			-- ...
+		end
+	});
+
 	-- Widgets - MapAmbience
 	table.insert(allSettingsData, {
 		type = "slider",

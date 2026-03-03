@@ -35,6 +35,7 @@ local Defaults = {
 		PreyBarEnabled = true,
 		BlockTrades = true,
 		MapAmbience = 25,
+		OutfitLinkOnClose = true,
 	},
 
 	NameplateTargetPos = {
@@ -106,6 +107,17 @@ Artificer.CVars = {
 	"PraiseTheSun",
 	"nameplateShowOnlyNameForFriendlyPlayerUnits"
 ]]
+
+local function Print(text)
+	local textColor = CreateColor(.93, .65, .37):GenerateHexColor();
+	local addonNameColored = WrapTextInColorCode(L["TOC_Title"], textColor);
+	local addonNameJoiner = string.join(": ", addonNameColored, "%s");
+	local text = string.format(addonNameJoiner, text);
+	
+	return DEFAULT_CHAT_FRAME:AddMessage(text, 1, 1, 1);
+end
+
+Artificer.Print = Print;
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")

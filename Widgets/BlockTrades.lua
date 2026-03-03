@@ -2,6 +2,8 @@ local addonName, Artificer = ...;
 
 local L = Artificer.L;
 
+local Print = Artificer.Print;
+
 local blocky = CreateFrame("Frame");
 local originalBlockTradesState;
 
@@ -16,6 +18,23 @@ local function OnTransmogHide()
 	if Artificer_DB.Widgets.BlockTrades and originalBlockTradesState then
 		C_CVar.SetCVar("blockTrades", originalBlockTradesState);
 		originalBlockTradesState = nil;
+	end
+
+	-- the original purpose was to kind of prevent the transmog window from being nuked by unexpected closes, so i think posting the outfit link is a better option
+	if Artificer_DB.Widgets.OutfitLinkOnClose then
+		if TransmogFrame and TransmogFrame.CharacterPreview then
+			local itemTransmogInfoList = TransmogFrame.CharacterPreview:GetItemTransmogInfoList();
+			
+			if itemTransmogInfoList then
+				local link = C_TransmogCollection.GetCustomSetHyperlinkFromItemTransmogInfoList(itemTransmogInfoList);
+				
+				if link then
+					if not ChatEdit_InsertLink(link) then
+						Print(string.format(L["Widget_OutfitLinkOnClose_LastViewedOutfit"], link));
+					end
+				end
+			end
+		end
 	end
 end
 

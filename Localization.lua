@@ -166,6 +166,9 @@ if LOCALE == "enUS" then
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "Block Trading While Transmogging"
 	L["Widget_BlockTradesTT"] = "Blocks all trading while the transmog frame is open"
+	L["Widget_OutfitLinkOnClose"] = "Outfit Link on Transmog Close"
+	L["Widget_OutfitLinkOnCloseTT"] = "Automatically link your currently viewed outfit into the chat when closing the Transmog window."
+	L["Widget_OutfitLinkOnClose_LastViewedOutfit"] = "Last Viewed Outfit: %s"
 
 	--Widgets - MapAmbience
 	L["Widget_MapAmbience_QD"] = "Reduce Quel'danas Ambience Volume"
@@ -355,6 +358,9 @@ if LOCALE == "esMX" then
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "Bloquear intercambios durante la transfiguración"
 	L["Widget_BlockTradesTT"] = "Bloquea todos los intercambios mientras la ventana de transfiguración esté abierta."
+	L["Widget_OutfitLinkOnClose"] = "Vincular atuendo al cerrar la transfiguración"
+	L["Widget_OutfitLinkOnCloseTT"] = "Vincula automáticamente en el chat el atuendo actualmente visualizado al cerrar la ventana de transfiguración."
+	L["Widget_OutfitLinkOnClose_LastViewedOutfit"] = "Último atuendo visto: %s"
 
 	--Widgets - MapAmbience
 	L["Widget_MapAmbience_QD"] = "Reducir volumen ambiental en Quel'danas"
@@ -541,6 +547,9 @@ if LOCALE == "esES" then
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "Bloquear intercambios durante la transfiguración"
 	L["Widget_BlockTradesTT"] = "Bloquea todos los intercambios mientras la ventana de transfiguración esté abierta."
+	L["Widget_OutfitLinkOnClose"] = "Vincular atuendo al cerrar la transfiguración"
+	L["Widget_OutfitLinkOnCloseTT"] = "Vincula automáticamente en el chat el atuendo actualmente visualizado al cerrar la ventana de transfiguración."
+	L["Widget_OutfitLinkOnClose_LastViewedOutfit"] = "Último atuendo visto: %s"
 
 	--Widgets - MapAmbience
 	L["Widget_MapAmbience_QD"] = "Reducir volumen ambiental en Quel'danas"
@@ -725,6 +734,9 @@ if LOCALE == "deDE" then
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "Handel während der Transmogrifikation blockieren"
 	L["Widget_BlockTradesTT"] = "Blockiert jeglichen Handel, solange das Transmogrifikationsfenster geöffnet ist."
+	L["Widget_OutfitLinkOnClose"] = "Outfit beim Schließen der Transmogrifikation verlinken"
+	L["Widget_OutfitLinkOnCloseTT"] = "Verlinkt beim Schließen des Transmogrifikationsfensters automatisch das aktuell betrachtete Outfit im Chat."
+	L["Widget_OutfitLinkOnClose_LastViewedOutfit"] = "Zuletzt angesehenes Outfit: %s"
 
 	--Widgets - MapAmbience
 	L["Widget_MapAmbience_QD"] = "Umgebungslautstärke in Quel'danas reduzieren"
@@ -909,6 +921,9 @@ if LOCALE == "frFR" then
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "Bloquer les échanges pendant la transmogrification"
 	L["Widget_BlockTradesTT"] = "Bloque tous les échanges tant que la fenêtre de transmogrification est ouverte."
+	L["Widget_OutfitLinkOnClose"] = "Lier la tenue à la fermeture de la transmogrification"
+	L["Widget_OutfitLinkOnCloseTT"] = "Lie automatiquement la tenue actuellement affichée dans le chat lors de la fermeture de la fenêtre de transmogrification."
+	L["Widget_OutfitLinkOnClose_LastViewedOutfit"] = "Dernière tenue consultée : %s"
 
 	--Widgets - MapAmbience
 	L["Widget_MapAmbience_QD"] = "Réduire le volume d’ambiance à Quel'danas"
@@ -1094,6 +1109,9 @@ if LOCALE == "itIT" then
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "Blocca gli scambi durante la trasmogrificazione"
 	L["Widget_BlockTradesTT"] = "Blocca tutti gli scambi mentre la finestra di trasmogrificazione è aperta."
+	L["Widget_OutfitLinkOnClose"] = "Collega l’equipaggiamento alla chiusura della trasmogrificazione"
+	L["Widget_OutfitLinkOnCloseTT"] = "Collega automaticamente in chat l’equipaggiamento attualmente visualizzato alla chiusura della finestra di trasmogrificazione."
+	L["Widget_OutfitLinkOnClose_LastViewedOutfit"] = "Ultimo equipaggiamento visualizzato: %s"
 
 	--Widgets - MapAmbience
 	L["Widget_MapAmbience_QD"] = "Riduci volume ambientale a Quel'danas"
@@ -1279,6 +1297,9 @@ if LOCALE == "ptBR" then
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "Bloquear trocas durante a transmogrificação"
 	L["Widget_BlockTradesTT"] = "Bloqueia todas as trocas enquanto a janela de transmogrificação estiver aberta."
+	L["Widget_OutfitLinkOnClose"] = "Vincular traje ao fechar a transmogrificação"
+	L["Widget_OutfitLinkOnCloseTT"] = "Vincula automaticamente no chat o traje atualmente visualizado ao fechar a janela de transmogrificação."
+	L["Widget_OutfitLinkOnClose_LastViewedOutfit"] = "Último traje visualizado: %s"
 
 	--Widgets - MapAmbience
 	L["Widget_MapAmbience_QD"] = "Reduzir volume ambiente em Quel'danas"
@@ -1466,6 +1487,9 @@ if LOCALE == "ruRU" then
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "Блокировать обмен во время трансмогрификации"
 	L["Widget_BlockTradesTT"] = "Блокирует любой обмен, пока открыто окно трансмогрификации."
+	L["Widget_OutfitLinkOnClose"] = "Ссылка на комплект при закрытии трансмогрификации"
+	L["Widget_OutfitLinkOnCloseTT"] = "Автоматически отправляет в чат ссылку на текущий просматриваемый комплект при закрытии окна трансмогрификации."
+	L["Widget_OutfitLinkOnClose_LastViewedOutfit"] = "Последний просмотренный комплект: %s"
 
 	--Widgets - MapAmbience
 	L["Widget_MapAmbience_QD"] = "Снизить громкость окружения в Кель'Данасе"
@@ -1651,6 +1675,9 @@ if LOCALE == "koKR" then
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "형상변환 중 거래 차단"
 	L["Widget_BlockTradesTT"] = "형상변환 창이 열려 있는 동안 모든 거래를 차단합니다."
+	L["Widget_OutfitLinkOnClose"] = "형상변환 닫기 시 의상 링크"
+	L["Widget_OutfitLinkOnCloseTT"] = "형상변환 창을 닫을 때 현재 보고 있는 의상을 채팅에 자동으로 링크합니다."
+	L["Widget_OutfitLinkOnClose_LastViewedOutfit"] = "마지막으로 본 의상: %s"
 
 	--Widgets - MapAmbience
 	L["Widget_MapAmbience_QD"] = "쿠엘다나스 환경음 감소"
@@ -1836,6 +1863,9 @@ if LOCALE == "zhCN" then
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "幻化期间阻止交易"
 	L["Widget_BlockTradesTT"] = "在幻化界面打开时阻止所有交易。"
+	L["Widget_OutfitLinkOnClose"] = "关闭幻化时链接外观"
+	L["Widget_OutfitLinkOnCloseTT"] = "关闭幻化窗口时，自动将当前查看的外观链接到聊天。"
+	L["Widget_OutfitLinkOnClose_LastViewedOutfit"] = "上次查看的外观：%s"
 
 	--Widgets - MapAmbience
 	L["Widget_MapAmbience_QD"] = "降低奎尔丹纳斯环境音量"
@@ -2019,6 +2049,9 @@ if LOCALE == "zhTW" then
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "幻化期間阻止交易"
 	L["Widget_BlockTradesTT"] = "在幻化視窗開啟時阻止所有交易。"
+	L["Widget_OutfitLinkOnClose"] = "關閉幻化時連結外觀"
+	L["Widget_OutfitLinkOnCloseTT"] = "關閉幻化視窗時，自動將目前檢視的外觀連結到聊天。"
+	L["Widget_OutfitLinkOnClose_LastViewedOutfit"] = "上次檢視的外觀：%s"
 
 	--Widgets - MapAmbience
 	L["Widget_MapAmbience_QD"] = "降低奎爾達納斯環境音量"

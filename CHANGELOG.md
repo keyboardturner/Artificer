@@ -1,5 +1,9 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.1.2
+
+Added option to automatically link your outfit in chat upon the transmog window being closed
+
 # 0.1.1
 
 Fix party sync automation option which caused an error for the one who engages party sync
