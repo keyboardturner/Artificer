@@ -260,8 +260,6 @@ function Artificer:OpenNameplateAdvancedSettings()
 		colorLabel:SetPoint("TOPLEFT", sizeSlider, "BOTTOMLEFT", 0, -10)
 		colorLabel:SetText(L["FNP_IconColor"])
 
-		local _colorClipboard = nil
-
 		local colorSwatch = CreateFrame("Button", nil, f, "ColorSwatchTemplate")
 		colorSwatch:SetPoint("LEFT", colorLabel, "RIGHT", 10, 0)
 		colorSwatch:RegisterForClicks("AnyUp")
@@ -300,14 +298,14 @@ function Artificer:OpenNameplateAdvancedSettings()
 					rootDescription:CreateTitle(L["ColorOptions"]);
 
 					rootDescription:CreateButton(L["CopyColor"], function()
-						_colorClipboard = CopyTable(GetCurrentColor());
+						Artificer.ColorClipboard = CopyTable(GetCurrentColor());
 					end)
 
 					local pasteBtn = rootDescription:CreateButton(L["PasteColor"], function()
-						if not _colorClipboard then return; end
-						ApplyColor(CopyTable(_colorClipboard));
+						if not Artificer.ColorClipboard then return; end
+						ApplyColor(CopyTable(Artificer.ColorClipboard));
 					end)
-					if not _colorClipboard then pasteBtn:SetEnabled(false); end
+					if not Artificer.ColorClipboard then pasteBtn:SetEnabled(false); end
 
 					rootDescription:CreateButton(RESET_TO_DEFAULT, function()
 						ApplyColor({ r = 1, g = 1, b = 1, a = 1 });

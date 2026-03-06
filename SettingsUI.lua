@@ -598,6 +598,27 @@ function Artificer:BuildSettingsData()
 		end
 	});
 
+	-- Widgets - ProfessionToasts
+	table.insert(allSettingsData, {
+		type = "checkbox",
+		isNew = true,
+		key = "ProfessionToastsEnabled",
+		label = L["Widget_ProfessionToasts"],
+		tooltip = L["Widget_ProfessionToastsTT"],
+		searchText = GetSearchText(L["Widget_ProfessionToasts"], L["Widget_ProfessionToastsTT"]),
+		get = function()
+			return Artificer_DB and Artificer_DB.ProfessionToasts and Artificer_DB.ProfessionToasts.enabled;
+		end,
+		set = function(val)
+			if Artificer_DB and Artificer_DB.ProfessionToasts then
+				Artificer_DB.ProfessionToasts.enabled = val;
+			end
+		end,
+		hasAdvancedSettings = true,
+		onAdvancedClick = function()
+			Artificer:OpenProfessionToastAdvancedSettings();
+		end,
+	});
 
 	-- Header - Maps
 	table.insert(allSettingsData, {
@@ -1292,6 +1313,7 @@ end
 function Artificer:CloseAllAdvancedFrames()
 	if self.NameplateAdvancedFrame then self.NameplateAdvancedFrame:Hide() end
 	if self.PreyBarAdvancedFrame then self.PreyBarAdvancedFrame:Hide() end
+	if self.ProfToastAdvancedFrame then self.ProfToastAdvancedFrame:Hide() end
 end
 
 function Artificer:ToggleSettings()

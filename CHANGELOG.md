@@ -1,5 +1,16 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.1.3
+
+Added Profession Toasts widget, displaying a notification and playing a sound upon gaining a skill point in a profession.
+ - Comes with customization for frame width/height, font size, font color, background color, border color, background style, border style
+
+ Added 2 new assignable transmog outfit sounds: Metal Chain Maw and Wildhammer
+
+ Added CVar option for Auto Dismount (ground)
+
+ Fixed missing localization entries for minimapTrackingClosestOnly CVar
+
 # 0.1.2
 
 Added option to automatically link your outfit in chat upon the transmog window being closed

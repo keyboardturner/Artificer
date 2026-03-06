@@ -57,7 +57,26 @@ local Defaults = {
 		PreyBarStyle = "statusbar",
 		PreyBarPosition = "bottom",
 	},
+
+	ProfessionToasts = {
+		enabled = false,
+		bgStyle = "mobileicon",
+		width = 330,
+		height = 50,
+		fontSize = 24,
+		textColor = { r = .93, g = .76, b = 0, a = 1 },
+		bgColor = { r = 1, g = 1, b = 1, a = 1 },
+		borderColor = { r = 1, g = 1, b = 1, a = 1 },
+		borderDesat = false,
+		bgDesat = false,
+		showProfBg = true,
+		singleLine = false,
+		borderStyle = "questtracker",
+		playSound = true,
+	},
 };
+
+Artificer.Defaults = Defaults;
 
 Artificer.CVars = {
 	["minimapTrackingShowAll"] = {
@@ -85,7 +104,13 @@ Artificer.CVars = {
 		default = "1",
 		label = L["CVar_minimapTrackingClosestOnly"],
 		description = L["CVar_minimapTrackingClosestOnlyTT"]
-	}
+	},
+	["autoDismount"] = {
+		settings = "checkbox",
+		default = "1",
+		label = L["CVar_autoDismount"],
+		description = L["CVar_autoDismountTT"]
+	},
 };
 
 --[[ -- other CVars to look at?
@@ -222,6 +247,13 @@ f:SetScript("OnEvent", function(self, event, ...)
 				for pbKey, pbValue in pairs(v) do
 					if Artificer_DB.PreyBar[pbKey] == nil then
 						Artificer_DB.PreyBar[pbKey] = pbValue;
+					end
+				end
+			elseif k == "ProfessionToasts" then
+				if not Artificer_DB.ProfessionToasts then Artificer_DB.ProfessionToasts = {}; end
+				for ptKey, ptValue in pairs(v) do
+					if Artificer_DB.ProfessionToasts[ptKey] == nil then
+						Artificer_DB.ProfessionToasts[ptKey] = ptValue;
 					end
 				end
 			elseif Artificer_DB[k] == nil then

@@ -83,5 +83,6 @@ Widgets/HideTutorials.lua
 Widgets/PreyBar.lua
 Widgets/BlockTrades.lua
 Widgets/MapAmbience.lua
+Widgets/ProfessionToasts.lua
 
 SettingsUI.lua

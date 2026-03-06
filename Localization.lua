@@ -174,6 +174,61 @@ if LOCALE == "enUS" then
 	L["Widget_MapAmbience_QD"] = "Reduce Quel'danas Ambience Volume"
 	L["Widget_MapAmbience_QDTT"] = "Reduces the ambience volume in Quel'danas by roughly 25% of your existing ambience volume."
 
+	--Widgets - ProfessionToasts
+	L["Widget_ProfessionToasts"] = "Profession Toasts"
+	L["Widget_ProfessionToastsTT"] = "Displays a fade-in notification upon levelling a profession skill."
+	L["FrameWidth"] = HUD_EDIT_MODE_SETTING_DAMAGE_METER_FRAME_WIDTH
+	L["FrameHeight"] = HUD_EDIT_MODE_SETTING_DAMAGE_METER_FRAME_HEIGHT
+	L["FontSize"] = FONT_SIZE
+	L["FontColor"] = "Font Color"
+	L["BorderColor"] = EMBLEM_BORDER_COLOR
+	L["BackgroundColor"] = "Background Color"
+	L["BorderStyle"] = "Border Style"
+	L["BackgroundStyle"] = "Background Style"
+	L["SingleLine"] = "Single Line Profession Level"
+	L["PlaySound"] = COOLDOWN_VIEWER_SETTINGS_ALERT_MENU_BUTTON_TOOLTIP_PREVIEW
+	L["Desaturate"] = "Desaturate"
+
+	L["BorderStyle_housingcontainer"] = "Housing Container"
+	L["BorderStyle_shopheader"] = "Shop Header"
+	L["BorderStyle_questtracker"] = "Quest Tracker"
+	L["BorderStyle_achievementalert"] = "Achievement Alert"
+	L["BorderStyle_shipmisson"] = "Ship Mission"
+	L["BorderStyle_housingitem"] = "Housing Item"
+	L["BorderStyle_artifactlevel"] = "Artifact Level"
+	L["BorderStyle_shoptoast"] = "Shop Toast"
+	L["BorderStyle_legioninvasion"] = "Legion Invasion Title"
+	L["BorderStyle_lootroll"] = "Loot Roll"
+	L["BorderStyle_activities"] = "Activities"
+	L["BorderStyle_midnightscenariotitle"] = "Midnight Scenario Title"
+	L["BorderStyle_thewarwithinscenariotitle"] = "War Within Scenario Title"
+	L["BorderStyle_dragonflightscenariotitle"] = "Dragonflight Scenario Title"
+	L["BorderStyle_dragonflightscenarioframe"] = "Dragonflight Scenario Frame"
+	L["BorderStyle_evergreenscenariotitle"] = "Evergreen Scenario Title"
+
+	-- Professions - official translations
+	L["ALCHEMY"] = "Alchemy" --CHARACTER_PROFESSION_ALCHEMY
+	L["ARCHAEOLOGY"] = "Archaeology"--PROFESSIONS_ARCHAEOLOGY
+	L["BLACKSMITHING"] = "Blacksmithing" --CHARACTER_PROFESSION_BLACKSMITHING
+	L["COOKING"] = "Cooking" --PROFESSIONS_COOKING
+	L["ENCHANTING"] = "Enchanting" --CHARACTER_PROFESSION_ENCHANTING
+	L["ENGINEERING"] = "Engineering" --CHARACTER_PROFESSION_ENGINEERING
+	L["FIRST_AID"] = "First Aid" --PROFESSIONS_FIRST_AID
+	L["FISHING"] = "Fishing" --PROFESSIONS_FISHING
+	L["HERBALISM"] = "Herbalism" --CHARACTER_PROFESSION_HERBALISM
+	L["INSCRIPTION"] = "Inscription" --CHARACTER_PROFESSION_INSCRIPTION
+	L["JEWELCRAFTING"] = "Jewelcrafting" --CHARACTER_PROFESSION_JEWELCRAFTING
+	L["LEATHERWORKING"] = "Leatherworking" --CHARACTER_PROFESSION_LEATHERWORKING
+	L["MINING"] = "Mining" --CHARACTER_PROFESSION_MINING
+	L["SKINNING"] = "Skinning" --CHARACTER_PROFESSION_SKINNING
+	L["TAILORING"] = "Tailoring" --CHARACTER_PROFESSION_TAILORING
+
+	L["SpecializationArt"] = "Specialization Art"
+	L["MobileIcons"] = "Mobile Icon"
+
+	L["MetalChainMaw"] = "Metal Chain - Maw"
+	L["Wildhammer"] = "Wildhammer"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Show All Minimap Trackables"
 	L["CVar_minimapTrackingShowAllTT"] = "Toggle additional minimap tracking options."
@@ -183,6 +238,8 @@ if LOCALE == "enUS" then
 	L["CVar_AutoPushSpellToActionBarTT"] = "Whether spells should automatically be placed on your action bars."
 	L["CVar_minimapTrackingClosestOnly"] = "Minimap Tracking Closest Only"
 	L["CVar_minimapTrackingClosestOnlyTT"] = "Show only the closest tracked icon for certain minimap icon types."
+	L["CVar_autoDismount"] = "Auto Dismount (Ground)"
+	L["CVar_autoDismountTT"] = "Automatically dismount from your ground mount when interacting with certain things."
 
 	-- Global Strings
 	L["UIScale"] = UI_SCALE
@@ -366,6 +423,61 @@ if LOCALE == "esMX" then
 	L["Widget_MapAmbience_QD"] = "Reducir volumen ambiental en Quel'danas"
 	L["Widget_MapAmbience_QDTT"] = "Reduce el volumen ambiental en Quel'danas aproximadamente un 25% de tu volumen ambiental actual."
 
+	--Widgets - ProfessionToasts
+	L["Widget_ProfessionToasts"] = "Avisos de profesión"
+	L["Widget_ProfessionToastsTT"] = "Muestra una notificación con aparición gradual al subir el nivel de una habilidad de profesión."
+	L["FrameWidth"] = HUD_EDIT_MODE_SETTING_DAMAGE_METER_FRAME_WIDTH
+	L["FrameHeight"] = HUD_EDIT_MODE_SETTING_DAMAGE_METER_FRAME_HEIGHT
+	L["FontSize"] = FONT_SIZE
+	L["FontColor"] = "Color de fuente"
+	L["BorderColor"] = EMBLEM_BORDER_COLOR
+	L["BackgroundColor"] = "Color de fondo"
+	L["BorderStyle"] = "Estilo de borde"
+	L["BackgroundStyle"] = "Estilo de fondo"
+	L["SingleLine"] = "Nivel de profesión en una sola línea"
+	L["PlaySound"] = COOLDOWN_VIEWER_SETTINGS_ALERT_MENU_BUTTON_TOOLTIP_PREVIEW
+	L["Desaturate"] = "Desaturado"
+
+	L["BorderStyle_housingcontainer"] = "Contenedor de vivienda"
+	L["BorderStyle_shopheader"] = "Encabezado de tienda"
+	L["BorderStyle_questtracker"] = "Seguimiento de misiones"
+	L["BorderStyle_achievementalert"] = "Alerta de logro"
+	L["BorderStyle_shipmisson"] = "Misión de nave"
+	L["BorderStyle_housingitem"] = "Objeto de vivienda"
+	L["BorderStyle_artifactlevel"] = "Nivel de artefacto"
+	L["BorderStyle_shoptoast"] = "Notificación de tienda"
+	L["BorderStyle_legioninvasion"] = "Título de invasión de la Legión"
+	L["BorderStyle_lootroll"] = "Tirada de botín"
+	L["BorderStyle_activities"] = "Actividades"
+	L["BorderStyle_midnightscenariotitle"] = "Título de escenario Midnight"
+	L["BorderStyle_thewarwithinscenariotitle"] = "Título de escenario The War Within"
+	L["BorderStyle_dragonflightscenariotitle"] = "Título de escenario Dragonflight"
+	L["BorderStyle_dragonflightscenarioframe"] = "Marco de escenario Dragonflight"
+	L["BorderStyle_evergreenscenariotitle"] = "Título de escenario Evergreen"
+
+	-- Professions - official translations
+	L["ALCHEMY"] = "Alquimia"
+	L["ARCHAEOLOGY"] = "Arqueología"
+	L["BLACKSMITHING"] = "Herrería"
+	L["COOKING"] = "Cocina"
+	L["ENCHANTING"] = "Encantamiento"
+	L["ENGINEERING"] = "Ingeniería"
+	L["FIRST_AID"] = "Primeros auxilios"
+	L["FISHING"] = "Pesca"
+	L["HERBALISM"] = "Herboristería"
+	L["INSCRIPTION"] = "Inscripción"
+	L["JEWELCRAFTING"] = "Joyería"
+	L["LEATHERWORKING"] = "Peletería"
+	L["MINING"] = "Minería"
+	L["SKINNING"] = "Desuello"
+	L["TAILORING"] = "Sastrería"
+
+	L["SpecializationArt"] = "Arte de especialización"
+	L["MobileIcons"] = "Icono móvil"
+
+	L["MetalChainMaw"] = "Cadena metálica - Las Fauces"
+	L["Wildhammer"] = "Martillo Salvaje"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Mostrar todo en el minimapa"
 	L["CVar_minimapTrackingShowAllTT"] = "Activa opciones adicionales del minimapa."
@@ -373,6 +485,10 @@ if LOCALE == "esMX" then
 	L["CVar_weatherDensityTT"] = "Controla la intensidad del clima."
 	L["CVar_AutoPushSpellToActionBar"] = "Añadir hechizos automáticamente"
 	L["CVar_AutoPushSpellToActionBarTT"] = "Coloca hechizos automáticamente en las barras."
+	L["CVar_minimapTrackingClosestOnly"] = "Seguimiento del minimapa: solo el más cercano"
+	L["CVar_minimapTrackingClosestOnlyTT"] = "Muestra solo el icono rastreado más cercano para ciertos tipos de iconos del minimapa."
+	L["CVar_autoDismount"] = "Desmontar automáticamente (tierra)"
+	L["CVar_autoDismountTT"] = "Te desmonta automáticamente de tu montura terrestre al interactuar con ciertos objetos."
 
 	-- Global Strings
 	L["UIScale"] = UI_SCALE
@@ -555,6 +671,61 @@ if LOCALE == "esES" then
 	L["Widget_MapAmbience_QD"] = "Reducir volumen ambiental en Quel'danas"
 	L["Widget_MapAmbience_QDTT"] = "Reduce el volumen ambiental en Quel'danas aproximadamente un 25% de tu volumen ambiental actual."
 
+	--Widgets - ProfessionToasts
+	L["Widget_ProfessionToasts"] = "Avisos de profesión"
+	L["Widget_ProfessionToastsTT"] = "Muestra una notificación con aparición gradual al subir el nivel de una habilidad de profesión."
+	L["FrameWidth"] = HUD_EDIT_MODE_SETTING_DAMAGE_METER_FRAME_WIDTH
+	L["FrameHeight"] = HUD_EDIT_MODE_SETTING_DAMAGE_METER_FRAME_HEIGHT
+	L["FontSize"] = FONT_SIZE
+	L["FontColor"] = "Color de fuente"
+	L["BorderColor"] = EMBLEM_BORDER_COLOR
+	L["BackgroundColor"] = "Color de fondo"
+	L["BorderStyle"] = "Estilo de borde"
+	L["BackgroundStyle"] = "Estilo de fondo"
+	L["SingleLine"] = "Nivel de profesión en una sola línea"
+	L["PlaySound"] = COOLDOWN_VIEWER_SETTINGS_ALERT_MENU_BUTTON_TOOLTIP_PREVIEW
+	L["Desaturate"] = "Desaturado"
+
+	L["BorderStyle_housingcontainer"] = "Contenedor de vivienda"
+	L["BorderStyle_shopheader"] = "Encabezado de tienda"
+	L["BorderStyle_questtracker"] = "Seguimiento de misiones"
+	L["BorderStyle_achievementalert"] = "Alerta de logro"
+	L["BorderStyle_shipmisson"] = "Misión de nave"
+	L["BorderStyle_housingitem"] = "Objeto de vivienda"
+	L["BorderStyle_artifactlevel"] = "Nivel de artefacto"
+	L["BorderStyle_shoptoast"] = "Notificación de tienda"
+	L["BorderStyle_legioninvasion"] = "Título de invasión de la Legión"
+	L["BorderStyle_lootroll"] = "Tirada de botín"
+	L["BorderStyle_activities"] = "Actividades"
+	L["BorderStyle_midnightscenariotitle"] = "Título de escenario Midnight"
+	L["BorderStyle_thewarwithinscenariotitle"] = "Título de escenario The War Within"
+	L["BorderStyle_dragonflightscenariotitle"] = "Título de escenario Dragonflight"
+	L["BorderStyle_dragonflightscenarioframe"] = "Marco de escenario Dragonflight"
+	L["BorderStyle_evergreenscenariotitle"] = "Título de escenario Evergreen"
+
+	-- Professions - official translations
+	L["ALCHEMY"] = "Alquimia"
+	L["ARCHAEOLOGY"] = "Arqueología"
+	L["BLACKSMITHING"] = "Herrería"
+	L["COOKING"] = "Cocina"
+	L["ENCHANTING"] = "Encantamiento"
+	L["ENGINEERING"] = "Ingeniería"
+	L["FIRST_AID"] = "Primeros auxilios"
+	L["FISHING"] = "Pesca"
+	L["HERBALISM"] = "Herboristería"
+	L["INSCRIPTION"] = "Inscripción"
+	L["JEWELCRAFTING"] = "Joyería"
+	L["LEATHERWORKING"] = "Peletería"
+	L["MINING"] = "Minería"
+	L["SKINNING"] = "Desuello"
+	L["TAILORING"] = "Sastrería"
+
+	L["SpecializationArt"] = "Arte de especialización"
+	L["MobileIcons"] = "Icono móvil"
+
+	L["MetalChainMaw"] = "Cadena metálica - Las Fauces"
+	L["Wildhammer"] = "Martillo Salvaje"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Mostrar todo en el minimapa"
 	L["CVar_minimapTrackingShowAllTT"] = "Activa opciones adicionales del minimapa."
@@ -562,6 +733,10 @@ if LOCALE == "esES" then
 	L["CVar_weatherDensityTT"] = "Controla la intensidad del clima."
 	L["CVar_AutoPushSpellToActionBar"] = "Añadir hechizos automáticamente"
 	L["CVar_AutoPushSpellToActionBarTT"] = "Coloca hechizos automáticamente en las barras."
+	L["CVar_minimapTrackingClosestOnly"] = "Seguimiento del minimapa: solo el más cercano"
+	L["CVar_minimapTrackingClosestOnlyTT"] = "Muestra solo el icono rastreado más cercano para ciertos tipos de iconos del minimapa."
+	L["CVar_autoDismount"] = "Desmontar automáticamente (tierra)"
+	L["CVar_autoDismountTT"] = "Te desmonta automáticamente de tu montura terrestre al interactuar con ciertos objetos."
 
 	-- Global Strings
 	L["UIScale"] = UI_SCALE
@@ -742,6 +917,61 @@ if LOCALE == "deDE" then
 	L["Widget_MapAmbience_QD"] = "Umgebungslautstärke in Quel'danas reduzieren"
 	L["Widget_MapAmbience_QDTT"] = "Reduziert die Umgebungslautstärke in Quel'danas um etwa 25 % deiner aktuellen Umgebungslautstärke."
 
+	--Widgets - ProfessionToasts
+	L["Widget_ProfessionToasts"] = "Berufsmeldungen"
+	L["Widget_ProfessionToastsTT"] = "Zeigt eine Einblendbenachrichtigung an, wenn eine Berufsfertigkeit erhöht wird."
+	L["FrameWidth"] = HUD_EDIT_MODE_SETTING_DAMAGE_METER_FRAME_WIDTH
+	L["FrameHeight"] = HUD_EDIT_MODE_SETTING_DAMAGE_METER_FRAME_HEIGHT
+	L["FontSize"] = FONT_SIZE
+	L["FontColor"] = "Schriftfarbe"
+	L["BorderColor"] = EMBLEM_BORDER_COLOR
+	L["BackgroundColor"] = "Hintergrundfarbe"
+	L["BorderStyle"] = "Rahmenstil"
+	L["BackgroundStyle"] = "Hintergrundstil"
+	L["SingleLine"] = "Einzeilige Berufslevel-Anzeige"
+	L["PlaySound"] = COOLDOWN_VIEWER_SETTINGS_ALERT_MENU_BUTTON_TOOLTIP_PREVIEW
+	L["Desaturate"] = "Entsättigt"
+
+	L["BorderStyle_housingcontainer"] = "Wohnungscontainer"
+	L["BorderStyle_shopheader"] = "Shop-Kopfzeile"
+	L["BorderStyle_questtracker"] = "Questverfolgung"
+	L["BorderStyle_achievementalert"] = "Erfolgsbenachrichtigung"
+	L["BorderStyle_shipmisson"] = "Schiffsmission"
+	L["BorderStyle_housingitem"] = "Wohnungsgegenstand"
+	L["BorderStyle_artifactlevel"] = "Artefaktstufe"
+	L["BorderStyle_shoptoast"] = "Shop-Benachrichtigung"
+	L["BorderStyle_legioninvasion"] = "Legionsinvasionstitel"
+	L["BorderStyle_lootroll"] = "Beutewurf"
+	L["BorderStyle_activities"] = "Aktivitäten"
+	L["BorderStyle_midnightscenariotitle"] = "Midnight-Szenariotitel"
+	L["BorderStyle_thewarwithinscenariotitle"] = "The War Within-Szenariotitel"
+	L["BorderStyle_dragonflightscenariotitle"] = "Dragonflight-Szenariotitel"
+	L["BorderStyle_dragonflightscenarioframe"] = "Dragonflight-Szenariofenster"
+	L["BorderStyle_evergreenscenariotitle"] = "Evergreen-Szenariotitel"
+
+	-- Professions - official translations
+	L["ALCHEMY"] = "Alchemie"
+	L["ARCHAEOLOGY"] = "Archäologie"
+	L["BLACKSMITHING"] = "Schmiedekunst"
+	L["COOKING"] = "Kochkunst"
+	L["ENCHANTING"] = "Verzauberkunst"
+	L["ENGINEERING"] = "Ingenieurskunst"
+	L["FIRST_AID"] = "Erste Hilfe"
+	L["FISHING"] = "Angeln"
+	L["HERBALISM"] = "Kräuterkunde"
+	L["INSCRIPTION"] = "Inschriftenkunde"
+	L["JEWELCRAFTING"] = "Juwelierskunst"
+	L["LEATHERWORKING"] = "Lederverarbeitung"
+	L["MINING"] = "Bergbau"
+	L["SKINNING"] = "Kürschnerei"
+	L["TAILORING"] = "Schneiderei"
+
+	L["SpecializationArt"] = "Spezialisierungsgrafik"
+	L["MobileIcons"] = "Mobiles Symbol"
+
+	L["MetalChainMaw"] = "Metallkette – Schlund"
+	L["Wildhammer"] = "Wildhammer"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Alle Minikarten-Verfolgungen anzeigen"
 	L["CVar_minimapTrackingShowAllTT"] = "Aktiviert zusätzliche Minikarten-Verfolgungsoptionen."
@@ -749,6 +979,10 @@ if LOCALE == "deDE" then
 	L["CVar_weatherDensityTT"] = "Steuert die Intensität des Wetters."
 	L["CVar_AutoPushSpellToActionBar"] = "Zauber automatisch auf Aktionsleisten platzieren"
 	L["CVar_AutoPushSpellToActionBarTT"] = "Legt fest, ob Zauber automatisch auf Aktionsleisten platziert werden."
+	L["CVar_minimapTrackingClosestOnly"] = "Minimap-Verfolgung nur nächstgelegen"
+	L["CVar_minimapTrackingClosestOnlyTT"] = "Zeigt nur das nächstgelegene verfolgte Symbol für bestimmte Minimap-Symboltypen an."
+	L["CVar_autoDismount"] = "Automatisches Absitzen (Boden)"
+	L["CVar_autoDismountTT"] = "Steigt automatisch von deinem Bodenreittier ab, wenn du mit bestimmten Objekten interagierst."
 
 	-- Global Strings
 	L["UIScale"] = UI_SCALE
@@ -929,6 +1163,61 @@ if LOCALE == "frFR" then
 	L["Widget_MapAmbience_QD"] = "Réduire le volume d’ambiance à Quel'danas"
 	L["Widget_MapAmbience_QDTT"] = "Réduit le volume d’ambiance à Quel'danas d’environ 25 % de votre volume d’ambiance actuel."
 
+	--Widgets - ProfessionToasts
+	L["Widget_ProfessionToasts"] = "Notifications de profession"
+	L["Widget_ProfessionToastsTT"] = "Affiche une notification en fondu lors de l’augmentation du niveau d’une compétence de profession."
+	L["FrameWidth"] = HUD_EDIT_MODE_SETTING_DAMAGE_METER_FRAME_WIDTH
+	L["FrameHeight"] = HUD_EDIT_MODE_SETTING_DAMAGE_METER_FRAME_HEIGHT
+	L["FontSize"] = FONT_SIZE
+	L["FontColor"] = "Couleur de police"
+	L["BorderColor"] = EMBLEM_BORDER_COLOR
+	L["BackgroundColor"] = "Couleur d’arrière-plan"
+	L["BorderStyle"] = "Style de bordure"
+	L["BackgroundStyle"] = "Style d’arrière-plan"
+	L["SingleLine"] = "Niveau de profession sur une seule ligne"
+	L["PlaySound"] = COOLDOWN_VIEWER_SETTINGS_ALERT_MENU_BUTTON_TOOLTIP_PREVIEW
+	L["Desaturate"] = "Désaturé"
+
+	L["BorderStyle_housingcontainer"] = "Conteneur de logement"
+	L["BorderStyle_shopheader"] = "En-tête de boutique"
+	L["BorderStyle_questtracker"] = "Suivi de quête"
+	L["BorderStyle_achievementalert"] = "Alerte de haut fait"
+	L["BorderStyle_shipmisson"] = "Mission de navire"
+	L["BorderStyle_housingitem"] = "Objet de logement"
+	L["BorderStyle_artifactlevel"] = "Niveau d'artefact"
+	L["BorderStyle_shoptoast"] = "Notification de boutique"
+	L["BorderStyle_legioninvasion"] = "Titre d'invasion de la Légion"
+	L["BorderStyle_lootroll"] = "Jetin de butin"
+	L["BorderStyle_activities"] = "Activités"
+	L["BorderStyle_midnightscenariotitle"] = "Titre de scénario Midnight"
+	L["BorderStyle_thewarwithinscenariotitle"] = "Titre de scénario The War Within"
+	L["BorderStyle_dragonflightscenariotitle"] = "Titre de scénario Dragonflight"
+	L["BorderStyle_dragonflightscenarioframe"] = "Cadre de scénario Dragonflight"
+	L["BorderStyle_evergreenscenariotitle"] = "Titre de scénario Evergreen"
+
+	-- Professions - official translations
+	L["ALCHEMY"] = "Alchimie"
+	L["ARCHAEOLOGY"] = "Archéologie"
+	L["BLACKSMITHING"] = "Forge"
+	L["COOKING"] = "Cuisine"
+	L["ENCHANTING"] = "Enchantement"
+	L["ENGINEERING"] = "Ingénierie"
+	L["FIRST_AID"] = "Secourisme"
+	L["FISHING"] = "Pêche"
+	L["HERBALISM"] = "Herboristerie"
+	L["INSCRIPTION"] = "Calligraphie"
+	L["JEWELCRAFTING"] = "Joaillerie"
+	L["LEATHERWORKING"] = "Travail du cuir"
+	L["MINING"] = "Minage"
+	L["SKINNING"] = "Dépeçage"
+	L["TAILORING"] = "Couture"
+
+	L["SpecializationArt"] = "Illustration de spécialisation"
+	L["MobileIcons"] = "Icône mobile"
+
+	L["MetalChainMaw"] = "Chaîne métallique – Antre"
+	L["Wildhammer"] = "Marteau-Hardi"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Afficher tous les suivis de la minicarte"
 	L["CVar_minimapTrackingShowAllTT"] = "Active des options supplémentaires de suivi sur la minicarte."
@@ -936,6 +1225,10 @@ if LOCALE == "frFR" then
 	L["CVar_weatherDensityTT"] = "Contrôle l’intensité de la météo."
 	L["CVar_AutoPushSpellToActionBar"] = "Ajouter automatiquement les sorts aux barres d’action"
 	L["CVar_AutoPushSpellToActionBarTT"] = "Détermine si les sorts sont automatiquement placés sur les barres d’action."
+	L["CVar_minimapTrackingClosestOnly"] = "Suivi de la minicarte : le plus proche uniquement"
+	L["CVar_minimapTrackingClosestOnlyTT"] = "Affiche uniquement l’icône suivie la plus proche pour certains types d’icônes de la minicarte."
+	L["CVar_autoDismount"] = "Désarçonner automatiquement (sol)"
+	L["CVar_autoDismountTT"] = "Vous fait automatiquement descendre de votre monture terrestre lorsque vous interagissez avec certains objets."
 
 	-- Global Strings
 	L["UIScale"] = UI_SCALE
@@ -1117,6 +1410,61 @@ if LOCALE == "itIT" then
 	L["Widget_MapAmbience_QD"] = "Riduci volume ambientale a Quel'danas"
 	L["Widget_MapAmbience_QDTT"] = "Riduce il volume ambientale a Quel'danas di circa il 25% del volume ambientale attuale."
 
+	--Widgets - ProfessionToasts
+	L["Widget_ProfessionToasts"] = "Notifiche professioni"
+	L["Widget_ProfessionToastsTT"] = "Mostra una notifica in dissolvenza quando una abilità di professione aumenta di livello."
+	L["FrameWidth"] = HUD_EDIT_MODE_SETTING_DAMAGE_METER_FRAME_WIDTH
+	L["FrameHeight"] = HUD_EDIT_MODE_SETTING_DAMAGE_METER_FRAME_HEIGHT
+	L["FontSize"] = FONT_SIZE
+	L["FontColor"] = "Colore del carattere"
+	L["BorderColor"] = EMBLEM_BORDER_COLOR
+	L["BackgroundColor"] = "Colore di sfondo"
+	L["BorderStyle"] = "Stile del bordo"
+	L["BackgroundStyle"] = "Stile sfondo"
+	L["SingleLine"] = "Livello professione su una sola riga"
+	L["PlaySound"] = COOLDOWN_VIEWER_SETTINGS_ALERT_MENU_BUTTON_TOOLTIP_PREVIEW
+	L["Desaturate"] = "Desaturato"
+
+	L["BorderStyle_housingcontainer"] = "Contenitore abitazione"
+	L["BorderStyle_shopheader"] = "Intestazione negozio"
+	L["BorderStyle_questtracker"] = "Tracciamento missioni"
+	L["BorderStyle_achievementalert"] = "Avviso obiettivo"
+	L["BorderStyle_shipmisson"] = "Missione nave"
+	L["BorderStyle_housingitem"] = "Oggetto abitazione"
+	L["BorderStyle_artifactlevel"] = "Livello artefatto"
+	L["BorderStyle_shoptoast"] = "Notifica negozio"
+	L["BorderStyle_legioninvasion"] = "Titolo invasione della Legione"
+	L["BorderStyle_lootroll"] = "Tiro bottino"
+	L["BorderStyle_activities"] = "Attività"
+	L["BorderStyle_midnightscenariotitle"] = "Titolo scenario Midnight"
+	L["BorderStyle_thewarwithinscenariotitle"] = "Titolo scenario The War Within"
+	L["BorderStyle_dragonflightscenariotitle"] = "Titolo scenario Dragonflight"
+	L["BorderStyle_dragonflightscenarioframe"] = "Finestra scenario Dragonflight"
+	L["BorderStyle_evergreenscenariotitle"] = "Titolo scenario Evergreen"
+
+	-- Professions - official translations
+	L["ALCHEMY"] = "Alchimia"
+	L["ARCHAEOLOGY"] = "Archeologia"
+	L["BLACKSMITHING"] = "Forgiatura"
+	L["COOKING"] = "Cucina"
+	L["ENCHANTING"] = "Incantamento"
+	L["ENGINEERING"] = "Ingegneria"
+	L["FIRST_AID"] = "Primo Soccorso"
+	L["FISHING"] = "Pesca"
+	L["HERBALISM"] = "Erbalismo"
+	L["INSCRIPTION"] = "Runografia"
+	L["JEWELCRAFTING"] = "Oreficeria"
+	L["LEATHERWORKING"] = "Conciatura"
+	L["MINING"] = "Estrazione"
+	L["SKINNING"] = "Scuoiatura"
+	L["TAILORING"] = "Sartoria"
+
+	L["SpecializationArt"] = "Grafica della specializzazione"
+	L["MobileIcons"] = "Icona mobile"
+
+	L["MetalChainMaw"] = "Catena metallica – Fauci"
+	L["Wildhammer"] = "Granmartello"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Mostra tutti i tracciamenti minimappa"
 	L["CVar_minimapTrackingShowAllTT"] = "Attiva opzioni aggiuntive di tracciamento minimappa."
@@ -1124,6 +1472,10 @@ if LOCALE == "itIT" then
 	L["CVar_weatherDensityTT"] = "Controlla l'intensità del meteo."
 	L["CVar_AutoPushSpellToActionBar"] = "Aggiungi automaticamente incantesimi alle barre azione"
 	L["CVar_AutoPushSpellToActionBarTT"] = "Determina se gli incantesimi vengono aggiunti automaticamente alle barre azione."
+	L["CVar_minimapTrackingClosestOnly"] = "Tracciamento minimappa: solo il più vicino"
+	L["CVar_minimapTrackingClosestOnlyTT"] = "Mostra solo l'icona tracciata più vicina per alcuni tipi di icone della minimappa."
+	L["CVar_autoDismount"] = "Smonta automaticamente (terra)"
+	L["CVar_autoDismountTT"] = "Ti fa smontare automaticamente dalla cavalcatura terrestre quando interagisci con determinati oggetti."
 
 	-- Global Strings
 	L["UIScale"] = UI_SCALE
@@ -1305,6 +1657,61 @@ if LOCALE == "ptBR" then
 	L["Widget_MapAmbience_QD"] = "Reduzir volume ambiente em Quel'danas"
 	L["Widget_MapAmbience_QDTT"] = "Reduz o volume ambiente em Quel'danas em aproximadamente 25% do volume ambiente atual."
 
+	--Widgets - ProfessionToasts
+	L["Widget_ProfessionToasts"] = "Notificações de profissão"
+	L["Widget_ProfessionToastsTT"] = "Exibe uma notificação com fade ao subir o nível de uma habilidade de profissão."
+	L["FrameWidth"] = HUD_EDIT_MODE_SETTING_DAMAGE_METER_FRAME_WIDTH
+	L["FrameHeight"] = HUD_EDIT_MODE_SETTING_DAMAGE_METER_FRAME_HEIGHT
+	L["FontSize"] = FONT_SIZE
+	L["FontColor"] = "Cor da fonte"
+	L["BorderColor"] = EMBLEM_BORDER_COLOR
+	L["BackgroundColor"] = "Cor de fundo"
+	L["BorderStyle"] = "Estilo da borda"
+	L["BackgroundStyle"] = "Estilo do fundo"
+	L["SingleLine"] = "Nível de profissão em linha única"
+	L["PlaySound"] = COOLDOWN_VIEWER_SETTINGS_ALERT_MENU_BUTTON_TOOLTIP_PREVIEW
+	L["Desaturate"] = "Dessaturado"
+
+	L["BorderStyle_housingcontainer"] = "Contêiner de habitação"
+	L["BorderStyle_shopheader"] = "Cabeçalho da loja"
+	L["BorderStyle_questtracker"] = "Rastreador de missões"
+	L["BorderStyle_achievementalert"] = "Alerta de conquista"
+	L["BorderStyle_shipmisson"] = "Missão de navio"
+	L["BorderStyle_housingitem"] = "Item de habitação"
+	L["BorderStyle_artifactlevel"] = "Nível do artefato"
+	L["BorderStyle_shoptoast"] = "Notificação da loja"
+	L["BorderStyle_legioninvasion"] = "Título da invasão da Legião"
+	L["BorderStyle_lootroll"] = "Rolagem de saque"
+	L["BorderStyle_activities"] = "Atividades"
+	L["BorderStyle_midnightscenariotitle"] = "Título de cenário Midnight"
+	L["BorderStyle_thewarwithinscenariotitle"] = "Título de cenário The War Within"
+	L["BorderStyle_dragonflightscenariotitle"] = "Título de cenário Dragonflight"
+	L["BorderStyle_dragonflightscenarioframe"] = "Janela de cenário Dragonflight"
+	L["BorderStyle_evergreenscenariotitle"] = "Título de cenário Evergreen"
+
+	-- Professions - official translations
+	L["ALCHEMY"] = "Alquimia"
+	L["ARCHAEOLOGY"] = "Arqueologia"
+	L["BLACKSMITHING"] = "Ferraria"
+	L["COOKING"] = "Culinária"
+	L["ENCHANTING"] = "Encantamento"
+	L["ENGINEERING"] = "Engenharia"
+	L["FIRST_AID"] = "Primeiros socorros"
+	L["FISHING"] = "Pesca"
+	L["HERBALISM"] = "Herborismo"
+	L["INSCRIPTION"] = "Escrivania"
+	L["JEWELCRAFTING"] = "Joalheria"
+	L["LEATHERWORKING"] = "Couraria"
+	L["MINING"] = "Mineração"
+	L["SKINNING"] = "Esfolamento"
+	L["TAILORING"] = "Alfaiataria"
+
+	L["SpecializationArt"] = "Arte da especialização"
+	L["MobileIcons"] = "Ícone móvel"
+
+	L["MetalChainMaw"] = "Corrente de metal – Mandíbulas"
+	L["Wildhammer"] = "Martelo Feroz"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Mostrar todos os rastreamentos do minimapa"
 	L["CVar_minimapTrackingShowAllTT"] = "Ativa opções adicionais de rastreamento do minimapa."
@@ -1312,6 +1719,10 @@ if LOCALE == "ptBR" then
 	L["CVar_weatherDensityTT"] = "Controla a intensidade do clima."
 	L["CVar_AutoPushSpellToActionBar"] = "Adicionar feitiços automaticamente às barras de ação"
 	L["CVar_AutoPushSpellToActionBarTT"] = "Define se feitiços são adicionados automaticamente às barras de ação."
+	L["CVar_minimapTrackingClosestOnly"] = "Rastreamento do minimapa: apenas o mais próximo"
+	L["CVar_minimapTrackingClosestOnlyTT"] = "Mostra apenas o ícone rastreado mais próximo para certos tipos de ícones do minimapa."
+	L["CVar_autoDismount"] = "Desmontar automaticamente (Terrestre)"
+	L["CVar_autoDismountTT"] = "Desmonta automaticamente da sua montaria terrestre ao interagir com certos objetos."
 
 	-- Global Strings
 	L["UIScale"] = UI_SCALE
@@ -1495,6 +1906,61 @@ if LOCALE == "ruRU" then
 	L["Widget_MapAmbience_QD"] = "Снизить громкость окружения в Кель'Данасе"
 	L["Widget_MapAmbience_QDTT"] = "Снижает громкость окружения в Кель'Данасе примерно на 25% от текущего уровня громкости окружения."
 
+	--Widgets - ProfessionToasts
+	L["Widget_ProfessionToasts"] = "Уведомления профессий"
+	L["Widget_ProfessionToastsTT"] = "Показывает плавно появляющееся уведомление при повышении уровня навыка профессии."
+	L["FrameWidth"] = HUD_EDIT_MODE_SETTING_DAMAGE_METER_FRAME_WIDTH
+	L["FrameHeight"] = HUD_EDIT_MODE_SETTING_DAMAGE_METER_FRAME_HEIGHT
+	L["FontSize"] = FONT_SIZE
+	L["FontColor"] = "Цвет шрифта"
+	L["BorderColor"] = EMBLEM_BORDER_COLOR
+	L["BackgroundColor"] = "Цвет фона"
+	L["BorderStyle"] = "Стиль рамки"
+	L["BackgroundStyle"] = "Стиль фона"
+	L["SingleLine"] = "Уровень профессии в одну строку"
+	L["PlaySound"] = COOLDOWN_VIEWER_SETTINGS_ALERT_MENU_BUTTON_TOOLTIP_PREVIEW
+	L["Desaturate"] = "Обесцвеченный"
+
+	L["BorderStyle_housingcontainer"] = "Контейнер жилья"
+	L["BorderStyle_shopheader"] = "Заголовок магазина"
+	L["BorderStyle_questtracker"] = "Отслеживание заданий"
+	L["BorderStyle_achievementalert"] = "Уведомление о достижении"
+	L["BorderStyle_shipmisson"] = "Миссия корабля"
+	L["BorderStyle_housingitem"] = "Предмет жилья"
+	L["BorderStyle_artifactlevel"] = "Уровень артефакта"
+	L["BorderStyle_shoptoast"] = "Уведомление магазина"
+	L["BorderStyle_legioninvasion"] = "Заголовок вторжения Легиона"
+	L["BorderStyle_lootroll"] = "Бросок добычи"
+	L["BorderStyle_activities"] = "Активности"
+	L["BorderStyle_midnightscenariotitle"] = "Заголовок сценария Midnight"
+	L["BorderStyle_thewarwithinscenariotitle"] = "Заголовок сценария The War Within"
+	L["BorderStyle_dragonflightscenariotitle"] = "Заголовок сценария Dragonflight"
+	L["BorderStyle_dragonflightscenarioframe"] = "Окно сценария Dragonflight"
+	L["BorderStyle_evergreenscenariotitle"] = "Заголовок сценария Evergreen"
+
+	-- Professions - official translations
+	L["ALCHEMY"] = "Алхимия"
+	L["ARCHAEOLOGY"] = "Археология"
+	L["BLACKSMITHING"] = "Кузнечное дело"
+	L["COOKING"] = "Кулинария"
+	L["ENCHANTING"] = "Наложение чар"
+	L["ENGINEERING"] = "Инженерное дело"
+	L["FIRST_AID"] = "Первая помощь"
+	L["FISHING"] = "Рыбная ловля"
+	L["HERBALISM"] = "Травничество"
+	L["INSCRIPTION"] = "Начертание"
+	L["JEWELCRAFTING"] = "Ювелирное дело"
+	L["LEATHERWORKING"] = "Кожевничество"
+	L["MINING"] = "Горное дело"
+	L["SKINNING"] = "Снятие шкур"
+	L["TAILORING"] = "Портняжное дело"
+
+	L["SpecializationArt"] = "Иллюстрация специализации"
+	L["MobileIcons"] = "Мобильная иконка"
+
+	L["MetalChainMaw"] = "Металлическая цепь — Утроба"
+	L["Wildhammer"] = "Громовой Молот"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Показать все отслеживания миникарты"
 	L["CVar_minimapTrackingShowAllTT"] = "Включает дополнительные параметры отслеживания миникарты."
@@ -1502,6 +1968,10 @@ if LOCALE == "ruRU" then
 	L["CVar_weatherDensityTT"] = "Управляет интенсивностью погодных эффектов."
 	L["CVar_AutoPushSpellToActionBar"] = "Автоматически добавлять заклинания на панели"
 	L["CVar_AutoPushSpellToActionBarTT"] = "Определяет, будут ли заклинания автоматически добавляться на панели действий."
+	L["CVar_minimapTrackingClosestOnly"] = "Отслеживание на миникарте: только ближайшее"
+	L["CVar_minimapTrackingClosestOnlyTT"] = "Показывает только ближайший отслеживаемый значок для некоторых типов значков миникарты."
+	L["CVar_autoDismount"] = "Автоматическое спешивание (на земле)"
+	L["CVar_autoDismountTT"] = "Автоматически спешивает вас с наземного средства передвижения при взаимодействии с некоторыми объектами."
 
 	-- Global Strings
 	L["UIScale"] = UI_SCALE
@@ -1683,6 +2153,61 @@ if LOCALE == "koKR" then
 	L["Widget_MapAmbience_QD"] = "쿠엘다나스 환경음 감소"
 	L["Widget_MapAmbience_QDTT"] = "쿠엘다나스의 환경음 볼륨을 현재 환경음 볼륨의 약 25%만큼 줄입니다."
 
+	--Widgets - ProfessionToasts
+	L["Widget_ProfessionToasts"] = "전문 기술 알림"
+	L["Widget_ProfessionToastsTT"] = "전문 기술 숙련도가 상승할 때 페이드 인 알림을 표시합니다."
+	L["FrameWidth"] = HUD_EDIT_MODE_SETTING_DAMAGE_METER_FRAME_WIDTH
+	L["FrameHeight"] = HUD_EDIT_MODE_SETTING_DAMAGE_METER_FRAME_HEIGHT
+	L["FontSize"] = FONT_SIZE
+	L["FontColor"] = "글자 색상"
+	L["BorderColor"] = EMBLEM_BORDER_COLOR
+	L["BackgroundColor"] = "배경 색상"
+	L["BorderStyle"] = "테두리 스타일"
+	L["BackgroundStyle"] = "배경 스타일"
+	L["SingleLine"] = "단일 줄 전문 기술 레벨"
+	L["PlaySound"] = COOLDOWN_VIEWER_SETTINGS_ALERT_MENU_BUTTON_TOOLTIP_PREVIEW
+	L["Desaturate"] = "탈채색"
+
+	L["BorderStyle_housingcontainer"] = "하우징 컨테이너"
+	L["BorderStyle_shopheader"] = "상점 헤더"
+	L["BorderStyle_questtracker"] = "퀘스트 추적기"
+	L["BorderStyle_achievementalert"] = "업적 알림"
+	L["BorderStyle_shipmisson"] = "함선 임무"
+	L["BorderStyle_housingitem"] = "하우징 아이템"
+	L["BorderStyle_artifactlevel"] = "유물 레벨"
+	L["BorderStyle_shoptoast"] = "상점 알림"
+	L["BorderStyle_legioninvasion"] = "군단 침공 제목"
+	L["BorderStyle_lootroll"] = "전리품 주사위"
+	L["BorderStyle_activities"] = "활동"
+	L["BorderStyle_midnightscenariotitle"] = "Midnight 시나리오 제목"
+	L["BorderStyle_thewarwithinscenariotitle"] = "The War Within 시나리오 제목"
+	L["BorderStyle_dragonflightscenariotitle"] = "Dragonflight 시나리오 제목"
+	L["BorderStyle_dragonflightscenarioframe"] = "Dragonflight 시나리오 창"
+	L["BorderStyle_evergreenscenariotitle"] = "Evergreen 시나리오 제목"
+
+	-- Professions - official translations
+	L["ALCHEMY"] = "연금술"
+	L["ARCHAEOLOGY"] = "고고학"
+	L["BLACKSMITHING"] = "대장기술"
+	L["COOKING"] = "요리"
+	L["ENCHANTING"] = "마법부여"
+	L["ENGINEERING"] = "기계공학"
+	L["FIRST_AID"] = "응급치료"
+	L["FISHING"] = "낚시"
+	L["HERBALISM"] = "약초채집"
+	L["INSCRIPTION"] = "주문각인"
+	L["JEWELCRAFTING"] = "보석세공"
+	L["LEATHERWORKING"] = "가죽세공"
+	L["MINING"] = "채광"
+	L["SKINNING"] = "무두질"
+	L["TAILORING"] = "재봉술"
+
+	L["SpecializationArt"] = "전문화 아트"
+	L["MobileIcons"] = "모바일 아이콘"
+
+	L["MetalChainMaw"] = "금속 사슬 - 나락"
+	L["Wildhammer"] = "와일드해머"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "미니맵 추적 모두 표시"
 	L["CVar_minimapTrackingShowAllTT"] = "추가 미니맵 추적 옵션을 활성화합니다."
@@ -1690,6 +2215,10 @@ if LOCALE == "koKR" then
 	L["CVar_weatherDensityTT"] = "날씨 효과 강도를 조절합니다."
 	L["CVar_AutoPushSpellToActionBar"] = "주문 자동 행동 단축바 추가"
 	L["CVar_AutoPushSpellToActionBarTT"] = "주문을 행동 단축바에 자동으로 추가할지 설정합니다."
+	L["CVar_minimapTrackingClosestOnly"] = "미니맵 추적: 가장 가까운 것만"
+	L["CVar_minimapTrackingClosestOnlyTT"] = "일부 미니맵 아이콘 유형에 대해 가장 가까운 추적 아이콘만 표시합니다."
+	L["CVar_autoDismount"] = "자동 탈것 해제 (지상)"
+	L["CVar_autoDismountTT"] = "특정 대상과 상호작용할 때 지상 탈것에서 자동으로 내립니다."
 
 	-- Global Strings
 	L["UIScale"] = UI_SCALE
@@ -1871,6 +2400,61 @@ if LOCALE == "zhCN" then
 	L["Widget_MapAmbience_QD"] = "降低奎尔丹纳斯环境音量"
 	L["Widget_MapAmbience_QDTT"] = "将奎尔丹纳斯的环境音量降低约当前环境音量的25%。"
 
+	--Widgets - ProfessionToasts
+	L["Widget_ProfessionToasts"] = "专业技能提示"
+	L["Widget_ProfessionToastsTT"] = "当专业技能等级提升时显示淡入提示通知。"
+	L["FrameWidth"] = HUD_EDIT_MODE_SETTING_DAMAGE_METER_FRAME_WIDTH
+	L["FrameHeight"] = HUD_EDIT_MODE_SETTING_DAMAGE_METER_FRAME_HEIGHT
+	L["FontSize"] = FONT_SIZE
+	L["FontColor"] = "字体颜色"
+	L["BorderColor"] = EMBLEM_BORDER_COLOR
+	L["BackgroundColor"] = "背景颜色"
+	L["BorderStyle"] = "边框样式"
+	L["BackgroundStyle"] = "背景样式"
+	L["SingleLine"] = "单行专业等级"
+	L["PlaySound"] = COOLDOWN_VIEWER_SETTINGS_ALERT_MENU_BUTTON_TOOLTIP_PREVIEW
+	L["Desaturate"] = "去饱和"
+
+	L["BorderStyle_housingcontainer"] = "房屋容器"
+	L["BorderStyle_shopheader"] = "商店标题"
+	L["BorderStyle_questtracker"] = "任务追踪"
+	L["BorderStyle_achievementalert"] = "成就提示"
+	L["BorderStyle_shipmisson"] = "舰船任务"
+	L["BorderStyle_housingitem"] = "房屋物品"
+	L["BorderStyle_artifactlevel"] = "神器等级"
+	L["BorderStyle_shoptoast"] = "商店提示"
+	L["BorderStyle_legioninvasion"] = "军团入侵标题"
+	L["BorderStyle_lootroll"] = "拾取掷骰"
+	L["BorderStyle_activities"] = "活动"
+	L["BorderStyle_midnightscenariotitle"] = "Midnight 场景标题"
+	L["BorderStyle_thewarwithinscenariotitle"] = "地心之战场景标题"
+	L["BorderStyle_dragonflightscenariotitle"] = "巨龙时代场景标题"
+	L["BorderStyle_dragonflightscenarioframe"] = "巨龙时代场景框架"
+	L["BorderStyle_evergreenscenariotitle"] = "Evergreen 场景标题"
+
+	-- Professions - official translations
+	L["ALCHEMY"] = "炼金术"
+	L["ARCHAEOLOGY"] = "考古学"
+	L["BLACKSMITHING"] = "锻造"
+	L["COOKING"] = "烹饪"
+	L["ENCHANTING"] = "附魔"
+	L["ENGINEERING"] = "工程学"
+	L["FIRST_AID"] = "急救"
+	L["FISHING"] = "钓鱼"
+	L["HERBALISM"] = "草药学"
+	L["INSCRIPTION"] = "铭文"
+	L["JEWELCRAFTING"] = "珠宝加工"
+	L["LEATHERWORKING"] = "制皮"
+	L["MINING"] = "采矿"
+	L["SKINNING"] = "剥皮"
+	L["TAILORING"] = "裁缝"
+
+	L["SpecializationArt"] = "专精艺术"
+	L["MobileIcons"] = "移动图标"
+
+	L["MetalChainMaw"] = "金属锁链 - 噬渊"
+	L["Wildhammer"] = "蛮锤"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "显示所有小地图追踪"
 	L["CVar_minimapTrackingShowAllTT"] = "切换额外的小地图追踪选项。"
@@ -1878,6 +2462,10 @@ if LOCALE == "zhCN" then
 	L["CVar_weatherDensityTT"] = "控制天气密度/强度。"
 	L["CVar_AutoPushSpellToActionBar"] = "自动将法术加入动作条"
 	L["CVar_AutoPushSpellToActionBarTT"] = "是否自动将法术放置在动作条上。"
+	L["CVar_minimapTrackingClosestOnly"] = "小地图追踪：仅最近目标"
+	L["CVar_minimapTrackingClosestOnlyTT"] = "对于某些小地图图标类型，仅显示最近的追踪图标。"
+	L["CVar_autoDismount"] = "自动下坐骑（地面）"
+	L["CVar_autoDismountTT"] = "与某些对象互动时会自动从地面坐骑上下来。"
 
 	-- Global Strings
 	L["UIScale"] = UI_SCALE
@@ -2057,6 +2645,61 @@ if LOCALE == "zhTW" then
 	L["Widget_MapAmbience_QD"] = "降低奎爾達納斯環境音量"
 	L["Widget_MapAmbience_QDTT"] = "將奎爾達納斯的環境音量降低約目前環境音量的25%。"
 
+	--Widgets - ProfessionToasts
+	L["Widget_ProfessionToasts"] = "專業技能提示"
+	L["Widget_ProfessionToastsTT"] = "當專業技能等級提升時顯示淡入提示通知。"
+	L["FrameWidth"] = HUD_EDIT_MODE_SETTING_DAMAGE_METER_FRAME_WIDTH
+	L["FrameHeight"] = HUD_EDIT_MODE_SETTING_DAMAGE_METER_FRAME_HEIGHT
+	L["FontSize"] = FONT_SIZE
+	L["FontColor"] = "字體顏色"
+	L["BorderColor"] = EMBLEM_BORDER_COLOR
+	L["BackgroundColor"] = "背景顏色"
+	L["BorderStyle"] = "邊框樣式"
+	L["BackgroundStyle"] = "背景樣式"
+	L["SingleLine"] = "單行專業等級"
+	L["PlaySound"] = COOLDOWN_VIEWER_SETTINGS_ALERT_MENU_BUTTON_TOOLTIP_PREVIEW
+	L["Desaturate"] = "降低飽和度"
+
+	L["BorderStyle_housingcontainer"] = "房屋容器"
+	L["BorderStyle_shopheader"] = "商店標題"
+	L["BorderStyle_questtracker"] = "任務追蹤"
+	L["BorderStyle_achievementalert"] = "成就提示"
+	L["BorderStyle_shipmisson"] = "艦船任務"
+	L["BorderStyle_housingitem"] = "房屋物品"
+	L["BorderStyle_artifactlevel"] = "神器等級"
+	L["BorderStyle_shoptoast"] = "商店提示"
+	L["BorderStyle_legioninvasion"] = "軍團入侵標題"
+	L["BorderStyle_lootroll"] = "拾取擲骰"
+	L["BorderStyle_activities"] = "活動"
+	L["BorderStyle_midnightscenariotitle"] = "Midnight 情境標題"
+	L["BorderStyle_thewarwithinscenariotitle"] = "地心之戰情境標題"
+	L["BorderStyle_dragonflightscenariotitle"] = "巨龍崛起情境標題"
+	L["BorderStyle_dragonflightscenarioframe"] = "巨龍崛起情境框架"
+	L["BorderStyle_evergreenscenariotitle"] = "Evergreen 情境標題"
+
+	-- Professions - official translations
+	L["ALCHEMY"] = "鍊金術"
+	L["ARCHAEOLOGY"] = "考古學"
+	L["BLACKSMITHING"] = "鍛造"
+	L["COOKING"] = "烹飪"
+	L["ENCHANTING"] = "附魔"
+	L["ENGINEERING"] = "工程學"
+	L["FIRST_AID"] = "急救"
+	L["FISHING"] = "釣魚"
+	L["HERBALISM"] = "草藥學"
+	L["INSCRIPTION"] = "銘文學"
+	L["JEWELCRAFTING"] = "珠寶設計"
+	L["LEATHERWORKING"] = "製皮"
+	L["MINING"] = "採礦"
+	L["SKINNING"] = "剝皮"
+	L["TAILORING"] = "裁縫"
+
+	L["SpecializationArt"] = "專精美術"
+	L["MobileIcons"] = "行動圖示"
+
+	L["MetalChainMaw"] = "金屬鎖鏈 - 噬淵"
+	L["Wildhammer"] = "蠻錘"
+
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "顯示所有小地圖追蹤"
 	L["CVar_minimapTrackingShowAllTT"] = "切換額外的小地圖追蹤選項。"
@@ -2064,6 +2707,10 @@ if LOCALE == "zhTW" then
 	L["CVar_weatherDensityTT"] = "控制天氣密度/強度。"
 	L["CVar_AutoPushSpellToActionBar"] = "自動將法術加入動作條"
 	L["CVar_AutoPushSpellToActionBarTT"] = "是否自動將法術放置在動作條上。"
+	L["CVar_minimapTrackingClosestOnly"] = "小地圖追蹤：僅最近目標"
+	L["CVar_minimapTrackingClosestOnlyTT"] = "對於某些小地圖圖示類型，只顯示最近的追蹤圖示。"
+	L["CVar_autoDismount"] = "自動下坐騎（地面）"
+	L["CVar_autoDismountTT"] = "與某些物件互動時會自動從地面坐騎上下來。"
 
 	-- Global Strings
 	L["UIScale"] = UI_SCALE

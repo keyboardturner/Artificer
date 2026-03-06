@@ -142,6 +142,17 @@ local FoleySoundsLibrary = {
 		4577815, 4577817, 4577819, 4577821, 4577823,
 		4577825, 4577827, 4577829, 4577831,
 	},
+	Metal_Chain_Maw = { -- PlaySound(267379)
+		3745490, 3745492, 3745494, 3745496, 3745498,
+		3745500, 3745502, 3745504, 3745506, 3745508,
+		3745510, 3745512, 3745514, 3745516, 3745518,
+		3745520,
+	},
+	Wildhammer = { -- PlaySound(259880)
+		4611458, 4611460, 4611462, 4611464, 4611466,
+		4611468, 4611470, 4611472, 4611474, 4611476,
+		4611478,
+	},
 };
 
 local SoundDefinitions = {
@@ -234,6 +245,20 @@ local SoundDefinitions = {
 		icon = "Interface\\Icons\\inv_misc_coinbag_special",
 		sounds = FoleySoundsLibrary.TreasureGoblinPet_Bag,
 		volume = .1,
+	},
+	{
+		key = "Metal_Chain_Maw",
+		name = L["MetalChainMaw"],
+		icon = "Interface\\Icons\\inv_mail_mawraid_d_01_chest",
+		sounds = FoleySoundsLibrary.Metal_Chain_Maw,
+		volume = .04,
+	},
+	{
+		key = "Wildhammer",
+		name = L["Wildhammer"],
+		icon = "Interface\\Icons\\inv_misc_tabard_wildhammerclan",
+		sounds = FoleySoundsLibrary.Wildhammer,
+		volume = .08,
 	},
 };
 
