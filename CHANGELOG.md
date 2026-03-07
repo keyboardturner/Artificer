@@ -1,5 +1,9 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.1.3a
+
+Added in toast notifications for the Lumberjack achievements as they're similar to gathering professions
+
 # 0.1.3
 
 Added Profession Toasts widget, displaying a notification and playing a sound upon gaining a skill point in a profession.

@@ -962,3 +962,89 @@ initFrame:SetScript("OnEvent", function(self, event)
 		end
 	end)
 end)
+
+
+local AchievementIDs = { -- [achievementID] = criteriaID
+	[62357] = 112615, -- Classic
+	[62358] = 112674, -- TBC
+	[62359] = 251762, -- Wrath
+	[62360] = 112675, -- Cata
+	[62361] = 251763, -- MoP
+	[62362] = 112682, -- WoD
+	[62363] = 112683, -- Legion
+	[62364] = 112678, -- BFA
+	[62365] = 112673, -- SLs
+	[62366] = 112680, -- DF
+	[62369] = 112679, -- TWW
+	[62370] = 112681, -- Midnight
+};
+
+local achievementCache = {};
+
+local function SetAchievementBackground(achID)
+	if not ToastFrame then return end
+
+	local iconFileID = select(10, GetAchievementInfo(achID));
+
+	ToastFrame.BgTex:SetAtlas(nil);
+	if iconFileID then
+		ToastFrame.BgTex:SetTexture(iconFileID);
+	else
+		ToastFrame.BgTex:SetTexture(130660);
+	end
+end
+
+local function CacheAchievementProgress()
+	for achID, critID in pairs(AchievementIDs) do
+		local _, _, _, quantity = GetAchievementCriteriaInfoByID(achID, critID);
+		achievementCache[achID] = quantity or 0;
+	end
+end
+
+local function OnAchievementCriteriaUpdate()
+	if not IsEnabled() then return end
+
+	for achID, critID in pairs(AchievementIDs) do
+		local criteriaString, _, completed, quantity, reqQuantity = GetAchievementCriteriaInfoByID(achID, critID);
+
+		if quantity ~= nil then
+			local prev = achievementCache[achID] or 0;
+
+			if quantity > prev then
+				achievementCache[achID] = quantity;
+
+				local _, achievementName = GetAchievementInfo(achID);
+				local label = (achievementName and achievementName ~= "") and achievementName or (criteriaString and criteriaString ~= "" and criteriaString);
+
+				-- reqQuantity would be used but the equivalent for professions max skill level is annoyingly still not able to be queried
+				local progressText = quantity; -- string.format("%d / %d", quantity, reqQuantity);
+				
+
+				if not ToastFrame then
+					ToastFrame = CreateToastFrame();
+				end
+
+				SetAchievementBackground(achID);
+				SetToastContent(label, progressText);
+
+				local db = GetDB();
+				if db and db.playSound ~= false then
+					PlayProfessionSound(nil);
+				end
+
+				ShowToast();
+			end
+		end
+	end
+end
+
+local achievTrackerFrame = CreateFrame("Frame");
+achievTrackerFrame:RegisterEvent("PLAYER_LOGIN");
+achievTrackerFrame:RegisterEvent("CRITERIA_UPDATE");
+achievTrackerFrame:SetScript("OnEvent", function(self, event)
+	if event == "PLAYER_LOGIN" then
+		CacheAchievementProgress();
+	elseif event == "CRITERIA_UPDATE" then
+		OnAchievementCriteriaUpdate();
+	end
+end);
