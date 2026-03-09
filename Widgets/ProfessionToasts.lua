@@ -107,17 +107,17 @@ local ProfessionData = {
 			{ 4685798, 4685800, 4685802, 4685804 }
 		},
 		soundFiles = { 567493 },
-		sounds = { 4815, 128888 },
+		sounds = { 128888 },
 	},
 	[773] = { -- Inscription
 		name = L["INSCRIPTION"],
 		spec = "Professions-Specializations-Preview-Art-Inscription",
 		icon = "Mobile-Inscription",
 		randomSoundFiles = {
-			{ 1668195, 1668196, 1668197, 1668198, 1668199, 1668200 },
+			--{ 1668195, 1668196, 1668197, 1668198, 1668199, 1668200 },
 			{ 3092221, 3092222, 3092223, 3092224, 3092225, 3092226 },
 		},
-		soundFiles = { 567487 },
+		--soundFiles = { 567487 },
 		sounds = { 128885 },
 	},
 	[794] = { -- Archaeology

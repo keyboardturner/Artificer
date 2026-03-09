@@ -1,5 +1,9 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.1.3b
+
+Adjusted some profession level sounds for Inscription and Jewelcrafting.
+
 # 0.1.3a
 
 Added in toast notifications for the Lumberjack achievements as they're similar to gathering professions
