@@ -1010,12 +1010,13 @@ local function CheckPlayerMovement()
 	local isMounted = IsMounted()
 	local isSwimming = IsSwimming()
 	local isSubmerged = IsSubmerged()
+	local isShapeshifted = GetShapeshiftFormID()
 	
 	if isFalling then
 		C_Timer.After(.35, FallingChecker);
 	end
 	
-	if currentMoving and not isFalling and not isMounted and not isSwimming and not isSubmerged then
+	if currentMoving and not isFalling and not isMounted and not isSwimming and not isSubmerged and not isShapeshifted then
 		SoundSelector();
 	end
 	
