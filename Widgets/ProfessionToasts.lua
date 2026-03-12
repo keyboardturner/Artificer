@@ -117,7 +117,7 @@ local ProfessionData = {
 			--{ 1668195, 1668196, 1668197, 1668198, 1668199, 1668200 },
 			{ 3092221, 3092222, 3092223, 3092224, 3092225, 3092226 },
 		},
-		--soundFiles = { 567487 },
+		--soundFiles = { 567487 },	
 		sounds = { 128885 },
 	},
 	[794] = { -- Archaeology
@@ -509,7 +509,7 @@ end
 local function OnProfessionSkillUp(_, eventMessage)
 	if not IsEnabled() then return end
 
-	local pattern = ERR_SKILL_UP_SI:gsub("%%s", "(.+)"):gsub("%%d", "(%%d+)")
+	local pattern = ERR_SKILL_UP_SI:gsub("([%^%(%)%.%[%]%*%+%-%?])", "%%%1"):gsub("%%%d%$s", "(.+)"):gsub("%%%d%$d", "(%%d+)"):gsub("%%s", "(.+)"):gsub("%%d", "(%%d+)")
 	local skill, skillLevel = string.match(eventMessage, pattern)
 	if not skill or not skillLevel then return end
 
