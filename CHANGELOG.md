@@ -1,5 +1,13 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.1.3c
+
+Added outfit sound effect to play upon initiating a jump
+
+Changed the outfit sounds to not play a sound while shapeshifted (except shadowform)
+
+Fixed German client not properly showing the Profession notification toasts (note: this is a weird issue in blizz's global strings, it probably shouldn't be how it is)
+
 # 0.1.3b
 
 Adjusted some profession level sounds for Inscription and Jewelcrafting.

@@ -973,10 +973,27 @@ local function FallingChecker()
 	local isMounted = IsMounted()
 	local isSwimming = IsSwimming()
 	local isSubmerged = IsSubmerged()
-	if not isFalling and not currentMoving and not isMounted and not isSwimming and not isSubmerged then
+	local formID = GetShapeshiftFormID()
+	local isShapeshifted = formID and formID ~= 28 -- 28 shadowform
+
+	if not isFalling and not currentMoving and not isMounted and not isSwimming and not isSubmerged and not isShapeshifted then
 		SoundSelector();
 	end
 end
+
+-- play a sound when leaping
+hooksecurefunc("JumpOrAscendStart", function()
+	local isMounted = IsMounted()
+	local isSwimming = IsSwimming()
+	local isSubmerged = IsSubmerged()
+	local formID = GetShapeshiftFormID()
+	local isShapeshifted = formID and formID ~= 28 -- 28 is shadowform
+
+	-- checking `not IsFalling()` prevents the sound from triggering when hitting the jump key mid-air
+	if not isMounted and not isSwimming and not isSubmerged and not isShapeshifted and not IsFalling() then
+		SoundSelector();
+	end
+end)
 
 --[[
 	the vanilla foley sound frequency was less frequent, i think this is approximately every .4 sec avg
@@ -1010,7 +1027,8 @@ local function CheckPlayerMovement()
 	local isMounted = IsMounted()
 	local isSwimming = IsSwimming()
 	local isSubmerged = IsSubmerged()
-	local isShapeshifted = GetShapeshiftFormID()
+	local formID = GetShapeshiftFormID()
+	local isShapeshifted = formID and formID ~= 28 -- 28 shadowform
 	
 	if isFalling then
 		C_Timer.After(.35, FallingChecker);
