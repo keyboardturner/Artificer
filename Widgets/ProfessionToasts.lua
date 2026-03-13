@@ -509,9 +509,30 @@ end
 local function OnProfessionSkillUp(_, eventMessage)
 	if not IsEnabled() then return end
 
-	local pattern = ERR_SKILL_UP_SI:gsub("([%^%(%)%.%[%]%*%+%-%?])", "%%%1"):gsub("%%%d%$s", "(.+)"):gsub("%%%d%$d", "(%%d+)"):gsub("%%s", "(.+)"):gsub("%%d", "(%%d+)")
-	local skill, skillLevel = string.match(eventMessage, pattern)
-	if not skill or not skillLevel then return end
+	local s_pos = string.find(ERR_SKILL_UP_SI, "%%[%d%$]*s") or 1
+	local d_pos = string.find(ERR_SKILL_UP_SI, "%%[%d%$]*d") or 2
+
+	-- German differs in its global string:		Eure Fertigkeit '%1$s' hat sich auf %2$d erhöht.
+	-- so need to account for this weirdness
+	local pattern = ERR_SKILL_UP_SI:gsub("([%^%(%)%.%[%]%*%+%-%?])", "%%%1"):gsub("%%[%d%$]*[sd]", function(match)
+			if match:sub(-1) == "s" then
+				return "(.+)";
+			else
+				return "(%d+)";
+			end
+		end)
+
+	local v1, v2 = string.match(eventMessage, pattern)
+	if not v1 or not v2 then
+		return;
+	end
+
+	local skill, skillLevel
+	if s_pos < d_pos then
+		skill, skillLevel = v1, v2;
+	else
+		skill, skillLevel = v2, v1;
+	end
 
 	local profID = FindProfessionID(skill)
 
