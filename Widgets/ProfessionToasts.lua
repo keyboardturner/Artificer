@@ -1059,13 +1059,38 @@ local function OnAchievementCriteriaUpdate()
 	end
 end
 
+local isCacheInitialized = false;
+
+local function CheckAllAchievementsCompleted()
+	for achID, critID in pairs(AchievementIDs) do
+		local _, _, completed = GetAchievementCriteriaInfoByID(achID, critID);
+		if not completed then
+			return false;
+		end
+	end
+	return true;
+end
+
 local achievTrackerFrame = CreateFrame("Frame");
 achievTrackerFrame:RegisterEvent("PLAYER_LOGIN");
 achievTrackerFrame:RegisterEvent("CRITERIA_UPDATE");
+
 achievTrackerFrame:SetScript("OnEvent", function(self, event)
 	if event == "PLAYER_LOGIN" then
 		CacheAchievementProgress();
+		isCacheInitialized = true;
+		
+		if CheckAllAchievementsCompleted() then
+			self:UnregisterEvent("CRITERIA_UPDATE");
+		end
+		
 	elseif event == "CRITERIA_UPDATE" then
+		if not isCacheInitialized then return; end
+		
 		OnAchievementCriteriaUpdate();
+		
+		if CheckAllAchievementsCompleted() then
+			self:UnregisterEvent("CRITERIA_UPDATE");
+		end
 	end
 end);
