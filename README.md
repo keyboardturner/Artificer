@@ -2,6 +2,8 @@
 
 This addon aims to bring a variety of little niche options and features. These are all basically individual "tweak" settings, CVars, or addons that never felt like they could be full standalone projects. So my experimental projects essentially get placed in to here in this "workshop" of sorts.
 
+Found on [Curseforge](https://www.curseforge.com/wow/addons/artificer), [Wago.io](https://addons.wago.io/addons/artificer), and [WoWInterface](https://www.wowinterface.com/downloads/info27048-Artificer.html)
+
 It has the following options:
  - Fish Reel In: Plays a reel-in sound when your fishing cast finishes.
  - Hide Crafting Results: Hide the Crafting Results frame when opening a profession tradeskill frame and crafting an item
@@ -26,6 +28,11 @@ It also has the following features:
  - Cancel Aura Manager: Automatically remove specific buffs out of combat.
  - Abandon Quest Manager: Automatically remove specific quests you don't want to accept.
  - Outfit Sound Manager: Configure gear movement sounds that can play for each outfit.
+ - Prey Progress Bar: Clearly show your prey progress
+
+... and more, that would make this description pretty long.
+
+While it's an inspiration, this addon intentionally does minimal overlap with [Plumber](https://www.curseforge.com/wow/addons/plumber) by design - it's meant to be fully compatible and handle weird little niche options that it doesn't (and I'd also fully recommend trying out Plumber if you haven't).
 
 The main project can be accessed with a minimap button, the addon compartment frame, or via slash commands /artificer or /arti.
 
