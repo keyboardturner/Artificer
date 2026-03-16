@@ -36,6 +36,8 @@ local Defaults = {
 		BlockTrades = true,
 		MapAmbience = 25,
 		OutfitLinkOnClose = true,
+		DamageMeter = 1,
+		DamageWipe = 1,
 	},
 
 	NameplateTargetPos = {

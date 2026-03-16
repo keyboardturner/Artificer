@@ -84,5 +84,6 @@ Widgets/PreyBar.lua
 Widgets/BlockTrades.lua
 Widgets/MapAmbience.lua
 Widgets/ProfessionToasts.lua
+Widgets/DamageMeter.lua
 
 SettingsUI.lua

@@ -1,5 +1,9 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.1.4
+
+Added options for account wide settings for Damage Meter visibility and Auto-Reset Damage Meter
+
 # 0.1.3c
 
 Added outfit sound effect to play upon initiating a jump

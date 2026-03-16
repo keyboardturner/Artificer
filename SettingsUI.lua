@@ -1060,6 +1060,49 @@ function Artificer:BuildSettingsData()
 		end
 	});
 
+	-- Widgets - Damage Meter
+	table.insert(allSettingsData, {
+		type = "dropdown",
+		isWidget = true,
+		key = "DamageMeter",
+		isNew = true,
+		label = L["Widget_DamageMeter"], 
+		tooltip = L["Widget_DamageMeterTT"],
+		options = {
+			{ text = L["None"], value = 1 },
+			{ text = L["Account_On"], value = 2 },
+			{ text = L["Account_Off"], value = 3 },
+		},
+		searchText = GetSearchText(L["Widget_DamageMeter"], L["Widget_DamageMeterTT"]),
+		callback = function(val)
+			if Artificer.Widgets.ApplyDamageMeterSettings then
+				Artificer.Widgets.ApplyDamageMeterSettings();
+			end
+		end
+	});
+
+	-- Widgets - Damage Meter Wipe
+	table.insert(allSettingsData, {
+		type = "dropdown",
+		isWidget = true,
+		key = "DamageWipe",
+		isNew = true,
+		label = L["Widget_DamageWipe"], 
+		tooltip = L["Widget_DamageWipeTT"],
+		options = {
+			{ text = L["None"], value = 1 },
+			{ text = L["Account_On"], value = 2 },
+			{ text = L["Account_Off"], value = 3 },
+		},
+		searchText = GetSearchText(L["Widget_DamageWipe"], L["Widget_DamageWipeTT"]),
+		callback = function(val)
+			if Artificer.Widgets.ApplyDamageMeterSettings then
+				Artificer.Widgets.ApplyDamageMeterSettings();
+			end
+		end
+	});
+
+
 	-- Header - Console Variables (CVars)
 	table.insert(allSettingsData, {
 		type = "header",

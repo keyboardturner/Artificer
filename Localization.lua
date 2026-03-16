@@ -174,6 +174,12 @@ if LOCALE == "enUS" then
 	L["Widget_MapAmbience_QD"] = "Reduce Quel'danas Ambience Volume"
 	L["Widget_MapAmbience_QDTT"] = "Reduces the ambience volume in Quel'danas by roughly 25% of your existing ambience volume."
 
+	--Widgets - DamageMeter
+	L["Widget_DamageMeter"] = DAMAGE_METER_LABEL
+	L["Widget_DamageMeterTT"] = "Enforces account-wide settings for the damage meter visibility on every character"
+	L["Widget_DamageWipe"] = AUTO_RESET_DAMAGE_METER
+	L["Widget_DamageWipeTT"] = "Enforces account-wide settings for the resetting the damage meter on every character"
+
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "Profession Toasts"
 	L["Widget_ProfessionToastsTT"] = "Displays a fade-in notification upon levelling a profession skill."
@@ -423,6 +429,12 @@ if LOCALE == "esMX" then
 	L["Widget_MapAmbience_QD"] = "Reducir volumen ambiental en Quel'danas"
 	L["Widget_MapAmbience_QDTT"] = "Reduce el volumen ambiental en Quel'danas aproximadamente un 25% de tu volumen ambiental actual."
 
+	--Widgets - DamageMeter
+	L["Widget_DamageMeter"] = DAMAGE_METER_LABEL
+	L["Widget_DamageMeterTT"] = "Aplica configuraciones a nivel de cuenta para la visibilidad del medidor de daño en cada personaje."
+	L["Widget_DamageWipe"] = AUTO_RESET_DAMAGE_METER
+	L["Widget_DamageWipeTT"] = "Aplica configuraciones a nivel de cuenta para reiniciar el medidor de daño en cada personaje."
+
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "Avisos de profesión"
 	L["Widget_ProfessionToastsTT"] = "Muestra una notificación con aparición gradual al subir el nivel de una habilidad de profesión."
@@ -671,6 +683,12 @@ if LOCALE == "esES" then
 	L["Widget_MapAmbience_QD"] = "Reducir volumen ambiental en Quel'danas"
 	L["Widget_MapAmbience_QDTT"] = "Reduce el volumen ambiental en Quel'danas aproximadamente un 25% de tu volumen ambiental actual."
 
+	--Widgets - DamageMeter
+	L["Widget_DamageMeter"] = DAMAGE_METER_LABEL
+	L["Widget_DamageMeterTT"] = "Aplica configuraciones a nivel de cuenta para la visibilidad del medidor de daño en cada personaje."
+	L["Widget_DamageWipe"] = AUTO_RESET_DAMAGE_METER
+	L["Widget_DamageWipeTT"] = "Aplica configuraciones a nivel de cuenta para reiniciar el medidor de daño en cada personaje."
+
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "Avisos de profesión"
 	L["Widget_ProfessionToastsTT"] = "Muestra una notificación con aparición gradual al subir el nivel de una habilidad de profesión."
@@ -917,6 +935,12 @@ if LOCALE == "deDE" then
 	L["Widget_MapAmbience_QD"] = "Umgebungslautstärke in Quel'danas reduzieren"
 	L["Widget_MapAmbience_QDTT"] = "Reduziert die Umgebungslautstärke in Quel'danas um etwa 25 % deiner aktuellen Umgebungslautstärke."
 
+	--Widgets - DamageMeter
+	L["Widget_DamageMeter"] = DAMAGE_METER_LABEL
+	L["Widget_DamageMeterTT"] = "Erzwingt kontoweite Einstellungen für die Sichtbarkeit des Schadensmeters auf jedem Charakter."
+	L["Widget_DamageWipe"] = AUTO_RESET_DAMAGE_METER
+	L["Widget_DamageWipeTT"] = "Erzwingt kontoweite Einstellungen zum Zurücksetzen des Schadensmeters auf jedem Charakter."
+
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "Berufsmeldungen"
 	L["Widget_ProfessionToastsTT"] = "Zeigt eine Einblendbenachrichtigung an, wenn eine Berufsfertigkeit erhöht wird."
@@ -1162,6 +1186,12 @@ if LOCALE == "frFR" then
 	--Widgets - MapAmbience
 	L["Widget_MapAmbience_QD"] = "Réduire le volume d’ambiance à Quel'danas"
 	L["Widget_MapAmbience_QDTT"] = "Réduit le volume d’ambiance à Quel'danas d’environ 25 % de votre volume d’ambiance actuel."
+
+	--Widgets - DamageMeter
+	L["Widget_DamageMeter"] = DAMAGE_METER_LABEL
+	L["Widget_DamageMeterTT"] = "Applique les paramètres à l’échelle du compte pour la visibilité du compteur de dégâts sur chaque personnage."
+	L["Widget_DamageWipe"] = AUTO_RESET_DAMAGE_METER
+	L["Widget_DamageWipeTT"] = "Applique les paramètres à l’échelle du compte pour la réinitialisation du compteur de dégâts sur chaque personnage."
 
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "Notifications de profession"
@@ -1410,6 +1440,12 @@ if LOCALE == "itIT" then
 	L["Widget_MapAmbience_QD"] = "Riduci volume ambientale a Quel'danas"
 	L["Widget_MapAmbience_QDTT"] = "Riduce il volume ambientale a Quel'danas di circa il 25% del volume ambientale attuale."
 
+	--Widgets - DamageMeter
+	L["Widget_DamageMeter"] = DAMAGE_METER_LABEL
+	L["Widget_DamageMeterTT"] = "Applica le impostazioni a livello di account per la visibilità del misuratore dei danni su ogni personaggio."
+	L["Widget_DamageWipe"] = AUTO_RESET_DAMAGE_METER
+	L["Widget_DamageWipeTT"] = "Applica le impostazioni a livello di account per il ripristino del misuratore dei danni su ogni personaggio."
+
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "Notifiche professioni"
 	L["Widget_ProfessionToastsTT"] = "Mostra una notifica in dissolvenza quando una abilità di professione aumenta di livello."
@@ -1656,6 +1692,12 @@ if LOCALE == "ptBR" then
 	--Widgets - MapAmbience
 	L["Widget_MapAmbience_QD"] = "Reduzir volume ambiente em Quel'danas"
 	L["Widget_MapAmbience_QDTT"] = "Reduz o volume ambiente em Quel'danas em aproximadamente 25% do volume ambiente atual."
+
+	--Widgets - DamageMeter
+	L["Widget_DamageMeter"] = DAMAGE_METER_LABEL
+	L["Widget_DamageMeterTT"] = "Aplica configurações de conta para a visibilidade do medidor de dano em todos os personagens."
+	L["Widget_DamageWipe"] = AUTO_RESET_DAMAGE_METER
+	L["Widget_DamageWipeTT"] = "Aplica configurações de conta para redefinir o medidor de dano em todos os personagens."
 
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "Notificações de profissão"
@@ -1906,6 +1948,12 @@ if LOCALE == "ruRU" then
 	L["Widget_MapAmbience_QD"] = "Снизить громкость окружения в Кель'Данасе"
 	L["Widget_MapAmbience_QDTT"] = "Снижает громкость окружения в Кель'Данасе примерно на 25% от текущего уровня громкости окружения."
 
+	--Widgets - DamageMeter
+	L["Widget_DamageMeter"] = DAMAGE_METER_LABEL
+	L["Widget_DamageMeterTT"] = "Применяет общие для аккаунта настройки видимости счётчика урона для каждого персонажа."
+	L["Widget_DamageWipe"] = AUTO_RESET_DAMAGE_METER
+	L["Widget_DamageWipeTT"] = "Применяет общие для аккаунта настройки сброса счётчика урона для каждого персонажа."
+
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "Уведомления профессий"
 	L["Widget_ProfessionToastsTT"] = "Показывает плавно появляющееся уведомление при повышении уровня навыка профессии."
@@ -2152,6 +2200,12 @@ if LOCALE == "koKR" then
 	--Widgets - MapAmbience
 	L["Widget_MapAmbience_QD"] = "쿠엘다나스 환경음 감소"
 	L["Widget_MapAmbience_QDTT"] = "쿠엘다나스의 환경음 볼륨을 현재 환경음 볼륨의 약 25%만큼 줄입니다."
+
+	--Widgets - DamageMeter
+	L["Widget_DamageMeter"] = DAMAGE_METER_LABEL
+	L["Widget_DamageMeterTT"] = "모든 캐릭터에 대해 피해 미터 표시 여부를 계정 전체 설정으로 적용합니다."
+	L["Widget_DamageWipe"] = AUTO_RESET_DAMAGE_METER
+	L["Widget_DamageWipeTT"] = "모든 캐릭터에 대해 피해 미터 초기화 설정을 계정 전체 설정으로 적용합니다."
 
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "전문 기술 알림"
@@ -2400,6 +2454,12 @@ if LOCALE == "zhCN" then
 	L["Widget_MapAmbience_QD"] = "降低奎尔丹纳斯环境音量"
 	L["Widget_MapAmbience_QDTT"] = "将奎尔丹纳斯的环境音量降低约当前环境音量的25%。"
 
+	--Widgets - DamageMeter
+	L["Widget_DamageMeter"] = DAMAGE_METER_LABEL
+	L["Widget_DamageMeterTT"] = "为每个角色强制应用账户范围的伤害统计可见性设置。"
+	L["Widget_DamageWipe"] = AUTO_RESET_DAMAGE_METER
+	L["Widget_DamageWipeTT"] = "为每个角色强制应用账户范围的伤害统计重置设置。"
+
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "专业技能提示"
 	L["Widget_ProfessionToastsTT"] = "当专业技能等级提升时显示淡入提示通知。"
@@ -2644,6 +2704,12 @@ if LOCALE == "zhTW" then
 	--Widgets - MapAmbience
 	L["Widget_MapAmbience_QD"] = "降低奎爾達納斯環境音量"
 	L["Widget_MapAmbience_QDTT"] = "將奎爾達納斯的環境音量降低約目前環境音量的25%。"
+
+	--Widgets - DamageMeter
+	L["Widget_DamageMeter"] = DAMAGE_METER_LABEL
+	L["Widget_DamageMeterTT"] = "為每個角色強制套用帳號範圍的傷害統計顯示設定。"
+	L["Widget_DamageWipe"] = AUTO_RESET_DAMAGE_METER
+	L["Widget_DamageWipeTT"] = "為每個角色強制套用帳號範圍的傷害統計重置設定。"
 
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "專業技能提示"
