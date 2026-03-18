@@ -4,6 +4,8 @@
 
 Added options for account wide settings for Damage Meter visibility and Auto-Reset Damage Meter
 
+Added options to hide Blizz's prey widget and hide the prey widget + progress bar in combat
+
 # 0.1.3c
 
 Added outfit sound effect to play upon initiating a jump
