@@ -25,11 +25,62 @@ local WIDGET_SET_ID = 283;
 local PREY_TYPE = Enum.UIWidgetVisualizationType.PreyHuntProgress;
 
 local function GetStyle()
-	return (Artificer_DB and Artificer_DB.PreyBar and Artificer_DB.PreyBar.PreyBarStyle) or "statusbar";
+	return (Artificer_DB and Artificer_DB.PreyBar and Artificer_DB.PreyBar.PreyBarStyle) or Artificer.Defaults.PreyBar.PreyBarStyle;
 end
 
 local function GetPosition()
-	return (Artificer_DB and Artificer_DB.PreyBar and Artificer_DB.PreyBar.PreyBarPosition) or "bottom";
+	return (Artificer_DB and Artificer_DB.PreyBar and Artificer_DB.PreyBar.PreyBarPosition) or Artificer.Defaults.PreyBar.PreyBarPosition;
+end
+
+local function SetAlphaAnimated(frame, targetAlpha, duration)
+	if not frame then return end
+	duration = duration or 0.3
+
+	if not frame.fadeAnimGroup then
+		frame.fadeAnimGroup = frame:CreateAnimationGroup();
+		local alphaAnim = frame.fadeAnimGroup:CreateAnimation("Alpha");
+		alphaAnim:SetOrder(1);
+		frame.fadeAnim = alphaAnim;
+
+		frame.fadeAnimGroup:SetScript("OnFinished", function()
+			frame:SetAlpha(frame.targetAlpha);
+		end)
+		frame.targetAlpha = frame:GetAlpha();
+	end
+
+	if frame.targetAlpha == targetAlpha then
+		if not frame.fadeAnimGroup:IsPlaying() then
+			frame:SetAlpha(targetAlpha);
+		end
+		return;
+	end
+
+	frame.fadeAnimGroup:Stop()
+	frame.targetAlpha = targetAlpha
+
+	if targetAlpha > 0 and not frame:IsShown() then
+		frame:SetAlpha(0);
+		frame:Show();
+	end
+
+	frame.fadeAnim:SetFromAlpha(frame:GetAlpha())
+	frame.fadeAnim:SetToAlpha(targetAlpha)
+	frame.fadeAnim:SetDuration(duration)
+	frame.fadeAnimGroup:Play()
+end
+
+local function SuppressBlizzWidget(widgetFrame)
+    if not widgetFrame then return end
+    widgetFrame:Hide()
+    if not widgetFrame._artificerSuppressHooked then
+        widgetFrame:HookScript("OnShow", function(self)
+            local db = Artificer_DB and Artificer_DB.PreyBar;
+            if db and db.HideBlizzWidget then
+                self:Hide();
+            end
+        end)
+        widgetFrame._artificerSuppressHooked = true;
+    end
 end
 
 local function MakeIcon(parent)
@@ -98,37 +149,36 @@ end
 
 local function CreateIndicatorGroup()
 	local grp = {}
+	
+	-- reworking how the icons are made a little bit
+	grp.masterFrame = CreateFrame("Frame", nil, UIParent)
+	grp.masterFrame:SetSize(1, 1)
+	grp.masterFrame:Show()
+
 	grp.icons = {}
-
 	for i = 1, 3 do
-		grp.icons[i] = MakeIcon();
+		grp.icons[i] = MakeIcon(grp.masterFrame);
 	end
 
-	grp.sbFrame = MakeStatusBar()
-
-	local function HideIcons()
-		for i = 1, 3 do
-			grp.icons[i]:Hide();
-		end
-	end
-
-	local function ShowIcons()
-		for i = 1, 3 do
-			grp.icons[i]:Show();
-		end
-	end
+	grp.sbFrame = MakeStatusBar(grp.masterFrame)
 
 	function grp:HideAll()
-		HideIcons();
-		self.sbFrame:Hide();
+		SetAlphaAnimated(self.masterFrame, 0);
 	end
 
 	function grp:ShowForStyle(style)
-		self:HideAll();
+		SetAlphaAnimated(self.masterFrame, 1);
+		
 		if style == "statusbar" then
-			self.sbFrame:Show();
+			self.sbFrame:Show()
+			for i = 1, 3 do
+				self.icons[i]:Hide();
+			end
 		else
-			ShowIcons();
+			self.sbFrame:Hide()
+			for i = 1, 3 do
+				self.icons[i]:Show();
+			end
 		end
 	end
 
@@ -230,22 +280,38 @@ end
 
 local function UpdateIndicators()
 	if not (Artificer_DB and Artificer_DB.Widgets and Artificer_DB.Widgets.PreyBarEnabled) then
-		Indicators:HideAll();
-		return;
+		Indicators:HideAll()
+		if trackedWidget then
+			SetAlphaAnimated(trackedWidget, 1);
+		end
+		return
 	end
 
 	local widgetFrame, widgetID = FindPreyWidgetFrame()
-
 	if not widgetFrame then
 		Indicators:HideAll();
 		trackedWidget = nil;
 		return;
 	end
 
-	if widgetFrame ~= trackedWidget then
-		trackedWidget = widgetFrame;
-		Indicators:AnchorTo(widgetFrame);
-		Indicators:ShowForStyle(GetStyle());
+	local info = C_UIWidgetManager.GetPreyHuntProgressWidgetVisualizationInfo(widgetID)
+	if not info or info.shownState ~= Enum.WidgetShownState.Shown then
+		Indicators:HideAll();
+		return
+	end
+
+	local db = Artificer_DB and Artificer_DB.PreyBar
+	
+	local inCombat = InCombatLockdown() or UnitAffectingCombat("player")
+	local hideForCombat = db and db.HideInCombat and inCombat
+	local hideForNotFull = db and db.HideBlizzWidget and info.progressState < 3
+
+	if hideForCombat or hideForNotFull then
+		SetAlphaAnimated(widgetFrame, 0);
+		widgetFrame:EnableMouse(false);
+	else
+		SetAlphaAnimated(widgetFrame, 1);
+		widgetFrame:EnableMouse(true);
 	end
 
 	if not widgetFrame:IsVisible() then
@@ -253,27 +319,38 @@ local function UpdateIndicators()
 		return;
 	end
 
-	local info = C_UIWidgetManager.GetPreyHuntProgressWidgetVisualizationInfo(widgetID)
-	if not info or info.shownState ~= Enum.WidgetShownState.Shown then
+	if hideForCombat then
 		Indicators:HideAll();
 		return;
 	end
 
+	if widgetFrame ~= trackedWidget then
+		trackedWidget = widgetFrame;
+		Indicators:AnchorTo(widgetFrame);
+	end
+	
+	Indicators:ShowForStyle(GetStyle())
 	Indicators:Update(info.progressState)
 end
 
 function Artificer.Widgets.ApplyPreyBarSettings()
-	if not Indicators then return; end
+	if not Indicators then return end
 
-	trackedWidget = nil;
-	UpdateIndicators();
+	local db = Artificer_DB and Artificer_DB.PreyBar
+	if trackedWidget and not (db and db.HideBlizzWidget) then
+		SetAlphaAnimated(trackedWidget, 1);
+		trackedWidget:EnableMouse(true);
+	end
+
+	trackedWidget = nil
+	UpdateIndicators()
 end
 
 function Artificer:OpenPreyBarAdvancedSettings()
 	if not self.PreyBarAdvancedFrame then
 		local f = CreateFrame("Frame", "ArtificerPreyBarAdvancedFrame", Artificer.SettingsFrame, "DialogBorderTranslucentTemplate")
 		f:ClearAllPoints()
-		f:SetSize(300, 200)
+		f:SetSize(300, 270)
 		f:SetPoint("LEFT", Artificer.SettingsFrame, "RIGHT", 45, 0)
 		f:EnableMouse(true)
 		f:Hide()
@@ -426,10 +503,54 @@ function Artificer:OpenPreyBarAdvancedSettings()
 		end)
 		UpdatePositionText()
 
+		local hideCheck = CreateFrame("CheckButton", nil, f, "UICheckButtonTemplate")
+		hideCheck:SetPoint("TOPLEFT", positionDropdown, "BOTTOMLEFT", -2, -16)
+		hideCheck:SetSize(24, 24)
+
+		local hideCheckLabel = f:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+		hideCheckLabel:SetPoint("LEFT", hideCheck, "RIGHT", 4, 0)
+		hideCheckLabel:SetText(L["PreyBar_HideBlizzWidget"])
+
+		hideCheck:SetScript("OnClick", function(self)
+			if Artificer_DB then
+				if not Artificer_DB.PreyBar then
+					Artificer_DB.PreyBar = {};
+				end
+				Artificer_DB.PreyBar.HideBlizzWidget = self:GetChecked();
+			end
+			if Artificer.Widgets.ApplyPreyBarSettings then
+				Artificer.Widgets.ApplyPreyBarSettings();
+			end
+		end)
+
+		local combatCheck = CreateFrame("CheckButton", nil, f, "UICheckButtonTemplate")
+		combatCheck:SetPoint("TOPLEFT", hideCheck, "BOTTOMLEFT", 0, -18)
+		combatCheck:SetSize(24, 24)
+
+		local combatCheckLabel = f:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+		combatCheckLabel:SetPoint("LEFT", combatCheck, "RIGHT", 4, 0)
+		combatCheckLabel:SetText(L["PreyBar_HideInCombat"])
+
+		combatCheck:SetScript("OnClick", function(self)
+			if Artificer_DB then
+				if not Artificer_DB.PreyBar then
+					Artificer_DB.PreyBar = {};
+				end
+				Artificer_DB.PreyBar.HideInCombat = self:GetChecked();
+			end
+			if Artificer.Widgets.ApplyPreyBarSettings then
+				Artificer.Widgets.ApplyPreyBarSettings();
+			end
+		end)
+
 		f:HookScript("OnShow", function()
 			UpdateStyleText();
 			UpdatePositionText();
 			RefreshPositionVisibility();
+			local db = Artificer_DB and Artificer_DB.PreyBar;
+			
+			hideCheck:SetChecked(db and db.HideBlizzWidget ~= nil and db.HideBlizzWidget or Artificer.Defaults.PreyBar.HideBlizzWidget);
+			combatCheck:SetChecked(db and db.HideInCombat ~= nil and db.HideInCombat or Artificer.Defaults.PreyBar.HideInCombat);
 		end)
 
 		self.PreyBarAdvancedFrame = f
@@ -447,6 +568,8 @@ local loader = CreateFrame("Frame")
 loader:RegisterEvent("PLAYER_LOGIN")
 loader:RegisterEvent("UPDATE_UI_WIDGET")
 loader:RegisterEvent("PLAYER_ENTERING_WORLD")
+loader:RegisterEvent("PLAYER_REGEN_DISABLED")
+loader:RegisterEvent("PLAYER_REGEN_ENABLED")
 
 loader:SetScript("OnEvent", function(self, event)
 	if event == "PLAYER_LOGIN" then

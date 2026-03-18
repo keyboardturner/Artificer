@@ -58,6 +58,8 @@ local Defaults = {
 	PreyBar = {
 		PreyBarStyle = "statusbar",
 		PreyBarPosition = "bottom",
+		HideBlizzWidget = true,
+		HideInCombat = true,
 	},
 
 	ProfessionToasts = {

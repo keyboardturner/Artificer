@@ -160,6 +160,8 @@ if LOCALE == "enUS" then
 	L["PreyBar_Position_Bottom"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_BOTTOM
 	L["PreyBar_Position_Left"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_LEFT
 	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
+	L["PreyBar_HideBlizzWidget"] = "Hide Blizzard Prey Widget"
+	L["PreyBar_HideInCombat"] = "Hide in Combat"
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
@@ -415,6 +417,8 @@ if LOCALE == "esMX" then
 	L["PreyBar_Position_Bottom"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_BOTTOM
 	L["PreyBar_Position_Left"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_LEFT
 	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
+	L["PreyBar_HideBlizzWidget"] = "Ocultar widget de presa de Blizzard"
+	L["PreyBar_HideInCombat"] = "Ocultar en combate"
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
@@ -669,6 +673,8 @@ if LOCALE == "esES" then
 	L["PreyBar_Position_Bottom"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_BOTTOM
 	L["PreyBar_Position_Left"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_LEFT
 	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
+	L["PreyBar_HideBlizzWidget"] = "Ocultar widget de presa de Blizzard"
+	L["PreyBar_HideInCombat"] = "Ocultar en combate"
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
@@ -921,6 +927,8 @@ if LOCALE == "deDE" then
 	L["PreyBar_Position_Bottom"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_BOTTOM
 	L["PreyBar_Position_Left"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_LEFT
 	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
+	L["PreyBar_HideBlizzWidget"] = "Blizzard-Beute-Widget ausblenden"
+	L["PreyBar_HideInCombat"] = "Im Kampf ausblenden"
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
@@ -1174,6 +1182,8 @@ if LOCALE == "frFR" then
 	L["PreyBar_Position_Bottom"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_BOTTOM
 	L["PreyBar_Position_Left"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_LEFT
 	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
+	L["PreyBar_HideBlizzWidget"] = "Masquer le widget de proie de Blizzard"
+	L["PreyBar_HideInCombat"] = "Masquer en combat"
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 	--Widgets - BlockTrades
@@ -1426,6 +1436,8 @@ if LOCALE == "itIT" then
 	L["PreyBar_Position_Bottom"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_BOTTOM
 	L["PreyBar_Position_Left"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_LEFT
 	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
+	L["PreyBar_HideBlizzWidget"] = "Nascondi widget preda di Blizzard"
+	L["PreyBar_HideInCombat"] = "Nascondi in combattimento"
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
@@ -1679,6 +1691,8 @@ if LOCALE == "ptBR" then
 	L["PreyBar_Position_Bottom"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_BOTTOM
 	L["PreyBar_Position_Left"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_LEFT
 	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
+	L["PreyBar_HideBlizzWidget"] = "Ocultar widget de presa da Blizzard"
+	L["PreyBar_HideInCombat"] = "Ocultar em combate"
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
@@ -1934,6 +1948,8 @@ if LOCALE == "ruRU" then
 	L["PreyBar_Position_Bottom"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_BOTTOM
 	L["PreyBar_Position_Left"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_LEFT
 	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
+	L["PreyBar_HideBlizzWidget"] = "Скрыть виджет добычи Blizzard"
+	L["PreyBar_HideInCombat"] = "Скрывать в бою"
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
@@ -2187,6 +2203,8 @@ if LOCALE == "koKR" then
 	L["PreyBar_Position_Bottom"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_BOTTOM
 	L["PreyBar_Position_Left"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_LEFT
 	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
+	L["PreyBar_HideBlizzWidget"] = "블리자드 사냥감 위젯 숨기기"
+	L["PreyBar_HideInCombat"] = "전투 중 숨기기"
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
@@ -2440,6 +2458,8 @@ if LOCALE == "zhCN" then
 	L["PreyBar_Position_Bottom"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_BOTTOM
 	L["PreyBar_Position_Left"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_LEFT
 	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
+	L["PreyBar_HideBlizzWidget"] = "隐藏暴雪猎物组件"
+	L["PreyBar_HideInCombat"] = "战斗中隐藏"
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
@@ -2691,6 +2711,8 @@ if LOCALE == "zhTW" then
 	L["PreyBar_Position_Bottom"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_BOTTOM
 	L["PreyBar_Position_Left"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_LEFT
 	L["PreyBar_Position_Right"] = HUD_EDIT_MODE_SETTING_ENCOUNTER_EVENTS_ICON_DIRECTION_RIGHT
+	L["PreyBar_HideBlizzWidget"] = "隱藏暴雪獵物元件"
+	L["PreyBar_HideInCombat"] = "戰鬥中隱藏"
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
