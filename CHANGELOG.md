@@ -1,5 +1,9 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.1.4a
+
+Adjusted prey progress bar frame levels (should no longer be beneath the action bar and such)
+
 # 0.1.4
 
 Added options for account wide settings for Damage Meter visibility and Auto-Reset Damage Meter
