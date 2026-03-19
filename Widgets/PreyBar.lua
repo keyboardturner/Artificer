@@ -70,23 +70,23 @@ local function SetAlphaAnimated(frame, targetAlpha, duration)
 end
 
 local function SuppressBlizzWidget(widgetFrame)
-    if not widgetFrame then return end
-    widgetFrame:Hide()
-    if not widgetFrame._artificerSuppressHooked then
-        widgetFrame:HookScript("OnShow", function(self)
-            local db = Artificer_DB and Artificer_DB.PreyBar;
-            if db and db.HideBlizzWidget then
-                self:Hide();
-            end
-        end)
-        widgetFrame._artificerSuppressHooked = true;
-    end
+	if not widgetFrame then return end
+	widgetFrame:Hide()
+	if not widgetFrame._artificerSuppressHooked then
+		widgetFrame:HookScript("OnShow", function(self)
+			local db = Artificer_DB and Artificer_DB.PreyBar;
+			if db and db.HideBlizzWidget then
+				self:Hide();
+			end
+		end)
+		widgetFrame._artificerSuppressHooked = true;
+	end
 end
 
 local function MakeIcon(parent)
 	local f = CreateFrame("Frame", nil, parent or UIParent);
 	f:SetSize(INDICATOR_SIZE, INDICATOR_SIZE);
-	f:SetFrameStrata("MEDIUM");
+	f:SetFrameStrata("HIGH");
 	local tex = f:CreateTexture(nil, "ARTWORK");
 	tex:SetAllPoints(f);
 	f.texture = tex;
@@ -97,7 +97,7 @@ end
 local function MakeStatusBar(parent)
 	local container = CreateFrame("Frame", nil, parent or UIParent)
 	container:SetSize(BAR_LONG, BAR_SHORT)
-	container:SetFrameStrata("MEDIUM")
+	container:SetFrameStrata("HIGH")
 
 	local bg = container:CreateTexture(nil, "BACKGROUND", nil, 0)
 	bg:SetAtlas("CovenantSanctum-Level-Border-Venthyr", false)
@@ -122,18 +122,22 @@ local function MakeStatusBar(parent)
 	fill:SetVertexColor(1, 0, 0)
 	container.fill = fill
 
+	local overlay = CreateFrame("Frame", nil, container)
+	overlay:SetAllPoints(container)
+	overlay:SetFrameLevel(clip:GetFrameLevel() + 1)
+
 	local notches = {}
 	for i = 1, 2 do
-		local n = container:CreateTexture(nil, "OVERLAY", nil, 2);
+		local n = overlay:CreateTexture(nil, "OVERLAY", nil, 2);
 		n:SetAtlas("CovenantSanctum-Reservoir-Spark-Venthyr", false);
-		n:SetSize(NOTCH_CROSS*3.5, BAR_SHORT*1.3); -- hegiht, width
+		n:SetSize(NOTCH_CROSS*3.5, BAR_SHORT*1.3);
 
 		n:SetRotation(math.rad(90));
 		
 		notches[i] = n;
 	end
-	notches[1]:SetPoint("CENTER", container, "LEFT", BAR_LONG / 3, 0)
-	notches[2]:SetPoint("CENTER", container, "LEFT", BAR_LONG * 2 / 3, 0)
+	notches[1]:SetPoint("CENTER", overlay, "LEFT", BAR_LONG / 3, 0)
+	notches[2]:SetPoint("CENTER", overlay, "LEFT", BAR_LONG * 2 / 3, 0)
 	container.notches = notches
 
 	container.fillValue = 0
