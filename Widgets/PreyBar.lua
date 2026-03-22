@@ -110,7 +110,7 @@ local function MakeStatusBar(parent)
 	clip:SetFrameLevel(container:GetFrameLevel() + 1)
 	clip:SetPoint("TOPLEFT", container, "TOPLEFT")
 	clip:SetPoint("BOTTOMLEFT", container, "BOTTOMLEFT")
-	clip:SetWidth(1)
+	clip:SetWidth(0.001)
 	clip:SetHeight(BAR_SHORT)
 	container.clip = clip
 
@@ -144,7 +144,7 @@ local function MakeStatusBar(parent)
 
 	function container:SetValue(val)
 		self.fillValue = val;
-		self.clip:SetWidth(math.max(1, BAR_LONG * (val / 3)));
+		self.clip:SetWidth(math.max(0.001, BAR_LONG * (val / 3)));
 	end
 
 	container:Hide();

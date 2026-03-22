@@ -1,5 +1,9 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.1.4b
+
+Attempted fix to prey bar sometimes being completely empty despite having progress (there's also some weird behavior while grouped sometimes that happens to the default blizz UI)
+
 # 0.1.4a
 
 Adjusted prey progress bar frame levels (should no longer be beneath the action bar and such)
