@@ -1,5 +1,17 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.1.5
+
+Added an option to block guild invites account-wide
+
+Added options for screenshots:
+ - Hide Screenshot Text
+ - Adjust the Screenshot file format (png, jpg, tga)
+ - Adjust screenshot quality
+ - Change screenshot resolution (x0.5, x1, x2)
+
+ Added a new feature for chat message preview and character counter tooltip on the chat frame edit box, with options to disable, show only on mouseover (default), and show always.
+
 # 0.1.4b
 
 Attempted fix to prey bar sometimes being completely empty despite having progress (there's also some weird behavior while grouped sometimes that happens to the default blizz UI)
