@@ -62,6 +62,19 @@ if LOCALE == "enUS" then
 	L["Widget_CollapseBuffsTT"] = "Automatically collapses the default Buff Frame."
 	L["Widget_PartySync"] = "Automatically Accept Party Sync"
 	L["Widget_PartySyncTT"] = "Automatically accept the Party Sync confirm button when it is prompted."
+	L["Widget_ChatTooltipVisibility"] = "Chat Message Preview"
+	L["Widget_ChatTooltipVisibilityTT"] = "Display a tooltip on the edit box to preview the chat message you're currently editing."
+	L["CurrentMessage"] = "Current Message"
+	L["Mouseover"] = "Mouseover"
+	L["Widget_HideScreenshotText"] = "Hide Screenshot Text"
+	L["Widget_HideScreenshotTextTT"] = "Hides the screenshot taken text."
+	L["Widget_ScreenshotFormat"] = "Screenshot Format"
+	L["Widget_ScreenshotFormatTT"] = "Adjust the screenshot format (PNG may turn certain skyboxes transparent in the file)."
+	L["Widget_ScreenshotQuality"] = "Screenshot Quality"
+	L["Widget_ScreenshotQualityTT"] = "Adjust the screenshot quality."
+	L["Widget_ScreenshotSizeMultiplier"] = "Screenshot Resolution"
+	L["Widget_ScreenshotSizeMultiplierTT"] = "Adjust the screenshot resolution based on a multiplier of your window."
+	L["Warning_FileSize"] = "Caution: This may cause a large screenshot file size."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Account Auto Loot Toggle"
@@ -72,6 +85,8 @@ if LOCALE == "enUS" then
 	L["Widget_cooldownViewerEnabledTT"] = "Enforces account-wide settings for the Cooldown Manager on every character."
 	L["Account_On"] = "Account-Wide Enabled"
 	L["Account_Off"] = "Account-Wide Disabled"
+	L["Widget_BlockGuildInvites"] = "Account Block Guild Invites"
+	L["Widget_BlockGuildInvitesTT"] = "Account-wide setting to automatically decline guild invites on all characters."
 
 	--Widgets - CancelAura
 	L["CancelAuraManager"] = "Cancel Aura Manager"
@@ -266,6 +281,7 @@ if LOCALE == "enUS" then
 	L["Outfit"] = TRANSMOG_OUTFIT_NAME_DEFAULT
 	L["AdvancedOptions"] = ADVANCED_OPTIONS
 	L["Header_Nameplates"] = NAMEPLATES_LABEL
+	L["Header_Screenshot"] = BINDING_NAME_SCREENSHOT
 
 
 
@@ -319,6 +335,21 @@ if LOCALE == "esMX" then
 	L["Widget_CollapseBuffsTT"] = "Contrae automáticamente el marco de beneficios predeterminado."
 	L["Widget_PartySync"] = "Aceptar Sincronización de grupo automáticamente"
 	L["Widget_PartySyncTT"] = "Acepta automáticamente la sincronización de grupo."
+	L["Widget_ChatTooltipVisibility"] = "Vista previa del mensaje"
+	L["Widget_ChatTooltipVisibilityTT"] = "Muestra un tooltip en el cuadro de texto para previsualizar el mensaje que estás editando."
+	L["CurrentMessage"] = "Mensaje actual"
+	L["Mouseover"] = "Al pasar el ratón"
+	L["Widget_HideScreenshotText"] = "Ocultar texto de captura"
+	L["Widget_HideScreenshotTextTT"] = "Oculta el texto que indica que se ha tomado una captura."
+	L["Widget_ScreenshotFormat"] = "Formato de captura"
+	L["Widget_ScreenshotFormatTT"] = "Ajusta el formato de captura (PNG puede hacer algunos cielos transparentes)."
+	L["Widget_ScreenshotQuality"] = "Calidad de captura"
+	L["Widget_ScreenshotQualityTT"] = "Ajusta la calidad de la captura."
+	L["Widget_ScreenshotSizeMultiplier"] = "Resolución de captura"
+	L["Widget_ScreenshotSizeMultiplierTT"] = "Ajusta la resolución según un multiplicador de la ventana."
+	L["Warning_FileSize"] = "Advertencia: puede generar archivos grandes."
+	L["Widget_BlockGuildInvites"] = "Bloquear invitaciones de hermandad (cuenta)"
+	L["Widget_BlockGuildInvitesTT"] = "Configuración global para rechazar automáticamente invitaciones de hermandad en todos los personajes."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Alternar botín automático de la cuenta"
@@ -523,6 +554,7 @@ if LOCALE == "esMX" then
 	L["Outfit"] = TRANSMOG_OUTFIT_NAME_DEFAULT
 	L["AdvancedOptions"] = ADVANCED_OPTIONS
 	L["Header_Nameplates"] = NAMEPLATES_LABEL
+	L["Header_Screenshot"] = BINDING_NAME_SCREENSHOT
 
 
 return end
@@ -575,6 +607,21 @@ if LOCALE == "esES" then
 	L["Widget_CollapseBuffsTT"] = "Contrae automáticamente el marco de beneficios predeterminado."
 	L["Widget_PartySync"] = "Aceptar Sincronización de grupo automáticamente"
 	L["Widget_PartySyncTT"] = "Acepta automáticamente la sincronización de grupo."
+	L["Widget_ChatTooltipVisibility"] = "Vista previa del mensaje"
+	L["Widget_ChatTooltipVisibilityTT"] = "Muestra un tooltip en el cuadro de texto para previsualizar el mensaje que estás editando."
+	L["CurrentMessage"] = "Mensaje actual"
+	L["Mouseover"] = "Al pasar el ratón"
+	L["Widget_HideScreenshotText"] = "Ocultar texto de captura"
+	L["Widget_HideScreenshotTextTT"] = "Oculta el texto que indica que se ha tomado una captura."
+	L["Widget_ScreenshotFormat"] = "Formato de captura"
+	L["Widget_ScreenshotFormatTT"] = "Ajusta el formato de captura (PNG puede hacer algunos cielos transparentes)."
+	L["Widget_ScreenshotQuality"] = "Calidad de captura"
+	L["Widget_ScreenshotQualityTT"] = "Ajusta la calidad de la captura."
+	L["Widget_ScreenshotSizeMultiplier"] = "Resolución de captura"
+	L["Widget_ScreenshotSizeMultiplierTT"] = "Ajusta la resolución según un multiplicador de la ventana."
+	L["Warning_FileSize"] = "Advertencia: puede generar archivos grandes."
+	L["Widget_BlockGuildInvites"] = "Bloquear invitaciones de hermandad (cuenta)"
+	L["Widget_BlockGuildInvitesTT"] = "Configuración global para rechazar automáticamente invitaciones de hermandad en todos los personajes."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Alternar saqueo automático de la cuenta"
@@ -779,6 +826,7 @@ if LOCALE == "esES" then
 	L["Outfit"] = TRANSMOG_OUTFIT_NAME_DEFAULT
 	L["AdvancedOptions"] = ADVANCED_OPTIONS
 	L["Header_Nameplates"] = NAMEPLATES_LABEL
+	L["Header_Screenshot"] = BINDING_NAME_SCREENSHOT
 
 return end
 
@@ -829,6 +877,21 @@ if LOCALE == "deDE" then
 	L["Widget_CollapseBuffsTT"] = "Klappt die Standard-Buff-Leiste automatisch ein."
 	L["Widget_PartySync"] = "Gruppensynchronisierung automatisch akzeptieren"
 	L["Widget_PartySyncTT"] = "Akzeptiert automatisch die Bestätigung der Gruppensynchronisierung."
+	L["Widget_ChatTooltipVisibility"] = "Chatnachrichten-Vorschau"
+	L["Widget_ChatTooltipVisibilityTT"] = "Zeigt einen Tooltip im Eingabefeld an, um die aktuell bearbeitete Chatnachricht vorzusehen."
+	L["CurrentMessage"] = "Aktuelle Nachricht"
+	L["Mouseover"] = "Mouseover"
+	L["Widget_HideScreenshotText"] = "Screenshot-Text ausblenden"
+	L["Widget_HideScreenshotTextTT"] = "Blendet den Text „Screenshot aufgenommen“ aus."
+	L["Widget_ScreenshotFormat"] = "Screenshot-Format"
+	L["Widget_ScreenshotFormatTT"] = "Passt das Screenshot-Format an (PNG kann bestimmte Himmel transparent darstellen)."
+	L["Widget_ScreenshotQuality"] = "Screenshot-Qualität"
+	L["Widget_ScreenshotQualityTT"] = "Passt die Screenshot-Qualität an."
+	L["Widget_ScreenshotSizeMultiplier"] = "Screenshot-Auflösung"
+	L["Widget_ScreenshotSizeMultiplierTT"] = "Passt die Screenshot-Auflösung basierend auf einem Multiplikator des Fensters an."
+	L["Warning_FileSize"] = "Achtung: Dies kann zu einer großen Dateigröße führen."
+	L["Widget_BlockGuildInvites"] = "Gildeneinladungen blockieren (Accountweit)"
+	L["Widget_BlockGuildInvitesTT"] = "Accountweite Einstellung zum automatischen Ablehnen von Gildeneinladungen für alle Charaktere."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Account-Autoplünderung umschalten"
@@ -1033,6 +1096,7 @@ if LOCALE == "deDE" then
 	L["Outfit"] = TRANSMOG_OUTFIT_NAME_DEFAULT
 	L["AdvancedOptions"] = ADVANCED_OPTIONS
 	L["Header_Nameplates"] = NAMEPLATES_LABEL
+	L["Header_Screenshot"] = BINDING_NAME_SCREENSHOT
 
 return end
 
@@ -1084,6 +1148,21 @@ if LOCALE == "frFR" then
 	L["Widget_CollapseBuffsTT"] = "Réduit automatiquement la fenêtre des améliorations par défaut."
 	L["Widget_PartySync"] = "Accepter automatiquement la synchronisation de groupe"
 	L["Widget_PartySyncTT"] = "Accepte automatiquement la confirmation de synchronisation de groupe."
+	L["Widget_ChatTooltipVisibility"] = "Aperçu du message de chat"
+	L["Widget_ChatTooltipVisibilityTT"] = "Affiche une info-bulle dans la zone de saisie pour prévisualiser le message en cours d’édition."
+	L["CurrentMessage"] = "Message actuel"
+	L["Mouseover"] = "Survol"
+	L["Widget_HideScreenshotText"] = "Masquer le texte de capture"
+	L["Widget_HideScreenshotTextTT"] = "Masque le texte indiquant qu’une capture d’écran a été prise."
+	L["Widget_ScreenshotFormat"] = "Format de capture d’écran"
+	L["Widget_ScreenshotFormatTT"] = "Ajuste le format de capture (le PNG peut rendre certains ciels transparents)."
+	L["Widget_ScreenshotQuality"] = "Qualité de capture"
+	L["Widget_ScreenshotQualityTT"] = "Ajuste la qualité de la capture d’écran."
+	L["Widget_ScreenshotSizeMultiplier"] = "Résolution de capture"
+	L["Widget_ScreenshotSizeMultiplierTT"] = "Ajuste la résolution selon un multiplicateur de la fenêtre."
+	L["Warning_FileSize"] = "Attention : cela peut générer un fichier volumineux."
+	L["Widget_BlockGuildInvites"] = "Bloquer les invitations de guilde (compte)"
+	L["Widget_BlockGuildInvitesTT"] = "Paramètre global pour refuser automatiquement les invitations de guilde sur tous les personnages."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Basculer le butin automatique du compte"
@@ -1287,6 +1366,7 @@ if LOCALE == "frFR" then
 	L["Outfit"] = TRANSMOG_OUTFIT_NAME_DEFAULT
 	L["AdvancedOptions"] = ADVANCED_OPTIONS
 	L["Header_Nameplates"] = NAMEPLATES_LABEL
+	L["Header_Screenshot"] = BINDING_NAME_SCREENSHOT
 
 return end
 
@@ -1338,6 +1418,21 @@ if LOCALE == "itIT" then
 	L["Widget_CollapseBuffsTT"] = "Riduce automaticamente la finestra dei potenziamenti predefinita."
 	L["Widget_PartySync"] = "Accetta automaticamente Sincronizzazione gruppo"
 	L["Widget_PartySyncTT"] = "Accetta automaticamente la sincronizzazione gruppo."
+	L["Widget_ChatTooltipVisibility"] = "Anteprima messaggio chat"
+	L["Widget_ChatTooltipVisibilityTT"] = "Mostra un tooltip nella casella di testo per visualizzare in anteprima il messaggio in modifica."
+	L["CurrentMessage"] = "Messaggio attuale"
+	L["Mouseover"] = "Passaggio del mouse"
+	L["Widget_HideScreenshotText"] = "Nascondi testo screenshot"
+	L["Widget_HideScreenshotTextTT"] = "Nasconde il testo che indica che è stato fatto uno screenshot."
+	L["Widget_ScreenshotFormat"] = "Formato screenshot"
+	L["Widget_ScreenshotFormatTT"] = "Regola il formato dello screenshot (PNG può rendere trasparenti alcuni cieli)."
+	L["Widget_ScreenshotQuality"] = "Qualità screenshot"
+	L["Widget_ScreenshotQualityTT"] = "Regola la qualità dello screenshot."
+	L["Widget_ScreenshotSizeMultiplier"] = "Risoluzione screenshot"
+	L["Widget_ScreenshotSizeMultiplierTT"] = "Regola la risoluzione in base a un moltiplicatore della finestra."
+	L["Warning_FileSize"] = "Attenzione: può generare file di grandi dimensioni."
+	L["Widget_BlockGuildInvites"] = "Blocca inviti di gilda (account)"
+	L["Widget_BlockGuildInvitesTT"] = "Impostazione account per rifiutare automaticamente gli inviti di gilda su tutti i personaggi."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Attiva/disattiva raccolta automatica account"
@@ -1542,6 +1637,7 @@ if LOCALE == "itIT" then
 	L["Outfit"] = TRANSMOG_OUTFIT_NAME_DEFAULT
 	L["AdvancedOptions"] = ADVANCED_OPTIONS
 	L["Header_Nameplates"] = NAMEPLATES_LABEL
+	L["Header_Screenshot"] = BINDING_NAME_SCREENSHOT
 
 return end
 
@@ -1593,6 +1689,21 @@ if LOCALE == "ptBR" then
 	L["Widget_CollapseBuffsTT"] = "Recolhe automaticamente a janela de bônus padrão."
 	L["Widget_PartySync"] = "Aceitar Sincronização de Grupo automaticamente"
 	L["Widget_PartySyncTT"] = "Aceita automaticamente a confirmação de Sincronização de Grupo."
+	L["Widget_ChatTooltipVisibility"] = "Pré-visualização da mensagem"
+	L["Widget_ChatTooltipVisibilityTT"] = "Exibe uma dica na caixa de edição para visualizar a mensagem que está sendo digitada."
+	L["CurrentMessage"] = "Mensagem atual"
+	L["Mouseover"] = "Ao passar o mouse"
+	L["Widget_HideScreenshotText"] = "Ocultar texto de captura"
+	L["Widget_HideScreenshotTextTT"] = "Oculta o texto indicando que a captura de tela foi feita."
+	L["Widget_ScreenshotFormat"] = "Formato da captura"
+	L["Widget_ScreenshotFormatTT"] = "Ajusta o formato da captura (PNG pode deixar alguns céus transparentes)."
+	L["Widget_ScreenshotQuality"] = "Qualidade da captura"
+	L["Widget_ScreenshotQualityTT"] = "Ajusta a qualidade da captura."
+	L["Widget_ScreenshotSizeMultiplier"] = "Resolução da captura"
+	L["Widget_ScreenshotSizeMultiplierTT"] = "Ajusta a resolução com base em um multiplicador da janela."
+	L["Warning_FileSize"] = "Atenção: isso pode gerar arquivos grandes."
+	L["Widget_BlockGuildInvites"] = "Bloquear convites de guilda (conta)"
+	L["Widget_BlockGuildInvitesTT"] = "Configuração global para recusar automaticamente convites de guilda em todos os personagens."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Alternar Saque Automático da Conta"
@@ -1797,6 +1908,7 @@ if LOCALE == "ptBR" then
 	L["Outfit"] = TRANSMOG_OUTFIT_NAME_DEFAULT
 	L["AdvancedOptions"] = ADVANCED_OPTIONS
 	L["Header_Nameplates"] = NAMEPLATES_LABEL
+	L["Header_Screenshot"] = BINDING_NAME_SCREENSHOT
 
 -- Note that the EU Portuguese WoW client also
 -- uses the Brazilian Portuguese locale code.
@@ -1850,6 +1962,21 @@ if LOCALE == "ruRU" then
 	L["Widget_CollapseBuffsTT"] = "Автоматически сворачивает стандартное окно эффектов."
 	L["Widget_PartySync"] = "Автоматически принимать синхронизацию группы"
 	L["Widget_PartySyncTT"] = "Автоматически принимает подтверждение синхронизации группы."
+	L["Widget_ChatTooltipVisibility"] = "Предпросмотр сообщения чата"
+	L["Widget_ChatTooltipVisibilityTT"] = "Показывает подсказку в поле ввода для предпросмотра редактируемого сообщения."
+	L["CurrentMessage"] = "Текущее сообщение"
+	L["Mouseover"] = "При наведении"
+	L["Widget_HideScreenshotText"] = "Скрыть текст скриншота"
+	L["Widget_HideScreenshotTextTT"] = "Скрывает текст о создании скриншота."
+	L["Widget_ScreenshotFormat"] = "Формат скриншота"
+	L["Widget_ScreenshotFormatTT"] = "Изменяет формат скриншота (PNG может делать небо прозрачным)."
+	L["Widget_ScreenshotQuality"] = "Качество скриншота"
+	L["Widget_ScreenshotQualityTT"] = "Изменяет качество скриншота."
+	L["Widget_ScreenshotSizeMultiplier"] = "Разрешение скриншота"
+	L["Widget_ScreenshotSizeMultiplierTT"] = "Изменяет разрешение на основе множителя окна."
+	L["Warning_FileSize"] = "Внимание: это может увеличить размер файла."
+	L["Widget_BlockGuildInvites"] = "Блокировать приглашения в гильдию (аккаунт)"
+	L["Widget_BlockGuildInvitesTT"] = "Глобальная настройка для автоматического отклонения приглашений в гильдию на всех персонажах."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Переключить автосбор добычи для аккаунта"
@@ -2054,6 +2181,7 @@ if LOCALE == "ruRU" then
 	L["Outfit"] = TRANSMOG_OUTFIT_NAME_DEFAULT
 	L["AdvancedOptions"] = ADVANCED_OPTIONS
 	L["Header_Nameplates"] = NAMEPLATES_LABEL
+	L["Header_Screenshot"] = BINDING_NAME_SCREENSHOT
 
 return end
 
@@ -2105,6 +2233,21 @@ if LOCALE == "koKR" then
 	L["Widget_CollapseBuffsTT"] = "기본 버프 창을 자동으로 축소합니다."
 	L["Widget_PartySync"] = "파티 동기화 자동 수락"
 	L["Widget_PartySyncTT"] = "파티 동기화 확인을 자동으로 수락합니다."
+	L["Widget_ChatTooltipVisibility"] = "채팅 메시지 미리보기"
+	L["Widget_ChatTooltipVisibilityTT"] = "입력창에 툴팁을 표시하여 현재 작성 중인 메시지를 미리 봅니다."
+	L["CurrentMessage"] = "현재 메시지"
+	L["Mouseover"] = "마우스 오버"
+	L["Widget_HideScreenshotText"] = "스크린샷 텍스트 숨기기"
+	L["Widget_HideScreenshotTextTT"] = "스크린샷 촬영 메시지를 숨깁니다."
+	L["Widget_ScreenshotFormat"] = "스크린샷 형식"
+	L["Widget_ScreenshotFormatTT"] = "스크린샷 형식을 조정합니다 (PNG는 일부 하늘을 투명하게 만들 수 있음)."
+	L["Widget_ScreenshotQuality"] = "스크린샷 품질"
+	L["Widget_ScreenshotQualityTT"] = "스크린샷 품질을 조정합니다."
+	L["Widget_ScreenshotSizeMultiplier"] = "스크린샷 해상도"
+	L["Widget_ScreenshotSizeMultiplierTT"] = "창 크기 배율에 따라 해상도를 조정합니다."
+	L["Warning_FileSize"] = "주의: 파일 크기가 커질 수 있습니다."
+	L["Widget_BlockGuildInvites"] = "길드 초대 차단 (계정)"
+	L["Widget_BlockGuildInvitesTT"] = "모든 캐릭터에서 길드 초대를 자동 거절하는 계정 설정입니다."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "계정 자동 전리품 전환"
@@ -2309,6 +2452,7 @@ if LOCALE == "koKR" then
 	L["Outfit"] = TRANSMOG_OUTFIT_NAME_DEFAULT
 	L["AdvancedOptions"] = ADVANCED_OPTIONS
 	L["Header_Nameplates"] = NAMEPLATES_LABEL
+	L["Header_Screenshot"] = BINDING_NAME_SCREENSHOT
 
 return end
 
@@ -2360,6 +2504,21 @@ if LOCALE == "zhCN" then
 	L["Widget_CollapseBuffsTT"] = "自动折叠默认的增益框体。"
 	L["Widget_PartySync"] = "自动接受队伍同步"
 	L["Widget_PartySyncTT"] = "在出现队伍同步确认时自动接受。"
+	L["Widget_ChatTooltipVisibility"] = "聊天消息预览"
+	L["Widget_ChatTooltipVisibilityTT"] = "在输入框显示提示，以预览当前正在编辑的聊天消息。"
+	L["CurrentMessage"] = "当前消息"
+	L["Mouseover"] = "鼠标悬停"
+	L["Widget_HideScreenshotText"] = "隐藏截图文本"
+	L["Widget_HideScreenshotTextTT"] = "隐藏“已截取屏幕截图”的提示文本。"
+	L["Widget_ScreenshotFormat"] = "截图格式"
+	L["Widget_ScreenshotFormatTT"] = "调整截图格式（PNG可能会使部分天空透明）。"
+	L["Widget_ScreenshotQuality"] = "截图质量"
+	L["Widget_ScreenshotQualityTT"] = "调整截图质量。"
+	L["Widget_ScreenshotSizeMultiplier"] = "截图分辨率"
+	L["Widget_ScreenshotSizeMultiplierTT"] = "根据窗口倍率调整截图分辨率。"
+	L["Warning_FileSize"] = "注意：可能会导致文件较大。"
+	L["Widget_BlockGuildInvites"] = "屏蔽公会邀请（账号）"
+	L["Widget_BlockGuildInvitesTT"] = "账号范围设置，自动拒绝所有角色的公会邀请。"
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "账号自动拾取切换"
@@ -2564,6 +2723,7 @@ if LOCALE == "zhCN" then
 	L["Outfit"] = TRANSMOG_OUTFIT_NAME_DEFAULT
 	L["AdvancedOptions"] = ADVANCED_OPTIONS
 	L["Header_Nameplates"] = NAMEPLATES_LABEL
+	L["Header_Screenshot"] = BINDING_NAME_SCREENSHOT
 
 return end
 
@@ -2613,6 +2773,21 @@ if LOCALE == "zhTW" then
 	L["Widget_CollapseBuffsTT"] = "自動收合預設的增益框架。"
 	L["Widget_PartySync"] = "自動接受隊伍同步"
 	L["Widget_PartySyncTT"] = "在出現隊伍同步確認時自動接受。"
+	L["Widget_ChatTooltipVisibility"] = "聊天訊息預覽"
+	L["Widget_ChatTooltipVisibilityTT"] = "在輸入框顯示提示，以預覽目前正在編輯的聊天訊息。"
+	L["CurrentMessage"] = "目前訊息"
+	L["Mouseover"] = "滑鼠懸停"
+	L["Widget_HideScreenshotText"] = "隱藏截圖文字"
+	L["Widget_HideScreenshotTextTT"] = "隱藏「已擷取螢幕截圖」的提示文字。"
+	L["Widget_ScreenshotFormat"] = "截圖格式"
+	L["Widget_ScreenshotFormatTT"] = "調整截圖格式（PNG可能會使部分天空透明）。"
+	L["Widget_ScreenshotQuality"] = "截圖品質"
+	L["Widget_ScreenshotQualityTT"] = "調整截圖品質。"
+	L["Widget_ScreenshotSizeMultiplier"] = "截圖解析度"
+	L["Widget_ScreenshotSizeMultiplierTT"] = "根據視窗倍率調整解析度。"
+	L["Warning_FileSize"] = "注意：可能會導致檔案較大。"
+	L["Widget_BlockGuildInvites"] = "封鎖公會邀請（帳號）"
+	L["Widget_BlockGuildInvitesTT"] = "帳號設定，自動拒絕所有角色的公會邀請。"
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "帳號自動拾取切換"
@@ -2817,5 +2992,6 @@ if LOCALE == "zhTW" then
 	L["Outfit"] = TRANSMOG_OUTFIT_NAME_DEFAULT
 	L["AdvancedOptions"] = ADVANCED_OPTIONS
 	L["Header_Nameplates"] = NAMEPLATES_LABEL
+	L["Header_Screenshot"] = BINDING_NAME_SCREENSHOT
 
 return end

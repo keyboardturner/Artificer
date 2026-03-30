@@ -742,6 +742,26 @@ function Artificer:BuildSettingsData()
 		end
 	});
 
+	-- Widgets - ChatWrapper
+
+	table.insert(allSettingsData, {
+		type = "dropdown",
+		isWidget = true,
+		key = "ChatTooltipVisibility",
+		isNew = true,
+		label = L["Widget_ChatTooltipVisibility"],
+		tooltip = L["Widget_ChatTooltipVisibilityTT"],
+		options = {
+			{ text = L["Widget_LHV_None"], value = 1 },
+			{ text = L["Mouseover"], value = 2 },
+			{ text = L["Widget_LHV_Always"], value = 3 },
+		},
+		searchText = GetSearchText(L["Widget_ChatTooltipVisibility"], L["Widget_ChatTooltipVisibilityTT"]),
+		callback = function(val)
+			-- print(val)
+		end
+	});
+
 	--Header - Nameplates
 	table.insert(allSettingsData, {
 		type = "header",
@@ -765,6 +785,86 @@ function Artificer:BuildSettingsData()
 		hasAdvancedSettings = true,
 		onAdvancedClick = function()
 			Artificer:OpenNameplateAdvancedSettings();
+		end
+	});
+
+	--Header - Screenshot
+	table.insert(allSettingsData, {
+		type = "header",
+		label = L["Header_Screenshot"],
+	});
+
+	-- Widgets - Screenshot
+	table.insert(allSettingsData, {
+		type = "checkbox",
+		isWidget = true,
+		key = "HideScreenshotText",
+		isNew = true,
+		label = L["Widget_HideScreenshotText"],
+		tooltip = L["Widget_HideScreenshotTextTT"],
+		searchText = GetSearchText(L["Widget_HideScreenshotText"], L["Widget_HideScreenshotTextTT"]),
+		callback = function(val)
+			if Artificer.Widgets.ApplyHideScreenshotText then
+				Artificer.Widgets.ApplyHideScreenshotText();
+			end
+		end
+	});
+
+	-- Widgets - ScreenshotFormat
+	table.insert(allSettingsData, {
+		type = "dropdown",
+		key = "ScreenshotFormat",
+		isNew = true,
+		label = L["Widget_ScreenshotFormat"],
+		tooltip = L["Widget_ScreenshotFormatTT"].."\n\n".."|cnERROR_COLOR:"..L["Warning_FileSize"].."|r",
+		defaultValue = C_CVar.GetCVar("screenshotFormat") or "jpeg",
+		options = {
+			{ text = "JPEG", value = "jpeg" },
+			{ text = "TGA", value = "tga" },
+			{ text = "PNG", value = "png" },
+		},
+		searchText = GetSearchText(L["Widget_ScreenshotFormat"], L["Widget_ScreenshotFormatTT"].."\n\n".."|cnERROR_COLOR:"..L["Warning_FileSize"].."|r"),
+		callback = function(val)
+			C_CVar.SetCVar("screenshotFormat", val);
+		end
+	});
+
+	-- Widgets - ScreenshotQuality
+	table.insert(allSettingsData, {
+		type = "slider",
+		key = "ScreenshotQuality",
+		isNew = true,
+		label = L["Widget_ScreenshotQuality"],
+		tooltip = L["Widget_ScreenshotQualityTT"].."\n\n".."|cnERROR_COLOR:"..L["Warning_FileSize"].."|r",
+		min = 1,
+		max = 10,
+		step = 1,
+		defaultValue = tonumber(C_CVar.GetCVar("screenshotQuality")) or 3,
+		formatter = function(value) return tostring(math.floor(value)) end,
+		searchText = GetSearchText(L["Widget_ScreenshotQuality"], L["Widget_ScreenshotQualityTT"].."\n\n".."|cnERROR_COLOR:"..L["Warning_FileSize"].."|r"),
+		callback = function(val)
+			C_CVar.SetCVar("screenshotQuality", val);
+		end
+	});
+
+	-- Widgets - ScreenshotSizeMultiplier
+		table.insert(allSettingsData, {
+		type = "dropdown",
+		key = "ScreenshotSizeMultiplier",
+		isNew = true,
+		label = L["Widget_ScreenshotSizeMultiplier"],
+		tooltip = L["Widget_ScreenshotSizeMultiplierTT"].."\n\n".."|cnERROR_COLOR:"..L["Warning_FileSize"].."|r",
+		defaultValue = 1,
+		options = {
+			{ text = "x0.5", value = 0.5 },
+			{ text = "x1", value = 1 },
+			{ text = "x2", value = 2 },
+		},
+		searchText = GetSearchText(L["Widget_ScreenshotSizeMultiplier"], L["Widget_ScreenshotSizeMultiplierTT"]),
+		callback = function(val)
+			if Artificer.Widgets.ApplyScreenshotSizeMultiplier then
+				Artificer.Widgets.ApplyScreenshotSizeMultiplier(val)
+			end
 		end
 	});
 
@@ -998,6 +1098,27 @@ function Artificer:BuildSettingsData()
 		callback = function(val)
 			if Artificer.Widgets.ApplyAutoLoot then
 				Artificer.Widgets.ApplyAutoLoot();
+			end
+		end
+	});
+
+	-- Widgets - BlockGuildInvites
+	table.insert(allSettingsData, {
+		type = "dropdown",
+		isWidget = true,
+		key = "BlockGuildInvites",
+		isNew = true,
+		label = L["Widget_BlockGuildInvites"],
+		tooltip = L["Widget_BlockGuildInvitesTT"],
+		options = {
+			{ text = L["None"], value = 1 },
+			{ text = L["Account_On"], value = 2 },
+			{ text = L["Account_Off"], value = 3 },
+		},
+		searchText = GetSearchText(L["Widget_BlockGuildInvites"], L["Widget_BlockGuildInvitesTT"]),
+		callback = function(val)
+			if Artificer.Widgets.ApplyBlockGuildInvites then
+				Artificer.Widgets.ApplyBlockGuildInvites();
 			end
 		end
 	});

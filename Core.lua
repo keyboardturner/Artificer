@@ -22,6 +22,7 @@ local Defaults = {
 		OutfitIcon = true,
 		ServerNotifications = true,
 		AutoLoot = 1, -- changed from true
+		BlockGuildInvites = 1,
 		PetBattleMapFilter = 1, -- changed from false
 		CooldownManagerEnabled = 1, -- changed from false
 		PartySync = true,
@@ -38,6 +39,8 @@ local Defaults = {
 		OutfitLinkOnClose = true,
 		DamageMeter = 1,
 		DamageWipe = 1,
+		HideScreenshotText = false,
+		ChatTooltipVisibility = 2,
 	},
 
 	NameplateTargetPos = {
@@ -161,6 +164,8 @@ local function StoreCVar(cvarName)
 		Artificer_DB.StoredCVars[cvarName] = currentVal;
 	end
 end
+
+Artificer.StoreCVar = StoreCVar;
 
 local function RestoreCVars()
 	if not Artificer_DB or not Artificer_DB.StoredCVars then return end
