@@ -515,12 +515,12 @@ local function OnProfessionSkillUp(_, eventMessage)
 	-- German differs in its global string:		Eure Fertigkeit '%1$s' hat sich auf %2$d erhöht.
 	-- so need to account for this weirdness
 	local pattern = ERR_SKILL_UP_SI:gsub("([%^%(%)%.%[%]%*%+%-%?])", "%%%1"):gsub("%%[%d%$]*[sd]", function(match)
-			if match:sub(-1) == "s" then
-				return "(.+)";
-			else
-				return "(%d+)";
-			end
-		end)
+		if match:sub(-1) == "s" then
+			return "(.+)";
+		else
+			return "(%d+)";
+		end
+	end)
 
 	local v1, v2 = string.match(eventMessage, pattern)
 	if not v1 or not v2 then
