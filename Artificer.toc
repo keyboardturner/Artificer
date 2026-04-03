@@ -88,5 +88,7 @@ Widgets/DamageMeter.lua
 Widgets/Screenshot.lua
 Widgets/BlockGuildInvites.lua
 Widgets/ChatWrapper.lua
+Widgets/DeleteConfirm.lua
+Widgets/ObjectiveTrackerManager.lua
 
 SettingsUI.lua

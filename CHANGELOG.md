@@ -1,5 +1,13 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.1.6
+
+Added options to auto collapse the Objective Tracker under certain conditions, such as delves, raid, and rested area.
+
+Added option to display a "Delete Good Item" delete button - clicking once fills editbox with "DELETE", clicking a second time deletes the item.
+
+Yeet all secret values when trying to display profession toasts. Stop trying to level professions during dungeon/raid combat, you fiends
+
 # 0.1.5
 
 Added an option to block guild invites account-wide

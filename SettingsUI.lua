@@ -868,6 +868,40 @@ function Artificer:BuildSettingsData()
 		end
 	});
 
+	-- Header - Objective Tracker
+	table.insert(allSettingsData, {
+		type = "header",
+		label = L["Header_ObjectiveTracker"],
+	});
+
+	-- Widgets - AutoCollapseTracker
+	table.insert(allSettingsData, {
+		type = "multicheckbox",
+		isWidget = true,
+		key = "AutoCollapseTracker",
+		isNew = true,
+		label = L["Widget_AutoCollapseTracker"],
+		tooltip = L["Widget_AutoCollapseTrackerTT"],
+		options = {
+			{ key = "rested", text = L["Widget_ACT_RestedArea"], default = false },
+			{ key = "combat", text = L["Widget_ACT_Combat"], default = false },
+			{ key = "petbattle", text = L["Widget_ACT_PetBattles"], default = false },
+			{ key = "bg", text = L["Widget_ACT_Battlegrounds"], default = false },
+			{ key = "arena", text = L["Widget_ACT_Arena"], default = false },
+			{ key = "party", text = L["Widget_ACT_Dungeon"], default = false },
+			{ key = "mythicplus", text = L["Widget_ACT_MPlus"], default = false },
+			{ key = "raid", text = L["Widget_ACT_Raids"], default = false },
+			{ key = "scenario", text = L["Widget_ACT_ScenariosDelves"], default = false },
+			{ key = "housing", text = L["Widget_ACT_Housing"], default = false },
+		},
+		searchText = GetSearchText(L["Widget_AutoCollapseTracker"], string.join(" ", L["Widget_ACT_RestedArea"], L["Widget_ACT_Combat"], L["Widget_ACT_PetBattles"], L["Widget_ACT_Battlegrounds"], L["Widget_ACT_Arena"], L["Widget_ACT_Dungeon"], L["Widget_ACT_MPlus"], L["Widget_ACT_Raids"], L["Widget_ACT_ScenariosDelves"], L["Widget_ACT_Housing"])),
+		callback = function(values)
+			if Artificer.Widgets.UpdateTrackerState then
+				Artificer.Widgets.UpdateTrackerState();
+			end
+		end
+	});
+
 	-- Header - Misc.
 	table.insert(allSettingsData, {
 		type = "header",
@@ -1023,6 +1057,20 @@ function Artificer:BuildSettingsData()
 			if Artificer.Widgets.ApplyLootHistoryVisibility then
 				Artificer.Widgets.ApplyLootHistoryVisibility();
 			end
+		end
+	});
+
+	-- Widgets - DeleteConfirm
+	table.insert(allSettingsData, {
+		type = "checkbox",
+		isWidget = true,
+		key = "DeleteConfirm",
+		isNew = true,
+		label = L["Widget_DeleteConfirm"],
+		tooltip = L["Widget_DeleteConfirmTT"],
+		searchText = GetSearchText(L["Widget_DeleteConfirm"], L["Widget_DeleteConfirmTT"]),
+		callback = function(val)
+			-- ...
 		end
 	});
 

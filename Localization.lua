@@ -197,6 +197,26 @@ if LOCALE == "enUS" then
 	L["Widget_DamageWipe"] = AUTO_RESET_DAMAGE_METER
 	L["Widget_DamageWipeTT"] = "Enforces account-wide settings for the resetting the damage meter on every character"
 
+	--Widgets - Account-wide settings
+	L["Header_ObjectiveTracker"] = HUD_EDIT_MODE_OBJECTIVE_TRACKER_LABEL
+	L["Widget_AutoCollapseTracker"] = "Auto Collapse Objective Tracker"
+	L["Widget_AutoCollapseTrackerTT"] = "Automatically minimizes the Objective Tracker under certain conditions."
+	L["Widget_ACT_RestedArea"] = "Rested Area"
+	L["Widget_ACT_Combat"] = COMBAT
+	L["Widget_ACT_PetBattles"] = SHOW_PET_BATTLES_ON_MAP_TEXT
+	L["Widget_ACT_Battlegrounds"] = BATTLEFIELDS
+	L["Widget_ACT_Arena"] = ARENA
+	L["Widget_ACT_Dungeon"] = LFG_TYPE_DUNGEON
+	L["Widget_ACT_MPlus"] = PLAYER_DIFFICULTY_MYTHIC_PLUS
+	L["Widget_ACT_Raids"] = RAID
+	L["Widget_ACT_ScenariosDelves"] = SCENARIOS_PVEFRAME .. "/" .. DELVES_LABEL
+	L["Widget_ACT_Housing"] = BINDING_HEADER_HOUSING_SYSTEM
+
+	--Widgets - Delete Confirm
+	L["Widget_DeleteConfirm"] = "Delete Item Text Filler"
+	L["Widget_DeleteConfirmTT"] = string.format("Button to fill the '%s' text, with subsequent function to delete the item on the second press.", DELETE_ITEM_CONFIRM_STRING)
+	L["Widget_DeleteConfirm_ButtonTT"] = string.format("Click 1: Fill '%s' text.\n\nClick 2: Delete Item.", DELETE_ITEM_CONFIRM_STRING)
+
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "Profession Toasts"
 	L["Widget_ProfessionToastsTT"] = "Displays a fade-in notification upon levelling a profession skill."
@@ -470,6 +490,26 @@ if LOCALE == "esMX" then
 	L["Widget_DamageWipe"] = AUTO_RESET_DAMAGE_METER
 	L["Widget_DamageWipeTT"] = "Aplica configuraciones a nivel de cuenta para reiniciar el medidor de daño en cada personaje."
 
+	--Widgets - Account-wide settings
+	L["Header_ObjectiveTracker"] = HUD_EDIT_MODE_OBJECTIVE_TRACKER_LABEL
+	L["Widget_AutoCollapseTracker"] = "Contraer automáticamente el rastreador de objetivos"
+	L["Widget_AutoCollapseTrackerTT"] = "Minimiza automáticamente el rastreador de objetivos bajo ciertas condiciones."
+	L["Widget_ACT_RestedArea"] = "Área de descanso"
+	L["Widget_ACT_Combat"] = COMBAT
+	L["Widget_ACT_PetBattles"] = SHOW_PET_BATTLES_ON_MAP_TEXT
+	L["Widget_ACT_Battlegrounds"] = BATTLEFIELDS
+	L["Widget_ACT_Arena"] = ARENA
+	L["Widget_ACT_Dungeon"] = LFG_TYPE_DUNGEON
+	L["Widget_ACT_MPlus"] = PLAYER_DIFFICULTY_MYTHIC_PLUS
+	L["Widget_ACT_Raids"] = RAID
+	L["Widget_ACT_ScenariosDelves"] = SCENARIOS_PVEFRAME .. "/" .. DELVES_LABEL
+	L["Widget_ACT_Housing"] = BINDING_HEADER_HOUSING_SYSTEM
+
+	--Widgets - Delete Confirm
+	L["Widget_DeleteConfirm"] = "Rellenar texto de eliminación de objeto"
+	L["Widget_DeleteConfirmTT"] = string.format("Botón para rellenar el texto '%s', con una función posterior para eliminar el objeto en la segunda pulsación.", DELETE_ITEM_CONFIRM_STRING)
+	L["Widget_DeleteConfirm_ButtonTT"] = string.format("Clic 1: Rellenar el texto '%s'.\n\nClic 2: Eliminar objeto.", DELETE_ITEM_CONFIRM_STRING)
+
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "Avisos de profesión"
 	L["Widget_ProfessionToastsTT"] = "Muestra una notificación con aparición gradual al subir el nivel de una habilidad de profesión."
@@ -742,6 +782,26 @@ if LOCALE == "esES" then
 	L["Widget_DamageWipe"] = AUTO_RESET_DAMAGE_METER
 	L["Widget_DamageWipeTT"] = "Aplica configuraciones a nivel de cuenta para reiniciar el medidor de daño en cada personaje."
 
+	--Widgets - Account-wide settings
+	L["Header_ObjectiveTracker"] = HUD_EDIT_MODE_OBJECTIVE_TRACKER_LABEL
+	L["Widget_AutoCollapseTracker"] = "Contraer automáticamente el rastreador de objetivos"
+	L["Widget_AutoCollapseTrackerTT"] = "Minimiza automáticamente el rastreador de objetivos bajo ciertas condiciones."
+	L["Widget_ACT_RestedArea"] = "Área de descanso"
+	L["Widget_ACT_Combat"] = COMBAT
+	L["Widget_ACT_PetBattles"] = SHOW_PET_BATTLES_ON_MAP_TEXT
+	L["Widget_ACT_Battlegrounds"] = BATTLEFIELDS
+	L["Widget_ACT_Arena"] = ARENA
+	L["Widget_ACT_Dungeon"] = LFG_TYPE_DUNGEON
+	L["Widget_ACT_MPlus"] = PLAYER_DIFFICULTY_MYTHIC_PLUS
+	L["Widget_ACT_Raids"] = RAID
+	L["Widget_ACT_ScenariosDelves"] = SCENARIOS_PVEFRAME .. "/" .. DELVES_LABEL
+	L["Widget_ACT_Housing"] = BINDING_HEADER_HOUSING_SYSTEM
+
+	--Widgets - Delete Confirm
+	L["Widget_DeleteConfirm"] = "Rellenar texto de eliminación de objeto"
+	L["Widget_DeleteConfirmTT"] = string.format("Botón para rellenar el texto '%s', con una función posterior para eliminar el objeto en la segunda pulsación.", DELETE_ITEM_CONFIRM_STRING)
+	L["Widget_DeleteConfirm_ButtonTT"] = string.format("Clic 1: Rellenar el texto '%s'.\n\nClic 2: Eliminar objeto.", DELETE_ITEM_CONFIRM_STRING)
+
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "Avisos de profesión"
 	L["Widget_ProfessionToastsTT"] = "Muestra una notificación con aparición gradual al subir el nivel de una habilidad de profesión."
@@ -1012,6 +1072,26 @@ if LOCALE == "deDE" then
 	L["Widget_DamageWipe"] = AUTO_RESET_DAMAGE_METER
 	L["Widget_DamageWipeTT"] = "Erzwingt kontoweite Einstellungen zum Zurücksetzen des Schadensmeters auf jedem Charakter."
 
+	--Widgets - Account-wide settings
+	L["Header_ObjectiveTracker"] = HUD_EDIT_MODE_OBJECTIVE_TRACKER_LABEL
+	L["Widget_AutoCollapseTracker"] = "Zielverfolgung automatisch einklappen"
+	L["Widget_AutoCollapseTrackerTT"] = "Minimiert die Zielverfolgung unter bestimmten Bedingungen automatisch."
+	L["Widget_ACT_RestedArea"] = "Erholungsgebiet"
+	L["Widget_ACT_Combat"] = COMBAT
+	L["Widget_ACT_PetBattles"] = SHOW_PET_BATTLES_ON_MAP_TEXT
+	L["Widget_ACT_Battlegrounds"] = BATTLEFIELDS
+	L["Widget_ACT_Arena"] = ARENA
+	L["Widget_ACT_Dungeon"] = LFG_TYPE_DUNGEON
+	L["Widget_ACT_MPlus"] = PLAYER_DIFFICULTY_MYTHIC_PLUS
+	L["Widget_ACT_Raids"] = RAID
+	L["Widget_ACT_ScenariosDelves"] = SCENARIOS_PVEFRAME .. "/" .. DELVES_LABEL
+	L["Widget_ACT_Housing"] = BINDING_HEADER_HOUSING_SYSTEM
+
+	--Widgets - Delete Confirm
+	L["Widget_DeleteConfirm"] = "Text zum Löschen von Gegenständen ausfüllen"
+	L["Widget_DeleteConfirmTT"] = string.format("Schaltfläche zum Ausfüllen des Textes '%s', mit anschließender Funktion zum Löschen des Gegenstands beim zweiten Klick.", DELETE_ITEM_CONFIRM_STRING)
+	L["Widget_DeleteConfirm_ButtonTT"] = string.format("Klick 1: Text '%s' ausfüllen.\n\nKlick 2: Gegenstand löschen.", DELETE_ITEM_CONFIRM_STRING)
+
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "Berufsmeldungen"
 	L["Widget_ProfessionToastsTT"] = "Zeigt eine Einblendbenachrichtigung an, wenn eine Berufsfertigkeit erhöht wird."
@@ -1281,6 +1361,26 @@ if LOCALE == "frFR" then
 	L["Widget_DamageMeterTT"] = "Applique les paramètres à l’échelle du compte pour la visibilité du compteur de dégâts sur chaque personnage."
 	L["Widget_DamageWipe"] = AUTO_RESET_DAMAGE_METER
 	L["Widget_DamageWipeTT"] = "Applique les paramètres à l’échelle du compte pour la réinitialisation du compteur de dégâts sur chaque personnage."
+
+	--Widgets - Account-wide settings
+	L["Header_ObjectiveTracker"] = HUD_EDIT_MODE_OBJECTIVE_TRACKER_LABEL
+	L["Widget_AutoCollapseTracker"] = "Réduire automatiquement le suivi des objectifs"
+	L["Widget_AutoCollapseTrackerTT"] = "Réduit automatiquement le suivi des objectifs dans certaines conditions."
+	L["Widget_ACT_RestedArea"] = "Zone de repos"
+	L["Widget_ACT_Combat"] = COMBAT
+	L["Widget_ACT_PetBattles"] = SHOW_PET_BATTLES_ON_MAP_TEXT
+	L["Widget_ACT_Battlegrounds"] = BATTLEFIELDS
+	L["Widget_ACT_Arena"] = ARENA
+	L["Widget_ACT_Dungeon"] = LFG_TYPE_DUNGEON
+	L["Widget_ACT_MPlus"] = PLAYER_DIFFICULTY_MYTHIC_PLUS
+	L["Widget_ACT_Raids"] = RAID
+	L["Widget_ACT_ScenariosDelves"] = SCENARIOS_PVEFRAME .. "/" .. DELVES_LABEL
+	L["Widget_ACT_Housing"] = BINDING_HEADER_HOUSING_SYSTEM
+
+	--Widgets - Delete Confirm
+	L["Widget_DeleteConfirm"] = "Remplir le texte de suppression d'objet"
+	L["Widget_DeleteConfirmTT"] = string.format("Bouton pour remplir le texte '%s', avec une fonction permettant de supprimer l'objet lors du deuxième clic.", DELETE_ITEM_CONFIRM_STRING)
+	L["Widget_DeleteConfirm_ButtonTT"] = string.format("Clic 1 : Remplir le texte '%s'.\n\nClic 2 : Supprimer l'objet.", DELETE_ITEM_CONFIRM_STRING)
 
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "Notifications de profession"
@@ -1553,6 +1653,26 @@ if LOCALE == "itIT" then
 	L["Widget_DamageWipe"] = AUTO_RESET_DAMAGE_METER
 	L["Widget_DamageWipeTT"] = "Applica le impostazioni a livello di account per il ripristino del misuratore dei danni su ogni personaggio."
 
+	--Widgets - Account-wide settings
+	L["Header_ObjectiveTracker"] = HUD_EDIT_MODE_OBJECTIVE_TRACKER_LABEL
+	L["Widget_AutoCollapseTracker"] = "Comprimi automaticamente il tracciatore obiettivi"
+	L["Widget_AutoCollapseTrackerTT"] = "Riduce automaticamente il tracciatore obiettivi in determinate condizioni."
+	L["Widget_ACT_RestedArea"] = "Area di riposo"
+	L["Widget_ACT_Combat"] = COMBAT
+	L["Widget_ACT_PetBattles"] = SHOW_PET_BATTLES_ON_MAP_TEXT
+	L["Widget_ACT_Battlegrounds"] = BATTLEFIELDS
+	L["Widget_ACT_Arena"] = ARENA
+	L["Widget_ACT_Dungeon"] = LFG_TYPE_DUNGEON
+	L["Widget_ACT_MPlus"] = PLAYER_DIFFICULTY_MYTHIC_PLUS
+	L["Widget_ACT_Raids"] = RAID
+	L["Widget_ACT_ScenariosDelves"] = SCENARIOS_PVEFRAME .. "/" .. DELVES_LABEL
+	L["Widget_ACT_Housing"] = BINDING_HEADER_HOUSING_SYSTEM
+
+	--Widgets - Delete Confirm
+	L["Widget_DeleteConfirm"] = "Compila il testo di eliminazione oggetto"
+	L["Widget_DeleteConfirmTT"] = string.format("Pulsante per compilare il testo '%s', con una funzione successiva per eliminare l'oggetto al secondo clic.", DELETE_ITEM_CONFIRM_STRING)
+	L["Widget_DeleteConfirm_ButtonTT"] = string.format("Clic 1: Compila il testo '%s'.\n\nClic 2: Elimina oggetto.", DELETE_ITEM_CONFIRM_STRING)
+
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "Notifiche professioni"
 	L["Widget_ProfessionToastsTT"] = "Mostra una notifica in dissolvenza quando una abilità di professione aumenta di livello."
@@ -1823,6 +1943,26 @@ if LOCALE == "ptBR" then
 	L["Widget_DamageMeterTT"] = "Aplica configurações de conta para a visibilidade do medidor de dano em todos os personagens."
 	L["Widget_DamageWipe"] = AUTO_RESET_DAMAGE_METER
 	L["Widget_DamageWipeTT"] = "Aplica configurações de conta para redefinir o medidor de dano em todos os personagens."
+
+	--Widgets - Account-wide settings
+	L["Header_ObjectiveTracker"] = HUD_EDIT_MODE_OBJECTIVE_TRACKER_LABEL
+	L["Widget_AutoCollapseTracker"] = "Recolher automaticamente o rastreador de objetivos"
+	L["Widget_AutoCollapseTrackerTT"] = "Minimiza automaticamente o rastreador de objetivos sob certas condições."
+	L["Widget_ACT_RestedArea"] = "Área de descanso"
+	L["Widget_ACT_Combat"] = COMBAT
+	L["Widget_ACT_PetBattles"] = SHOW_PET_BATTLES_ON_MAP_TEXT
+	L["Widget_ACT_Battlegrounds"] = BATTLEFIELDS
+	L["Widget_ACT_Arena"] = ARENA
+	L["Widget_ACT_Dungeon"] = LFG_TYPE_DUNGEON
+	L["Widget_ACT_MPlus"] = PLAYER_DIFFICULTY_MYTHIC_PLUS
+	L["Widget_ACT_Raids"] = RAID
+	L["Widget_ACT_ScenariosDelves"] = SCENARIOS_PVEFRAME .. "/" .. DELVES_LABEL
+	L["Widget_ACT_Housing"] = BINDING_HEADER_HOUSING_SYSTEM
+
+	--Widgets - Delete Confirm
+	L["Widget_DeleteConfirm"] = "Preencher texto de exclusão de item"
+	L["Widget_DeleteConfirmTT"] = string.format("Botão para preencher o texto '%s', com função subsequente para excluir o item no segundo clique.", DELETE_ITEM_CONFIRM_STRING)
+	L["Widget_DeleteConfirm_ButtonTT"] = string.format("Clique 1: Preencher o texto '%s'.\n\nClique 2: Excluir item.", DELETE_ITEM_CONFIRM_STRING)
 
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "Notificações de profissão"
@@ -2097,6 +2237,26 @@ if LOCALE == "ruRU" then
 	L["Widget_DamageWipe"] = AUTO_RESET_DAMAGE_METER
 	L["Widget_DamageWipeTT"] = "Применяет общие для аккаунта настройки сброса счётчика урона для каждого персонажа."
 
+	--Widgets - Account-wide settings
+	L["Header_ObjectiveTracker"] = HUD_EDIT_MODE_OBJECTIVE_TRACKER_LABEL
+	L["Widget_AutoCollapseTracker"] = "Автоматически сворачивать отслеживание задач"
+	L["Widget_AutoCollapseTrackerTT"] = "Автоматически сворачивает отслеживание задач при определённых условиях."
+	L["Widget_ACT_RestedArea"] = "Зона отдыха"
+	L["Widget_ACT_Combat"] = COMBAT
+	L["Widget_ACT_PetBattles"] = SHOW_PET_BATTLES_ON_MAP_TEXT
+	L["Widget_ACT_Battlegrounds"] = BATTLEFIELDS
+	L["Widget_ACT_Arena"] = ARENA
+	L["Widget_ACT_Dungeon"] = LFG_TYPE_DUNGEON
+	L["Widget_ACT_MPlus"] = PLAYER_DIFFICULTY_MYTHIC_PLUS
+	L["Widget_ACT_Raids"] = RAID
+	L["Widget_ACT_ScenariosDelves"] = SCENARIOS_PVEFRAME .. "/" .. DELVES_LABEL
+	L["Widget_ACT_Housing"] = BINDING_HEADER_HOUSING_SYSTEM
+
+	--Widgets - Delete Confirm
+	L["Widget_DeleteConfirm"] = "Заполнить текст удаления предмета"
+	L["Widget_DeleteConfirmTT"] = string.format("Кнопка для заполнения текста '%s' с последующей функцией удаления предмета при втором нажатии.", DELETE_ITEM_CONFIRM_STRING)
+	L["Widget_DeleteConfirm_ButtonTT"] = string.format("Нажатие 1: Заполнить текст '%s'.\n\nНажатие 2: Удалить предмет.", DELETE_ITEM_CONFIRM_STRING)
+
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "Уведомления профессий"
 	L["Widget_ProfessionToastsTT"] = "Показывает плавно появляющееся уведомление при повышении уровня навыка профессии."
@@ -2367,6 +2527,26 @@ if LOCALE == "koKR" then
 	L["Widget_DamageMeterTT"] = "모든 캐릭터에 대해 피해 미터 표시 여부를 계정 전체 설정으로 적용합니다."
 	L["Widget_DamageWipe"] = AUTO_RESET_DAMAGE_METER
 	L["Widget_DamageWipeTT"] = "모든 캐릭터에 대해 피해 미터 초기화 설정을 계정 전체 설정으로 적용합니다."
+
+	--Widgets - Account-wide settings
+	L["Header_ObjectiveTracker"] = HUD_EDIT_MODE_OBJECTIVE_TRACKER_LABEL
+	L["Widget_AutoCollapseTracker"] = "목표 추적 자동 축소"
+	L["Widget_AutoCollapseTrackerTT"] = "특정 조건에서 목표 추적을 자동으로 최소화합니다."
+	L["Widget_ACT_RestedArea"] = "휴식 지역"
+	L["Widget_ACT_Combat"] = COMBAT
+	L["Widget_ACT_PetBattles"] = SHOW_PET_BATTLES_ON_MAP_TEXT
+	L["Widget_ACT_Battlegrounds"] = BATTLEFIELDS
+	L["Widget_ACT_Arena"] = ARENA
+	L["Widget_ACT_Dungeon"] = LFG_TYPE_DUNGEON
+	L["Widget_ACT_MPlus"] = PLAYER_DIFFICULTY_MYTHIC_PLUS
+	L["Widget_ACT_Raids"] = RAID
+	L["Widget_ACT_ScenariosDelves"] = SCENARIOS_PVEFRAME .. "/" .. DELVES_LABEL
+	L["Widget_ACT_Housing"] = BINDING_HEADER_HOUSING_SYSTEM
+
+	--Widgets - Delete Confirm
+	L["Widget_DeleteConfirm"] = "아이템 삭제 텍스트 채우기"
+	L["Widget_DeleteConfirmTT"] = string.format("'%s' 텍스트를 채우는 버튼이며, 두 번째 클릭 시 아이템을 삭제합니다.", DELETE_ITEM_CONFIRM_STRING)
+	L["Widget_DeleteConfirm_ButtonTT"] = string.format("클릭 1: '%s' 텍스트 채우기.\n\n클릭 2: 아이템 삭제.", DELETE_ITEM_CONFIRM_STRING)
 
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "전문 기술 알림"
@@ -2639,6 +2819,26 @@ if LOCALE == "zhCN" then
 	L["Widget_DamageWipe"] = AUTO_RESET_DAMAGE_METER
 	L["Widget_DamageWipeTT"] = "为每个角色强制应用账户范围的伤害统计重置设置。"
 
+	--Widgets - Account-wide settings
+	L["Header_ObjectiveTracker"] = HUD_EDIT_MODE_OBJECTIVE_TRACKER_LABEL
+	L["Widget_AutoCollapseTracker"] = "自动折叠目标追踪"
+	L["Widget_AutoCollapseTrackerTT"] = "在特定条件下自动最小化目标追踪。"
+	L["Widget_ACT_RestedArea"] = "休息区域"
+	L["Widget_ACT_Combat"] = COMBAT
+	L["Widget_ACT_PetBattles"] = SHOW_PET_BATTLES_ON_MAP_TEXT
+	L["Widget_ACT_Battlegrounds"] = BATTLEFIELDS
+	L["Widget_ACT_Arena"] = ARENA
+	L["Widget_ACT_Dungeon"] = LFG_TYPE_DUNGEON
+	L["Widget_ACT_MPlus"] = PLAYER_DIFFICULTY_MYTHIC_PLUS
+	L["Widget_ACT_Raids"] = RAID
+	L["Widget_ACT_ScenariosDelves"] = SCENARIOS_PVEFRAME .. "/" .. DELVES_LABEL
+	L["Widget_ACT_Housing"] = BINDING_HEADER_HOUSING_SYSTEM
+
+	--Widgets - Delete Confirm
+	L["Widget_DeleteConfirm"] = "填充物品删除文本"
+	L["Widget_DeleteConfirmTT"] = string.format("用于填充“%s”文本的按钮，并在第二次点击时删除该物品。", DELETE_ITEM_CONFIRM_STRING)
+	L["Widget_DeleteConfirm_ButtonTT"] = string.format("点击1：填充“%s”文本。\n\n点击2：删除物品。", DELETE_ITEM_CONFIRM_STRING)
+
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "专业技能提示"
 	L["Widget_ProfessionToastsTT"] = "当专业技能等级提升时显示淡入提示通知。"
@@ -2907,6 +3107,26 @@ if LOCALE == "zhTW" then
 	L["Widget_DamageMeterTT"] = "為每個角色強制套用帳號範圍的傷害統計顯示設定。"
 	L["Widget_DamageWipe"] = AUTO_RESET_DAMAGE_METER
 	L["Widget_DamageWipeTT"] = "為每個角色強制套用帳號範圍的傷害統計重置設定。"
+
+	--Widgets - Account-wide settings
+	L["Header_ObjectiveTracker"] = HUD_EDIT_MODE_OBJECTIVE_TRACKER_LABEL
+	L["Widget_AutoCollapseTracker"] = "自動收合目標追蹤"
+	L["Widget_AutoCollapseTrackerTT"] = "在特定條件下自動最小化目標追蹤。"
+	L["Widget_ACT_RestedArea"] = "休息區域"
+	L["Widget_ACT_Combat"] = COMBAT
+	L["Widget_ACT_PetBattles"] = SHOW_PET_BATTLES_ON_MAP_TEXT
+	L["Widget_ACT_Battlegrounds"] = BATTLEFIELDS
+	L["Widget_ACT_Arena"] = ARENA
+	L["Widget_ACT_Dungeon"] = LFG_TYPE_DUNGEON
+	L["Widget_ACT_MPlus"] = PLAYER_DIFFICULTY_MYTHIC_PLUS
+	L["Widget_ACT_Raids"] = RAID
+	L["Widget_ACT_ScenariosDelves"] = SCENARIOS_PVEFRAME .. "/" .. DELVES_LABEL
+	L["Widget_ACT_Housing"] = BINDING_HEADER_HOUSING_SYSTEM
+
+	--Widgets - Delete Confirm
+	L["Widget_DeleteConfirm"] = "填入物品刪除文字"
+	L["Widget_DeleteConfirmTT"] = string.format("用於填入「%s」文字的按鈕，並在第二次點擊時刪除該物品。", DELETE_ITEM_CONFIRM_STRING)
+	L["Widget_DeleteConfirm_ButtonTT"] = string.format("點擊1：填入「%s」文字。\n\n點擊2：刪除物品。", DELETE_ITEM_CONFIRM_STRING)
 
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "專業技能提示"

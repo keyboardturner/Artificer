@@ -41,6 +41,16 @@ local Defaults = {
 		DamageWipe = 1,
 		HideScreenshotText = false,
 		ChatTooltipVisibility = 2,
+		DeleteConfirm = false,
+		AutoCollapseTracker = {
+			rested = false,
+			mythicplus = false,
+			raid = false,
+			scenario = false,
+			arena = false,
+			bg = false,
+			petbattle = false,
+		},
 	},
 
 	NameplateTargetPos = {
