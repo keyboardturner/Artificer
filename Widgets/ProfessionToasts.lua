@@ -507,7 +507,7 @@ end
 
 
 local function OnProfessionSkillUp(_, eventMessage)
-	if not IsEnabled() then return end
+	if not IsEnabled() or issecretvalue(eventMessage) then return end
 
 	local s_pos = string.find(ERR_SKILL_UP_SI, "%%[%d%$]*s") or 1
 	local d_pos = string.find(ERR_SKILL_UP_SI, "%%[%d%$]*d") or 2
