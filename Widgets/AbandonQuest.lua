@@ -157,7 +157,7 @@ local function CreateListRow(parent, data)
 	f:SetScript("OnEnter", function(self)
 		GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
 		local questTitle = C_QuestLog.GetTitleForQuestID(data.questID)
-		if questTitle and questTitle ~= "" then
+		if questTitle and not issecretvalue(questTitle) and questTitle ~= "" then
 			GameTooltip:SetText(questTitle, 1, 1, 1)
 			GameTooltip:AddLine(string.format(L["QuestID"],data.questID), 0.5, 0.5, 0.5)
 			local questTagInfo = C_QuestLog.GetQuestTagInfo(data.questID)
