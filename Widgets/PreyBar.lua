@@ -32,45 +32,57 @@ local function GetPosition()
 	return (Artificer_DB and Artificer_DB.PreyBar and Artificer_DB.PreyBar.PreyBarPosition) or Artificer.Defaults.PreyBar.PreyBarPosition;
 end
 
+local frameFaders = {};
+
 local function SetAlphaAnimated(frame, targetAlpha, duration)
 	if not frame then return end
 	duration = duration or 0.3
 
-	if not frame.fadeAnimGroup then
-		frame.fadeAnimGroup = frame:CreateAnimationGroup();
-		local alphaAnim = frame.fadeAnimGroup:CreateAnimation("Alpha");
-		alphaAnim:SetOrder(1);
-		frame.fadeAnim = alphaAnim;
-
-		frame.fadeAnimGroup:SetScript("OnFinished", function()
-			frame:SetAlpha(frame.targetAlpha);
+	if not frameFaders[frame] then
+		local fader = CreateFrame("Frame", nil, Artificer.SettingsFrame or UIParent)
+		local animGroup = fader:CreateAnimationGroup()
+		local alphaAnim = animGroup:CreateAnimation("Alpha")
+		alphaAnim:SetOrder(1)
+		
+		alphaAnim:SetTarget(frame)
+		
+		animGroup:SetScript("OnFinished", function()
+			if frameFaders[frame] then
+				frame:SetAlpha(frameFaders[frame].targetAlpha);
+			end
 		end)
-		frame.targetAlpha = frame:GetAlpha();
+		
+		frameFaders[frame] = {
+			animGroup = animGroup,
+			alphaAnim = alphaAnim,
+			targetAlpha = frame:GetAlpha()
+		};
 	end
 
-	if frame.targetAlpha == targetAlpha then
-		if not frame.fadeAnimGroup:IsPlaying() then
+	local faderData = frameFaders[frame]
+
+	if faderData.targetAlpha == targetAlpha then
+		if not faderData.animGroup:IsPlaying() then
 			frame:SetAlpha(targetAlpha);
 		end
 		return;
 	end
 
-	frame.fadeAnimGroup:Stop()
-	frame.targetAlpha = targetAlpha
+	faderData.animGroup:Stop()
+	faderData.targetAlpha = targetAlpha
 
 	if targetAlpha > 0 and not frame:IsShown() then
 		frame:SetAlpha(0);
-		frame:Show();
 	end
 
-	frame.fadeAnim:SetFromAlpha(frame:GetAlpha())
-	frame.fadeAnim:SetToAlpha(targetAlpha)
-	frame.fadeAnim:SetDuration(duration)
-	frame.fadeAnimGroup:Play()
+	faderData.alphaAnim:SetFromAlpha(frame:GetAlpha())
+	faderData.alphaAnim:SetToAlpha(targetAlpha)
+	faderData.alphaAnim:SetDuration(duration)
+	faderData.animGroup:Play()
 end
 
 local function SuppressBlizzWidget(widgetFrame)
-	if not widgetFrame then return end
+	if not widgetFrame or widgetFrame:IsProtected() then return end
 	widgetFrame:Hide()
 	if not widgetFrame._artificerSuppressHooked then
 		widgetFrame:HookScript("OnShow", function(self)
@@ -198,6 +210,7 @@ local function CreateIndicatorGroup()
 	end
 
 	function grp:AnchorTo(widgetFrame)
+		if widgetFrame:IsProtected() then return end
 		local style = GetStyle()
 		local position = GetPosition()
 		local isHoriz = (position == "top" or position == "bottom")
@@ -292,7 +305,7 @@ local function UpdateIndicators()
 	end
 
 	local widgetFrame, widgetID = FindPreyWidgetFrame()
-	if not widgetFrame then
+	if not widgetFrame or widgetFrame:IsProtected() then
 		Indicators:HideAll();
 		trackedWidget = nil;
 		return;
