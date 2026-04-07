@@ -52,13 +52,11 @@ function ChromieTimeMapButtonMixin:Refresh()
 	local shouldShow = false;
 
 	if Artificer_DB and Artificer_DB.Widgets.ChromieTimeIcon then
-		shouldShow = true; 
+		local inChromieTime = C_PlayerInfo.IsPlayerInChromieTime();
 		
-		local InChromieTime = C_PlayerInfo.IsPlayerInChromieTime();
-		if InChromieTime then
+		if inChromieTime then
 			self.icon:SetDesaturated(false);
-		else
-			self.icon:SetDesaturated(true);
+			shouldShow = true;
 		end
 	end
 
