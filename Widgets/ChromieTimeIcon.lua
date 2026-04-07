@@ -1,33 +1,41 @@
 local addonName, Artificer = ...;
-
 local L = Artificer.L;
 
-local ChromieTimeIcon = "Interface/AddOns/Artificer/Textures/ChromieTimeIcon";
-local CHROMIE_TIME_NOT_ACTIVE = L["Widget_ChromieTimeIcon_NoCampaign"];
+ChromieTimeMapButtonMixin = {};
 
-local iconFrame = CreateFrame("Frame", nil, WorldMapFrame.ScrollContainer)
-iconFrame:SetSize(32, 32)
-iconFrame:SetPoint("TOPRIGHT", WorldMapFrame.ScrollContainer, "TOPRIGHT", -4, -67)
+function ChromieTimeMapButtonMixin:OnLoad()
+	self:SetSize(32, 32);
 
-iconFrame.background = iconFrame:CreateTexture(nil, "BACKGROUND", nil, -2)
-iconFrame.background:SetTexture(136467)
-iconFrame.background:SetPoint("TOPLEFT", iconFrame, "TOPLEFT", 4, -4)
-iconFrame.background:SetSize(25, 25)
+	self.background = self:CreateTexture(nil, "BACKGROUND", nil, -2);
+	self.background:SetTexture(136467);
+	self.background:SetSize(25, 25);
+	self.background:SetPoint("TOPLEFT", self, "TOPLEFT", 4, -4);
 
-iconFrame.icon = iconFrame:CreateTexture(nil, "ARTWORK", nil)
-iconFrame.icon:SetTexture(ChromieTimeIcon)
-iconFrame.icon:SetDesaturated(true)
-iconFrame.icon:SetPoint("TOPLEFT", iconFrame, "TOPLEFT", 5, -4)
-iconFrame.icon:SetSize(25, 25)
+	self.icon = self:CreateTexture(nil, "ARTWORK", nil);
+	self.icon:SetTexture("Interface/AddOns/Artificer/Textures/ChromieTimeIcon");
+	self.icon:SetSize(25, 25);
+	self.icon:SetPoint("TOPLEFT", self, "TOPLEFT", 5, -4);
 
-iconFrame.border = iconFrame:CreateTexture(nil, "OVERLAY", nil, 1)
-iconFrame.border:SetPoint("TOPLEFT", iconFrame, "TOPLEFT", 0, 0)
-iconFrame.border:SetSize(54, 54)
-iconFrame.border:SetTexture(136430)
+	self.border = self:CreateTexture(nil, "OVERLAY", nil, 1);
+	self.border:SetTexture(136430);
+	self.border:SetSize(54, 54);
+	self.border:SetPoint("TOPLEFT", self, "TOPLEFT", 0, 0);
 
-iconFrame:Hide();
+	self:SetHighlightTexture("Interface/Minimap/UI-Minimap-ZoomButton-Highlight", "ADD");
 
-local function GetChromieTimeLocationString(unitToken)
+	self:RegisterEvent("PLAYER_ENTERING_WORLD");
+	self:RegisterEvent("PLAYER_LEVEL_UP");
+	self:RegisterEvent("ZONE_CHANGED_NEW_AREA");
+	self:RegisterEvent("QUESTLINE_UPDATE");
+	self:RegisterEvent("LORE_TEXT_UPDATED_CAMPAIGN");
+	self:RegisterEvent("PLAYER_DIFFICULTY_CHANGED");
+
+	self:SetScript("OnEvent", self.OnEvent);
+	self:SetScript("OnEnter", self.OnEnter);
+	self:SetScript("OnLeave", self.OnLeave);
+end
+
+function ChromieTimeMapButtonMixin:GetChromieTimeLocationString(unitToken)
 	local expansionID = UnitChromieTimeID(unitToken);
 	local option = C_ChromieTime.GetChromieTimeExpansionOption(expansionID);
 	local expansion = option and option.name or "";
@@ -38,47 +46,55 @@ local function GetChromieTimeLocationString(unitToken)
 	end
 end
 
-local function UpdateChromieTimeIcon()
+function ChromieTimeMapButtonMixin:Refresh()
 	if Artificer_DB and Artificer_DB.Widgets.ChromieTimeIcon then
-		local InChromieTime, CanEnterChromieTime = C_PlayerInfo.IsPlayerInChromieTime(), C_PlayerInfo.CanPlayerEnterChromieTime()
+		local InChromieTime = C_PlayerInfo.IsPlayerInChromieTime();
 		if InChromieTime then
-			iconFrame.icon:SetDesaturated(false);
-			iconFrame:Show();
+			self.icon:SetDesaturated(false);
+			self:Show();
 		else
-			iconFrame.icon:SetDesaturated(true);
-			iconFrame:Hide();
+			self.icon:SetDesaturated(true);
+			self:Hide();
 		end
 	else
-		iconFrame:Hide();
+		self:Hide();
 	end
 end
 
-Artificer.Widgets.UpdateChromieTimeIcon = UpdateChromieTimeIcon();
+function ChromieTimeMapButtonMixin:OnEvent(event, ...)
+	self:Refresh();
+end
 
-iconFrame:SetScript("OnEnter", function(self)
-	local InChromieTime, CanEnterChromieTime = C_PlayerInfo.IsPlayerInChromieTime(), C_PlayerInfo.CanPlayerEnterChromieTime()
-	GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-	GameTooltip_SetTitle(GameTooltip, CHROMIE_TIME_PREVIEW_CARD_DEFAULT_TITLE)
+function ChromieTimeMapButtonMixin:OnEnter()
+	local InChromieTime = C_PlayerInfo.IsPlayerInChromieTime();
+	GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+	GameTooltip_SetTitle(GameTooltip, CHROMIE_TIME_PREVIEW_CARD_DEFAULT_TITLE);
+	
 	if InChromieTime then
-		GameTooltip_AddNormalLine(GameTooltip, GetChromieTimeLocationString("player"));
+		GameTooltip_AddNormalLine(GameTooltip, self:GetChromieTimeLocationString("player"));
 	else
-		GameTooltip_AddNormalLine(GameTooltip, CHROMIE_TIME_NOT_ACTIVE);
+		GameTooltip_AddNormalLine(GameTooltip, L["Widget_ChromieTimeIcon_NoCampaign"]);
 	end
+	
 	GameTooltip:Show();
-end)
-iconFrame:SetScript("OnLeave", function()
+end
+
+function ChromieTimeMapButtonMixin:OnLeave()
 	GameTooltip:Hide();
-end)
+end
 
-iconFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
-iconFrame:RegisterEvent("PLAYER_LEVEL_UP")
-iconFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
-iconFrame:RegisterEvent("QUESTLINE_UPDATE")
-iconFrame:RegisterEvent("LORE_TEXT_UPDATED_CAMPAIGN")
-iconFrame:RegisterEvent("PLAYER_DIFFICULTY_CHANGED")
+local chromieMapButton = CreateFrame("Button", "ArtificerChromieTimeMapButton", WorldMapFrame.ScrollContainer);
+chromieMapButton:SetPoint("TOPRIGHT", WorldMapFrame.ScrollContainer, "TOPRIGHT", -4, -67);
 
-iconFrame:SetScript("OnEvent", UpdateChromieTimeIcon);
-EventRegistry:RegisterCallback("WorldMapOnShow", UpdateChromieTimeIcon);
-EventRegistry:RegisterCallback("MapCanvas.MapSet", UpdateChromieTimeIcon);
+Mixin(chromieMapButton, ChromieTimeMapButtonMixin);
 
-UpdateChromieTimeIcon();
+chromieMapButton:OnLoad();
+
+Artificer.Widgets.UpdateChromieTimeIcon = function() 
+	chromieMapButton:Refresh(); 
+end;
+
+EventRegistry:RegisterCallback("WorldMapOnShow", function() chromieMapButton:Refresh() end);
+EventRegistry:RegisterCallback("MapCanvas.MapSet", function() chromieMapButton:Refresh() end);
+
+chromieMapButton:Refresh();
