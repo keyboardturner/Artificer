@@ -1,5 +1,9 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.1.6a
+
+Testing Krowi_WorldMapButtons library packager integration
+
 # 0.1.6
 
 Added options to auto collapse the Objective Tracker under certain conditions, such as delves, raid, and rested area.
