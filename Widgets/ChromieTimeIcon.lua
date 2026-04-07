@@ -1,6 +1,8 @@
 local addonName, Artificer = ...;
 local L = Artificer.L;
 
+local KrowiLib = LibStub("Krowi_WorldMapButtons-1.4");
+
 ChromieTimeMapButtonMixin = {};
 
 function ChromieTimeMapButtonMixin:OnLoad()
@@ -47,17 +49,31 @@ function ChromieTimeMapButtonMixin:GetChromieTimeLocationString(unitToken)
 end
 
 function ChromieTimeMapButtonMixin:Refresh()
+	local shouldShow = false;
+
 	if Artificer_DB and Artificer_DB.Widgets.ChromieTimeIcon then
+		shouldShow = true; 
+		
 		local InChromieTime = C_PlayerInfo.IsPlayerInChromieTime();
 		if InChromieTime then
 			self.icon:SetDesaturated(false);
-			self:Show();
 		else
 			self.icon:SetDesaturated(true);
-			self:Hide();
 		end
-	else
+	end
+
+	local visibilityChanged = false;
+	
+	if shouldShow and not self:IsShown() then
+		self:Show();
+		visibilityChanged = true;
+	elseif not shouldShow and self:IsShown() then
 		self:Hide();
+		visibilityChanged = true;
+	end
+
+	if visibilityChanged and KrowiLib.SetPoints then
+		KrowiLib.SetPoints();
 	end
 end
 
@@ -83,8 +99,9 @@ function ChromieTimeMapButtonMixin:OnLeave()
 	GameTooltip:Hide();
 end
 
-local chromieMapButton = CreateFrame("Button", "ArtificerChromieTimeMapButton", WorldMapFrame.ScrollContainer);
-chromieMapButton:SetPoint("TOPRIGHT", WorldMapFrame.ScrollContainer, "TOPRIGHT", -4, -67);
+local chromieMapButton = KrowiLib:Add(nil, "Button");
+
+chromieMapButton:SetFrameStrata("HIGH");
 
 Mixin(chromieMapButton, ChromieTimeMapButtonMixin);
 
@@ -93,8 +110,5 @@ chromieMapButton:OnLoad();
 Artificer.Widgets.UpdateChromieTimeIcon = function() 
 	chromieMapButton:Refresh(); 
 end;
-
-EventRegistry:RegisterCallback("WorldMapOnShow", function() chromieMapButton:Refresh() end);
-EventRegistry:RegisterCallback("MapCanvas.MapSet", function() chromieMapButton:Refresh() end);
 
 chromieMapButton:Refresh();
