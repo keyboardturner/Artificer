@@ -95,6 +95,7 @@ if LOCALE == "enUS" then
 	L["EnterSpellID"] = "Enter Spell ID"
 	L["CanceledAuras"] = "Canceled Auras"
 	L["AuraHistory"] = "Aura History"
+	L["SpellID"] = "Spell ID"
 
 	--Widgets - AbandonQuestManager
 	L["AbandonQuestManager"] = "Abandon Quest Manager"
@@ -392,6 +393,7 @@ if LOCALE == "esMX" then
 	L["EnterSpellID"] = "Introduce ID de hechizo"
 	L["CanceledAuras"] = "Auras canceladas"
 	L["AuraHistory"] = "Historial de auras"
+	L["SpellID"] = "ID de hechizo"
 
 	--Widgets - AbandonQuestManager
 	L["AbandonQuestManager"] = "Gestor de abandono de misiones"
@@ -688,6 +690,7 @@ if LOCALE == "esES" then
 	L["EnterSpellID"] = "Introduce ID de hechizo"
 	L["CanceledAuras"] = "Auras canceladas"
 	L["AuraHistory"] = "Historial de auras"
+	L["SpellID"] = "ID de hechizo"
 
 	--Widgets - AbandonQuestManager
 	L["AbandonQuestManager"] = "Gestor de abandono de misiones"
@@ -982,6 +985,7 @@ if LOCALE == "deDE" then
 	L["EnterSpellID"] = "Zauber-ID eingeben"
 	L["CanceledAuras"] = "Abgebrochene Auren"
 	L["AuraHistory"] = "Aura-Verlauf"
+	L["SpellID"] = "Zauber-ID"
 
 	--Widgets - AbandonQuestManager
 	L["AbandonQuestManager"] = "Questabbruch-Manager"
@@ -1277,6 +1281,7 @@ if LOCALE == "frFR" then
 	L["EnterSpellID"] = "Entrer l’ID du sort"
 	L["CanceledAuras"] = "Auras annulées"
 	L["AuraHistory"] = "Historique des auras"
+	L["SpellID"] = "l’ID du sort"
 
 	--Widgets - AbandonQuestManager
 	L["AbandonQuestManager"] = "Gestionnaire d’abandon de quêtes"
@@ -1572,6 +1577,7 @@ if LOCALE == "itIT" then
 	L["EnterSpellID"] = "Inserisci ID incantesimo"
 	L["CanceledAuras"] = "Aure rimosse"
 	L["AuraHistory"] = "Cronologia aure"
+	L["SpellID"] = "ID incantesimo"
 
 	--Widgets - AbandonQuestManager
 	L["AbandonQuestManager"] = "Gestore abbandono missioni"
@@ -1867,6 +1873,7 @@ if LOCALE == "ptBR" then
 	L["EnterSpellID"] = "Inserir ID de feitiço"
 	L["CanceledAuras"] = "Auras canceladas"
 	L["AuraHistory"] = "Histórico de auras"
+	L["SpellID"] = "ID de feitiço"
 
 	--Widgets - AbandonQuestManager
 	L["AbandonQuestManager"] = "Gerenciador de abandono de missões"
@@ -2164,6 +2171,7 @@ if LOCALE == "ruRU" then
 	L["EnterSpellID"] = "Введите ID заклинания"
 	L["CanceledAuras"] = "Снятые ауры"
 	L["AuraHistory"] = "История аур"
+	L["SpellID"] = "ID заклинания"
 
 	--Widgets - AbandonQuestManager
 	L["AbandonQuestManager"] = "Менеджер отмены заданий"
@@ -2459,6 +2467,7 @@ if LOCALE == "koKR" then
 	L["EnterSpellID"] = "주문 ID 입력"
 	L["CanceledAuras"] = "해제된 오라"
 	L["AuraHistory"] = "오라 기록"
+	L["SpellID"] = "주문 ID"
 
 	--Widgets - AbandonQuestManager
 	L["AbandonQuestManager"] = "퀘스트 포기 관리자"
@@ -2754,6 +2763,7 @@ if LOCALE == "zhCN" then
 	L["EnterSpellID"] = "输入法术 ID"
 	L["CanceledAuras"] = "已取消光环"
 	L["AuraHistory"] = "光环历史"
+	L["SpellID"] = "法术 ID"
 
 	--Widgets - AbandonQuestManager
 	L["AbandonQuestManager"] = "任务放弃管理器"
@@ -3047,6 +3057,7 @@ if LOCALE == "zhTW" then
 	L["EnterSpellID"] = "輸入法術 ID"
 	L["CanceledAuras"] = "已取消光環"
 	L["AuraHistory"] = "光環歷史"
+	L["SpellID"] = "法術 ID"
 
 	--Widgets - AbandonQuestManager
 	L["AbandonQuestManager"] = "任務放棄管理器"

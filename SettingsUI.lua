@@ -342,7 +342,7 @@ local function InitializeMultiCheckbox(button, data)
 					local submenu = desc:CreateButton(option.text);
 					BuildMenu(submenu, option.children);
 				else
-					desc:CreateCheckbox(
+					local checkbox = desc:CreateCheckbox(
 						option.text,
 						function() return values[option.key] end,
 						function()
@@ -353,9 +353,18 @@ local function InitializeMultiCheckbox(button, data)
 								SetDBValue(data.key, values);
 							end;
 							UpdateDropdownText();
-							if data.callback then data.callback(values) end;
+							if data.callback then
+								data.callback(values);
+							end
 						end
 					)
+					
+					if option.tooltip then
+						checkbox:SetTooltip(function(tooltip, elementDescription)
+							GameTooltip_SetTitle(tooltip, option.text);
+							GameTooltip_AddNormalLine(tooltip, option.tooltip);
+						end)
+					end
 				end
 			end
 		end
@@ -742,7 +751,7 @@ function Artificer:BuildSettingsData()
 				for _, spellID in ipairs(spellList) do
 					local spellName = C_Spell.GetSpellName(spellID);
 					if spellName then
-						table.insert(named, { key = spellID, text = spellName, default = true });
+						table.insert(named, { key = spellID, text = spellName, tooltip = L["SpellID"] .. ": " .. spellID, default = true });
 					end
 				end
 				
