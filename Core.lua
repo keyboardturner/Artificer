@@ -51,6 +51,7 @@ local Defaults = {
 			bg = false,
 			petbattle = false,
 		},
+		FilteredOverlays = {},
 	},
 
 	NameplateTargetPos = {

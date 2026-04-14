@@ -269,31 +269,63 @@ local function InitializeMultiCheckbox(button, data)
 		local values = data.isWidget and GetWidgetValue(data.key) or GetDBValue(data.key)
 		if type(values) ~= "table" then
 			values = {}
-			for _, opt in ipairs(data.options) do
-				values[opt.key] = opt.default ~= false;
+		end
+		
+		local needsSave = false;
+		
+		local function InitDefaults(optList)
+			for _, opt in ipairs(optList) do
+				if opt.isGroup then
+					InitDefaults(opt.children);
+				else
+					if values[opt.key] == nil then
+						values[opt.key] = opt.default ~= false;
+						needsSave = true;
+					end
+				end
 			end
+		end
+		
+		if data.options then
+			InitDefaults(data.options);
+		end
+		
+		if needsSave then
 			if data.isWidget then
 				SetWidgetValue(data.key, values);
 			else
 				SetDBValue(data.key, values);
 			end
 		end
+		
 		return values
 	end
 
 	local function UpdateDropdownText()
 		local values = GetCurrentValues()
 		local selected = {}
+		local totalCount = 0
 		
-		for _, opt in ipairs(data.options) do
-			if values[opt.key] then
-				table.insert(selected, opt.text)
+		local function GatherSelected(optList)
+			for _, opt in ipairs(optList) do
+				if opt.isGroup then
+					GatherSelected(opt.children);
+				else
+					totalCount = totalCount + 1;
+					if values[opt.key] then
+						table.insert(selected, opt.text);
+					end
+				end
 			end
+		end
+		
+		if data.options then
+			GatherSelected(data.options);
 		end
 		
 		if #selected == 0 then
 			button.multicheckbox.Text:SetText(L["None"]);
-		elseif #selected == #data.options then
+		elseif #selected == totalCount then
 			button.multicheckbox.Text:SetText(L["All"]);
 		else
 			button.multicheckbox.Text:SetText(table.concat(selected, ", "));
@@ -304,21 +336,32 @@ local function InitializeMultiCheckbox(button, data)
 		rootDescription:SetScrollMode(300)
 		local values = GetCurrentValues()
 		
-		for _, option in ipairs(data.options) do
-			local checkbox = rootDescription:CreateCheckbox(
-				option.text,
-				function() return values[option.key] end,
-				function()
-					values[option.key] = not values[option.key];
-					if data.isWidget then
-						SetWidgetValue(data.key, values);
-					else
-						SetDBValue(data.key, values);
-					end;
-					UpdateDropdownText();
-					if data.callback then data.callback(values) end;
+		local function BuildMenu(desc, optList)
+			for _, option in ipairs(optList) do
+				if option.isGroup then
+					local submenu = desc:CreateButton(option.text);
+					BuildMenu(submenu, option.children);
+				else
+					desc:CreateCheckbox(
+						option.text,
+						function() return values[option.key] end,
+						function()
+							values[option.key] = not values[option.key];
+							if data.isWidget then
+								SetWidgetValue(data.key, values);
+							else
+								SetDBValue(data.key, values);
+							end;
+							UpdateDropdownText();
+							if data.callback then data.callback(values) end;
+						end
+					)
 				end
-			)
+			end
+		end
+		
+		if data.options then
+			BuildMenu(rootDescription, data.options);
 		end
 	end
 	
@@ -676,6 +719,60 @@ function Artificer:BuildSettingsData()
 		callback = function(val)
 			if Artificer.UpdateOutfitHighlighter then
 				Artificer.UpdateOutfitHighlighter();
+			end
+		end
+	});
+
+	-- Header - Combat
+	table.insert(allSettingsData, {
+		type = "header",
+		label = L["Header_Combat"],
+	});
+
+	-- Widgets - Spell Activation Overlay
+	local overlayOptions = {};
+	if Artificer.SpellCategories then
+		for classID, spellList in pairs(Artificer.SpellCategories) do
+			local className = GetClassInfo(classID);
+			
+			if className then
+				local classGroup = { isGroup = true, text = className, children = {} };
+				local named = {};
+				
+				for _, spellID in ipairs(spellList) do
+					local spellName = C_Spell.GetSpellName(spellID);
+					if spellName then
+						table.insert(named, { key = spellID, text = spellName, default = true });
+					end
+				end
+				
+				table.sort(named, function(a, b) return a.text < b.text end);
+				
+				for _, entry in ipairs(named) do
+					table.insert(classGroup.children, entry);
+				end
+				
+				if #classGroup.children > 0 then
+					table.insert(overlayOptions, classGroup);
+				end
+			end
+		end
+		
+		table.sort(overlayOptions, function(a, b) return a.text < b.text end);
+	end
+
+	table.insert(allSettingsData, {
+		type = "multicheckbox",
+		isWidget = true,
+		key = "FilteredOverlays",
+		isNew = true,
+		label = L["Widget_SpellAlerts"],
+		tooltip = L["Widget_SpellAlertsTT"],
+		options = overlayOptions,
+		searchText = GetSearchText(L["Widget_SpellAlerts"], L["Widget_SpellAlertsTT"]),
+		callback = function(values)
+			if SpellActivationOverlayFrame then
+				SpellActivationOverlayFrame:HideAllOverlays();
 			end
 		end
 	});

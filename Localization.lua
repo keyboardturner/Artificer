@@ -180,6 +180,10 @@ if LOCALE == "enUS" then
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
+	L["Header_Combat"] = COMBAT_LABEL
+	L["Widget_SpellAlerts"] = COMBAT_TEXT_SHOW_REACTIVES_TEXT
+	L["Widget_SpellAlertsTT"] = "Filter specific spell alerts which appear on screen.\n\nRequires Spell Alerts to be enabled."
+
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "Block Trading While Transmogging"
 	L["Widget_BlockTradesTT"] = "Blocks all trading while the transmog frame is open"
@@ -473,6 +477,10 @@ if LOCALE == "esMX" then
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
+	L["Header_Combat"] = COMBAT_LABEL
+	L["Widget_SpellAlerts"] = COMBAT_TEXT_SHOW_REACTIVES_TEXT
+	L["Widget_SpellAlertsTT"] = "Filtra alertas de hechizos específicas que aparecen en pantalla.\n\nRequiere que las alertas de hechizos estén activadas."
+
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "Bloquear intercambios durante la transfiguración"
 	L["Widget_BlockTradesTT"] = "Bloquea todos los intercambios mientras la ventana de transfiguración esté abierta."
@@ -765,6 +773,10 @@ if LOCALE == "esES" then
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
+	L["Header_Combat"] = COMBAT_LABEL
+	L["Widget_SpellAlerts"] = COMBAT_TEXT_SHOW_REACTIVES_TEXT
+	L["Widget_SpellAlertsTT"] = "Filtra alertas de hechizos específicas que aparecen en pantalla.\n\nRequiere que las alertas de hechizos estén activadas."
+
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "Bloquear intercambios durante la transfiguración"
 	L["Widget_BlockTradesTT"] = "Bloquea todos los intercambios mientras la ventana de transfiguración esté abierta."
@@ -1054,6 +1066,10 @@ if LOCALE == "deDE" then
 	L["PreyBar_HideInCombat"] = "Im Kampf ausblenden"
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
+
+	L["Header_Combat"] = COMBAT_LABEL
+	L["Widget_SpellAlerts"] = COMBAT_TEXT_SHOW_REACTIVES_TEXT
+	L["Widget_SpellAlertsTT"] = "Filtert bestimmte Zauberwarnungen, die auf dem Bildschirm erscheinen.\n\nErfordert, dass Zauberwarnungen aktiviert sind."
 
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "Handel während der Transmogrifikation blockieren"
@@ -1345,6 +1361,11 @@ if LOCALE == "frFR" then
 	L["PreyBar_HideInCombat"] = "Masquer en combat"
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
+
+	L["Header_Combat"] = COMBAT_LABEL
+	L["Widget_SpellAlerts"] = COMBAT_TEXT_SHOW_REACTIVES_TEXT
+	L["Widget_SpellAlertsTT"] = "Filtre des alertes de sorts spécifiques qui apparaissent à l’écran.\n\nNécessite que les alertes de sorts soient activées."
+
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "Bloquer les échanges pendant la transmogrification"
 	L["Widget_BlockTradesTT"] = "Bloque tous les échanges tant que la fenêtre de transmogrification est ouverte."
@@ -1636,6 +1657,10 @@ if LOCALE == "itIT" then
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
+	L["Header_Combat"] = COMBAT_LABEL
+	L["Widget_SpellAlerts"] = COMBAT_TEXT_SHOW_REACTIVES_TEXT
+	L["Widget_SpellAlertsTT"] = "Filtra specifici avvisi di incantesimi che appaiono sullo schermo.\n\nRichiede che gli avvisi degli incantesimi siano attivati."
+
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "Blocca gli scambi durante la trasmogrificazione"
 	L["Widget_BlockTradesTT"] = "Blocca tutti gli scambi mentre la finestra di trasmogrificazione è aperta."
@@ -1926,6 +1951,10 @@ if LOCALE == "ptBR" then
 	L["PreyBar_HideInCombat"] = "Ocultar em combate"
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
+
+	L["Header_Combat"] = COMBAT_LABEL
+	L["Widget_SpellAlerts"] = COMBAT_TEXT_SHOW_REACTIVES_TEXT
+	L["Widget_SpellAlertsTT"] = "Filtra alertas de feitiços específicos que aparecem na tela.\n\nRequer que os alertas de feitiços estejam ativados."
 
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "Bloquear trocas durante a transmogrificação"
@@ -2220,6 +2249,10 @@ if LOCALE == "ruRU" then
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
+	L["Header_Combat"] = COMBAT_LABEL
+	L["Widget_SpellAlerts"] = COMBAT_TEXT_SHOW_REACTIVES_TEXT
+	L["Widget_SpellAlertsTT"] = "Фильтрует определённые оповещения о заклинаниях, появляющиеся на экране.\n\nТребуется включить оповещения о заклинаниях."
+
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "Блокировать обмен во время трансмогрификации"
 	L["Widget_BlockTradesTT"] = "Блокирует любой обмен, пока открыто окно трансмогрификации."
@@ -2510,6 +2543,10 @@ if LOCALE == "koKR" then
 	L["PreyBar_HideInCombat"] = "전투 중 숨기기"
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
+
+	L["Header_Combat"] = COMBAT_LABEL
+	L["Widget_SpellAlerts"] = COMBAT_TEXT_SHOW_REACTIVES_TEXT
+	L["Widget_SpellAlertsTT"] = "화면에 표시되는 특정 주문 알림을 필터링합니다.\n\n주문 알림이 활성화되어 있어야 합니다."
 
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "형상변환 중 거래 차단"
@@ -2802,6 +2839,10 @@ if LOCALE == "zhCN" then
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
 
+	L["Header_Combat"] = COMBAT_LABEL
+	L["Widget_SpellAlerts"] = COMBAT_TEXT_SHOW_REACTIVES_TEXT
+	L["Widget_SpellAlertsTT"] = "筛选屏幕上显示的特定法术提示。\n\n需要启用法术提示。"
+
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "幻化期间阻止交易"
 	L["Widget_BlockTradesTT"] = "在幻化界面打开时阻止所有交易。"
@@ -3090,6 +3131,10 @@ if LOCALE == "zhTW" then
 	L["PreyBar_HideInCombat"] = "戰鬥中隱藏"
 
 	L["EncounterBar"] = HUD_EDIT_MODE_ENCOUNTER_BAR_LABEL
+
+	L["Header_Combat"] = COMBAT_LABEL
+	L["Widget_SpellAlerts"] = COMBAT_TEXT_SHOW_REACTIVES_TEXT
+	L["Widget_SpellAlertsTT"] = "篩選螢幕上顯示的特定法術提示。\n\n需要啟用法術提示。"
 
 	--Widgets - BlockTrades
 	L["Widget_BlockTrades"] = "幻化期間阻止交易"
