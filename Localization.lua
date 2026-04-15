@@ -206,6 +206,8 @@ if LOCALE == "enUS" then
 	L["Header_ObjectiveTracker"] = HUD_EDIT_MODE_OBJECTIVE_TRACKER_LABEL
 	L["Widget_AutoCollapseTracker"] = "Auto Collapse Objective Tracker"
 	L["Widget_AutoCollapseTrackerTT"] = "Automatically minimizes the Objective Tracker under certain conditions."
+	L["Widget_AutoFadeObjectiveTracker"] = "Auto Fade Objective Tracker"
+	L["Widget_AutoFadeObjectiveTrackerTT"] = "Automatically fades the Objective Tracker under certain conditions."
 	L["Widget_ACT_RestedArea"] = "Rested Area"
 	L["Widget_ACT_Combat"] = COMBAT
 	L["Widget_ACT_PetBattles"] = SHOW_PET_BATTLES_ON_MAP_TEXT
@@ -504,6 +506,8 @@ if LOCALE == "esMX" then
 	L["Header_ObjectiveTracker"] = HUD_EDIT_MODE_OBJECTIVE_TRACKER_LABEL
 	L["Widget_AutoCollapseTracker"] = "Contraer automáticamente el rastreador de objetivos"
 	L["Widget_AutoCollapseTrackerTT"] = "Minimiza automáticamente el rastreador de objetivos bajo ciertas condiciones."
+	L["Widget_AutoFadeObjectiveTracker"] = "Desvanecer automáticamente el rastreador de objetivos"
+	L["Widget_AutoFadeObjectiveTrackerTT"] = "Desvanece automáticamente el rastreador de objetivos bajo ciertas condiciones."
 	L["Widget_ACT_RestedArea"] = "Área de descanso"
 	L["Widget_ACT_Combat"] = COMBAT
 	L["Widget_ACT_PetBattles"] = SHOW_PET_BATTLES_ON_MAP_TEXT
@@ -801,6 +805,8 @@ if LOCALE == "esES" then
 	L["Header_ObjectiveTracker"] = HUD_EDIT_MODE_OBJECTIVE_TRACKER_LABEL
 	L["Widget_AutoCollapseTracker"] = "Contraer automáticamente el rastreador de objetivos"
 	L["Widget_AutoCollapseTrackerTT"] = "Minimiza automáticamente el rastreador de objetivos bajo ciertas condiciones."
+	L["Widget_AutoFadeObjectiveTracker"] = "Desvanecer automáticamente el rastreador de objetivos"
+	L["Widget_AutoFadeObjectiveTrackerTT"] = "Desvanece automáticamente el rastreador de objetivos bajo ciertas condiciones."
 	L["Widget_ACT_RestedArea"] = "Área de descanso"
 	L["Widget_ACT_Combat"] = COMBAT
 	L["Widget_ACT_PetBattles"] = SHOW_PET_BATTLES_ON_MAP_TEXT
@@ -1096,6 +1102,8 @@ if LOCALE == "deDE" then
 	L["Header_ObjectiveTracker"] = HUD_EDIT_MODE_OBJECTIVE_TRACKER_LABEL
 	L["Widget_AutoCollapseTracker"] = "Zielverfolgung automatisch einklappen"
 	L["Widget_AutoCollapseTrackerTT"] = "Minimiert die Zielverfolgung unter bestimmten Bedingungen automatisch."
+	L["Widget_AutoFadeObjectiveTracker"] = "Zielverfolgung automatisch ausblenden"
+	L["Widget_AutoFadeObjectiveTrackerTT"] = "Blendet die Zielverfolgung unter bestimmten Bedingungen automatisch aus."
 	L["Widget_ACT_RestedArea"] = "Erholungsgebiet"
 	L["Widget_ACT_Combat"] = COMBAT
 	L["Widget_ACT_PetBattles"] = SHOW_PET_BATTLES_ON_MAP_TEXT
@@ -1392,6 +1400,8 @@ if LOCALE == "frFR" then
 	L["Header_ObjectiveTracker"] = HUD_EDIT_MODE_OBJECTIVE_TRACKER_LABEL
 	L["Widget_AutoCollapseTracker"] = "Réduire automatiquement le suivi des objectifs"
 	L["Widget_AutoCollapseTrackerTT"] = "Réduit automatiquement le suivi des objectifs dans certaines conditions."
+	L["Widget_AutoFadeObjectiveTracker"] = "Fondu automatique du suivi des objectifs"
+	L["Widget_AutoFadeObjectiveTrackerTT"] = "Applique un fondu automatique au suivi des objectifs dans certaines conditions."
 	L["Widget_ACT_RestedArea"] = "Zone de repos"
 	L["Widget_ACT_Combat"] = COMBAT
 	L["Widget_ACT_PetBattles"] = SHOW_PET_BATTLES_ON_MAP_TEXT
@@ -1688,6 +1698,8 @@ if LOCALE == "itIT" then
 	L["Header_ObjectiveTracker"] = HUD_EDIT_MODE_OBJECTIVE_TRACKER_LABEL
 	L["Widget_AutoCollapseTracker"] = "Comprimi automaticamente il tracciatore obiettivi"
 	L["Widget_AutoCollapseTrackerTT"] = "Riduce automaticamente il tracciatore obiettivi in determinate condizioni."
+	L["Widget_AutoFadeObjectiveTracker"] = "Dissolvenza automatica tracciatore obiettivi"
+	L["Widget_AutoFadeObjectiveTrackerTT"] = "Applica automaticamente una dissolvenza al tracciatore obiettivi in determinate condizioni."
 	L["Widget_ACT_RestedArea"] = "Area di riposo"
 	L["Widget_ACT_Combat"] = COMBAT
 	L["Widget_ACT_PetBattles"] = SHOW_PET_BATTLES_ON_MAP_TEXT
@@ -1984,6 +1996,8 @@ if LOCALE == "ptBR" then
 	L["Header_ObjectiveTracker"] = HUD_EDIT_MODE_OBJECTIVE_TRACKER_LABEL
 	L["Widget_AutoCollapseTracker"] = "Recolher automaticamente o rastreador de objetivos"
 	L["Widget_AutoCollapseTrackerTT"] = "Minimiza automaticamente o rastreador de objetivos sob certas condições."
+	L["Widget_AutoFadeObjectiveTracker"] = "Esmaecer rastreador de objetivos automaticamente"
+	L["Widget_AutoFadeObjectiveTrackerTT"] = "Esmaece automaticamente o rastreador de objetivos sob certas condições."
 	L["Widget_ACT_RestedArea"] = "Área de descanso"
 	L["Widget_ACT_Combat"] = COMBAT
 	L["Widget_ACT_PetBattles"] = SHOW_PET_BATTLES_ON_MAP_TEXT
@@ -2282,6 +2296,8 @@ if LOCALE == "ruRU" then
 	L["Header_ObjectiveTracker"] = HUD_EDIT_MODE_OBJECTIVE_TRACKER_LABEL
 	L["Widget_AutoCollapseTracker"] = "Автоматически сворачивать отслеживание задач"
 	L["Widget_AutoCollapseTrackerTT"] = "Автоматически сворачивает отслеживание задач при определённых условиях."
+	L["Widget_AutoFadeObjectiveTracker"] = "Автозатухание отслеживания задач"
+	L["Widget_AutoFadeObjectiveTrackerTT"] = "Автоматически затемняет отслеживание задач при определённых условиях."
 	L["Widget_ACT_RestedArea"] = "Зона отдыха"
 	L["Widget_ACT_Combat"] = COMBAT
 	L["Widget_ACT_PetBattles"] = SHOW_PET_BATTLES_ON_MAP_TEXT
@@ -2578,6 +2594,8 @@ if LOCALE == "koKR" then
 	L["Header_ObjectiveTracker"] = HUD_EDIT_MODE_OBJECTIVE_TRACKER_LABEL
 	L["Widget_AutoCollapseTracker"] = "목표 추적 자동 축소"
 	L["Widget_AutoCollapseTrackerTT"] = "특정 조건에서 목표 추적을 자동으로 최소화합니다."
+	L["Widget_AutoFadeObjectiveTracker"] = "목표 추적기 자동 페이드"
+	L["Widget_AutoFadeObjectiveTrackerTT"] = "특정 조건에서 목표 추적기를 자동으로 흐리게 합니다."
 	L["Widget_ACT_RestedArea"] = "휴식 지역"
 	L["Widget_ACT_Combat"] = COMBAT
 	L["Widget_ACT_PetBattles"] = SHOW_PET_BATTLES_ON_MAP_TEXT
@@ -2874,6 +2892,8 @@ if LOCALE == "zhCN" then
 	L["Header_ObjectiveTracker"] = HUD_EDIT_MODE_OBJECTIVE_TRACKER_LABEL
 	L["Widget_AutoCollapseTracker"] = "自动折叠目标追踪"
 	L["Widget_AutoCollapseTrackerTT"] = "在特定条件下自动最小化目标追踪。"
+	L["Widget_AutoFadeObjectiveTracker"] = "目标追踪自动淡出"
+	L["Widget_AutoFadeObjectiveTrackerTT"] = "在特定条件下自动淡出目标追踪。"
 	L["Widget_ACT_RestedArea"] = "休息区域"
 	L["Widget_ACT_Combat"] = COMBAT
 	L["Widget_ACT_PetBattles"] = SHOW_PET_BATTLES_ON_MAP_TEXT
@@ -3168,6 +3188,8 @@ if LOCALE == "zhTW" then
 	L["Header_ObjectiveTracker"] = HUD_EDIT_MODE_OBJECTIVE_TRACKER_LABEL
 	L["Widget_AutoCollapseTracker"] = "自動收合目標追蹤"
 	L["Widget_AutoCollapseTrackerTT"] = "在特定條件下自動最小化目標追蹤。"
+	L["Widget_AutoFadeObjectiveTracker"] = "目標追蹤自動淡出"
+	L["Widget_AutoFadeObjectiveTrackerTT"] = "在特定條件下自動淡出目標追蹤。"
 	L["Widget_ACT_RestedArea"] = "休息區域"
 	L["Widget_ACT_Combat"] = COMBAT
 	L["Widget_ACT_PetBattles"] = SHOW_PET_BATTLES_ON_MAP_TEXT

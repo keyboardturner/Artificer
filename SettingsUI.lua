@@ -987,8 +987,8 @@ function Artificer:BuildSettingsData()
 		isWidget = true,
 		key = "AutoCollapseTracker",
 		isNew = true,
-		label = L["Widget_AutoCollapseTracker"],
-		tooltip = L["Widget_AutoCollapseTrackerTT"],
+		label = L["Widget_AutoFadeObjectiveTracker"],
+		tooltip = L["Widget_AutoFadeObjectiveTrackerTT"],
 		options = {
 			{ key = "rested", text = L["Widget_ACT_RestedArea"], default = false },
 			{ key = "combat", text = L["Widget_ACT_Combat"], default = false },
@@ -1001,7 +1001,7 @@ function Artificer:BuildSettingsData()
 			{ key = "scenario", text = L["Widget_ACT_ScenariosDelves"], default = false },
 			{ key = "housing", text = L["Widget_ACT_Housing"], default = false },
 		},
-		searchText = GetSearchText(L["Widget_AutoCollapseTracker"], string.join(" ", L["Widget_ACT_RestedArea"], L["Widget_ACT_Combat"], L["Widget_ACT_PetBattles"], L["Widget_ACT_Battlegrounds"], L["Widget_ACT_Arena"], L["Widget_ACT_Dungeon"], L["Widget_ACT_MPlus"], L["Widget_ACT_Raids"], L["Widget_ACT_ScenariosDelves"], L["Widget_ACT_Housing"])),
+		searchText = GetSearchText(L["Widget_AutoFadeObjectiveTracker"], string.join(" ", L["Widget_AutoFadeObjectiveTrackerTT"], L["Widget_ACT_RestedArea"], L["Widget_ACT_Combat"], L["Widget_ACT_PetBattles"], L["Widget_ACT_Battlegrounds"], L["Widget_ACT_Arena"], L["Widget_ACT_Dungeon"], L["Widget_ACT_MPlus"], L["Widget_ACT_Raids"], L["Widget_ACT_ScenariosDelves"], L["Widget_ACT_Housing"])),
 		callback = function(values)
 			if Artificer.Widgets.UpdateTrackerState then
 				Artificer.Widgets.UpdateTrackerState();
