@@ -8,6 +8,8 @@ Made some adjustments to some code to avoid taint issues
  - The option to collapse the Objective Tracker has been redesigned. The functionality is no longer to collapse the objective tracker, as it appears to (somehow?????) cause taint issues. Instead, the Objective Tracker will fade out/in under the specific conditions instead.
  - The prey bar widget has received some adjustments to avoid modification if the widget frames are protected as an extra precaution. It wasn't exactly the cause of taint, but better safe than sorry as the addon was "hiding" the click frame
 
+Changed the Chromie Time button to now use Krowi_WorldMapButtons library. It should play nicer with other addons that use this lib to display the little buttons on the map filter.
+
 # 0.1.6a
 
 Testing Krowi_WorldMapButtons library packager integration
