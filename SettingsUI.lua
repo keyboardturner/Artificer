@@ -167,7 +167,8 @@ local function InitializeDropdown(button, data)
 		button.dropdown:SetPoint("RIGHT", button, "RIGHT", -10, 0);
 		button.dropdown:SetWidth(150);
 		
-		button.dropdownLabel = button:CreateFontString(nil, "OVERLAY", "GameTooltipText");
+		button.dropdownLabel = button:CreateFontString(nil, "OVERLAY");
+		button.dropdownLabel:SetFontObject("GameTooltipText");
 		button.dropdownLabel:SetPoint("LEFT", button, "LEFT", 24+15, 0);
 		button.dropdownLabel:SetPoint("RIGHT", button.dropdown, "LEFT", -10, 0);
 		button.dropdownLabel:SetJustifyH("LEFT");

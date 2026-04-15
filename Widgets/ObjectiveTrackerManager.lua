@@ -13,9 +13,11 @@ local function ShouldCollapse()
 	if settings.rested and IsResting() then
 		return true;
 	end
+	--[[
 	if settings.combat and UnitAffectingCombat("player") then
 		return true;
 	end
+	]]
 	if settings.petbattle and C_PetBattles and C_PetBattles.IsInBattle() then
 		return true;
 	end
@@ -45,9 +47,30 @@ end
 end
 
 local wasCollapsedByAddon = false;
+local combatHiddenByAddon = false;
 
 Artificer.Widgets.UpdateTrackerState = function()
-	if not ObjectiveTrackerFrame or not ObjectiveTrackerFrame.SetCollapsed then return end
+	if not ObjectiveTrackerFrame then return end
+
+	local settings = Artificer_DB and Artificer_DB.Widgets and Artificer_DB.Widgets.AutoCollapseTracker;
+	if type(settings) ~= "table" then return end
+
+	if settings.combat then
+		if not combatHiddenByAddon then
+			RegisterStateDriver(ObjectiveTrackerFrame, "visibility", "[combat] hide; show");
+			combatHiddenByAddon = true;
+		end
+	else
+		if combatHiddenByAddon then
+			UnregisterStateDriver(ObjectiveTrackerFrame, "visibility");
+			ObjectiveTrackerFrame:Show();
+			combatHiddenByAddon = false;
+		end
+	end
+
+	if InCombatLockdown() then return end
+
+	if not ObjectiveTrackerFrame.SetCollapsed then return end
 
 	local isCollapsed = ObjectiveTrackerFrame:IsCollapsed();
 	local shouldCollapse = ShouldCollapse();
