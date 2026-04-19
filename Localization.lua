@@ -135,6 +135,15 @@ if LOCALE == "enUS" then
 	L["Widget_MinimapRightClickTT"] = "Set the Minimap right-click functionality"
 	L["LockAppearance"] = "Lock Appearance"
 
+	--Widgets - TransmogHistory
+	L["UndoTT"] = "Undo"
+	L["RedoTT"] = "Redo"
+	L["UndoKeybindTT"] = "(Alt-Z / Shift-Z)"
+	L["RedoKeybindTT"] = "(Alt-Y / Shift-Y)"
+	L["RestoreSessionTT"] = "Restore Previous Session"
+	L["SheathWeaponTT"] = TRANSMOG_SHEATHE_WEAPON
+	L["InvalidWeapoonSheathTT"] = TRANSMOG_SLOT_WARNING_NOTHING_EQUIPPED
+
 	--Widgets - Loot History Visibility
 	L["Widget_LootHistoryVisibility"] = "Loot History Visibility"
 	L["Widget_LootHistoryVisibilityTT"] = "Automatically hide the loot history based on the selected option."
@@ -435,6 +444,15 @@ if LOCALE == "esMX" then
 	L["Widget_MinimapRightClickTT"] = "Configurar la función del clic derecho en el minimapa"
 	L["LockAppearance"] = "Bloquear apariencia"
 
+	--Widgets - TransmogHistory
+	L["UndoTT"] = "Deshacer"
+	L["RedoTT"] = "Rehacer"
+	L["UndoKeybindTT"] = "(Alt-Z / Mayús-Z)"
+	L["RedoKeybindTT"] = "(Alt-Y / Mayús-Y)"
+	L["RestoreSessionTT"] = "Restaurar sesión anterior"
+	L["SheathWeaponTT"] = TRANSMOG_SHEATHE_WEAPON
+	L["InvalidWeapoonSheathTT"] = TRANSMOG_SLOT_WARNING_NOTHING_EQUIPPED
+
 	--Widgets - Loot History Visibility
 	L["Widget_LootHistoryVisibility"] = "Visibilidad del historial de botín"
 	L["Widget_LootHistoryVisibilityTT"] = "Oculta automáticamente el historial de botín según la opción seleccionada."
@@ -734,6 +752,15 @@ if LOCALE == "esES" then
 	L["Widget_MinimapRightClickTT"] = "Configurar la función del clic derecho en el minimapa"
 	L["LockAppearance"] = "Mantener apariencia"
 
+	--Widgets - TransmogHistory
+	L["UndoTT"] = "Deshacer"
+	L["RedoTT"] = "Rehacer"
+	L["UndoKeybindTT"] = "(Alt-Z / Mayús-Z)"
+	L["RedoKeybindTT"] = "(Alt-Y / Mayús-Y)"
+	L["RestoreSessionTT"] = "Restaurar sesión anterior"
+	L["SheathWeaponTT"] = TRANSMOG_SHEATHE_WEAPON
+	L["InvalidWeapoonSheathTT"] = TRANSMOG_SLOT_WARNING_NOTHING_EQUIPPED
+
 	--Widgets - Loot History Visibility
 	L["Widget_LootHistoryVisibility"] = "Visibilidad del historial de botín"
 	L["Widget_LootHistoryVisibilityTT"] = "Oculta automáticamente el historial de botín según la opción seleccionada."
@@ -1030,6 +1057,15 @@ if LOCALE == "deDE" then
 	L["Widget_MinimapRightClick"] = "Minikarten-Rechtsklick"
 	L["Widget_MinimapRightClickTT"] = "Lege die Funktion des Rechtsklicks auf die Minikarte fest"
 	L["LockAppearance"] = "Aussehen fixieren"
+
+	--Widgets - TransmogHistory
+	L["UndoTT"] = "Rückgängig"
+	L["RedoTT"] = "Wiederholen"
+	L["UndoKeybindTT"] = "(Alt-Z / Umschalt-Z)"
+	L["RedoKeybindTT"] = "(Alt-Y / Umschalt-Y)"
+	L["RestoreSessionTT"] = "Vorherige Sitzung wiederherstellen"
+	L["SheathWeaponTT"] = TRANSMOG_SHEATHE_WEAPON
+	L["InvalidWeapoonSheathTT"] = TRANSMOG_SLOT_WARNING_NOTHING_EQUIPPED
 
 	--Widgets - Loot History Visibility
 	L["Widget_LootHistoryVisibility"] = "Sichtbarkeit des Beuteverlaufs"
@@ -1329,6 +1365,15 @@ if LOCALE == "frFR" then
 	L["Widget_MinimapRightClickTT"] = "Définir la fonction du clic droit sur la minicarte"
 	L["LockAppearance"] = "Verrouiller l’apparence"
 
+	--Widgets - TransmogHistory
+	L["UndoTT"] = "Annuler"
+	L["RedoTT"] = "Rétablir"
+	L["UndoKeybindTT"] = "(Alt-Z / Maj-Z)"
+	L["RedoKeybindTT"] = "(Alt-Y / Maj-Y)"
+	L["RestoreSessionTT"] = "Restaurer la session précédente"
+	L["SheathWeaponTT"] = TRANSMOG_SHEATHE_WEAPON
+	L["InvalidWeapoonSheathTT"] = TRANSMOG_SLOT_WARNING_NOTHING_EQUIPPED
+
 	--Widgets - Loot History Visibility
 	L["Widget_LootHistoryVisibility"] = "Visibilité de l’historique du butin"
 	L["Widget_LootHistoryVisibilityTT"] = "Masque automatiquement l’historique du butin selon l’option sélectionnée."
@@ -1627,6 +1672,15 @@ if LOCALE == "itIT" then
 	L["Widget_MinimapRightClickTT"] = "Imposta la funzione del clic destro sulla minimappa"
 	L["LockAppearance"] = "Blocco aspetto"
 
+	--Widgets - TransmogHistory
+	L["UndoTT"] = "Annulla"
+	L["RedoTT"] = "Ripeti"
+	L["UndoKeybindTT"] = "(Alt-Z / Maiusc-Z)"
+	L["RedoKeybindTT"] = "(Alt-Y / Maiusc-Y)"
+	L["RestoreSessionTT"] = "Ripristina sessione precedente"
+	L["SheathWeaponTT"] = TRANSMOG_SHEATHE_WEAPON
+	L["InvalidWeapoonSheathTT"] = TRANSMOG_SLOT_WARNING_NOTHING_EQUIPPED
+
 	--Widgets - Loot History Visibility
 	L["Widget_LootHistoryVisibility"] = "Visibilità cronologia bottino"
 	L["Widget_LootHistoryVisibilityTT"] = "Nasconde automaticamente la cronologia del bottino in base all’opzione selezionata."
@@ -1924,6 +1978,15 @@ if LOCALE == "ptBR" then
 	L["Widget_MinimapRightClick"] = "Clique direito no minimapa"
 	L["Widget_MinimapRightClickTT"] = "Definir a função do clique direito no minimapa"
 	L["LockAppearance"] = "Travar aparência"
+
+	--Widgets - TransmogHistory
+	L["UndoTT"] = "Desfazer"
+	L["RedoTT"] = "Refazer"
+	L["UndoKeybindTT"] = "(Alt-Z / Shift-Z)"
+	L["RedoKeybindTT"] = "(Alt-Y / Shift-Y)"
+	L["RestoreSessionTT"] = "Restaurar sessão anterior"
+	L["SheathWeaponTT"] = TRANSMOG_SHEATHE_WEAPON
+	L["InvalidWeapoonSheathTT"] = TRANSMOG_SLOT_WARNING_NOTHING_EQUIPPED
 
 	--Widgets - Loot History Visibility
 	L["Widget_LootHistoryVisibility"] = "Visibilidade do histórico de saque"
@@ -2225,6 +2288,15 @@ if LOCALE == "ruRU" then
 	L["Widget_MinimapRightClickTT"] = "Настроить функцию правого клика по миникарте"
 	L["LockAppearance"] = "Закрепить внешний вид"
 
+	--Widgets - TransmogHistory
+	L["UndoTT"] = "Отменить"
+	L["RedoTT"] = "Повторить"
+	L["UndoKeybindTT"] = "(Alt-Z / Shift-Z)"
+	L["RedoKeybindTT"] = "(Alt-Y / Shift-Y)"
+	L["RestoreSessionTT"] = "Восстановить предыдущую сессию"
+	L["SheathWeaponTT"] = TRANSMOG_SHEATHE_WEAPON
+	L["InvalidWeapoonSheathTT"] = TRANSMOG_SLOT_WARNING_NOTHING_EQUIPPED
+
 	--Widgets - Loot History Visibility
 	L["Widget_LootHistoryVisibility"] = "Видимость истории добычи"
 	L["Widget_LootHistoryVisibilityTT"] = "Автоматически скрывать историю добычи в зависимости от выбранной опции."
@@ -2522,6 +2594,15 @@ if LOCALE == "koKR" then
 	L["Widget_MinimapRightClick"] = "미니맵 오른쪽 클릭"
 	L["Widget_MinimapRightClickTT"] = "미니맵 오른쪽 클릭 기능 설정"
 	L["LockAppearance"] = "형상 고정"
+
+	--Widgets - TransmogHistory
+	L["UndoTT"] = "실행 취소"
+	L["RedoTT"] = "다시 실행"
+	L["UndoKeybindTT"] = "(Alt-Z / Shift-Z)"
+	L["RedoKeybindTT"] = "(Alt-Y / Shift-Y)"
+	L["RestoreSessionTT"] = "이전 세션 복원"
+	L["SheathWeaponTT"] = TRANSMOG_SHEATHE_WEAPON
+	L["InvalidWeapoonSheathTT"] = TRANSMOG_SLOT_WARNING_NOTHING_EQUIPPED
 
 	--Widgets - Loot History Visibility
 	L["Widget_LootHistoryVisibility"] = "전리품 기록 표시"
@@ -2821,6 +2902,15 @@ if LOCALE == "zhCN" then
 	L["Widget_MinimapRightClickTT"] = "设置小地图右键功能"
 	L["LockAppearance"] = "锁定外观"
 
+	--Widgets - TransmogHistory
+	L["UndoTT"] = "撤销"
+	L["RedoTT"] = "重做"
+	L["UndoKeybindTT"] = "(Alt-Z / Shift-Z)"
+	L["RedoKeybindTT"] = "(Alt-Y / Shift-Y)"
+	L["RestoreSessionTT"] = "恢复上一次会话"
+	L["SheathWeaponTT"] = TRANSMOG_SHEATHE_WEAPON
+	L["InvalidWeapoonSheathTT"] = TRANSMOG_SLOT_WARNING_NOTHING_EQUIPPED
+
 	--Widgets - Loot History Visibility
 	L["Widget_LootHistoryVisibility"] = "拾取记录可见性"
 	L["Widget_LootHistoryVisibilityTT"] = "根据所选选项自动隐藏拾取记录。"
@@ -3116,6 +3206,15 @@ if LOCALE == "zhTW" then
 	L["Widget_MinimapRightClick"] = "小地圖右鍵"
 	L["Widget_MinimapRightClickTT"] = "設定小地圖右鍵功能"
 	L["LockAppearance"] = "鎖定外觀"
+
+	--Widgets - TransmogHistory
+	L["UndoTT"] = "復原"
+	L["RedoTT"] = "重做"
+	L["UndoKeybindTT"] = "(Alt-Z / Shift-Z)"
+	L["RedoKeybindTT"] = "(Alt-Y / Shift-Y)"
+	L["RestoreSessionTT"] = "還原上一個工作階段"
+	L["SheathWeaponTT"] = TRANSMOG_SHEATHE_WEAPON
+	L["InvalidWeapoonSheathTT"] = TRANSMOG_SLOT_WARNING_NOTHING_EQUIPPED
 
 	--Widgets - Loot History Visibility
 	L["Widget_LootHistoryVisibility"] = "拾取紀錄可見性"
