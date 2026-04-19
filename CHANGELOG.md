@@ -1,5 +1,13 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.1.8
+
+12.0.5 toc update
+
+Added transmog undo/redo and outfit restoration buttons
+
+Added transmog sheath buttons
+
 # 0.1.7
 
 Added dropdown menu to toggle Spell Alert frames per spell (Requires Spell Alerts to be enabled)
