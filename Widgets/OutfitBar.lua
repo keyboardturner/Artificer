@@ -1016,7 +1016,7 @@ local function CheckPlayerMovement()
 	local multMax = 1.54
 	local basicMult = .37
 
-	if unitSpeed and unitSpeed ~= 0 then
+	if not issecretvalue(unitSpeed) and unitSpeed and unitSpeed ~= 0 then
 		speedMult = (speedFrequency / unitSpeed) * scalingFactor + offset;
 		if speedMult < multMin then speedMult = multMin end;
 		if speedMult > multMax then speedMult = multMax end;

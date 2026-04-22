@@ -1,5 +1,10 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.1.8a
+
+Fixed secret taint issue with GetUnitSpeed (seriously who was abusing GetUnitSpeed to circumvent API restrictions)
+ - as a result, the speed multiplier rate will stay static under combat restrictions
+
 # 0.1.8
 
 12.0.5 toc update
