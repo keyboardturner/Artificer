@@ -84,18 +84,18 @@ local Defaults = {
 
 		chromie = { r=1, g=1, b=1, a=1, desat = false, },
 
-		group_member = { r=1, g=1, b=1, a=1, desat = false, },
-		group_assist = { r=1, g=1, b=1, a=1, desat = false, },
+		group_member = { r=1, g=1, b=0, a=1, desat = true, },
+		group_assist = { r=1, g=1, b=0, a=1, desat = true, },
 		group_leader = { r=1, g=1, b=1, a=1, desat = false, },
 
-		guild_member = { r=1, g=1, b=1, a=1, desat = false, },
+		guild_member = { r=0, g=1, b=0, a=1, desat = false, },
 
-		friend_character = { r=1, g=1, b=1, a=1, desat = true, },
-		friend_account = { r=1, g=1, b=1, a=1, desat = true, },
-		friend_bnet = { r=1, g=1, b=1, a=1, desat = true, },
+		friend_character = { r=1, g=1, b=1, a=1, desat = false, },
+		friend_account = { r=0, g=.77, b=1, a=1, desat = true, },
+		friend_bnet = { r=0, g=.77, b=1, a=1, desat = true, },
 
 		ignored_character = { r=1, g=1, b=1, a=1, desat = false, },
-		ignored_account = { r=1, g=1, b=1, a=1, desat = false, },
+		ignored_account = { r=1, g=0, b=0, a=1, desat = true, },
 		--ignored_muted = { r=1, g=1, b=1, a=1, desat = false, },
 	};
 	NameplateStatusSize = 30,
