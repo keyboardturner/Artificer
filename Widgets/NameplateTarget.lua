@@ -7,12 +7,11 @@ local MAX_NAMEPLATES = 50;
 
 local NamePlateTextures = {};
 local eventFrame = CreateFrame("Frame");
-local isRodeoActive = false;
 
 local TARGET_STYLES = {
-	{ key = "hero_ring",	name = L["FNP_HeroTalentRing"],	atlas	= "talents-heroclass-ring-minimize-show" },
-	{ key = "crosshair",	name = L["FNP_ArtificerEye"],	texture	= "Interface\\AddOns\\Artificer\\Textures\\Artificer_Eye.blp" },
-	{ key = "lfg_eye",		name = L["FNP_LFGEye"],			atlas	= "RaidFrame-Icon-LFR" },
+	{ key = "hero_ring", name = L["FNP_HeroTalentRing"], atlas = "talents-heroclass-ring-minimize-show" },
+	{ key = "crosshair", name = L["FNP_ArtificerEye"], texture = "Interface\\AddOns\\Artificer\\Textures\\Artificer_Eye.blp" },
+	{ key = "lfg_eye", name = L["FNP_LFGEye"], atlas = "RaidFrame-Icon-LFR" },
 };
 
 local DEFAULT_STYLE_KEY = TARGET_STYLES[1].key;
@@ -27,16 +26,15 @@ local function GetStyleByKey(key)
 end
 
 function Artificer.UpdateNameplateTargetAppearance()
-	local styleKey = (Artificer_DB and Artificer_DB.NameplateTargetStyle) or DEFAULT_STYLE_KEY
-	local size = (Artificer_DB and Artificer_DB.NameplateTargetSize) or 32
-	local styleData = GetStyleByKey(styleKey)
-
-	local color = (Artificer_DB and Artificer_DB.NameplateTargetColor) or { r = 1, g = 1, b = 1, a = 1 }
+	local styleKey = (Artificer_DB and Artificer_DB.NameplateTargetStyle) or DEFAULT_STYLE_KEY;
+	local size = (Artificer_DB and Artificer_DB.NameplateTargetSize) or 32;
+	local styleData = GetStyleByKey(styleKey);
+	local color = (Artificer_DB and Artificer_DB.NameplateTargetColor) or { r = 1, g = 1, b = 1, a = 1 };
 
 	local function ApplyToIcon(frame)
-		if not frame then return end
-		frame:SetSize(size, size)
-		
+		if not frame then return end;
+		frame:SetSize(size, size);
+
 		if styleData.atlas then
 			frame.tex:SetTexture(nil);
 			frame.tex:SetAtlas(styleData.atlas);
@@ -45,7 +43,7 @@ function Artificer.UpdateNameplateTargetAppearance()
 			frame.tex:SetTexture(styleData.texture);
 		end
 
-		frame.tex:SetVertexColor(color.r, color.g, color.b, color.a)
+		frame.tex:SetVertexColor(color.r, color.g, color.b, color.a);
 	end
 
 	if Artificer.NameplateAdvancedFrame and Artificer.NameplateAdvancedFrame.Icon then
@@ -53,7 +51,7 @@ function Artificer.UpdateNameplateTargetAppearance()
 	end
 
 	for i = 1, MAX_NAMEPLATES do
-		local key = "NamePlate" .. i
+		local key = "NamePlate" .. i;
 		if NamePlateTextures[key] then
 			ApplyToIcon(NamePlateTextures[key]);
 		end
@@ -62,38 +60,38 @@ end
 
 function Artificer:OpenNameplateAdvancedSettings()
 	if not self.NameplateAdvancedFrame then
-		local f = CreateFrame("Frame", "ArtificerNameplateAdvancedFrame", Artificer.SettingsFrame, "DialogBorderTranslucentTemplate")
-		f:ClearAllPoints()
-		f:SetSize(375, 400)
-		f:SetPoint("LEFT", Artificer.SettingsFrame, "RIGHT", 45, 0)
-		--f:SetMovable(true)
-		f:EnableMouse(true)
-		--f:RegisterForDrag("LeftButton")
-		f:Hide()
+		local f = CreateFrame("Frame", "ArtificerNameplateAdvancedFrame", Artificer.SettingsFrame, "DialogBorderTranslucentTemplate");
+		f:ClearAllPoints();
+		f:SetSize(375, 400);
+		f:SetPoint("LEFT", Artificer.SettingsFrame, "RIGHT", 45, 0);
+		--f:SetMovable(true);
+		f:EnableMouse(true);
+		--f:RegisterForDrag("LeftButton");
+		f:Hide();
 
-		tinsert(UISpecialFrames, "ArtificerNameplateAdvancedFrame")
+		tinsert(UISpecialFrames, "ArtificerNameplateAdvancedFrame");
 
-		f.previewScale = 1
+		f.previewScale = 1;
 
 		f:SetScript("OnHide", function()
 			PlaySound(840);
-		end)
+		end);
 
 		local closeButton = CreateFrame("Button", nil, f, "UIPanelCloseButtonNoScripts");
 		closeButton:SetPoint("TOPRIGHT", 0, 0);
 		closeButton:SetScript("OnClick", function()
 			f:Hide();
 		end);
-		
-		local plateTextBG = CreateFrame("Frame", "ArtificerNameplateAdvancedFrameTitle", f, "DialogBorderTranslucentTemplate")
-		plateTextBG:ClearAllPoints()
-		plateTextBG:SetSize(100, 40)
-		plateTextBG:SetPoint("BOTTOM", f, "TOP", 0, -15)
 
-		local plateText = plateTextBG:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-		plateText:SetPoint("CENTER")
-		plateText:SetText(L["FNP_DragIcon"])
-		plateTextBG:SetWidth(plateText:GetWidth()*1.2)
+		local plateTextBG = CreateFrame("Frame", "ArtificerNameplateAdvancedFrameTitle", f, "DialogBorderTranslucentTemplate");
+		plateTextBG:ClearAllPoints();
+		plateTextBG:SetSize(100, 40);
+		plateTextBG:SetPoint("BOTTOM", f, "TOP", 0, -15);
+
+		local plateText = plateTextBG:CreateFontString(nil, "OVERLAY", "GameFontNormal");
+		plateText:SetPoint("CENTER");
+		plateText:SetText(L["FNP_DragIcon"]);
+		plateTextBG:SetWidth(plateText:GetWidth() * 1.2);
 
 		local backdropInfo = {
 			bgFile = "interface\\reforging\\itemupgradetooltipfullmask",
@@ -105,34 +103,34 @@ function Artificer:OpenNameplateAdvancedSettings()
 			insets = { left = 1, right = 1, top = 1, bottom = 1 },
 		};
 
-		local dummyBounds = CreateFrame("Frame", nil, f, "BackdropTemplate")
-		dummyBounds:SetBackdrop(backdropInfo)
-		dummyBounds:SetSize(350,200)
-		dummyBounds:SetPoint("TOP", f, "TOP", 0, -12.5)
+		local dummyBounds = CreateFrame("Frame", nil, f, "BackdropTemplate");
+		dummyBounds:SetBackdrop(backdropInfo);
+		dummyBounds:SetSize(350, 200);
+		dummyBounds:SetPoint("TOP", f, "TOP", 0, -12.5);
 
-		local width, height = C_NamePlate.GetNamePlateSize()
-		if not width or width == 0 then width, height = 110, 45 end
-		
-		local dummyPlate = CreateFrame("Frame", nil, dummyBounds, "BackdropTemplate")
-		dummyPlate:SetSize(width, height)
-		dummyPlate:SetPoint("CENTER", 0, 0)
-		
-		local bg = dummyPlate:CreateTexture(nil, "BACKGROUND")
-		bg:SetAllPoints()
-		bg:SetAtlas("nameplates-bar-background-white")
-		
-		local icon = CreateFrame("Frame", nil, dummyPlate)
-		icon:SetSize(32, 32)
-		icon.tex = icon:CreateTexture(nil, "ARTWORK")
-		icon.tex:SetAllPoints()
+		local width, height = C_NamePlate.GetNamePlateSize();
+		if not width or width == 0 then width, height = 110, 45; end
+
+		local dummyPlate = CreateFrame("Frame", nil, dummyBounds, "BackdropTemplate");
+		dummyPlate:SetSize(width, height);
+		dummyPlate:SetPoint("CENTER", 0, 0);
+
+		local bg = dummyPlate:CreateTexture(nil, "BACKGROUND");
+		bg:SetAllPoints();
+		bg:SetAtlas("nameplates-bar-background-white");
+
+		local icon = CreateFrame("Frame", nil, dummyPlate);
+		icon:SetSize(32, 32);
+		icon.tex = icon:CreateTexture(nil, "ARTWORK");
+		icon.tex:SetAllPoints();
 
 		local function UpdateDummyPlate()
-			local w, h = C_NamePlate.GetNamePlateSize()
+			local w, h = C_NamePlate.GetNamePlateSize();
 			if not w or w == 0 then
 				w, h = 110, 45;
 			end
 
-			local maxW = dummyBounds:GetWidth()  - 20;
+			local maxW = dummyBounds:GetWidth() - 20;
 			local maxH = dummyBounds:GetHeight() - 20;
 			local scale = math.min(maxW / w, maxH / h, 1);
 			f.previewScale = scale;
@@ -147,11 +145,11 @@ function Artificer:OpenNameplateAdvancedSettings()
 			local pos = Artificer_DB and Artificer_DB.NameplateTargetPos or { point = "CENTER", relativePoint = "CENTER", x = 0, y = 0 };
 			icon:ClearAllPoints();
 			icon:SetPoint(pos.point, dummyPlate, pos.relativePoint, pos.x * f.previewScale, pos.y * f.previewScale);
-		end)
-		
-		--icon:SetMovable(false)
-		icon:EnableMouse(true)
-		--icon:RegisterForDrag("LeftButton")
+		end);
+
+		--icon:SetMovable(false);
+		icon:EnableMouse(true);
+		--icon:RegisterForDrag("LeftButton");
 
 		local dragOffsetX, dragOffsetY = 0, 0;
 
@@ -188,7 +186,7 @@ function Artificer:OpenNameplateAdvancedSettings()
 
 			local dpX, dpY = dummyPlate:GetCenter();
 			local icX, icY = self:GetCenter();
-			local dX = icX - dpX;
+			local dX= icX - dpX;
 			local dY = icY - dpY;
 
 			local realX = dX / f.previewScale;
@@ -208,13 +206,13 @@ function Artificer:OpenNameplateAdvancedSettings()
 			end
 		end);
 
-		local styleDropdown = CreateFrame("DropdownButton", nil, f, "WowStyle1DropdownTemplate")
-		styleDropdown:SetPoint("TOPLEFT", dummyBounds, "BOTTOMLEFT", 20, -30)
-		styleDropdown:SetWidth(150)
-		
-		local styleLabel = f:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-		styleLabel:SetPoint("BOTTOMLEFT", styleDropdown, "TOPLEFT", 0, 5)
-		styleLabel:SetText(L["FNP_IconStyle"])
+		local styleDropdown = CreateFrame("DropdownButton", nil, f, "WowStyle1DropdownTemplate");
+		styleDropdown:SetPoint("TOPLEFT", dummyBounds, "BOTTOMLEFT", 20, -30);
+		styleDropdown:SetWidth(150);
+
+		local styleLabel = f:CreateFontString(nil, "OVERLAY", "GameFontNormal");
+		styleLabel:SetPoint("BOTTOMLEFT", styleDropdown, "TOPLEFT", 0, 5);
+		styleLabel:SetText(L["FNP_IconStyle"]);
 
 		local function UpdateDropdownText()
 			local currentKey = (Artificer_DB and Artificer_DB.NameplateTargetStyle) or DEFAULT_STYLE_KEY;
@@ -224,45 +222,47 @@ function Artificer:OpenNameplateAdvancedSettings()
 
 		styleDropdown:SetupMenu(function(dropdown, rootDescription)
 			for _, style in ipairs(TARGET_STYLES) do
-				rootDescription:CreateRadio(style.name, function()
-					return ((Artificer_DB and Artificer_DB.NameplateTargetStyle) or DEFAULT_STYLE_KEY) == style.key
-				end, function()
-					if not Artificer_DB then return; end
-					Artificer_DB.NameplateTargetStyle = style.key;
-					UpdateDropdownText();
-					Artificer.UpdateNameplateTargetAppearance();
-				end);
+				rootDescription:CreateRadio(style.name,
+					function()
+						return ((Artificer_DB and Artificer_DB.NameplateTargetStyle) or DEFAULT_STYLE_KEY) == style.key;
+					end,
+					function()
+						if not Artificer_DB then return; end
+						Artificer_DB.NameplateTargetStyle = style.key;
+						UpdateDropdownText();
+						Artificer.UpdateNameplateTargetAppearance();
+					end);
 			end
-		end)
-		UpdateDropdownText()
+		end);
+		UpdateDropdownText();
 
-		local sizeSlider = CreateFrame("Frame", nil, f, "MinimalSliderWithSteppersTemplate")
-		sizeSlider:SetPoint("TOPLEFT", styleDropdown, "BOTTOMLEFT", 0, -40)
-		sizeSlider:SetWidth(200)
+		local sizeSlider = CreateFrame("Frame", nil, f, "MinimalSliderWithSteppersTemplate");
+		sizeSlider:SetPoint("TOPLEFT", styleDropdown, "BOTTOMLEFT", 0, -40);
+		sizeSlider:SetWidth(200);
 
-		local sizeLabel = f:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-		sizeLabel:SetPoint("BOTTOMLEFT", sizeSlider, "TOPLEFT", 0, 5)
-		sizeLabel:SetText(L["FNP_IconSize"])
+		local sizeLabel = f:CreateFontString(nil, "OVERLAY", "GameFontNormal");
+		sizeLabel:SetPoint("BOTTOMLEFT", sizeSlider, "TOPLEFT", 0, 5);
+		sizeLabel:SetText(L["FNP_IconSize"]);
 
-		local options = Settings.CreateSliderOptions(16, 64, 2)
-		options:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value) return tostring(math.floor(value)) end)
-		
-		local currentSize = (Artificer_DB and Artificer_DB.NameplateTargetSize) or 32
-		sizeSlider:Init(currentSize, options.minValue, options.maxValue, options.steps, options.formatters)
-		
+		local options = Settings.CreateSliderOptions(16, 64, 2);
+		options:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value) return tostring(math.floor(value)); end);
+
+		local currentSize = (Artificer_DB and Artificer_DB.NameplateTargetSize) or 32;
+		sizeSlider:Init(currentSize, options.minValue, options.maxValue, options.steps, options.formatters);
+
 		sizeSlider:RegisterCallback("OnValueChanged", function(self, value)
 			if not Artificer_DB then return; end
 			Artificer_DB.NameplateTargetSize = value;
 			Artificer.UpdateNameplateTargetAppearance();
 		end, sizeSlider);
 
-		local colorLabel = f:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-		colorLabel:SetPoint("TOPLEFT", sizeSlider, "BOTTOMLEFT", 0, -10)
-		colorLabel:SetText(L["FNP_IconColor"])
+		local colorLabel = f:CreateFontString(nil, "OVERLAY", "GameFontNormal");
+		colorLabel:SetPoint("TOPLEFT", sizeSlider, "BOTTOMLEFT", 0, -10);
+		colorLabel:SetText(L["FNP_IconColor"]);
 
-		local colorSwatch = CreateFrame("Button", nil, f, "ColorSwatchTemplate")
-		colorSwatch:SetPoint("LEFT", colorLabel, "RIGHT", 10, 0)
-		colorSwatch:RegisterForClicks("AnyUp")
+		local colorSwatch = CreateFrame("Button", nil, f, "ColorSwatchTemplate");
+		colorSwatch:SetPoint("LEFT", colorLabel, "RIGHT", 10, 0);
+		colorSwatch:RegisterForClicks("AnyUp");
 
 		local function GetCurrentColor()
 			if Artificer_DB and Artificer_DB.NameplateTargetColor then
@@ -272,16 +272,14 @@ function Artificer:OpenNameplateAdvancedSettings()
 		end
 
 		local function ApplyColor(t)
-			if not t then return end
+			if not t then return end;
 			colorSwatch.Color:SetVertexColor(t.r, t.g, t.b, t.a);
-			if Artificer_DB then
-				Artificer_DB.NameplateTargetColor = t;
-			end
-			Artificer.UpdateNameplateTargetAppearance()
+			if Artificer_DB then Artificer_DB.NameplateTargetColor = t; end
+			Artificer.UpdateNameplateTargetAppearance();
 		end
 
-		local initColor = GetCurrentColor()
-		colorSwatch.Color:SetVertexColor(initColor.r, initColor.g, initColor.b, initColor.a)
+		local initColor = GetCurrentColor();
+		colorSwatch.Color:SetVertexColor(initColor.r, initColor.g, initColor.b, initColor.a);
 
 		colorSwatch:SetScript("OnEnter", function(self)
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
@@ -289,8 +287,8 @@ function Artificer:OpenNameplateAdvancedSettings()
 			GameTooltip:AddLine(L["LC_OpenColorPicker"], 1, 1, 1);
 			GameTooltip:AddLine(L["RC_OpenDropdown"], 1, 1, 1);
 			GameTooltip:Show();
-		end)
-		colorSwatch:SetScript("OnLeave", GameTooltip_Hide)
+		end);
+		colorSwatch:SetScript("OnLeave", GameTooltip_Hide);
 
 		colorSwatch:SetScript("OnClick", function(_, button)
 			if button == "RightButton" then
@@ -299,25 +297,23 @@ function Artificer:OpenNameplateAdvancedSettings()
 
 					rootDescription:CreateButton(L["CopyColor"], function()
 						Artificer.ColorClipboard = CopyTable(GetCurrentColor());
-					end)
+					end);
 
 					local pasteBtn = rootDescription:CreateButton(L["PasteColor"], function()
 						if not Artificer.ColorClipboard then return; end
 						ApplyColor(CopyTable(Artificer.ColorClipboard));
-					end)
+					end);
 					if not Artificer.ColorClipboard then pasteBtn:SetEnabled(false); end
 
 					rootDescription:CreateButton(RESET_TO_DEFAULT, function()
 						ApplyColor({ r = 1, g = 1, b = 1, a = 1 });
 					end);
-				end)
-				return
+				end);
+				return;
 			end
 
-			local current = GetCurrentColor()
-			local info = {}
-			info.r, info.g, info.b, info.opacity = current.r, current.g, current.b, current.a
-			info.hasOpacity = true
+			local current = GetCurrentColor();
+			local info = { r = current.r, g = current.g, b = current.b, opacity = current.a, hasOpacity = true };
 
 			info.swatchFunc = function()
 				local r, g, b = ColorPickerFrame:GetColorRGB();
@@ -325,40 +321,40 @@ function Artificer:OpenNameplateAdvancedSettings()
 				local saved = GetCurrentColor();
 				saved.r, saved.g, saved.b, saved.a = r, g, b, a;
 				ApplyColor(saved);
-			end
+			end;
 
 			info.cancelFunc = function()
 				local r, g, b, a = ColorPickerFrame:GetPreviousValues();
 				local saved = GetCurrentColor();
 				saved.r, saved.g, saved.b, saved.a = r, g, b, a;
 				ApplyColor(saved);
-			end
+			end;
 
-			ColorPickerFrame:SetupColorPickerAndShow(info)
-		end)
-		
+			ColorPickerFrame:SetupColorPickerAndShow(info);
+		end);
+
 		self.NameplateAdvancedFrame = f;
 		f.Icon = icon;
 		f.DummyPlate = dummyPlate;
 		f.ColorSwatch = colorSwatch;
 		f.GetCurrentColor = GetCurrentColor;
 	end
-	
-	local pos = Artificer_DB.NameplateTargetPos or { point = "RIGHT", relativePoint = "LEFT", x = 0, y = 0 }
-	local scale = self.NameplateAdvancedFrame.previewScale or 1
-	self.NameplateAdvancedFrame.Icon:ClearAllPoints()
-	self.NameplateAdvancedFrame.Icon:SetPoint(pos.point, self.NameplateAdvancedFrame.DummyPlate, pos.relativePoint, pos.x * scale, pos.y * scale)
 
-	local c = self.NameplateAdvancedFrame.GetCurrentColor()
-	self.NameplateAdvancedFrame.ColorSwatch.Color:SetVertexColor(c.r, c.g, c.b, c.a)
+	local pos = Artificer_DB.NameplateTargetPos or { point = "RIGHT", relativePoint = "LEFT", x = 0, y = 0 };
+	local scale = self.NameplateAdvancedFrame.previewScale or 1;
+	self.NameplateAdvancedFrame.Icon:ClearAllPoints();
+	self.NameplateAdvancedFrame.Icon:SetPoint(pos.point, self.NameplateAdvancedFrame.DummyPlate, pos.relativePoint, pos.x * scale, pos.y * scale);
 
-	Artificer.UpdateNameplateTargetAppearance()
-	
+	local c = self.NameplateAdvancedFrame.GetCurrentColor();
+	self.NameplateAdvancedFrame.ColorSwatch.Color:SetVertexColor(c.r, c.g, c.b, c.a);
+
+	Artificer.UpdateNameplateTargetAppearance();
+
 	if self.NameplateAdvancedFrame:IsVisible() then
 		self.NameplateAdvancedFrame:Hide();
 	else
 		Artificer:CloseAllAdvancedFrames();
-		
+
 		self.NameplateAdvancedFrame:Show();
 	end
 end
@@ -382,20 +378,19 @@ end
 for i = 1, MAX_NAMEPLATES do
 	local key = "NamePlate" .. i;
 	NamePlateTextures[key] = CreateFrame("Frame", nil, WorldFrame);
-	--NamePlateTextures[key]:SetSize(32, 32);
-
 	NamePlateTextures[key].tex = NamePlateTextures[key]:CreateTexture();
 	NamePlateTextures[key].tex:SetAllPoints();
-	--NamePlateTextures[key].tex:SetAtlas("talents-heroclass-ring-minimize-show");
 	NamePlateTextures[key]:Hide();
 end
 
 local function processUnit(unitToken)
+	if not Artificer_DB.Widgets.NameplateTargetIndicator then return; end
+
 	local namePlate = C_NamePlate.GetNamePlateForUnit(unitToken);
 	if not namePlate then return; end
 	local unitFrame = namePlate:GetName();
 
-	if issecretvalue(unitToken) then return end
+	if issecretvalue(unitToken) then return; end
 	if issecretvalue(UnitExists(unitToken)) then return; end
 	if issecretvalue(UnitGUID(unitToken)) then return; end
 	if issecretvalue(C_PlayerInfo.GUIDIsPlayer(UnitGUID(unitToken))) then return; end
@@ -418,10 +413,10 @@ local function processUnit(unitToken)
 end
 
 local function onNamePlateEvent(self, event, unitToken)
-	if not Artificer_DB.Widgets.NameplateTargetIndicator then return end
+	if not Artificer_DB.Widgets.NameplateTargetIndicator then return; end
 
 	local namePlate = C_NamePlate.GetNamePlateForUnit(unitToken);
-	if not namePlate then return end
+	if not namePlate then return; end
 	local unitFrame = namePlate:GetName();
 
 	if event == "NAME_PLATE_UNIT_REMOVED" then
@@ -429,21 +424,11 @@ local function onNamePlateEvent(self, event, unitToken)
 		NamePlateTextures[unitFrame]:Hide();
 	elseif event == "NAME_PLATE_UNIT_ADDED" then
 		local targetToken = unitToken .. "target";
-		if issecretvalue(targetToken) or issecretvalue(UnitExists(targetToken)) or issecretvalue(UnitName(targetToken)) or issecretvalue(UnitName("player")) then return end
+		if issecretvalue(targetToken) or issecretvalue(UnitExists(targetToken)) or issecretvalue(UnitName(targetToken)) or issecretvalue(UnitName("player")) then return; end
 		if UnitExists(targetToken) and UnitIsPlayer(unitToken) and UnitName(targetToken) == UnitName("player") then
 			SetTargetIconPosition(NamePlateTextures[unitFrame], _G[unitFrame]);
 			NamePlateTextures[unitFrame]:Show();
 		end
-	end
-end
-
-local function Rodeo()
-	if not isRodeoActive then return end
-
-	C_Timer.After(1, Rodeo);
-
-	for i = 1, MAX_NAMEPLATES do
-		processUnit(format(NAMEPLATE_TOKEN, i));
 	end
 end
 
@@ -462,26 +447,23 @@ function Artificer.RefreshNameplateTargetIndicator()
 		eventFrame:RegisterEvent("NAME_PLATE_UNIT_ADDED");
 		eventFrame:RegisterEvent("NAME_PLATE_UNIT_REMOVED");
 		eventFrame:SetScript("OnEvent", onNamePlateEvent);
-
-		if not isRodeoActive then
-			isRodeoActive = true;
-			Rodeo();
-		end
 	else
 		eventFrame:UnregisterEvent("NAME_PLATE_UNIT_ADDED");
 		eventFrame:UnregisterEvent("NAME_PLATE_UNIT_REMOVED");
 		eventFrame:SetScript("OnEvent", nil);
-
-		isRodeoActive = false;
 		hideAll();
 	end
+
+	Artificer.NameplateRodeo:Refresh();
 end
 
-local f = CreateFrame("Frame")
-f:RegisterEvent("PLAYER_LOGIN")
+Artificer.NameplateRodeo:RegisterFast(processUnit);
+
+local f = CreateFrame("Frame");
+f:RegisterEvent("PLAYER_LOGIN");
 f:SetScript("OnEvent", function(self, event)
 	if event == "PLAYER_LOGIN" then
 		Artificer.UpdateNameplateTargetAppearance();
 		Artificer.RefreshNameplateTargetIndicator();
 	end
-end)
+end);

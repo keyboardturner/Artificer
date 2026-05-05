@@ -433,12 +433,25 @@ local function InitializeSlider(button, data)
 	end
 
 	button.slider.isInitializing = true
-	local currentVal = tonumber(GetDBValue(data.key)) or data.defaultValue;
+	
+	local currentVal
+	if data.isWidget then
+		currentVal = tonumber(GetWidgetValue(data.key)) or data.defaultValue;
+	else
+		currentVal = tonumber(GetDBValue(data.key)) or data.defaultValue;
+	end
+	
 	button.slider:Init(currentVal, options.minValue, options.maxValue, options.steps, options.formatters);
 
 	local function OnValueChanged(self, value)
 		if button.slider.isInitializing then return end
-		SetDBValue(data.key, value)
+		
+		if data.isWidget then
+			SetWidgetValue(data.key, value);
+		else
+			SetDBValue(data.key, value);
+		end
+		
 		if data.callback then data.callback(value); end
 	end
 
@@ -895,6 +908,28 @@ function Artificer:BuildSettingsData()
 		end
 	});
 
+	-- Widgets - NameplateStatus
+	table.insert(allSettingsData, {
+	type = "checkbox",
+	isWidget = true,
+	key = "NameplateStatusIndicator",
+	isNew = true,
+	label = L["FNP_StatusIndicator"],
+	tooltip = L["FNP_StatusIndicatorTT"],
+	searchText = GetSearchText(L["FNP_StatusIndicator"], L["FNP_StatusIndicatorTT"]),
+	callback = function(val)
+		if Artificer.RefreshNameplateStatusIndicator then
+			Artificer.RefreshNameplateStatusIndicator();
+		end
+	end,
+	hasAdvancedSettings = true,
+	onAdvancedClick = function()
+		if Artificer.OpenNameplateStatusAdvancedSettings then
+			Artificer:OpenNameplateStatusAdvancedSettings();
+		end
+	end
+});
+
 	--Header - Screenshot
 	table.insert(allSettingsData, {
 		type = "header",
@@ -1220,7 +1255,7 @@ function Artificer:BuildSettingsData()
 		min = 0, 
 		max = 100, 
 		step = 1,
-		defaultValue = 25,
+		defaultValue = 100, -- blizz made their own changes so the default multiplier can stay as 100% now
 		formatter = function(value) return math.floor(value + 0.5) .. "%" end,
 		searchText = GetSearchText(L["Widget_MapAmbience_QD"], L["Widget_MapAmbience_QDTT"]),
 		callback = function(val)

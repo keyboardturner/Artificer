@@ -52,6 +52,7 @@ local Defaults = {
 			petbattle = false,
 		},
 		FilteredOverlays = {},
+		NameplateStatusIndicator = false,
 	},
 
 	NameplateTargetPos = {
@@ -60,6 +61,43 @@ local Defaults = {
 		x = 0,
 		y = 0,
 	},
+
+	NameplateStatusPos = {
+		point = "CENTER",
+		relativePoint = "CENTER",
+		x = 0,
+		y = 40,
+	},
+	NameplateStatusTypes = {
+		connection = true,
+		chromie = true,
+		group = true,
+		guild = true,
+		friend = true,
+		ignored = true,
+	},
+	NameplateStatusColors = {
+		connection_away = { r=1, g=1, b=1, a=1, desat = false, },
+		connection_dnd = { r=1, g=1, b=1, a=1, desat = false, },
+		connection_DCd = { r=1, g=1, b=1, a=1, desat = false, },
+
+		chromie = { r=1, g=1, b=1, a=1, desat = false, },
+
+		group_member = { r=1, g=1, b=1, a=1, desat = false, },
+		group_assist = { r=1, g=1, b=1, a=1, desat = false, },
+		group_leader = { r=1, g=1, b=1, a=1, desat = false, },
+
+		guild_member = { r=1, g=1, b=1, a=1, desat = false, },
+
+		friend_character = { r=1, g=1, b=1, a=1, desat = true, },
+		friend_account = { r=1, g=1, b=1, a=1, desat = true, },
+		friend_bnet = { r=1, g=1, b=1, a=1, desat = true, },
+		
+		ignored_character = { r=1, g=1, b=1, a=1, desat = false, },
+		ignored_account = { r=1, g=1, b=1, a=1, desat = false, },
+		--ignored_muted = { r=1, g=1, b=1, a=1, desat = false, },
+	};
+	NameplateStatusSize = 30,
 
 	OutfitSwapSounds = {
 		impact = true,

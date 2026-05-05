@@ -566,8 +566,17 @@ function Artificer:OpenPreyBarAdvancedSettings()
 			RefreshPositionVisibility();
 			local db = Artificer_DB and Artificer_DB.PreyBar;
 			
-			hideCheck:SetChecked(db and db.HideBlizzWidget ~= nil and db.HideBlizzWidget or Artificer.Defaults.PreyBar.HideBlizzWidget);
-			combatCheck:SetChecked(db and db.HideInCombat ~= nil and db.HideInCombat or Artificer.Defaults.PreyBar.HideInCombat);
+			local hideBlizz = Artificer.Defaults.PreyBar.HideBlizzWidget;
+			if db and db.HideBlizzWidget ~= nil then
+				hideBlizz = db.HideBlizzWidget;
+			end
+			hideCheck:SetChecked(hideBlizz);
+
+			local hideCombat = Artificer.Defaults.PreyBar.HideInCombat;
+			if db and db.HideInCombat ~= nil then
+				hideCombat = db.HideInCombat;
+			end
+			combatCheck:SetChecked(hideCombat);
 		end)
 
 		self.PreyBarAdvancedFrame = f

@@ -172,6 +172,22 @@ if LOCALE == "enUS" then
 	L["CopyColor"] = "Copy Color"
 	L["PasteColor"] = "Paste Color"
 
+	--Widgets - NameplateStatus
+	L["FNP_StatusIndicator"] = "Friendly Nameplate Status Indicator"
+	L["FNP_StatusIndicatorTT"] = "Displays an icon on the nameplate of a friendly player status."
+	L["FNP_StatusOptions"] = PLAYER_STATUS
+	L["FNP_StatusConnection"] = "Connection (AFK/DND/DC)"
+	L["FNP_StatusChromie"] = "Chromie Time"
+	L["FNP_StatusGroup"] = PARTY_MEMBERS
+	L["FNP_StatusGuild"] = LFG_LIST_GUILD_MEMBER
+	L["FNP_StatusFriend"] = FRIENDS
+	L["FNP_StatusIgnored"] = IGNORED
+
+	--Widgets - Account Ignore List
+	L["Widget_AccountIgnoreList"] = "Account Ignore List Window"
+	L["Widget_AccountIgnoreListTT"] = "Display a window containing all recorded ignores on the account."
+	L["AccountIgnoreList"] = "Account Ignore List"
+
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "Prey Progress Indicators"
 	L["Widget_PreyBarTT"] = "Displays alternate Prey Progress alongside the Prey Hunt widget."
@@ -481,6 +497,22 @@ if LOCALE == "esMX" then
 	L["CopyColor"] = "Copiar color"
 	L["PasteColor"] = "Pegar color"
 
+	--Widgets - NameplateStatus
+	L["FNP_StatusIndicator"] = "Indicador de estado en placas de nombre amistosas"
+	L["FNP_StatusIndicatorTT"] = "Muestra un icono en la placa de nombre del estado de un jugador amistoso."
+	L["FNP_StatusOptions"] = PLAYER_STATUS
+	L["FNP_StatusConnection"] = "Conexión (AFK/DND/DC)"
+	L["FNP_StatusChromie"] = "Tiempo de Cromi"
+	L["FNP_StatusGroup"] = PARTY_MEMBERS
+	L["FNP_StatusGuild"] = LFG_LIST_GUILD_MEMBER
+	L["FNP_StatusFriend"] = FRIENDS
+	L["FNP_StatusIgnored"] = IGNORED
+
+	--Widgets - Account Ignore List
+	L["Widget_AccountIgnoreList"] = "Ventana de lista de ignorados de la cuenta"
+	L["Widget_AccountIgnoreListTT"] = "Muestra una ventana que contiene todos los ignorados registrados en la cuenta."
+	L["AccountIgnoreList"] = "Lista de ignorados de la cuenta"
+
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "Indicadores de progreso de presa"
 	L["Widget_PreyBarTT"] = "Muestra progreso alternativo de presa junto al widget Cacería de Presa."
@@ -789,6 +821,22 @@ if LOCALE == "esES" then
 	L["CopyColor"] = "Copiar color"
 	L["PasteColor"] = "Pegar color"
 
+	--Widgets - NameplateStatus
+	L["FNP_StatusIndicator"] = "Indicador de estado en placas de nombre amistosas"
+	L["FNP_StatusIndicatorTT"] = "Muestra un icono en la placa de nombre del estado de un jugador amistoso."
+	L["FNP_StatusOptions"] = PLAYER_STATUS
+	L["FNP_StatusConnection"] = "Conexión (AFK/DND/DC)"
+	L["FNP_StatusChromie"] = "Tiempo de Cromi"
+	L["FNP_StatusGroup"] = PARTY_MEMBERS
+	L["FNP_StatusGuild"] = LFG_LIST_GUILD_MEMBER
+	L["FNP_StatusFriend"] = FRIENDS
+	L["FNP_StatusIgnored"] = IGNORED
+
+	--Widgets - Account Ignore List
+	L["Widget_AccountIgnoreList"] = "Ventana de lista de ignorados de la cuenta"
+	L["Widget_AccountIgnoreListTT"] = "Muestra una ventana que contiene todos los ignorados registrados en la cuenta."
+	L["AccountIgnoreList"] = "Lista de ignorados de la cuenta"
+
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "Indicadores de progreso de presa"
 	L["Widget_PreyBarTT"] = "Muestra un progreso alternativo de presa junto al widget Caza de Presa."
@@ -1094,6 +1142,22 @@ if LOCALE == "deDE" then
 	L["ColorOptions"] = "Farboptionen"
 	L["CopyColor"] = "Farbe kopieren"
 	L["PasteColor"] = "Farbe einfügen"
+
+	--Widgets - NameplateStatus
+	L["FNP_StatusIndicator"] = "Freundliche Namensplaketten-Statusanzeige"
+	L["FNP_StatusIndicatorTT"] = "Zeigt ein Symbol auf der Namensplakette eines freundlichen Spielerstatus an."
+	L["FNP_StatusOptions"] = PLAYER_STATUS
+	L["FNP_StatusConnection"] = "Verbindung (AFK/DND/DC)"
+	L["FNP_StatusChromie"] = "Chromie-Zeit"
+	L["FNP_StatusGroup"] = PARTY_MEMBERS
+	L["FNP_StatusGuild"] = LFG_LIST_GUILD_MEMBER
+	L["FNP_StatusFriend"] = FRIENDS
+	L["FNP_StatusIgnored"] = IGNORED
+
+	--Widgets - Account Ignore List
+	L["Widget_AccountIgnoreList"] = "Fenster für kontoweite Ignorierliste"
+	L["Widget_AccountIgnoreListTT"] = "Zeigt ein Fenster mit allen auf dem Konto gespeicherten Ignorierten an."
+	L["AccountIgnoreList"] = "Kontoweite Ignorierliste"
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "Beute-Fortschrittsanzeigen"
@@ -1402,6 +1466,22 @@ if LOCALE == "frFR" then
 	L["CopyColor"] = "Copier la couleur"
 	L["PasteColor"] = "Coller la couleur"
 
+	--Widgets - NameplateStatus
+	L["FNP_StatusIndicator"] = "Indicateur d’état des barres de nom amicales"
+	L["FNP_StatusIndicatorTT"] = "Affiche une icône sur la barre de nom de l’état d’un joueur amical."
+	L["FNP_StatusOptions"] = PLAYER_STATUS
+	L["FNP_StatusConnection"] = "Connexion (ABS/DND/DC)"
+	L["FNP_StatusChromie"] = "Temps de Chromie"
+	L["FNP_StatusGroup"] = PARTY_MEMBERS
+	L["FNP_StatusGuild"] = LFG_LIST_GUILD_MEMBER
+	L["FNP_StatusFriend"] = FRIENDS
+	L["FNP_StatusIgnored"] = IGNORED
+
+	--Widgets - Account Ignore List
+	L["Widget_AccountIgnoreList"] = "Fenêtre de liste d’ignorés du compte"
+	L["Widget_AccountIgnoreListTT"] = "Affiche une fenêtre contenant tous les ignorés enregistrés sur le compte."
+	L["AccountIgnoreList"] = "Liste d’ignorés du compte"
+
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "Indicateurs de progression de proie"
 	L["Widget_PreyBarTT"] = "Affiche une progression alternative de proie à côté du widget Chasse à la proie."
@@ -1709,6 +1789,22 @@ if LOCALE == "itIT" then
 	L["CopyColor"] = "Copia colore"
 	L["PasteColor"] = "Incolla colore"
 
+	--Widgets - NameplateStatus
+	L["FNP_StatusIndicator"] = "Indicatore di stato delle barre dei nomi amichevoli"
+	L["FNP_StatusIndicatorTT"] = "Mostra un'icona sulla barra del nome dello stato di un giocatore amichevole."
+	L["FNP_StatusOptions"] = PLAYER_STATUS
+	L["FNP_StatusConnection"] = "Connessione (AFK/DND/DC)"
+	L["FNP_StatusChromie"] = "Tempo di Cromie"
+	L["FNP_StatusGroup"] = PARTY_MEMBERS
+	L["FNP_StatusGuild"] = LFG_LIST_GUILD_MEMBER
+	L["FNP_StatusFriend"] = FRIENDS
+	L["FNP_StatusIgnored"] = IGNORED
+
+	--Widgets - Account Ignore List
+	L["Widget_AccountIgnoreList"] = "Finestra lista ignorati account"
+	L["Widget_AccountIgnoreListTT"] = "Mostra una finestra contenente tutti gli ignorati registrati nell'account."
+	L["AccountIgnoreList"] = "Lista ignorati account"
+
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "Indicatori progresso preda"
 	L["Widget_PreyBarTT"] = "Mostra un progresso alternativo della preda accanto al widget Caccia alla preda."
@@ -2015,6 +2111,22 @@ if LOCALE == "ptBR" then
 	L["ColorOptions"] = "Opções de cor"
 	L["CopyColor"] = "Copiar cor"
 	L["PasteColor"] = "Colar cor"
+
+	--Widgets - NameplateStatus
+	L["FNP_StatusIndicator"] = "Indicador de status em placas de nome amigáveis"
+	L["FNP_StatusIndicatorTT"] = "Exibe um ícone na placa de nome do status de um jogador amigável."
+	L["FNP_StatusOptions"] = PLAYER_STATUS
+	L["FNP_StatusConnection"] = "Conexão (AFK/DND/DC)"
+	L["FNP_StatusChromie"] = "Tempo da Chromie"
+	L["FNP_StatusGroup"] = PARTY_MEMBERS
+	L["FNP_StatusGuild"] = LFG_LIST_GUILD_MEMBER
+	L["FNP_StatusFriend"] = FRIENDS
+	L["FNP_StatusIgnored"] = IGNORED
+
+	--Widgets - Account Ignore List
+	L["Widget_AccountIgnoreList"] = "Janela da lista de ignorados da conta"
+	L["Widget_AccountIgnoreListTT"] = "Exibe uma janela contendo todos os ignorados registrados na conta."
+	L["AccountIgnoreList"] = "Lista de ignorados da conta"
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "Indicadores de progresso da presa"
@@ -2325,6 +2437,22 @@ if LOCALE == "ruRU" then
 	L["CopyColor"] = "Копировать цвет"
 	L["PasteColor"] = "Вставить цвет"
 
+	--Widgets - NameplateStatus
+	L["FNP_StatusIndicator"] = "Индикатор статуса дружественных индикаторов здоровья"
+	L["FNP_StatusIndicatorTT"] = "Отображает значок статуса дружественного игрока на индикаторе здоровья."
+	L["FNP_StatusOptions"] = PLAYER_STATUS
+	L["FNP_StatusConnection"] = "Подключение (AFK/DND/DC)"
+	L["FNP_StatusChromie"] = "Время Хроми"
+	L["FNP_StatusGroup"] = PARTY_MEMBERS
+	L["FNP_StatusGuild"] = LFG_LIST_GUILD_MEMBER
+	L["FNP_StatusFriend"] = FRIENDS
+	L["FNP_StatusIgnored"] = IGNORED
+
+	--Widgets - Account Ignore List
+	L["Widget_AccountIgnoreList"] = "Окно списка игнорируемых аккаунта"
+	L["Widget_AccountIgnoreListTT"] = "Отображает окно со всеми сохранёнными игнорируемыми на аккаунте."
+	L["AccountIgnoreList"] = "Список игнорируемых аккаунта"
+
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "Индикаторы прогресса добычи"
 	L["Widget_PreyBarTT"] = "Отображает альтернативный прогресс добычи рядом с виджетом Охота на добычу."
@@ -2631,6 +2759,22 @@ if LOCALE == "koKR" then
 	L["ColorOptions"] = "색상 옵션"
 	L["CopyColor"] = "색상 복사"
 	L["PasteColor"] = "색상 붙여넣기"
+
+	--Widgets - NameplateStatus
+	L["FNP_StatusIndicator"] = "아군 이름표 상태 표시기"
+	L["FNP_StatusIndicatorTT"] = "아군 플레이어 상태의 이름표에 아이콘을 표시합니다."
+	L["FNP_StatusOptions"] = PLAYER_STATUS
+	L["FNP_StatusConnection"] = "접속 상태 (자리비움/방해 금지/접속 종료)"
+	L["FNP_StatusChromie"] = "크로미의 시간"
+	L["FNP_StatusGroup"] = PARTY_MEMBERS
+	L["FNP_StatusGuild"] = LFG_LIST_GUILD_MEMBER
+	L["FNP_StatusFriend"] = FRIENDS
+	L["FNP_StatusIgnored"] = IGNORED
+
+	--Widgets - Account Ignore List
+	L["Widget_AccountIgnoreList"] = "계정 차단 목록 창"
+	L["Widget_AccountIgnoreListTT"] = "계정에 기록된 모든 차단 목록을 포함한 창을 표시합니다."
+	L["AccountIgnoreList"] = "계정 차단 목록"
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "먹이 진행 표시기"
@@ -2939,6 +3083,22 @@ if LOCALE == "zhCN" then
 	L["CopyColor"] = "复制颜色"
 	L["PasteColor"] = "粘贴颜色"
 
+	--Widgets - NameplateStatus
+	L["FNP_StatusIndicator"] = "友方姓名板状态指示器"
+	L["FNP_StatusIndicatorTT"] = "在友方玩家状态的姓名板上显示一个图标。"
+	L["FNP_StatusOptions"] = PLAYER_STATUS
+	L["FNP_StatusConnection"] = "连接状态（AFK/DND/DC）"
+	L["FNP_StatusChromie"] = "克罗米时间"
+	L["FNP_StatusGroup"] = PARTY_MEMBERS
+	L["FNP_StatusGuild"] = LFG_LIST_GUILD_MEMBER
+	L["FNP_StatusFriend"] = FRIENDS
+	L["FNP_StatusIgnored"] = IGNORED
+
+	--Widgets - Account Ignore List
+	L["Widget_AccountIgnoreList"] = "账号忽略列表窗口"
+	L["Widget_AccountIgnoreListTT"] = "显示一个包含账号所有已记录忽略对象的窗口。"
+	L["AccountIgnoreList"] = "账号忽略列表"
+
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "猎物进度指示器"
 	L["Widget_PreyBarTT"] = "在猎物狩猎组件旁显示替代的猎物进度。"
@@ -3243,6 +3403,22 @@ if LOCALE == "zhTW" then
 	L["ColorOptions"] = "顏色選項"
 	L["CopyColor"] = "複製顏色"
 	L["PasteColor"] = "貼上顏色"
+
+	--Widgets - NameplateStatus
+	L["FNP_StatusIndicator"] = "友方名條狀態指示器"
+	L["FNP_StatusIndicatorTT"] = "在友方玩家狀態的名條上顯示圖示。"
+	L["FNP_StatusOptions"] = PLAYER_STATUS
+	L["FNP_StatusConnection"] = "連線狀態（AFK/DND/DC）"
+	L["FNP_StatusChromie"] = "克羅米時間"
+	L["FNP_StatusGroup"] = PARTY_MEMBERS
+	L["FNP_StatusGuild"] = LFG_LIST_GUILD_MEMBER
+	L["FNP_StatusFriend"] = FRIENDS
+	L["FNP_StatusIgnored"] = IGNORED
+
+	--Widgets - Account Ignore List
+	L["Widget_AccountIgnoreList"] = "帳號忽略清單視窗"
+	L["Widget_AccountIgnoreListTT"] = "顯示包含帳號所有已記錄忽略對象的視窗。"
+	L["AccountIgnoreList"] = "帳號忽略清單"
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "獵物進度指示器"
