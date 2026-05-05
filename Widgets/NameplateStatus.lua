@@ -67,30 +67,30 @@ local function SetIconTexture(iconFrame, textureData)
 end
 
 local function ApplyContainerAppearance(container)
-    local size = Artificer_DB.NameplateStatusSize or Artificer.Defaults.NameplateStatusSize;
-    local colors = Artificer_DB.NameplateStatusColors or Artificer.Defaults.NameplateStatusColors;
+	local size = Artificer_DB.NameplateStatusSize or Artificer.Defaults.NameplateStatusSize;
+	local colors = Artificer_DB.NameplateStatusColors or Artificer.Defaults.NameplateStatusColors;
 
-    for _, key in ipairs(statusi) do
-        local icon = container[key];
-        icon:SetSize(size, size);
+	for _, key in ipairs(statusi) do
+		local icon = container[key];
+		icon:SetSize(size, size);
 
-        local colorKey = icon.statusKey or key;
-        local c = colors[colorKey] or { r=1, g=1, b=1, a=1, desat=false };
+		local colorKey = icon.statusKey or key;
+		local c = colors[colorKey] or { r=1, g=1, b=1, a=1, desat=false };
 
-        icon.tex:SetVertexColor(c.r, c.g, c.b, c.a);
-        icon.tex:SetDesaturated(c.desat);
-    end
-    LayoutContainerIcons(container);
+		icon.tex:SetVertexColor(c.r, c.g, c.b, c.a);
+		icon.tex:SetDesaturated(c.desat);
+	end
+	LayoutContainerIcons(container);
 end
 
 function Artificer.UpdateNameplateStatusAppearance()
-    if Artificer.NameplateStatusAdvancedFrame and Artificer.NameplateStatusAdvancedFrame.previewContainer then
-        ApplyContainerAppearance(Artificer.NameplateStatusAdvancedFrame.previewContainer);
-    end
+	if Artificer.NameplateStatusAdvancedFrame and Artificer.NameplateStatusAdvancedFrame.previewContainer then
+		ApplyContainerAppearance(Artificer.NameplateStatusAdvancedFrame.previewContainer);
+	end
 
-    for _, container in pairs(StatusContainers) do
-        ApplyContainerAppearance(container);
-    end
+	for _, container in pairs(StatusContainers) do
+		ApplyContainerAppearance(container);
+	end
 end
 
 function Artificer.UpdateStatusPreviewVisibility()
@@ -536,7 +536,6 @@ end
 
 -- icons that require more immediate attention
 local function UpdateFastIcons(unitToken, container)
-	container.connection:Hide();
 	container.group:Hide();
 
 	if issecretvalue(unitToken) or issecretvalue(UnitExists(unitToken)) then return; end
@@ -544,27 +543,6 @@ local function UpdateFastIcons(unitToken, container)
 	if not scrubsecretvalues(UnitIsFriend("player", unitToken)) then return; end
 
 	local options = Artificer_DB.NameplateStatusTypes;
-
-	-- AFK/DND/DC'd
-	if options.connection then
-		local isConnected = scrubsecretvalues(UnitIsConnected(unitToken));
-		local isAFK = scrubsecretvalues(UnitIsAFK(unitToken));
-		local isDND = scrubsecretvalues(UnitIsDND(unitToken));
-
-		if isConnected == false then
-			container.connection.statusKey = "connection_DCd";
-			SetIconTexture(container.connection, StatusTextures.connection_DCd);
-			container.connection:Show();
-		elseif isDND then
-			container.connection.statusKey = "connection_dnd";
-			SetIconTexture(container.connection, StatusTextures.connection_dnd);
-			container.connection:Show();
-		elseif isAFK then
-			container.connection.statusKey = "connection_away";
-			SetIconTexture(container.connection, StatusTextures.connection_away);
-			container.connection:Show();
-		end
-	end
 
 	-- group member (leader > assist > party/raid)
 	if options.group then
@@ -594,7 +572,6 @@ end
 --icons that will be relatively slow or unlikely to change, so the update time is slower
 local function UpdateSlowIcons(unitToken, container)
 	container.chromie:Hide();
-	container.guild:Hide();
 	container.friend:Hide();
 	container.ignored:Hide();
 
@@ -613,16 +590,6 @@ local function UpdateSlowIcons(unitToken, container)
 			container.chromie.statusKey = "chromie";
 			SetIconTexture(container.chromie, StatusTextures.chromie);
 			container.chromie:Show();
-		end
-	end
-
-	-- guild member
-	if options.guild then
-		local inGuild = scrubsecretvalues(UnitIsInMyGuild(unitToken));
-		if inGuild then
-			container.guild.statusKey = "guild_member";
-			SetIconTexture(container.guild, StatusTextures.guild_member);
-			container.guild:Show();
 		end
 	end
 
@@ -681,47 +648,6 @@ local function UpdateSlowIcons(unitToken, container)
 	LayoutContainerIcons(container);
 end
 
-local function UpdateSocialIcons(unitToken, container)
-	container.friend:Hide();
-	container.ignored:Hide();
-
-	if not UnitExists(unitToken) or not UnitIsPlayer(unitToken) then
-		LayoutContainerIcons(container); return;
-	end
-	if not scrubsecretvalues(UnitIsFriend("player", unitToken)) then
-		LayoutContainerIcons(container); return;
-	end
-
-	local options = Artificer_DB.NameplateStatusTypes;
-	local guid = UnitGUID(unitToken);
-
-	if not guid or guid == "" then
-		LayoutContainerIcons(container); return;
-	end
-
-	local unitName = UnitName(unitToken);
-	local isAccountFriend, isAccountIgnored = false, false;
-	if unitName then
-		isAccountFriend, isAccountIgnored = Artificer:IsAccountFriendOrIgnored(unitName);
-	end
-
-	local isIgnored = isAccountIgnored or scrubsecretvalues(C_FriendList.IsIgnoredByGuid(guid));
-	local isCharFriend = isAccountFriend or scrubsecretvalues(C_FriendList.IsFriend(guid));
-	local isBNetFriend = false;
-	local accountInfo = scrubsecretvalues(C_BattleNet.GetAccountInfoByGUID(guid));
-	if accountInfo and accountInfo.isFriend then isBNetFriend = true; end
-
-	if options.ignored and isIgnored then
-		SetIconTexture(container.ignored, StatusTextures.ignored_character.atlas );
-		container.ignored:Show();
-	elseif options.friend and (isCharFriend or isBNetFriend) then
-		SetIconTexture(container.friend, StatusTextures.friend_character.atlas );
-		container.friend:Show();
-	end
-
-	LayoutContainerIcons(container);
-end
-
 local function CreateContainer(index)
 	local container = CreateFrame("Frame", nil, WorldFrame);
 	container:SetSize(64, 16);
@@ -769,6 +695,57 @@ function Artificer.UpdateNameplateStatusPositions()
 	end
 end
 
+local function UpdateConnectionIcon(unitToken, container)
+	container.connection:Hide();
+
+	if issecretvalue(unitToken) or issecretvalue(UnitExists(unitToken)) then return; end
+	if not UnitExists(unitToken) or not UnitIsPlayer(unitToken) then return; end
+	if not scrubsecretvalues(UnitIsFriend("player", unitToken)) then return; end
+
+	local options = Artificer_DB.NameplateStatusTypes;
+	if not options.connection then return; end
+
+	local isConnected = scrubsecretvalues(UnitIsConnected(unitToken));
+	local isAFK = scrubsecretvalues(UnitIsAFK(unitToken));
+	local isDND = scrubsecretvalues(UnitIsDND(unitToken));
+
+	if isConnected == false then
+		container.connection.statusKey = "connection_DCd";
+		SetIconTexture(container.connection, StatusTextures.connection_DCd);
+		container.connection:Show();
+	elseif isDND then
+		container.connection.statusKey = "connection_dnd";
+		SetIconTexture(container.connection, StatusTextures.connection_dnd);
+		container.connection:Show();
+	elseif isAFK then
+		container.connection.statusKey = "connection_away";
+		SetIconTexture(container.connection, StatusTextures.connection_away);
+		container.connection:Show();
+	end
+
+	LayoutContainerIcons(container);
+end
+
+local function UpdateGuildIcon(unitToken, container)
+	container.guild:Hide();
+
+	if issecretvalue(unitToken) or issecretvalue(UnitExists(unitToken)) then return; end
+	if not UnitExists(unitToken) or not UnitIsPlayer(unitToken) then return; end
+	if not scrubsecretvalues(UnitIsFriend("player", unitToken)) then return; end
+
+	local options = Artificer_DB.NameplateStatusTypes;
+	if not options.guild then return; end
+
+	local inGuild = scrubsecretvalues(UnitIsInMyGuild(unitToken));
+	if inGuild then
+		container.guild.statusKey = "guild_member";
+		SetIconTexture(container.guild, StatusTextures.guild_member);
+		container.guild:Show();
+	end
+
+	LayoutContainerIcons(container);
+end
+
 local function ProcessStatusUnit(unitToken)
 	local namePlate = C_NamePlate.GetNamePlateForUnit(unitToken);
 	if not namePlate then return; end
@@ -781,7 +758,9 @@ local function ProcessStatusUnit(unitToken)
 	if UnitExists(unitToken) and UnitIsPlayer(unitToken) and scrubsecretvalues(UnitIsFriend("player", unitToken)) then
 		SetContainerPosition(container, _G[unitFrame]);
 		UpdateFastIcons(unitToken, container);
+		UpdateConnectionIcon(unitToken, container);
 		UpdateSlowIcons(unitToken, container);
+		UpdateGuildIcon(unitToken, container);
 		ApplyContainerAppearance(container);
 		container:Show();
 	else
@@ -809,17 +788,6 @@ local function FastProcessStatusUnit(unitToken)
 	end
 end
 
-local function SlowProcessStatusUnit(unitToken)
-	if not Artificer_DB.Widgets.NameplateStatusIndicator then return; end
-
-	local containerKey = "NamePlateStatus" .. string.match(unitToken, "%d+");
-	local container = StatusContainers[containerKey];
-
-	if not container or not container:IsShown() then return; end
-
-	UpdateSlowIcons(unitToken, container);
-end
-
 local function OnSocialUpdate(event)
 	if not Artificer_DB.Widgets.NameplateStatusIndicator then return; end
 
@@ -834,7 +802,7 @@ local function OnSocialUpdate(event)
 		local containerKey = "NamePlateStatus" .. i;
 		local container = StatusContainers[containerKey];
 		if container and container:IsShown() then
-			UpdateSocialIcons(unitToken, container);
+			UpdateSlowIcons(unitToken, container);
 		end
 	end
 end
@@ -857,6 +825,22 @@ local function OnNamePlateStatusEvent(self, event, unitToken)
 		end
 	elseif event == "NAME_PLATE_UNIT_ADDED" then
 		ProcessStatusUnit(unitToken);
+	elseif event == "PLAYER_FLAGS_CHANGED" or event == "UNIT_CONNECTION" then
+		if not unitToken or not string.match(unitToken, "^nameplate%d") then return; end
+		local containerKey = "NamePlateStatus" .. string.match(unitToken, "%d+");
+		local container = StatusContainers[containerKey];
+		if container and container:IsShown() then
+			UpdateConnectionIcon(unitToken, container);
+		end
+	elseif event == "PLAYER_GUILD_UPDATE" then
+		for i = 1, MAX_NAMEPLATES do
+			local token = format(STATUS_TOKEN, i);
+			local containerKey = "NamePlateStatus" .. i;
+			local container = StatusContainers[containerKey];
+			if container and container:IsShown() then
+				UpdateGuildIcon(token, container);
+			end
+		end
 	end
 end
 
@@ -866,10 +850,16 @@ function Artificer.RefreshNameplateStatusIndicator()
 	if isEnabled then
 		eventFrame:RegisterEvent("NAME_PLATE_UNIT_ADDED");
 		eventFrame:RegisterEvent("NAME_PLATE_UNIT_REMOVED");
+		eventFrame:RegisterEvent("PLAYER_FLAGS_CHANGED");
+		eventFrame:RegisterEvent("UNIT_CONNECTION");
+		eventFrame:RegisterEvent("PLAYER_GUILD_UPDATE");
 		eventFrame:SetScript("OnEvent", OnNamePlateStatusEvent);
 	else
 		eventFrame:UnregisterEvent("NAME_PLATE_UNIT_ADDED");
 		eventFrame:UnregisterEvent("NAME_PLATE_UNIT_REMOVED");
+		eventFrame:UnregisterEvent("PLAYER_FLAGS_CHANGED");
+		eventFrame:UnregisterEvent("UNIT_CONNECTION");
+		eventFrame:UnregisterEvent("PLAYER_GUILD_UPDATE");
 		eventFrame:SetScript("OnEvent", nil);
 		HideAllStatuses();
 	end
@@ -878,7 +868,7 @@ function Artificer.RefreshNameplateStatusIndicator()
 end
 
 Artificer.NameplateRodeo:RegisterFast(FastProcessStatusUnit);
-Artificer.NameplateRodeo:RegisterSlow(SlowProcessStatusUnit);
+
 Artificer.NameplateRodeo:RegisterSocial(OnSocialUpdate);
 
 local loader = CreateFrame("Frame");
