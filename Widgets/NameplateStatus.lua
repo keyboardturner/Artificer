@@ -66,31 +66,31 @@ local function SetIconTexture(iconFrame, textureData)
 	end
 end
 
+local function ApplyContainerAppearance(container)
+    local size = Artificer_DB.NameplateStatusSize or Artificer.Defaults.NameplateStatusSize;
+    local colors = Artificer_DB.NameplateStatusColors or Artificer.Defaults.NameplateStatusColors;
+
+    for _, key in ipairs(statusi) do
+        local icon = container[key];
+        icon:SetSize(size, size);
+
+        local colorKey = icon.statusKey or key;
+        local c = colors[colorKey] or { r=1, g=1, b=1, a=1, desat=false };
+
+        icon.tex:SetVertexColor(c.r, c.g, c.b, c.a);
+        icon.tex:SetDesaturated(c.desat);
+    end
+    LayoutContainerIcons(container);
+end
+
 function Artificer.UpdateNameplateStatusAppearance()
-	local size = Artificer_DB.NameplateStatusSize or Artificer.Defaults.NameplateStatusSize;
-	local colors = Artificer_DB.NameplateStatusColors or Artificer.Defaults.NameplateStatusColors;
+    if Artificer.NameplateStatusAdvancedFrame and Artificer.NameplateStatusAdvancedFrame.previewContainer then
+        ApplyContainerAppearance(Artificer.NameplateStatusAdvancedFrame.previewContainer);
+    end
 
-	local function ApplyAppearance(container)
-		for _, key in ipairs(statusi) do
-			local icon = container[key];
-			icon:SetSize(size, size);
-			
-			local colorKey = icon.statusKey or key;
-			local c = colors[colorKey] or { r=1, g=1, b=1, a=1, desat=false }; 
-			
-			icon.tex:SetVertexColor(c.r, c.g, c.b, c.a);
-			icon.tex:SetDesaturated(c.desat);
-		end
-		LayoutContainerIcons(container);
-	end
-
-	if Artificer.NameplateStatusAdvancedFrame and Artificer.NameplateStatusAdvancedFrame.previewContainer then
-		ApplyAppearance(Artificer.NameplateStatusAdvancedFrame.previewContainer);
-	end
-
-	for _, container in pairs(StatusContainers) do
-		ApplyAppearance(container);
-	end
+    for _, container in pairs(StatusContainers) do
+        ApplyContainerAppearance(container);
+    end
 end
 
 function Artificer.UpdateStatusPreviewVisibility()
@@ -502,10 +502,13 @@ function Artificer:IsAccountFriendOrIgnored(unitName)
 	local isIgnored = false;
 
 	if Artificer_DB.AccountFriends then
-		for _, friendList in pairs(Artificer_DB.AccountFriends) do
+		for ownerName, friendList in pairs(Artificer_DB.AccountFriends) do
 			for _, friendName in ipairs(friendList) do
-				if friendName == unitName or string.match(friendName, "^" .. unitName .. "-") then
+				if friendName == unitName or string.match(friendName, "^" .. unitName:gsub("([%(%)%.%%%+%-%*%?%[%^%$])", "%%%1") .. "%-") then
 					isFriend = true;
+					if Artificer_DB.debug then
+						print("Friend: ",friendName .. " - " .. ownerName);
+					end
 					break;
 				end
 			end
@@ -514,10 +517,13 @@ function Artificer:IsAccountFriendOrIgnored(unitName)
 	end
 
 	if Artificer_DB.AccountIgnores then
-		for _, ignoreList in pairs(Artificer_DB.AccountIgnores) do
+		for ownerName, ignoreList in pairs(Artificer_DB.AccountIgnores) do
 			for _, ignoredName in ipairs(ignoreList) do
-				if ignoredName == unitName or string.match(ignoredName, "^" .. unitName .. "-") then
+				if ignoredName == unitName or string.match(ignoredName, "^" .. unitName:gsub("([%(%)%.%%%+%-%*%?%[%^%$])", "%%%1") .. "%-") then
 					isIgnored = true;
+					if Artificer_DB.debug then
+						print("Ignored: ",ignoredName .. " - " .. ownerName);
+					end
 					break;
 				end
 			end
@@ -706,10 +712,10 @@ local function UpdateSocialIcons(unitToken, container)
 	if accountInfo and accountInfo.isFriend then isBNetFriend = true; end
 
 	if options.ignored and isIgnored then
-		SetIconTexture(container.ignored, true, StatusTextures.ignored_character.atlas );
+		SetIconTexture(container.ignored, StatusTextures.ignored_character.atlas );
 		container.ignored:Show();
 	elseif options.friend and (isCharFriend or isBNetFriend) then
-		SetIconTexture(container.friend, true, StatusTextures.friend_character.atlas );
+		SetIconTexture(container.friend, StatusTextures.friend_character.atlas );
 		container.friend:Show();
 	end
 
@@ -776,6 +782,7 @@ local function ProcessStatusUnit(unitToken)
 		SetContainerPosition(container, _G[unitFrame]);
 		UpdateFastIcons(unitToken, container);
 		UpdateSlowIcons(unitToken, container);
+		ApplyContainerAppearance(container);
 		container:Show();
 	else
 		container:Hide();
