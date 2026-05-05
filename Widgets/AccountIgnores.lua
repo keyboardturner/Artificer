@@ -165,26 +165,54 @@ local function CreateUI()
 end
 
 local function OnIgnoreWindowShow()
-	if not container then CreateUI() end
+	if not container then CreateUI(); end
 	
-	container:Show()
+	local showFrame = true
+	if Artificer_DB and Artificer_DB.Widgets and Artificer_DB.Widgets.AccountIgnoresWindow ~= nil then
+		showFrame = Artificer_DB.Widgets.AccountIgnoresWindow;
+	end
+
+	if showFrame then
+		container:Show();
+	else
+		container:Hide();
+	end
 	
 	AccountIgnores:SyncCurrentCharacter()
 	UpdateScrollList()
 
-	local mainFrame = FriendsFrame
-	local ignoreWindow = FriendsFrame.IgnoreListWindow
+	if showFrame then
+		local mainFrame = FriendsFrame;
+		local ignoreWindow = FriendsFrame.IgnoreListWindow;
 
-	if C_AddOns.IsAddOnLoaded("BetterFriendlist") and BetterFriendsFrame then
-		mainFrame = BetterFriendsFrame;
-		ignoreWindow = BetterFriendsFrame.IgnoreListWindow;
+		if C_AddOns.IsAddOnLoaded("BetterFriendlist") and BetterFriendsFrame then
+			mainFrame = BetterFriendsFrame;
+			ignoreWindow = BetterFriendsFrame.IgnoreListWindow;
+		end
+
+		if ignoreWindow and mainFrame then
+			local sizeX = mainFrame:GetWidth()*.75;
+			local sizeY = mainFrame:GetHeight()*.85;
+			
+			ignoreWindow:SetSize(sizeX, sizeY);
+		end
 	end
+end
 
-	if ignoreWindow and mainFrame then
-		local sizeX = mainFrame:GetWidth()*.75;
-		local sizeY = mainFrame:GetHeight()*.85;
-		
-		ignoreWindow:SetSize(sizeX, sizeY);
+function Artificer.AccountIgnores_ToggleVisibility(val)
+	local isWindowVisible = (FriendsFrame and FriendsFrame.IgnoreListWindow and FriendsFrame.IgnoreListWindow:IsVisible()) or (BetterFriendsFrame and BetterFriendsFrame.IgnoreListWindow and BetterFriendsFrame.IgnoreListWindow:IsVisible())
+
+	if isWindowVisible and container then
+		if val then
+			container:Show();
+			local mainFrame = C_AddOns.IsAddOnLoaded("BetterFriendlist") and BetterFriendsFrame or FriendsFrame;
+			local ignoreWindow = C_AddOns.IsAddOnLoaded("BetterFriendlist") and BetterFriendsFrame.IgnoreListWindow or FriendsFrame.IgnoreListWindow;
+			if ignoreWindow and mainFrame then
+				ignoreWindow:SetSize(mainFrame:GetWidth()*.75, mainFrame:GetHeight()*.85);
+			end
+		else
+			container:Hide();
+		end
 	end
 end
 
