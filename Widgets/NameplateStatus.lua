@@ -101,24 +101,28 @@ function Artificer.UpdateStatusPreviewVisibility()
 	local p = f.previewContainer;
 
 	if options.connection then
+		p.connection.statusKey = "connection_away";
 		SetIconTexture(p.connection, StatusTextures.connection_away);
 		p.connection:Show();
 	else
 		p.connection:Hide();
 	end
 	if options.chromie then
+		p.chromie.statusKey = "chromie";
 		SetIconTexture(p.chromie, StatusTextures.chromie);
 		p.chromie:Show();
 	else
 		p.chromie:Hide();
 	end
 	if options.group then
+		p.group.statusKey = "group_member";
 		SetIconTexture(p.group, StatusTextures.group_member);
 		p.group:Show();
 	else
 		p.group:Hide();
 	end
 	if options.guild then
+		p.guild.statusKey = "guild_member";
 		SetIconTexture(p.guild, StatusTextures.guild_member);
 		p.guild:Show();
 	else
@@ -127,9 +131,11 @@ function Artificer.UpdateStatusPreviewVisibility()
 
 	p.ignored:Hide(); p.friend:Hide();
 	if options.ignored then
+		p.ignored.statusKey = "ignored_character";
 		SetIconTexture(p.ignored, StatusTextures.ignored_character);
 		p.ignored:Show();
 	elseif options.friend then
+		p.friend.statusKey = "friend_character";
 		SetIconTexture(p.friend, StatusTextures.friend_character);
 		p.friend:Show();
 	end
@@ -296,7 +302,7 @@ function Artificer:OpenNameplateStatusAdvancedSettings()
 		local dropdown = CreateFrame("DropdownButton", nil, f, "WowStyle1DropdownTemplate");
 		dropdown:SetPoint("TOPLEFT", dropdownLabel, "BOTTOMLEFT", 0, -5);
 		dropdown:SetWidth(180);
-		dropdown:SetDefaultText("Select Status Icons...");
+		dropdown:SetDefaultText(L["FNP_StatusIndicator"]);
 
 		local function GeneratorFunction(dropdown, rootDescription)
 			local function IsSelected(key) return Artificer_DB.NameplateStatusTypes[key] == true; end
@@ -872,8 +878,8 @@ local loader = CreateFrame("Frame");
 loader:RegisterEvent("PLAYER_LOGIN");
 loader:SetScript("OnEvent", function(self, event)
 	if event == "PLAYER_LOGIN" then
-		if not Artificer_DB.Widgets.NameplateStatusTypes then
-			Artificer_DB.Widgets.NameplateStatusTypes = CopyTable(Artificer.Defaults.Widgets.NameplateStatusTypes)
+		if not Artificer_DB.NameplateStatusTypes then
+			Artificer_DB.NameplateStatusTypes = CopyTable(Artificer.Defaults.NameplateStatusTypes)
 		end
 		if not Artificer_DB.NameplateStatusSize then
 			Artificer_DB.NameplateStatusSize = Artificer.Defaults.NameplateStatusSize;

@@ -53,6 +53,7 @@ local Defaults = {
 		},
 		FilteredOverlays = {},
 		NameplateStatusIndicator = false,
+		AccountIgnoresWindow = true,
 	},
 
 	NameplateTargetPos = {
@@ -92,7 +93,7 @@ local Defaults = {
 		friend_character = { r=1, g=1, b=1, a=1, desat = true, },
 		friend_account = { r=1, g=1, b=1, a=1, desat = true, },
 		friend_bnet = { r=1, g=1, b=1, a=1, desat = true, },
-		
+
 		ignored_character = { r=1, g=1, b=1, a=1, desat = false, },
 		ignored_account = { r=1, g=1, b=1, a=1, desat = false, },
 		--ignored_muted = { r=1, g=1, b=1, a=1, desat = false, },

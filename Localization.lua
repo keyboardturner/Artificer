@@ -182,6 +182,18 @@ if LOCALE == "enUS" then
 	L["FNP_StatusGuild"] = LFG_LIST_GUILD_MEMBER
 	L["FNP_StatusFriend"] = FRIENDS
 	L["FNP_StatusIgnored"] = IGNORED
+	L["FNP_StatusConnectionDCd"] = "Disconnected"
+	L["FNP_StatusConnectionAway"] = CHAT_MSG_AFK
+	L["FNP_StatusConnectionDND"] = DND
+	L["FNP_StatusGroupMember"] = GROUP
+	L["FNP_StatusGroupAssist"] = RAID_ASSISTANT
+	L["FNP_StatusGroupLeader"] = LEADER
+	L["FNP_StatusGuildMember"] = LFG_LIST_GUILD_MEMBER
+	L["FNP_StatusFriendChar"] = FRIENDS .. " - " .. CHARACTER
+	L["FNP_StatusFriendAcc"] = FRIENDS .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
+	L["FNP_StatusFriendBNet"] = FRIENDS .. " - " .. BATTLETAG
+	L["FNP_StatusIgnoredChar"] = IGNORED .. " - " .. CHARACTER
+	L["FNP_StatusIgnoredAcc"] = IGNORED .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Account Ignore List Window"
@@ -507,6 +519,18 @@ if LOCALE == "esMX" then
 	L["FNP_StatusGuild"] = LFG_LIST_GUILD_MEMBER
 	L["FNP_StatusFriend"] = FRIENDS
 	L["FNP_StatusIgnored"] = IGNORED
+	L["FNP_StatusConnectionDCd"] = "Desconectado"
+	L["FNP_StatusConnectionAway"] = CHAT_MSG_AFK
+	L["FNP_StatusConnectionDND"] = DND
+	L["FNP_StatusGroupMember"] = GROUP
+	L["FNP_StatusGroupAssist"] = RAID_ASSISTANT
+	L["FNP_StatusGroupLeader"] = LEADER
+	L["FNP_StatusGuildMember"] = LFG_LIST_GUILD_MEMBER
+	L["FNP_StatusFriendChar"] = FRIENDS .. " - " .. CHARACTER
+	L["FNP_StatusFriendAcc"] = FRIENDS .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
+	L["FNP_StatusFriendBNet"] = FRIENDS .. " - " .. BATTLETAG
+	L["FNP_StatusIgnoredChar"] = IGNORED .. " - " .. CHARACTER
+	L["FNP_StatusIgnoredAcc"] = IGNORED .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Ventana de lista de ignorados de la cuenta"
@@ -831,6 +855,18 @@ if LOCALE == "esES" then
 	L["FNP_StatusGuild"] = LFG_LIST_GUILD_MEMBER
 	L["FNP_StatusFriend"] = FRIENDS
 	L["FNP_StatusIgnored"] = IGNORED
+	L["FNP_StatusConnectionDCd"] = "Desconectado"
+	L["FNP_StatusConnectionAway"] = CHAT_MSG_AFK
+	L["FNP_StatusConnectionDND"] = DND
+	L["FNP_StatusGroupMember"] = GROUP
+	L["FNP_StatusGroupAssist"] = RAID_ASSISTANT
+	L["FNP_StatusGroupLeader"] = LEADER
+	L["FNP_StatusGuildMember"] = LFG_LIST_GUILD_MEMBER
+	L["FNP_StatusFriendChar"] = FRIENDS .. " - " .. CHARACTER
+	L["FNP_StatusFriendAcc"] = FRIENDS .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
+	L["FNP_StatusFriendBNet"] = FRIENDS .. " - " .. BATTLETAG
+	L["FNP_StatusIgnoredChar"] = IGNORED .. " - " .. CHARACTER
+	L["FNP_StatusIgnoredAcc"] = IGNORED .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Ventana de lista de ignorados de la cuenta"
@@ -1153,6 +1189,18 @@ if LOCALE == "deDE" then
 	L["FNP_StatusGuild"] = LFG_LIST_GUILD_MEMBER
 	L["FNP_StatusFriend"] = FRIENDS
 	L["FNP_StatusIgnored"] = IGNORED
+	L["FNP_StatusConnectionDCd"] = "Getrennt"
+	L["FNP_StatusConnectionAway"] = CHAT_MSG_AFK
+	L["FNP_StatusConnectionDND"] = DND
+	L["FNP_StatusGroupMember"] = GROUP
+	L["FNP_StatusGroupAssist"] = RAID_ASSISTANT
+	L["FNP_StatusGroupLeader"] = LEADER
+	L["FNP_StatusGuildMember"] = LFG_LIST_GUILD_MEMBER
+	L["FNP_StatusFriendChar"] = FRIENDS .. " - " .. CHARACTER
+	L["FNP_StatusFriendAcc"] = FRIENDS .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
+	L["FNP_StatusFriendBNet"] = FRIENDS .. " - " .. BATTLETAG
+	L["FNP_StatusIgnoredChar"] = IGNORED .. " - " .. CHARACTER
+	L["FNP_StatusIgnoredAcc"] = IGNORED .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Fenster für kontoweite Ignorierliste"
@@ -1476,6 +1524,18 @@ if LOCALE == "frFR" then
 	L["FNP_StatusGuild"] = LFG_LIST_GUILD_MEMBER
 	L["FNP_StatusFriend"] = FRIENDS
 	L["FNP_StatusIgnored"] = IGNORED
+	L["FNP_StatusConnectionDCd"] = "Déconnecté"
+	L["FNP_StatusConnectionAway"] = CHAT_MSG_AFK
+	L["FNP_StatusConnectionDND"] = DND
+	L["FNP_StatusGroupMember"] = GROUP
+	L["FNP_StatusGroupAssist"] = RAID_ASSISTANT
+	L["FNP_StatusGroupLeader"] = LEADER
+	L["FNP_StatusGuildMember"] = LFG_LIST_GUILD_MEMBER
+	L["FNP_StatusFriendChar"] = FRIENDS .. " - " .. CHARACTER
+	L["FNP_StatusFriendAcc"] = FRIENDS .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
+	L["FNP_StatusFriendBNet"] = FRIENDS .. " - " .. BATTLETAG
+	L["FNP_StatusIgnoredChar"] = IGNORED .. " - " .. CHARACTER
+	L["FNP_StatusIgnoredAcc"] = IGNORED .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Fenêtre de liste d’ignorés du compte"
@@ -1799,6 +1859,18 @@ if LOCALE == "itIT" then
 	L["FNP_StatusGuild"] = LFG_LIST_GUILD_MEMBER
 	L["FNP_StatusFriend"] = FRIENDS
 	L["FNP_StatusIgnored"] = IGNORED
+	L["FNP_StatusConnectionDCd"] = "Disconnesso"
+	L["FNP_StatusConnectionAway"] = CHAT_MSG_AFK
+	L["FNP_StatusConnectionDND"] = DND
+	L["FNP_StatusGroupMember"] = GROUP
+	L["FNP_StatusGroupAssist"] = RAID_ASSISTANT
+	L["FNP_StatusGroupLeader"] = LEADER
+	L["FNP_StatusGuildMember"] = LFG_LIST_GUILD_MEMBER
+	L["FNP_StatusFriendChar"] = FRIENDS .. " - " .. CHARACTER
+	L["FNP_StatusFriendAcc"] = FRIENDS .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
+	L["FNP_StatusFriendBNet"] = FRIENDS .. " - " .. BATTLETAG
+	L["FNP_StatusIgnoredChar"] = IGNORED .. " - " .. CHARACTER
+	L["FNP_StatusIgnoredAcc"] = IGNORED .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Finestra lista ignorati account"
@@ -2122,6 +2194,18 @@ if LOCALE == "ptBR" then
 	L["FNP_StatusGuild"] = LFG_LIST_GUILD_MEMBER
 	L["FNP_StatusFriend"] = FRIENDS
 	L["FNP_StatusIgnored"] = IGNORED
+	L["FNP_StatusConnectionDCd"] = "Desconectado"
+	L["FNP_StatusConnectionAway"] = CHAT_MSG_AFK
+	L["FNP_StatusConnectionDND"] = DND
+	L["FNP_StatusGroupMember"] = GROUP
+	L["FNP_StatusGroupAssist"] = RAID_ASSISTANT
+	L["FNP_StatusGroupLeader"] = LEADER
+	L["FNP_StatusGuildMember"] = LFG_LIST_GUILD_MEMBER
+	L["FNP_StatusFriendChar"] = FRIENDS .. " - " .. CHARACTER
+	L["FNP_StatusFriendAcc"] = FRIENDS .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
+	L["FNP_StatusFriendBNet"] = FRIENDS .. " - " .. BATTLETAG
+	L["FNP_StatusIgnoredChar"] = IGNORED .. " - " .. CHARACTER
+	L["FNP_StatusIgnoredAcc"] = IGNORED .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Janela da lista de ignorados da conta"
@@ -2447,6 +2531,18 @@ if LOCALE == "ruRU" then
 	L["FNP_StatusGuild"] = LFG_LIST_GUILD_MEMBER
 	L["FNP_StatusFriend"] = FRIENDS
 	L["FNP_StatusIgnored"] = IGNORED
+	L["FNP_StatusConnectionDCd"] = "Отключён"
+	L["FNP_StatusConnectionAway"] = CHAT_MSG_AFK
+	L["FNP_StatusConnectionDND"] = DND
+	L["FNP_StatusGroupMember"] = GROUP
+	L["FNP_StatusGroupAssist"] = RAID_ASSISTANT
+	L["FNP_StatusGroupLeader"] = LEADER
+	L["FNP_StatusGuildMember"] = LFG_LIST_GUILD_MEMBER
+	L["FNP_StatusFriendChar"] = FRIENDS .. " - " .. CHARACTER
+	L["FNP_StatusFriendAcc"] = FRIENDS .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
+	L["FNP_StatusFriendBNet"] = FRIENDS .. " - " .. BATTLETAG
+	L["FNP_StatusIgnoredChar"] = IGNORED .. " - " .. CHARACTER
+	L["FNP_StatusIgnoredAcc"] = IGNORED .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Окно списка игнорируемых аккаунта"
@@ -2770,6 +2866,18 @@ if LOCALE == "koKR" then
 	L["FNP_StatusGuild"] = LFG_LIST_GUILD_MEMBER
 	L["FNP_StatusFriend"] = FRIENDS
 	L["FNP_StatusIgnored"] = IGNORED
+	L["FNP_StatusConnectionDCd"] = "접속 종료"
+	L["FNP_StatusConnectionAway"] = CHAT_MSG_AFK
+	L["FNP_StatusConnectionDND"] = DND
+	L["FNP_StatusGroupMember"] = GROUP
+	L["FNP_StatusGroupAssist"] = RAID_ASSISTANT
+	L["FNP_StatusGroupLeader"] = LEADER
+	L["FNP_StatusGuildMember"] = LFG_LIST_GUILD_MEMBER
+	L["FNP_StatusFriendChar"] = FRIENDS .. " - " .. CHARACTER
+	L["FNP_StatusFriendAcc"] = FRIENDS .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
+	L["FNP_StatusFriendBNet"] = FRIENDS .. " - " .. BATTLETAG
+	L["FNP_StatusIgnoredChar"] = IGNORED .. " - " .. CHARACTER
+	L["FNP_StatusIgnoredAcc"] = IGNORED .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "계정 차단 목록 창"
@@ -3093,6 +3201,18 @@ if LOCALE == "zhCN" then
 	L["FNP_StatusGuild"] = LFG_LIST_GUILD_MEMBER
 	L["FNP_StatusFriend"] = FRIENDS
 	L["FNP_StatusIgnored"] = IGNORED
+	L["FNP_StatusConnectionDCd"] = "已断开连接"
+	L["FNP_StatusConnectionAway"] = CHAT_MSG_AFK
+	L["FNP_StatusConnectionDND"] = DND
+	L["FNP_StatusGroupMember"] = GROUP
+	L["FNP_StatusGroupAssist"] = RAID_ASSISTANT
+	L["FNP_StatusGroupLeader"] = LEADER
+	L["FNP_StatusGuildMember"] = LFG_LIST_GUILD_MEMBER
+	L["FNP_StatusFriendChar"] = FRIENDS .. " - " .. CHARACTER
+	L["FNP_StatusFriendAcc"] = FRIENDS .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
+	L["FNP_StatusFriendBNet"] = FRIENDS .. " - " .. BATTLETAG
+	L["FNP_StatusIgnoredChar"] = IGNORED .. " - " .. CHARACTER
+	L["FNP_StatusIgnoredAcc"] = IGNORED .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "账号忽略列表窗口"
@@ -3414,6 +3534,18 @@ if LOCALE == "zhTW" then
 	L["FNP_StatusGuild"] = LFG_LIST_GUILD_MEMBER
 	L["FNP_StatusFriend"] = FRIENDS
 	L["FNP_StatusIgnored"] = IGNORED
+	L["FNP_StatusConnectionDCd"] = "已斷線"
+	L["FNP_StatusConnectionAway"] = CHAT_MSG_AFK
+	L["FNP_StatusConnectionDND"] = DND
+	L["FNP_StatusGroupMember"] = GROUP
+	L["FNP_StatusGroupAssist"] = RAID_ASSISTANT
+	L["FNP_StatusGroupLeader"] = LEADER
+	L["FNP_StatusGuildMember"] = LFG_LIST_GUILD_MEMBER
+	L["FNP_StatusFriendChar"] = FRIENDS .. " - " .. CHARACTER
+	L["FNP_StatusFriendAcc"] = FRIENDS .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
+	L["FNP_StatusFriendBNet"] = FRIENDS .. " - " .. BATTLETAG
+	L["FNP_StatusIgnoredChar"] = IGNORED .. " - " .. CHARACTER
+	L["FNP_StatusIgnoredAcc"] = IGNORED .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "帳號忽略清單視窗"

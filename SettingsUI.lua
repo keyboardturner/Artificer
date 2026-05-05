@@ -1265,6 +1265,22 @@ function Artificer:BuildSettingsData()
 		end
 	});
 
+	-- Widgets - ShowAccountIgnores
+	table.insert(allSettingsData, {
+		type = "checkbox",
+		isWidget = true,
+		key = "AccountIgnoresWindow",
+		isNew = true,
+		label = L["Widget_AccountIgnoreList"],
+		tooltip = L["Widget_AccountIgnoreListTT"],
+		searchText = GetSearchText(L["Widget_AccountIgnoreList"], L["Widget_AccountIgnoreListTT"]),
+		callback = function(val)
+			if Artificer.AccountIgnores_ToggleVisibility then
+				Artificer.AccountIgnores_ToggleVisibility(val);
+			end
+		end
+	});
+
 	-- Header - Account Settings
 	table.insert(allSettingsData, {
 		type = "header",
