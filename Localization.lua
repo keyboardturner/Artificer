@@ -3373,6 +3373,8 @@ if LOCALE == "zhTW" then
 
 	L["TOC_Title"] = "技師 (Artificer)"
 	L["TOC_Notes"] = "個人工作室以及一系列介面調整與優化"
+	L["SLASH_ARTI1"] = "/artificer" -- english slash command - *Do Not Localize*
+	L["SLASH_ARTI2"] = "/arti" -- english slash command - *Do Not Localize*
 	L["SLASH_ARTI3"] = "/技師" -- localized slash command
 	L["SLASH_ARTI4"] = "/技師" -- localized slash command
 	L["OpenSettings"] = "打開設定"
