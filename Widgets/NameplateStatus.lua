@@ -16,6 +16,15 @@ local statusi = {
 	"ignored",
 };
 
+local THROTTLE_DELAY = 1.0;
+local isTimerRunning = false;
+local pendingUpdates = {
+	social = false,
+	guild = false,
+	group = false,
+	connectionTokens = {},
+};
+
 local StatusTextures = {
 	connection_away = { tex = "Interface\\AddOns\\Artificer\\Textures\\Status_Away.png" },
 	connection_dnd = { tex = "Interface\\AddOns\\Artificer\\Textures\\Status_Busy.png" },
@@ -778,6 +787,63 @@ local function ProcessStatusUnit(unitToken)
 	end
 end
 
+local function ProcessPendingUpdates()
+	isTimerRunning = false;
+	
+	if pendingUpdates.social then
+		pendingUpdates.social = false;
+		for i = 1, MAX_NAMEPLATES do
+			local unitToken = format(STATUS_TOKEN, i);
+			local containerKey = "NamePlateStatus" .. i;
+			local container = StatusContainers[containerKey];
+			if container and container:IsShown() then
+				UpdateSocialIcons(unitToken, container);
+			end
+		end
+	end
+
+	if pendingUpdates.guild then
+		pendingUpdates.guild = false;
+		for i = 1, MAX_NAMEPLATES do
+			local token = format(STATUS_TOKEN, i);
+			local containerKey = "NamePlateStatus" .. i;
+			local container = StatusContainers[containerKey];
+			if container and container:IsShown() then
+				UpdateGuildIcon(token, container);
+			end
+		end
+	end
+
+	if pendingUpdates.group then
+		pendingUpdates.group = false;
+		for i = 1, MAX_NAMEPLATES do
+			local token = format(STATUS_TOKEN, i);
+			local containerKey = "NamePlateStatus" .. i;
+			local container = StatusContainers[containerKey];
+			if container and container:IsShown() then
+				UpdateGroupIcon(token, container);
+			end
+		end
+	end
+
+	for unitToken in pairs(pendingUpdates.connectionTokens) do
+		local containerKey = "NamePlateStatus" .. string.match(unitToken, "%d+");
+		local container = StatusContainers[containerKey];
+		if container and container:IsShown() then
+			UpdateConnectionIcon(unitToken, container);
+		end
+	end
+	
+	wipe(pendingUpdates.connectionTokens);
+end
+
+local function TriggerThrottle()
+	if not isTimerRunning then
+		isTimerRunning = true;
+		C_Timer.After(THROTTLE_DELAY, ProcessPendingUpdates);
+	end
+end
+
 local function OnSocialUpdate(event)
 	if not Artificer_DB.Widgets.NameplateStatusIndicator then return; end
 
@@ -787,14 +853,8 @@ local function OnSocialUpdate(event)
 		Artificer.AccountFriends:SyncCurrentCharacter();
 	end
 
-	for i = 1, MAX_NAMEPLATES do
-		local unitToken = format(STATUS_TOKEN, i);
-		local containerKey = "NamePlateStatus" .. i;
-		local container = StatusContainers[containerKey];
-		if container and container:IsShown() then
-			UpdateSocialIcons(unitToken, container);
-		end
-	end
+	pendingUpdates.social = true;
+	TriggerThrottle();
 end
 
 local function HideAllStatuses()
@@ -817,29 +877,14 @@ local function OnNamePlateStatusEvent(self, event, unitToken)
 		ProcessStatusUnit(unitToken);
 	elseif event == "PLAYER_FLAGS_CHANGED" or event == "UNIT_CONNECTION" then
 		if not unitToken or not string.match(unitToken, "^nameplate%d") then return; end
-		local containerKey = "NamePlateStatus" .. string.match(unitToken, "%d+");
-		local container = StatusContainers[containerKey];
-		if container and container:IsShown() then
-			UpdateConnectionIcon(unitToken, container);
-		end
+		pendingUpdates.connectionTokens[unitToken] = true;
+		TriggerThrottle();
 	elseif event == "PLAYER_GUILD_UPDATE" then
-		for i = 1, MAX_NAMEPLATES do
-			local token = format(STATUS_TOKEN, i);
-			local containerKey = "NamePlateStatus" .. i;
-			local container = StatusContainers[containerKey];
-			if container and container:IsShown() then
-				UpdateGuildIcon(token, container);
-			end
-		end
+		pendingUpdates.guild = true;
+		TriggerThrottle();
 	elseif event == "GROUP_ROSTER_UPDATE" then
-		for i = 1, MAX_NAMEPLATES do
-			local token = format(STATUS_TOKEN, i);
-			local containerKey = "NamePlateStatus" .. i;
-			local container = StatusContainers[containerKey];
-			if container and container:IsShown() then
-				UpdateGroupIcon(token, container);
-			end
-		end
+		pendingUpdates.group = true;
+		TriggerThrottle();
 	end
 end
 
