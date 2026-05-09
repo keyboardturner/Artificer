@@ -79,7 +79,10 @@ Widgets/HideCraftingResults.lua
 Widgets/MovableCurrencyTransfer.lua
 Widgets/AddonCompartmentMover.lua
 Widgets/CollapseBuffs.lua
+Widgets/AccountIgnores.lua
+Widgets/NameplateRodeo.lua
 Widgets/NameplateTarget.lua
+Widgets/NameplateStatus.lua
 Widgets/LootHistoryVisibility.lua
 Widgets/HideTutorials.lua
 Widgets/PreyBar.lua
