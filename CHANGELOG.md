@@ -1,5 +1,25 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.1.9
+
+Added Nameplate Status icon options - Nameplates can now show various statuses on nameplates such as Away, Busy, Disconnected, Group, Guild, Friend, and Ignored
+ - Each Option comes with a color picker
+
+Added an additional attached window to the Ignored frame that displays the data of Ignore Lists across all characters, as well as character-specific Friend Lists.
+ - Friend/Ignore character data can be deleted for cases where characters are deleted and no longer retrievable
+ - Nameplate Status icons can additionally benefit from the account-wide friend and ignore list, indicated by a small warband campfire in the top right of the status icon
+
+Fixed a missing slash command for zhTW localization
+
+Fixed the Quel'Danas Ambience slider to no longer always force the ambience volume down to ~25% (adjust to 100% to keep it the same volume as other zones)
+
+Adjusted some visibility logic in the Prey Bar
+
+Adjusted some of the functionality of the Nameplate Target icon to facilitate a separated function in NameplateRodeo for other nameplate plugins to use
+
+Adjusted how some data is saved and utilizes default values, no longer saving some data into an empty duplicated void
+
+
 # 0.1.8a
 
 Fixed secret taint issue with GetUnitSpeed (seriously who was abusing GetUnitSpeed to circumvent API restrictions)
