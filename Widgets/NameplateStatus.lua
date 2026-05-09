@@ -632,13 +632,13 @@ local function UpdateSocialIcons(unitToken, container)
 			container.friend.statusKey = "friend_bnet";
 			SetIconTexture(container.friend, StatusTextures.friend_bnet);
 			container.friend:Show();
-		elseif isAccFriend then
-			container.friend.statusKey = "friend_account";
-			SetIconTexture(container.friend, StatusTextures.friend_account);
-			container.friend:Show();
 		elseif isCharFriend then
 			container.friend.statusKey = "friend_character";
 			SetIconTexture(container.friend, StatusTextures.friend_character);
+			container.friend:Show();
+		elseif isAccFriend then
+			container.friend.statusKey = "friend_account";
+			SetIconTexture(container.friend, StatusTextures.friend_account);
 			container.friend:Show();
 		end
 	end
