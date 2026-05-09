@@ -199,6 +199,9 @@ if LOCALE == "enUS" then
 	L["Widget_AccountIgnoreList"] = "Account Ignore List Window"
 	L["Widget_AccountIgnoreListTT"] = "Display a window containing all recorded ignores on the account."
 	L["AccountIgnoreList"] = "Account Ignore List"
+	L["AccountFriendList"] = "Account Friend List"
+	L["RemoveCharData"] = "Remove Character Data"
+	L["RemoveAllConfirm"] = "Remove all %s entries for |cffffd100%s|r from the account list?"
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "Prey Progress Indicators"
@@ -536,6 +539,9 @@ if LOCALE == "esMX" then
 	L["Widget_AccountIgnoreList"] = "Ventana de lista de ignorados de la cuenta"
 	L["Widget_AccountIgnoreListTT"] = "Muestra una ventana que contiene todos los ignorados registrados en la cuenta."
 	L["AccountIgnoreList"] = "Lista de ignorados de la cuenta"
+	L["AccountFriendList"] = "Lista de amigos de la cuenta"
+	L["RemoveCharData"] = "Eliminar datos del personaje"
+	L["RemoveAllConfirm"] = "¿Eliminar todas las entradas de %s para |cffffd100%s|r de la lista de la cuenta?"
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "Indicadores de progreso de presa"
@@ -872,6 +878,9 @@ if LOCALE == "esES" then
 	L["Widget_AccountIgnoreList"] = "Ventana de lista de ignorados de la cuenta"
 	L["Widget_AccountIgnoreListTT"] = "Muestra una ventana que contiene todos los ignorados registrados en la cuenta."
 	L["AccountIgnoreList"] = "Lista de ignorados de la cuenta"
+	L["AccountFriendList"] = "Lista de amigos de la cuenta"
+	L["RemoveCharData"] = "Eliminar datos del personaje"
+	L["RemoveAllConfirm"] = "¿Eliminar todas las entradas de %s para |cffffd100%s|r de la lista de la cuenta?"
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "Indicadores de progreso de presa"
@@ -1206,6 +1215,9 @@ if LOCALE == "deDE" then
 	L["Widget_AccountIgnoreList"] = "Fenster für kontoweite Ignorierliste"
 	L["Widget_AccountIgnoreListTT"] = "Zeigt ein Fenster mit allen auf dem Konto gespeicherten Ignorierten an."
 	L["AccountIgnoreList"] = "Kontoweite Ignorierliste"
+	L["AccountFriendList"] = "Kontoweite Freundesliste"
+	L["RemoveCharData"] = "Charakterdaten entfernen"
+	L["RemoveAllConfirm"] = "Alle %s-Einträge für |cffffd100%s|r aus der Kontoliste entfernen?"
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "Beute-Fortschrittsanzeigen"
@@ -1541,6 +1553,9 @@ if LOCALE == "frFR" then
 	L["Widget_AccountIgnoreList"] = "Fenêtre de liste d’ignorés du compte"
 	L["Widget_AccountIgnoreListTT"] = "Affiche une fenêtre contenant tous les ignorés enregistrés sur le compte."
 	L["AccountIgnoreList"] = "Liste d’ignorés du compte"
+	L["AccountFriendList"] = "Liste d'amis du compte"
+	L["RemoveCharData"] = "Supprimer les données du personnage"
+	L["RemoveAllConfirm"] = "Supprimer toutes les entrées %s pour |cffffd100%s|r de la liste du compte ?"
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "Indicateurs de progression de proie"
@@ -1876,6 +1891,9 @@ if LOCALE == "itIT" then
 	L["Widget_AccountIgnoreList"] = "Finestra lista ignorati account"
 	L["Widget_AccountIgnoreListTT"] = "Mostra una finestra contenente tutti gli ignorati registrati nell'account."
 	L["AccountIgnoreList"] = "Lista ignorati account"
+	L["AccountFriendList"] = "Lista amici dell'account"
+	L["RemoveCharData"] = "Rimuovi dati del personaggio"
+	L["RemoveAllConfirm"] = "Rimuovere tutte le voci %s per |cffffd100%s|r dalla lista dell'account?"
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "Indicatori progresso preda"
@@ -2211,6 +2229,9 @@ if LOCALE == "ptBR" then
 	L["Widget_AccountIgnoreList"] = "Janela da lista de ignorados da conta"
 	L["Widget_AccountIgnoreListTT"] = "Exibe uma janela contendo todos os ignorados registrados na conta."
 	L["AccountIgnoreList"] = "Lista de ignorados da conta"
+	L["AccountFriendList"] = "Lista de amigos da conta"
+	L["RemoveCharData"] = "Remover dados do personagem"
+	L["RemoveAllConfirm"] = "Remover todas as entradas de %s para |cffffd100%s|r da lista da conta?"
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "Indicadores de progresso da presa"
@@ -2548,6 +2569,9 @@ if LOCALE == "ruRU" then
 	L["Widget_AccountIgnoreList"] = "Окно списка игнорируемых аккаунта"
 	L["Widget_AccountIgnoreListTT"] = "Отображает окно со всеми сохранёнными игнорируемыми на аккаунте."
 	L["AccountIgnoreList"] = "Список игнорируемых аккаунта"
+	L["AccountFriendList"] = "Список друзей аккаунта"
+	L["RemoveCharData"] = "Удалить данные персонажа"
+	L["RemoveAllConfirm"] = "Удалить все записи %s для |cffffd100%s|r из списка аккаунта?"
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "Индикаторы прогресса добычи"
@@ -2883,6 +2907,9 @@ if LOCALE == "koKR" then
 	L["Widget_AccountIgnoreList"] = "계정 차단 목록 창"
 	L["Widget_AccountIgnoreListTT"] = "계정에 기록된 모든 차단 목록을 포함한 창을 표시합니다."
 	L["AccountIgnoreList"] = "계정 차단 목록"
+	L["AccountFriendList"] = "계정 친구 목록"
+	L["RemoveCharData"] = "캐릭터 데이터 제거"
+	L["RemoveAllConfirm"] = "계정 목록에서 |cffffd100%s|r의 모든 %s 항목을 제거하시겠습니까?"
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "먹이 진행 표시기"
@@ -3218,6 +3245,9 @@ if LOCALE == "zhCN" then
 	L["Widget_AccountIgnoreList"] = "账号忽略列表窗口"
 	L["Widget_AccountIgnoreListTT"] = "显示一个包含账号所有已记录忽略对象的窗口。"
 	L["AccountIgnoreList"] = "账号忽略列表"
+	L["AccountFriendList"] = "账号好友列表"
+	L["RemoveCharData"] = "移除角色数据"
+	L["RemoveAllConfirm"] = "是否从账号列表中移除 |cffffd100%s|r 的所有 %s 条目？"
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "猎物进度指示器"
@@ -3553,6 +3583,9 @@ if LOCALE == "zhTW" then
 	L["Widget_AccountIgnoreList"] = "帳號忽略清單視窗"
 	L["Widget_AccountIgnoreListTT"] = "顯示包含帳號所有已記錄忽略對象的視窗。"
 	L["AccountIgnoreList"] = "帳號忽略清單"
+	L["AccountFriendList"] = "帳號好友清單"
+	L["RemoveCharData"] = "移除角色資料"
+	L["RemoveAllConfirm"] = "是否要從帳號清單中移除 |cffffd100%s|r 的所有 %s 項目？"
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "獵物進度指示器"
