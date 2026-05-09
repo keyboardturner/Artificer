@@ -1684,6 +1684,7 @@ function Artificer:CloseAllAdvancedFrames()
 	if self.NameplateAdvancedFrame then self.NameplateAdvancedFrame:Hide() end
 	if self.PreyBarAdvancedFrame then self.PreyBarAdvancedFrame:Hide() end
 	if self.ProfToastAdvancedFrame then self.ProfToastAdvancedFrame:Hide() end
+	if self.NameplateStatusAdvancedFrame then self.NameplateStatusAdvancedFrame:Hide() end
 end
 
 function Artificer:ToggleSettings()
