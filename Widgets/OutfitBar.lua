@@ -974,9 +974,11 @@ local function FallingChecker()
 	local isSwimming = IsSwimming()
 	local isSubmerged = IsSubmerged()
 	local formID = GetShapeshiftFormID()
+	local isdead = UnitIsDeadOrGhost("player")
+	local isinvehicle = UnitInVehicle("player") or UnitHasVehicleUI("player")
 	local isShapeshifted = formID and formID ~= 28 -- 28 shadowform
 
-	if not isFalling and not currentMoving and not isMounted and not isSwimming and not isSubmerged and not isShapeshifted then
+	if not isFalling and not currentMoving and not isMounted and not isSwimming and not isSubmerged and not isShapeshifted and not isdead and not isinvehicle then
 		SoundSelector();
 	end
 end
