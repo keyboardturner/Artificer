@@ -97,5 +97,6 @@ Widgets/DeleteConfirm.lua
 Widgets/ObjectiveTrackerManager.lua
 Widgets/SpellAlerts.lua
 Widgets/TransmogHistory.lua
+Widgets/UnderlightFixer.lua
 
 SettingsUI.lua
