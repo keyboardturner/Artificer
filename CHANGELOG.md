@@ -1,5 +1,11 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.2.0
+
+Added a potential extra fix to the Underlight Angler (needs feedback because i could only click it once and i accidentally did before finishing)
+
+Kill outfit foley noises in vehicles
+
 # 0.1.9
 
 Added Nameplate Status icon options - Nameplates can now show various statuses on nameplates such as Away, Busy, Disconnected, Group, Guild, Friend, and Ignored
