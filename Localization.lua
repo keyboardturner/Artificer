@@ -194,6 +194,13 @@ if LOCALE == "enUS" then
 	L["FNP_StatusFriendBNet"] = FRIENDS .. " - " .. BATTLETAG
 	L["FNP_StatusIgnoredChar"] = IGNORED .. " - " .. CHARACTER
 	L["FNP_StatusIgnoredAcc"] = IGNORED .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
+	L["FNP_AlignVertically"] = "Align Vertically"
+	L["FNP_AlignHorizontally"] = "Align Horizontally"
+	L["FNP_Preview"] = PREVIEW
+	L["FNP_GrowthDirection"] = "Growth Direction"
+	L["FNP_Center"] = "Center"
+	L["FNP_LeftToRight"] = "Left-to-Right"
+	L["FNP_RightToLeft"] = "Right-to-Left"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Account Ignore List Window"
@@ -534,6 +541,13 @@ if LOCALE == "esMX" then
 	L["FNP_StatusFriendBNet"] = FRIENDS .. " - " .. BATTLETAG
 	L["FNP_StatusIgnoredChar"] = IGNORED .. " - " .. CHARACTER
 	L["FNP_StatusIgnoredAcc"] = IGNORED .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
+	L["FNP_AlignVertically"] = "Alinear verticalmente"
+	L["FNP_AlignHorizontally"] = "Alinear horizontalmente"
+	L["FNP_Preview"] = PREVIEW
+	L["FNP_GrowthDirection"] = "Dirección de crecimiento"
+	L["FNP_Center"] = "Centro"
+	L["FNP_LeftToRight"] = "Izquierda a derecha"
+	L["FNP_RightToLeft"] = "Derecha a izquierda"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Ventana de lista de ignorados de la cuenta"
@@ -873,6 +887,13 @@ if LOCALE == "esES" then
 	L["FNP_StatusFriendBNet"] = FRIENDS .. " - " .. BATTLETAG
 	L["FNP_StatusIgnoredChar"] = IGNORED .. " - " .. CHARACTER
 	L["FNP_StatusIgnoredAcc"] = IGNORED .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
+	L["FNP_AlignVertically"] = "Alinear verticalmente"
+	L["FNP_AlignHorizontally"] = "Alinear horizontalmente"
+	L["FNP_Preview"] = PREVIEW
+	L["FNP_GrowthDirection"] = "Dirección de crecimiento"
+	L["FNP_Center"] = "Centro"
+	L["FNP_LeftToRight"] = "Izquierda a derecha"
+	L["FNP_RightToLeft"] = "Derecha a izquierda"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Ventana de lista de ignorados de la cuenta"
@@ -1210,6 +1231,13 @@ if LOCALE == "deDE" then
 	L["FNP_StatusFriendBNet"] = FRIENDS .. " - " .. BATTLETAG
 	L["FNP_StatusIgnoredChar"] = IGNORED .. " - " .. CHARACTER
 	L["FNP_StatusIgnoredAcc"] = IGNORED .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
+	L["FNP_AlignVertically"] = "Vertikal ausrichten"
+	L["FNP_AlignHorizontally"] = "Horizontal ausrichten"
+	L["FNP_Preview"] = PREVIEW
+	L["FNP_GrowthDirection"] = "Wachstumsrichtung"
+	L["FNP_Center"] = "Zentriert"
+	L["FNP_LeftToRight"] = "Links nach rechts"
+	L["FNP_RightToLeft"] = "Rechts nach links"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Fenster für kontoweite Ignorierliste"
@@ -1548,6 +1576,13 @@ if LOCALE == "frFR" then
 	L["FNP_StatusFriendBNet"] = FRIENDS .. " - " .. BATTLETAG
 	L["FNP_StatusIgnoredChar"] = IGNORED .. " - " .. CHARACTER
 	L["FNP_StatusIgnoredAcc"] = IGNORED .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
+	L["FNP_AlignVertically"] = "Aligner verticalement"
+	L["FNP_AlignHorizontally"] = "Aligner horizontalement"
+	L["FNP_Preview"] = PREVIEW
+	L["FNP_GrowthDirection"] = "Direction de croissance"
+	L["FNP_Center"] = "Centre"
+	L["FNP_LeftToRight"] = "Gauche à droite"
+	L["FNP_RightToLeft"] = "Droite à gauche"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Fenêtre de liste d’ignorés du compte"
@@ -1886,6 +1921,13 @@ if LOCALE == "itIT" then
 	L["FNP_StatusFriendBNet"] = FRIENDS .. " - " .. BATTLETAG
 	L["FNP_StatusIgnoredChar"] = IGNORED .. " - " .. CHARACTER
 	L["FNP_StatusIgnoredAcc"] = IGNORED .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
+	L["FNP_AlignVertically"] = "Allinea verticalmente"
+	L["FNP_AlignHorizontally"] = "Allinea orizzontalmente"
+	L["FNP_Preview"] = PREVIEW
+	L["FNP_GrowthDirection"] = "Direzione di crescita"
+	L["FNP_Center"] = "Centro"
+	L["FNP_LeftToRight"] = "Da sinistra a destra"
+	L["FNP_RightToLeft"] = "Da destra a sinistra"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Finestra lista ignorati account"
@@ -2224,6 +2266,13 @@ if LOCALE == "ptBR" then
 	L["FNP_StatusFriendBNet"] = FRIENDS .. " - " .. BATTLETAG
 	L["FNP_StatusIgnoredChar"] = IGNORED .. " - " .. CHARACTER
 	L["FNP_StatusIgnoredAcc"] = IGNORED .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
+	L["FNP_AlignVertically"] = "Alinhar verticalmente"
+	L["FNP_AlignHorizontally"] = "Alinhar horizontalmente"
+	L["FNP_Preview"] = PREVIEW
+	L["FNP_GrowthDirection"] = "Direção de crescimento"
+	L["FNP_Center"] = "Centro"
+	L["FNP_LeftToRight"] = "Esquerda para direita"
+	L["FNP_RightToLeft"] = "Direita para esquerda"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Janela da lista de ignorados da conta"
@@ -2564,6 +2613,13 @@ if LOCALE == "ruRU" then
 	L["FNP_StatusFriendBNet"] = FRIENDS .. " - " .. BATTLETAG
 	L["FNP_StatusIgnoredChar"] = IGNORED .. " - " .. CHARACTER
 	L["FNP_StatusIgnoredAcc"] = IGNORED .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
+	L["FNP_AlignVertically"] = "Выравнивать по вертикали"
+	L["FNP_AlignHorizontally"] = "Выравнивать по горизонтали"
+	L["FNP_Preview"] = PREVIEW
+	L["FNP_GrowthDirection"] = "Направление роста"
+	L["FNP_Center"] = "По центру"
+	L["FNP_LeftToRight"] = "Слева направо"
+	L["FNP_RightToLeft"] = "Справа налево"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Окно списка игнорируемых аккаунта"
@@ -2902,6 +2958,13 @@ if LOCALE == "koKR" then
 	L["FNP_StatusFriendBNet"] = FRIENDS .. " - " .. BATTLETAG
 	L["FNP_StatusIgnoredChar"] = IGNORED .. " - " .. CHARACTER
 	L["FNP_StatusIgnoredAcc"] = IGNORED .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
+	L["FNP_AlignVertically"] = "세로 정렬"
+	L["FNP_AlignHorizontally"] = "가로 정렬"
+	L["FNP_Preview"] = PREVIEW
+	L["FNP_GrowthDirection"] = "성장 방향"
+	L["FNP_Center"] = "중앙"
+	L["FNP_LeftToRight"] = "왼쪽에서 오른쪽"
+	L["FNP_RightToLeft"] = "오른쪽에서 왼쪽"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "계정 차단 목록 창"
@@ -3240,6 +3303,13 @@ if LOCALE == "zhCN" then
 	L["FNP_StatusFriendBNet"] = FRIENDS .. " - " .. BATTLETAG
 	L["FNP_StatusIgnoredChar"] = IGNORED .. " - " .. CHARACTER
 	L["FNP_StatusIgnoredAcc"] = IGNORED .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
+	L["FNP_AlignVertically"] = "垂直对齐"
+	L["FNP_AlignHorizontally"] = "水平对齐"
+	L["FNP_Preview"] = PREVIEW
+	L["FNP_GrowthDirection"] = "增长方向"
+	L["FNP_Center"] = "居中"
+	L["FNP_LeftToRight"] = "从左到右"
+	L["FNP_RightToLeft"] = "从右到左"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "账号忽略列表窗口"
@@ -3578,6 +3648,13 @@ if LOCALE == "zhTW" then
 	L["FNP_StatusFriendBNet"] = FRIENDS .. " - " .. BATTLETAG
 	L["FNP_StatusIgnoredChar"] = IGNORED .. " - " .. CHARACTER
 	L["FNP_StatusIgnoredAcc"] = IGNORED .. " - " .. REPUTATION_SORT_TYPE_ACCOUNT
+	L["FNP_AlignVertically"] = "垂直對齊"
+	L["FNP_AlignHorizontally"] = "水平對齊"
+	L["FNP_Preview"] = PREVIEW
+	L["FNP_GrowthDirection"] = "增長方向"
+	L["FNP_Center"] = "置中"
+	L["FNP_LeftToRight"] = "由左至右"
+	L["FNP_RightToLeft"] = "由右至左"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "帳號忽略清單視窗"

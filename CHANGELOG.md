@@ -1,5 +1,14 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.2.1
+
+Adjustments to the Artificer Nameplate Status/Target icons:
+ - Added dropdown option align-grow the status buttons along the center, left-to-right, and right-to-left
+ - Added centering lines for vertical/horizontal
+ - Adjusted the Artificer nameplate option window to be larger
+ - Made the color pickers into a scrollable list (there's enough of them that it warrants it at this point)
+ - Changed the dummy nameplate to be more reflective that it's the nameplate boundaries and not the nameplate healthbar itself (the vast amount of nameplate addons makes this pretty difficult to do)
+
 # 0.2.0
 
 Added a potential extra fix to the Underlight Angler (needs feedback because i could only click it once and i accidentally did before finishing)

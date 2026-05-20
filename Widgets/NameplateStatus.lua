@@ -43,24 +43,54 @@ local StatusTextures = {
 
 local function LayoutContainerIcons(container)
 	local padding = 2;
-	local lastIcon = nil;
-	local totalWidth = 0;
+	local visibleIcons = {};
 
 	for _, iconName in ipairs(statusi) do
 		local icon = container[iconName];
-		icon:ClearAllPoints();
 		if icon:IsShown() then
+			table.insert(visibleIcons, icon);
+		end
+	end
+
+	local totalWidth = 0;
+	for _, icon in ipairs(visibleIcons) do
+		totalWidth = totalWidth + icon:GetWidth();
+	end
+	totalWidth = totalWidth + math.max(0, (#visibleIcons - 1) * padding);
+
+	container:SetWidth(math.max(totalWidth, 1));
+
+	local growth = (Artificer_DB and Artificer_DB.NameplateStatusGrowthDir) or "CENTER";
+	local lastIcon = nil;
+
+	if growth == "RIGHT_TO_LEFT" then
+		for _, icon in ipairs(visibleIcons) do
+			icon:ClearAllPoints();
+			if not lastIcon then
+				icon:SetPoint("RIGHT", container, "RIGHT", 0, 0);
+			else
+				icon:SetPoint("RIGHT", lastIcon, "LEFT", -padding, 0);
+			end
+			lastIcon = icon;
+		end
+	elseif growth == "LEFT_TO_RIGHT" then
+		for _, icon in ipairs(visibleIcons) do
+			icon:ClearAllPoints();
 			if not lastIcon then
 				icon:SetPoint("LEFT", container, "LEFT", 0, 0);
 			else
 				icon:SetPoint("LEFT", lastIcon, "RIGHT", padding, 0);
 			end
-			totalWidth = totalWidth + icon:GetWidth() + (lastIcon and padding or 0);
 			lastIcon = icon;
 		end
+	else -- center
+		local currentOffset = -totalWidth / 2;
+		for _, icon in ipairs(visibleIcons) do
+			icon:ClearAllPoints();
+			icon:SetPoint("LEFT", container, "CENTER", currentOffset, 0);
+			currentOffset = currentOffset + icon:GetWidth() + padding;
+		end
 	end
-
-	container:SetWidth(math.max(totalWidth, 1));
 end
 
 local function SetIconTexture(iconFrame, textureData)
@@ -156,7 +186,7 @@ function Artificer:OpenNameplateStatusAdvancedSettings()
 	if not self.NameplateStatusAdvancedFrame then
 		local f = CreateFrame("Frame", "ArtificerNameplateStatusAdvancedFrame", Artificer.SettingsFrame, "DialogBorderTranslucentTemplate");
 		f:ClearAllPoints();
-		f:SetSize(420, 580);
+		f:SetSize(550, 580);
 		f:SetPoint("LEFT", Artificer.SettingsFrame, "RIGHT", 45, 0);
 		f:EnableMouse(true);
 		f:Hide();
@@ -190,13 +220,14 @@ function Artificer:OpenNameplateStatusAdvancedSettings()
 
 		local dummyBounds = CreateFrame("Frame", nil, f, "BackdropTemplate");
 		dummyBounds:SetBackdrop(backdropInfo);
-		dummyBounds:SetSize(380, 160);
+		dummyBounds:SetWidth(f:GetWidth()-20);
+		dummyBounds:SetHeight(200);
 		dummyBounds:SetPoint("TOP", f, "TOP", 0, -12.5);
 
 		local dummyPlate = CreateFrame("Frame", nil, dummyBounds, "BackdropTemplate");
 		local bg = dummyPlate:CreateTexture(nil, "BACKGROUND");
 		bg:SetAllPoints();
-		bg:SetAtlas("nameplates-bar-background-white");
+		bg:SetAtlas("transmog-setCard-transmogrified");
 
 		f.DummyPlate = dummyPlate;
 
@@ -220,6 +251,69 @@ function Artificer:OpenNameplateStatusAdvancedSettings()
 
 		f.previewContainer = previewContainer;
 
+		local function ResetStatusPosition(axis)
+			if not Artificer_DB.NameplateStatusPos then
+				Artificer_DB.NameplateStatusPos = { point = "CENTER", relativePoint = "CENTER", x = 0, y = 0 };
+			end
+
+			if axis == "X" then
+				Artificer_DB.NameplateStatusPos.x = 0;
+			elseif axis == "Y" then
+				Artificer_DB.NameplateStatusPos.y = 0;
+			end
+
+			local pos = Artificer_DB.NameplateStatusPos;
+			local anchorPoint = pos.point or "CENTER";
+			f.previewContainer:ClearAllPoints();
+			f.previewContainer:SetPoint(anchorPoint, dummyPlate, "CENTER", pos.x * f.previewScale, pos.y * f.previewScale);
+
+			if Artificer.UpdateNameplateStatusPositions then
+				Artificer.UpdateNameplateStatusPositions();
+			end
+		end
+
+		local vLine = CreateFrame("Button", nil, dummyBounds);
+		vLine:SetWidth(4);
+		vLine:SetPoint("TOP", dummyBounds, "TOP", 0, 0);
+		vLine:SetPoint("BOTTOM", dummyBounds, "BOTTOM", 0, 0);
+		vLine:SetFrameLevel(dummyPlate:GetFrameLevel() + 1);
+		local vTex = vLine:CreateTexture(nil, "BACKGROUND");
+		vTex:SetAllPoints();
+		vTex:SetColorTexture(0, 1, 1, 0.2);
+		vLine:SetScript("OnEnter", function(self)
+			vTex:SetColorTexture(0, 1, 1, 0.6);
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+			GameTooltip:SetText(L["FNP_AlignHorizontally"], 1, 1, 1);
+			GameTooltip:Show();
+		end)
+		vLine:SetScript("OnLeave", function()
+			vTex:SetColorTexture(0, 1, 1, 0.2);
+			GameTooltip_Hide();
+		end)
+		vLine:SetScript("OnClick", function() ResetStatusPosition("X"); end);
+
+		local hLine = CreateFrame("Button", nil, dummyBounds);
+		hLine:SetHeight(4);
+		hLine:SetPoint("LEFT", dummyBounds, "LEFT", 0, 0);
+		hLine:SetPoint("RIGHT", dummyBounds, "RIGHT", 0, 0);
+		hLine:SetFrameLevel(dummyPlate:GetFrameLevel() + 1);
+		local hTex = hLine:CreateTexture(nil, "BACKGROUND");
+		hTex:SetAllPoints();
+		hTex:SetColorTexture(0, 1, 1, 0.2);
+		hLine:SetScript("OnEnter", function(self)
+			hTex:SetColorTexture(0, 1, 1, 0.6);
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+			GameTooltip:SetText(L["FNP_AlignVertically"], 1, 1, 1);
+			GameTooltip:Show();
+		end)
+		hLine:SetScript("OnLeave", function()
+			hTex:SetColorTexture(0, 1, 1, 0.2);
+			GameTooltip_Hide();
+		end)
+		hLine:SetScript("OnClick", function() ResetStatusPosition("Y"); end);
+		
+		f.previewContainer:SetFrameLevel(vLine:GetFrameLevel() + 2);
+
 		local activePreviewContainer = CreateFrame("Frame", nil, f, "BackdropTemplate");
 		activePreviewContainer:SetBackdrop(backdropInfo);
 		activePreviewContainer:SetSize(60, 60);
@@ -227,7 +321,7 @@ function Artificer:OpenNameplateStatusAdvancedSettings()
 
 		local activePreviewLabel = activePreviewContainer:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall");
 		activePreviewLabel:SetPoint("BOTTOM", activePreviewContainer, "TOP", 0, 5);
-		activePreviewLabel:SetText(L["Preview"] or "Preview");
+		activePreviewLabel:SetText(L["FNP_Preview"]);
 
 		local activePreviewIcon = activePreviewContainer:CreateTexture(nil, "ARTWORK");
 		activePreviewIcon:SetPoint("CENTER");
@@ -251,8 +345,14 @@ function Artificer:OpenNameplateStatusAdvancedSettings()
 			PlaySound(839);
 			UpdateDummyPlate();
 			local pos = Artificer_DB.NameplateStatusPos or Artificer.Defaults.NameplateStatusPos;
+			local growth = Artificer_DB.NameplateStatusGrowthDir or "CENTER";
+			
+			local anchorPoint = "CENTER";
+			if growth == "LEFT_TO_RIGHT" then anchorPoint = "LEFT";
+			elseif growth == "RIGHT_TO_LEFT" then anchorPoint = "RIGHT"; end
+
 			previewContainer:ClearAllPoints();
-			previewContainer:SetPoint(pos.point, dummyPlate, pos.relativePoint, pos.x * f.previewScale, pos.y * f.previewScale);
+			previewContainer:SetPoint(anchorPoint, dummyPlate, "CENTER", pos.x * f.previewScale, pos.y * f.previewScale);
 			Artificer.UpdateStatusPreviewVisibility();
 			Artificer.UpdateNameplateStatusAppearance();
 		end);
@@ -287,17 +387,31 @@ function Artificer:OpenNameplateStatusAdvancedSettings()
 			self:SetScript("OnUpdate", nil);
 
 			local dpX, dpY = dummyPlate:GetCenter();
-			local icX, icY = self:GetCenter();
-			local dX, dY = icX - dpX, icY - dpY;
+			local cX, cY = self:GetCenter();
+			local growth = Artificer_DB.NameplateStatusGrowthDir or "CENTER";
+			local halfW = self:GetWidth() / 2;
+
+			local icX = cX;
+			local anchorPoint = "CENTER";
+
+			if growth == "LEFT_TO_RIGHT" then
+				icX = cX - halfW;
+				anchorPoint = "LEFT";
+			elseif growth == "RIGHT_TO_LEFT" then
+				icX = cX + halfW;
+				anchorPoint = "RIGHT";
+			end
+
+			local dX, dY = icX - dpX, cY - dpY;
 
 			if not Artificer_DB.NameplateStatusPos then Artificer_DB.NameplateStatusPos = {}; end
-			Artificer_DB.NameplateStatusPos.point = "CENTER";
+			Artificer_DB.NameplateStatusPos.point = anchorPoint;
 			Artificer_DB.NameplateStatusPos.relativePoint = "CENTER";
 			Artificer_DB.NameplateStatusPos.x = dX / f.previewScale;
 			Artificer_DB.NameplateStatusPos.y = dY / f.previewScale;
 
 			self:ClearAllPoints();
-			self:SetPoint("CENTER", dummyPlate, "CENTER", dX, dY);
+			self:SetPoint(anchorPoint, dummyPlate, "CENTER", dX, dY);
 
 			if Artificer.UpdateNameplateStatusPositions then
 				Artificer.UpdateNameplateStatusPositions();
@@ -329,8 +443,40 @@ function Artificer:OpenNameplateStatusAdvancedSettings()
 		end
 		dropdown:SetupMenu(GeneratorFunction);
 
+		local growthDropdownLabel = f:CreateFontString(nil, "OVERLAY", "GameFontNormal");
+		growthDropdownLabel:SetPoint("TOPLEFT", dropdown, "BOTTOMLEFT", 0, -10);
+		growthDropdownLabel:SetText(L["FNP_GrowthDirection"]);
+
+		local growthDropdown = CreateFrame("DropdownButton", nil, f, "WowStyle1DropdownTemplate");
+		growthDropdown:SetPoint("TOPLEFT", growthDropdownLabel, "BOTTOMLEFT", 0, -5);
+		growthDropdown:SetWidth(180);
+
+		local function GrowthGeneratorFunction(dropdown, rootDescription)
+			local function IsSelected(key) return (Artificer_DB.NameplateStatusGrowthDir or "CENTER") == key; end
+			local function SetSelected(key)
+				Artificer_DB.NameplateStatusGrowthDir = key;
+				
+				local pos = Artificer_DB.NameplateStatusPos or Artificer.Defaults.NameplateStatusPos;
+				if key == "LEFT_TO_RIGHT" then pos.point = "LEFT";
+				elseif key == "RIGHT_TO_LEFT" then pos.point = "RIGHT";
+				else pos.point = "CENTER"; end
+
+				f.previewContainer:ClearAllPoints();
+				f.previewContainer:SetPoint(pos.point, dummyPlate, "CENTER", pos.x * f.previewScale, pos.y * f.previewScale);
+
+				Artificer.UpdateNameplateStatusAppearance();
+				if Artificer.RefreshNameplateStatusIndicator then Artificer.RefreshNameplateStatusIndicator(); end
+				if Artificer.UpdateNameplateStatusPositions then Artificer.UpdateNameplateStatusPositions(); end
+			end
+			rootDescription:CreateRadio(L["FNP_Center"], function() return IsSelected("CENTER") end, function() SetSelected("CENTER") end);
+			rootDescription:CreateRadio(L["FNP_LeftToRight"], function() return IsSelected("LEFT_TO_RIGHT") end, function() SetSelected("LEFT_TO_RIGHT") end);
+			rootDescription:CreateRadio(L["FNP_RightToLeft"], function() return IsSelected("RIGHT_TO_LEFT") end, function() SetSelected("RIGHT_TO_LEFT") end);
+		end
+		growthDropdown:SetupMenu(GrowthGeneratorFunction);
+		growthDropdown:SetDefaultText(L["GrowthDirection"] or "Growth Direction");
+
 		local sizeSlider = CreateFrame("Frame", nil, f, "MinimalSliderWithSteppersTemplate");
-		sizeSlider:SetPoint("TOPRIGHT", dummyBounds, "BOTTOMRIGHT", -20, -25);
+		sizeSlider:SetPoint("TOPRIGHT", dummyBounds, "BOTTOMRIGHT", -30, -25);
 		sizeSlider:SetWidth(160);
 
 		local sizeLabel = f:CreateFontString(nil, "OVERLAY", "GameFontNormal");
@@ -367,26 +513,40 @@ function Artificer:OpenNameplateStatusAdvancedSettings()
 			{ key = "ignored_account", name = L["FNP_StatusIgnoredAcc"] },
 		};
 
-		local startY = -230;
-		for i, s in ipairs(statuses) do
-			local yOff = startY - ((i - 1) * 26);
+		local scrollBox = CreateFrame("Frame", nil, f, "WowScrollBoxList");
+		scrollBox:SetPoint("TOPLEFT", f, "BOTTOMLEFT", 15, 250);
+		scrollBox:SetPoint("BOTTOMRIGHT", f, "BOTTOMRIGHT", -35, 15);
 
-			local swatch = CreateFrame("Button", nil, f, "ColorSwatchTemplate");
-			swatch:SetPoint("TOPLEFT", f, "TOPLEFT", 20, yOff);
-			swatch:RegisterForClicks("AnyUp");
+		local scrollBar = CreateFrame("EventFrame", nil, f, "MinimalScrollBar");
+		scrollBar:SetPoint("TOPLEFT", scrollBox, "TOPRIGHT", 5, 0);
+		scrollBar:SetPoint("BOTTOMLEFT", scrollBox, "BOTTOMRIGHT", 5, 0);
 
-			local cLabel = f:CreateFontString(nil, "OVERLAY", "GameFontNormal");
-			cLabel:SetPoint("LEFT", swatch, "RIGHT", 10, 0);
-			cLabel:SetText(s.name);
-			cLabel:SetWidth(150);
-			cLabel:SetJustifyH("LEFT");
+		local scrollView = CreateScrollBoxListLinearView();
+		scrollView:SetElementExtent(28);
+		ScrollUtil.InitScrollBoxListWithScrollBar(scrollBox, scrollBar, scrollView);
 
-			local desatCheck = CreateFrame("CheckButton", nil, f, "ChatConfigCheckButtonTemplate");
-			desatCheck:SetPoint("LEFT", cLabel, "RIGHT", 10, 0);
-			desatCheck:SetSize(24, 24);
-			desatCheck.Text = desatCheck.Text or desatCheck:CreateFontString(nil, "OVERLAY", "GameFontNormal");
-			desatCheck.Text:SetPoint("LEFT", desatCheck, "RIGHT", 5, 0);
-			desatCheck.Text:SetText(L["Desaturate"] or "Desaturate");
+		scrollView:SetElementInitializer("Frame", function(rowFrame, s)
+			if not rowFrame.isInitialized then
+				rowFrame.swatch = CreateFrame("Button", nil, rowFrame, "ColorSwatchTemplate");
+				rowFrame.swatch:SetPoint("LEFT", rowFrame, "LEFT", 5, 0);
+				rowFrame.swatch:RegisterForClicks("AnyUp");
+
+				rowFrame.cLabel = rowFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal");
+				rowFrame.cLabel:SetPoint("LEFT", rowFrame.swatch, "RIGHT", 10, 0);
+				rowFrame.cLabel:SetWidth(150);
+				rowFrame.cLabel:SetJustifyH("LEFT");
+
+				rowFrame.desatCheck = CreateFrame("CheckButton", nil, rowFrame, "ChatConfigCheckButtonTemplate");
+				rowFrame.desatCheck:SetPoint("LEFT", rowFrame.cLabel, "RIGHT", 10, 0);
+				rowFrame.desatCheck:SetSize(24, 24);
+				rowFrame.desatCheck.Text = rowFrame.desatCheck.Text or rowFrame.desatCheck:CreateFontString(nil, "OVERLAY", "GameFontNormal");
+				rowFrame.desatCheck.Text:SetPoint("LEFT", rowFrame.desatCheck, "RIGHT", 5, 0);
+				rowFrame.desatCheck.Text:SetText(L["Desaturate"] or "Desaturate");
+				
+				rowFrame.isInitialized = true;
+			end
+
+			rowFrame.cLabel:SetText(s.name);
 
 			local function GetCurrentColor()
 				if Artificer_DB.NameplateStatusColors and Artificer_DB.NameplateStatusColors[s.key] then 
@@ -397,7 +557,7 @@ function Artificer:OpenNameplateStatusAdvancedSettings()
 
 			local function ApplyColor(t)
 				if not t then return; end
-				swatch.Color:SetVertexColor(t.r, t.g, t.b, t.a);
+				rowFrame.swatch.Color:SetVertexColor(t.r, t.g, t.b, t.a);
 				if not Artificer_DB.NameplateStatusColors then Artificer_DB.NameplateStatusColors = {}; end
 				Artificer_DB.NameplateStatusColors[s.key] = t;
 				Artificer.UpdateNameplateStatusAppearance();
@@ -409,8 +569,8 @@ function Artificer:OpenNameplateStatusAdvancedSettings()
 			end
 
 			local initColor = GetCurrentColor();
-			swatch.Color:SetVertexColor(initColor.r, initColor.g, initColor.b, initColor.a);
-			desatCheck:SetChecked(initColor.desat);
+			rowFrame.swatch.Color:SetVertexColor(initColor.r, initColor.g, initColor.b, initColor.a);
+			rowFrame.desatCheck:SetChecked(initColor.desat);
 
 			local function ShowPreview()
 				local texInfo = StatusTextures[s.key]
@@ -443,14 +603,14 @@ function Artificer:OpenNameplateStatusAdvancedSettings()
 				end
 			end
 
-			swatch:HookScript("OnEnter", ShowPreview);
-			swatch:HookScript("OnLeave", HidePreview);
-			desatCheck:HookScript("OnEnter", ShowPreview);
-			desatCheck:HookScript("OnLeave", HidePreview);
+			rowFrame.swatch:SetScript("OnEnter", ShowPreview);
+			rowFrame.swatch:SetScript("OnLeave", HidePreview);
+			rowFrame.desatCheck:SetScript("OnEnter", ShowPreview);
+			rowFrame.desatCheck:SetScript("OnLeave", HidePreview);
 
-			swatch:SetScript("OnClick", function(_, button)
+			rowFrame.swatch:SetScript("OnClick", function(_, button)
 				if button == "RightButton" then
-					MenuUtil.CreateContextMenu(swatch, function(owner, rootDescription)
+					MenuUtil.CreateContextMenu(rowFrame.swatch, function(owner, rootDescription)
 						rootDescription:CreateTitle(L["ColorOptions"]);
 						rootDescription:CreateButton(L["CopyColor"], function() Artificer.ColorClipboard = CopyTable(GetCurrentColor()); end);
 						local pasteBtn = rootDescription:CreateButton(L["PasteColor"], function()
@@ -472,12 +632,12 @@ function Artificer:OpenNameplateStatusAdvancedSettings()
 				info.swatchFunc = function()
 					local r, g, b = ColorPickerFrame:GetColorRGB();
 					local a = ColorPickerFrame:GetColorAlpha();
-					local newColor = { r = r, g = g, b = b, a = a, desat = desatCheck:GetChecked() };
+					local newColor = { r = r, g = g, b = b, a = a, desat = rowFrame.desatCheck:GetChecked() };
 					ApplyColor(newColor);
 				end;
 				info.cancelFunc = function()
 					local r, g, b, a = ColorPickerFrame:GetPreviousValues();
-					local newColor = { r = r, g = g, b = b, a = a, desat = desatCheck:GetChecked() };
+					local newColor = { r = r, g = g, b = b, a = a, desat = rowFrame.desatCheck:GetChecked() };
 					ApplyColor(newColor);
 
 					f.activePreviewContainer:Hide();
@@ -486,12 +646,15 @@ function Artificer:OpenNameplateStatusAdvancedSettings()
 				ColorPickerFrame:SetupColorPickerAndShow(info);
 			end);
 
-			desatCheck:SetScript("OnClick", function(self)
+			rowFrame.desatCheck:SetScript("OnClick", function(self)
 				local current = GetCurrentColor();
 				current.desat = self:GetChecked();
 				ApplyColor(current);
 			end);
-		end
+		end);
+
+		local dataProvider = CreateDataProvider(statuses);
+		scrollView:SetDataProvider(dataProvider);
 
 		self.NameplateStatusAdvancedFrame = f;
 	end
@@ -698,9 +861,18 @@ end
 
 local function SetContainerPosition(container, namePlateFrame)
 	local pos = Artificer_DB.NameplateStatusPos or Artificer.Defaults.NameplateStatusPos;
+	local growth = Artificer_DB.NameplateStatusGrowthDir or "CENTER";
+	local anchorPoint = "CENTER";
+
+	if growth == "LEFT_TO_RIGHT" then 
+		anchorPoint = "LEFT";
+	elseif growth == "RIGHT_TO_LEFT" then 
+		anchorPoint = "RIGHT"; 
+	end
+
 	container:ClearAllPoints();
 	container:SetParent(namePlateFrame);
-	container:SetPoint(pos.point, namePlateFrame, pos.relativePoint, pos.x, pos.y);
+	container:SetPoint(anchorPoint, namePlateFrame, pos.relativePoint, pos.x, pos.y);
 end
 
 function Artificer.UpdateNameplateStatusPositions()

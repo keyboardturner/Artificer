@@ -69,6 +69,7 @@ local Defaults = {
 		x = 0,
 		y = 40,
 	},
+	NameplateStatusGrowthDir = "CENTER",
 	NameplateStatusTypes = {
 		connection = true,
 		chromie = true,

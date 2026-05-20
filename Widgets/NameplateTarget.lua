@@ -62,7 +62,7 @@ function Artificer:OpenNameplateAdvancedSettings()
 	if not self.NameplateAdvancedFrame then
 		local f = CreateFrame("Frame", "ArtificerNameplateAdvancedFrame", Artificer.SettingsFrame, "DialogBorderTranslucentTemplate");
 		f:ClearAllPoints();
-		f:SetSize(375, 400);
+		f:SetSize(550, 400);
 		f:SetPoint("LEFT", Artificer.SettingsFrame, "RIGHT", 45, 0);
 		--f:SetMovable(true);
 		f:EnableMouse(true);
@@ -105,7 +105,8 @@ function Artificer:OpenNameplateAdvancedSettings()
 
 		local dummyBounds = CreateFrame("Frame", nil, f, "BackdropTemplate");
 		dummyBounds:SetBackdrop(backdropInfo);
-		dummyBounds:SetSize(350, 200);
+		dummyBounds:SetWidth(f:GetWidth()-20);
+		dummyBounds:SetHeight(200);
 		dummyBounds:SetPoint("TOP", f, "TOP", 0, -12.5);
 
 		local width, height = C_NamePlate.GetNamePlateSize();
@@ -117,7 +118,7 @@ function Artificer:OpenNameplateAdvancedSettings()
 
 		local bg = dummyPlate:CreateTexture(nil, "BACKGROUND");
 		bg:SetAllPoints();
-		bg:SetAtlas("nameplates-bar-background-white");
+		bg:SetAtlas("transmog-setCard-transmogrified");
 
 		local icon = CreateFrame("Frame", nil, dummyPlate);
 		icon:SetSize(32, 32);
@@ -205,6 +206,68 @@ function Artificer:OpenNameplateAdvancedSettings()
 				Artificer.UpdateNameplateTargetPositions();
 			end
 		end);
+
+		local function ResetTargetPosition(axis)
+			if not Artificer_DB.NameplateTargetPos then
+				Artificer_DB.NameplateTargetPos = { point = "CENTER", relativePoint = "CENTER", x = 0, y = 0 };
+			end
+
+			if axis == "X" then
+				Artificer_DB.NameplateTargetPos.x = 0;
+			elseif axis == "Y" then
+				Artificer_DB.NameplateTargetPos.y = 0;
+			end
+
+			local pos = Artificer_DB.NameplateTargetPos;
+			icon:ClearAllPoints();
+			icon:SetPoint(pos.point, dummyPlate, pos.relativePoint, pos.x * f.previewScale, pos.y * f.previewScale);
+
+			if Artificer.UpdateNameplateTargetPositions then
+				Artificer.UpdateNameplateTargetPositions();
+			end
+		end
+
+		local vLine = CreateFrame("Button", nil, dummyBounds);
+		vLine:SetWidth(4);
+		vLine:SetPoint("TOP", dummyBounds, "TOP", 0, 0);
+		vLine:SetPoint("BOTTOM", dummyBounds, "BOTTOM", 0, 0);
+		vLine:SetFrameLevel(dummyPlate:GetFrameLevel() + 1);
+		local vTex = vLine:CreateTexture(nil, "BACKGROUND");
+		vTex:SetAllPoints();
+		vTex:SetColorTexture(0, 1, 1, 0.2);
+		vLine:SetScript("OnEnter", function(self)
+			vTex:SetColorTexture(0, 1, 1, 0.6);
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+			GameTooltip:SetText(L["FNP_AlignHorizontally"], 1, 1, 1);
+			GameTooltip:Show();
+		end)
+		vLine:SetScript("OnLeave", function()
+			vTex:SetColorTexture(0, 1, 1, 0.2);
+			GameTooltip_Hide();
+		end)
+		vLine:SetScript("OnClick", function() ResetTargetPosition("X"); end);
+
+		local hLine = CreateFrame("Button", nil, dummyBounds);
+		hLine:SetHeight(4);
+		hLine:SetPoint("LEFT", dummyBounds, "LEFT", 0, 0);
+		hLine:SetPoint("RIGHT", dummyBounds, "RIGHT", 0, 0);
+		hLine:SetFrameLevel(dummyPlate:GetFrameLevel() + 1);
+		local hTex = hLine:CreateTexture(nil, "BACKGROUND");
+		hTex:SetAllPoints();
+		hTex:SetColorTexture(0, 1, 1, 0.2);
+		hLine:SetScript("OnEnter", function(self)
+			hTex:SetColorTexture(0, 1, 1, 0.6);
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+			GameTooltip:SetText(L["FNP_AlignVertically"], 1, 1, 1);
+			GameTooltip:Show();
+		end)
+		hLine:SetScript("OnLeave", function()
+			hTex:SetColorTexture(0, 1, 1, 0.2);
+			GameTooltip_Hide();
+		end)
+		hLine:SetScript("OnClick", function() ResetTargetPosition("Y") end);
+
+		icon:SetFrameLevel(vLine:GetFrameLevel() + 2);
 
 		local styleDropdown = CreateFrame("DropdownButton", nil, f, "WowStyle1DropdownTemplate");
 		styleDropdown:SetPoint("TOPLEFT", dummyBounds, "BOTTOMLEFT", 20, -30);
