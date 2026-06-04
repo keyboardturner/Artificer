@@ -98,5 +98,6 @@ Widgets/ObjectiveTrackerManager.lua
 Widgets/SpellAlerts.lua
 Widgets/TransmogHistory.lua
 Widgets/UnderlightFixer.lua
+Widgets/LFDBackground.lua
 
 SettingsUI.lua
