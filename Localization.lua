@@ -75,6 +75,8 @@ if LOCALE == "enUS" then
 	L["Widget_ScreenshotSizeMultiplier"] = "Screenshot Resolution"
 	L["Widget_ScreenshotSizeMultiplierTT"] = "Adjust the screenshot resolution based on a multiplier of your window."
 	L["Warning_FileSize"] = "Caution: This may cause a large screenshot file size."
+	L["Widget_LFDBackground"] = "Dungeon Finder Tweaks"
+	L["Widget_LFDBackgroundTT"] = "Changes the Dungeon Finder background texture to display a background associated with a selected expansion. Additionally displays tooltips on the queue frames that indicate the currently queued dungeon."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Account Auto Loot Toggle"
@@ -424,6 +426,8 @@ if LOCALE == "esMX" then
 	L["Warning_FileSize"] = "Advertencia: puede generar archivos grandes."
 	L["Widget_BlockGuildInvites"] = "Bloquear invitaciones de hermandad (cuenta)"
 	L["Widget_BlockGuildInvitesTT"] = "Configuración global para rechazar automáticamente invitaciones de hermandad en todos los personajes."
+	L["Widget_LFDBackground"] = "Ajustes del Buscador de Mazmorras"
+	L["Widget_LFDBackgroundTT"] = "Cambia la textura de fondo del Buscador de Mazmorras para mostrar un fondo asociado con una expansión seleccionada. Además, muestra información emergente en los marcos de cola indicando la mazmorra actualmente en cola."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Alternar botín automático de la cuenta"
@@ -770,6 +774,8 @@ if LOCALE == "esES" then
 	L["Warning_FileSize"] = "Advertencia: puede generar archivos grandes."
 	L["Widget_BlockGuildInvites"] = "Bloquear invitaciones de hermandad (cuenta)"
 	L["Widget_BlockGuildInvitesTT"] = "Configuración global para rechazar automáticamente invitaciones de hermandad en todos los personajes."
+	L["Widget_LFDBackground"] = "Ajustes del Buscador de Mazmorras"
+	L["Widget_LFDBackgroundTT"] = "Cambia la textura de fondo del Buscador de Mazmorras para mostrar un fondo asociado a una expansión seleccionada. Además, muestra información emergente en los marcos de cola indicando la mazmorra actualmente en cola."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Alternar saqueo automático de la cuenta"
@@ -1114,6 +1120,8 @@ if LOCALE == "deDE" then
 	L["Warning_FileSize"] = "Achtung: Dies kann zu einer großen Dateigröße führen."
 	L["Widget_BlockGuildInvites"] = "Gildeneinladungen blockieren (Accountweit)"
 	L["Widget_BlockGuildInvitesTT"] = "Accountweite Einstellung zum automatischen Ablehnen von Gildeneinladungen für alle Charaktere."
+	L["Widget_LFDBackground"] = "Dungeonbrowser-Anpassungen"
+	L["Widget_LFDBackgroundTT"] = "Ändert die Hintergrundtextur des Dungeonbrowsers, um einen Hintergrund der ausgewählten Erweiterung anzuzeigen. Zusätzlich werden Tooltips auf den Warteschlangenfenstern angezeigt, die den aktuell angemeldeten Dungeon angeben."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Account-Autoplünderung umschalten"
@@ -1459,6 +1467,8 @@ if LOCALE == "frFR" then
 	L["Warning_FileSize"] = "Attention : cela peut générer un fichier volumineux."
 	L["Widget_BlockGuildInvites"] = "Bloquer les invitations de guilde (compte)"
 	L["Widget_BlockGuildInvitesTT"] = "Paramètre global pour refuser automatiquement les invitations de guilde sur tous les personnages."
+	L["Widget_LFDBackground"] = "Ajustements de l’Outil Donjons"
+	L["Widget_LFDBackgroundTT"] = "Modifie la texture d’arrière-plan de l’Outil Donjons afin d’afficher un fond associé à l’extension sélectionnée. Affiche également des infobulles sur les fenêtres de file d’attente indiquant le donjon actuellement sélectionné."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Basculer le butin automatique du compte"
@@ -1804,6 +1814,8 @@ if LOCALE == "itIT" then
 	L["Warning_FileSize"] = "Attenzione: può generare file di grandi dimensioni."
 	L["Widget_BlockGuildInvites"] = "Blocca inviti di gilda (account)"
 	L["Widget_BlockGuildInvitesTT"] = "Impostazione account per rifiutare automaticamente gli inviti di gilda su tutti i personaggi."
+	L["Widget_LFDBackground"] = "Modifiche allo Strumento Ricerca Spedizioni"
+	L["Widget_LFDBackgroundTT"] = "Modifica la texture di sfondo dello Strumento Ricerca Spedizioni per mostrare uno sfondo associato all'espansione selezionata. Inoltre mostra suggerimenti sui riquadri di coda che indicano il dungeon attualmente selezionato."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Attiva/disattiva raccolta automatica account"
@@ -2149,6 +2161,8 @@ if LOCALE == "ptBR" then
 	L["Warning_FileSize"] = "Atenção: isso pode gerar arquivos grandes."
 	L["Widget_BlockGuildInvites"] = "Bloquear convites de guilda (conta)"
 	L["Widget_BlockGuildInvitesTT"] = "Configuração global para recusar automaticamente convites de guilda em todos os personagens."
+	L["Widget_LFDBackground"] = "Ajustes do Localizador de Masmorras"
+	L["Widget_LFDBackgroundTT"] = "Altera a textura de fundo do Localizador de Masmorras para exibir um fundo associado à expansão selecionada. Também exibe dicas de ferramenta nos quadros de fila indicando a masmorra atualmente na fila."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Alternar Saque Automático da Conta"
@@ -2496,6 +2510,8 @@ if LOCALE == "ruRU" then
 	L["Warning_FileSize"] = "Внимание: это может увеличить размер файла."
 	L["Widget_BlockGuildInvites"] = "Блокировать приглашения в гильдию (аккаунт)"
 	L["Widget_BlockGuildInvitesTT"] = "Глобальная настройка для автоматического отклонения приглашений в гильдию на всех персонажах."
+	L["Widget_LFDBackground"] = "Настройки поиска подземелий"
+	L["Widget_LFDBackgroundTT"] = "Изменяет фоновую текстуру окна поиска подземелий, отображая фон, связанный с выбранным дополнением. Также показывает подсказки на окнах очереди с указанием текущего подземелья в очереди."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Переключить автосбор добычи для аккаунта"
@@ -2841,6 +2857,8 @@ if LOCALE == "koKR" then
 	L["Warning_FileSize"] = "주의: 파일 크기가 커질 수 있습니다."
 	L["Widget_BlockGuildInvites"] = "길드 초대 차단 (계정)"
 	L["Widget_BlockGuildInvitesTT"] = "모든 캐릭터에서 길드 초대를 자동 거절하는 계정 설정입니다."
+	L["Widget_LFDBackground"] = "던전 찾기 개선"
+	L["Widget_LFDBackgroundTT"] = "던전 찾기 창의 배경 텍스처를 선택한 확장팩에 맞는 배경으로 변경합니다. 또한 대기열 창에 현재 신청한 던전을 표시하는 툴팁을 추가합니다."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "계정 자동 전리품 전환"
@@ -3186,6 +3204,8 @@ if LOCALE == "zhCN" then
 	L["Warning_FileSize"] = "注意：可能会导致文件较大。"
 	L["Widget_BlockGuildInvites"] = "屏蔽公会邀请（账号）"
 	L["Widget_BlockGuildInvitesTT"] = "账号范围设置，自动拒绝所有角色的公会邀请。"
+	L["Widget_LFDBackground"] = "地下城查找器增强"
+	L["Widget_LFDBackgroundTT"] = "将地下城查找器背景纹理更改为所选资料片对应的背景。同时在排队框体上显示提示信息，指示当前排队的地下城。"
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "账号自动拾取切换"
@@ -3531,6 +3551,8 @@ if LOCALE == "zhTW" then
 	L["Warning_FileSize"] = "注意：可能會導致檔案較大。"
 	L["Widget_BlockGuildInvites"] = "封鎖公會邀請（帳號）"
 	L["Widget_BlockGuildInvitesTT"] = "帳號設定，自動拒絕所有角色的公會邀請。"
+	L["Widget_LFDBackground"] = "地城搜尋器增強"
+	L["Widget_LFDBackgroundTT"] = "將地城搜尋器背景材質更改為所選資料片對應的背景。同時在排隊框架上顯示提示資訊，指出目前排隊中的地城。"
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "帳號自動拾取切換"

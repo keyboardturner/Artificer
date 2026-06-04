@@ -54,6 +54,7 @@ local Defaults = {
 		FilteredOverlays = {},
 		NameplateStatusIndicator = false,
 		AccountIgnoresWindow = true,
+		LFDBackground = true,
 	},
 
 	NameplateTargetPos = {

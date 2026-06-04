@@ -2,6 +2,10 @@ local addonName, Artificer = ...;
 
 local L = Artificer.L;
 
+local function IsEnabled()
+	return Artificer_DB and Artificer_DB.Widgets and Artificer_DB.Widgets.LFDBackground;
+end
+
 local backgrounds = {
 	--timewalking
 	[2634] = "UI-EJ-Classic", -- Classic TWing
@@ -95,6 +99,7 @@ frame:SetScript("OnEvent", function(self, event, addonName)
 
 			hooksecurefunc("LFDQueueFrame_SetTypeRandomDungeon", function()
 				if not LFDQueueFrameBackground then return; end		
+				if not IsEnabled() then return; end
 
 				local dungeonID = LFDQueueFrame.type;
 
@@ -107,6 +112,7 @@ frame:SetScript("OnEvent", function(self, event, addonName)
 
 			hooksecurefunc("LFDQueueFrame_SetTypeSpecificDungeon", function()
 				if not LFDQueueFrameBackground then return; end
+				if not IsEnabled() then return; end
 
 				local dungeonID = LFDQueueFrame.type;
 
@@ -119,6 +125,7 @@ frame:SetScript("OnEvent", function(self, event, addonName)
 
 			hooksecurefunc("LFDQueueFrame_SetTypeFollowerDungeon", function()
 				if not LFDQueueFrameBackground then return; end
+				if not IsEnabled() then return; end
 
 				local dungeonID = LFDQueueFrame.type;
 
@@ -131,6 +138,7 @@ frame:SetScript("OnEvent", function(self, event, addonName)
 
 			PVEFrame:HookScript("OnShow", function()
 				if not LFDQueueFrameBackground then return; end
+				if not IsEnabled() then return; end
 
 				local dungeonID = LFDQueueFrame.type;
 
@@ -145,6 +153,7 @@ frame:SetScript("OnEvent", function(self, event, addonName)
 		end
 	else
 		if not LFDQueueFrameBackground then return; end
+		if not IsEnabled() then return; end
 
 		local dungeonID = LFDQueueFrame.type;
 
@@ -167,6 +176,8 @@ hooksecurefunc("QueueStatusEntry_SetMinimalDisplay", CleanupCustomEntryText);
 hooksecurefunc("QueueStatusEntry_SetFullDisplay", CleanupCustomEntryText);
 
 hooksecurefunc("QueueStatusEntry_SetUpLFG", function(entry, category)
+	if not IsEnabled() then return; end
+    
 	local mode = GetLFGMode(category);
 	if mode ~= "queued" then return; end
 
@@ -228,6 +239,8 @@ local function GetQueuedLFDInstanceName()
 end
 
 local function AppendQueueStatusToTooltip(self)
+	if not IsEnabled() then return; end
+
 	local instanceName = GetQueuedLFDInstanceName();
 	if instanceName then
 		if not GameTooltip:IsVisible() then

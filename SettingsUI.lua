@@ -1429,6 +1429,20 @@ function Artificer:BuildSettingsData()
 		end
 	});
 
+	-- Widgets - LFDBackground
+	table.insert(allSettingsData, {
+		type = "checkbox",
+		isWidget = true,
+		key = "LFDBackground",
+		isNew = true,
+		label = L["Widget_LFDBackground"],
+		tooltip = L["Widget_LFDBackgroundTT"],
+		searchText = GetSearchText(L["Widget_LFDBackground"], L["Widget_LFDBackgroundTT"]),
+		callback = function(val)
+			-- ...
+		end
+	});
+
 
 	-- Header - Console Variables (CVars)
 	table.insert(allSettingsData, {
