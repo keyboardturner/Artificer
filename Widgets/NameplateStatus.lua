@@ -779,7 +779,7 @@ local function UpdateSocialIcons(unitToken, container)
 		isAccFriend, isAccIgnored = Artificer:IsAccountFriendOrIgnored(unitName);
 	end
 
-	-- friends (bnet > account > character)
+	-- friends (character > bnet > account)
 	if options.friend then
 		local isBNetFriend = false;
 		if C_BattleNet and C_BattleNet.GetAccountInfoByGUID then
@@ -791,13 +791,13 @@ local function UpdateSocialIcons(unitToken, container)
 		
 		local isCharFriend = C_FriendList and C_FriendList.IsFriend and C_FriendList.IsFriend(guid);
 
-		if isBNetFriend then
-			container.friend.statusKey = "friend_bnet";
-			SetIconTexture(container.friend, StatusTextures.friend_bnet);
-			container.friend:Show();
-		elseif isCharFriend then
+		if isCharFriend then
 			container.friend.statusKey = "friend_character";
 			SetIconTexture(container.friend, StatusTextures.friend_character);
+			container.friend:Show();
+		elseif isBNetFriend then
+			container.friend.statusKey = "friend_bnet";
+			SetIconTexture(container.friend, StatusTextures.friend_bnet);
 			container.friend:Show();
 		elseif isAccFriend then
 			container.friend.statusKey = "friend_account";
@@ -806,7 +806,7 @@ local function UpdateSocialIcons(unitToken, container)
 		end
 	end
 
-	-- ignored (account > character)
+	-- ignored (character > account)
 	if options.ignored then
 		local isCharIgnored = false;
 		if C_FriendList and C_FriendList.IsIgnoredByGUID then
@@ -815,13 +815,13 @@ local function UpdateSocialIcons(unitToken, container)
 			isCharIgnored = C_FriendList.IsIgnored(unitName);
 		end
 
-		if isAccIgnored then
-			container.ignored.statusKey = "ignored_account";
-			SetIconTexture(container.ignored, StatusTextures.ignored_account);
-			container.ignored:Show();
-		elseif isCharIgnored then
+		if isCharIgnored then
 			container.ignored.statusKey = "ignored_character";
 			SetIconTexture(container.ignored, StatusTextures.ignored_character);
+			container.ignored:Show();
+		elseif isAccIgnored then
+			container.ignored.statusKey = "ignored_account";
+			SetIconTexture(container.ignored, StatusTextures.ignored_account);
 			container.ignored:Show();
 		end
 	end
