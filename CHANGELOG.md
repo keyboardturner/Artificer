@@ -1,5 +1,13 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.2.2
+
+Added Looking For Group UI tweaks:
+ - Added background textures depending on the selection in the LFG UI, such as Legion Timewalking having a Legion background
+ - Added tooltips indicating the currently queued dungeon to the queue status eye, queue button, and dropdown
+
+Adjusted the nameplate status priority to be character > bnet > account
+
 # 0.2.1
 
 Adjustments to the Artificer Nameplate Status/Target icons:
