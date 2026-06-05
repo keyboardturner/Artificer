@@ -149,6 +149,19 @@ frame:SetScript("OnEvent", function(self, event, addonName)
 				end
 			end)
 
+			hooksecurefunc("GroupFinderFrame_ShowGroupFrame", function()
+				if not LFDQueueFrameBackground then return; end
+				if not IsEnabled() then return; end
+
+				local dungeonID = LFDQueueFrame.type;
+
+				if type(dungeonID) == "number" and backgrounds[dungeonID] then
+					RunNextFrame(function() SetBingusTexture(backgrounds[dungeonID]); end);
+				else
+					RevertTexCoords();
+				end
+			end);
+
 			self:UnregisterEvent("ADDON_LOADED");
 		end
 	else
@@ -177,7 +190,7 @@ hooksecurefunc("QueueStatusEntry_SetFullDisplay", CleanupCustomEntryText);
 
 hooksecurefunc("QueueStatusEntry_SetUpLFG", function(entry, category)
 	if not IsEnabled() then return; end
-    
+	
 	local mode = GetLFGMode(category);
 	if mode ~= "queued" then return; end
 
