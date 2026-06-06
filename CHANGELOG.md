@@ -1,6 +1,6 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
-# 0.0.2b
+# 0.2.2b
 
 Fix to Krowi WorldMapButtons library being "missing"
 
