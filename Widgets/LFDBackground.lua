@@ -162,6 +162,19 @@ frame:SetScript("OnEvent", function(self, event, addonName)
 				end
 			end);
 
+			hooksecurefunc("LFDQueueFrameRandom_UpdateFrame", function()
+				if not LFDQueueFrameBackground then return; end		
+				if not IsEnabled() then return; end
+
+				local dungeonID = LFDQueueFrame.type;
+
+				if type(dungeonID) == "number" and backgrounds[dungeonID] then
+					SetBingusTexture(backgrounds[dungeonID]);
+				else
+					RevertTexCoords();
+				end
+			end);
+
 			self:UnregisterEvent("ADDON_LOADED");
 		end
 	else
