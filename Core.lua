@@ -398,3 +398,5 @@ f:SetScript("OnEvent", function(self, event, ...)
 		RestoreCVars();
 	end
 end)
+
+Artificer_API = Artificer_API or {};

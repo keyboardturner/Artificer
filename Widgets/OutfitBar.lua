@@ -92,6 +92,19 @@ local function GetVolumeDB()
 	return charDB.FoleyVolume;
 end
 
+local function GetFrequencyDB()
+	if not Artificer.GetCharDB then return nil end
+
+	local charDB = Artificer.GetCharDB()
+	if not charDB then return nil end
+
+	if not charDB.FoleyFrequency then
+		charDB.FoleyFrequency = {};
+	end
+	
+	return charDB.FoleyFrequency;
+end
+
 local FoleySoundsLibrary = {
 	Leather = {	-- SoundKit ID 1003 (Leather)
 		567580, 567586, 567591, 567598, 567599,
@@ -272,6 +285,46 @@ for _, def in ipairs(SoundDefinitions) do
 	SoundVolumeLookup[def.key] = def.volume or 1.0;
 end
 
+-- foley sound API for addons to add their own
+function Artificer_API.RegisterFoleySound(self, soundDef)
+	if type(soundDef) ~= "table" then
+		return false, "Sound definition must be a table.";
+	end
+	if not soundDef.key or type(soundDef.key) ~= "string" then
+		return false, "Sound definition requires a unique string 'key'.";
+	end
+	if SoundDataLookup[soundDef.key] then
+		return false, string.format("Sound key '%s' is already registered.", soundDef.key);
+	end
+	if type(soundDef.sounds) ~= "table" or #soundDef.sounds == 0 then
+		return false, "Sound definition requires a non-empty 'sounds' table containing File IDs or paths.";
+	end
+
+	local key = soundDef.key;
+	local cleanedDef = {
+		key = key,
+		name = soundDef.name or key,
+		icon = soundDef.icon or "Interface\\Icons\\INV_Misc_QuestionMark",
+		sounds = soundDef.sounds,
+		volume = tonumber(soundDef.volume) or 1.0,
+	};
+
+	table.insert(SoundDefinitions, cleanedDef);
+
+	SoundDataLookup[key] = cleanedDef.sounds;
+	SoundIconLookup[key] = cleanedDef.icon;
+	SoundVolumeLookup[key] = cleanedDef.volume;
+
+	if soundPanel and soundPanel:IsVisible() then
+		UpdateSoundPanelSelection();
+	end
+	if ArtiOFFrame and ArtiOFFrame:IsVisible() then
+		RefreshOutfitListVisuals();
+	end
+
+	return true;
+end
+
 local ArtiOFFrame;
 local soundPanel;
 local selectedOutfitID = nil;
@@ -371,6 +424,14 @@ UpdateSoundPanelSelection = function()
 		soundPanel.volumeSlider.isInitializing = false;
 	end
 
+	local freqDB = GetFrequencyDB()
+	local currentFreq = (freqDB and freqDB[selectedOutfitID]) or 0.37
+	if soundPanel.freqSlider then
+		soundPanel.freqSlider.isInitializing = true;
+		soundPanel.freqSlider:SetValue(currentFreq);
+		soundPanel.freqSlider.isInitializing = false;
+	end
+
 	local soundData = {}
 	local foleyDB = GetFoleyDB()
 	local currentSound = (foleyDB and foleyDB[selectedOutfitID]) or "None"
@@ -433,8 +494,35 @@ local function CreateSoundPanel(parent)
 		end
 	end, volumeSlider)
 
+	local freqLabel = p:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+	freqLabel:SetPoint("TOP", volumeSlider, "BOTTOM", 0, -10)
+	freqLabel:SetText(L["Frequency"] or "Frequency")
+	
+	local freqOptions = Settings.CreateSliderOptions(0.1, 1.0, 0.02)
+	freqOptions:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value)
+		return string.format("%.2fs", value);
+	end)
+	
+	local freqSlider = CreateFrame("Frame", nil, p, "MinimalSliderWithSteppersTemplate")
+	freqSlider:SetPoint("TOP", freqLabel, "BOTTOM", 0, 0)
+	freqSlider:SetWidth(180)
+	freqSlider:Init(0.37, freqOptions.minValue, freqOptions.maxValue, freqOptions.steps, freqOptions.formatters)
+	p.freqSlider = freqSlider
+	local rightTextFreq = freqSlider.RightText
+	rightTextFreq:SetPoint("LEFT", freqSlider, "RIGHT", -25, 25)
+	
+	freqSlider:RegisterCallback("OnValueChanged", function(_, value)
+		if not selectedOutfitID then return end
+		if freqSlider.isInitializing then return end
+		
+		local freqDB = GetFrequencyDB()
+		if freqDB then
+			freqDB[selectedOutfitID] = value;
+		end
+	end, freqSlider)
+
 	local scrollBox = CreateFrame("Frame", nil, p, "WowScrollBoxList")
-	scrollBox:SetPoint("TOPLEFT", 6, -110)
+	scrollBox:SetPoint("TOPLEFT", 6, -170)
 	scrollBox:SetPoint("BOTTOMRIGHT", -26, 6)
 	p.scrollBox = scrollBox
 
@@ -1016,7 +1104,11 @@ local function CheckPlayerMovement()
 	local offset = 0.7
 	local multMin = .85
 	local multMax = 1.54
-	local basicMult = .37
+	--local basicMult = .37 --now is slider
+
+	local activeOutfitID = C_TransmogOutfitInfo.GetActiveOutfitID()
+	local freqDB = GetFrequencyDB()
+	local basicMult = (freqDB and activeOutfitID and freqDB[activeOutfitID]) or 0.37
 
 	if not issecretvalue(unitSpeed) and unitSpeed and unitSpeed ~= 0 then
 		speedMult = (speedFrequency / unitSpeed) * scalingFactor + offset;
