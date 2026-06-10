@@ -498,7 +498,7 @@ local function CreateSoundPanel(parent)
 	freqLabel:SetPoint("TOP", volumeSlider, "BOTTOM", 0, -10)
 	freqLabel:SetText(L["Frequency"] or "Frequency")
 	
-	local freqOptions = Settings.CreateSliderOptions(0.1, 1.0, 0.02)
+	local freqOptions = Settings.CreateSliderOptions(0.1, 1.0, 0.01)
 	freqOptions:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value)
 		return string.format("%.2fs", value);
 	end)
