@@ -136,6 +136,8 @@ if LOCALE == "enUS" then
 	L["Widget_MinimapRightClick"] = "Minimap Right-Click"
 	L["Widget_MinimapRightClickTT"] = "Set the Minimap right-click functionality"
 	L["LockAppearance"] = "Lock Appearance"
+	L["Volume"] = VOLUME
+	L["Frequency"] = CAA_SAY_PARTY_HEALTH_FREQUENCY_LABEL
 
 	--Widgets - TransmogHistory
 	L["UndoTT"] = "Undo"
@@ -485,6 +487,8 @@ if LOCALE == "esMX" then
 	L["Widget_MinimapRightClick"] = "Clic derecho en el minimapa"
 	L["Widget_MinimapRightClickTT"] = "Configurar la función del clic derecho en el minimapa"
 	L["LockAppearance"] = "Bloquear apariencia"
+	L["Volume"] = VOLUME
+	L["Frequency"] = CAA_SAY_PARTY_HEALTH_FREQUENCY_LABEL
 
 	--Widgets - TransmogHistory
 	L["UndoTT"] = "Deshacer"
@@ -833,6 +837,8 @@ if LOCALE == "esES" then
 	L["Widget_MinimapRightClick"] = "Clic derecho en el minimapa"
 	L["Widget_MinimapRightClickTT"] = "Configurar la función del clic derecho en el minimapa"
 	L["LockAppearance"] = "Mantener apariencia"
+	L["Volume"] = VOLUME
+	L["Frequency"] = CAA_SAY_PARTY_HEALTH_FREQUENCY_LABEL
 
 	--Widgets - TransmogHistory
 	L["UndoTT"] = "Deshacer"
@@ -1179,6 +1185,8 @@ if LOCALE == "deDE" then
 	L["Widget_MinimapRightClick"] = "Minikarten-Rechtsklick"
 	L["Widget_MinimapRightClickTT"] = "Lege die Funktion des Rechtsklicks auf die Minikarte fest"
 	L["LockAppearance"] = "Aussehen fixieren"
+	L["Volume"] = VOLUME
+	L["Frequency"] = CAA_SAY_PARTY_HEALTH_FREQUENCY_LABEL
 
 	--Widgets - TransmogHistory
 	L["UndoTT"] = "Rückgängig"
@@ -1526,6 +1534,8 @@ if LOCALE == "frFR" then
 	L["Widget_MinimapRightClick"] = "Clic droit sur la minicarte"
 	L["Widget_MinimapRightClickTT"] = "Définir la fonction du clic droit sur la minicarte"
 	L["LockAppearance"] = "Verrouiller l’apparence"
+	L["Volume"] = VOLUME
+	L["Frequency"] = CAA_SAY_PARTY_HEALTH_FREQUENCY_LABEL
 
 	--Widgets - TransmogHistory
 	L["UndoTT"] = "Annuler"
@@ -1873,6 +1883,8 @@ if LOCALE == "itIT" then
 	L["Widget_MinimapRightClick"] = "Clic destro sulla minimappa"
 	L["Widget_MinimapRightClickTT"] = "Imposta la funzione del clic destro sulla minimappa"
 	L["LockAppearance"] = "Blocco aspetto"
+	L["Volume"] = VOLUME
+	L["Frequency"] = CAA_SAY_PARTY_HEALTH_FREQUENCY_LABEL
 
 	--Widgets - TransmogHistory
 	L["UndoTT"] = "Annulla"
@@ -2220,6 +2232,8 @@ if LOCALE == "ptBR" then
 	L["Widget_MinimapRightClick"] = "Clique direito no minimapa"
 	L["Widget_MinimapRightClickTT"] = "Definir a função do clique direito no minimapa"
 	L["LockAppearance"] = "Travar aparência"
+	L["Volume"] = VOLUME
+	L["Frequency"] = CAA_SAY_PARTY_HEALTH_FREQUENCY_LABEL
 
 	--Widgets - TransmogHistory
 	L["UndoTT"] = "Desfazer"
@@ -2569,6 +2583,8 @@ if LOCALE == "ruRU" then
 	L["Widget_MinimapRightClick"] = "Правый клик по миникарте"
 	L["Widget_MinimapRightClickTT"] = "Настроить функцию правого клика по миникарте"
 	L["LockAppearance"] = "Закрепить внешний вид"
+	L["Volume"] = VOLUME
+	L["Frequency"] = CAA_SAY_PARTY_HEALTH_FREQUENCY_LABEL
 
 	--Widgets - TransmogHistory
 	L["UndoTT"] = "Отменить"
@@ -2916,6 +2932,8 @@ if LOCALE == "koKR" then
 	L["Widget_MinimapRightClick"] = "미니맵 오른쪽 클릭"
 	L["Widget_MinimapRightClickTT"] = "미니맵 오른쪽 클릭 기능 설정"
 	L["LockAppearance"] = "형상 고정"
+	L["Volume"] = VOLUME
+	L["Frequency"] = CAA_SAY_PARTY_HEALTH_FREQUENCY_LABEL
 
 	--Widgets - TransmogHistory
 	L["UndoTT"] = "실행 취소"
@@ -3263,6 +3281,8 @@ if LOCALE == "zhCN" then
 	L["Widget_MinimapRightClick"] = "小地图右键"
 	L["Widget_MinimapRightClickTT"] = "设置小地图右键功能"
 	L["LockAppearance"] = "锁定外观"
+	L["Volume"] = VOLUME
+	L["Frequency"] = CAA_SAY_PARTY_HEALTH_FREQUENCY_LABEL
 
 	--Widgets - TransmogHistory
 	L["UndoTT"] = "撤销"
@@ -3610,6 +3630,8 @@ if LOCALE == "zhTW" then
 	L["Widget_MinimapRightClick"] = "小地圖右鍵"
 	L["Widget_MinimapRightClickTT"] = "設定小地圖右鍵功能"
 	L["LockAppearance"] = "鎖定外觀"
+	L["Volume"] = VOLUME
+	L["Frequency"] = CAA_SAY_PARTY_HEALTH_FREQUENCY_LABEL
 
 	--Widgets - TransmogHistory
 	L["UndoTT"] = "復原"

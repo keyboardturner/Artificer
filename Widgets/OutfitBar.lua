@@ -469,7 +469,7 @@ local function CreateSoundPanel(parent)
 
 	local volumeLabel = p:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 	volumeLabel:SetPoint("TOP", div, "BOTTOM", 0, -8)
-	volumeLabel:SetText("Volume")
+	volumeLabel:SetText(L["Volume"])
 	
 	local options = Settings.CreateSliderOptions(0, 1, 0.01)
 	options:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value)
@@ -496,7 +496,7 @@ local function CreateSoundPanel(parent)
 
 	local freqLabel = p:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 	freqLabel:SetPoint("TOP", volumeSlider, "BOTTOM", 0, -10)
-	freqLabel:SetText(L["Frequency"] or "Frequency")
+	freqLabel:SetText(L["Frequency"])
 	
 	local freqOptions = Settings.CreateSliderOptions(0.1, 1.0, 0.01)
 	freqOptions:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value)
