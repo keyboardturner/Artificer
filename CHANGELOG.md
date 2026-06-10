@@ -1,5 +1,41 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.2.3
+
+Added a frequency slider to the Outfit Manager sounds selection
+
+Fixed the LFD Queue frame background being a little too stretchy sometimes when a timewalking dungeon isn't selected by default
+
+### Addon Dev notes
+
+Added an API `Artificer_API.RegisterFoleySound(self, soundDef)` to allow addons to add their own sounds to the outfit manager selection
+ - full example:
+ ```
+EventUtil.ContinueOnAddOnLoaded("Artificer", function()
+	if Artificer_API and Artificer_API.RegisterFoleySound then
+
+		do
+			local success, err = Artificer_API:RegisterFoleySound({
+				key = "ArtiFS_mFootSmallDirt",
+				name = "mFoot Small Dirt",
+				icon = "Interface\\Icons\\Spell_quicksand",
+				volume = 0.50,
+				sounds = { -- File ID or path
+					540099,
+					540128,
+					540136,
+					540201,
+					540227,
+				}
+			});
+			
+			if not success then print("Registration failed:", err); end
+		end
+		
+	end
+end);
+ ```
+
 # 0.2.2b
 
 Fix to Krowi WorldMapButtons library being "missing"
