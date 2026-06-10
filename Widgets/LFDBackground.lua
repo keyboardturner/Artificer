@@ -79,6 +79,7 @@ end
 
 local function RevertTexCoords()
 	LFDQueueFrameBackground:SetTexCoord(0,256/400,0,1);
+	LFDQueueFrameBackground:SetAllPoints(LFDParentFrameInset);
 end
 
 local function SetBingusTexture(texture)
