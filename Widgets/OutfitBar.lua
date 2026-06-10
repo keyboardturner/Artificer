@@ -279,6 +279,14 @@ local SoundDataLookup = {};
 local SoundIconLookup = {};
 local SoundVolumeLookup = {};
 
+local ArtiOFFrame;
+local soundPanel;
+local selectedOutfitID = nil;
+
+local UpdateSoundPanelSelection;
+local RefreshOutfitListVisuals;
+local UpdateOutfitCooldowns;
+
 for _, def in ipairs(SoundDefinitions) do
 	SoundDataLookup[def.key] = def.sounds;
 	SoundIconLookup[def.key] = def.icon;
@@ -324,14 +332,6 @@ function Artificer_API.RegisterFoleySound(self, soundDef)
 
 	return true;
 end
-
-local ArtiOFFrame;
-local soundPanel;
-local selectedOutfitID = nil;
-
-local UpdateSoundPanelSelection;
-local RefreshOutfitListVisuals;
-local UpdateOutfitCooldowns;
 
 
 local function CreateSoundOptionButton(parent, data)
