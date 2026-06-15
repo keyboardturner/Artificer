@@ -1,5 +1,9 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.2.4
+
+12.0.7 toc update
+
 # 0.2.3
 
 Added a frequency slider to the Outfit Manager sounds selection
