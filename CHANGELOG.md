@@ -10,6 +10,11 @@ Added a Professions Book overhaul feature:
  - The profession icon is now a clickable button that opens the journal
  - A variety of profession spells have been added to associated profession flyout menus which can be dragged to action buttons
 
+Some of the settings UI received updates to bring it up to par with the Weather addon settings UI
+ - Headers are now displayed when searching
+ - A border/background is now placed in the settings scroll container
+ - The size has been slightly adjusted to be wider
+
 # 0.2.4
 
 12.0.7 toc update
