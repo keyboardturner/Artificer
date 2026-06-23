@@ -491,7 +491,7 @@ local function InitializeHeader(button, data)
 	
 	if not button.headerLabel then
 		button.headerLabel = button:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
-		button.headerLabel:SetPoint("LEFT", 10, -5)
+		button.headerLabel:SetPoint("LEFT", 0, -5)
 		button.headerLabel:SetPoint("RIGHT", -10, -5)
 		button.headerLabel:SetJustifyH("LEFT")
 		button.headerLabel:SetTextColor(1, 0.82, 0) 
@@ -642,7 +642,6 @@ function Artificer:BuildSettingsData()
 		isNew = true,
 		label = L["Widget_FishReelIn"],
 		tooltip = L["Widget_FishReelInTT"],
-		searchText = GetSearchText(L["Widget_FishReelIn"], L["Widget_FishReelInTT"]),
 		callback = function(val)
 			-- print("Fish Reel In: " .. tostring(val))
 		end
@@ -656,7 +655,6 @@ function Artificer:BuildSettingsData()
 		isNew = true,
 		label = L["Widget_HideCraftingResults"],
 		tooltip = L["Widget_HideCraftingResultsTT"],
-		searchText = GetSearchText(L["Widget_HideCraftingResults"], L["Widget_HideCraftingResultsTT"]),
 		callback = function(val)
 			if Artificer.Widgets.HideCraftingResults then
 				Artificer.Widgets.HideCraftingResults();
@@ -671,7 +669,6 @@ function Artificer:BuildSettingsData()
 		key = "ProfessionToastsEnabled",
 		label = L["Widget_ProfessionToasts"],
 		tooltip = L["Widget_ProfessionToastsTT"],
-		searchText = GetSearchText(L["Widget_ProfessionToasts"], L["Widget_ProfessionToastsTT"]),
 		get = function()
 			return Artificer_DB and Artificer_DB.ProfessionToasts and Artificer_DB.ProfessionToasts.enabled;
 		end,
@@ -693,8 +690,7 @@ function Artificer:BuildSettingsData()
 		key = "ProfessionsBook",
 		isNew = true,
 		label = L["Widget_ProfessionsBook"],
-		tooltip = L["Widget_ProfessionsBookTT"],
-		searchText = GetSearchText(L["Widget_ProfessionsBook"], L["Widget_ProfessionsBookTT"]),
+		tooltip = L["Widget_ProfessionsBookTT"].."\n\n".."|cnERROR_COLOR:"..L["Widget_ProfessionsBook_Reload"].."|r",
 		callback = function(val)
 			Artificer.Print(L["Widget_ProfessionsBook_Reload"]);
 		end,
@@ -718,7 +714,6 @@ function Artificer:BuildSettingsData()
 		isNew = true,
 		label = L["Widget_ChromieTimeIcon"],
 		tooltip = L["Widget_ChromieTimeIconTT"],
-		searchText = GetSearchText(L["Widget_ChromieTimeIcon"], L["Widget_ChromieTimeIconTT"]),
 		callback = function(val)
 			if Artificer.Widgets.UpdateChromieTimeIcon then
 				Artificer.Widgets.UpdateChromieTimeIcon();
@@ -740,7 +735,6 @@ function Artificer:BuildSettingsData()
 		isNew = true,
 		label = L["Widget_HideMacroText"],
 		tooltip = L["Widget_HideMacroTextTT"],
-		searchText = GetSearchText(L["Widget_HideMacroText"], L["Widget_HideMacroTextTT"]),
 		callback = function(val)
 			if Artificer.DetermineMacroText then
 				Artificer.DetermineMacroText();
@@ -756,7 +750,6 @@ function Artificer:BuildSettingsData()
 		isNew = true,
 		label = L["Widget_OutfitIcon"],
 		tooltip = L["Widget_OutfitIconTT"],
-		searchText = GetSearchText(L["Widget_OutfitIcon"], L["Widget_OutfitIconTT"]),
 		callback = function(val)
 			if Artificer.UpdateOutfitHighlighter then
 				Artificer.UpdateOutfitHighlighter();
@@ -810,7 +803,6 @@ function Artificer:BuildSettingsData()
 		label = L["Widget_SpellAlerts"],
 		tooltip = L["Widget_SpellAlertsTT"],
 		options = overlayOptions,
-		searchText = GetSearchText(L["Widget_SpellAlerts"], L["Widget_SpellAlertsTT"]),
 		callback = function(values)
 			if SpellActivationOverlayFrame then
 				SpellActivationOverlayFrame:HideAllOverlays();
@@ -832,7 +824,6 @@ function Artificer:BuildSettingsData()
 		isNew = true,
 		label = L["Widget_PreyBar"],
 		tooltip = L["Widget_PreyBarTT"],
-		searchText = GetSearchText(L["Widget_PreyBar"], L["Widget_PreyBarTT"]),
 		callback = function(val)
 			if Artificer.Widgets.ApplyPreyBarSettings then
 				Artificer.Widgets.ApplyPreyBarSettings();
@@ -858,7 +849,6 @@ function Artificer:BuildSettingsData()
 		isNew = true,
 		label = L["Widget_ArrowKeyEditbox"],
 		tooltip = L["Widget_ArrowKeyEditboxTT"],
-		searchText = GetSearchText(L["Widget_ArrowKeyEditbox"], L["Widget_ArrowKeyEditboxTT"]),
 		callback = function(val)
 			if Artificer.ArrowKeySetting then
 				Artificer.ArrowKeySetting();
@@ -874,7 +864,6 @@ function Artificer:BuildSettingsData()
 		isNew = true,
 		label = L["Widget_ServerNotifications"],
 		tooltip = L["Widget_ServerNotificationsTT"],
-		searchText = GetSearchText(L["Widget_ServerNotifications"], L["Widget_ServerNotificationsTT"]),
 		callback = function(val)
 			-- print("Server Notifications: " .. tostring(val))
 		end
@@ -894,7 +883,6 @@ function Artificer:BuildSettingsData()
 			{ text = L["Mouseover"], value = 2 },
 			{ text = L["Widget_LHV_Always"], value = 3 },
 		},
-		searchText = GetSearchText(L["Widget_ChatTooltipVisibility"], L["Widget_ChatTooltipVisibilityTT"]),
 		callback = function(val)
 			-- print(val)
 		end
@@ -914,7 +902,6 @@ function Artificer:BuildSettingsData()
 		isNew = true,
 		label = L["FNP_TargetIndicator"],
 		tooltip = L["FNP_TargetIndicatorTT"],
-		searchText = GetSearchText(L["FNP_TargetIndicator"], L["FNP_TargetIndicatorTT"]),
 		callback = function(val)
 			if Artificer.RefreshNameplateTargetIndicator then
 				Artificer.RefreshNameplateTargetIndicator();
@@ -934,7 +921,6 @@ function Artificer:BuildSettingsData()
 	isNew = true,
 	label = L["FNP_StatusIndicator"],
 	tooltip = L["FNP_StatusIndicatorTT"],
-	searchText = GetSearchText(L["FNP_StatusIndicator"], L["FNP_StatusIndicatorTT"]),
 	callback = function(val)
 		if Artificer.RefreshNameplateStatusIndicator then
 			Artificer.RefreshNameplateStatusIndicator();
@@ -962,7 +948,6 @@ function Artificer:BuildSettingsData()
 		isNew = true,
 		label = L["Widget_HideScreenshotText"],
 		tooltip = L["Widget_HideScreenshotTextTT"],
-		searchText = GetSearchText(L["Widget_HideScreenshotText"], L["Widget_HideScreenshotTextTT"]),
 		callback = function(val)
 			if Artificer.Widgets.ApplyHideScreenshotText then
 				Artificer.Widgets.ApplyHideScreenshotText();
@@ -983,7 +968,6 @@ function Artificer:BuildSettingsData()
 			{ text = "TGA", value = "tga" },
 			{ text = "PNG", value = "png" },
 		},
-		searchText = GetSearchText(L["Widget_ScreenshotFormat"], L["Widget_ScreenshotFormatTT"].."\n\n".."|cnERROR_COLOR:"..L["Warning_FileSize"].."|r"),
 		callback = function(val)
 			C_CVar.SetCVar("screenshotFormat", val);
 		end
@@ -1001,7 +985,6 @@ function Artificer:BuildSettingsData()
 		step = 1,
 		defaultValue = tonumber(C_CVar.GetCVar("screenshotQuality")) or 3,
 		formatter = function(value) return tostring(math.floor(value)) end,
-		searchText = GetSearchText(L["Widget_ScreenshotQuality"], L["Widget_ScreenshotQualityTT"].."\n\n".."|cnERROR_COLOR:"..L["Warning_FileSize"].."|r"),
 		callback = function(val)
 			C_CVar.SetCVar("screenshotQuality", val);
 		end
@@ -1020,7 +1003,6 @@ function Artificer:BuildSettingsData()
 			{ text = "x1", value = 1 },
 			{ text = "x2", value = 2 },
 		},
-		searchText = GetSearchText(L["Widget_ScreenshotSizeMultiplier"], L["Widget_ScreenshotSizeMultiplierTT"]),
 		callback = function(val)
 			if Artificer.Widgets.ApplyScreenshotSizeMultiplier then
 				Artificer.Widgets.ApplyScreenshotSizeMultiplier(val)
@@ -1054,7 +1036,6 @@ function Artificer:BuildSettingsData()
 			{ key = "scenario", text = L["Widget_ACT_ScenariosDelves"], default = false },
 			{ key = "housing", text = L["Widget_ACT_Housing"], default = false },
 		},
-		searchText = GetSearchText(L["Widget_AutoFadeObjectiveTracker"], string.join(" ", L["Widget_AutoFadeObjectiveTrackerTT"], L["Widget_ACT_RestedArea"], L["Widget_ACT_Combat"], L["Widget_ACT_PetBattles"], L["Widget_ACT_Battlegrounds"], L["Widget_ACT_Arena"], L["Widget_ACT_Dungeon"], L["Widget_ACT_MPlus"], L["Widget_ACT_Raids"], L["Widget_ACT_ScenariosDelves"], L["Widget_ACT_Housing"])),
 		callback = function(values)
 			if Artificer.Widgets.UpdateTrackerState then
 				Artificer.Widgets.UpdateTrackerState();
@@ -1076,7 +1057,6 @@ function Artificer:BuildSettingsData()
 		isNew = true,
 		label = L["Widget_AddonCompartmentMover"], 
 		tooltip = L["Widget_AddonCompartmentMoverTT"],
-		searchText = GetSearchText(L["Widget_AddonCompartmentMover"], L["Widget_AddonCompartmentMoverTT"]),
 		callback = function(val)
 			if Artificer.Widgets.ApplyAddonCompartmentMover then
 				Artificer.Widgets.ApplyAddonCompartmentMover()
@@ -1092,7 +1072,6 @@ function Artificer:BuildSettingsData()
 		isNew = true,
 		label = L["Widget_MinimapIcon"], 
 		tooltip = L["Widget_MinimapIconTT"],
-		searchText = GetSearchText(L["Widget_MinimapIcon"], L["Widget_MinimapIconTT"]),
 		get = function()
 			if Artificer_DB and Artificer_DB.MinimapIcon then
 				return not Artificer_DB.MinimapIcon.hide;
@@ -1128,7 +1107,6 @@ function Artificer:BuildSettingsData()
 			{ text = L["OutfitManager"], value = "outfitsound" },
 			{ text = L["AbandonQuestManager"], value = "abandonquest" },
 		},
-		searchText = GetSearchText(L["Widget_MinimapRightClick"], L["Widget_MinimapRightClickTT"]),
 	});
 
 	-- Widgets - PartySync
@@ -1139,7 +1117,6 @@ function Artificer:BuildSettingsData()
 		isNew = true,
 		label = L["Widget_PartySync"],
 		tooltip = L["Widget_PartySyncTT"],
-		searchText = GetSearchText(L["Widget_PartySync"], L["Widget_PartySyncTT"]),
 		callback = function(val)
 			-- ...
 		end
@@ -1153,7 +1130,6 @@ function Artificer:BuildSettingsData()
 		isNew = true,
 		label = L["Widget_MovableCurrencyTransfer"],
 		tooltip = L["Widget_MovableCurrencyTransferTT"],
-		searchText = GetSearchText(L["Widget_MovableCurrencyTransfer"], L["Widget_MovableCurrencyTransferTT"]),
 		callback = function(val)
 			if Artificer.Widgets.ApplyMovableCurrencyTransfer then
 				Artificer.Widgets.ApplyMovableCurrencyTransfer();
@@ -1175,7 +1151,6 @@ function Artificer:BuildSettingsData()
 			{ key = "C", text = L["Widget_OSS_STC"], default = true },
 			{ key = "D", text = L["Widget_OSS_STD"], default = true },
 		},
-		searchText = GetSearchText(L["Widget_OutfitSwapSounds"], L["Widget_OutfitSwapSoundsTT"]),
 		callback = function(values)
 			-- ...
 		end
@@ -1190,7 +1165,6 @@ function Artificer:BuildSettingsData()
 		isNew = true,
 		label = L["Widget_CollapseBuffs"],
 		tooltip = L["Widget_CollapseBuffsTT"],
-		searchText = GetSearchText(L["Widget_CollapseBuffs"], L["Widget_CollapseBuffsTT"]),
 		callback = function(val)
 			if Artificer.Widgets.ApplyCollapsedBuffs then
 				Artificer.Widgets.ApplyCollapsedBuffs();
@@ -1212,7 +1186,6 @@ function Artificer:BuildSettingsData()
 			{ key = "notFull", text = L["Widget_LHV_NotFull"], default = false },
 			{ key = "always", text = L["Widget_LHV_Always"], default = false },
 		},
-		searchText = GetSearchText(L["Widget_LootHistoryVisibility"], L["Widget_LootHistoryVisibilityTT"]),
 		callback = function(values)
 			if Artificer.Widgets.ApplyLootHistoryVisibility then
 				Artificer.Widgets.ApplyLootHistoryVisibility();
@@ -1228,7 +1201,6 @@ function Artificer:BuildSettingsData()
 		isNew = true,
 		label = L["Widget_DeleteConfirm"],
 		tooltip = L["Widget_DeleteConfirmTT"],
-		searchText = GetSearchText(L["Widget_DeleteConfirm"], L["Widget_DeleteConfirmTT"]),
 		callback = function(val)
 			-- ...
 		end
@@ -1242,7 +1214,6 @@ function Artificer:BuildSettingsData()
 		isNew = true,
 		label = L["Widget_BlockTrades"],
 		tooltip = L["Widget_BlockTradesTT"],
-		searchText = GetSearchText(L["Widget_BlockTrades"], L["Widget_BlockTradesTT"]),
 		callback = function(val)
 			-- print("block trades enabled for thingy")
 		end
@@ -1256,7 +1227,6 @@ function Artificer:BuildSettingsData()
 		isNew = true,
 		label = L["Widget_OutfitLinkOnClose"], 
 		tooltip = L["Widget_OutfitLinkOnCloseTT"],
-		searchText = GetSearchText(L["Widget_OutfitLinkOnClose"], L["Widget_OutfitLinkOnCloseTT"]),
 		callback = function(val)
 			-- ...
 		end
@@ -1275,7 +1245,6 @@ function Artificer:BuildSettingsData()
 		step = 1,
 		defaultValue = 100, -- blizz made their own changes so the default multiplier can stay as 100% now
 		formatter = function(value) return math.floor(value + 0.5) .. "%" end,
-		searchText = GetSearchText(L["Widget_MapAmbience_QD"], L["Widget_MapAmbience_QDTT"]),
 		callback = function(val)
 			if Artificer.UpdateMapAmbience then
 				Artificer:UpdateMapAmbience(val);
@@ -1291,7 +1260,6 @@ function Artificer:BuildSettingsData()
 		isNew = true,
 		label = L["Widget_AccountIgnoreList"],
 		tooltip = L["Widget_AccountIgnoreListTT"],
-		searchText = GetSearchText(L["Widget_AccountIgnoreList"], L["Widget_AccountIgnoreListTT"]),
 		callback = function(val)
 			if Artificer.AccountIgnores_ToggleVisibility then
 				Artificer.AccountIgnores_ToggleVisibility(val);
@@ -1318,7 +1286,6 @@ function Artificer:BuildSettingsData()
 			{ text = L["Account_On"], value = 2 },
 			{ text = L["Account_Off"], value = 3 },
 		},
-		searchText = GetSearchText(L["Widget_AutoLoot"], L["Widget_AutoLootTT"]),
 		callback = function(val)
 			if Artificer.Widgets.ApplyAutoLoot then
 				Artificer.Widgets.ApplyAutoLoot();
@@ -1339,7 +1306,6 @@ function Artificer:BuildSettingsData()
 			{ text = L["Account_On"], value = 2 },
 			{ text = L["Account_Off"], value = 3 },
 		},
-		searchText = GetSearchText(L["Widget_BlockGuildInvites"], L["Widget_BlockGuildInvitesTT"]),
 		callback = function(val)
 			if Artificer.Widgets.ApplyBlockGuildInvites then
 				Artificer.Widgets.ApplyBlockGuildInvites();
@@ -1360,7 +1326,6 @@ function Artificer:BuildSettingsData()
 			{ text = L["Account_On"], value = 2 },
 			{ text = L["Account_Off"], value = 3 },
 		},
-		searchText = GetSearchText(L["Widget_PetBattleMapFilter"], L["Widget_PetBattleMapFilterTT"]),
 		callback = function(val)
 			if Artificer.Widgets.ApplyPetBattleMapFilter then
 				Artificer.Widgets.ApplyPetBattleMapFilter();
@@ -1381,7 +1346,6 @@ function Artificer:BuildSettingsData()
 			{ text = L["Account_On"], value = 2 },
 			{ text = L["Account_Off"], value = 3 },
 		},
-		searchText = GetSearchText(L["Widget_cooldownViewerEnabled"], L["Widget_cooldownViewerEnabledTT"]),
 		callback = function(val)
 			if Artificer.Widgets.ApplyCooldownManagerEnabled then
 				Artificer.Widgets.ApplyCooldownManagerEnabled();
@@ -1397,7 +1361,6 @@ function Artificer:BuildSettingsData()
 		isNew = true,
 		label = L["Widget_HideTutorials"],
 		tooltip = L["Widget_HideTutorialsTT"],
-		searchText = GetSearchText(L["Widget_HideTutorials"], L["Widget_HideTutorialsTT"]),
 		callback = function(val)
 			if Artificer.Widgets.ApplyHideTutorials then
 				Artificer.Widgets.ApplyHideTutorials();
@@ -1418,7 +1381,6 @@ function Artificer:BuildSettingsData()
 			{ text = L["Account_On"], value = 2 },
 			{ text = L["Account_Off"], value = 3 },
 		},
-		searchText = GetSearchText(L["Widget_DamageMeter"], L["Widget_DamageMeterTT"]),
 		callback = function(val)
 			if Artificer.Widgets.ApplyDamageMeterSettings then
 				Artificer.Widgets.ApplyDamageMeterSettings();
@@ -1439,7 +1401,6 @@ function Artificer:BuildSettingsData()
 			{ text = L["Account_On"], value = 2 },
 			{ text = L["Account_Off"], value = 3 },
 		},
-		searchText = GetSearchText(L["Widget_DamageWipe"], L["Widget_DamageWipeTT"]),
 		callback = function(val)
 			if Artificer.Widgets.ApplyDamageMeterSettings then
 				Artificer.Widgets.ApplyDamageMeterSettings();
@@ -1455,7 +1416,6 @@ function Artificer:BuildSettingsData()
 		isNew = true,
 		label = L["Widget_LFDBackground"],
 		tooltip = L["Widget_LFDBackgroundTT"],
-		searchText = GetSearchText(L["Widget_LFDBackground"], L["Widget_LFDBackgroundTT"]),
 		callback = function(val)
 			-- ...
 		end
@@ -1476,7 +1436,6 @@ function Artificer:BuildSettingsData()
 				isNew = true,
 				label = data.label,
 				tooltip = data.description,
-				searchText = GetSearchText(data.label, data.description),
 				callback = function(val)
 					if data.settings == "checkbox" then
 						local cvarVal = val and "1" or "0"
@@ -1538,13 +1497,19 @@ function Artificer:BuildSettingsData()
 	})
 	--]]
 
+	for _, data in ipairs(allSettingsData) do
+		local labelText = data.label or ""
+		local tooltipText = data.tooltip or ""
+		data.searchText = string.lower(labelText .. " " .. tooltipText)
+	end
+
 	return allSettingsData
 end
 
 
 function Artificer:CreateSettingsUI()
 	local frame = CreateFrame("Frame", "ArtificerSettingsFrame", UIParent, "PortraitFrameTemplateMinimizable")
-	frame:SetSize(400, 500)
+	frame:SetSize(450, 500)
 	frame:SetMovable(true)
 	Artificer:RestoreFrameSettings(frame, "SettingsFrame")
 	frame:EnableMouse(true)
@@ -1650,7 +1615,14 @@ function Artificer:CreateSettingsUI()
 	frame.Bg:SetPoint("BOTTOMRIGHT", -2, 2)
 	frame.Bg:SetColorTexture(0.1, 0.1, 0.1, 0.9)
 
-	frame.BgIcon = frame:CreateTexture(nil, "BACKGROUND", nil, 1)
+	local settingsListBg = frame:CreateTexture(nil, "BACKGROUND", nil, 1);
+	settingsListBg:SetPoint("TOPLEFT", frame.Bg, "TOPLEFT", 12, -35);
+	settingsListBg:SetPoint("BOTTOMRIGHT", frame.Bg, "BOTTOMRIGHT", -25, 5);
+	settingsListBg:SetAtlas("GO-bg-Group");
+	settingsListBg:SetTextureSliceMargins(10, 10, 10, 10);
+	settingsListBg:SetTextureSliceMode(Enum.UITextureSliceMode.Stretched);
+
+	frame.BgIcon = frame:CreateTexture(nil, "BACKGROUND", nil, 2)
 	frame.BgIcon:SetPoint("CENTER", 0, 0)
 	frame.BgIcon:SetSize(frame.Bg:GetWidth()*.75, frame.Bg:GetWidth()*.75)
 	frame.BgIcon:SetTexture("Interface\\AddOns\\Artificer\\Textures\\ArtificerIcon_Small.blp")
@@ -1658,14 +1630,14 @@ function Artificer:CreateSettingsUI()
 	frame.BgIcon:SetVertexColor(0.1, 0.1, 0.1, 0.2)
 
 	local SearchBox = CreateFrame("EditBox", nil, frame, "SearchBoxTemplate")
-	SearchBox:SetPoint("TOPLEFT", frame, "TOPLEFT", 60, -35)
-	SearchBox:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -25, -35)
+	SearchBox:SetPoint("TOPLEFT", frame, "TOPLEFT", 65, -35)
+	SearchBox:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -30, -35)
 	SearchBox:SetHeight(20)
 	SearchBox:SetAutoFocus(false)
 
 	local ScrollBox = CreateFrame("Frame", nil, frame, "WowScrollBoxList")
-	ScrollBox:SetPoint("TOPLEFT", frame, "TOPLEFT", 6, -65)
-	ScrollBox:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -25, 6)
+	ScrollBox:SetPoint("TOPLEFT", frame, "TOPLEFT", 20, -61)
+	ScrollBox:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -25, 9)
 
 	local ScrollBar = CreateFrame("EventFrame", nil, frame, "MinimalScrollBar")
 	ScrollBar:SetPoint("TOPLEFT", ScrollBox, "TOPRIGHT", 5, 0)
@@ -1683,9 +1655,21 @@ function Artificer:CreateSettingsUI()
 		local query = SearchBox:GetText():lower();
 		local filtered = {};
 		
+		local currentHeader = nil;
+		local headerMatches = false;
+		
 		for _, data in ipairs(allSettingsData) do
-			if query == "" or (data.searchText and data.searchText:find(query, 1, true)) then
-				table.insert(filtered, data);
+			if data.type == "header" then
+				currentHeader = data;
+				headerMatches = (query == "" or (data.searchText and data.searchText:find(query, 1, true)));
+			else
+				if headerMatches or query == "" or (data.searchText and data.searchText:find(query, 1, true)) then
+					if currentHeader then
+						table.insert(filtered, currentHeader);
+						currentHeader = nil;
+					end
+					table.insert(filtered, data);
+				end
 			end
 		end
 		
