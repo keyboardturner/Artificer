@@ -307,6 +307,19 @@ if LOCALE == "enUS" then
 	L["BorderStyle_dragonflightscenarioframe"] = "Dragonflight Scenario Frame"
 	L["BorderStyle_evergreenscenariotitle"] = "Evergreen Scenario Title"
 
+	--Widgets - ProfessionsBook
+	L["Widget_ProfessionsBook"] = "Professions Book"
+	L["Widget_ProfessionsBookTT"] = "Restyles the Professions Book frame to fit the modern Spellbook style.\n\nRequires Reloading to toggle."
+	L["Widget_ProfessionsBook_Reload"] = "Requires Reloading to toggle."
+	L["ProfBook_ShowGear"] = "Show Gear Slots"
+	L["ProfBook_AutoOpen"] = "Auto Open for Enchants"
+	L["ProfBook_ShowTimer"] = "Show Enchant Timers"
+	L["ProfBook_StyleModern"] = "Modern"
+	L["ProfBook_StyleAtlas"] = "Mobile App"
+	L["ProfBook_StyleClassic"] = "Classic"
+	L["ProfBook_StyleProfBook"] = "Profession Book"
+	L["ProfBook_StyleSpell"] = "Journal Spell"
+
 	-- Professions - official translations
 	L["ALCHEMY"] = "Alchemy" --CHARACTER_PROFESSION_ALCHEMY
 	L["ARCHAEOLOGY"] = "Archaeology"--PROFESSIONS_ARCHAEOLOGY
@@ -658,6 +671,19 @@ if LOCALE == "esMX" then
 	L["BorderStyle_dragonflightscenarioframe"] = "Marco de escenario Dragonflight"
 	L["BorderStyle_evergreenscenariotitle"] = "Título de escenario Evergreen"
 
+	--Widgets - ProfessionsBook
+	L["Widget_ProfessionsBook"] = "Libro de Profesiones"
+	L["Widget_ProfessionsBookTT"] = "Rediseña la ventana del Libro de Profesiones para ajustarse al estilo moderno del Libro de Hechizos.\n\nRequiere recargar la interfaz para activarse o desactivarse."
+	L["Widget_ProfessionsBook_Reload"] = "Requiere recargar la interfaz para activarse o desactivarse."
+	L["ProfBook_ShowGear"] = "Mostrar ranuras de equipo"
+	L["ProfBook_AutoOpen"] = "Abrir automáticamente para encantamientos"
+	L["ProfBook_ShowTimer"] = "Mostrar temporizadores de encantamientos"
+	L["ProfBook_StyleModern"] = "Moderno"
+	L["ProfBook_StyleAtlas"] = "Aplicación móvil"
+	L["ProfBook_StyleClassic"] = "Clásico"
+	L["ProfBook_StyleProfBook"] = "Libro de Profesiones"
+	L["ProfBook_StyleSpell"] = "Hechizo del diario"
+
 	-- Professions - official translations
 	L["ALCHEMY"] = "Alquimia"
 	L["ARCHAEOLOGY"] = "Arqueología"
@@ -1008,6 +1034,19 @@ if LOCALE == "esES" then
 	L["BorderStyle_dragonflightscenarioframe"] = "Marco de escenario Dragonflight"
 	L["BorderStyle_evergreenscenariotitle"] = "Título de escenario Evergreen"
 
+	--Widgets - ProfessionsBook
+	L["Widget_ProfessionsBook"] = "Libro de Profesiones"
+	L["Widget_ProfessionsBookTT"] = "Rediseña la ventana del Libro de Profesiones para ajustarse al estilo moderno del Libro de Hechizos.\n\nRequiere recargar la interfaz para activarse o desactivarse."
+	L["Widget_ProfessionsBook_Reload"] = "Requiere recargar la interfaz para activarse o desactivarse."
+	L["ProfBook_ShowGear"] = "Mostrar ranuras de equipo"
+	L["ProfBook_AutoOpen"] = "Abrir automáticamente para encantamientos"
+	L["ProfBook_ShowTimer"] = "Mostrar temporizadores de encantamientos"
+	L["ProfBook_StyleModern"] = "Moderno"
+	L["ProfBook_StyleAtlas"] = "Aplicación móvil"
+	L["ProfBook_StyleClassic"] = "Clásico"
+	L["ProfBook_StyleProfBook"] = "Libro de Profesiones"
+	L["ProfBook_StyleSpell"] = "Hechizo del diario"
+
 	-- Professions - official translations
 	L["ALCHEMY"] = "Alquimia"
 	L["ARCHAEOLOGY"] = "Arqueología"
@@ -1355,6 +1394,19 @@ if LOCALE == "deDE" then
 	L["BorderStyle_dragonflightscenariotitle"] = "Dragonflight-Szenariotitel"
 	L["BorderStyle_dragonflightscenarioframe"] = "Dragonflight-Szenariofenster"
 	L["BorderStyle_evergreenscenariotitle"] = "Evergreen-Szenariotitel"
+
+	--Widgets - ProfessionsBook
+	L["Widget_ProfessionsBook"] = "Berufebuch"
+	L["Widget_ProfessionsBookTT"] = "Passt das Berufebuch optisch an den modernen Zauberbuch-Stil an.\n\nZum Umschalten ist ein Neuladen erforderlich."
+	L["Widget_ProfessionsBook_Reload"] = "Zum Umschalten ist ein Neuladen erforderlich."
+	L["ProfBook_ShowGear"] = "Ausrüstungsplätze anzeigen"
+	L["ProfBook_AutoOpen"] = "Automatisch für Verzauberungen öffnen"
+	L["ProfBook_ShowTimer"] = "Verzauberungs-Timer anzeigen"
+	L["ProfBook_StyleModern"] = "Modern"
+	L["ProfBook_StyleAtlas"] = "Mobile App"
+	L["ProfBook_StyleClassic"] = "Klassisch"
+	L["ProfBook_StyleProfBook"] = "Berufebuch"
+	L["ProfBook_StyleSpell"] = "Zauberbuchzauber"
 
 	-- Professions - official translations
 	L["ALCHEMY"] = "Alchemie"
@@ -1705,6 +1757,19 @@ if LOCALE == "frFR" then
 	L["BorderStyle_dragonflightscenarioframe"] = "Cadre de scénario Dragonflight"
 	L["BorderStyle_evergreenscenariotitle"] = "Titre de scénario Evergreen"
 
+	--Widgets - ProfessionsBook
+	L["Widget_ProfessionsBook"] = "Livre des métiers"
+	L["Widget_ProfessionsBookTT"] = "Modernise l'apparence du Livre des métiers pour correspondre au style moderne du Grimoire.\n\nNécessite un rechargement de l'interface pour être activé ou désactivé."
+	L["Widget_ProfessionsBook_Reload"] = "Nécessite un rechargement de l'interface pour être activé ou désactivé."
+	L["ProfBook_ShowGear"] = "Afficher les emplacements d'équipement"
+	L["ProfBook_AutoOpen"] = "Ouverture automatique pour les enchantements"
+	L["ProfBook_ShowTimer"] = "Afficher les minuteries d'enchantement"
+	L["ProfBook_StyleModern"] = "Moderne"
+	L["ProfBook_StyleAtlas"] = "Application mobile"
+	L["ProfBook_StyleClassic"] = "Classique"
+	L["ProfBook_StyleProfBook"] = "Livre des métiers"
+	L["ProfBook_StyleSpell"] = "Sort du journal"
+
 	-- Professions - official translations
 	L["ALCHEMY"] = "Alchimie"
 	L["ARCHAEOLOGY"] = "Archéologie"
@@ -2054,6 +2119,19 @@ if LOCALE == "itIT" then
 	L["BorderStyle_dragonflightscenarioframe"] = "Finestra scenario Dragonflight"
 	L["BorderStyle_evergreenscenariotitle"] = "Titolo scenario Evergreen"
 
+	--Widgets - ProfessionsBook
+	L["Widget_ProfessionsBook"] = "Libro delle Professioni"
+	L["Widget_ProfessionsBookTT"] = "Rinnova l'aspetto della finestra del Libro delle Professioni per adattarla allo stile moderno del Libro degli Incantesimi.\n\nRichiede il riavvio dell'interfaccia per essere attivato o disattivato."
+	L["Widget_ProfessionsBook_Reload"] = "Richiede il riavvio dell'interfaccia per essere attivato o disattivato."
+	L["ProfBook_ShowGear"] = "Mostra slot equipaggiamento"
+	L["ProfBook_AutoOpen"] = "Apertura automatica per gli incantamenti"
+	L["ProfBook_ShowTimer"] = "Mostra timer degli incantamenti"
+	L["ProfBook_StyleModern"] = "Moderno"
+	L["ProfBook_StyleAtlas"] = "App mobile"
+	L["ProfBook_StyleClassic"] = "Classico"
+	L["ProfBook_StyleProfBook"] = "Libro delle Professioni"
+	L["ProfBook_StyleSpell"] = "Incantesimo del diario"
+
 	-- Professions - official translations
 	L["ALCHEMY"] = "Alchimia"
 	L["ARCHAEOLOGY"] = "Archeologia"
@@ -2402,6 +2480,19 @@ if LOCALE == "ptBR" then
 	L["BorderStyle_dragonflightscenariotitle"] = "Título de cenário Dragonflight"
 	L["BorderStyle_dragonflightscenarioframe"] = "Janela de cenário Dragonflight"
 	L["BorderStyle_evergreenscenariotitle"] = "Título de cenário Evergreen"
+
+	--Widgets - ProfessionsBook
+	L["Widget_ProfessionsBook"] = "Livro de Profissões"
+	L["Widget_ProfessionsBookTT"] = "Reestiliza a janela do Livro de Profissões para combinar com o estilo moderno do Livro de Feitiços.\n\nÉ necessário recarregar a interface para ativar ou desativar."
+	L["Widget_ProfessionsBook_Reload"] = "É necessário recarregar a interface para ativar ou desativar."
+	L["ProfBook_ShowGear"] = "Mostrar espaços de equipamento"
+	L["ProfBook_AutoOpen"] = "Abrir automaticamente para encantamentos"
+	L["ProfBook_ShowTimer"] = "Mostrar temporizadores de encantamento"
+	L["ProfBook_StyleModern"] = "Moderno"
+	L["ProfBook_StyleAtlas"] = "Aplicativo móvel"
+	L["ProfBook_StyleClassic"] = "Clássico"
+	L["ProfBook_StyleProfBook"] = "Livro de Profissões"
+	L["ProfBook_StyleSpell"] = "Feitiço do diário"
 
 	-- Professions - official translations
 	L["ALCHEMY"] = "Alquimia"
@@ -2754,6 +2845,19 @@ if LOCALE == "ruRU" then
 	L["BorderStyle_dragonflightscenarioframe"] = "Окно сценария Dragonflight"
 	L["BorderStyle_evergreenscenariotitle"] = "Заголовок сценария Evergreen"
 
+	--Widgets - ProfessionsBook
+	L["Widget_ProfessionsBook"] = "Книга профессий"
+	L["Widget_ProfessionsBookTT"] = "Изменяет оформление окна профессий в современном стиле книги заклинаний.\n\nДля применения требуется перезагрузка интерфейса."
+	L["Widget_ProfessionsBook_Reload"] = "Для применения требуется перезагрузка интерфейса."
+	L["ProfBook_ShowGear"] = "Показывать слоты экипировки"
+	L["ProfBook_AutoOpen"] = "Автоматически открывать для чар"
+	L["ProfBook_ShowTimer"] = "Показывать таймеры чар"
+	L["ProfBook_StyleModern"] = "Современный"
+	L["ProfBook_StyleAtlas"] = "Мобильное приложение"
+	L["ProfBook_StyleClassic"] = "Классический"
+	L["ProfBook_StyleProfBook"] = "Книга профессий"
+	L["ProfBook_StyleSpell"] = "Заклинание журнала"
+
 	-- Professions - official translations
 	L["ALCHEMY"] = "Алхимия"
 	L["ARCHAEOLOGY"] = "Археология"
@@ -3102,6 +3206,19 @@ if LOCALE == "koKR" then
 	L["BorderStyle_dragonflightscenariotitle"] = "Dragonflight 시나리오 제목"
 	L["BorderStyle_dragonflightscenarioframe"] = "Dragonflight 시나리오 창"
 	L["BorderStyle_evergreenscenariotitle"] = "Evergreen 시나리오 제목"
+
+	--Widgets - ProfessionsBook
+	L["Widget_ProfessionsBook"] = "전문 기술 책"
+	L["Widget_ProfessionsBookTT"] = "전문 기술 책 창을 현대적인 주문책 스타일에 맞게 재구성합니다.\n\n전환하려면 UI 재시작이 필요합니다."
+	L["Widget_ProfessionsBook_Reload"] = "전환하려면 UI 재시작이 필요합니다."
+	L["ProfBook_ShowGear"] = "장비 슬롯 표시"
+	L["ProfBook_AutoOpen"] = "마법부여 시 자동 열기"
+	L["ProfBook_ShowTimer"] = "마법부여 타이머 표시"
+	L["ProfBook_StyleModern"] = "현대식"
+	L["ProfBook_StyleAtlas"] = "모바일 앱"
+	L["ProfBook_StyleClassic"] = "클래식"
+	L["ProfBook_StyleProfBook"] = "전문 기술 책"
+	L["ProfBook_StyleSpell"] = "주문 기록"
 
 	-- Professions - official translations
 	L["ALCHEMY"] = "연금술"
@@ -3452,6 +3569,19 @@ if LOCALE == "zhCN" then
 	L["BorderStyle_dragonflightscenarioframe"] = "巨龙时代场景框架"
 	L["BorderStyle_evergreenscenariotitle"] = "Evergreen 场景标题"
 
+	--Widgets - ProfessionsBook
+	L["Widget_ProfessionsBook"] = "专业技能书"
+	L["Widget_ProfessionsBookTT"] = "重新设计专业技能书界面，使其符合现代法术书风格。\n\n切换此选项需要重新加载界面。"
+	L["Widget_ProfessionsBook_Reload"] = "切换此选项需要重新加载界面。"
+	L["ProfBook_ShowGear"] = "显示装备栏位"
+	L["ProfBook_AutoOpen"] = "附魔时自动打开"
+	L["ProfBook_ShowTimer"] = "显示附魔计时器"
+	L["ProfBook_StyleModern"] = "现代"
+	L["ProfBook_StyleAtlas"] = "移动应用"
+	L["ProfBook_StyleClassic"] = "经典"
+	L["ProfBook_StyleProfBook"] = "专业技能书"
+	L["ProfBook_StyleSpell"] = "法术日志"
+
 	-- Professions - official translations
 	L["ALCHEMY"] = "炼金术"
 	L["ARCHAEOLOGY"] = "考古学"
@@ -3800,6 +3930,19 @@ if LOCALE == "zhTW" then
 	L["BorderStyle_dragonflightscenariotitle"] = "巨龍崛起情境標題"
 	L["BorderStyle_dragonflightscenarioframe"] = "巨龍崛起情境框架"
 	L["BorderStyle_evergreenscenariotitle"] = "Evergreen 情境標題"
+
+	--Widgets - ProfessionsBook
+	L["Widget_ProfessionsBook"] = "專業技能書"
+	L["Widget_ProfessionsBookTT"] = "重新設計專業技能書介面，使其符合現代法術書風格。\n\n切換此選項需要重新載入介面。"
+	L["Widget_ProfessionsBook_Reload"] = "切換此選項需要重新載入介面。"
+	L["ProfBook_ShowGear"] = "顯示裝備欄位"
+	L["ProfBook_AutoOpen"] = "附魔時自動開啟"
+	L["ProfBook_ShowTimer"] = "顯示附魔計時器"
+	L["ProfBook_StyleModern"] = "現代"
+	L["ProfBook_StyleAtlas"] = "行動應用程式"
+	L["ProfBook_StyleClassic"] = "經典"
+	L["ProfBook_StyleProfBook"] = "專業技能書"
+	L["ProfBook_StyleSpell"] = "法術日誌"
 
 	-- Professions - official translations
 	L["ALCHEMY"] = "鍊金術"

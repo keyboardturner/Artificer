@@ -55,6 +55,7 @@ local Defaults = {
 		NameplateStatusIndicator = false,
 		AccountIgnoresWindow = true,
 		LFDBackground = true,
+		ProfessionsBook = true,
 	},
 
 	NameplateTargetPos = {
@@ -132,6 +133,12 @@ local Defaults = {
 		singleLine = false,
 		borderStyle = "questtracker",
 		playSound = true,
+	},
+	
+	ProfessionsBook = {
+		showGearSlots = true,
+		autoOpenBook = true,
+		showTimer = true,
 	},
 };
 

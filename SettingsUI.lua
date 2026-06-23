@@ -686,6 +686,24 @@ function Artificer:BuildSettingsData()
 		end,
 	});
 
+	-- Widgets - ProfessionsBook
+	table.insert(allSettingsData, {
+		type = "checkbox",
+		isWidget = true,
+		key = "ProfessionsBook",
+		isNew = true,
+		label = L["Widget_ProfessionsBook"],
+		tooltip = L["Widget_ProfessionsBookTT"],
+		searchText = GetSearchText(L["Widget_ProfessionsBook"], L["Widget_ProfessionsBookTT"]),
+		callback = function(val)
+			Artificer.Print(L["Widget_ProfessionsBook_Reload"]);
+		end,
+		hasAdvancedSettings = true,
+		onAdvancedClick = function()
+			Artificer:OpenProfessionsBookAdvancedSettings();
+		end
+	});
+
 	-- Header - Maps
 	table.insert(allSettingsData, {
 		type = "header",
@@ -1699,6 +1717,7 @@ function Artificer:CloseAllAdvancedFrames()
 	if self.PreyBarAdvancedFrame then self.PreyBarAdvancedFrame:Hide() end
 	if self.ProfToastAdvancedFrame then self.ProfToastAdvancedFrame:Hide() end
 	if self.NameplateStatusAdvancedFrame then self.NameplateStatusAdvancedFrame:Hide() end
+	if self.ProfBookAdvancedFrame then self.ProfBookAdvancedFrame:Hide() end
 end
 
 function Artificer:ToggleSettings()

@@ -1,0 +1,1079 @@
+local addonName, Artificer = ...;
+
+local L = Artificer.L;
+
+local function IsModuleEnabled()
+	return Artificer_DB and Artificer_DB.Widgets and Artificer_DB.Widgets.ProfessionsBook;
+end
+
+local function GetProfDB()
+	local db = Artificer_DB and Artificer_DB.ProfessionsBook or (Artificer.Defaults and Artificer.Defaults.ProfessionsBook);
+	if db then
+		if db.iconStyle == nil then
+			db.iconStyle = "icon";
+		end
+		return db;
+	end
+	return { showGearSlots = true, autoOpenBook = true, showTimer = true, iconStyle = "icon" };
+end
+
+local frameMaxSlots = {
+	["PrimaryProfession1"] = 3,
+	["PrimaryProfession2"] = 3,
+	["SecondaryProfession1"] = 2,
+	["SecondaryProfession2"] = 1,
+};
+
+local slotIDToName = {
+	[20] = "Prof0ToolSlot", [21] = "Prof0Gear0Slot", [22] = "Prof0Gear1Slot",
+	[23] = "Prof1ToolSlot", [24] = "Prof1Gear0Slot", [25] = "Prof1Gear1Slot",
+	[26] = "CookingToolSlot", [27] = "CookingGear0Slot",
+	[28] = "FishingToolSlot",
+};
+
+local professionJournalSpells = {
+	--primary (crafting)
+	[171] = { -- Alchemy
+		journal = 2259,
+		icon = 4620669,
+		secondaryicon = "Mobile-Alchemy",
+		oldicon = 136240,
+		professionbookicon = 3615513,
+		spells = {},
+	},
+	[164] = { -- Blacksmithing
+		journal = 2018,
+		icon = 4620670,
+		secondaryicon = "Mobile-Blacksmithing",
+		oldicon = 136241,
+		professionbookicon = 3618821,
+		spells = {},
+	},
+	[333] = { -- Enchanting
+		journal = 7411,
+		icon = 4620672,
+		secondaryicon = "Mobile-Enchanting",
+		oldicon = 136244,
+		spells = {13262},
+		professionbookicon = 3615911,
+	},
+	[202] = { -- Engineering
+		journal = 4036,
+		icon = 4620673,
+		secondaryicon = "Mobile-Enginnering",
+		oldicon = 136243,
+		professionbookicon = 3615515,
+		spells = {},
+	},
+	[773] = { -- Inscription
+		journal = 45357,
+		icon = 4620676,
+		secondaryicon = "Mobile-Inscription",
+		oldicon = 237171,
+		professionbookicon = 3615518,
+		spells = {},
+	},
+	[755] = { -- Jewelcrafting
+		journal = 25229,
+		icon = 4620677,
+		secondaryicon = "Mobile-Jewelcrafting",
+		oldicon = 134072,
+		professionbookicon = 3615519,
+		spells = {},
+	},
+	[165] = { -- Leatherworking
+		journal = 2108,
+		icon = 4620678,
+		secondaryicon = "Mobile-Leatherworking",
+		oldicon = 136247,
+		professionbookicon = 3615520,
+		spells = {},
+	},
+	[197] = { -- Tailoring
+		journal = 3908,
+		icon = 4620681,
+		secondaryicon = "Mobile-Tailoring",
+		oldicon = 136249,
+		professionbookicon = 3615523,
+		spells = {},
+	},
+
+	--primary (gathering)
+
+	[182] = { -- Herbalism
+		journal = 193290,
+		icon = 4620675,
+		secondaryicon = "Mobile-Herbalism",
+		oldicon = 136246,
+		professionbookicon = 3615517,
+		spells = {2366, 390392, 423395, 439871, 1221172, 1223014},
+	},
+	[186] = { -- Mining
+		journal = 2656,
+		icon = 4620679,
+		secondaryicon = "Mobile-Mining",
+		oldicon = 136248,
+		professionbookicon = 3615521,
+		spells = {2575, 288213, 423394, 1225392},
+	},
+	[393] = { -- Skinning
+		journal = 194174,
+		icon = 4620680,
+		secondaryicon = "Mobile-Skinning",
+		oldicon = 134366,
+		professionbookicon = 3615522,
+		spells = {8613, 442615, 440977, 1223388, 1226037, 1250491},
+	},
+
+	--secondary
+	[356] = { -- Fishing
+		journal = 271990,
+		icon = 4620674,
+		secondaryicon = "Mobile-Fishing",
+		oldicon = 136245,
+		professionbookicon = 3615516,
+		spells = {131474},
+	},
+	[185] = { -- Cooking
+		journal = 2550,
+		icon = 4620671,
+		secondaryicon = "Mobile-Cooking",
+		oldicon = 133971,
+		professionbookicon = 3615514,
+		spells = {818},
+	},
+	[794] = { -- Archaeology
+		journalIDs = {
+			78670,	-- 75
+			88961,	-- 150
+			89718,	-- 225
+			89719,	-- 300
+			89720,	-- 375
+			89721,	-- 450
+			89722,	-- 525
+			110393,	-- 600
+			158762,	-- 700
+			195127,	-- 800
+			278910,	-- 950
+		},
+		icon = 441139,
+		secondaryicon = "Mobile-Archeology",
+		oldicon = 441139,
+		professionbookicon = 441139,
+		spells = {80451},
+	},
+	--[[
+	[129] = { -- First Aid (Removed)
+		journal = , -- probably was the same as archaeology
+		icon = 135966,
+		secondaryicon = "Mobile-FirstAid",
+		oldicon = 135966,
+		professionbookicon = 135966,
+		spells = {},
+	},
+	]]
+};
+
+local function GetLearnedSpells(spellList)
+	local learned = {};
+	if not spellList then return learned; end
+	
+	for _, spellID in ipairs(spellList) do
+		local isKnown = false;
+		
+		isKnown = C_SpellBook.IsSpellKnown(spellID);
+		
+		if isKnown then
+			table.insert(learned, spellID);
+		end
+	end
+	
+	return learned;
+end
+
+local function UpgradeProfessionFrame(frame)
+	if not frame or frame.isUpgraded then return; end
+	local isSecondary = string.find(frame:GetName(), "Secondary");
+	
+	if isSecondary then
+		frame:SetHeight(70);
+	else
+		frame:SetHeight(81);
+	end
+	if not frame.specialization then
+		frame.specialization = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal");
+		frame.specialization:Hide();
+	end
+	frame.spellOffset = frame.spellOffset or 0;
+	
+	if frame.icon then
+		frame.icon:SetAlpha(0);
+	end
+	
+	local originalBorder = _G[frame:GetName().."IconBorder"];
+	if originalBorder then
+		originalBorder:SetAlpha(0);
+	end
+	
+	frame.iconButton = CreateFrame("Button", nil, frame);
+	
+	if isSecondary then
+		frame.iconButton:SetSize(56, 56);
+	else
+		frame.iconButton:SetSize(72, 72);
+	end
+
+	frame.iconButton:SetPoint("TOPLEFT", frame, "TOPLEFT", -23, -7);
+	
+	frame.iconButton:RegisterForClicks("LeftButtonUp");
+	frame.iconButton:SetHighlightAtlas("common-roundhighlight", "ADD");
+	
+	local newBorder = frame.iconButton:CreateTexture(nil, "OVERLAY");
+	newBorder:SetAllPoints();
+	newBorder:SetTexture("Interface\\Spellbook\\ProfessionsBook");
+	newBorder:SetTexCoord(0.43359375, 0.72265625, 0.14843750, 0.72656250);
+	frame.customIconBorder = newBorder;
+	
+	frame.customIcon = frame.iconButton:CreateTexture(nil, "BORDER");
+	frame.customIcon:SetPoint("TOPLEFT", newBorder, "TOPLEFT", 1, -1);
+	frame.customIcon:SetPoint("BOTTOMRIGHT", newBorder, "BOTTOMRIGHT", -1, 1);
+	
+	frame.customIconOverlay = frame.iconButton:CreateTexture(nil, "ARTWORK");
+	frame.customIconOverlay:SetAllPoints(frame.customIcon);
+	frame.customIconOverlay:SetDesaturated(true);
+	frame.customIconOverlay:SetBlendMode("ADD");
+	frame.customIconOverlay:SetAlpha(0.3);
+	frame.customIconOverlay:SetVertexColor(1.0,0.4,0.0);
+	
+	local circleMask = frame.iconButton:CreateMaskTexture();
+	circleMask:SetTexture("Interface\\CharacterFrame\\TempPortraitAlphaMask", "CLAMPTOBLACKADDITIVE", "CLAMPTOBLACKADDITIVE");
+	circleMask:SetAllPoints(frame.customIcon);
+	frame.customIcon:AddMaskTexture(circleMask);
+	frame.customIconOverlay:AddMaskTexture(circleMask);
+
+	if frame.professionName then
+		frame.professionName:SetTextColor(0.25098*1.7, 0.129411*1.7, 0.0, 0.8);
+		
+		if not frame.professionBackplate then
+			frame.professionBackplate = frame:CreateTexture(nil, "BACKGROUND");
+			frame.professionBackplate:SetAtlas("spellbook-list-backplate");
+			frame.professionBackplate:SetSize(240, 50);
+			frame.professionBackplate:SetPoint("LEFT", frame.professionName, "LEFT", -60, 0);
+			
+			frame.professionBackplate:SetVertexColor(0.3, 0.15, 0.05, 0.3);
+		end
+	end
+	if frame.rank then
+		frame.rank:SetTextColor(0.25098*1.7, 0.129411*1.7, 0.0, 0.8);
+	end
+	if frame.missingHeader then
+		frame.missingHeader:SetTextColor(0.25098*1.7, 0.129411*1.7, 0.0, 0.8);
+	end
+
+	if isSecondary then
+		if frame.statusBar then
+			frame.statusBar:ClearAllPoints();
+			frame.statusBar:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", 94, 0);
+		end
+		if frame.professionName then
+			frame.professionName:ClearAllPoints();
+			frame.professionName:SetPoint("TOPLEFT", frame, "TOPLEFT", 80, 0);
+		end
+		if frame.rank then
+			frame.rank:ClearAllPoints();
+			frame.rank:SetPoint("BOTTOMLEFT", frame.statusBar, "TOPLEFT", -15, 3);
+		end
+		if frame.missingHeader then
+			frame.missingHeader:ClearAllPoints();
+			frame.missingHeader:SetPoint("TOPLEFT", frame, "TOPLEFT", 50, -10);
+		end
+		if frame.missingText then
+			frame.missingText:ClearAllPoints();
+			frame.missingText:SetPoint("TOPLEFT", frame.missingHeader, "BOTTOMLEFT", 0, -1);
+		end
+	else
+		if frame.professionName then
+			frame.professionName:ClearAllPoints();
+			frame.professionName:SetPoint("TOPLEFT", frame, "TOPLEFT", 80, -5);
+		end
+		if frame.rank then
+			frame.rank:ClearAllPoints();
+			frame.rank:SetPoint("BOTTOMLEFT", frame.professionName, "BOTTOMLEFT", 0, -43);
+		end
+		if frame.statusBar then
+			frame.statusBar:ClearAllPoints();
+			frame.statusBar:SetPoint("TOPLEFT", frame.rank, "BOTTOMLEFT", 14, -5);
+		end
+		if frame.missingHeader then
+			frame.missingHeader:ClearAllPoints();
+			frame.missingHeader:SetPoint("TOPLEFT", frame, "TOPLEFT", 65, -13);
+		end
+		if frame.missingText then
+			frame.missingText:ClearAllPoints();
+			frame.missingText:SetPoint("TOPLEFT", frame.missingHeader, "BOTTOMLEFT", 0, -1);
+		end
+	end
+
+	frame.iconButton:RegisterForDrag("LeftButton");
+	
+	frame.iconButton:SetScript("OnDragStart", function(self)
+		if InCombatLockdown() then return; end
+		if self.journalSpellID then
+			C_Spell.PickupSpell(self.journalSpellID);
+		end
+	end)
+
+	frame.iconButton:SetScript("OnClick", function(self)
+		if self.journalSpellID then
+			CastSpellByID(self.journalSpellID);
+		end
+	end)
+	
+	frame.iconButton:SetScript("OnEnter", function(self)
+		if self.journalSpellID then
+			GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+			GameTooltip:SetSpellByID(self.journalSpellID);
+			GameTooltip:Show();
+		end
+	end)
+	frame.iconButton:SetScript("OnLeave", function() GameTooltip_Hide(); end);
+
+	frame.spellFlyoutTrigger = CreateFrame("Button", nil, frame);
+	frame.spellFlyoutTrigger:SetSize(35, 35);
+	frame.spellFlyoutTrigger:SetPoint("LEFT", frame.iconButton, "RIGHT", 4, 0);
+	
+	local bgOffset = 7;
+	local bg = frame.spellFlyoutTrigger:CreateTexture(nil, "BACKGROUND");
+	bg:SetPoint("TOPLEFT", bgOffset, -bgOffset);
+	bg:SetPoint("BOTTOMRIGHT", -bgOffset, bgOffset);
+	bg:SetAtlas("talents-node-choiceflyout-circle-locked");
+	local bgBorder = frame.spellFlyoutTrigger:CreateTexture(nil, "BACKGROUND");
+	bgBorder:SetAllPoints();
+	bgBorder:SetAtlas("talents-node-apex-small-gray");
+
+	local arrow = frame.spellFlyoutTrigger:CreateTexture(nil, "OVERLAY");
+	arrow:SetSize(15, 5);
+	arrow:SetPoint("CENTER", 1, 0);
+	arrow:SetAtlas("UI-HUD-ActionBar-Flyout");
+	arrow:SetRotation(math.rad(-90)); -- i'm too lazy to texcoord it
+	frame.spellFlyoutTrigger.arrow = arrow;
+
+	frame.spellFlyoutContainer = CreateFrame("Frame", nil, frame, "BackdropTemplate");
+	frame.spellFlyoutContainer:SetFrameStrata("HIGH");
+	frame.spellFlyoutContainer:SetBackdrop({
+		bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
+		edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
+		tile = true, tileSize = 16, edgeSize = 16,
+		insets = { left = 4, right = 4, top = 4, bottom = 4 }
+	});
+	frame.spellFlyoutContainer:SetBackdropColor(0, 0, 0, 0.9);
+	frame.spellFlyoutContainer:SetPoint("TOPLEFT", frame.spellFlyoutTrigger, "TOPRIGHT", 2, 0);
+	frame.spellFlyoutContainer:Hide();
+
+	frame.spellFlyoutButtons = {};
+
+	local function UpdateArrowTexture(self)
+		if frame.spellFlyoutContainer:IsShown() then
+			self.arrow:SetAtlas("UI-HUD-ActionBar-Flyout-Down");
+		elseif self:IsMouseOver() then
+			self.arrow:SetAtlas("UI-HUD-ActionBar-Flyout-Mouseover");
+		else
+			self.arrow:SetAtlas("UI-HUD-ActionBar-Flyout");
+		end
+	end
+
+	frame.spellFlyoutTrigger:SetScript("OnEnter", function(self)
+		UpdateArrowTexture(self);
+	end)
+
+	frame.spellFlyoutTrigger:SetScript("OnLeave", function(self)
+		UpdateArrowTexture(self);
+	end)
+
+	frame.spellFlyoutTrigger:SetScript("OnClick", function(self)
+		if InCombatLockdown() then return; end
+		local isOpening = not frame.spellFlyoutContainer:IsShown();
+		frame.spellFlyoutContainer:SetShown(isOpening);
+		UpdateArrowTexture(self);
+	end)
+	
+	frame.spellFlyoutContainer:SetScript("OnHide", function()
+		UpdateArrowTexture(frame.spellFlyoutTrigger);
+	end)
+	frame.spellFlyoutContainer:SetScript("OnShow", function()
+		UpdateArrowTexture(frame.spellFlyoutTrigger);
+	end)
+
+	frame.isUpgraded = true;
+end
+
+local function InitializeGearSlots(frame)
+	if frame.gearSlots then return; end
+	frame.gearSlots = {};
+
+	local frameName = frame:GetName();
+	local maxSlots = frameMaxSlots[frameName];
+	
+	if not maxSlots then return; end
+
+	if not frame.flyoutSettings then
+		frame.flyoutSettings = {
+			onClickFunc = PaperDollFrameItemFlyoutButton_OnClick,
+			getItemsFunc = PaperDollFrameItemFlyout_GetItems,
+			postGetItemsFunc = PaperDollFrameItemFlyout_PostGetItems,
+			hasPopouts = true,
+			parent = frame,
+			anchorX = -30,
+			anchorY = -35,
+		};
+	end
+
+	for i = 1, maxSlots do
+		local btn = CreateFrame("ItemButton", nil, frame);
+		btn:SetSize(36, 36);
+
+		if i == 1 then
+			btn:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -23, -8);
+		elseif i == 2 then
+			local divider = CreateFrame("Frame", nil, frame);
+			divider:SetSize(5, 37);
+			divider:SetPoint("RIGHT", frame.gearSlots[1], "LEFT", -6, 0);
+			
+			local tex = divider:CreateTexture(nil, "ARTWORK");
+			tex:SetAtlas("Professions-Equipment-Divider", true);
+			tex:SetPoint("CENTER");
+			
+			frame.gearSlotDivider = divider;
+			
+			btn:SetPoint("RIGHT", divider, "LEFT", -6, 0);
+		else
+			btn:SetPoint("RIGHT", frame.gearSlots[i-1], "LEFT", -4, 0);
+		end
+
+		btn:RegisterForDrag("LeftButton");
+		btn:RegisterForClicks("LeftButtonUp", "RightButtonUp");
+		
+		btn:SetScript("OnEvent", PaperDollItemSlotButton_OnEvent);
+		btn:SetScript("OnShow", PaperDollItemSlotButton_OnShow);
+		btn:SetScript("OnHide", PaperDollItemSlotButton_OnHide);
+		
+		btn:SetScript("OnClick", function(self, button)
+			if IsModifiedClick() then
+				PaperDollItemSlotButton_OnModifiedClick(self, button);
+			else
+				PaperDollItemSlotButton_OnClick(self, button);
+			end
+		end)
+		
+		btn:SetScript("OnDragStart", function(self)
+			PaperDollItemSlotButton_OnClick(self, "LeftButton");
+		end);
+		btn:SetScript("OnReceiveDrag", function(self)
+			PaperDollItemSlotButton_OnClick(self, "LeftButton");
+		end);
+		btn:SetScript("OnEnter", PaperDollItemSlotButton_OnEnter);
+		btn:SetScript("OnLeave", PaperDollItemSlotButton_OnLeave);
+
+		table.insert(frame.gearSlots, btn);
+	end
+end
+
+local function ApplyProfessionHook()
+	hooksecurefunc("FormatProfession", function(frame, index)
+		
+		if not InCombatLockdown() then
+			if frame.SpellButton1 then frame.SpellButton1:Hide(); end
+			if frame.SpellButton2 then frame.SpellButton2:Hide(); end
+			
+			if frame.SpellButtonBottom then frame.SpellButtonBottom:Hide(); end
+		end
+
+		if frameMaxSlots[frame:GetName()] then
+			if GetProfDB().showGearSlots then
+				InitializeGearSlots(frame);
+
+				local hasProfession = (index ~= nil);
+				local skillLine = nil;
+
+				if hasProfession then
+					local _, _, _, _, _, _, skillLineID = GetProfessionInfo(index);
+					skillLine = skillLineID;
+				end
+
+				local activeSlots = {};
+				if skillLine and C_TradeSkillUI and C_TradeSkillUI.GetProfessionSlots then
+					local professionEnum = nil;
+
+					if C_TradeSkillUI.GetProfessionInfoBySkillLineID then
+						local profInfo = C_TradeSkillUI.GetProfessionInfoBySkillLineID(skillLine);
+						if profInfo and profInfo.profession then
+							professionEnum = profInfo.profession;
+						end
+					end
+
+					-- API uses Enum.Profession
+					if not professionEnum then
+						local skillLineToEnum = {
+							[129] = 0,	-- First Aid
+							[164] = 1,	-- Blacksmithing
+							[165] = 2,	-- Leatherworking
+							[171] = 3,	-- Alchemy
+							[182] = 4,	-- Herbalism
+							[185] = 5,	-- Cooking
+							[186] = 6,	-- Mining
+							[197] = 7,	-- Tailoring
+							[202] = 8,	-- Engineering
+							[333] = 9,	-- Enchanting
+							[356] = 10,	-- Fishing
+							[393] = 11,	-- Skinning
+							[755] = 12,	-- Jewelcrafting
+							[773] = 13,	-- Inscription
+							[794] = 14,	-- Archaeology
+						};
+						professionEnum = skillLineToEnum[skillLine];
+					end
+
+					if professionEnum then
+						activeSlots = C_TradeSkillUI.GetProfessionSlots(professionEnum) or {};
+					end
+				end
+
+				for i, btn in ipairs(frame.gearSlots) do
+					local slotID = activeSlots[i];
+
+					if slotID and hasProfession and not InCombatLockdown() then
+						btn.slotName = slotIDToName[slotID];
+						PaperDollItemSlotButton_OnLoad(btn);
+						btn:Show();
+						PaperDollItemSlotButton_Update(btn);
+					else
+						btn:Hide();
+						btn:SetID(0);
+						btn.slotName = nil;
+					end
+				end
+				
+				if frame.gearSlotDivider then
+					frame.gearSlotDivider:SetShown(hasProfession and #activeSlots > 1 and not InCombatLockdown());
+				end
+
+			else
+				if frame.gearSlots then
+					for _, btn in ipairs(frame.gearSlots) do
+						btn:Hide();
+					end
+				end
+				if frame.gearSlotDivider then
+					frame.gearSlotDivider:Hide();
+				end
+			end
+		end
+
+		if frame.isUpgraded then
+			local skillData = nil;
+			
+			if index then
+				local name, texture, rank, maxRank, numSpells, spellOffset, skillLine = GetProfessionInfo(index);
+				skillData = professionJournalSpells[skillLine];
+				
+				local chosenTexture = texture;
+				local style = GetProfDB().iconStyle or "icon";
+
+				if skillData then
+					if style == "icon" and skillData.icon then
+						chosenTexture = skillData.icon;
+					elseif style == "secondaryicon" and skillData.secondaryicon then
+						chosenTexture = skillData.secondaryicon;
+					elseif style == "oldicon" and skillData.oldicon then
+						chosenTexture = skillData.oldicon;
+					elseif style == "professionbook" and skillData.professionbookicon then
+						chosenTexture = skillData.professionbookicon;
+					elseif style == "journal" and skillData.journal then
+						local spellInfo = C_Spell.GetSpellInfo(skillData.journal);
+						if spellInfo then
+							chosenTexture = spellInfo.iconID;
+						else
+							chosenTexture = GetSpellTexture(skillData.journal);
+						end
+					end
+				end
+
+				if not chosenTexture and frame.icon then
+					chosenTexture = frame.icon:GetTexture();
+				end
+
+				local function SetIconTex(texObj, texVal)
+					if not texObj or not texVal then return; end
+					if type(texVal) == "string" and not string.match(texVal, "\\") and C_Texture.GetAtlasInfo(texVal) then
+						texObj:SetAtlas(texVal);
+					else
+						texObj:SetTexture(texVal);
+					end
+				end
+
+				SetIconTex(frame.customIcon, chosenTexture);
+				SetIconTex(frame.customIconOverlay, chosenTexture);
+				
+				frame.iconButton:Enable();
+				frame.customIcon:SetAlpha(0.8);
+				frame.customIcon:SetDesaturated(false);
+				frame.customIcon:SetBlendMode("BLEND");
+				
+				if frame.customIconOverlay then
+					frame.customIconOverlay:Show();
+					frame.customIconOverlay:SetVertexColor(1,.4,0);
+				end
+
+				if frame.professionBackplate then
+					frame.professionBackplate:Show();
+				end
+			else
+				frame.iconButton:Disable();
+
+				frame.customIcon:SetTexture("Interface\\Icons\\INV_Scroll_04");
+				frame.customIcon:SetAlpha(0.8);
+				frame.customIcon:SetDesaturated(true);
+				frame.customIcon:SetBlendMode("BLEND");
+
+				if frame.customIconOverlay then
+					frame.customIconOverlay:SetTexture("Interface\\Icons\\INV_Scroll_04");
+					frame.customIconOverlay:Show();
+				end
+
+				if frame.professionBackplate then
+					frame.professionBackplate:Hide();
+				end
+			end
+
+			local resolvedJournalID = nil;
+			if skillData then
+				if skillData.journalIDs then
+					for _, spellID in ipairs(skillData.journalIDs) do
+						local isKnown = false;
+						isKnown = C_SpellBook.IsSpellKnown(spellID);
+
+						if isKnown then
+							resolvedJournalID = spellID;
+							break;
+						end
+					end
+				else
+					resolvedJournalID = skillData.journal;
+				end
+			end
+
+			frame.iconButton.journalSpellID = resolvedJournalID;
+
+			local activeSpells = skillData and GetLearnedSpells(skillData.spells) or {};
+
+			if #activeSpells > 0 then
+				frame.spellFlyoutTrigger:Show();
+				
+				local numFlyoutSpells = #activeSpells;
+				local container = frame.spellFlyoutContainer;
+				
+				local maxPerRow = 5;
+				local btnSize = 32;
+				local padding = 4;
+				local inset = 4;
+				
+				local numCols = math.min(numFlyoutSpells, maxPerRow);
+				local numRows = math.ceil(numFlyoutSpells / maxPerRow);
+				
+				local containerWidth = (numCols * btnSize) + ((numCols - 1) * padding) + (inset * 2);
+				local containerHeight = (numRows * btnSize) + ((numRows - 1) * padding) + (inset * 2);
+				
+				container:SetSize(containerWidth, containerHeight);
+				
+				for i = 1, numFlyoutSpells do
+					local spellID = activeSpells[i];
+					local spellBtn = frame.spellFlyoutButtons[i];
+					
+					if not spellBtn then
+						spellBtn = CreateFrame("Button", nil, container);
+						spellBtn:SetSize(btnSize, btnSize);
+						spellBtn:SetHighlightTexture("Interface\\Buttons\\ButtonHilight-Square", "ADD");
+						spellBtn:SetPushedTexture("Interface\\Buttons\\UI-Quickslot-Depress");
+						
+						local iconTex = spellBtn:CreateTexture(nil, "ARTWORK");
+						iconTex:SetAllPoints();
+						spellBtn.icon = iconTex;
+						
+						spellBtn:RegisterForDrag("LeftButton");
+						
+						spellBtn:SetScript("OnEnter", function(self)
+							GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+							GameTooltip:SetSpellByID(self.spellID);
+						end)
+						spellBtn:SetScript("OnLeave", function() GameTooltip_Hide(); end);
+						
+						spellBtn:SetScript("OnDragStart", function(self)
+							if InCombatLockdown() then return; end
+							C_Spell.PickupSpell(self.spellID);
+							container:Hide();
+						end)
+						
+						frame.spellFlyoutButtons[i] = spellBtn;
+					end
+					
+					spellBtn.spellID = spellID;
+					
+					local spellInfo = C_Spell.GetSpellInfo(spellID);
+					if spellInfo then
+						spellBtn.icon:SetTexture(spellInfo.iconID);
+					else
+						spellBtn.icon:SetTexture(GetSpellTexture(spellID));
+					end
+					
+					local colIndex = (i - 1) % maxPerRow;
+					local rowIndex = math.floor((i - 1) / maxPerRow);
+					
+					local xOffset = inset + (colIndex * (btnSize + padding));
+					local yOffset = -(inset + (rowIndex * (btnSize + padding)));
+					
+					spellBtn:ClearAllPoints();
+					spellBtn:SetPoint("TOPLEFT", container, "TOPLEFT", xOffset, yOffset);
+					spellBtn:Show();
+				end
+				
+				for i = numFlyoutSpells + 1, #frame.spellFlyoutButtons do
+					if frame.spellFlyoutButtons[i] then
+						frame.spellFlyoutButtons[i]:Hide();
+					end
+				end
+			else
+				frame.spellFlyoutTrigger:Hide();
+				frame.spellFlyoutContainer:Hide();
+			end
+		end
+	end)
+end
+
+EventUtil.ContinueOnAddOnLoaded("Blizzard_ProfessionsBook", function()
+	if not IsModuleEnabled() then return; end
+	
+	ProfessionsBookPage1:Hide();
+	ProfessionsBookPage2:Hide();
+
+	local newPageLeft = ProfessionsBookFrame:CreateTexture(nil, "BACKGROUND");
+	newPageLeft:SetPoint("TOPLEFT", ProfessionsBookFrame, "TOPLEFT", 0, -25);
+	newPageLeft:SetPoint("BOTTOMRIGHT", ProfessionsBookFrame, "BOTTOMRIGHT", 0, 0);
+	newPageLeft:SetTexture("Interface\\AddOns\\Artificer\\Textures\\ProfessionsBookBackground2.png");
+	
+	local ribbon = ProfessionsBookFrame:CreateTexture(nil, "BORDER");
+	ribbon:SetTexture("Interface\\AddOns\\Artificer\\Textures\\ProfessionsBookRibbon.png");
+	ribbon:SetPoint("TOPLEFT", ProfessionsBookFrame, "TOPLEFT", -10, -15);
+	ribbon:SetSize(102*.6, 557*.6);
+	--ribbon:SetVertexColor(.4741, .7498, .2502);
+	ribbon:SetTexCoord(1, 0, 0, 1);
+
+	SecondaryProfession1:SetPoint("TOPLEFT", PrimaryProfession2, "BOTTOMLEFT", 0, -20);
+	SecondaryProfession2:SetPoint("TOPLEFT", SecondaryProfession1, "BOTTOMLEFT", 0, -5);
+	SecondaryProfession3:SetPoint("TOPLEFT", SecondaryProfession2, "BOTTOMLEFT", 0, -5);
+
+	local framesToUpgrade = {
+		"PrimaryProfession1", "PrimaryProfession2",
+		"SecondaryProfession1", "SecondaryProfession2", "SecondaryProfession3"
+	};
+	
+	for _, name in ipairs(framesToUpgrade) do
+		local frame = _G[name];
+		if frame then
+			UpgradeProfessionFrame(frame);
+		end
+	end
+
+	ApplyProfessionHook();
+end)
+
+-- open the frame thingy when selecting an enchant
+local baitListenerFrame = CreateFrame("Frame");
+baitListenerFrame:RegisterEvent("ENCHANT_SPELL_SELECTED");
+baitListenerFrame:SetScript("OnEvent", function(self, event, ...)
+	if event == "ENCHANT_SPELL_SELECTED" then
+		if not IsModuleEnabled() or not GetProfDB().autoOpenBook then return; end
+		
+		local matchedSlots = {};
+
+		for slotID = 20, 28 do
+			local itemLocation = ItemLocation:CreateFromEquipmentSlot(slotID);
+			
+			if itemLocation:IsValid() then
+				if C_Item.DoesItemMatchTargetEnchantingSpell(itemLocation) then
+					table.insert(matchedSlots, slotID);
+				end
+			end
+		end
+
+		--[[
+		DevTools_Dump({
+				EventFired = event,
+				MatchedProfessionSlots = matchedSlots,
+				TotalMatches = #matchedSlots
+			}, "Profession Gear Enchant Check");
+		]]
+
+		if #matchedSlots > 0 then
+			if not ProfessionsBookFrame or not ProfessionsBookFrame:IsShown() then
+				ToggleProfessionsBook();
+			end
+		end
+	end
+end)
+
+
+
+local ProfessionTimerFrame = CreateFrame("StatusBar", "ProfessionEnchantTimer", UIParent);
+ProfessionTimerFrame:SetSize(200, 20);
+ProfessionTimerFrame:SetPoint("CENTER", 0, -150);
+ProfessionTimerFrame:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar"); -- i'll probably change or add options for this later
+ProfessionTimerFrame:SetStatusBarColor(0.2, 0.8, 0.2);
+ProfessionTimerFrame:Hide()
+
+local bg = ProfessionTimerFrame:CreateTexture(nil, "BACKGROUND");
+bg:SetAllPoints();
+bg:SetColorTexture(0, 0, 0, 0.6);
+
+local border = CreateFrame("Frame", nil, ProfessionTimerFrame, "BackdropTemplate");
+border:SetPoint("TOPLEFT", -2, 2);
+border:SetPoint("BOTTOMRIGHT", 2, -2);
+border:SetBackdrop({
+	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
+	edgeSize = 12,
+});
+
+local text = ProfessionTimerFrame:CreateFontString(nil, "OVERLAY", "GameFontHighlight");
+text:SetPoint("CENTER");
+ProfessionTimerFrame.Text = text;
+
+local activeEnchantEndTime = 0;
+local activeEnchantMaxDuration = 1;
+
+ProfessionTimerFrame:SetScript("OnUpdate", function(self, elapsed)
+	local remaining = activeEnchantEndTime - GetTime();
+	if remaining <= 0 then
+		self:Hide();
+	else
+		self:SetValue(remaining);
+		local mins = math.floor(remaining / 60);
+		local secs = math.floor(remaining % 60);
+		self.Text:SetText(string.format("[PH] Profession Buff: %02d:%02d", mins, secs)); -- change this to be grab the enchant name
+	end
+end)
+
+local function GetTempEnchantDurationFromSlot(slotID)
+	local tooltipData = C_TooltipInfo.GetInventoryItem("player", slotID);
+	if not tooltipData or not tooltipData.lines then return nil; end
+
+	for _, line in ipairs(tooltipData.lines) do
+		if line.leftText then
+			local mins = string.match(line.leftText, "(%d+) min");
+			if mins then return tonumber(mins) * 60; end
+
+			local secs = string.match(line.leftText, "(%d+) sec");
+			if secs then return tonumber(secs); end
+		end
+	end
+	return nil;
+end
+
+local timerListener = CreateFrame("Frame");
+timerListener:RegisterEvent("ENCHANT_SPELL_COMPLETED");
+timerListener:RegisterEvent("PLAYER_ENTERING_WORLD");
+
+timerListener:SetScript("OnEvent", function(self, event, ...)
+	if not IsModuleEnabled() or not GetProfDB().showTimer then return; end
+	
+	if event == "ENCHANT_SPELL_COMPLETED" then
+		local successful, enchantedItem = ...;
+		
+		if successful and enchantedItem and enchantedItem:IsEquipmentSlot() then
+			local slotID = enchantedItem:GetEquipmentSlot();
+
+			if slotID >= 20 and slotID <= 28 then -- profession slots
+				C_Timer.After(0.5, function()
+					local durationInSeconds = GetTempEnchantDurationFromSlot(slotID);
+					if durationInSeconds then
+						activeEnchantMaxDuration = durationInSeconds;
+						activeEnchantEndTime = GetTime() + durationInSeconds;
+
+						ProfessionTimerFrame:SetMinMaxValues(0, activeEnchantMaxDuration);
+						ProfessionTimerFrame:Show();
+					end
+				end);
+			end
+		end
+		
+	elseif event == "PLAYER_ENTERING_WORLD" then -- this is a bit imperfect, but idk if there's a better way
+		for slotID = 20, 28 do
+			local durationInSeconds = GetTempEnchantDurationFromSlot(slotID);
+			if durationInSeconds then
+				activeEnchantMaxDuration = durationInSeconds;
+				activeEnchantEndTime = GetTime() + durationInSeconds;
+
+				ProfessionTimerFrame:SetMinMaxValues(0, activeEnchantMaxDuration);
+				ProfessionTimerFrame:Show();
+				break; -- for now, displaying just 1 timer, but will need to add more because you can have like 3 buffs potentially
+			end
+		end
+	end
+end)
+
+local combatStateListener = CreateFrame("Frame");
+combatStateListener:RegisterEvent("PLAYER_REGEN_DISABLED");
+combatStateListener:RegisterEvent("PLAYER_REGEN_ENABLED");
+
+combatStateListener:SetScript("OnEvent", function(self, event)
+	if ProfessionsBookFrame and ProfessionsBookFrame:IsShown() then
+		for i = 1, 2 do
+			local primary = _G["PrimaryProfession"..i];
+			local secondary = _G["SecondaryProfession"..i];
+			if primary and primary.spellFlyoutContainer then primary.spellFlyoutContainer:Hide(); end
+			if secondary and secondary.spellFlyoutContainer then secondary.spellFlyoutContainer:Hide(); end
+		end
+		
+		ProfessionsBookFrame_Update();
+	end
+end)
+
+function Artificer:OpenProfessionsBookAdvancedSettings()
+	if not self.ProfBookAdvancedFrame then
+		local f = CreateFrame("Frame", "ArtificerProfBookAdvancedFrame", Artificer.SettingsFrame, "DialogBorderTranslucentTemplate");
+		f:ClearAllPoints();
+		f:SetSize(300, 240);
+		f:SetPoint("LEFT", Artificer.SettingsFrame, "RIGHT", 45, 0);
+		f:EnableMouse(true);
+		f:Hide();
+
+		tinsert(UISpecialFrames, "ArtificerProfBookAdvancedFrame");
+
+		f:SetScript("OnHide", function() PlaySound(840); end)
+		f:SetScript("OnShow", function() PlaySound(839); end)
+
+		local closeButton = CreateFrame("Button", nil, f, "UIPanelCloseButtonNoScripts");
+		closeButton:SetPoint("TOPRIGHT", 0, 0);
+		closeButton:SetScript("OnClick", function() f:Hide() end);
+
+		local titleBG = CreateFrame("Frame", nil, f, "DialogBorderTranslucentTemplate");
+		titleBG:ClearAllPoints();
+		titleBG:SetSize(160, 40);
+		titleBG:SetPoint("BOTTOM", f, "TOP", 0, -15);
+
+		local titleText = titleBG:CreateFontString(nil, "OVERLAY", "GameFontNormal");
+		titleText:SetPoint("CENTER");
+		titleText:SetText(L["Widget_ProfessionsBook"]);
+		titleBG:SetWidth(titleText:GetWidth() * 1.2);
+
+		local gearCheck = CreateFrame("CheckButton", nil, f, "UICheckButtonTemplate");
+		gearCheck:SetPoint("TOPLEFT", f, "TOPLEFT", 20, -35);
+		gearCheck:SetSize(24, 24);
+		local gearLabel = f:CreateFontString(nil, "OVERLAY", "GameFontNormal");
+		gearLabel:SetPoint("LEFT", gearCheck, "RIGHT", 4, 0);
+		gearLabel:SetText(L["ProfBook_ShowGear"]);
+		gearCheck:SetScript("OnClick", function(self)
+			if Artificer_DB then
+				if not Artificer_DB.ProfessionsBook then Artificer_DB.ProfessionsBook = {}; end
+				Artificer_DB.ProfessionsBook.showGearSlots = self:GetChecked();
+			end
+			if ProfessionsBookFrame and ProfessionsBookFrame:IsShown() then ProfessionsBookFrame_Update(); end
+		end)
+
+		local autoCheck = CreateFrame("CheckButton", nil, f, "UICheckButtonTemplate");
+		autoCheck:SetPoint("TOPLEFT", gearCheck, "BOTTOMLEFT", 0, -10);
+		autoCheck:SetSize(24, 24);
+		local autoLabel = f:CreateFontString(nil, "OVERLAY", "GameFontNormal");
+		autoLabel:SetPoint("LEFT", autoCheck, "RIGHT", 4, 0);
+		autoLabel:SetText(L["ProfBook_AutoOpen"]);
+		autoCheck:SetScript("OnClick", function(self)
+			if Artificer_DB then
+				if not Artificer_DB.ProfessionsBook then Artificer_DB.ProfessionsBook = {}; end
+				Artificer_DB.ProfessionsBook.autoOpenBook = self:GetChecked();
+			end
+		end)
+
+		local timerCheck = CreateFrame("CheckButton", nil, f, "UICheckButtonTemplate");
+		timerCheck:SetPoint("TOPLEFT", autoCheck, "BOTTOMLEFT", 0, -10);
+		timerCheck:SetSize(24, 24);
+		local timerLabel = f:CreateFontString(nil, "OVERLAY", "GameFontNormal");
+		timerLabel:SetPoint("LEFT", timerCheck, "RIGHT", 4, 0);
+		timerLabel:SetText(L["ProfBook_ShowTimer"]);
+		timerCheck:SetScript("OnClick", function(self)
+			if Artificer_DB then
+				if not Artificer_DB.ProfessionsBook then Artificer_DB.ProfessionsBook = {}; end
+				Artificer_DB.ProfessionsBook.showTimer = self:GetChecked();
+			end
+			if not self:GetChecked() and ProfessionEnchantTimer then ProfessionEnchantTimer:Hide(); end
+		end)
+
+		local dropButton = CreateFrame("DropdownButton", nil, f, "WowStyle1DropdownTemplate");
+		dropButton:SetPoint("TOPLEFT", timerCheck, "BOTTOMLEFT", 6, -30);
+		dropButton:SetWidth(160);
+
+		local styleLabel = f:CreateFontString(nil, "OVERLAY", "GameFontNormal");
+		styleLabel:SetPoint("BOTTOMLEFT", dropButton, "TOPLEFT", 0, 10);
+		styleLabel:SetText(L["FNP_IconStyle"]);
+
+		local STYLE_OPTIONS = {
+			{ text = L["ProfBook_StyleModern"], value = "icon" },
+			{ text = L["ProfBook_StyleAtlas"], value = "secondaryicon" },
+			{ text = L["ProfBook_StyleClassic"], value = "oldicon" },
+			{ text = L["ProfBook_StyleProfBook"], value = "professionbook" },
+			{ text = L["ProfBook_StyleSpell"], value = "journal" },
+		};
+
+		local function GetStyleText(val)
+			for _, opt in ipairs(STYLE_OPTIONS) do
+				if opt.value == val then
+					return opt.text;
+				end
+			end
+			return STYLE_OPTIONS[1].text;
+		end
+
+		local function UpdateDropButtonText()
+			local currentStyle = GetProfDB().iconStyle or "icon";
+			dropButton.Text:SetText(GetStyleText(currentStyle));
+		end
+
+		dropButton:SetupMenu(function(dropdown, rootDescription)
+			rootDescription:SetTag("ARTIFICER_PROFBOOK_ICONSTYLE");
+			
+			for _, opt in ipairs(STYLE_OPTIONS) do
+				rootDescription:CreateRadio(opt.text,
+					function()
+						return GetProfDB().iconStyle == opt.value;
+					end,
+					function()
+						if Artificer_DB then
+							if not Artificer_DB.ProfessionsBook then Artificer_DB.ProfessionsBook = {}; end
+							Artificer_DB.ProfessionsBook.iconStyle = opt.value;
+						end
+						UpdateDropButtonText();
+						if ProfessionsBookFrame and ProfessionsBookFrame:IsShown() then
+							ProfessionsBookFrame_Update();
+						end
+					end
+				)
+			end
+		end)
+		
+		UpdateDropButtonText();
+
+		f:HookScript("OnShow", function()
+			local db = GetProfDB();
+			gearCheck:SetChecked(db.showGearSlots);
+			autoCheck:SetChecked(db.autoOpenBook);
+			timerCheck:SetChecked(db.showTimer);
+			UpdateDropButtonText();
+		end)
+
+		self.ProfBookAdvancedFrame = f;
+	end
+
+	if self.ProfBookAdvancedFrame:IsVisible() then
+		self.ProfBookAdvancedFrame:Hide();
+	else
+		Artificer:CloseAllAdvancedFrames();
+		self.ProfBookAdvancedFrame:Show();
+	end
+end
