@@ -954,10 +954,11 @@ end)
 -- open the frame thingy when selecting an enchant
 local baitListenerFrame = CreateFrame("Frame");
 baitListenerFrame:RegisterEvent("ENCHANT_SPELL_SELECTED");
+baitListenerFrame:RegisterEvent("ENCHANT_SPELL_COMPLETED");
 baitListenerFrame:SetScript("OnEvent", function(self, event, ...)
+	if not IsModuleEnabled() or not GetProfDB().autoOpenBook then return; end
+
 	if event == "ENCHANT_SPELL_SELECTED" then
-		if not IsModuleEnabled() or not GetProfDB().autoOpenBook then return; end
-		
 		local matchedSlots = {};
 
 		for slotID = 20, 28 do
@@ -983,13 +984,18 @@ baitListenerFrame:SetScript("OnEvent", function(self, event, ...)
 				ToggleProfessionsBook();
 			end
 		end
+		
+	elseif event == "ENCHANT_SPELL_COMPLETED" then
+		if ProfessionsBookFrame and ProfessionsBookFrame:IsShown() then
+			HideUIPanel(ProfessionsBookFrame);
+		end
 	end
 end)
 
 
 
 local TimerContainer = CreateFrame("Frame", "ArtificerProfessionTimerContainer", UIParent);
-TimerContainer:SetSize(200, 20);
+TimerContainer:SetSize(224, 20);
 TimerContainer:SetPoint("CENTER", 0, -150);
 TimerContainer:SetMovable(true);
 TimerContainer:RegisterForDrag("LeftButton");
@@ -1028,13 +1034,13 @@ local function LayoutTimers()
 	table.sort(sortedSlots);
 
 	local height = math.max(20, #sortedSlots * 40);
-	TimerContainer:SetSize(200, height);
+	TimerContainer:SetSize(224, height);
 
 	for i, slotID in ipairs(sortedSlots) do
 		local bar = activeTimers[slotID];
 		bar:ClearAllPoints();
 		if i == 1 then
-			bar:SetPoint("TOPLEFT", TimerContainer, "TOPLEFT", 0, -15);
+			bar:SetPoint("TOPLEFT", TimerContainer, "TOPLEFT", 24, -15);
 		else
 			local prevBar = activeTimers[sortedSlots[i-1]];
 			bar:SetPoint("TOPLEFT", prevBar, "BOTTOMLEFT", 0, -20);
@@ -1073,6 +1079,20 @@ local function GetOrCreateTimerBar(slotID)
 		border:SetPoint("TOPLEFT", -2, 2);
 		border:SetPoint("BOTTOMRIGHT", 2, -2);
 		border:SetBackdrop({
+			edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
+			edgeSize = 12,
+		});
+
+		local icon = bar:CreateTexture(nil, "ARTWORK");
+		icon:SetSize(20, 20);
+		icon:SetPoint("RIGHT", bar, "LEFT", -4, 0);
+		icon:SetTexCoord(0.08, 0.92, 0.08, 0.92);
+		bar.Icon = icon;
+
+		local iconBorder = CreateFrame("Frame", nil, bar, "BackdropTemplate");
+		iconBorder:SetPoint("TOPLEFT", icon, "TOPLEFT", -2, 2);
+		iconBorder:SetPoint("BOTTOMRIGHT", icon, "BOTTOMRIGHT", 2, -2);
+		iconBorder:SetBackdrop({
 			edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
 			edgeSize = 12,
 		});
@@ -1118,7 +1138,12 @@ TimerContainer:SetScript("OnUpdate", function(self, elapsed)
 	for slotID, bar in pairs(activeTimers) do
 		local remaining = bar.endTime - currentTime;
 		if remaining <= 0 then
+			local currentGUID = bar.itemGUID;
 			ReleaseTimerBar(slotID);
+			
+			if Artificer_DB and Artificer_DB.EnchantTimers and currentGUID then
+				Artificer_DB.EnchantTimers[currentGUID] = nil;
+			end
 		else
 			bar:SetValue(remaining);
 			
@@ -1215,13 +1240,117 @@ end
 local timerListener = CreateFrame("Frame");
 timerListener:RegisterEvent("ENCHANT_SPELL_COMPLETED");
 timerListener:RegisterEvent("PLAYER_ENTERING_WORLD");
+timerListener:RegisterEvent("BAG_UPDATE_DELAYED");
+timerListener:RegisterEvent("BAG_UPDATE_COOLDOWN");
 timerListener:RegisterEvent("ADDON_LOADED");
+
+local function UpdateTimerBar(slotID, isNewEnchant)
+	local itemLocation = ItemLocation:CreateFromEquipmentSlot(slotID);
+	if not itemLocation:IsValid() then
+		ReleaseTimerBar(slotID);
+		return false;
+	end
+	
+	local itemGUID = C_Item.GetItemGUID(itemLocation);
+	if not itemGUID then
+		ReleaseTimerBar(slotID);
+		return false;
+	end
+
+	local remainingTime, name = GetTempEnchantInfoFromSlot(slotID);
+	local currentOSTime = time();
+	
+	local db = Artificer_DB and Artificer_DB.EnchantTimers;
+	
+	if db and db[slotID] ~= nil then
+		db[slotID] = nil;
+	end
+
+	if db and db[itemGUID] and db[itemGUID].expiration and db[itemGUID].expiration <= currentOSTime then
+		db[itemGUID] = nil;
+	end
+
+	if not remainingTime and db and db[itemGUID] then
+		local expectedRemaining = db[itemGUID].expiration - currentOSTime;
+		if expectedRemaining > 0 then
+			remainingTime = expectedRemaining;
+			name = db[itemGUID].name;
+		end
+	end
+
+	if remainingTime and name then
+		local maxDuration = remainingTime;
+
+		if db then
+			if isNewEnchant or not db[itemGUID] or db[itemGUID].name ~= name then
+				db[itemGUID] = {
+					maxDuration = remainingTime,
+					name = name,
+					expiration = currentOSTime + remainingTime
+				};
+			else
+				maxDuration = db[itemGUID].maxDuration;
+				
+				local savedExpiration = db[itemGUID].expiration;
+				if savedExpiration then
+					local expectedRemaining = savedExpiration - currentOSTime;
+					if math.abs(expectedRemaining - remainingTime) > 60 then
+						db[itemGUID].expiration = currentOSTime + remainingTime;
+						
+						if remainingTime > db[itemGUID].maxDuration then
+							db[itemGUID].maxDuration = remainingTime;
+							maxDuration = remainingTime;
+						end
+					else
+						remainingTime = expectedRemaining;
+					end
+				else
+					db[itemGUID].expiration = currentOSTime + remainingTime;
+				end
+			end
+		end
+
+		local bar = GetOrCreateTimerBar(slotID);
+		bar.itemGUID = itemGUID;
+		local exactTime = GetTime();
+		if bar.endTime and bar.enchantName == name then
+			local drift = math.abs((bar.endTime - exactTime) - remainingTime);
+			if drift > 2 then
+				bar.endTime = exactTime + remainingTime;
+			end
+		else
+			bar.endTime = exactTime + remainingTime;
+		end
+
+		bar.enchantName = name;
+		bar.NameText:SetText(name);
+		bar.Icon:SetTexture(GetInventoryItemTexture("player", slotID));
+		bar:SetMinMaxValues(0, maxDuration);
+		return true;
+	else
+		if db and db[itemGUID] then
+			db[itemGUID] = nil;
+		end
+		ReleaseTimerBar(slotID);
+		return false;
+	end
+end
 
 timerListener:SetScript("OnEvent", function(self, event, ...)
 	if event == "ADDON_LOADED" then
 		local loadedAddon = ...;
 		if loadedAddon == addonName then
-			if Artificer_DB and Artificer_DB.FramePositions and Artificer_DB.FramePositions["ProfessionTimerContainer"] then
+			if not Artificer_DB then return; end
+			Artificer_DB.EnchantTimers = Artificer_DB.EnchantTimers or {};
+			
+			local currentOSTime = time();
+			for key, data in pairs(Artificer_DB.EnchantTimers) do
+				if type(data) == "table" and data.expiration and data.expiration <= currentOSTime then
+					Artificer_DB.EnchantTimers[key] = nil;
+				end
+			end
+			
+			if Artificer_DB.FramePositions and Artificer_DB.FramePositions["ProfessionTimerContainer"] then
 				local pos = Artificer_DB.FramePositions["ProfessionTimerContainer"];
 				TimerContainer:ClearAllPoints();
 				TimerContainer:SetPoint(pos.point, UIParent, pos.relativePoint, pos.x, pos.y);
@@ -1242,31 +1371,19 @@ timerListener:SetScript("OnEvent", function(self, event, ...)
 		if successful and enchantedItem and enchantedItem:IsEquipmentSlot() then
 			local slotID = enchantedItem:GetEquipmentSlot();
 			if slotID >= 20 and slotID <= 28 then
-				C_Timer.After(0.5, function()
-					local duration, name = GetTempEnchantInfoFromSlot(slotID);
-					if duration and name then
-						local bar = GetOrCreateTimerBar(slotID);
-						bar.endTime = GetTime() + duration;
-						bar.enchantName = name;
-						bar.NameText:SetText(name);
-						bar:SetMinMaxValues(0, duration);
-						LayoutTimers();
-					end
-				end);
+				if UpdateTimerBar(slotID, true) then
+					LayoutTimers();
+				end
 			end
 		end
+	elseif event == "BAG_UPDATE_DELAYED" or event == "BAG_UPDATE_COOLDOWN" then
+		for slotID = 20, 28 do
+			UpdateTimerBar(slotID, false);
+		end
+		LayoutTimers();
 	elseif event == "PLAYER_ENTERING_WORLD" then
 		for slotID = 20, 28 do
-			local duration, name = GetTempEnchantInfoFromSlot(slotID);
-			if duration and name then
-				local bar = GetOrCreateTimerBar(slotID);
-				bar.endTime = GetTime() + duration;
-				bar.enchantName = name;
-				bar.NameText:SetText(name);
-				bar:SetMinMaxValues(0, duration);
-			else
-				ReleaseTimerBar(slotID);
-			end
+			UpdateTimerBar(slotID, false);
 		end
 		LayoutTimers();
 	end
