@@ -1,5 +1,15 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.2.5
+
+Added a Professions Book overhaul feature:
+ - Completely restyled the Professions Book appearance to be akin to modern interface frames
+ - Added Enchant Timers for things like fishing bait
+ - Temp Enchant items such as fishing bait will automatically open the Professions Book frame
+ - Added profession item slots accessible in place of where the spell icons were
+ - The profession icon is now a clickable button that opens the journal
+ - A variety of profession spells have been added to associated profession flyout menus which can be dragged to action buttons
+
 # 0.2.4
 
 12.0.7 toc update
