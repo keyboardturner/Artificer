@@ -319,6 +319,7 @@ if LOCALE == "enUS" then
 	L["ProfBook_StyleClassic"] = "Classic"
 	L["ProfBook_StyleProfBook"] = "Profession Book"
 	L["ProfBook_StyleSpell"] = "Journal Spell"
+	L["ProfBook_UnspentKnowledgeTooltipFormat"] = "%s Points Available"
 
 	-- Professions - official translations
 	L["ALCHEMY"] = "Alchemy" --CHARACTER_PROFESSION_ALCHEMY
@@ -683,6 +684,7 @@ if LOCALE == "esMX" then
 	L["ProfBook_StyleClassic"] = "Clásico"
 	L["ProfBook_StyleProfBook"] = "Libro de Profesiones"
 	L["ProfBook_StyleSpell"] = "Hechizo del diario"
+	L["ProfBook_UnspentKnowledgeTooltipFormat"] = "%s puntos disponibles"
 
 	-- Professions - official translations
 	L["ALCHEMY"] = "Alquimia"
@@ -1046,6 +1048,7 @@ if LOCALE == "esES" then
 	L["ProfBook_StyleClassic"] = "Clásico"
 	L["ProfBook_StyleProfBook"] = "Libro de Profesiones"
 	L["ProfBook_StyleSpell"] = "Hechizo del diario"
+	L["ProfBook_UnspentKnowledgeTooltipFormat"] = "%s puntos disponibles"
 
 	-- Professions - official translations
 	L["ALCHEMY"] = "Alquimia"
@@ -1407,6 +1410,7 @@ if LOCALE == "deDE" then
 	L["ProfBook_StyleClassic"] = "Klassisch"
 	L["ProfBook_StyleProfBook"] = "Berufebuch"
 	L["ProfBook_StyleSpell"] = "Zauberbuchzauber"
+	L["ProfBook_UnspentKnowledgeTooltipFormat"] = "%s Punkte verfügbar"
 
 	-- Professions - official translations
 	L["ALCHEMY"] = "Alchemie"
@@ -1769,6 +1773,7 @@ if LOCALE == "frFR" then
 	L["ProfBook_StyleClassic"] = "Classique"
 	L["ProfBook_StyleProfBook"] = "Livre des métiers"
 	L["ProfBook_StyleSpell"] = "Sort du journal"
+	L["ProfBook_UnspentKnowledgeTooltipFormat"] = "%s points disponibles"
 
 	-- Professions - official translations
 	L["ALCHEMY"] = "Alchimie"
@@ -2131,6 +2136,7 @@ if LOCALE == "itIT" then
 	L["ProfBook_StyleClassic"] = "Classico"
 	L["ProfBook_StyleProfBook"] = "Libro delle Professioni"
 	L["ProfBook_StyleSpell"] = "Incantesimo del diario"
+	L["ProfBook_UnspentKnowledgeTooltipFormat"] = "%s punti disponibili"
 
 	-- Professions - official translations
 	L["ALCHEMY"] = "Alchimia"
@@ -2493,6 +2499,7 @@ if LOCALE == "ptBR" then
 	L["ProfBook_StyleClassic"] = "Clássico"
 	L["ProfBook_StyleProfBook"] = "Livro de Profissões"
 	L["ProfBook_StyleSpell"] = "Feitiço do diário"
+	L["ProfBook_UnspentKnowledgeTooltipFormat"] = "%s pontos disponíveis"
 
 	-- Professions - official translations
 	L["ALCHEMY"] = "Alquimia"
@@ -2857,6 +2864,7 @@ if LOCALE == "ruRU" then
 	L["ProfBook_StyleClassic"] = "Классический"
 	L["ProfBook_StyleProfBook"] = "Книга профессий"
 	L["ProfBook_StyleSpell"] = "Заклинание журнала"
+	L["ProfBook_UnspentKnowledgeTooltipFormat"] = "Доступно очков: %s"
 
 	-- Professions - official translations
 	L["ALCHEMY"] = "Алхимия"
@@ -3219,6 +3227,7 @@ if LOCALE == "koKR" then
 	L["ProfBook_StyleClassic"] = "클래식"
 	L["ProfBook_StyleProfBook"] = "전문 기술 책"
 	L["ProfBook_StyleSpell"] = "주문 기록"
+	L["ProfBook_UnspentKnowledgeTooltipFormat"] = "사용 가능한 지식 포인트: %s"
 
 	-- Professions - official translations
 	L["ALCHEMY"] = "연금술"
@@ -3581,6 +3590,7 @@ if LOCALE == "zhCN" then
 	L["ProfBook_StyleClassic"] = "经典"
 	L["ProfBook_StyleProfBook"] = "专业技能书"
 	L["ProfBook_StyleSpell"] = "法术日志"
+	L["ProfBook_UnspentKnowledgeTooltipFormat"] = "可用点数：%s"
 
 	-- Professions - official translations
 	L["ALCHEMY"] = "炼金术"
@@ -3943,6 +3953,7 @@ if LOCALE == "zhTW" then
 	L["ProfBook_StyleClassic"] = "經典"
 	L["ProfBook_StyleProfBook"] = "專業技能書"
 	L["ProfBook_StyleSpell"] = "法術日誌"
+	L["ProfBook_UnspentKnowledgeTooltipFormat"] = "可用點數：%s"
 
 	-- Professions - official translations
 	L["ALCHEMY"] = "鍊金術"

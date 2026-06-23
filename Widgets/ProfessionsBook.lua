@@ -31,6 +31,166 @@ local slotIDToName = {
 	[28] = "FishingToolSlot",
 };
 
+
+-- the knowledge points are mostly "borrowed" from Plumber functionality, since i kind of obscure its point badge with my rework
+-- if an API from Plumber gets added or something i'll use that instead, but until then RIP
+local primaryFrameToProfessionIndex = {
+	["PrimaryProfession1"] = 1,
+	["PrimaryProfession2"] = 2,
+};
+
+local GetSpecTabIDsForSkillLine = C_ProfSpecs and C_ProfSpecs.GetSpecTabIDsForSkillLine;
+local GetConfigIDForSkillLine = C_ProfSpecs and C_ProfSpecs.GetConfigIDForSkillLine;
+local GetTabInfo = C_ProfSpecs and C_ProfSpecs.GetTabInfo;
+local GetSpendCurrencyForPath = C_ProfSpecs and C_ProfSpecs.GetSpendCurrencyForPath;
+local GetTreeCurrencyInfo = C_Traits and C_Traits.GetTreeCurrencyInfo;
+local GetNodeInfo = C_Traits and C_Traits.GetNodeInfo;
+local GetTreeNodes = C_Traits and C_Traits.GetTreeNodes;
+local CanPurchaseRank = C_Traits and C_Traits.CanPurchaseRank;
+
+local function GetPrimaryProfessionSkillLine(index)
+	local prof = select(index, GetProfessions());
+	if prof then
+		local subcategoryName = select(11, GetProfessionInfo(prof));
+		if not subcategoryName or subcategoryName == "" then return; end
+
+		if C_TradeSkillUI and C_TradeSkillUI.GetAllProfessionTradeSkillLines and C_TradeSkillUI.GetProfessionInfoBySkillLineID then
+			local skillLines = C_TradeSkillUI.GetAllProfessionTradeSkillLines();
+			for _, skillLine in ipairs(skillLines) do
+				local info = C_TradeSkillUI.GetProfessionInfoBySkillLineID(skillLine);
+				if info and info.professionName == subcategoryName then
+					return skillLine;
+				end
+			end
+		end
+	end
+end
+
+local function GetProfessionUnspentPoints(index)
+	if not (GetConfigIDForSkillLine and GetSpecTabIDsForSkillLine and GetTabInfo and GetSpendCurrencyForPath and GetTreeCurrencyInfo and GetNodeInfo and GetTreeNodes and CanPurchaseRank) then
+		return;
+	end
+
+	local skillLine = GetPrimaryProfessionSkillLine(index);
+	if not skillLine then return; end
+
+	local configID = GetConfigIDForSkillLine(skillLine);
+	if not configID then return; end
+
+	local tabTreeIDs = GetSpecTabIDsForSkillLine(skillLine);
+	if not tabTreeIDs then return; end
+
+	local total = 0;
+	local anyPurchasableNode = false;
+	local tabCurrencyCount = {};
+
+	for _, treeID in ipairs(tabTreeIDs) do
+		local tabInfo = GetTabInfo(treeID);
+		if tabInfo then
+			local tabSpendCurrency = GetSpendCurrencyForPath(tabInfo.rootNodeID);
+			if tabSpendCurrency and tabCurrencyCount[tabSpendCurrency] == nil then
+				local treeCurrencyInfo = GetTreeCurrencyInfo(configID, treeID, false) or {};
+				local currencyCount = 0;
+				for _, treeCurrency in ipairs(treeCurrencyInfo) do
+					if treeCurrency.traitCurrencyID == tabSpendCurrency then
+						currencyCount = treeCurrency.quantity or 0;
+						break;
+					end
+				end
+				tabCurrencyCount[tabSpendCurrency] = currencyCount;
+				total = total + currencyCount;
+			end
+		end
+
+		local nodeIDs = GetTreeNodes(treeID) or {};
+		for _, nodeID in ipairs(nodeIDs) do
+			local nodeInfo = GetNodeInfo(configID, nodeID);
+			if nodeInfo and nodeInfo.isVisible then
+				local activeEntryID = nodeInfo.activeEntry and nodeInfo.activeEntry.entryID or nil;
+				if CanPurchaseRank(configID, nodeID, activeEntryID) then
+					anyPurchasableNode = true;
+				end
+			end
+		end
+	end
+
+	if anyPurchasableNode then
+		return total;
+	end
+end
+
+local UnspentPointsBadgeMixin = {};
+do
+	function UnspentPointsBadgeMixin:SetPoints(points)
+		if points and points > 0 then
+			self.points = points;
+			local displayText = points;
+			if points > 99 then
+				displayText = "99+";
+			end
+			self.Text:SetText(displayText);
+			self:Show();
+		else
+			self.points = 0;
+			self:Hide();
+		end
+	end
+
+	function UnspentPointsBadgeMixin:OnEnter()
+		if not (self.points and self.points > 0) then return; end
+		GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+		GameTooltip:SetText(PROFESSIONS_SPECIALIZATION_UNSPENT_POINTS, 1, 1, 1, 1, true);
+		local format = L["ProfBook_UnspentKnowledgeTooltipFormat"];
+		if format then
+			GameTooltip:AddLine(format:format(self.points), 1, 0.82, 0, true);
+		else
+			GameTooltip:AddLine(self.points, 1, 0.82, 0);
+		end
+		GameTooltip:Show();
+	end
+
+	function UnspentPointsBadgeMixin:OnLeave()
+		GameTooltip:Hide();
+	end
+end
+
+local function CreateUnspentPointsBadge(parent)
+	local badge = CreateFrame("Frame", nil, parent);
+	Mixin(badge, UnspentPointsBadgeMixin);
+	badge:SetSize(22, 22);
+	badge:SetPoint("CENTER", parent, "BOTTOM", 0, 0);
+	badge:SetFrameLevel(parent:GetFrameLevel() + 5);
+
+	badge.Background = badge:CreateTexture(nil, "ARTWORK");
+	badge.Background:SetAllPoints();
+	badge.Background:SetAtlas("transmog-gearSlot-disabled-small");
+
+	badge.Text = badge:CreateFontString(nil, "OVERLAY", "TextStatusBarText");
+	badge.Text:SetJustifyH("CENTER");
+	badge.Text:SetPoint("CENTER", badge, "CENTER", 0, 0);
+
+	badge:SetScript("OnEnter", badge.OnEnter);
+	badge:SetScript("OnLeave", badge.OnLeave);
+	badge:Hide();
+
+	return badge;
+end
+
+local function UpdateUnspentPointsBadge(frame, professionIndex, hasProfession)
+	if not (frame.iconButton and professionIndex) then return; end
+
+	if not frame.unspentPointsBadge then
+		frame.unspentPointsBadge = CreateUnspentPointsBadge(frame.iconButton);
+	end
+
+	local points;
+	if hasProfession then
+		points = GetProfessionUnspentPoints(professionIndex);
+	end
+	frame.unspentPointsBadge:SetPoints(points);
+end
+-- end of peter's plumber points(tm) feature
+
 local professionJournalSpells = {
 	--primary (crafting)
 	[171] = { -- Alchemy
@@ -571,7 +731,12 @@ local function ApplyProfessionHook()
 
 		if frame.isUpgraded then
 			local skillData = nil;
-			
+
+			local primaryIndex = primaryFrameToProfessionIndex[frame:GetName()];
+			if primaryIndex then
+				UpdateUnspentPointsBadge(frame, primaryIndex, index ~= nil);
+			end
+
 			if index then
 				local name, texture, rank, maxRank, numSpells, spellOffset, skillLine = GetProfessionInfo(index);
 				skillData = professionJournalSpells[skillLine];
@@ -1120,6 +1285,15 @@ combatStateListener:SetScript("OnEvent", function(self, event)
 			if secondary and secondary.spellFlyoutContainer then secondary.spellFlyoutContainer:Hide(); end
 		end
 		
+		ProfessionsBookFrame_Update();
+	end
+end)
+
+local unspentPointsListener = CreateFrame("Frame");
+unspentPointsListener:RegisterEvent("TRAIT_TREE_CURRENCY_INFO_UPDATED");
+unspentPointsListener:RegisterEvent("TRAIT_CONFIG_UPDATED");
+unspentPointsListener:SetScript("OnEvent", function(self, event, ...)
+	if ProfessionsBookFrame and ProfessionsBookFrame:IsShown() and IsModuleEnabled() then
 		ProfessionsBookFrame_Update();
 	end
 end)
