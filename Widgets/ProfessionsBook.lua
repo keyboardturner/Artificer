@@ -823,99 +823,287 @@ end)
 
 
 
-local ProfessionTimerFrame = CreateFrame("StatusBar", "ProfessionEnchantTimer", UIParent);
-ProfessionTimerFrame:SetSize(200, 20);
-ProfessionTimerFrame:SetPoint("CENTER", 0, -150);
-ProfessionTimerFrame:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar"); -- i'll probably change or add options for this later
-ProfessionTimerFrame:SetStatusBarColor(0.2, 0.8, 0.2);
-ProfessionTimerFrame:Hide()
+local TimerContainer = CreateFrame("Frame", "ArtificerProfessionTimerContainer", UIParent);
+TimerContainer:SetSize(200, 20);
+TimerContainer:SetPoint("CENTER", 0, -150);
+TimerContainer:SetMovable(true);
+TimerContainer:RegisterForDrag("LeftButton");
 
-local bg = ProfessionTimerFrame:CreateTexture(nil, "BACKGROUND");
-bg:SetAllPoints();
-bg:SetColorTexture(0, 0, 0, 0.6);
+TimerContainer.Overlay = TimerContainer:CreateTexture(nil, "BACKGROUND");
+TimerContainer.Overlay:SetAllPoints();
+TimerContainer.Overlay:SetColorTexture(0, 1, 0, 0.2);
+TimerContainer.Overlay:Hide();
 
-local border = CreateFrame("Frame", nil, ProfessionTimerFrame, "BackdropTemplate");
-border:SetPoint("TOPLEFT", -2, 2);
-border:SetPoint("BOTTOMRIGHT", 2, -2);
-border:SetBackdrop({
-	edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-	edgeSize = 12,
-});
+TimerContainer.DragText = TimerContainer:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall");
+TimerContainer.DragText:SetPoint("CENTER");
+TimerContainer.DragText:SetText(DRAG_MODEL);
+TimerContainer.DragText:SetTextColor(0, 1, 0);
+TimerContainer.DragText:Hide();
 
-local text = ProfessionTimerFrame:CreateFontString(nil, "OVERLAY", "GameFontHighlight");
-text:SetPoint("CENTER");
-ProfessionTimerFrame.Text = text;
+TimerContainer:SetScript("OnDragStart", function(self)
+	self.isDragging = true;
+	self:StartMoving();
+end);
+TimerContainer:SetScript("OnDragStop", function(self)
+	self.isDragging = false;
+	self:StopMovingOrSizing();
+	if Artificer and Artificer.SaveFramePosition then
+		Artificer:SaveFramePosition(self, "ProfessionTimerContainer");
+	end
+end);
 
-local activeEnchantEndTime = 0;
-local activeEnchantMaxDuration = 1;
+local activeTimers = {};
+local timerPool = {};
 
-ProfessionTimerFrame:SetScript("OnUpdate", function(self, elapsed)
-	local remaining = activeEnchantEndTime - GetTime();
-	if remaining <= 0 then
-		self:Hide();
+local function LayoutTimers()
+	local sortedSlots = {};
+	for slotID in pairs(activeTimers) do
+		table.insert(sortedSlots, slotID);
+	end
+	table.sort(sortedSlots);
+
+	local height = math.max(20, #sortedSlots * 40);
+	TimerContainer:SetSize(200, height);
+
+	for i, slotID in ipairs(sortedSlots) do
+		local bar = activeTimers[slotID];
+		bar:ClearAllPoints();
+		if i == 1 then
+			bar:SetPoint("TOPLEFT", TimerContainer, "TOPLEFT", 0, -15);
+		else
+			local prevBar = activeTimers[sortedSlots[i-1]];
+			bar:SetPoint("TOPLEFT", prevBar, "BOTTOMLEFT", 0, -20);
+		end
+		bar:Show();
+	end
+end
+
+local function ReleaseTimerBar(slotID)
+	local bar = activeTimers[slotID];
+	if bar then
+		bar:Hide();
+		activeTimers[slotID] = nil;
+		table.insert(timerPool, bar);
+		LayoutTimers();
+	end
+end
+
+local function GetOrCreateTimerBar(slotID)
+	if activeTimers[slotID] then return activeTimers[slotID]; end
+
+	local bar
+	if #timerPool > 0 then
+		bar = table.remove(timerPool);
 	else
-		self:SetValue(remaining);
-		local mins = math.floor(remaining / 60);
-		local secs = math.floor(remaining % 60);
-		self.Text:SetText(string.format("[PH] Profession Buff: %02d:%02d", mins, secs)); -- change this to be grab the enchant name
+		bar = CreateFrame("StatusBar", nil, TimerContainer);
+		bar:SetSize(200, 20);
+		bar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar"); -- i'll probably change or add options for this later
+		bar:SetStatusBarColor(0.2, 0.8, 0.2);
+
+		local bg = bar:CreateTexture(nil, "BACKGROUND");
+		bg:SetAllPoints();
+		bg:SetColorTexture(0, 0, 0, 0.6);
+
+		local border = CreateFrame("Frame", nil, bar, "BackdropTemplate");
+		border:SetPoint("TOPLEFT", -2, 2);
+		border:SetPoint("BOTTOMRIGHT", 2, -2);
+		border:SetBackdrop({
+			edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
+			edgeSize = 12,
+		});
+
+		local nameText = bar:CreateFontString(nil, "OVERLAY", "GameFontHighlight");
+		nameText:SetPoint("BOTTOMLEFT", bar, "TOPLEFT", 0, 2);
+		nameText:SetJustifyH("LEFT");
+		bar.NameText = nameText;
+		
+		local timeText = bar:CreateFontString(nil, "OVERLAY", "GameFontHighlight");
+		timeText:SetPoint("RIGHT", bar, "RIGHT", -5, 0);
+		timeText:SetJustifyH("RIGHT");
+		bar.TimeText = timeText;
+	end
+	
+	bar.slotID = slotID;
+	activeTimers[slotID] = bar;
+	return bar;
+end
+
+TimerContainer:SetScript("OnUpdate", function(self, elapsed)
+	local advancedOpen = Artificer.ProfBookAdvancedFrame and Artificer.ProfBookAdvancedFrame:IsShown();
+	local shiftDown = IsShiftKeyDown();
+	local shouldEnableMouse = advancedOpen or shiftDown or self.isDragging;
+	
+	if self:IsMouseEnabled() ~= shouldEnableMouse then
+		self:EnableMouse(shouldEnableMouse);
+	end
+	
+	if advancedOpen then
+		self.Overlay:Show();
+		if next(activeTimers) == nil then
+			self.DragText:Show();
+		else
+			self.DragText:Hide();
+		end
+	else
+		self.Overlay:Hide();
+		self.DragText:Hide();
+	end
+
+	local currentTime = GetTime()
+	for slotID, bar in pairs(activeTimers) do
+		local remaining = bar.endTime - currentTime;
+		if remaining <= 0 then
+			ReleaseTimerBar(slotID);
+		else
+			bar:SetValue(remaining);
+			
+			local hours = math.floor(remaining / 3600);
+			local mins = math.floor((remaining % 3600) / 60);
+			local secs = math.floor(remaining % 60);
+			
+			if hours > 0 then
+				bar.TimeText:SetText(string.format("%d:%02d:%02d", hours, mins, secs));
+			else
+				bar.TimeText:SetText(string.format("%02d:%02d", mins, secs));
+			end
+		end
 	end
 end)
 
-local function GetTempEnchantDurationFromSlot(slotID)
+local enchantPatterns = {};
+local patternsLoaded = false;
+
+local function LoadEnchantPatterns()
+	if patternsLoaded then return; end
+	
+	local function AddPattern(globalStr, mult)
+		if type(globalStr) ~= "string" then return; end
+		
+		for _, num in ipairs({1, 8}) do
+			local markerString = "\001";
+			local success, formatted = pcall(string.format, globalStr, markerString, num);
+			if not success then return; end
+			
+			local strPos = string.find(formatted, markerString);
+			local numPos = string.find(formatted, tostring(num));
+			
+			if strPos and numPos then
+				local nameFirst = strPos < numPos;
+				
+				local pattern = string.gsub(formatted, "([%^%$%(%)%%%.%[%]%*%+%-%?])", "%%%1");
+				
+				pattern = string.gsub(pattern, markerString, "(.+)");
+				pattern = string.gsub(pattern, tostring(num), "(%%d+)");
+				
+				table.insert(enchantPatterns, {
+					pattern = "^" .. pattern .. "$",
+					mult = mult,
+					nameFirst = nameFirst
+				});
+			end
+		end
+	end
+
+	AddPattern(ITEM_ENCHANT_TIME_LEFT_DAYS, 86400);
+	AddPattern(ITEM_ENCHANT_TIME_LEFT_HOURS, 3600);
+	AddPattern(ITEM_ENCHANT_TIME_LEFT_MIN, 60);
+	AddPattern(ITEM_ENCHANT_TIME_LEFT_SEC, 1);
+	
+	patternsLoaded = true;
+end
+
+local function GetTempEnchantInfoFromSlot(slotID)
+	LoadEnchantPatterns();
+	
 	local tooltipData = C_TooltipInfo.GetInventoryItem("player", slotID);
-	if not tooltipData or not tooltipData.lines then return nil; end
+	if not tooltipData or not tooltipData.lines then return nil, nil; end
 
 	for _, line in ipairs(tooltipData.lines) do
 		if line.leftText then
-			local mins = string.match(line.leftText, "(%d+) min");
-			if mins then return tonumber(mins) * 60; end
-
-			local secs = string.match(line.leftText, "(%d+) sec");
-			if secs then return tonumber(secs); end
+			local cleanText = string.gsub(line.leftText, "|c%x%x%x%x%x%x%x%x", "");
+			cleanText = string.gsub(cleanText, "|r", "");
+			cleanText = strtrim(cleanText);
+			
+			for _, data in ipairs(enchantPatterns) do
+				local match1, match2 = string.match(cleanText, data.pattern);
+				
+				if match1 and match2 then
+					local name, durationStr;
+					
+					if data.nameFirst then
+						name = match1;
+						durationStr = match2;
+					else
+						name = match2;
+						durationStr = match1;
+					end
+					
+					local duration = tonumber(durationStr) * data.mult;
+					return duration, strtrim(name);
+				end
+			end
 		end
 	end
-	return nil;
+	return nil, nil;
 end
 
 local timerListener = CreateFrame("Frame");
 timerListener:RegisterEvent("ENCHANT_SPELL_COMPLETED");
 timerListener:RegisterEvent("PLAYER_ENTERING_WORLD");
+timerListener:RegisterEvent("ADDON_LOADED");
 
 timerListener:SetScript("OnEvent", function(self, event, ...)
-	if not IsModuleEnabled() or not GetProfDB().showTimer then return; end
+	if event == "ADDON_LOADED" then
+		local loadedAddon = ...;
+		if loadedAddon == addonName then
+			if Artificer_DB and Artificer_DB.FramePositions and Artificer_DB.FramePositions["ProfessionTimerContainer"] then
+				local pos = Artificer_DB.FramePositions["ProfessionTimerContainer"];
+				TimerContainer:ClearAllPoints();
+				TimerContainer:SetPoint(pos.point, UIParent, pos.relativePoint, pos.x, pos.y);
+			end
+		end
+		return;
+	end
+
+	if not IsModuleEnabled() or not GetProfDB().showTimer then
+		for slotID in pairs(activeTimers) do
+			ReleaseTimerBar(slotID);
+		end
+		return;
+	end
 	
 	if event == "ENCHANT_SPELL_COMPLETED" then
 		local successful, enchantedItem = ...;
-		
 		if successful and enchantedItem and enchantedItem:IsEquipmentSlot() then
 			local slotID = enchantedItem:GetEquipmentSlot();
-
-			if slotID >= 20 and slotID <= 28 then -- profession slots
+			if slotID >= 20 and slotID <= 28 then
 				C_Timer.After(0.5, function()
-					local durationInSeconds = GetTempEnchantDurationFromSlot(slotID);
-					if durationInSeconds then
-						activeEnchantMaxDuration = durationInSeconds;
-						activeEnchantEndTime = GetTime() + durationInSeconds;
-
-						ProfessionTimerFrame:SetMinMaxValues(0, activeEnchantMaxDuration);
-						ProfessionTimerFrame:Show();
+					local duration, name = GetTempEnchantInfoFromSlot(slotID);
+					if duration and name then
+						local bar = GetOrCreateTimerBar(slotID);
+						bar.endTime = GetTime() + duration;
+						bar.enchantName = name;
+						bar.NameText:SetText(name);
+						bar:SetMinMaxValues(0, duration);
+						LayoutTimers();
 					end
 				end);
 			end
 		end
-		
-	elseif event == "PLAYER_ENTERING_WORLD" then -- this is a bit imperfect, but idk if there's a better way
+	elseif event == "PLAYER_ENTERING_WORLD" then
 		for slotID = 20, 28 do
-			local durationInSeconds = GetTempEnchantDurationFromSlot(slotID);
-			if durationInSeconds then
-				activeEnchantMaxDuration = durationInSeconds;
-				activeEnchantEndTime = GetTime() + durationInSeconds;
-
-				ProfessionTimerFrame:SetMinMaxValues(0, activeEnchantMaxDuration);
-				ProfessionTimerFrame:Show();
-				break; -- for now, displaying just 1 timer, but will need to add more because you can have like 3 buffs potentially
+			local duration, name = GetTempEnchantInfoFromSlot(slotID);
+			if duration and name then
+				local bar = GetOrCreateTimerBar(slotID);
+				bar.endTime = GetTime() + duration;
+				bar.enchantName = name;
+				bar.NameText:SetText(name);
+				bar:SetMinMaxValues(0, duration);
+			else
+				ReleaseTimerBar(slotID);
 			end
 		end
+		LayoutTimers();
 	end
 end)
 
