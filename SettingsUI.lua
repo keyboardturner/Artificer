@@ -1266,6 +1266,26 @@ function Artificer:BuildSettingsData()
 			end
 		end
 	});
+	
+	-- Widgets - BnetToasts
+	table.insert(allSettingsData, {
+		type = "dropdown",
+		isWidget = true,
+		key = "BnetToasts",
+		isNew = true,
+		label = L["Widget_BnetToasts"],
+		tooltip = (string.format(L["Widget_BnetToastsTT"],L["Widget_BnetToasts_Original"])),
+		options = {
+			{ text = L["None"], value = 1 },
+			{ text = L["Account_On"], value = 2 },
+			{ text = L["Account_Off"], value = 3 },
+		},
+		callback = function(val)
+			if Artificer.Widgets.ApplyBnetToasts then
+				Artificer.Widgets.ApplyBnetToasts();
+			end
+		end
+	});
 
 	-- Header - Account Settings
 	table.insert(allSettingsData, {

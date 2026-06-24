@@ -100,5 +100,6 @@ Widgets/TransmogHistory.lua
 Widgets/UnderlightFixer.lua
 Widgets/LFDBackground.lua
 Widgets/ProfessionsBook.lua
+Widgets/BnetToasts.lua
 
 SettingsUI.lua

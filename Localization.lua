@@ -275,6 +275,11 @@ if LOCALE == "enUS" then
 	L["Widget_DeleteConfirmTT"] = string.format("Button to fill the '%s' text, with subsequent function to delete the item on the second press.", DELETE_ITEM_CONFIRM_STRING)
 	L["Widget_DeleteConfirm_ButtonTT"] = string.format("Click 1: Fill '%s' text.\n\nClick 2: Delete Item.", DELETE_ITEM_CONFIRM_STRING)
 
+	--Widgets - Bnet toasts
+	L["Widget_BnetToasts"] = "Battle.net Toast Window Fix"
+	L["Widget_BnetToastsTT"] = "The current settings option to toggle battle.net toast window appears to be broken, so this should correct it. The original option is called |cffffffff%s|r."
+	L["Widget_BnetToasts_Original"] = SHOW_TOAST_WINDOW_TEXT
+
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "Profession Toasts"
 	L["Widget_ProfessionToastsTT"] = "Displays a fade-in notification upon levelling a profession skill."
@@ -640,6 +645,11 @@ if LOCALE == "esMX" then
 	L["Widget_DeleteConfirmTT"] = string.format("Botón para rellenar el texto '%s', con una función posterior para eliminar el objeto en la segunda pulsación.", DELETE_ITEM_CONFIRM_STRING)
 	L["Widget_DeleteConfirm_ButtonTT"] = string.format("Clic 1: Rellenar el texto '%s'.\n\nClic 2: Eliminar objeto.", DELETE_ITEM_CONFIRM_STRING)
 
+	--Widgets - Bnet toasts
+	L["Widget_BnetToasts"] = "Corrección de la ventana de notificaciones de Battle.net"
+	L["Widget_BnetToastsTT"] = "La opción actual para activar o desactivar la ventana de notificaciones de Battle.net parece estar rota, por lo que esto debería corregirla. La opción original se llama |cffffffff%s|r."
+	L["Widget_BnetToasts_Original"] = SHOW_TOAST_WINDOW_TEXT
+
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "Avisos de profesión"
 	L["Widget_ProfessionToastsTT"] = "Muestra una notificación con aparición gradual al subir el nivel de una habilidad de profesión."
@@ -1004,6 +1014,11 @@ if LOCALE == "esES" then
 	L["Widget_DeleteConfirmTT"] = string.format("Botón para rellenar el texto '%s', con una función posterior para eliminar el objeto en la segunda pulsación.", DELETE_ITEM_CONFIRM_STRING)
 	L["Widget_DeleteConfirm_ButtonTT"] = string.format("Clic 1: Rellenar el texto '%s'.\n\nClic 2: Eliminar objeto.", DELETE_ITEM_CONFIRM_STRING)
 
+	--Widgets - Bnet toasts
+	L["Widget_BnetToasts"] = "Corrección de la ventana de notificaciones de Battle.net"
+	L["Widget_BnetToastsTT"] = "La opción actual para activar o desactivar la ventana de notificaciones de Battle.net parece estar rota, por lo que esto debería corregirla. La opción original se llama |cffffffff%s|r."
+	L["Widget_BnetToasts_Original"] = SHOW_TOAST_WINDOW_TEXT
+
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "Avisos de profesión"
 	L["Widget_ProfessionToastsTT"] = "Muestra una notificación con aparición gradual al subir el nivel de una habilidad de profesión."
@@ -1365,6 +1380,11 @@ if LOCALE == "deDE" then
 	L["Widget_DeleteConfirm"] = "Text zum Löschen von Gegenständen ausfüllen"
 	L["Widget_DeleteConfirmTT"] = string.format("Schaltfläche zum Ausfüllen des Textes '%s', mit anschließender Funktion zum Löschen des Gegenstands beim zweiten Klick.", DELETE_ITEM_CONFIRM_STRING)
 	L["Widget_DeleteConfirm_ButtonTT"] = string.format("Klick 1: Text '%s' ausfüllen.\n\nKlick 2: Gegenstand löschen.", DELETE_ITEM_CONFIRM_STRING)
+
+	--Widgets - Bnet toasts
+	L["Widget_BnetToasts"] = "Battle.net-Benachrichtigungsfenster reparieren"
+	L["Widget_BnetToastsTT"] = "Die aktuelle Einstellungsoption zum Aktivieren oder Deaktivieren des Battle.net-Benachrichtigungsfensters scheint fehlerhaft zu sein. Diese Option sollte das Problem beheben. Die ursprüngliche Option heißt |cffffffff%s|r."
+	L["Widget_BnetToasts_Original"] = SHOW_TOAST_WINDOW_TEXT
 
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "Berufsmeldungen"
@@ -1729,6 +1749,11 @@ if LOCALE == "frFR" then
 	L["Widget_DeleteConfirmTT"] = string.format("Bouton pour remplir le texte '%s', avec une fonction permettant de supprimer l'objet lors du deuxième clic.", DELETE_ITEM_CONFIRM_STRING)
 	L["Widget_DeleteConfirm_ButtonTT"] = string.format("Clic 1 : Remplir le texte '%s'.\n\nClic 2 : Supprimer l'objet.", DELETE_ITEM_CONFIRM_STRING)
 
+	--Widgets - Bnet toasts
+	L["Widget_BnetToasts"] = "Correction de la fenêtre de notifications Battle.net"
+	L["Widget_BnetToastsTT"] = "L'option actuelle permettant d'activer ou de désactiver la fenêtre de notifications Battle.net semble défectueuse. Cette option devrait corriger le problème. L'option d'origine s'appelle |cffffffff%s|r."
+	L["Widget_BnetToasts_Original"] = SHOW_TOAST_WINDOW_TEXT
+
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "Notifications de profession"
 	L["Widget_ProfessionToastsTT"] = "Affiche une notification en fondu lors de l’augmentation du niveau d’une compétence de profession."
@@ -2092,6 +2117,11 @@ if LOCALE == "itIT" then
 	L["Widget_DeleteConfirmTT"] = string.format("Pulsante per compilare il testo '%s', con una funzione successiva per eliminare l'oggetto al secondo clic.", DELETE_ITEM_CONFIRM_STRING)
 	L["Widget_DeleteConfirm_ButtonTT"] = string.format("Clic 1: Compila il testo '%s'.\n\nClic 2: Elimina oggetto.", DELETE_ITEM_CONFIRM_STRING)
 
+	--Widgets - Bnet toasts
+	L["Widget_BnetToasts"] = "Correzione finestra notifiche Battle.net"
+	L["Widget_BnetToastsTT"] = "L'attuale opzione per attivare o disattivare la finestra delle notifiche di Battle.net sembra non funzionare correttamente. Questa opzione dovrebbe correggerla. L'opzione originale si chiama |cffffffff%s|r."
+	L["Widget_BnetToasts_Original"] = SHOW_TOAST_WINDOW_TEXT
+
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "Notifiche professioni"
 	L["Widget_ProfessionToastsTT"] = "Mostra una notifica in dissolvenza quando una abilità di professione aumenta di livello."
@@ -2454,6 +2484,11 @@ if LOCALE == "ptBR" then
 	L["Widget_DeleteConfirm"] = "Preencher texto de exclusão de item"
 	L["Widget_DeleteConfirmTT"] = string.format("Botão para preencher o texto '%s', com função subsequente para excluir o item no segundo clique.", DELETE_ITEM_CONFIRM_STRING)
 	L["Widget_DeleteConfirm_ButtonTT"] = string.format("Clique 1: Preencher o texto '%s'.\n\nClique 2: Excluir item.", DELETE_ITEM_CONFIRM_STRING)
+
+	--Widgets - Bnet toasts
+	L["Widget_BnetToasts"] = "Correção da janela de notificações da Battle.net"
+	L["Widget_BnetToastsTT"] = "A opção atual para ativar ou desativar a janela de notificações da Battle.net parece estar com problema. Esta opção deve corrigir isso. A opção original se chama |cffffffff%s|r."
+	L["Widget_BnetToasts_Original"] = SHOW_TOAST_WINDOW_TEXT
 
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "Notificações de profissão"
@@ -2820,6 +2855,11 @@ if LOCALE == "ruRU" then
 	L["Widget_DeleteConfirmTT"] = string.format("Кнопка для заполнения текста '%s' с последующей функцией удаления предмета при втором нажатии.", DELETE_ITEM_CONFIRM_STRING)
 	L["Widget_DeleteConfirm_ButtonTT"] = string.format("Нажатие 1: Заполнить текст '%s'.\n\nНажатие 2: Удалить предмет.", DELETE_ITEM_CONFIRM_STRING)
 
+	--Widgets - Bnet toasts
+	L["Widget_BnetToasts"] = "Исправление окна уведомлений Battle.net"
+	L["Widget_BnetToastsTT"] = "Текущая настройка для включения или отключения окна уведомлений Battle.net, похоже, работает некорректно. Этот параметр должен исправить проблему. Исходная настройка называется |cffffffff%s|r."
+	L["Widget_BnetToasts_Original"] = SHOW_TOAST_WINDOW_TEXT
+
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "Уведомления профессий"
 	L["Widget_ProfessionToastsTT"] = "Показывает плавно появляющееся уведомление при повышении уровня навыка профессии."
@@ -3182,6 +3222,11 @@ if LOCALE == "koKR" then
 	L["Widget_DeleteConfirm"] = "아이템 삭제 텍스트 채우기"
 	L["Widget_DeleteConfirmTT"] = string.format("'%s' 텍스트를 채우는 버튼이며, 두 번째 클릭 시 아이템을 삭제합니다.", DELETE_ITEM_CONFIRM_STRING)
 	L["Widget_DeleteConfirm_ButtonTT"] = string.format("클릭 1: '%s' 텍스트 채우기.\n\n클릭 2: 아이템 삭제.", DELETE_ITEM_CONFIRM_STRING)
+
+	--Widgets - Bnet toasts
+	L["Widget_BnetToasts"] = "Battle.net 알림 창 수정"
+	L["Widget_BnetToastsTT"] = "현재 Battle.net 알림 창을 켜고 끄는 설정 옵션이 제대로 작동하지 않는 것으로 보입니다. 이 옵션은 해당 문제를 수정합니다. 원래 옵션 이름은 |cffffffff%s|r 입니다."
+	L["Widget_BnetToasts_Original"] = SHOW_TOAST_WINDOW_TEXT
 
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "전문 기술 알림"
@@ -3546,6 +3591,11 @@ if LOCALE == "zhCN" then
 	L["Widget_DeleteConfirmTT"] = string.format("用于填充“%s”文本的按钮，并在第二次点击时删除该物品。", DELETE_ITEM_CONFIRM_STRING)
 	L["Widget_DeleteConfirm_ButtonTT"] = string.format("点击1：填充“%s”文本。\n\n点击2：删除物品。", DELETE_ITEM_CONFIRM_STRING)
 
+	--Widgets - Bnet toasts
+	L["Widget_BnetToasts"] = "Battle.net 提示窗口修复"
+	L["Widget_BnetToastsTT"] = "当前用于切换 Battle.net 提示窗口的设置选项似乎已失效，此选项应能修复该问题。原始选项名称为 |cffffffff%s|r。"
+	L["Widget_BnetToasts_Original"] = SHOW_TOAST_WINDOW_TEXT
+
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "专业技能提示"
 	L["Widget_ProfessionToastsTT"] = "当专业技能等级提升时显示淡入提示通知。"
@@ -3908,6 +3958,11 @@ if LOCALE == "zhTW" then
 	L["Widget_DeleteConfirm"] = "填入物品刪除文字"
 	L["Widget_DeleteConfirmTT"] = string.format("用於填入「%s」文字的按鈕，並在第二次點擊時刪除該物品。", DELETE_ITEM_CONFIRM_STRING)
 	L["Widget_DeleteConfirm_ButtonTT"] = string.format("點擊1：填入「%s」文字。\n\n點擊2：刪除物品。", DELETE_ITEM_CONFIRM_STRING)
+
+	--Widgets - Bnet toasts
+	L["Widget_BnetToasts"] = "Battle.net 提示視窗修正"
+	L["Widget_BnetToastsTT"] = "目前用於切換 Battle.net 提示視窗的設定選項似乎已失效，此選項應可修正該問題。原始選項名稱為 |cffffffff%s|r。"
+	L["Widget_BnetToasts_Original"] = SHOW_TOAST_WINDOW_TEXT
 
 	--Widgets - ProfessionToasts
 	L["Widget_ProfessionToasts"] = "專業技能提示"

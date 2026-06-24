@@ -56,6 +56,7 @@ local Defaults = {
 		AccountIgnoresWindow = true,
 		LFDBackground = true,
 		ProfessionsBook = true,
+		BnetToasts = 1,
 	},
 
 	NameplateTargetPos = {

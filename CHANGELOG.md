@@ -1,5 +1,9 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.2.6
+
+Added option/fix to battle.net toast popups ignoring the blizz settings (usually called "Show Toast Window" in default settings).
+
 # 0.2.5
 
 Added a Professions Book overhaul feature:
