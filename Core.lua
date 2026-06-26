@@ -140,6 +140,18 @@ local Defaults = {
 		showGearSlots = true,
 		autoOpenBook = true,
 		showTimer = true,
+		iconStyle = "icon",
+		hideCustomIcons = false,
+		hideDefaultIcons = true,
+		Colors = {
+			Bg = { r = 0.3, g = 0.15, b = 0.05, a = 0.3, desat = false },
+			Name = { r = 0.427, g = 0.22, b = 0, a = 0.8 },
+			Rank = { r = 0.427, g = 0.22, b = 0, a = 0.8 },
+			Bar = { r = 1, g = 1, b = 1, a = 1, desat = false },
+			BarText = { r = 1, g = 1, b = 1, a = 1 },
+			BookLeft = { r = 1, g = 1, b = 1, a = 1, desat = false },
+			Ribbon = { r = 1, g = 1, b = 1, a = 1, desat = false },
+		},
 	},
 };
 

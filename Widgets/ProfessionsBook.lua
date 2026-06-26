@@ -9,12 +9,15 @@ end
 local function GetProfDB()
 	local db = Artificer_DB and Artificer_DB.ProfessionsBook or (Artificer.Defaults and Artificer.Defaults.ProfessionsBook);
 	if db then
-		if db.iconStyle == nil then
-			db.iconStyle = "icon";
+		if db.iconStyle == nil then db.iconStyle = "icon"; end
+		if db.hideCustomIcons == nil then db.hideCustomIcons = false; end
+		if db.hideDefaultIcons == nil then db.hideDefaultIcons = true; end
+		if db.Colors == nil then
+			db.Colors = CopyTable(Artificer.Defaults.ProfessionsBook.Colors);
 		end
 		return db;
 	end
-	return { showGearSlots = true, autoOpenBook = true, showTimer = true, iconStyle = "icon" };
+	return CopyTable(Artificer.Defaults.ProfessionsBook);
 end
 
 local frameMaxSlots = {
@@ -564,6 +567,11 @@ local function UpgradeProfessionFrame(frame)
 		UpdateArrowTexture(frame.spellFlyoutTrigger);
 	end)
 
+	if frame.UnlearnButton and frame.UnlearnButton.Icon then
+		frame.UnlearnButton.Icon:SetTexture(nil);
+		frame.UnlearnButton.Icon:SetAtlas("transmog-icon-remove");
+	end
+
 	frame.isUpgraded = true;
 end
 
@@ -810,6 +818,40 @@ local function ApplyProfessionHook()
 				end
 			end
 
+			local db = GetProfDB();
+			if frame.icon then
+				frame.icon:SetAlpha(db.hideDefaultIcons and 0 or 1);
+			end
+			
+			if frame.iconButton then
+				frame.iconButton:SetShown(not db.hideCustomIcons);
+			end
+			if frame.customIconBorder then
+				frame.customIconBorder:SetShown(not db.hideCustomIcons);
+			end
+
+			if frame.professionBackplate then
+				local c = db.Colors.Bg;
+				frame.professionBackplate:SetVertexColor(c.r, c.g, c.b, c.a);
+				frame.professionBackplate:SetDesaturated(c.desat);
+			end
+			if frame.professionName then
+				local c = db.Colors.Name;
+				frame.professionName:SetTextColor(c.r, c.g, c.b, c.a);
+			end
+			if frame.rank then
+				local c = db.Colors.Rank;
+				frame.rank:SetTextColor(c.r, c.g, c.b, c.a);
+			end
+			if frame.statusBar then
+				local c = db.Colors.Bar;
+				frame.statusBar:SetStatusBarColor(c.r, c.g, c.b, c.a);
+				if frame.statusBar.rankText then
+					local tc = db.Colors.BarText;
+					frame.statusBar.rankText:SetTextColor(tc.r, tc.g, tc.b, tc.a);
+				end
+			end
+
 			local resolvedJournalID = nil;
 			if skillData then
 				if skillData.journalIDs then
@@ -924,6 +966,7 @@ EventUtil.ContinueOnAddOnLoaded("Blizzard_ProfessionsBook", function()
 	newPageLeft:SetPoint("TOPLEFT", ProfessionsBookFrame, "TOPLEFT", 0, -25);
 	newPageLeft:SetPoint("BOTTOMRIGHT", ProfessionsBookFrame, "BOTTOMRIGHT", 0, 0);
 	newPageLeft:SetTexture("Interface\\AddOns\\Artificer\\Textures\\ProfessionsBookBackground2.png");
+	ProfessionsBookFrame.ArtificerPageLeft = newPageLeft;
 	
 	local ribbon = ProfessionsBookFrame:CreateTexture(nil, "BORDER");
 	ribbon:SetTexture("Interface\\AddOns\\Artificer\\Textures\\ProfessionsBookRibbon.png");
@@ -931,6 +974,7 @@ EventUtil.ContinueOnAddOnLoaded("Blizzard_ProfessionsBook", function()
 	ribbon:SetSize(102*.6, 557*.6);
 	--ribbon:SetVertexColor(.4741, .7498, .2502);
 	ribbon:SetTexCoord(1, 0, 0, 1);
+	ProfessionsBookFrame.ArtificerRibbon = ribbon;
 
 	SecondaryProfession1:SetPoint("TOPLEFT", PrimaryProfession2, "BOTTOMLEFT", 0, -20);
 	SecondaryProfession2:SetPoint("TOPLEFT", SecondaryProfession1, "BOTTOMLEFT", 0, -5);
@@ -949,6 +993,10 @@ EventUtil.ContinueOnAddOnLoaded("Blizzard_ProfessionsBook", function()
 	end
 
 	ApplyProfessionHook();
+	
+	if Artificer.UpdateProfessionGlobalColors then
+		Artificer.UpdateProfessionGlobalColors();
+	end
 end)
 
 -- open the frame thingy when selecting an enchant
@@ -1114,7 +1162,7 @@ local function GetOrCreateTimerBar(slotID)
 end
 
 TimerContainer:SetScript("OnUpdate", function(self, elapsed)
-	local advancedOpen = Artificer.ProfBookAdvancedFrame and Artificer.ProfBookAdvancedFrame:IsShown();
+	local advancedOpen = Artificer.ProfBookAdvancedFrame and Artificer.ProfBookAdvancedFrame:IsVisible();
 	local shiftDown = IsShiftKeyDown();
 	local shouldEnableMouse = advancedOpen or shiftDown or self.isDragging;
 	
@@ -1415,11 +1463,60 @@ unspentPointsListener:SetScript("OnEvent", function(self, event, ...)
 	end
 end)
 
+function Artificer.UpdateProfessionStatusBarColors()
+	local db = GetProfDB()
+	local barColor = db.Colors.Bar
+	
+	if not barColor then return end
+
+	local r, g, b, a, desat = barColor.r, barColor.g, barColor.b, barColor.a, barColor.desat
+
+	local function ColorBar(barName)
+		local bar = _G[barName]
+		if bar then
+			bar:SetStatusBarColor(r, g, b, a)
+			local bg = bar:GetStatusBarTexture()
+			if bg then bg:SetDesaturated(desat) end
+			
+			local left = _G[barName .. "Left"]
+			if left then
+				left:SetVertexColor(r, g, b, a)
+				left:SetDesaturated(desat)
+			end
+			
+			local right = _G[barName .. "Right"]
+			if right then
+				right:SetVertexColor(r, g, b, a)
+				right:SetDesaturated(desat)
+			end
+		end
+	end
+
+	for i = 1, 2 do ColorBar("PrimaryProfession" .. i .. "StatusBar") end
+	for i = 1, 4 do ColorBar("SecondaryProfession" .. i .. "StatusBar") end
+end
+
+function Artificer.UpdateProfessionGlobalColors()
+	local db = GetProfDB()
+	if ProfessionsBookFrame then
+		if ProfessionsBookFrame.ArtificerPageLeft then
+			local c = db.Colors.BookLeft or { r = 1, g = 1, b = 1, a = 1, desat = false }
+			ProfessionsBookFrame.ArtificerPageLeft:SetVertexColor(c.r, c.g, c.b, c.a)
+			ProfessionsBookFrame.ArtificerPageLeft:SetDesaturated(c.desat)
+		end
+		if ProfessionsBookFrame.ArtificerRibbon then
+			local c = db.Colors.Ribbon or { r = 1, g = 1, b = 1, a = 1, desat = false }
+			ProfessionsBookFrame.ArtificerRibbon:SetVertexColor(c.r, c.g, c.b, c.a)
+			ProfessionsBookFrame.ArtificerRibbon:SetDesaturated(c.desat)
+		end
+	end
+end
+
 function Artificer:OpenProfessionsBookAdvancedSettings()
 	if not self.ProfBookAdvancedFrame then
 		local f = CreateFrame("Frame", "ArtificerProfBookAdvancedFrame", Artificer.SettingsFrame, "DialogBorderTranslucentTemplate");
 		f:ClearAllPoints();
-		f:SetSize(300, 240);
+		f:SetSize(350, 520);
 		f:SetPoint("LEFT", Artificer.SettingsFrame, "RIGHT", 45, 0);
 		f:EnableMouse(true);
 		f:Hide();
@@ -1450,10 +1547,8 @@ function Artificer:OpenProfessionsBookAdvancedSettings()
 		gearLabel:SetPoint("LEFT", gearCheck, "RIGHT", 4, 0);
 		gearLabel:SetText(L["ProfBook_ShowGear"]);
 		gearCheck:SetScript("OnClick", function(self)
-			if Artificer_DB then
-				if not Artificer_DB.ProfessionsBook then Artificer_DB.ProfessionsBook = {}; end
-				Artificer_DB.ProfessionsBook.showGearSlots = self:GetChecked();
-			end
+			if not Artificer_DB.ProfessionsBook then Artificer_DB.ProfessionsBook = {}; end
+			Artificer_DB.ProfessionsBook.showGearSlots = self:GetChecked();
 			if ProfessionsBookFrame and ProfessionsBookFrame:IsShown() then ProfessionsBookFrame_Update(); end
 		end)
 
@@ -1464,10 +1559,8 @@ function Artificer:OpenProfessionsBookAdvancedSettings()
 		autoLabel:SetPoint("LEFT", autoCheck, "RIGHT", 4, 0);
 		autoLabel:SetText(L["ProfBook_AutoOpen"]);
 		autoCheck:SetScript("OnClick", function(self)
-			if Artificer_DB then
-				if not Artificer_DB.ProfessionsBook then Artificer_DB.ProfessionsBook = {}; end
-				Artificer_DB.ProfessionsBook.autoOpenBook = self:GetChecked();
-			end
+			if not Artificer_DB.ProfessionsBook then Artificer_DB.ProfessionsBook = {}; end
+			Artificer_DB.ProfessionsBook.autoOpenBook = self:GetChecked();
 		end)
 
 		local timerCheck = CreateFrame("CheckButton", nil, f, "UICheckButtonTemplate");
@@ -1477,10 +1570,8 @@ function Artificer:OpenProfessionsBookAdvancedSettings()
 		timerLabel:SetPoint("LEFT", timerCheck, "RIGHT", 4, 0);
 		timerLabel:SetText(L["ProfBook_ShowTimer"]);
 		timerCheck:SetScript("OnClick", function(self)
-			if Artificer_DB then
-				if not Artificer_DB.ProfessionsBook then Artificer_DB.ProfessionsBook = {}; end
-				Artificer_DB.ProfessionsBook.showTimer = self:GetChecked();
-			end
+			if not Artificer_DB.ProfessionsBook then Artificer_DB.ProfessionsBook = {}; end
+			Artificer_DB.ProfessionsBook.showTimer = self:GetChecked();
 			if not self:GetChecked() and ProfessionEnchantTimer then ProfessionEnchantTimer:Hide(); end
 		end)
 
@@ -1516,17 +1607,15 @@ function Artificer:OpenProfessionsBookAdvancedSettings()
 
 		dropButton:SetupMenu(function(dropdown, rootDescription)
 			rootDescription:SetTag("ARTIFICER_PROFBOOK_ICONSTYLE");
-			
+
 			for _, opt in ipairs(STYLE_OPTIONS) do
 				rootDescription:CreateRadio(opt.text,
 					function()
 						return GetProfDB().iconStyle == opt.value;
 					end,
 					function()
-						if Artificer_DB then
-							if not Artificer_DB.ProfessionsBook then Artificer_DB.ProfessionsBook = {}; end
-							Artificer_DB.ProfessionsBook.iconStyle = opt.value;
-						end
+						if not Artificer_DB.ProfessionsBook then Artificer_DB.ProfessionsBook = {}; end
+						Artificer_DB.ProfessionsBook.iconStyle = opt.value;
 						UpdateDropButtonText();
 						if ProfessionsBookFrame and ProfessionsBookFrame:IsShown() then
 							ProfessionsBookFrame_Update();
@@ -1535,15 +1624,158 @@ function Artificer:OpenProfessionsBookAdvancedSettings()
 				)
 			end
 		end)
-		
+
 		UpdateDropButtonText();
+
+		local customIconCheck = CreateFrame("CheckButton", nil, f, "UICheckButtonTemplate");
+		customIconCheck:SetPoint("TOPLEFT", dropButton, "BOTTOMLEFT", -6, -20);
+		customIconCheck:SetSize(24, 24);
+		local customIconLabel = f:CreateFontString(nil, "OVERLAY", "GameFontNormal");
+		customIconLabel:SetPoint("LEFT", customIconCheck, "RIGHT", 4, 0);
+		customIconLabel:SetText(L["ProfBook_HideCustomIcons"]);
+		customIconCheck:SetScript("OnClick", function(self)
+			if not Artificer_DB.ProfessionsBook then Artificer_DB.ProfessionsBook = {}; end
+			Artificer_DB.ProfessionsBook.hideCustomIcons = self:GetChecked();
+			if ProfessionsBookFrame and ProfessionsBookFrame:IsShown() then ProfessionsBookFrame_Update(); end
+		end)
+
+		local defaultIconCheck = CreateFrame("CheckButton", nil, f, "UICheckButtonTemplate");
+		defaultIconCheck:SetPoint("TOPLEFT", customIconCheck, "BOTTOMLEFT", 0, -10);
+		defaultIconCheck:SetSize(24, 24);
+		local defaultIconLabel = f:CreateFontString(nil, "OVERLAY", "GameFontNormal");
+		defaultIconLabel:SetPoint("LEFT", defaultIconCheck, "RIGHT", 4, 0);
+		defaultIconLabel:SetText(L["ProfBook_HideDefaultIcons"]);
+		defaultIconCheck:SetScript("OnClick", function(self)
+			if not Artificer_DB.ProfessionsBook then Artificer_DB.ProfessionsBook = {}; end
+			Artificer_DB.ProfessionsBook.hideDefaultIcons = self:GetChecked();
+			if ProfessionsBookFrame and ProfessionsBookFrame:IsShown() then ProfessionsBookFrame_Update(); end
+		end)
+
+		local scrollBox = CreateFrame("Frame", nil, f, "WowScrollBoxList");
+		scrollBox:SetPoint("TOPLEFT", defaultIconCheck, "BOTTOMLEFT", -5, -10);
+		scrollBox:SetPoint("BOTTOMRIGHT", f, "BOTTOMRIGHT", -35, 15);
+
+		local scrollBar = CreateFrame("EventFrame", nil, f, "MinimalScrollBar");
+		scrollBar:SetPoint("TOPLEFT", scrollBox, "TOPRIGHT", 5, 0);
+		scrollBar:SetPoint("BOTTOMLEFT", scrollBox, "BOTTOMRIGHT", 5, 0);
+
+		local scrollView = CreateScrollBoxListLinearView();
+		scrollView:SetElementExtent(28);
+		ScrollUtil.InitScrollBoxListWithScrollBar(scrollBox, scrollBar, scrollView);
+
+		scrollView:SetElementInitializer("Frame", function(rowFrame, s)
+			if not rowFrame.isInitialized then
+				rowFrame.swatch = CreateFrame("Button", nil, rowFrame, "ColorSwatchTemplate");
+				rowFrame.swatch:SetPoint("LEFT", rowFrame, "LEFT", 5, 0);
+				rowFrame.swatch:RegisterForClicks("AnyUp");
+
+				rowFrame.cLabel = rowFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal");
+				rowFrame.cLabel:SetPoint("LEFT", rowFrame.swatch, "RIGHT", 10, 0);
+				rowFrame.cLabel:SetWidth(150);
+				rowFrame.cLabel:SetJustifyH("LEFT");
+
+				rowFrame.desatCheck = CreateFrame("CheckButton", nil, rowFrame, "ChatConfigCheckButtonTemplate");
+				rowFrame.desatCheck:SetPoint("LEFT", rowFrame.cLabel, "RIGHT", 10, 0);
+				rowFrame.desatCheck:SetSize(24, 24);
+				rowFrame.desatCheck.Text = rowFrame.desatCheck.Text or rowFrame.desatCheck:CreateFontString(nil, "OVERLAY", "GameFontNormal");
+				rowFrame.desatCheck.Text:SetPoint("LEFT", rowFrame.desatCheck, "RIGHT", 5, 0);
+				rowFrame.desatCheck.Text:SetText(L["Desaturate"]);
+
+				rowFrame.isInitialized = true;
+			end
+
+			rowFrame.cLabel:SetText(s.name);
+			
+			if s.isText then
+				rowFrame.desatCheck:Hide();
+			else
+				rowFrame.desatCheck:Show();
+			end
+
+			local function GetCurrentColor()
+				local db = GetProfDB();
+				return db.Colors[s.key] or { r=1, g=1, b=1, a=1, desat=false };
+			end
+
+			local function ApplyColor(t)
+				if not t then return; end
+				rowFrame.swatch.Color:SetVertexColor(t.r, t.g, t.b, t.a);
+				if not Artificer_DB.ProfessionsBook then Artificer_DB.ProfessionsBook = {}; end
+				if not Artificer_DB.ProfessionsBook.Colors then Artificer_DB.ProfessionsBook.Colors = CopyTable(Artificer.Defaults.ProfessionsBook.Colors); end
+				
+				Artificer_DB.ProfessionsBook.Colors[s.key] = t;
+				if ProfessionsBookFrame and ProfessionsBookFrame:IsShown() then
+					ProfessionsBookFrame_Update();
+					Artificer.UpdateProfessionStatusBarColors();
+					Artificer.UpdateProfessionGlobalColors();
+				end
+			end
+
+			local initColor = GetCurrentColor();
+			rowFrame.swatch.Color:SetVertexColor(initColor.r, initColor.g, initColor.b, initColor.a);
+			rowFrame.desatCheck:SetChecked(initColor.desat);
+
+			rowFrame.desatCheck:SetScript("OnClick", function(self)
+				local current = GetCurrentColor();
+				current.desat = self:GetChecked();
+				ApplyColor(current);
+			end);
+
+			rowFrame.swatch:SetScript("OnClick", function(_, button)
+				if button == "RightButton" then
+					MenuUtil.CreateContextMenu(rowFrame.swatch, function(owner, rootDescription)
+						rootDescription:CreateTitle(L["ColorOptions"]);
+						rootDescription:CreateButton(L["CopyColor"], function() Artificer.ColorClipboard = CopyTable(GetCurrentColor()); end);
+						local pasteBtn = rootDescription:CreateButton(L["PasteColor"], function()
+							if Artificer.ColorClipboard then ApplyColor(CopyTable(Artificer.ColorClipboard)); end
+						end);
+						if not Artificer.ColorClipboard then pasteBtn:SetEnabled(false); end
+						rootDescription:CreateButton(RESET_TO_DEFAULT, function()
+							ApplyColor(CopyTable(Artificer.Defaults.ProfessionsBook.Colors[s.key]));
+						end);
+					end);
+					return;
+				end
+
+				local current = GetCurrentColor();
+				local info = { r = current.r, g = current.g, b = current.b, opacity = current.a, hasOpacity = true };
+
+				info.swatchFunc = function()
+					local r, g, b = ColorPickerFrame:GetColorRGB();
+					local a = ColorPickerFrame:GetColorAlpha();
+					ApplyColor({ r = r, g = g, b = b, a = a, desat = rowFrame.desatCheck:GetChecked() });
+				end;
+				info.cancelFunc = function()
+					local r, g, b, a = ColorPickerFrame:GetPreviousValues();
+					ApplyColor({ r = r, g = g, b = b, a = a, desat = rowFrame.desatCheck:GetChecked() });
+				end;
+				ColorPickerFrame:SetupColorPickerAndShow(info);
+			end);
+		end);
+
+		local colorElements = {
+			{ key = "Bg", name = L["ProfBook_ColorBg"], isText = false },
+			{ key = "BookLeft", name = L["ProfBook_ColorBookLeft"], isText = false },
+			{ key = "Ribbon", name = L["ProfBook_ColorRibbon"], isText = false },
+			{ key = "Name", name = L["ProfBook_ColorName"], isText = true },
+			{ key = "Rank", name = L["ProfBook_ColorRank"], isText = true },
+			{ key = "Bar", name = L["ProfBook_ColorBar"], isText = false },
+			{ key = "BarText", name = L["ProfBook_ColorBarText"], isText = true },
+		}
+		
+		local dataProvider = CreateDataProvider(colorElements);
+		scrollView:SetDataProvider(dataProvider);
 
 		f:HookScript("OnShow", function()
 			local db = GetProfDB();
 			gearCheck:SetChecked(db.showGearSlots);
 			autoCheck:SetChecked(db.autoOpenBook);
 			timerCheck:SetChecked(db.showTimer);
+			customIconCheck:SetChecked(db.hideCustomIcons);
+			defaultIconCheck:SetChecked(db.hideDefaultIcons);
 			UpdateDropButtonText();
+			Artificer.UpdateProfessionStatusBarColors();
+			Artificer.UpdateProfessionGlobalColors();
 		end)
 
 		self.ProfBookAdvancedFrame = f;

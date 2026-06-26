@@ -1550,6 +1550,7 @@ function Artificer:CreateSettingsUI()
 	end)
 	frame:SetScript("OnHide", function()
 		PlaySound(248166);
+		Artificer:CloseAllAdvancedFrames();
 	end)
 
 	frame:SetToplevel(true)
