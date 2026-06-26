@@ -1,5 +1,9 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.2.6a
+
+Added several color pickers to the Professions Book and a few checkbox options to toggle icons in the Advanced Settings
+
 # 0.2.6
 
 Added option/fix to battle.net toast popups ignoring the blizz settings (usually called "Show Toast Window" in default settings).
