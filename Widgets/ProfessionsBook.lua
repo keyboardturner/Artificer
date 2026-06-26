@@ -1754,7 +1754,7 @@ function Artificer:OpenProfessionsBookAdvancedSettings()
 		end);
 
 		local colorElements = {
-			{ key = "Bg", name = L["ProfBook_ColorBg"], isText = false },
+			{ key = "Bg", name = L["ProfBook_ColorBackplate"], isText = false },
 			{ key = "BookLeft", name = L["ProfBook_ColorBookLeft"], isText = false },
 			{ key = "Ribbon", name = L["ProfBook_ColorRibbon"], isText = false },
 			{ key = "Name", name = L["ProfBook_ColorName"], isText = true },
