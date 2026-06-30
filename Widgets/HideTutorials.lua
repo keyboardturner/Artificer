@@ -35,7 +35,7 @@ f:SetScript("OnEvent", function(self, event)
 		Artificer.Widgets.ApplyHideTutorials();
 	end
 end)
-
+--[[
 hooksecurefunc("NPE_CheckTutorials", function()
 	if Artificer_DB and Artificer_DB.Widgets and Artificer_DB.Widgets.HideTutorials then
 		if C_PlayerInfo.IsPlayerNPERestricted() and UnitLevel("player") == 1 then
@@ -43,3 +43,4 @@ hooksecurefunc("NPE_CheckTutorials", function()
 		end
 	end
 end)
+]]
