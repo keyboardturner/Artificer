@@ -1,5 +1,20 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.2.7
+
+Added several new outfit sounds:
+ - Mole Mount
+ - Brutosaur Mount
+ - Chain Gauntlet
+ - Bone Shuffle
+ - Metal Lantern
+ - Arathi Lynx
+ - Fishing Rod
+
+Added a new tab to the Outfit Manager that allows adjusting swimming sounds. It utilizes the same tech/functions as the Outfit Sounds.
+
+Updated the new player experience tutorial functionalities for the "Hide Tutorial" Setting as in 12.1.0 some functionality for it is apparently removed.
+
 # 0.2.6a
 
 Added several color pickers to the Professions Book and a few checkbox options to toggle icons in the Advanced Settings

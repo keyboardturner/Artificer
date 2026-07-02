@@ -7,6 +7,9 @@ Artificer.Widgets.ApplyHideTutorials = function()
 
 	C_CVar.SetCVar("showTutorials", 0)
 	C_CVar.SetCVar("showNPETutorials", 0)
+	if NewPlayerExperience then -- not available for player login
+		NewPlayerExperience:Shutdown();
+	end
 
 	local charDB = Artificer.GetCharDB()
 	local tocVersion = select(4, GetBuildInfo())
@@ -30,17 +33,16 @@ end
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("PLAYER_LOGIN")
+f:RegisterEvent("PLAYER_ENTERING_WORLD")
 f:SetScript("OnEvent", function(self, event)
-	if event == "PLAYER_LOGIN" then
-		Artificer.Widgets.ApplyHideTutorials();
-	end
+	Artificer.Widgets.ApplyHideTutorials();
 end)
---[[
-hooksecurefunc("NPE_CheckTutorials", function()
-	if Artificer_DB and Artificer_DB.Widgets and Artificer_DB.Widgets.HideTutorials then
-		if C_PlayerInfo.IsPlayerNPERestricted() and UnitLevel("player") == 1 then
-			C_CVar.SetCVar("showTutorials", 0);
+if NPE_CheckTutorials then -- removed in 12.1.0
+	hooksecurefunc("NPE_CheckTutorials", function()
+		if Artificer_DB and Artificer_DB.Widgets and Artificer_DB.Widgets.HideTutorials then
+			if C_PlayerInfo.IsPlayerNPERestricted() and UnitLevel("player") == 1 then
+				C_CVar.SetCVar("showTutorials", 0);
+			end
 		end
-	end
-end)
-]]
+	end)
+end
