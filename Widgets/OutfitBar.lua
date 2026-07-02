@@ -166,6 +166,15 @@ local FoleySoundsLibrary = {
 		4611468, 4611470, 4611472, 4611474, 4611476,
 		4611478,
 	},
+	MoleMount = { --PlaySound(270965)
+		5915938, 5915940, 5915942, 5915944, 5915946,
+	},
+	BrutosaurMount = { -- PlaySound(270964)
+		6211670, 6211672, 6211674, 6211676, 6211678,
+		6211680, 6211682, 6211684, 6211686, 6211688,
+		6211690, 6211692, 6211694, 6211696, 6211698,
+		6211700,
+	},
 };
 
 local SoundDefinitions = {
@@ -271,6 +280,20 @@ local SoundDefinitions = {
 		name = L["Wildhammer"],
 		icon = "Interface\\Icons\\inv_misc_tabard_wildhammerclan",
 		sounds = FoleySoundsLibrary.Wildhammer,
+		volume = .08,
+	},
+	{
+		key = "MoleMount",
+		name = L["MoleMount"],
+		icon = "Interface\\Icons\\inv_molemount_dark",
+		sounds = FoleySoundsLibrary.MoleMount,
+		volume = .30,
+	},
+	{
+		key = "BrutosaurMount",
+		name = L["BrutosaurMount"],
+		icon = "Interface\\Icons\\inv_brontsaurusmountspecial",
+		sounds = FoleySoundsLibrary.BrutosaurMount,
 		volume = .08,
 	},
 };
@@ -473,7 +496,7 @@ local function CreateSoundPanel(parent)
 	
 	local options = Settings.CreateSliderOptions(0, 1, 0.01)
 	options:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value)
-		return string.format("%d%%", value * 100);
+		return string.format("%.0f%%", value * 100);
 	end)
 	
 	local volumeSlider = CreateFrame("Frame", nil, p, "MinimalSliderWithSteppersTemplate")
@@ -500,7 +523,7 @@ local function CreateSoundPanel(parent)
 	
 	local freqOptions = Settings.CreateSliderOptions(0.1, 1.0, 0.01)
 	freqOptions:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value)
-		return string.format("%.2fs", value);
+		return string.format("%.0f%%", value);
 	end)
 	
 	local freqSlider = CreateFrame("Frame", nil, p, "MinimalSliderWithSteppersTemplate")
