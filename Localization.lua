@@ -357,6 +357,25 @@ if LOCALE == "enUS" then
 
 	L["MetalChainMaw"] = "Metal Chain - Maw"
 	L["Wildhammer"] = "Wildhammer"
+	L["MoleMount"] = "Mole Mount"
+	L["BrutosaurMount"] = "Brutosaur Mount"
+	L["ChainGauntlet"] = "Chain Gauntlet"
+	L["BoneShuffle"] = "Bone Shuffle"
+	L["MetalLantern"] = "Metal Lantern"
+	L["ArathiLynx"] = "Arathi Lynx"
+	L["FishingRod"] = "Fishing Rod"
+
+	L["SwimSettings"] = "Swim Settings"
+	L["EnableDiveSound"] = "Enable Dive Sound"
+	L["DiveVolume"] = "Dive Volume"
+	L["EnableSwimMovement"] = "Enable Swim Movement Sound"
+	L["SwimVolume"] = "Swim Volume"
+	L["SwimFrequency"] = "Swim Frequency"
+	L["SwimSoundType"] = "Swim Sound Type"
+	L["Small"] = HOUSING_PLOTSIZE_SMALL
+	L["Medium"] = HOUSING_PLOTSIZE_MEDIUM
+	L["Large"] = HOUSING_PLOTSIZE_LARGE
+
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Show All Minimap Trackables"
@@ -736,6 +755,24 @@ if LOCALE == "esMX" then
 
 	L["MetalChainMaw"] = "Cadena metálica - Las Fauces"
 	L["Wildhammer"] = "Martillo Salvaje"
+	L["MoleMount"] = "Montura topo"
+	L["BrutosaurMount"] = "Montura brutosaurio"
+	L["ChainGauntlet"] = "Guantelete de cadena"
+	L["BoneShuffle"] = "Traqueteo de huesos"
+	L["MetalLantern"] = "Farol metálico"
+	L["ArathiLynx"] = "Lince arathi"
+	L["FishingRod"] = "Caña de pescar"
+
+	L["SwimSettings"] = "Configuración de natación"
+	L["EnableDiveSound"] = "Activar sonido de inmersión"
+	L["DiveVolume"] = "Volumen de inmersión"
+	L["EnableSwimMovement"] = "Activar sonido de movimiento al nadar"
+	L["SwimVolume"] = "Volumen de natación"
+	L["SwimFrequency"] = "Frecuencia de natación"
+	L["SwimSoundType"] = "Tipo de sonido de natación"
+	L["Small"] = HOUSING_PLOTSIZE_SMALL
+	L["Medium"] = HOUSING_PLOTSIZE_MEDIUM
+	L["Large"] = HOUSING_PLOTSIZE_LARGE
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Mostrar todo en el minimapa"
@@ -1114,6 +1151,24 @@ if LOCALE == "esES" then
 
 	L["MetalChainMaw"] = "Cadena metálica - Las Fauces"
 	L["Wildhammer"] = "Martillo Salvaje"
+	L["MoleMount"] = "Montura topo"
+	L["BrutosaurMount"] = "Montura brutosaurio"
+	L["ChainGauntlet"] = "Guantelete de cadena"
+	L["BoneShuffle"] = "Traqueteo de huesos"
+	L["MetalLantern"] = "Farol metálico"
+	L["ArathiLynx"] = "Lince Arathi"
+	L["FishingRod"] = "Caña de pescar"
+
+	L["SwimSettings"] = "Configuración de natación"
+	L["EnableDiveSound"] = "Activar sonido de inmersión"
+	L["DiveVolume"] = "Volumen de inmersión"
+	L["EnableSwimMovement"] = "Activar sonido de movimiento al nadar"
+	L["SwimVolume"] = "Volumen de natación"
+	L["SwimFrequency"] = "Frecuencia de natación"
+	L["SwimSoundType"] = "Tipo de sonido de natación"
+	L["Small"] = HOUSING_PLOTSIZE_SMALL
+	L["Medium"] = HOUSING_PLOTSIZE_MEDIUM
+	L["Large"] = HOUSING_PLOTSIZE_LARGE
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Mostrar todo en el minimapa"
@@ -1490,6 +1545,24 @@ if LOCALE == "deDE" then
 
 	L["MetalChainMaw"] = "Metallkette – Schlund"
 	L["Wildhammer"] = "Wildhammer"
+	L["MoleMount"] = "Maulwurf-Reittier"
+	L["BrutosaurMount"] = "Brutosaurus-Reittier"
+	L["ChainGauntlet"] = "Kettenhandschuh"
+	L["BoneShuffle"] = "Knochenklappern"
+	L["MetalLantern"] = "Metalllaterne"
+	L["ArathiLynx"] = "Arathi-Luchs"
+	L["FishingRod"] = "Angelrute"
+
+	L["SwimSettings"] = "Schwimmeinstellungen"
+	L["EnableDiveSound"] = "Tauchgeräusch aktivieren"
+	L["DiveVolume"] = "Tauchlautstärke"
+	L["EnableSwimMovement"] = "Schwimmbewegungsgeräusche aktivieren"
+	L["SwimVolume"] = "Schwimmlautstärke"
+	L["SwimFrequency"] = "Schwimmfrequenz"
+	L["SwimSoundType"] = "Schwimmgeräuschtyp"
+	L["Small"] = HOUSING_PLOTSIZE_SMALL
+	L["Medium"] = HOUSING_PLOTSIZE_MEDIUM
+	L["Large"] = HOUSING_PLOTSIZE_LARGE
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Alle Minikarten-Verfolgungen anzeigen"
@@ -1867,6 +1940,24 @@ if LOCALE == "frFR" then
 
 	L["MetalChainMaw"] = "Chaîne métallique – Antre"
 	L["Wildhammer"] = "Marteau-Hardi"
+	L["MoleMount"] = "Monture taupe"
+	L["BrutosaurMount"] = "Monture brutosaure"
+	L["ChainGauntlet"] = "Gantelet en mailles"
+	L["BoneShuffle"] = "Cliquetis d'os"
+	L["MetalLantern"] = "Lanterne métallique"
+	L["ArathiLynx"] = "Lynx arathi"
+	L["FishingRod"] = "Canne à pêche"
+
+	L["SwimSettings"] = "Paramètres de nage"
+	L["EnableDiveSound"] = "Activer le son de plongée"
+	L["DiveVolume"] = "Volume de plongée"
+	L["EnableSwimMovement"] = "Activer les sons de nage"
+	L["SwimVolume"] = "Volume de nage"
+	L["SwimFrequency"] = "Fréquence de nage"
+	L["SwimSoundType"] = "Type de son de nage"
+	L["Small"] = HOUSING_PLOTSIZE_SMALL
+	L["Medium"] = HOUSING_PLOTSIZE_MEDIUM
+	L["Large"] = HOUSING_PLOTSIZE_LARGE
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Afficher tous les suivis de la minicarte"
@@ -2244,6 +2335,24 @@ if LOCALE == "itIT" then
 
 	L["MetalChainMaw"] = "Catena metallica – Fauci"
 	L["Wildhammer"] = "Granmartello"
+	L["MoleMount"] = "Cavalcatura talpa"
+	L["BrutosaurMount"] = "Cavalcatura brutosauro"
+	L["ChainGauntlet"] = "Guanto di maglia"
+	L["BoneShuffle"] = "Scricchiolio d'ossa"
+	L["MetalLantern"] = "Lanterna metallica"
+	L["ArathiLynx"] = "Lince di Arathi"
+	L["FishingRod"] = "Canna da pesca"
+
+	L["SwimSettings"] = "Impostazioni di nuoto"
+	L["EnableDiveSound"] = "Abilita suono d'immersione"
+	L["DiveVolume"] = "Volume d'immersione"
+	L["EnableSwimMovement"] = "Abilita suoni del nuoto"
+	L["SwimVolume"] = "Volume del nuoto"
+	L["SwimFrequency"] = "Frequenza del nuoto"
+	L["SwimSoundType"] = "Tipo di suono del nuoto"
+	L["Small"] = HOUSING_PLOTSIZE_SMALL
+	L["Medium"] = HOUSING_PLOTSIZE_MEDIUM
+	L["Large"] = HOUSING_PLOTSIZE_LARGE
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Mostra tutti i tracciamenti minimappa"
@@ -2621,6 +2730,24 @@ if LOCALE == "ptBR" then
 
 	L["MetalChainMaw"] = "Corrente de metal – Mandíbulas"
 	L["Wildhammer"] = "Martelo Feroz"
+	L["MoleMount"] = "Montaria Toupeira"
+	L["BrutosaurMount"] = "Montaria Brutossauro"
+	L["ChainGauntlet"] = "Manopla de Corrente"
+	L["BoneShuffle"] = "Chocalho de Ossos"
+	L["MetalLantern"] = "Lanterna de Metal"
+	L["ArathiLynx"] = "Lince Arathi"
+	L["FishingRod"] = "Vara de Pesca"
+
+	L["SwimSettings"] = "Configurações de Natação"
+	L["EnableDiveSound"] = "Ativar som de mergulho"
+	L["DiveVolume"] = "Volume do mergulho"
+	L["EnableSwimMovement"] = "Ativar sons de natação"
+	L["SwimVolume"] = "Volume da natação"
+	L["SwimFrequency"] = "Frequência da natação"
+	L["SwimSoundType"] = "Tipo de som da natação"
+	L["Small"] = HOUSING_PLOTSIZE_SMALL
+	L["Medium"] = HOUSING_PLOTSIZE_MEDIUM
+	L["Large"] = HOUSING_PLOTSIZE_LARGE
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Mostrar todos os rastreamentos do minimapa"
@@ -3000,6 +3127,24 @@ if LOCALE == "ruRU" then
 
 	L["MetalChainMaw"] = "Металлическая цепь — Утроба"
 	L["Wildhammer"] = "Громовой Молот"
+	L["MoleMount"] = "Ездовая кротовина"
+	L["BrutosaurMount"] = "Ездовой брутозавр"
+	L["ChainGauntlet"] = "Кольчужная рукавица"
+	L["BoneShuffle"] = "Костяной перестук"
+	L["MetalLantern"] = "Металлический фонарь"
+	L["ArathiLynx"] = "Аратийская рысь"
+	L["FishingRod"] = "Удочка"
+
+	L["SwimSettings"] = "Настройки плавания"
+	L["EnableDiveSound"] = "Включить звук ныряния"
+	L["DiveVolume"] = "Громкость ныряния"
+	L["EnableSwimMovement"] = "Включить звуки плавания"
+	L["SwimVolume"] = "Громкость плавания"
+	L["SwimFrequency"] = "Частота звуков плавания"
+	L["SwimSoundType"] = "Тип звука плавания"
+	L["Small"] = HOUSING_PLOTSIZE_SMALL
+	L["Medium"] = HOUSING_PLOTSIZE_MEDIUM
+	L["Large"] = HOUSING_PLOTSIZE_LARGE
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "Показать все отслеживания миникарты"
@@ -3377,6 +3522,24 @@ if LOCALE == "koKR" then
 
 	L["MetalChainMaw"] = "금속 사슬 - 나락"
 	L["Wildhammer"] = "와일드해머"
+	L["MoleMount"] = "두더지 탈것"
+	L["BrutosaurMount"] = "브루토사우루스 탈것"
+	L["ChainGauntlet"] = "사슬 건틀릿"
+	L["BoneShuffle"] = "뼈 덜그럭거림"
+	L["MetalLantern"] = "금속 등불"
+	L["ArathiLynx"] = "아라시 스라소니"
+	L["FishingRod"] = "낚싯대"
+
+	L["SwimSettings"] = "수영 설정"
+	L["EnableDiveSound"] = "잠수 효과음 사용"
+	L["DiveVolume"] = "잠수 음량"
+	L["EnableSwimMovement"] = "수영 이동 효과음 사용"
+	L["SwimVolume"] = "수영 음량"
+	L["SwimFrequency"] = "수영 빈도"
+	L["SwimSoundType"] = "수영 효과음 종류"
+	L["Small"] = HOUSING_PLOTSIZE_SMALL
+	L["Medium"] = HOUSING_PLOTSIZE_MEDIUM
+	L["Large"] = HOUSING_PLOTSIZE_LARGE
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "미니맵 추적 모두 표시"
@@ -3754,6 +3917,24 @@ if LOCALE == "zhCN" then
 
 	L["MetalChainMaw"] = "金属锁链 - 噬渊"
 	L["Wildhammer"] = "蛮锤"
+	L["MoleMount"] = "鼹鼠坐骑"
+	L["BrutosaurMount"] = "雷龙坐骑"
+	L["ChainGauntlet"] = "锁链护手"
+	L["BoneShuffle"] = "骨骼碰撞"
+	L["MetalLantern"] = "金属提灯"
+	L["ArathiLynx"] = "阿拉希山猫"
+	L["FishingRod"] = "鱼竿"
+
+	L["SwimSettings"] = "游泳设置"
+	L["EnableDiveSound"] = "启用潜水音效"
+	L["DiveVolume"] = "潜水音量"
+	L["EnableSwimMovement"] = "启用游泳移动音效"
+	L["SwimVolume"] = "游泳音量"
+	L["SwimFrequency"] = "游泳频率"
+	L["SwimSoundType"] = "游泳音效类型"
+	L["Small"] = HOUSING_PLOTSIZE_SMALL
+	L["Medium"] = HOUSING_PLOTSIZE_MEDIUM
+	L["Large"] = HOUSING_PLOTSIZE_LARGE
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "显示所有小地图追踪"
@@ -4131,6 +4312,24 @@ if LOCALE == "zhTW" then
 
 	L["MetalChainMaw"] = "金屬鎖鏈 - 噬淵"
 	L["Wildhammer"] = "蠻錘"
+	L["MoleMount"] = "鼴鼠坐騎"
+	L["BrutosaurMount"] = "雷龍坐騎"
+	L["ChainGauntlet"] = "鎖鏈護手"
+	L["BoneShuffle"] = "骨骼碰撞"
+	L["MetalLantern"] = "金屬提燈"
+	L["ArathiLynx"] = "阿拉希山貓"
+	L["FishingRod"] = "釣竿"
+
+	L["SwimSettings"] = "游泳設定"
+	L["EnableDiveSound"] = "啟用潛水音效"
+	L["DiveVolume"] = "潛水音量"
+	L["EnableSwimMovement"] = "啟用游泳移動音效"
+	L["SwimVolume"] = "游泳音量"
+	L["SwimFrequency"] = "游泳頻率"
+	L["SwimSoundType"] = "游泳音效類型"
+	L["Small"] = HOUSING_PLOTSIZE_SMALL
+	L["Medium"] = HOUSING_PLOTSIZE_MEDIUM
+	L["Large"] = HOUSING_PLOTSIZE_LARGE
 
 	--CVars
 	L["CVar_minimapTrackingShowAll"] = "顯示所有小地圖追蹤"
