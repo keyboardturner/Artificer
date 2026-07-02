@@ -111,15 +111,24 @@ local function GetSwimDB()
 	local charDB = Artificer.GetCharDB();
 	if not charDB then return nil; end
 
+	local defaults = {
+		diveEnabled = true,
+		diveVolume = 0.30,
+		movementEnabled = true,
+		movementVolume = 0.25,
+		movementFrequency = 0.60,
+		movementSoundType = "UnderwaterLarge",
+		allowShapeshift = true,
+	};
+
 	if not charDB.SwimSettings then
-		charDB.SwimSettings = {
-			diveEnabled = true,
-			diveVolume = 0.30,
-			movementEnabled = true,
-			movementVolume = 0.25,
-			movementFrequency = 0.60,
-			movementSoundType = "UnderwaterLarge",
-		};
+		charDB.SwimSettings = {};
+	end
+
+	for key, value in pairs(defaults) do
+		if charDB.SwimSettings[key] == nil then
+			charDB.SwimSettings[key] = value;
+		end
 	end
 	
 	return charDB.SwimSettings;
@@ -1088,6 +1097,14 @@ local function CreateSwimPanel(parent)
 	end
 	moveDropdown.Text:SetText(defaultText);
 
+	local shapeCheck = CreateFrame("CheckButton", nil, content, "ChatConfigCheckButtonTemplate");
+	shapeCheck:SetPoint("TOPLEFT", moveDropdown, "BOTTOMLEFT", 0, -15);
+	shapeCheck.Text:SetText(L["AllowShapeshiftSwim"]);
+	shapeCheck:SetChecked(GetSwimDB().allowShapeshift);
+	shapeCheck:SetScript("OnClick", function(self)
+		GetSwimDB().allowShapeshift = self:GetChecked();
+	end)
+
 	return p;
 end
 
@@ -1465,7 +1482,8 @@ local function CheckPlayerMovement()
 
 	if isSwimming or isSubmerged then
 		basicMult = (swimDB and swimDB.movementFrequency) or 0.60;
-		if currentMoving and not isFalling and not isMounted and not isShapeshifted then
+		local ignoreShapeshift = swimDB and swimDB.allowShapeshift;
+		if currentMoving and not isFalling and not isMounted and (not isShapeshifted or ignoreShapeshift) then
 			PlaySwimMovementSound();
 		end
 	else
@@ -1473,7 +1491,7 @@ local function CheckPlayerMovement()
 		if isFalling then
 			C_Timer.After(.35, FallingChecker);
 		end
-		
+
 		if currentMoving and not isFalling and not isMounted and not isSwimming and not isSubmerged and not isShapeshifted then
 			SoundSelector();
 		end

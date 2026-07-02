@@ -372,6 +372,7 @@ if LOCALE == "enUS" then
 	L["SwimVolume"] = "Swim Volume"
 	L["SwimFrequency"] = "Swim Frequency"
 	L["SwimSoundType"] = "Swim Sound Type"
+	L["AllowShapeshiftSwim"] = "Swim Movement Sound In Shapeshift"
 	L["Small"] = HOUSING_PLOTSIZE_SMALL
 	L["Medium"] = HOUSING_PLOTSIZE_MEDIUM
 	L["Large"] = HOUSING_PLOTSIZE_LARGE
@@ -770,6 +771,7 @@ if LOCALE == "esMX" then
 	L["SwimVolume"] = "Volumen de natación"
 	L["SwimFrequency"] = "Frecuencia de natación"
 	L["SwimSoundType"] = "Tipo de sonido de natación"
+	L["AllowShapeshiftSwim"] = "Sonido de natación al cambiar de forma"
 	L["Small"] = HOUSING_PLOTSIZE_SMALL
 	L["Medium"] = HOUSING_PLOTSIZE_MEDIUM
 	L["Large"] = HOUSING_PLOTSIZE_LARGE
@@ -1166,6 +1168,7 @@ if LOCALE == "esES" then
 	L["SwimVolume"] = "Volumen de natación"
 	L["SwimFrequency"] = "Frecuencia de natación"
 	L["SwimSoundType"] = "Tipo de sonido de natación"
+	L["AllowShapeshiftSwim"] = "Sonido de natación al cambiar de forma"
 	L["Small"] = HOUSING_PLOTSIZE_SMALL
 	L["Medium"] = HOUSING_PLOTSIZE_MEDIUM
 	L["Large"] = HOUSING_PLOTSIZE_LARGE
@@ -1560,6 +1563,7 @@ if LOCALE == "deDE" then
 	L["SwimVolume"] = "Schwimmlautstärke"
 	L["SwimFrequency"] = "Schwimmfrequenz"
 	L["SwimSoundType"] = "Schwimmgeräuschtyp"
+	L["AllowShapeshiftSwim"] = "Schwimmgeräusche in Gestaltwandlung"
 	L["Small"] = HOUSING_PLOTSIZE_SMALL
 	L["Medium"] = HOUSING_PLOTSIZE_MEDIUM
 	L["Large"] = HOUSING_PLOTSIZE_LARGE
@@ -1955,6 +1959,7 @@ if LOCALE == "frFR" then
 	L["SwimVolume"] = "Volume de nage"
 	L["SwimFrequency"] = "Fréquence de nage"
 	L["SwimSoundType"] = "Type de son de nage"
+	L["AllowShapeshiftSwim"] = "Sons de nage en changeforme"
 	L["Small"] = HOUSING_PLOTSIZE_SMALL
 	L["Medium"] = HOUSING_PLOTSIZE_MEDIUM
 	L["Large"] = HOUSING_PLOTSIZE_LARGE
@@ -2350,6 +2355,7 @@ if LOCALE == "itIT" then
 	L["SwimVolume"] = "Volume del nuoto"
 	L["SwimFrequency"] = "Frequenza del nuoto"
 	L["SwimSoundType"] = "Tipo di suono del nuoto"
+	L["AllowShapeshiftSwim"] = "Suoni di nuoto in mutaforma"
 	L["Small"] = HOUSING_PLOTSIZE_SMALL
 	L["Medium"] = HOUSING_PLOTSIZE_MEDIUM
 	L["Large"] = HOUSING_PLOTSIZE_LARGE
@@ -2745,6 +2751,7 @@ if LOCALE == "ptBR" then
 	L["SwimVolume"] = "Volume da natação"
 	L["SwimFrequency"] = "Frequência da natação"
 	L["SwimSoundType"] = "Tipo de som da natação"
+	L["AllowShapeshiftSwim"] = "Som de natação em metamorfose"
 	L["Small"] = HOUSING_PLOTSIZE_SMALL
 	L["Medium"] = HOUSING_PLOTSIZE_MEDIUM
 	L["Large"] = HOUSING_PLOTSIZE_LARGE
@@ -3142,6 +3149,7 @@ if LOCALE == "ruRU" then
 	L["SwimVolume"] = "Громкость плавания"
 	L["SwimFrequency"] = "Частота звуков плавания"
 	L["SwimSoundType"] = "Тип звука плавания"
+	L["AllowShapeshiftSwim"] = "Звуки плавания в облике"
 	L["Small"] = HOUSING_PLOTSIZE_SMALL
 	L["Medium"] = HOUSING_PLOTSIZE_MEDIUM
 	L["Large"] = HOUSING_PLOTSIZE_LARGE
@@ -3537,6 +3545,7 @@ if LOCALE == "koKR" then
 	L["SwimVolume"] = "수영 음량"
 	L["SwimFrequency"] = "수영 빈도"
 	L["SwimSoundType"] = "수영 효과음 종류"
+	L["AllowShapeshiftSwim"] = "변신 시 수영 이동 효과음"
 	L["Small"] = HOUSING_PLOTSIZE_SMALL
 	L["Medium"] = HOUSING_PLOTSIZE_MEDIUM
 	L["Large"] = HOUSING_PLOTSIZE_LARGE
@@ -3932,6 +3941,7 @@ if LOCALE == "zhCN" then
 	L["SwimVolume"] = "游泳音量"
 	L["SwimFrequency"] = "游泳频率"
 	L["SwimSoundType"] = "游泳音效类型"
+	L["AllowShapeshiftSwim"] = "变形状态下播放游泳移动音效"
 	L["Small"] = HOUSING_PLOTSIZE_SMALL
 	L["Medium"] = HOUSING_PLOTSIZE_MEDIUM
 	L["Large"] = HOUSING_PLOTSIZE_LARGE
@@ -4327,6 +4337,7 @@ if LOCALE == "zhTW" then
 	L["SwimVolume"] = "游泳音量"
 	L["SwimFrequency"] = "游泳頻率"
 	L["SwimSoundType"] = "游泳音效類型"
+	L["AllowShapeshiftSwim"] = "變形狀態下播放游泳移動音效"
 	L["Small"] = HOUSING_PLOTSIZE_SMALL
 	L["Medium"] = HOUSING_PLOTSIZE_MEDIUM
 	L["Large"] = HOUSING_PLOTSIZE_LARGE
