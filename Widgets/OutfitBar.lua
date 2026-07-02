@@ -175,6 +175,28 @@ local FoleySoundsLibrary = {
 		6211690, 6211692, 6211694, 6211696, 6211698,
 		6211700,
 	},
+	ChainGauntlet = {
+		1561730, 1561731, 1561732, 1561733, 1561734,
+		1561735, 1561736, 1561737, 1561738, 1561739,
+	},
+	BoneShuffle = { -- PlaySound(277695)
+		4632216, 4632218, 4632220, 4632222, 4632224,
+		4632226, 4632228, 4632230, 4632232, 4632234,
+	},
+	MetalLantern = { -- PlaySound(265831)
+		5846775, 5846777, 5846779, 5846781, 5846783,
+		5846785, 5846787, 5846789, 5846791, 5846793,
+		5846795, 5846797, 5846799, 5846801, 5846803,
+		5846805, 5846807, 5846809, 5846811,
+	},
+	ArathiLynx = { -- PlaySound(286854)
+		5795394, 5795396, 5795398, 5795400, 5795402,
+		5795404,
+	},
+	FishingRod = { -- PlaySound(242755)
+		4632261, 4632263, 4632265, 4632271, 4632273,
+		4632275, 4632277, 4632279, 4632281, 4632283,
+	},
 };
 
 local SoundDefinitions = {
@@ -294,6 +316,41 @@ local SoundDefinitions = {
 		name = L["BrutosaurMount"],
 		icon = "Interface\\Icons\\inv_brontsaurusmountspecial",
 		sounds = FoleySoundsLibrary.BrutosaurMount,
+		volume = .08,
+	},
+	{
+		key = "ChainGauntlet",
+		name = L["ChainGauntlet"],
+		icon = "Interface\\Icons\\inv_misc_desecrated_mailglove",
+		sounds = FoleySoundsLibrary.ChainGauntlet,
+		volume = .15,
+	},
+	{
+		key = "BoneShuffle",
+		name = L["BoneShuffle"],
+		icon = "Interface\\Icons\\ability_deathknight_boneshield",
+		sounds = FoleySoundsLibrary.BoneShuffle,
+		volume = .08,
+	},
+	{
+		key = "MetalLantern",
+		name = L["MetalLantern"],
+		icon = "Interface\\Icons\\inv_misc_lantern_01",
+		sounds = FoleySoundsLibrary.MetalLantern,
+		volume = .15,
+	},
+	{
+		key = "ArathiLynx",
+		name = L["ArathiLynx"],
+		icon = "Interface\\Icons\\inv_babyeversonglynx_black",
+		sounds = FoleySoundsLibrary.ArathiLynx,
+		volume = .15,
+	},
+	{
+		key = "FishingRod",
+		name = L["FishingRod"],
+		icon = "Interface\\Icons\\inv_misc_2h_draenorfishingpole_a_01",
+		sounds = FoleySoundsLibrary.FishingRod,
 		volume = .08,
 	},
 };
@@ -523,7 +580,7 @@ local function CreateSoundPanel(parent)
 	
 	local freqOptions = Settings.CreateSliderOptions(0.1, 1.0, 0.01)
 	freqOptions:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value)
-		return string.format("%.0f%%", value);
+		return string.format("%.2fs", value);
 	end)
 	
 	local freqSlider = CreateFrame("Frame", nil, p, "MinimalSliderWithSteppersTemplate")
