@@ -105,6 +105,26 @@ local function GetFrequencyDB()
 	return charDB.FoleyFrequency;
 end
 
+local function GetSwimDB()
+	if not Artificer.GetCharDB then return nil; end
+
+	local charDB = Artificer.GetCharDB();
+	if not charDB then return nil; end
+
+	if not charDB.SwimSettings then
+		charDB.SwimSettings = {
+			diveEnabled = true,
+			diveVolume = 0.30,
+			movementEnabled = true,
+			movementVolume = 0.25,
+			movementFrequency = 0.60,
+			movementSoundType = "UnderwaterLarge",
+		};
+	end
+	
+	return charDB.SwimSettings;
+end
+
 local FoleySoundsLibrary = {
 	Leather = {	-- SoundKit ID 1003 (Leather)
 		567580, 567586, 567591, 567598, 567599,
@@ -196,6 +216,33 @@ local FoleySoundsLibrary = {
 	FishingRod = { -- PlaySound(242755)
 		4632261, 4632263, 4632265, 4632271, 4632273,
 		4632275, 4632277, 4632279, 4632281, 4632283,
+	},
+};
+
+local SwimSounds = {
+	UnderwaterSplash = {
+		4531327, 4531329, 4531331, 4531333, 4531335,
+		4531337, 4531339, 4531341, 4531343, 4531345,
+	},
+	UnderwaterDive = {
+		567371, 567305, 567356, 567349,
+	},
+};
+
+local SwimMovement = {
+	UnderwaterSmall = {
+		4531291, 4531293, 4531295, 4531297, 4531299,
+		4531301, 4531303, 4531305, 3610667, 3610669,
+		3610671, 3610673, 3610675,
+	},
+	UnderwaterMedium = {
+		6917022, 6917024, 6917026, 6917028, 6917030,
+		6917032, 6917034, 6917036, 6917038, 6917040,
+		6917042, 6917044, 6917046, 6917048, 6917050,
+	},
+	UnderwaterLarge = {
+		6922771, 6922773, 6922775, 6922777, 6922779,
+		6922781, 6922783, 6922785, 6922787, 6922789,
 	},
 };
 
@@ -914,6 +961,136 @@ local function RefreshOutfits()
 	UpdateSoundPanelSelection()
 end
 
+local function CreateSwimPanel(parent)
+	local p = CreateFrame("Frame", nil, parent, "InsetFrameTemplate3");
+	p:SetPoint("TOPLEFT", parent.Inset, "TOPLEFT", 0, 0);
+	p:SetPoint("BOTTOMRIGHT", parent.Inset, "BOTTOMRIGHT", 0, 0);
+	p:Hide();
+
+	p.header = p:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge");
+	p.header:SetPoint("TOP", 0, -15);
+	p.header:SetText(L["SwimSettings"]);
+
+	local div = p:CreateTexture(nil, "ARTWORK");
+	div:SetAtlas("transmog-setCard-transmogrified-pending-FX2");
+	div:SetSize(180, 15);
+	div:SetPoint("TOP", p.header, "BOTTOM", 0, -5);
+
+	local scrollFrame = CreateFrame("ScrollFrame", nil, p, "ScrollFrameTemplate");
+	scrollFrame:SetPoint("TOPLEFT", p, "TOPLEFT", 6, -55);
+	scrollFrame:SetPoint("BOTTOMRIGHT", p, "BOTTOMRIGHT", -28, 6);
+
+	local content = CreateFrame("Frame", nil, scrollFrame);
+	content:SetSize(550, 450);
+	scrollFrame:SetScrollChild(content);
+	p.scrollFrame = scrollFrame;
+	p.content = content;
+
+	local diveCheck = CreateFrame("CheckButton", nil, content, "ChatConfigCheckButtonTemplate");
+	diveCheck:SetPoint("TOPLEFT", content, "TOPLEFT", 10, -10);
+	diveCheck.Text:SetText(L["EnableDiveSound"]);
+	diveCheck:SetChecked(GetSwimDB().diveEnabled);
+	diveCheck:SetScript("OnClick", function(self)
+		GetSwimDB().diveEnabled = self:GetChecked();
+	end)
+
+	local diveVolOptions = Settings.CreateSliderOptions(0, 1, 0.01);
+	diveVolOptions:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value) return string.format("%.0f%%", value * 100) end);
+	local diveVolSlider = CreateFrame("Frame", nil, content, "MinimalSliderWithSteppersTemplate");
+	diveVolSlider:SetPoint("TOPLEFT", diveCheck, "BOTTOMLEFT", 15, -25);
+	diveVolSlider:SetWidth(150);
+	diveVolSlider:Init(GetSwimDB().diveVolume, diveVolOptions.minValue, diveVolOptions.maxValue, diveVolOptions.steps, diveVolOptions.formatters);
+		
+	local rightTextDive = diveVolSlider.RightText;
+	rightTextDive:SetPoint("LEFT", diveVolSlider, "RIGHT", -25, 25);
+
+	local dvLabel = content:CreateFontString(nil, "OVERLAY", "GameFontNormal");
+	dvLabel:SetPoint("BOTTOMLEFT", diveVolSlider, "TOPLEFT", 0, 5);
+	dvLabel:SetText(L["DiveVolume"]);
+	diveVolSlider:RegisterCallback("OnValueChanged", function(_, value)
+		GetSwimDB().diveVolume = value;
+	end)
+
+	local moveCheck = CreateFrame("CheckButton", nil, content, "ChatConfigCheckButtonTemplate");
+	moveCheck:SetPoint("TOPLEFT", diveVolSlider, "BOTTOMLEFT", -15, -30);
+	moveCheck.Text:SetText(L["EnableSwimMovement"]);
+	moveCheck:SetChecked(GetSwimDB().movementEnabled);
+	moveCheck:SetScript("OnClick", function(self)
+		GetSwimDB().movementEnabled = self:GetChecked();
+	end)
+
+	local moveVolOptions = Settings.CreateSliderOptions(0, 1, 0.01);
+	moveVolOptions:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value) return string.format("%.0f%%", value * 100) end);
+	local moveVolSlider = CreateFrame("Frame", nil, content, "MinimalSliderWithSteppersTemplate");
+	moveVolSlider:SetPoint("TOPLEFT", moveCheck, "BOTTOMLEFT", 15, -25);
+	moveVolSlider:SetWidth(150);
+	moveVolSlider:Init(GetSwimDB().movementVolume, moveVolOptions.minValue, moveVolOptions.maxValue, moveVolOptions.steps, moveVolOptions.formatters);
+	local rightTextMove = moveVolSlider.RightText;
+	rightTextMove:SetPoint("LEFT", moveVolSlider, "RIGHT", -25, 25);
+
+	local mvLabel = content:CreateFontString(nil, "OVERLAY", "GameFontNormal");
+	mvLabel:SetPoint("BOTTOMLEFT", moveVolSlider, "TOPLEFT", 0, 5);
+	mvLabel:SetText(L["SwimVolume"]);
+	moveVolSlider:RegisterCallback("OnValueChanged", function(_, value)
+		GetSwimDB().movementVolume = value;
+	end)
+
+	local freqOptions = Settings.CreateSliderOptions(0.1, 2.0, 0.01);
+	freqOptions:SetLabelFormatter(MinimalSliderWithSteppersMixin.Label.Right, function(value) return string.format("%.2fs", value) end);
+	local freqSlider = CreateFrame("Frame", nil, content, "MinimalSliderWithSteppersTemplate");
+	freqSlider:SetPoint("TOPLEFT", moveVolSlider, "BOTTOMLEFT", 0, -40);
+	freqSlider:SetWidth(150);
+	freqSlider:Init(GetSwimDB().movementFrequency, freqOptions.minValue, freqOptions.maxValue, freqOptions.steps, freqOptions.formatters);
+	
+	local rightTextFreq = freqSlider.RightText;
+	rightTextFreq:SetPoint("LEFT", freqSlider, "RIGHT", -25, 25);
+
+	local fLabel = content:CreateFontString(nil, "OVERLAY", "GameFontNormal");
+	fLabel:SetPoint("BOTTOMLEFT", freqSlider, "TOPLEFT", 0, 5);
+	fLabel:SetText(L["SwimFrequency"]);
+	freqSlider:RegisterCallback("OnValueChanged", function(_, value)
+		GetSwimDB().movementFrequency = value;
+	end)
+
+	local ddLabel = content:CreateFontString(nil, "OVERLAY", "GameFontNormal");
+	ddLabel:SetPoint("TOPLEFT", freqSlider, "BOTTOMLEFT", 0, -25);
+	ddLabel:SetText(L["SwimSoundType"]);
+	
+	local moveDropdown = CreateFrame("DropdownButton", nil, content, "WowStyle1DropdownTemplate");
+	moveDropdown:SetPoint("TOPLEFT", ddLabel, "BOTTOMLEFT", 0, -5);
+	moveDropdown:SetWidth(150);
+	
+	local function DropdownGenerator(dropdown, rootDescription)
+		local options = {
+			{ text = L["Small"], value = "UnderwaterSmall" },
+			{ text = L["Medium"], value = "UnderwaterMedium" },
+			{ text = L["Large"], value = "UnderwaterLarge" },
+		};
+		for _, opt in ipairs(options) do
+			rootDescription:CreateRadio(opt.text, function()
+				return GetSwimDB().movementSoundType == opt.value;
+			end, function()
+				GetSwimDB().movementSoundType = opt.value;
+				moveDropdown.Text:SetText(opt.text);
+			end, opt.value);
+		end
+	end
+	moveDropdown:SetupMenu(DropdownGenerator);
+	
+	local currentType = GetSwimDB().movementSoundType;
+	local defaultText = L["Large"];
+	if currentType == "UnderwaterSmall" then
+		defaultText = L["Small"];
+	elseif currentType == "UnderwaterMedium" then
+		defaultText = L["Medium"];
+	elseif currentType == "UnderwaterLarge" then
+		defaultText = L["Large"];
+	end
+	moveDropdown.Text:SetText(defaultText);
+
+	return p;
+end
+
 local function CreateMainFrame()
 	ArtiOFFrame = CreateFrame("Frame", "ArtificerOutfitPickerFrame", UIParent, "ButtonFrameTemplate")
 	tinsert(UISpecialFrames, ArtiOFFrame:GetName())
@@ -1039,7 +1216,7 @@ local function CreateMainFrame()
 	scrollBorder:SetWidth(360)
 	ArtiOFFrame.ScrollBorder = scrollBorder
 	
-	local scrollFrame = CreateFrame("ScrollFrame", nil, ArtiOFFrame, "ScrollFrameTemplate")
+	local scrollFrame = CreateFrame("ScrollFrame", nil, scrollBorder, "ScrollFrameTemplate")
 	scrollFrame:SetPoint("TOPLEFT", scrollBorder, "TOPLEFT", 6, -8)
 	scrollFrame:SetPoint("BOTTOMRIGHT", scrollBorder, "BOTTOMRIGHT", -28, 3)
 	
@@ -1052,6 +1229,7 @@ local function CreateMainFrame()
 	ArtiOFFrame.buttons = {}
 	
 	soundPanel = CreateSoundPanel(ArtiOFFrame)
+	ArtiOFFrame.swimPanel = CreateSwimPanel(ArtiOFFrame)
 	
 	ArtiOFFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 	ArtiOFFrame:RegisterEvent("TRANSMOG_DISPLAYED_OUTFIT_CHANGED")
@@ -1066,8 +1244,39 @@ local function CreateMainFrame()
 			end
 		end
 	end)
+
+	local tab1 = CreateFrame("Button", "$parentTab1", ArtiOFFrame, "PanelTabButtonTemplate");
+	tab1:SetPoint("TOPLEFT", ArtiOFFrame, "BOTTOMLEFT", 10, 2);
+	tab1:SetID(1);
+	tab1:SetText(L["OutfitManager"]);
+
+	local tab2 = CreateFrame("Button", "$parentTab2", ArtiOFFrame, "PanelTabButtonTemplate");
+	tab2:SetPoint("LEFT", tab1, "RIGHT", 0, 0);
+	tab2:SetID(2);
+	tab2:SetText(L["SwimSettings"]);
+
+	local function SelectTab(id)
+		PanelTemplates_SetTab(ArtiOFFrame, id);
+		if id == 1 then
+			ArtiOFFrame.ScrollBorder:Show();
+			ArtiOFFrame.scrollFrame:Show();
+			soundPanel:Show();
+			ArtiOFFrame.swimPanel:Hide();
+		else
+			ArtiOFFrame.ScrollBorder:Hide();
+			ArtiOFFrame.scrollFrame:Hide();
+			soundPanel:Hide();
+			ArtiOFFrame.swimPanel:Show();
+		end
+	end
+
+	tab1:SetScript("OnClick", function() SelectTab(1); end);
+	tab2:SetScript("OnClick", function() SelectTab(2); end);
+
+	PanelTemplates_SetNumTabs(ArtiOFFrame, 2);
+	SelectTab(1);
 	
-	return ArtiOFFrame
+	return ArtiOFFrame;
 end
 --[[
 	-- this event can be so unbelievably taxing and quite frankly isn't necessary to show the CDs properly. leaving a note here because Mistakes Were Made(tm)
@@ -1135,6 +1344,44 @@ local function SoundSelector()
 	end
 end
 
+local lastSwimSoundID = nil;
+
+local function PlayDiveSound()
+	local swimDB = GetSwimDB();
+	if not swimDB or not swimDB.diveEnabled then return; end
+
+	local soundData = SwimSounds.UnderwaterDive;
+	if not soundData then return; end
+
+	local fileID = soundData[math.random(1, #soundData)];
+	C_EncounterEvents.SetEventSound(FOLEY_EVENT_ID, FOLEY_TRIGGER_ID, { file = fileID, volume = swimDB.diveVolume });
+	C_EncounterEvents.PlayEventSound(FOLEY_EVENT_ID, FOLEY_TRIGGER_ID);
+	C_EncounterEvents.SetEventSound(FOLEY_EVENT_ID, FOLEY_TRIGGER_ID, nil);
+end
+
+local function PlaySwimMovementSound()
+	local swimDB = GetSwimDB();
+	if not swimDB or not swimDB.movementEnabled then return; end
+
+	local soundData = SwimMovement[swimDB.movementSoundType];
+	if not soundData then return; end
+
+	local fileID;
+	if #soundData > 1 then
+		fileID = lastSwimSoundID;
+		while fileID == lastSwimSoundID do
+			fileID = soundData[math.random(1, #soundData)];
+		end
+	else
+		fileID = soundData[1];
+	end
+	
+	lastSwimSoundID = fileID;
+	C_EncounterEvents.SetEventSound(FOLEY_EVENT_ID, FOLEY_TRIGGER_ID, { file = fileID, volume = swimDB.movementVolume });
+	C_EncounterEvents.PlayEventSound(FOLEY_EVENT_ID, FOLEY_TRIGGER_ID);
+	C_EncounterEvents.SetEventSound(FOLEY_EVENT_ID, FOLEY_TRIGGER_ID, nil);
+end
+
 local function FallingChecker()
 	local currentMoving = IsPlayerMoving()
 	local isFalling = IsFalling()
@@ -1176,46 +1423,66 @@ end)
 	it's purposefully not meant to play while mounted, falling, swimming, etc. because you're largely not moving
 	or these just otherwise wouldn't be "hearable" in those environments
 --]]
-local function CheckPlayerMovement()
-	local unitSpeed = select(1, GetUnitSpeed("player"))
-	local speedMult = 1
-	local speedFrequency = 7
-	local scalingFactor = .3
-	local offset = 0.7
-	local multMin = .85
-	local multMax = 1.54
-	--local basicMult = .37 --now is slider
+local wasFalling = false;
 
-	local activeOutfitID = C_TransmogOutfitInfo.GetActiveOutfitID()
-	local freqDB = GetFrequencyDB()
-	local basicMult = (freqDB and activeOutfitID and freqDB[activeOutfitID]) or 0.37
+local function CheckPlayerMovement()
+	local unitSpeed = select(1, GetUnitSpeed("player"));
+	local speedMult = 1;
+	local speedFrequency = 7;
+	local scalingFactor = .3;
+	local offset = 0.7;
+	local multMin = .85;
+	local multMax = 1.54;
+	--local basicMult = .37; --now is slider
+
+	local activeOutfitID = C_TransmogOutfitInfo.GetActiveOutfitID();
+	local freqDB = GetFrequencyDB();
+	local swimDB = GetSwimDB();
+	local basicMult = 0.37;
 
 	if not issecretvalue(unitSpeed) and unitSpeed and unitSpeed ~= 0 then
 		speedMult = (speedFrequency / unitSpeed) * scalingFactor + offset;
-		if speedMult < multMin then speedMult = multMin end;
-		if speedMult > multMax then speedMult = multMax end;
+		if speedMult < multMin then
+			speedMult = multMin;
+		end;
+		if speedMult > multMax then
+			speedMult = multMax;
+		end;
 	end
 
-	local currentMoving = IsPlayerMoving()
-	local isFalling = IsFalling()
-	local isMounted = IsMounted()
-	local isSwimming = IsSwimming()
-	local isSubmerged = IsSubmerged()
-	local formID = GetShapeshiftFormID()
-	local isShapeshifted = formID and formID ~= 28 -- 28 shadowform
+	local currentMoving = IsPlayerMoving();
+	local isFalling = IsFalling();
+	local isMounted = IsMounted();
+	local isSwimming = IsSwimming();
+	local isSubmerged = IsSubmerged();
+	local formID = GetShapeshiftFormID();
+	local isShapeshifted = formID and formID ~= 28; -- 28 shadowform
 	
-	if isFalling then
-		C_Timer.After(.35, FallingChecker);
+	if wasFalling and (isSwimming or isSubmerged) then
+		PlayDiveSound();
+	end
+	wasFalling = isFalling;
+
+	if isSwimming or isSubmerged then
+		basicMult = (swimDB and swimDB.movementFrequency) or 0.60;
+		if currentMoving and not isFalling and not isMounted and not isShapeshifted then
+			PlaySwimMovementSound();
+		end
+	else
+		basicMult = (freqDB and activeOutfitID and freqDB[activeOutfitID]) or 0.37;
+		if isFalling then
+			C_Timer.After(.35, FallingChecker);
+		end
+		
+		if currentMoving and not isFalling and not isMounted and not isSwimming and not isSubmerged and not isShapeshifted then
+			SoundSelector();
+		end
 	end
 	
-	if currentMoving and not isFalling and not isMounted and not isSwimming and not isSubmerged and not isShapeshifted then
-		SoundSelector();
-	end
-	
-	C_Timer.After(basicMult*speedMult, CheckPlayerMovement)
+	C_Timer.After(basicMult*speedMult, CheckPlayerMovement);
 end
 
-CheckPlayerMovement()
+CheckPlayerMovement();
 
 local loader = CreateFrame("Frame")
 loader:RegisterEvent("PLAYER_LOGIN")
