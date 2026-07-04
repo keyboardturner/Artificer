@@ -54,6 +54,16 @@ Action Bar 7							MultiBar6Button[1-12]				157 - 168
 Action Bar 8							MultiBar7Button[1-12]				169 - 180
 ]]
 
+-- to help prevent foleysounds for fishing rafts
+-- there's a lot of stuff that should apply but it'd be a lot of work
+local raftAuras = {
+	visibleAuras = {124036, 152421, 383268, 288758}, -- the visible auras
+	spellCDSpam = {
+		124035,288818,383279,	-- will only trigger upon initial waterwalk
+		129479,383299,			-- gets spammed a bunch
+	},
+};
+
 local _, CLASS = UnitClass("player");
 local OUTFIT_SLOT = (CLASS == "DRUID" and 130 or 118); -- use what OPie does for this so it doesn't just nuke their stuff
 
@@ -1305,8 +1315,22 @@ EventRegistry:RegisterFrameEventAndCallback("UNIT_SPELLCAST_SUCCEEDED", function
 end)
 --]]
 
+local lastRaftSpamTime = 0; -- refer to above raftAuras
+
 EventRegistry:RegisterFrameEventAndCallback("SPELL_UPDATE_COOLDOWN", function(event, spellID)
-	if ArtiOFFrame and ArtiOFFrame:IsVisible() and not issecretvalue(spellID) and spellID == outfitSpellID then
+	if issecretvalue(spellID) then return end
+
+	 -- refer to above raftAuras
+	if raftAuras and raftAuras.spellCDSpam then
+		for _, spamID in ipairs(raftAuras.spellCDSpam) do
+			if spellID == spamID then
+				lastRaftSpamTime = GetTime();
+				break;
+			end
+		end
+	end
+
+	if ArtiOFFrame and ArtiOFFrame:IsVisible() and spellID == outfitSpellID then
 		UpdateOutfitCooldowns();
 		return;
 	end
@@ -1325,6 +1349,7 @@ function Artificer:ToggleOutfitSoundUI()
 end
 
 local function SoundSelector()
+	if GetTime() - lastRaftSpamTime <= 0.5 then return; end -- this will be affected by lag so it's not perfect
 	local foleyDB = GetFoleyDB()
 	local volumeDB = GetVolumeDB()
 

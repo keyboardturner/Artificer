@@ -1,5 +1,10 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.2.7a
+
+cancel outfit sounds when on a fishing raft (WIP)
+ - this will be affected by lag so it may not work if your ping is super high idk
+
 # 0.2.7
 
 Added several new outfit sounds:
