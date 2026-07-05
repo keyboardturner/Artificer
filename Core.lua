@@ -57,6 +57,28 @@ local Defaults = {
 		LFDBackground = true,
 		ProfessionsBook = true,
 		BnetToasts = 1,
+		ObjectSelectionCircleFilters = {
+			self = true,
+			friendlyPlayer = true,
+			friendlyNPC = true,
+			enemyPlayer = true,
+			enemyNPC = true,
+			pet = true,
+			interactable = true,
+			attackable = true,
+			hideWithUI = true,
+		},
+		FindYourself = {
+			openworld = true,
+			bg = true,
+			arena = true,
+			party = true,
+			mythicplus = true,
+			raid = true,
+			scenario = true,
+			housing = true,
+			combat = false,
+		},
 	},
 
 	NameplateTargetPos = {
@@ -158,13 +180,15 @@ local Defaults = {
 Artificer.Defaults = Defaults;
 
 Artificer.CVars = {
-	["minimapTrackingShowAll"] = {
+	{
+		name = "minimapTrackingShowAll",
 		settings = "checkbox",
 		default = "0",
 		label = L["CVar_minimapTrackingShowAll"],
 		description = L["CVar_minimapTrackingShowAllTT"],
 	},
-	["weatherDensity"] = {
+	{
+		name = "weatherDensity",
 		settings = "slider",
 		default = "2",
 		min = "0",
@@ -172,19 +196,22 @@ Artificer.CVars = {
 		label = L["CVar_weatherDensity"],
 		description = L["CVar_weatherDensityTT"],
 	},
-	["AutoPushSpellToActionBar"] = {
+	{
+		name = "AutoPushSpellToActionBar",
 		settings = "checkbox",
 		default = "1",
 		label = L["CVar_AutoPushSpellToActionBar"],
 		description = L["CVar_AutoPushSpellToActionBarTT"],
 	},
-	["minimapTrackingClosestOnly"] = {
+	{
+		name = "minimapTrackingClosestOnly",
 		settings = "checkbox",
 		default = "1",
 		label = L["CVar_minimapTrackingClosestOnly"],
 		description = L["CVar_minimapTrackingClosestOnlyTT"]
 	},
-	["autoDismount"] = {
+	{
+		name = "autoDismount",
 		settings = "checkbox",
 		default = "1",
 		label = L["CVar_autoDismount"],
@@ -210,6 +237,12 @@ Artificer.CVars = {
 	"persistMoveLogOnTransfer",
 	"PraiseTheSun",
 	"nameplateShowOnlyNameForFriendlyPlayerUnits"
+
+	--these ones seem to be "removed" - handled in Find Yourself options
+	"findYourselfInBG"
+	"findYourselfInBGOnlyInCombat"
+	"findYourselfInRaid"
+	"findYourselfInRaidOnlyInCombat"
 ]]
 
 local function Print(text)
@@ -369,7 +402,8 @@ f:SetScript("OnEvent", function(self, event, ...)
 		Artificer.MinimapIconLib = LDBIcon;
 
 		if Artificer.CVars then
-			for cvarName, data in pairs(Artificer.CVars) do
+			for _, data in ipairs(Artificer.CVars) do
+				local cvarName = data.name;
 				StoreCVar(cvarName);
 
 				if Artificer_DB[cvarName] == nil then

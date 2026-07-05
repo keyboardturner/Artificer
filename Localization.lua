@@ -269,6 +269,20 @@ if LOCALE == "enUS" then
 	L["Widget_ACT_Raids"] = RAID
 	L["Widget_ACT_ScenariosDelves"] = SCENARIOS_PVEFRAME .. "/" .. DELVES_LABEL
 	L["Widget_ACT_Housing"] = BINDING_HEADER_HOUSING_SYSTEM
+	L["Widget_ACT_OpenWorld"] = "Open World"
+
+	--Widgets - SelectionCircle
+	L["Widget_SelectionCircle"] = "Selection Circle"
+	L["Widget_SelectionCircleTT"] = "Toggle the Selection Circle for certain types of units."
+	L["Widget_SC_Self"] = "Self"
+	L["Widget_SC_FriendlyPlayer"] = "Friendly Player"
+	L["Widget_SC_FriendlyNPC"] = "Friendly NPC"
+	L["Widget_SC_EnemyPlayer"] = "Enemy Player"
+	L["Widget_SC_EnemyNPC"] = "Enemy NPC"
+	L["Widget_SC_Pet"] = "Player Pet"
+	L["Widget_SC_Interactable"] = "Interactable"
+	L["Widget_SC_Attackable"] = "Attackable"
+	L["Widget_SC_HideWithUI"] = "Hide With UI"
 
 	--Widgets - Delete Confirm
 	L["Widget_DeleteConfirm"] = "Delete Item Text Filler"
@@ -389,6 +403,10 @@ if LOCALE == "enUS" then
 	L["CVar_minimapTrackingClosestOnlyTT"] = "Show only the closest tracked icon for certain minimap icon types."
 	L["CVar_autoDismount"] = "Auto Dismount (Ground)"
 	L["CVar_autoDismountTT"] = "Automatically dismount from your ground mount when interacting with certain things."
+	L["CVar_findYourselfAnywhere"] = SELF_HIGHLIGHT_OPTION
+	L["CVar_findYourselfAnywhereTT"] = OPTION_TOOLTIP_SELF_HIGHLIGHT
+	L["CVar_findYourselfAnywhereCond"] = string.join(" - ", SELF_HIGHLIGHT_OPTION, "Conditions")
+	L["CVar_findYourselfAnywhereCondTT"] = string.format("Adds conditions to when the %s option is applied.\n\nRequires a %s option",L["CVar_findYourselfAnywhere"],L["CVar_findYourselfAnywhere"])
 
 	-- Global Strings
 	L["UIScale"] = UI_SCALE
@@ -668,6 +686,20 @@ if LOCALE == "esMX" then
 	L["Widget_ACT_Raids"] = RAID
 	L["Widget_ACT_ScenariosDelves"] = SCENARIOS_PVEFRAME .. "/" .. DELVES_LABEL
 	L["Widget_ACT_Housing"] = BINDING_HEADER_HOUSING_SYSTEM
+	L["Widget_ACT_OpenWorld"] = "Mundo abierto"
+
+	--Widgets - SelectionCircle
+	L["Widget_SelectionCircle"] = "Círculo de selección"
+	L["Widget_SelectionCircleTT"] = "Activa o desactiva el círculo de selección para determinados tipos de unidades."
+	L["Widget_SC_Self"] = "Uno mismo"
+	L["Widget_SC_FriendlyPlayer"] = "Jugador amistoso"
+	L["Widget_SC_FriendlyNPC"] = "PNJ amistoso"
+	L["Widget_SC_EnemyPlayer"] = "Jugador enemigo"
+	L["Widget_SC_EnemyNPC"] = "PNJ enemigo"
+	L["Widget_SC_Pet"] = "Mascota del jugador"
+	L["Widget_SC_Interactable"] = "Interactuable"
+	L["Widget_SC_Attackable"] = "Atacable"
+	L["Widget_SC_HideWithUI"] = "Ocultar con la IU"
 
 	--Widgets - Delete Confirm
 	L["Widget_DeleteConfirm"] = "Rellenar texto de eliminación de objeto"
@@ -787,6 +819,10 @@ if LOCALE == "esMX" then
 	L["CVar_minimapTrackingClosestOnlyTT"] = "Muestra solo el icono rastreado más cercano para ciertos tipos de iconos del minimapa."
 	L["CVar_autoDismount"] = "Desmontar automáticamente (tierra)"
 	L["CVar_autoDismountTT"] = "Te desmonta automáticamente de tu montura terrestre al interactuar con ciertos objetos."
+	L["CVar_findYourselfAnywhere"] = SELF_HIGHLIGHT_OPTION
+	L["CVar_findYourselfAnywhereTT"] = OPTION_TOOLTIP_SELF_HIGHLIGHT
+	L["CVar_findYourselfAnywhereCond"] = string.join(" - ", SELF_HIGHLIGHT_OPTION, "Condiciones")
+	L["CVar_findYourselfAnywhereCondTT"] = string.format("Agrega condiciones para cuándo se aplica la opción %s.\n\nRequiere que la opción %s esté activada.", L["CVar_findYourselfAnywhere"], L["CVar_findYourselfAnywhere"])
 
 	-- Global Strings
 	L["UIScale"] = UI_SCALE
@@ -1065,6 +1101,20 @@ if LOCALE == "esES" then
 	L["Widget_ACT_Raids"] = RAID
 	L["Widget_ACT_ScenariosDelves"] = SCENARIOS_PVEFRAME .. "/" .. DELVES_LABEL
 	L["Widget_ACT_Housing"] = BINDING_HEADER_HOUSING_SYSTEM
+	L["Widget_ACT_OpenWorld"] = "Mundo abierto"
+
+	--Widgets - SelectionCircle
+	L["Widget_SelectionCircle"] = "Círculo de selección"
+	L["Widget_SelectionCircleTT"] = "Activa o desactiva el círculo de selección para determinados tipos de unidades."
+	L["Widget_SC_Self"] = "Uno mismo"
+	L["Widget_SC_FriendlyPlayer"] = "Jugador amistoso"
+	L["Widget_SC_FriendlyNPC"] = "PNJ amistoso"
+	L["Widget_SC_EnemyPlayer"] = "Jugador enemigo"
+	L["Widget_SC_EnemyNPC"] = "PNJ enemigo"
+	L["Widget_SC_Pet"] = "Mascota del jugador"
+	L["Widget_SC_Interactable"] = "Interactuable"
+	L["Widget_SC_Attackable"] = "Atacable"
+	L["Widget_SC_HideWithUI"] = "Ocultar con la IU"
 
 	--Widgets - Delete Confirm
 	L["Widget_DeleteConfirm"] = "Rellenar texto de eliminación de objeto"
@@ -1184,6 +1234,10 @@ if LOCALE == "esES" then
 	L["CVar_minimapTrackingClosestOnlyTT"] = "Muestra solo el icono rastreado más cercano para ciertos tipos de iconos del minimapa."
 	L["CVar_autoDismount"] = "Desmontar automáticamente (tierra)"
 	L["CVar_autoDismountTT"] = "Te desmonta automáticamente de tu montura terrestre al interactuar con ciertos objetos."
+	L["CVar_findYourselfAnywhere"] = SELF_HIGHLIGHT_OPTION
+	L["CVar_findYourselfAnywhereTT"] = OPTION_TOOLTIP_SELF_HIGHLIGHT
+	L["CVar_findYourselfAnywhereCond"] = string.join(" - ", SELF_HIGHLIGHT_OPTION, "Condiciones")
+	L["CVar_findYourselfAnywhereCondTT"] = string.format("Añade condiciones para cuándo se aplica la opción %s.\n\nRequiere que la opción %s esté activada.", L["CVar_findYourselfAnywhere"], L["CVar_findYourselfAnywhere"])
 
 	-- Global Strings
 	L["UIScale"] = UI_SCALE
@@ -1460,6 +1514,20 @@ if LOCALE == "deDE" then
 	L["Widget_ACT_Raids"] = RAID
 	L["Widget_ACT_ScenariosDelves"] = SCENARIOS_PVEFRAME .. "/" .. DELVES_LABEL
 	L["Widget_ACT_Housing"] = BINDING_HEADER_HOUSING_SYSTEM
+	L["Widget_ACT_OpenWorld"] = "Offene Welt"
+
+	--Widgets - SelectionCircle
+	L["Widget_SelectionCircle"] = "Auswahlkreis"
+	L["Widget_SelectionCircleTT"] = "Schaltet den Auswahlkreis für bestimmte Einheitentypen ein oder aus."
+	L["Widget_SC_Self"] = "Selbst"
+	L["Widget_SC_FriendlyPlayer"] = "Freundlicher Spieler"
+	L["Widget_SC_FriendlyNPC"] = "Freundlicher NSC"
+	L["Widget_SC_EnemyPlayer"] = "Feindlicher Spieler"
+	L["Widget_SC_EnemyNPC"] = "Feindlicher NSC"
+	L["Widget_SC_Pet"] = "Begleiter des Spielers"
+	L["Widget_SC_Interactable"] = "Interagierbar"
+	L["Widget_SC_Attackable"] = "Angreifbar"
+	L["Widget_SC_HideWithUI"] = "Mit UI ausblenden"
 
 	--Widgets - Delete Confirm
 	L["Widget_DeleteConfirm"] = "Text zum Löschen von Gegenständen ausfüllen"
@@ -1579,6 +1647,10 @@ if LOCALE == "deDE" then
 	L["CVar_minimapTrackingClosestOnlyTT"] = "Zeigt nur das nächstgelegene verfolgte Symbol für bestimmte Minimap-Symboltypen an."
 	L["CVar_autoDismount"] = "Automatisches Absitzen (Boden)"
 	L["CVar_autoDismountTT"] = "Steigt automatisch von deinem Bodenreittier ab, wenn du mit bestimmten Objekten interagierst."
+	L["CVar_findYourselfAnywhere"] = SELF_HIGHLIGHT_OPTION
+	L["CVar_findYourselfAnywhereTT"] = OPTION_TOOLTIP_SELF_HIGHLIGHT
+	L["CVar_findYourselfAnywhereCond"] = string.join(" - ", SELF_HIGHLIGHT_OPTION, "Bedingungen")
+	L["CVar_findYourselfAnywhereCondTT"] = string.format("Fügt Bedingungen hinzu, wann die Option %s angewendet wird.\n\nErfordert, dass die Option %s aktiviert ist.", L["CVar_findYourselfAnywhere"], L["CVar_findYourselfAnywhere"])
 
 	-- Global Strings
 	L["UIScale"] = UI_SCALE
@@ -1856,6 +1928,20 @@ if LOCALE == "frFR" then
 	L["Widget_ACT_Raids"] = RAID
 	L["Widget_ACT_ScenariosDelves"] = SCENARIOS_PVEFRAME .. "/" .. DELVES_LABEL
 	L["Widget_ACT_Housing"] = BINDING_HEADER_HOUSING_SYSTEM
+	L["Widget_ACT_OpenWorld"] = "Monde ouvert"
+
+	--Widgets - SelectionCircle
+	L["Widget_SelectionCircle"] = "Cercle de sélection"
+	L["Widget_SelectionCircleTT"] = "Active ou désactive le cercle de sélection pour certains types d'unités."
+	L["Widget_SC_Self"] = "Soi-même"
+	L["Widget_SC_FriendlyPlayer"] = "Joueur amical"
+	L["Widget_SC_FriendlyNPC"] = "PNJ amical"
+	L["Widget_SC_EnemyPlayer"] = "Joueur ennemi"
+	L["Widget_SC_EnemyNPC"] = "PNJ ennemi"
+	L["Widget_SC_Pet"] = "Familier du joueur"
+	L["Widget_SC_Interactable"] = "Interactif"
+	L["Widget_SC_Attackable"] = "Attaquable"
+	L["Widget_SC_HideWithUI"] = "Masquer avec l'interface"
 
 	--Widgets - Delete Confirm
 	L["Widget_DeleteConfirm"] = "Remplir le texte de suppression d'objet"
@@ -1975,6 +2061,10 @@ if LOCALE == "frFR" then
 	L["CVar_minimapTrackingClosestOnlyTT"] = "Affiche uniquement l’icône suivie la plus proche pour certains types d’icônes de la minicarte."
 	L["CVar_autoDismount"] = "Désarçonner automatiquement (sol)"
 	L["CVar_autoDismountTT"] = "Vous fait automatiquement descendre de votre monture terrestre lorsque vous interagissez avec certains objets."
+	L["CVar_findYourselfAnywhere"] = SELF_HIGHLIGHT_OPTION
+	L["CVar_findYourselfAnywhereTT"] = OPTION_TOOLTIP_SELF_HIGHLIGHT
+	L["CVar_findYourselfAnywhereCond"] = string.join(" - ", SELF_HIGHLIGHT_OPTION, "Conditions")
+	L["CVar_findYourselfAnywhereCondTT"] = string.format("Ajoute des conditions pour déterminer quand l'option %s est appliquée.\n\nNécessite que l'option %s soit activée.", L["CVar_findYourselfAnywhere"], L["CVar_findYourselfAnywhere"])
 
 	-- Global Strings
 	L["UIScale"] = UI_SCALE
@@ -2252,6 +2342,20 @@ if LOCALE == "itIT" then
 	L["Widget_ACT_Raids"] = RAID
 	L["Widget_ACT_ScenariosDelves"] = SCENARIOS_PVEFRAME .. "/" .. DELVES_LABEL
 	L["Widget_ACT_Housing"] = BINDING_HEADER_HOUSING_SYSTEM
+	L["Widget_ACT_OpenWorld"] = "Mondo aperto"
+
+	--Widgets - SelectionCircle
+	L["Widget_SelectionCircle"] = "Cerchio di selezione"
+	L["Widget_SelectionCircleTT"] = "Attiva o disattiva il cerchio di selezione per determinati tipi di unità."
+	L["Widget_SC_Self"] = "Sé stessi"
+	L["Widget_SC_FriendlyPlayer"] = "Giocatore alleato"
+	L["Widget_SC_FriendlyNPC"] = "PNG alleato"
+	L["Widget_SC_EnemyPlayer"] = "Giocatore nemico"
+	L["Widget_SC_EnemyNPC"] = "PNG nemico"
+	L["Widget_SC_Pet"] = "Famiglio del giocatore"
+	L["Widget_SC_Interactable"] = "Interagibile"
+	L["Widget_SC_Attackable"] = "Attaccabile"
+	L["Widget_SC_HideWithUI"] = "Nascondi con l'interfaccia"
 
 	--Widgets - Delete Confirm
 	L["Widget_DeleteConfirm"] = "Compila il testo di eliminazione oggetto"
@@ -2371,6 +2475,10 @@ if LOCALE == "itIT" then
 	L["CVar_minimapTrackingClosestOnlyTT"] = "Mostra solo l'icona tracciata più vicina per alcuni tipi di icone della minimappa."
 	L["CVar_autoDismount"] = "Smonta automaticamente (terra)"
 	L["CVar_autoDismountTT"] = "Ti fa smontare automaticamente dalla cavalcatura terrestre quando interagisci con determinati oggetti."
+	L["CVar_findYourselfAnywhere"] = SELF_HIGHLIGHT_OPTION
+	L["CVar_findYourselfAnywhereTT"] = OPTION_TOOLTIP_SELF_HIGHLIGHT
+	L["CVar_findYourselfAnywhereCond"] = string.join(" - ", SELF_HIGHLIGHT_OPTION, "Condizioni")
+	L["CVar_findYourselfAnywhereCondTT"] = string.format("Aggiunge condizioni per stabilire quando applicare l'opzione %s.\n\nRichiede che l'opzione %s sia abilitata.", L["CVar_findYourselfAnywhere"], L["CVar_findYourselfAnywhere"])
 
 	-- Global Strings
 	L["UIScale"] = UI_SCALE
@@ -2648,6 +2756,20 @@ if LOCALE == "ptBR" then
 	L["Widget_ACT_Raids"] = RAID
 	L["Widget_ACT_ScenariosDelves"] = SCENARIOS_PVEFRAME .. "/" .. DELVES_LABEL
 	L["Widget_ACT_Housing"] = BINDING_HEADER_HOUSING_SYSTEM
+	L["Widget_ACT_OpenWorld"] = "Mundo aberto"
+
+	--Widgets - SelectionCircle
+	L["Widget_SelectionCircle"] = "Círculo de seleção"
+	L["Widget_SelectionCircleTT"] = "Ativa ou desativa o círculo de seleção para determinados tipos de unidades."
+	L["Widget_SC_Self"] = "Você"
+	L["Widget_SC_FriendlyPlayer"] = "Jogador amigável"
+	L["Widget_SC_FriendlyNPC"] = "PNJ amigável"
+	L["Widget_SC_EnemyPlayer"] = "Jogador inimigo"
+	L["Widget_SC_EnemyNPC"] = "PNJ inimigo"
+	L["Widget_SC_Pet"] = "Ajudante do jogador"
+	L["Widget_SC_Interactable"] = "Interagível"
+	L["Widget_SC_Attackable"] = "Atacável"
+	L["Widget_SC_HideWithUI"] = "Ocultar com a interface"
 
 	--Widgets - Delete Confirm
 	L["Widget_DeleteConfirm"] = "Preencher texto de exclusão de item"
@@ -2767,6 +2889,10 @@ if LOCALE == "ptBR" then
 	L["CVar_minimapTrackingClosestOnlyTT"] = "Mostra apenas o ícone rastreado mais próximo para certos tipos de ícones do minimapa."
 	L["CVar_autoDismount"] = "Desmontar automaticamente (Terrestre)"
 	L["CVar_autoDismountTT"] = "Desmonta automaticamente da sua montaria terrestre ao interagir com certos objetos."
+	L["CVar_findYourselfAnywhere"] = SELF_HIGHLIGHT_OPTION
+	L["CVar_findYourselfAnywhereTT"] = OPTION_TOOLTIP_SELF_HIGHLIGHT
+	L["CVar_findYourselfAnywhereCond"] = string.join(" - ", SELF_HIGHLIGHT_OPTION, "Condições")
+	L["CVar_findYourselfAnywhereCondTT"] = string.format("Adiciona condições para quando a opção %s será aplicada.\n\nRequer que a opção %s esteja ativada.", L["CVar_findYourselfAnywhere"], L["CVar_findYourselfAnywhere"])
 
 	-- Global Strings
 	L["UIScale"] = UI_SCALE
@@ -3046,6 +3172,20 @@ if LOCALE == "ruRU" then
 	L["Widget_ACT_Raids"] = RAID
 	L["Widget_ACT_ScenariosDelves"] = SCENARIOS_PVEFRAME .. "/" .. DELVES_LABEL
 	L["Widget_ACT_Housing"] = BINDING_HEADER_HOUSING_SYSTEM
+	L["Widget_ACT_OpenWorld"] = "Открытый мир"
+
+	--Widgets - SelectionCircle
+	L["Widget_SelectionCircle"] = "Круг выделения"
+	L["Widget_SelectionCircleTT"] = "Включает или отключает круг выделения для определённых типов существ."
+	L["Widget_SC_Self"] = "Себя"
+	L["Widget_SC_FriendlyPlayer"] = "Дружественный игрок"
+	L["Widget_SC_FriendlyNPC"] = "Дружественный НИП"
+	L["Widget_SC_EnemyPlayer"] = "Вражеский игрок"
+	L["Widget_SC_EnemyNPC"] = "Вражеский НИП"
+	L["Widget_SC_Pet"] = "Питомец игрока"
+	L["Widget_SC_Interactable"] = "Взаимодействуемый"
+	L["Widget_SC_Attackable"] = "Атакуемый"
+	L["Widget_SC_HideWithUI"] = "Скрывать вместе с интерфейсом"
 
 	--Widgets - Delete Confirm
 	L["Widget_DeleteConfirm"] = "Заполнить текст удаления предмета"
@@ -3165,6 +3305,10 @@ if LOCALE == "ruRU" then
 	L["CVar_minimapTrackingClosestOnlyTT"] = "Показывает только ближайший отслеживаемый значок для некоторых типов значков миникарты."
 	L["CVar_autoDismount"] = "Автоматическое спешивание (на земле)"
 	L["CVar_autoDismountTT"] = "Автоматически спешивает вас с наземного средства передвижения при взаимодействии с некоторыми объектами."
+	L["CVar_findYourselfAnywhere"] = SELF_HIGHLIGHT_OPTION
+	L["CVar_findYourselfAnywhereTT"] = OPTION_TOOLTIP_SELF_HIGHLIGHT
+	L["CVar_findYourselfAnywhereCond"] = string.join(" - ", SELF_HIGHLIGHT_OPTION, "Условия")
+	L["CVar_findYourselfAnywhereCondTT"] = string.format("Добавляет условия, при которых применяется параметр %s.\n\nТребуется включённый параметр %s.", L["CVar_findYourselfAnywhere"], L["CVar_findYourselfAnywhere"])
 
 	-- Global Strings
 	L["UIScale"] = UI_SCALE
@@ -3442,6 +3586,20 @@ if LOCALE == "koKR" then
 	L["Widget_ACT_Raids"] = RAID
 	L["Widget_ACT_ScenariosDelves"] = SCENARIOS_PVEFRAME .. "/" .. DELVES_LABEL
 	L["Widget_ACT_Housing"] = BINDING_HEADER_HOUSING_SYSTEM
+	L["Widget_ACT_OpenWorld"] = "오픈 월드"
+
+	--Widgets - SelectionCircle
+	L["Widget_SelectionCircle"] = "선택 원"
+	L["Widget_SelectionCircleTT"] = "특정 유형의 유닛에 대한 선택 원을 표시하거나 숨깁니다."
+	L["Widget_SC_Self"] = "자신"
+	L["Widget_SC_FriendlyPlayer"] = "우호 플레이어"
+	L["Widget_SC_FriendlyNPC"] = "우호 NPC"
+	L["Widget_SC_EnemyPlayer"] = "적대 플레이어"
+	L["Widget_SC_EnemyNPC"] = "적대 NPC"
+	L["Widget_SC_Pet"] = "플레이어 소환수"
+	L["Widget_SC_Interactable"] = "상호작용 가능"
+	L["Widget_SC_Attackable"] = "공격 가능"
+	L["Widget_SC_HideWithUI"] = "UI와 함께 숨기기"
 
 	--Widgets - Delete Confirm
 	L["Widget_DeleteConfirm"] = "아이템 삭제 텍스트 채우기"
@@ -3561,6 +3719,10 @@ if LOCALE == "koKR" then
 	L["CVar_minimapTrackingClosestOnlyTT"] = "일부 미니맵 아이콘 유형에 대해 가장 가까운 추적 아이콘만 표시합니다."
 	L["CVar_autoDismount"] = "자동 탈것 해제 (지상)"
 	L["CVar_autoDismountTT"] = "특정 대상과 상호작용할 때 지상 탈것에서 자동으로 내립니다."
+	L["CVar_findYourselfAnywhere"] = SELF_HIGHLIGHT_OPTION
+	L["CVar_findYourselfAnywhereTT"] = OPTION_TOOLTIP_SELF_HIGHLIGHT
+	L["CVar_findYourselfAnywhereCond"] = string.join(" - ", SELF_HIGHLIGHT_OPTION, "조건")
+	L["CVar_findYourselfAnywhereCondTT"] = string.format("%s 옵션이 적용되는 조건을 추가합니다.\n\n%s 옵션이 활성화되어 있어야 합니다.", L["CVar_findYourselfAnywhere"], L["CVar_findYourselfAnywhere"])
 
 	-- Global Strings
 	L["UIScale"] = UI_SCALE
@@ -3838,6 +4000,20 @@ if LOCALE == "zhCN" then
 	L["Widget_ACT_Raids"] = RAID
 	L["Widget_ACT_ScenariosDelves"] = SCENARIOS_PVEFRAME .. "/" .. DELVES_LABEL
 	L["Widget_ACT_Housing"] = BINDING_HEADER_HOUSING_SYSTEM
+	L["Widget_ACT_OpenWorld"] = "开放世界"
+
+	--Widgets - SelectionCircle
+	L["Widget_SelectionCircle"] = "选择圈"
+	L["Widget_SelectionCircleTT"] = "切换特定单位类型的选择圈显示。"
+	L["Widget_SC_Self"] = "自己"
+	L["Widget_SC_FriendlyPlayer"] = "友方玩家"
+	L["Widget_SC_FriendlyNPC"] = "友方NPC"
+	L["Widget_SC_EnemyPlayer"] = "敌方玩家"
+	L["Widget_SC_EnemyNPC"] = "敌方NPC"
+	L["Widget_SC_Pet"] = "玩家宠物"
+	L["Widget_SC_Interactable"] = "可交互"
+	L["Widget_SC_Attackable"] = "可攻击"
+	L["Widget_SC_HideWithUI"] = "随界面隐藏"
 
 	--Widgets - Delete Confirm
 	L["Widget_DeleteConfirm"] = "填充物品删除文本"
@@ -3957,6 +4133,10 @@ if LOCALE == "zhCN" then
 	L["CVar_minimapTrackingClosestOnlyTT"] = "对于某些小地图图标类型，仅显示最近的追踪图标。"
 	L["CVar_autoDismount"] = "自动下坐骑（地面）"
 	L["CVar_autoDismountTT"] = "与某些对象互动时会自动从地面坐骑上下来。"
+	L["CVar_findYourselfAnywhere"] = SELF_HIGHLIGHT_OPTION
+	L["CVar_findYourselfAnywhereTT"] = OPTION_TOOLTIP_SELF_HIGHLIGHT
+	L["CVar_findYourselfAnywhereCond"] = string.join(" - ", SELF_HIGHLIGHT_OPTION, "条件")
+	L["CVar_findYourselfAnywhereCondTT"] = string.format("为 %s 选项添加生效条件。\n\n需要启用 %s 选项。", L["CVar_findYourselfAnywhere"], L["CVar_findYourselfAnywhere"])
 
 	-- Global Strings
 	L["UIScale"] = UI_SCALE
@@ -4234,6 +4414,20 @@ if LOCALE == "zhTW" then
 	L["Widget_ACT_Raids"] = RAID
 	L["Widget_ACT_ScenariosDelves"] = SCENARIOS_PVEFRAME .. "/" .. DELVES_LABEL
 	L["Widget_ACT_Housing"] = BINDING_HEADER_HOUSING_SYSTEM
+	L["Widget_ACT_OpenWorld"] = "開放世界"
+
+	--Widgets - SelectionCircle
+	L["Widget_SelectionCircle"] = "選取圈"
+	L["Widget_SelectionCircleTT"] = "切換特定類型單位的選取圈顯示。"
+	L["Widget_SC_Self"] = "自己"
+	L["Widget_SC_FriendlyPlayer"] = "友方玩家"
+	L["Widget_SC_FriendlyNPC"] = "友方 NPC"
+	L["Widget_SC_EnemyPlayer"] = "敵方玩家"
+	L["Widget_SC_EnemyNPC"] = "敵方 NPC"
+	L["Widget_SC_Pet"] = "玩家寵物"
+	L["Widget_SC_Interactable"] = "可互動"
+	L["Widget_SC_Attackable"] = "可攻擊"
+	L["Widget_SC_HideWithUI"] = "隨介面隱藏"
 
 	--Widgets - Delete Confirm
 	L["Widget_DeleteConfirm"] = "填入物品刪除文字"
@@ -4353,6 +4547,10 @@ if LOCALE == "zhTW" then
 	L["CVar_minimapTrackingClosestOnlyTT"] = "對於某些小地圖圖示類型，只顯示最近的追蹤圖示。"
 	L["CVar_autoDismount"] = "自動下坐騎（地面）"
 	L["CVar_autoDismountTT"] = "與某些物件互動時會自動從地面坐騎上下來。"
+	L["CVar_findYourselfAnywhere"] = SELF_HIGHLIGHT_OPTION
+	L["CVar_findYourselfAnywhereTT"] = OPTION_TOOLTIP_SELF_HIGHLIGHT
+	L["CVar_findYourselfAnywhereCond"] = string.join(" - ", SELF_HIGHLIGHT_OPTION, "條件")
+	L["CVar_findYourselfAnywhereCondTT"] = string.format("為 %s 選項新增生效條件。\n\n需要啟用 %s 選項。", L["CVar_findYourselfAnywhere"], L["CVar_findYourselfAnywhere"])
 
 	-- Global Strings
 	L["UIScale"] = UI_SCALE

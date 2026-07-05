@@ -278,7 +278,7 @@ local function InitializeMultiCheckbox(button, data)
 			for _, opt in ipairs(optList) do
 				if opt.isGroup then
 					InitDefaults(opt.children);
-				else
+				elseif not opt.isDivider and not opt.isTitle then
 					if values[opt.key] == nil then
 						values[opt.key] = opt.default ~= false;
 						needsSave = true;
@@ -311,7 +311,7 @@ local function InitializeMultiCheckbox(button, data)
 			for _, opt in ipairs(optList) do
 				if opt.isGroup then
 					GatherSelected(opt.children);
-				else
+				elseif not opt.isDivider and not opt.isTitle then
 					totalCount = totalCount + 1;
 					if values[opt.key] then
 						table.insert(selected, opt.text);
@@ -342,6 +342,10 @@ local function InitializeMultiCheckbox(button, data)
 				if option.isGroup then
 					local submenu = desc:CreateButton(option.text);
 					BuildMenu(submenu, option.children);
+				elseif option.isDivider then
+					desc:CreateDivider();
+				elseif option.isTitle then
+					desc:CreateTitle(option.text);
 				else
 					local checkbox = desc:CreateCheckbox(
 						option.text,
@@ -1252,18 +1256,16 @@ function Artificer:BuildSettingsData()
 		end
 	});
 
-	-- Widgets - ShowAccountIgnores
+	-- Widgets - LFDBackground
 	table.insert(allSettingsData, {
 		type = "checkbox",
 		isWidget = true,
-		key = "AccountIgnoresWindow",
+		key = "LFDBackground",
 		isNew = true,
-		label = L["Widget_AccountIgnoreList"],
-		tooltip = L["Widget_AccountIgnoreListTT"],
+		label = L["Widget_LFDBackground"],
+		tooltip = L["Widget_LFDBackgroundTT"],
 		callback = function(val)
-			if Artificer.AccountIgnores_ToggleVisibility then
-				Artificer.AccountIgnores_ToggleVisibility(val);
-			end
+			-- ...
 		end
 	});
 	
@@ -1428,16 +1430,18 @@ function Artificer:BuildSettingsData()
 		end
 	});
 
-	-- Widgets - LFDBackground
+	-- Widgets - ShowAccountIgnores
 	table.insert(allSettingsData, {
 		type = "checkbox",
 		isWidget = true,
-		key = "LFDBackground",
+		key = "AccountIgnoresWindow",
 		isNew = true,
-		label = L["Widget_LFDBackground"],
-		tooltip = L["Widget_LFDBackgroundTT"],
+		label = L["Widget_AccountIgnoreList"],
+		tooltip = L["Widget_AccountIgnoreListTT"],
 		callback = function(val)
-			-- ...
+			if Artificer.AccountIgnores_ToggleVisibility then
+				Artificer.AccountIgnores_ToggleVisibility(val);
+			end
 		end
 	});
 
@@ -1448,8 +1452,63 @@ function Artificer:BuildSettingsData()
 		label = L["Header_CVars"],
 	});
 
+	-- Widgets - SelectionCircle
+	table.insert(allSettingsData, {
+		type = "multicheckbox",
+		isWidget = true,
+		key = "ObjectSelectionCircleFilters",
+		isNew = true,
+		label = L["Widget_SelectionCircle"],
+		tooltip = L["Widget_SelectionCircleTT"],
+		options = {
+			{ key = "self", text = L["Widget_SC_Self"], default = true },
+			{ key = "friendlyPlayer", text = L["Widget_SC_FriendlyPlayer"], default = true },
+			{ key = "friendlyNPC", text = L["Widget_SC_FriendlyNPC"], default = true },
+			{ key = "enemyPlayer", text = L["Widget_SC_EnemyPlayer"], default = true },
+			{ key = "enemyNPC", text = L["Widget_SC_EnemyNPC"], default = true },
+			{ key = "pet", text = L["Widget_SC_Pet"], default = true },
+			{ key = "interactable", text = L["Widget_SC_Interactable"], default = true },
+			{ key = "attackable", text = L["Widget_SC_Attackable"], default = true },
+			{ key = "hideWithUI", text = L["Widget_SC_HideWithUI"], default = true },
+		},
+		callback = function(values)
+			if Artificer.Widgets.ApplySelectionCircle then
+				Artificer.Widgets.ApplySelectionCircle();
+			end
+		end
+	});
+
+	-- Widgets - Find Yourself (SelectionCircle)
+	table.insert(allSettingsData, {
+		type = "multicheckbox",
+		isWidget = true,
+		key = "FindYourself",
+		isNew = true,
+		label = L["CVar_findYourselfAnywhereCond"], 
+		tooltip = L["CVar_findYourselfAnywhereCondTT"],
+		options = {
+			{ key = "openworld", text = L["Widget_ACT_OpenWorld"], default = true },
+			{ key = "bg", text = L["Widget_ACT_Battlegrounds"], default = true },
+			{ key = "arena", text = L["Widget_ACT_Arena"], default = true },
+			{ key = "party", text = L["Widget_ACT_Dungeon"], default = true },
+			{ key = "mythicplus", text = L["Widget_ACT_MPlus"], default = true },
+			{ key = "raid", text = L["Widget_ACT_Raids"], default = true },
+			{ key = "scenario", text = L["Widget_ACT_ScenariosDelves"], default = true },
+			{ key = "housing", text = L["Widget_ACT_Housing"], default = true },
+			{ isDivider = true },
+			--{ isTitle = true, text = L["Header_Combat"] },
+			{ key = "combat", text = L["Widget_ACT_Combat"], default = false },
+		},
+		callback = function(val)
+			if Artificer.Widgets.ApplyFindYourself then
+				Artificer.Widgets.ApplyFindYourself();
+			end
+		end
+	});
+
 	if Artificer.CVars then
-		for cvarName, data in pairs(Artificer.CVars) do
+		for _, data in ipairs(Artificer.CVars) do
+			local cvarName = data.name;
 			local settingData = {
 				type = data.settings,
 				key = cvarName,

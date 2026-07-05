@@ -1,5 +1,13 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.2.8
+
+Added options to toggle the Selection Circle based on various target conditions, such as friendly NPC, self, interactable, or hiding with the UI.
+
+Added options to toggle the "Self Highlight" under certain conditions, such as Battleground, Raid, Dungeon, as well as only in Combat.
+
+Slightly reworked how CVars are ordered
+
 # 0.2.7a
 
 cancel outfit sounds when on a fishing raft (WIP)
