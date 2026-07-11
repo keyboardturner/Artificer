@@ -57,10 +57,10 @@ Action Bar 8							MultiBar7Button[1-12]				169 - 180
 -- to help prevent foleysounds for fishing rafts
 -- there's a lot of stuff that should apply but it'd be a lot of work
 local raftAuras = {
-	visibleAuras = {124036, 152421, 383268, 288758}, -- the visible auras
+	visibleAuras = {124036, 116032, 152421, 383268, 288758, 1218420}, -- the visible auras
 	spellCDSpam = {
-		124035,288818,383279,	-- will only trigger upon initial waterwalk
-		129479,383299,			-- gets spammed a bunch
+		124035,288818,383279,1218424,	-- will only trigger upon initial waterwalk
+		129479,383299,1218425,			-- gets spammed a bunch
 	},
 };
 
