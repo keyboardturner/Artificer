@@ -1066,6 +1066,7 @@ baitListenerFrame:SetScript("OnEvent", function(self, event, ...)
 	if not IsModuleEnabled() or not GetProfDB().autoOpenBook then return; end
 
 	if event == "ENCHANT_SPELL_SELECTED" then
+		if InCombatLockdown() then return; end 
 		local matchedSlots = {};
 
 		for slotID = 20, 28 do
