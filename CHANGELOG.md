@@ -1,5 +1,15 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.2.8a
+
+Made the buttons in the Professions Book secured and disappear in combat
+
+Made the flyout buttons in the Professions Book clickable rather than solely draggable
+
+Made the fishing enchant auto-open stop functioning in combat
+
+Added personal barge toy to list of things that cancel out outfit sounds
+
 # 0.2.8
 
 Added options to toggle the Selection Circle based on various target conditions, such as friendly NPC, self, interactable, or hiding with the UI.
