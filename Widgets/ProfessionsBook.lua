@@ -378,7 +378,9 @@ local function UpgradeProfessionFrame(frame)
 		originalBorder:SetAlpha(0);
 	end
 	
-	frame.iconButton = CreateFrame("Button", nil, frame);
+	frame.iconButton = CreateFrame("Button", nil, frame, "SecureActionButtonTemplate");
+	frame.iconButton:SetAttribute("type", "spell");
+	frame.iconButton:SetAttribute("useOnKeyDown", false);
 	
 	if isSecondary then
 		frame.iconButton:SetSize(56, 56);
@@ -481,17 +483,9 @@ local function UpgradeProfessionFrame(frame)
 	
 	frame.iconButton:SetScript("OnDragStart", function(self)
 		if InCombatLockdown() then return; end
-		if self.journalSpellID then
-			C_Spell.PickupSpell(self.journalSpellID);
-		end
+		if self.journalSpellID then C_Spell.PickupSpell(self.journalSpellID); end
 	end)
 
-	frame.iconButton:SetScript("OnClick", function(self)
-		if self.journalSpellID then
-			CastSpellByID(self.journalSpellID);
-		end
-	end)
-	
 	frame.iconButton:SetScript("OnEnter", function(self)
 		if self.journalSpellID then
 			GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
@@ -499,7 +493,23 @@ local function UpgradeProfessionFrame(frame)
 			GameTooltip:Show();
 		end
 	end)
-	frame.iconButton:SetScript("OnLeave", function() GameTooltip_Hide(); end);
+
+	frame.iconButton:SetScript("OnMouseDown", function(self)
+		if not self:IsEnabled() then return; end
+		frame.customIcon:SetTexCoord(0.05, 0.95, 0.05, 0.95);
+		if frame.customIconOverlay then frame.customIconOverlay:SetTexCoord(0.05, 0.95, 0.05, 0.95); end
+	end)
+
+	frame.iconButton:SetScript("OnMouseUp", function(self)
+		frame.customIcon:SetTexCoord(0, 1, 0, 1);
+		if frame.customIconOverlay then frame.customIconOverlay:SetTexCoord(0, 1, 0, 1); end
+	end)
+
+	frame.iconButton:SetScript("OnLeave", function(self)
+		GameTooltip_Hide();
+		frame.customIcon:SetTexCoord(0, 1, 0, 1);
+		if frame.customIconOverlay then frame.customIconOverlay:SetTexCoord(0, 1, 0, 1); end
+	end);
 
 	frame.spellFlyoutTrigger = CreateFrame("Button", nil, frame);
 	frame.spellFlyoutTrigger:SetSize(35, 35);
@@ -521,7 +531,14 @@ local function UpgradeProfessionFrame(frame)
 	arrow:SetRotation(math.rad(-90)); -- i'm too lazy to texcoord it
 	frame.spellFlyoutTrigger.arrow = arrow;
 
-	frame.spellFlyoutContainer = CreateFrame("Frame", nil, frame, "BackdropTemplate");
+	frame.spellFlyoutContainer = CreateFrame("Frame", nil, frame, "SecureHandlerStateTemplate, BackdropTemplate");
+	
+	RegisterStateDriver(frame.spellFlyoutContainer, "combatstate", "[combat] true; false");
+	frame.spellFlyoutContainer:SetAttribute("_onstate-combatstate", [[
+		if newstate == "true" then
+			self:Hide();
+		end
+	]]);
 	frame.spellFlyoutContainer:SetFrameStrata("HIGH");
 	frame.spellFlyoutContainer:SetBackdrop({
 		bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
@@ -787,7 +804,9 @@ local function ApplyProfessionHook()
 				SetIconTex(frame.customIcon, chosenTexture);
 				SetIconTex(frame.customIconOverlay, chosenTexture);
 				
-				frame.iconButton:Enable();
+				if not InCombatLockdown() then
+					frame.iconButton:Enable();
+				end
 				frame.customIcon:SetAlpha(0.8);
 				frame.customIcon:SetDesaturated(false);
 				frame.customIcon:SetBlendMode("BLEND");
@@ -801,7 +820,9 @@ local function ApplyProfessionHook()
 					frame.professionBackplate:Show();
 				end
 			else
-				frame.iconButton:Disable();
+				if not InCombatLockdown() then
+					frame.iconButton:Disable();
+				end
 
 				frame.customIcon:SetTexture("Interface\\Icons\\INV_Scroll_04");
 				frame.customIcon:SetAlpha(0.8);
@@ -823,11 +844,16 @@ local function ApplyProfessionHook()
 				frame.icon:SetAlpha(db.hideDefaultIcons and 0 or 1);
 			end
 			
-			if frame.iconButton then
-				frame.iconButton:SetShown(not db.hideCustomIcons);
-			end
 			if frame.customIconBorder then
 				frame.customIconBorder:SetShown(not db.hideCustomIcons);
+			end
+
+			if frame.iconButton and not InCombatLockdown() then
+				if index and not db.hideCustomIcons then
+					RegisterStateDriver(frame.iconButton, "visibility", "[combat] hide; show");
+				else
+					RegisterStateDriver(frame.iconButton, "visibility", "hide");
+				end
 			end
 
 			if frame.professionBackplate then
@@ -870,10 +896,24 @@ local function ApplyProfessionHook()
 			end
 
 			frame.iconButton.journalSpellID = resolvedJournalID;
+			
+			if not InCombatLockdown() then
+				if resolvedJournalID then
+					local spellInfo = C_Spell.GetSpellInfo(resolvedJournalID);
+					frame.iconButton:SetAttribute("spell", spellInfo and spellInfo.name or tostring(resolvedJournalID));
+				else
+					frame.iconButton:SetAttribute("spell", nil);
+				end
+			end
 
 			local activeSpells = skillData and GetLearnedSpells(skillData.spells) or {};
 
 			if #activeSpells > 0 then
+				if InCombatLockdown() then
+					return;
+				end
+
+				RegisterStateDriver(frame.spellFlyoutTrigger, "visibility", "[combat] hide; show");
 				frame.spellFlyoutTrigger:Show();
 				
 				local numFlyoutSpells = #activeSpells;
@@ -897,33 +937,50 @@ local function ApplyProfessionHook()
 					local spellBtn = frame.spellFlyoutButtons[i];
 					
 					if not spellBtn then
-						spellBtn = CreateFrame("Button", nil, container);
+						spellBtn = CreateFrame("Button", nil, container, "SecureActionButtonTemplate");
+						spellBtn:SetAttribute("type", "spell");
+						spellBtn:SetAttribute("useOnKeyDown", false);
 						spellBtn:SetSize(btnSize, btnSize);
 						spellBtn:SetHighlightTexture("Interface\\Buttons\\ButtonHilight-Square", "ADD");
-						spellBtn:SetPushedTexture("Interface\\Buttons\\UI-Quickslot-Depress");
 						
 						local iconTex = spellBtn:CreateTexture(nil, "ARTWORK");
 						iconTex:SetAllPoints();
 						spellBtn.icon = iconTex;
 						
 						spellBtn:RegisterForDrag("LeftButton");
+						spellBtn:RegisterForClicks("LeftButtonUp");
 						
 						spellBtn:SetScript("OnEnter", function(self)
 							GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
 							GameTooltip:SetSpellByID(self.spellID);
 						end)
-						spellBtn:SetScript("OnLeave", function() GameTooltip_Hide(); end);
 						
 						spellBtn:SetScript("OnDragStart", function(self)
 							if InCombatLockdown() then return; end
 							C_Spell.PickupSpell(self.spellID);
 							container:Hide();
 						end)
+
+						spellBtn:SetScript("OnMouseDown", function(self)
+							self.icon:SetTexCoord(0.05, 0.95, 0.05, 0.95);
+						end)
+						spellBtn:SetScript("OnMouseUp", function(self)
+							self.icon:SetTexCoord(0, 1, 0, 1);
+						end)
+						spellBtn:SetScript("OnLeave", function(self)
+							GameTooltip_Hide();
+							self.icon:SetTexCoord(0, 1, 0, 1);
+						end)
 						
 						frame.spellFlyoutButtons[i] = spellBtn;
 					end
 					
 					spellBtn.spellID = spellID;
+					
+					if not InCombatLockdown() then
+						local flyoutSpellInfo = C_Spell.GetSpellInfo(spellID);
+						spellBtn:SetAttribute("spell", flyoutSpellInfo and flyoutSpellInfo.name or tostring(spellID));
+					end
 					
 					local spellInfo = C_Spell.GetSpellInfo(spellID);
 					if spellInfo then
@@ -949,7 +1006,9 @@ local function ApplyProfessionHook()
 					end
 				end
 			else
-				frame.spellFlyoutTrigger:Hide();
+				if not InCombatLockdown() then
+					RegisterStateDriver(frame.spellFlyoutTrigger, "visibility", "hide");
+				end
 				frame.spellFlyoutContainer:Hide();
 			end
 		end
