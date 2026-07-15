@@ -1,5 +1,15 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.2.8b
+
+Added the Undercurrent spell to the list of Fishing spells in the flyout (if learned)
+
+Opening Alchemy spellbook should actually work for real this time
+ - There was an issue where it was attempting to open it by the spell name, similar to doing `/cast Alchemy`. Normally this works for most other profession spellbooks. The spell ID should be `2259`, but it was using spell ID `264211`, which is identical in name. You can actually reproduce this ingame by manually typing in the slash command to open various profession books, and Alchemy "fails" (it's successfully casting the other spell but the spell does nothing).
+
+
+Added a potential fix to a combat error with the spell flyout menu
+
 # 0.2.8a
 
 Made the buttons in the Professions Book secured and disappear in combat

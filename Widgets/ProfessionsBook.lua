@@ -295,7 +295,7 @@ local professionJournalSpells = {
 		secondaryicon = "Mobile-Fishing",
 		oldicon = 136245,
 		professionbookicon = 3615516,
-		spells = {131474},
+		spells = {131474, 201891},
 	},
 	[185] = { -- Cooking
 		journal = 2550,
@@ -899,8 +899,7 @@ local function ApplyProfessionHook()
 			
 			if not InCombatLockdown() then
 				if resolvedJournalID then
-					local spellInfo = C_Spell.GetSpellInfo(resolvedJournalID);
-					frame.iconButton:SetAttribute("spell", spellInfo and spellInfo.name or tostring(resolvedJournalID));
+					frame.iconButton:SetAttribute("spell", resolvedJournalID);
 				else
 					frame.iconButton:SetAttribute("spell", nil);
 				end
@@ -1008,8 +1007,8 @@ local function ApplyProfessionHook()
 			else
 				if not InCombatLockdown() then
 					RegisterStateDriver(frame.spellFlyoutTrigger, "visibility", "hide");
+					frame.spellFlyoutContainer:Hide();
 				end
-				frame.spellFlyoutContainer:Hide();
 			end
 		end
 	end)
