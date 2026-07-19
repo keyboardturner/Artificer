@@ -663,355 +663,356 @@ local function InitializeGearSlots(frame)
 	end
 end
 
-local function ApplyProfessionHook()
-	hooksecurefunc("FormatProfession", function(frame, index)
+local function UpdateArtificerProfessionFrame(frame, index)
+	if not InCombatLockdown() then
+		if frame.SpellButton1 then frame.SpellButton1:Hide(); end
+		if frame.SpellButton2 then frame.SpellButton2:Hide(); end
 		
-		if not InCombatLockdown() then
-			if frame.SpellButton1 then frame.SpellButton1:Hide(); end
-			if frame.SpellButton2 then frame.SpellButton2:Hide(); end
-			
-			if frame.SpellButtonBottom then frame.SpellButtonBottom:Hide(); end
-		end
+		if frame.SpellButtonBottom then frame.SpellButtonBottom:Hide(); end
+	end
 
-		if frameMaxSlots[frame:GetName()] then
-			if GetProfDB().showGearSlots then
-				InitializeGearSlots(frame);
+	if frameMaxSlots[frame:GetName()] then
+		if GetProfDB().showGearSlots then
+			InitializeGearSlots(frame);
 
-				local hasProfession = (index ~= nil);
-				local skillLine = nil;
+			local hasProfession = (index ~= nil);
+			local skillLine = nil;
 
-				if hasProfession then
-					local _, _, _, _, _, _, skillLineID = GetProfessionInfo(index);
-					skillLine = skillLineID;
-				end
-
-				local activeSlots = {};
-				if skillLine and C_TradeSkillUI and C_TradeSkillUI.GetProfessionSlots then
-					local professionEnum = nil;
-
-					if C_TradeSkillUI.GetProfessionInfoBySkillLineID then
-						local profInfo = C_TradeSkillUI.GetProfessionInfoBySkillLineID(skillLine);
-						if profInfo and profInfo.profession then
-							professionEnum = profInfo.profession;
-						end
-					end
-
-					-- API uses Enum.Profession
-					if not professionEnum then
-						local skillLineToEnum = {
-							[129] = 0,	-- First Aid
-							[164] = 1,	-- Blacksmithing
-							[165] = 2,	-- Leatherworking
-							[171] = 3,	-- Alchemy
-							[182] = 4,	-- Herbalism
-							[185] = 5,	-- Cooking
-							[186] = 6,	-- Mining
-							[197] = 7,	-- Tailoring
-							[202] = 8,	-- Engineering
-							[333] = 9,	-- Enchanting
-							[356] = 10,	-- Fishing
-							[393] = 11,	-- Skinning
-							[755] = 12,	-- Jewelcrafting
-							[773] = 13,	-- Inscription
-							[794] = 14,	-- Archaeology
-						};
-						professionEnum = skillLineToEnum[skillLine];
-					end
-
-					if professionEnum then
-						activeSlots = C_TradeSkillUI.GetProfessionSlots(professionEnum) or {};
-					end
-				end
-
-				for i, btn in ipairs(frame.gearSlots) do
-					local slotID = activeSlots[i];
-
-					if slotID and hasProfession and not InCombatLockdown() then
-						btn.slotName = slotIDToName[slotID];
-						PaperDollItemSlotButton_OnLoad(btn);
-						btn:Show();
-						PaperDollItemSlotButton_Update(btn);
-					else
-						btn:Hide();
-						btn:SetID(0);
-						btn.slotName = nil;
-					end
-				end
-				
-				if frame.gearSlotDivider then
-					frame.gearSlotDivider:SetShown(hasProfession and #activeSlots > 1 and not InCombatLockdown());
-				end
-
-			else
-				if frame.gearSlots then
-					for _, btn in ipairs(frame.gearSlots) do
-						btn:Hide();
-					end
-				end
-				if frame.gearSlotDivider then
-					frame.gearSlotDivider:Hide();
-				end
-			end
-		end
-
-		if frame.isUpgraded then
-			local skillData = nil;
-
-			local primaryIndex = primaryFrameToProfessionIndex[frame:GetName()];
-			if primaryIndex then
-				UpdateUnspentPointsBadge(frame, primaryIndex, index ~= nil);
+			if hasProfession then
+				local _, _, _, _, _, _, skillLineID = GetProfessionInfo(index);
+				skillLine = skillLineID;
 			end
 
-			if index then
-				local name, texture, rank, maxRank, numSpells, spellOffset, skillLine = GetProfessionInfo(index);
-				skillData = professionJournalSpells[skillLine];
-				
-				local chosenTexture = texture;
-				local style = GetProfDB().iconStyle or "icon";
+			local activeSlots = {};
+			if skillLine and C_TradeSkillUI and C_TradeSkillUI.GetProfessionSlots then
+				local professionEnum = nil;
 
-				if skillData then
-					if style == "icon" and skillData.icon then
-						chosenTexture = skillData.icon;
-					elseif style == "secondaryicon" and skillData.secondaryicon then
-						chosenTexture = skillData.secondaryicon;
-					elseif style == "oldicon" and skillData.oldicon then
-						chosenTexture = skillData.oldicon;
-					elseif style == "professionbook" and skillData.professionbookicon then
-						chosenTexture = skillData.professionbookicon;
-					elseif style == "journal" and skillData.journal then
-						local spellInfo = C_Spell.GetSpellInfo(skillData.journal);
-						if spellInfo then
-							chosenTexture = spellInfo.iconID;
-						else
-							chosenTexture = GetSpellTexture(skillData.journal);
-						end
+				if C_TradeSkillUI.GetProfessionInfoBySkillLineID then
+					local profInfo = C_TradeSkillUI.GetProfessionInfoBySkillLineID(skillLine);
+					if profInfo and profInfo.profession then
+						professionEnum = profInfo.profession;
 					end
 				end
 
-				if not chosenTexture and frame.icon then
-					chosenTexture = frame.icon:GetTexture();
+				-- API uses Enum.Profession
+				if not professionEnum then
+					local skillLineToEnum = {
+						[129] = 0,	-- First Aid
+						[164] = 1,	-- Blacksmithing
+						[165] = 2,	-- Leatherworking
+						[171] = 3,	-- Alchemy
+						[182] = 4,	-- Herbalism
+						[185] = 5,	-- Cooking
+						[186] = 6,	-- Mining
+						[197] = 7,	-- Tailoring
+						[202] = 8,	-- Engineering
+						[333] = 9,	-- Enchanting
+						[356] = 10,	-- Fishing
+						[393] = 11,	-- Skinning
+						[755] = 12,	-- Jewelcrafting
+						[773] = 13,	-- Inscription
+						[794] = 14,	-- Archaeology
+					};
+					professionEnum = skillLineToEnum[skillLine];
 				end
 
-				local function SetIconTex(texObj, texVal)
-					if not texObj or not texVal then return; end
-					if type(texVal) == "string" and not string.match(texVal, "\\") and C_Texture.GetAtlasInfo(texVal) then
-						texObj:SetAtlas(texVal);
-					else
-						texObj:SetTexture(texVal);
-					end
-				end
-
-				SetIconTex(frame.customIcon, chosenTexture);
-				SetIconTex(frame.customIconOverlay, chosenTexture);
-				
-				if not InCombatLockdown() then
-					frame.iconButton:Enable();
-				end
-				frame.customIcon:SetAlpha(0.8);
-				frame.customIcon:SetDesaturated(false);
-				frame.customIcon:SetBlendMode("BLEND");
-				
-				if frame.customIconOverlay then
-					frame.customIconOverlay:Show();
-					frame.customIconOverlay:SetVertexColor(1,.4,0);
-				end
-
-				if frame.professionBackplate then
-					frame.professionBackplate:Show();
-				end
-			else
-				if not InCombatLockdown() then
-					frame.iconButton:Disable();
-				end
-
-				frame.customIcon:SetTexture("Interface\\Icons\\INV_Scroll_04");
-				frame.customIcon:SetAlpha(0.8);
-				frame.customIcon:SetDesaturated(true);
-				frame.customIcon:SetBlendMode("BLEND");
-
-				if frame.customIconOverlay then
-					frame.customIconOverlay:SetTexture("Interface\\Icons\\INV_Scroll_04");
-					frame.customIconOverlay:Show();
-				end
-
-				if frame.professionBackplate then
-					frame.professionBackplate:Hide();
+				if professionEnum then
+					activeSlots = C_TradeSkillUI.GetProfessionSlots(professionEnum) or {};
 				end
 			end
 
-			local db = GetProfDB();
-			if frame.icon then
-				frame.icon:SetAlpha(db.hideDefaultIcons and 0 or 1);
-			end
-			
-			if frame.customIconBorder then
-				frame.customIconBorder:SetShown(not db.hideCustomIcons);
-			end
+			for i, btn in ipairs(frame.gearSlots) do
+				local slotID = activeSlots[i];
 
-			if frame.iconButton and not InCombatLockdown() then
-				if index and not db.hideCustomIcons then
-					RegisterStateDriver(frame.iconButton, "visibility", "[combat] hide; show");
+				if slotID and hasProfession and not InCombatLockdown() then
+					btn.slotName = slotIDToName[slotID];
+					PaperDollItemSlotButton_OnLoad(btn);
+					btn:Show();
+					PaperDollItemSlotButton_Update(btn);
 				else
-					RegisterStateDriver(frame.iconButton, "visibility", "hide");
+					btn:Hide();
+					btn:SetID(0);
+					btn.slotName = nil;
 				end
+			end
+			
+			if frame.gearSlotDivider then
+				frame.gearSlotDivider:SetShown(hasProfession and #activeSlots > 1 and not InCombatLockdown());
+			end
+
+		else
+			if frame.gearSlots then
+				for _, btn in ipairs(frame.gearSlots) do
+					btn:Hide();
+				end
+			end
+			if frame.gearSlotDivider then
+				frame.gearSlotDivider:Hide();
+			end
+		end
+	end
+
+	if frame.isUpgraded then
+		local skillData = nil;
+
+		local primaryIndex = primaryFrameToProfessionIndex[frame:GetName()];
+		if primaryIndex then
+			UpdateUnspentPointsBadge(frame, primaryIndex, index ~= nil);
+		end
+
+		if index then
+			local name, texture, rank, maxRank, numSpells, spellOffset, skillLine = GetProfessionInfo(index);
+			skillData = professionJournalSpells[skillLine];
+			
+			local chosenTexture = texture;
+			local style = GetProfDB().iconStyle or "icon";
+
+			if skillData then
+				if style == "icon" and skillData.icon then
+					chosenTexture = skillData.icon;
+				elseif style == "secondaryicon" and skillData.secondaryicon then
+					chosenTexture = skillData.secondaryicon;
+				elseif style == "oldicon" and skillData.oldicon then
+					chosenTexture = skillData.oldicon;
+				elseif style == "professionbook" and skillData.professionbookicon then
+					chosenTexture = skillData.professionbookicon;
+				elseif style == "journal" and skillData.journal then
+					local spellInfo = C_Spell.GetSpellInfo(skillData.journal);
+					if spellInfo then
+						chosenTexture = spellInfo.iconID;
+					else
+						chosenTexture = GetSpellTexture(skillData.journal);
+					end
+				end
+			end
+
+			if not chosenTexture and frame.icon then
+				chosenTexture = frame.icon:GetTexture();
+			end
+
+			local function SetIconTex(texObj, texVal)
+				if not texObj or not texVal then return; end
+				if type(texVal) == "string" and not string.match(texVal, "\\") and C_Texture.GetAtlasInfo(texVal) then
+					texObj:SetAtlas(texVal);
+				else
+					texObj:SetTexture(texVal);
+				end
+			end
+
+			SetIconTex(frame.customIcon, chosenTexture);
+			SetIconTex(frame.customIconOverlay, chosenTexture);
+			
+			if not InCombatLockdown() then
+				frame.iconButton:Enable();
+			end
+			frame.customIcon:SetAlpha(0.8);
+			frame.customIcon:SetDesaturated(false);
+			frame.customIcon:SetBlendMode("BLEND");
+			
+			if frame.customIconOverlay then
+				frame.customIconOverlay:Show();
+				frame.customIconOverlay:SetVertexColor(1,.4,0);
 			end
 
 			if frame.professionBackplate then
-				local c = db.Colors.Bg;
-				frame.professionBackplate:SetVertexColor(c.r, c.g, c.b, c.a);
-				frame.professionBackplate:SetDesaturated(c.desat);
+				frame.professionBackplate:Show();
 			end
-			if frame.professionName then
-				local c = db.Colors.Name;
-				frame.professionName:SetTextColor(c.r, c.g, c.b, c.a);
-			end
-			if frame.rank then
-				local c = db.Colors.Rank;
-				frame.rank:SetTextColor(c.r, c.g, c.b, c.a);
-			end
-			if frame.statusBar then
-				local c = db.Colors.Bar;
-				frame.statusBar:SetStatusBarColor(c.r, c.g, c.b, c.a);
-				if frame.statusBar.rankText then
-					local tc = db.Colors.BarText;
-					frame.statusBar.rankText:SetTextColor(tc.r, tc.g, tc.b, tc.a);
-				end
-			end
-
-			local resolvedJournalID = nil;
-			if skillData then
-				if skillData.journalIDs then
-					for _, spellID in ipairs(skillData.journalIDs) do
-						local isKnown = false;
-						isKnown = C_SpellBook.IsSpellKnown(spellID);
-
-						if isKnown then
-							resolvedJournalID = spellID;
-							break;
-						end
-					end
-				else
-					resolvedJournalID = skillData.journal;
-				end
-			end
-
-			frame.iconButton.journalSpellID = resolvedJournalID;
-			
+		else
 			if not InCombatLockdown() then
-				if resolvedJournalID then
-					frame.iconButton:SetAttribute("spell", resolvedJournalID);
-				else
-					frame.iconButton:SetAttribute("spell", nil);
-				end
+				frame.iconButton:Disable();
 			end
 
-			local activeSpells = skillData and GetLearnedSpells(skillData.spells) or {};
+			frame.customIcon:SetTexture("Interface\\Icons\\INV_Scroll_04");
+			frame.customIcon:SetAlpha(0.8);
+			frame.customIcon:SetDesaturated(true);
+			frame.customIcon:SetBlendMode("BLEND");
 
-			if #activeSpells > 0 then
-				if InCombatLockdown() then
-					return;
-				end
+			if frame.customIconOverlay then
+				frame.customIconOverlay:SetTexture("Interface\\Icons\\INV_Scroll_04");
+				frame.customIconOverlay:Show();
+			end
 
-				RegisterStateDriver(frame.spellFlyoutTrigger, "visibility", "[combat] hide; show");
-				frame.spellFlyoutTrigger:Show();
-				
-				local numFlyoutSpells = #activeSpells;
-				local container = frame.spellFlyoutContainer;
-				
-				local maxPerRow = 5;
-				local btnSize = 32;
-				local padding = 4;
-				local inset = 4;
-				
-				local numCols = math.min(numFlyoutSpells, maxPerRow);
-				local numRows = math.ceil(numFlyoutSpells / maxPerRow);
-				
-				local containerWidth = (numCols * btnSize) + ((numCols - 1) * padding) + (inset * 2);
-				local containerHeight = (numRows * btnSize) + ((numRows - 1) * padding) + (inset * 2);
-				
-				container:SetSize(containerWidth, containerHeight);
-				
-				for i = 1, numFlyoutSpells do
-					local spellID = activeSpells[i];
-					local spellBtn = frame.spellFlyoutButtons[i];
-					
-					if not spellBtn then
-						spellBtn = CreateFrame("Button", nil, container, "SecureActionButtonTemplate");
-						spellBtn:SetAttribute("type", "spell");
-						spellBtn:SetAttribute("useOnKeyDown", false);
-						spellBtn:SetSize(btnSize, btnSize);
-						spellBtn:SetHighlightTexture("Interface\\Buttons\\ButtonHilight-Square", "ADD");
-						
-						local iconTex = spellBtn:CreateTexture(nil, "ARTWORK");
-						iconTex:SetAllPoints();
-						spellBtn.icon = iconTex;
-						
-						spellBtn:RegisterForDrag("LeftButton");
-						spellBtn:RegisterForClicks("LeftButtonUp");
-						
-						spellBtn:SetScript("OnEnter", function(self)
-							GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
-							GameTooltip:SetSpellByID(self.spellID);
-						end)
-						
-						spellBtn:SetScript("OnDragStart", function(self)
-							if InCombatLockdown() then return; end
-							C_Spell.PickupSpell(self.spellID);
-							container:Hide();
-						end)
+			if frame.professionBackplate then
+				frame.professionBackplate:Hide();
+			end
+		end
 
-						spellBtn:SetScript("OnMouseDown", function(self)
-							self.icon:SetTexCoord(0.05, 0.95, 0.05, 0.95);
-						end)
-						spellBtn:SetScript("OnMouseUp", function(self)
-							self.icon:SetTexCoord(0, 1, 0, 1);
-						end)
-						spellBtn:SetScript("OnLeave", function(self)
-							GameTooltip_Hide();
-							self.icon:SetTexCoord(0, 1, 0, 1);
-						end)
-						
-						frame.spellFlyoutButtons[i] = spellBtn;
-					end
-					
-					spellBtn.spellID = spellID;
-					
-					if not InCombatLockdown() then
-						local flyoutSpellInfo = C_Spell.GetSpellInfo(spellID);
-						spellBtn:SetAttribute("spell", flyoutSpellInfo and flyoutSpellInfo.name or tostring(spellID));
-					end
-					
-					local spellInfo = C_Spell.GetSpellInfo(spellID);
-					if spellInfo then
-						spellBtn.icon:SetTexture(spellInfo.iconID);
-					else
-						spellBtn.icon:SetTexture(GetSpellTexture(spellID));
-					end
-					
-					local colIndex = (i - 1) % maxPerRow;
-					local rowIndex = math.floor((i - 1) / maxPerRow);
-					
-					local xOffset = inset + (colIndex * (btnSize + padding));
-					local yOffset = -(inset + (rowIndex * (btnSize + padding)));
-					
-					spellBtn:ClearAllPoints();
-					spellBtn:SetPoint("TOPLEFT", container, "TOPLEFT", xOffset, yOffset);
-					spellBtn:Show();
-				end
-				
-				for i = numFlyoutSpells + 1, #frame.spellFlyoutButtons do
-					if frame.spellFlyoutButtons[i] then
-						frame.spellFlyoutButtons[i]:Hide();
+		local db = GetProfDB();
+		if frame.icon then
+			frame.icon:SetAlpha(db.hideDefaultIcons and 0 or 1);
+		end
+		
+		if frame.customIconBorder then
+			frame.customIconBorder:SetShown(not db.hideCustomIcons);
+		end
+
+		if frame.iconButton and not InCombatLockdown() then
+			if index and not db.hideCustomIcons then
+				RegisterStateDriver(frame.iconButton, "visibility", "[combat] hide; show");
+			else
+				RegisterStateDriver(frame.iconButton, "visibility", "hide");
+			end
+		end
+
+		if frame.professionBackplate then
+			local c = db.Colors.Bg;
+			frame.professionBackplate:SetVertexColor(c.r, c.g, c.b, c.a);
+			frame.professionBackplate:SetDesaturated(c.desat);
+		end
+		if frame.professionName then
+			local c = db.Colors.Name;
+			frame.professionName:SetTextColor(c.r, c.g, c.b, c.a);
+		end
+		if frame.rank then
+			local c = db.Colors.Rank;
+			frame.rank:SetTextColor(c.r, c.g, c.b, c.a);
+		end
+		if frame.statusBar then
+			local c = db.Colors.Bar;
+			frame.statusBar:SetStatusBarColor(c.r, c.g, c.b, c.a);
+			if frame.statusBar.rankText then
+				local tc = db.Colors.BarText;
+				frame.statusBar.rankText:SetTextColor(tc.r, tc.g, tc.b, tc.a);
+			end
+		end
+
+		local resolvedJournalID = nil;
+		if skillData then
+			if skillData.journalIDs then
+				for _, spellID in ipairs(skillData.journalIDs) do
+					local isKnown = false;
+					isKnown = C_SpellBook.IsSpellKnown(spellID);
+
+					if isKnown then
+						resolvedJournalID = spellID;
+						break;
 					end
 				end
 			else
-				if not InCombatLockdown() then
-					RegisterStateDriver(frame.spellFlyoutTrigger, "visibility", "hide");
-					frame.spellFlyoutContainer:Hide();
-				end
+				resolvedJournalID = skillData.journal;
 			end
 		end
-	end)
+
+		frame.iconButton.journalSpellID = resolvedJournalID;
+		
+		if not InCombatLockdown() then
+			if resolvedJournalID then
+				frame.iconButton:SetAttribute("spell", resolvedJournalID);
+			else
+				frame.iconButton:SetAttribute("spell", nil);
+			end
+		end
+
+		local activeSpells = skillData and GetLearnedSpells(skillData.spells) or {};
+
+		if #activeSpells > 0 then
+			if InCombatLockdown() then
+				return;
+			end
+
+			RegisterStateDriver(frame.spellFlyoutTrigger, "visibility", "[combat] hide; show");
+			frame.spellFlyoutTrigger:Show();
+			
+			local numFlyoutSpells = #activeSpells;
+			local container = frame.spellFlyoutContainer;
+			
+			local maxPerRow = 5;
+			local btnSize = 32;
+			local padding = 4;
+			local inset = 4;
+			
+			local numCols = math.min(numFlyoutSpells, maxPerRow);
+			local numRows = math.ceil(numFlyoutSpells / maxPerRow);
+			
+			local containerWidth = (numCols * btnSize) + ((numCols - 1) * padding) + (inset * 2);
+			local containerHeight = (numRows * btnSize) + ((numRows - 1) * padding) + (inset * 2);
+			
+			container:SetSize(containerWidth, containerHeight);
+			
+			for i = 1, numFlyoutSpells do
+				local spellID = activeSpells[i];
+				local spellBtn = frame.spellFlyoutButtons[i];
+				
+				if not spellBtn then
+					spellBtn = CreateFrame("Button", nil, container, "SecureActionButtonTemplate");
+					spellBtn:SetAttribute("type", "spell");
+					spellBtn:SetAttribute("useOnKeyDown", false);
+					spellBtn:SetSize(btnSize, btnSize);
+					spellBtn:SetHighlightTexture("Interface\\Buttons\\ButtonHilight-Square", "ADD");
+					
+					local iconTex = spellBtn:CreateTexture(nil, "ARTWORK");
+					iconTex:SetAllPoints();
+					spellBtn.icon = iconTex;
+					
+					spellBtn:RegisterForDrag("LeftButton");
+					spellBtn:RegisterForClicks("LeftButtonUp");
+					
+					spellBtn:SetScript("OnEnter", function(self)
+						GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+						GameTooltip:SetSpellByID(self.spellID);
+					end)
+					
+					spellBtn:SetScript("OnDragStart", function(self)
+						if InCombatLockdown() then return; end
+						C_Spell.PickupSpell(self.spellID);
+						container:Hide();
+					end)
+
+					spellBtn:SetScript("OnMouseDown", function(self)
+						self.icon:SetTexCoord(0.05, 0.95, 0.05, 0.95);
+					end)
+					spellBtn:SetScript("OnMouseUp", function(self)
+						self.icon:SetTexCoord(0, 1, 0, 1);
+					end)
+					spellBtn:SetScript("OnLeave", function(self)
+						GameTooltip_Hide();
+						self.icon:SetTexCoord(0, 1, 0, 1);
+					end)
+					
+					frame.spellFlyoutButtons[i] = spellBtn;
+				end
+				
+				spellBtn.spellID = spellID;
+				
+				if not InCombatLockdown() then
+					local flyoutSpellInfo = C_Spell.GetSpellInfo(spellID);
+					spellBtn:SetAttribute("spell", flyoutSpellInfo and flyoutSpellInfo.name or tostring(spellID));
+				end
+				
+				local spellInfo = C_Spell.GetSpellInfo(spellID);
+				if spellInfo then
+					spellBtn.icon:SetTexture(spellInfo.iconID);
+				else
+					spellBtn.icon:SetTexture(GetSpellTexture(spellID));
+				end
+				
+				local colIndex = (i - 1) % maxPerRow;
+				local rowIndex = math.floor((i - 1) / maxPerRow);
+				
+				local xOffset = inset + (colIndex * (btnSize + padding));
+				local yOffset = -(inset + (rowIndex * (btnSize + padding)));
+				
+				spellBtn:ClearAllPoints();
+				spellBtn:SetPoint("TOPLEFT", container, "TOPLEFT", xOffset, yOffset);
+				spellBtn:Show();
+			end
+			
+			for i = numFlyoutSpells + 1, #frame.spellFlyoutButtons do
+				if frame.spellFlyoutButtons[i] then
+					frame.spellFlyoutButtons[i]:Hide();
+				end
+			end
+		else
+			if not InCombatLockdown() then
+				RegisterStateDriver(frame.spellFlyoutTrigger, "visibility", "hide");
+				frame.spellFlyoutContainer:Hide();
+			end
+		end
+	end
+end
+
+local function ApplyProfessionHook()
+	hooksecurefunc("FormatProfession", UpdateArtificerProfessionFrame)
 end
 
 EventUtil.ContinueOnAddOnLoaded("Blizzard_ProfessionsBook", function()
@@ -1509,7 +1510,14 @@ combatStateListener:SetScript("OnEvent", function(self, event)
 			if secondary and secondary.spellFlyoutContainer then secondary.spellFlyoutContainer:Hide(); end
 		end
 		
-		ProfessionsBookFrame_Update();
+		if event == "PLAYER_REGEN_ENABLED" then
+			local prof1, prof2, arch, fish, cook = GetProfessions();
+			UpdateArtificerProfessionFrame(PrimaryProfession1, prof1);
+			UpdateArtificerProfessionFrame(PrimaryProfession2, prof2);
+			UpdateArtificerProfessionFrame(SecondaryProfession1, cook);
+			UpdateArtificerProfessionFrame(SecondaryProfession2, fish);
+			UpdateArtificerProfessionFrame(SecondaryProfession3, arch);
+		end
 	end
 end)
 
@@ -1517,7 +1525,7 @@ local unspentPointsListener = CreateFrame("Frame");
 unspentPointsListener:RegisterEvent("TRAIT_TREE_CURRENCY_INFO_UPDATED");
 unspentPointsListener:RegisterEvent("TRAIT_CONFIG_UPDATED");
 unspentPointsListener:SetScript("OnEvent", function(self, event, ...)
-	if ProfessionsBookFrame and ProfessionsBookFrame:IsShown() and IsModuleEnabled() then
+	if ProfessionsBookFrame and ProfessionsBookFrame:IsShown() and IsModuleEnabled() and not InCombatLockdown() then
 		ProfessionsBookFrame_Update();
 	end
 end)
@@ -1608,7 +1616,9 @@ function Artificer:OpenProfessionsBookAdvancedSettings()
 		gearCheck:SetScript("OnClick", function(self)
 			if not Artificer_DB.ProfessionsBook then Artificer_DB.ProfessionsBook = {}; end
 			Artificer_DB.ProfessionsBook.showGearSlots = self:GetChecked();
-			if ProfessionsBookFrame and ProfessionsBookFrame:IsShown() then ProfessionsBookFrame_Update(); end
+			if ProfessionsBookFrame and ProfessionsBookFrame:IsShown() and not InCombatLockdown() then
+				ProfessionsBookFrame_Update();
+			end
 		end)
 
 		local autoCheck = CreateFrame("CheckButton", nil, f, "UICheckButtonTemplate");
@@ -1676,7 +1686,7 @@ function Artificer:OpenProfessionsBookAdvancedSettings()
 						if not Artificer_DB.ProfessionsBook then Artificer_DB.ProfessionsBook = {}; end
 						Artificer_DB.ProfessionsBook.iconStyle = opt.value;
 						UpdateDropButtonText();
-						if ProfessionsBookFrame and ProfessionsBookFrame:IsShown() then
+						if ProfessionsBookFrame and ProfessionsBookFrame:IsShown() and not InCombatLockdown() then
 							ProfessionsBookFrame_Update();
 						end
 					end
@@ -1695,7 +1705,9 @@ function Artificer:OpenProfessionsBookAdvancedSettings()
 		customIconCheck:SetScript("OnClick", function(self)
 			if not Artificer_DB.ProfessionsBook then Artificer_DB.ProfessionsBook = {}; end
 			Artificer_DB.ProfessionsBook.hideCustomIcons = self:GetChecked();
-			if ProfessionsBookFrame and ProfessionsBookFrame:IsShown() then ProfessionsBookFrame_Update(); end
+			if ProfessionsBookFrame and ProfessionsBookFrame:IsShown() and not InCombatLockdown() then
+				ProfessionsBookFrame_Update();
+			end
 		end)
 
 		local defaultIconCheck = CreateFrame("CheckButton", nil, f, "UICheckButtonTemplate");
@@ -1707,7 +1719,9 @@ function Artificer:OpenProfessionsBookAdvancedSettings()
 		defaultIconCheck:SetScript("OnClick", function(self)
 			if not Artificer_DB.ProfessionsBook then Artificer_DB.ProfessionsBook = {}; end
 			Artificer_DB.ProfessionsBook.hideDefaultIcons = self:GetChecked();
-			if ProfessionsBookFrame and ProfessionsBookFrame:IsShown() then ProfessionsBookFrame_Update(); end
+			if ProfessionsBookFrame and ProfessionsBookFrame:IsShown() and not InCombatLockdown() then
+				ProfessionsBookFrame_Update();
+			end
 		end)
 
 		local scrollBox = CreateFrame("Frame", nil, f, "WowScrollBoxList");
@@ -1763,7 +1777,7 @@ function Artificer:OpenProfessionsBookAdvancedSettings()
 				if not Artificer_DB.ProfessionsBook.Colors then Artificer_DB.ProfessionsBook.Colors = CopyTable(Artificer.Defaults.ProfessionsBook.Colors); end
 				
 				Artificer_DB.ProfessionsBook.Colors[s.key] = t;
-				if ProfessionsBookFrame and ProfessionsBookFrame:IsShown() then
+				if ProfessionsBookFrame and ProfessionsBookFrame:IsShown() and not InCombatLockdown() then
 					ProfessionsBookFrame_Update();
 					Artificer.UpdateProfessionStatusBarColors();
 					Artificer.UpdateProfessionGlobalColors();
