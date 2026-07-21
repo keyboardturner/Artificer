@@ -197,6 +197,15 @@ Artificer.CVars = {
 		description = L["CVar_weatherDensityTT"],
 	},
 	{
+		name = "SkyCloudLOD",
+		settings = "slider",
+		default = "0",
+		min = "0",
+		max = "3",
+		label = L["CVar_SkyCloudLOD"],
+		description = L["CVar_SkyCloudLODTT"],
+	},
+	{
 		name = "AutoPushSpellToActionBar",
 		settings = "checkbox",
 		default = "1",
@@ -216,6 +225,15 @@ Artificer.CVars = {
 		default = "1",
 		label = L["CVar_autoDismount"],
 		description = L["CVar_autoDismountTT"]
+	},
+	{
+		name = "violenceLevel",
+		settings = "slider",
+		default = "2",
+		min = "0",
+		max = "5",
+		label = L["CVar_violenceLevel"],
+		description = L["CVar_violenceLevelTT"],
 	},
 };
 
