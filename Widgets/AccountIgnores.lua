@@ -210,14 +210,27 @@ local function SwitchMode(mode)
 	UpdateScrollList();
 end
 
+local function GetActiveIgnoreWindow()
+	if SocialUIFrame and SocialUIFrame.IgnoreListFrame then
+		return SocialUIFrame.IgnoreListFrame, SocialUIFrame;
+	end
+	
+	if C_AddOns.IsAddOnLoaded("BetterFriendlist") and BetterFriendsFrame then
+		return BetterFriendsFrame.IgnoreListWindow, BetterFriendsFrame;
+	end
+	
+	if FriendsFrame and FriendsFrame.IgnoreListWindow then
+		return FriendsFrame.IgnoreListWindow, FriendsFrame;
+	end
+	
+	return nil, nil;
+end
+
 local function CreateUI()
 	if container then return; end
 
-	local parentFrame = FriendsFrame.IgnoreListWindow
-	
-	if C_AddOns.IsAddOnLoaded("BetterFriendlist") and BetterFriendsFrame then
-		parentFrame = BetterFriendsFrame.IgnoreListWindow;
-	end
+	local parentFrame, mainFrame = GetActiveIgnoreWindow();
+	if not parentFrame then return; end
 
 	container = CreateFrame("Frame", "ArtificerAccountIgnores", parentFrame, "BackdropTemplate")
 	container:SetPoint("TOPLEFT", parentFrame, "TOPRIGHT", 5, 0)
@@ -298,30 +311,31 @@ local function OnIgnoreWindowShow()
 	UpdateScrollList()
 
 	if showFrame then
-		local mainFrame = FriendsFrame;
-		local ignoreWindow = FriendsFrame.IgnoreListWindow;
-
-		if C_AddOns.IsAddOnLoaded("BetterFriendlist") and BetterFriendsFrame then
-			mainFrame = BetterFriendsFrame;
-			ignoreWindow = BetterFriendsFrame.IgnoreListWindow;
-		end
+		local ignoreWindow, mainFrame = GetActiveIgnoreWindow();
 
 		if ignoreWindow and mainFrame then
-			ignoreWindow:SetSize(mainFrame:GetWidth() * .75, mainFrame:GetHeight() * .85);
+			if ignoreWindow == (SocialUIFrame and SocialUIFrame.IgnoreListFrame) then
+				ignoreWindow:SetHeight(mainFrame:GetHeight() * 0.85);
+			else
+				ignoreWindow:SetSize(mainFrame:GetWidth() * 0.75, mainFrame:GetHeight() * 0.85);
+			end
 		end
 	end
 end
 
 function Artificer.AccountIgnores_ToggleVisibility(val)
-	local isWindowVisible = (FriendsFrame and FriendsFrame.IgnoreListWindow and FriendsFrame.IgnoreListWindow:IsVisible()) or (BetterFriendsFrame and BetterFriendsFrame.IgnoreListWindow and BetterFriendsFrame.IgnoreListWindow:IsVisible());
+	local ignoreWindow, mainFrame = GetActiveIgnoreWindow();
+	local isWindowVisible = ignoreWindow and ignoreWindow:IsVisible();
 
 	if isWindowVisible and container then
 		if val then
 			container:Show();
-			local mainFrame = C_AddOns.IsAddOnLoaded("BetterFriendlist") and BetterFriendsFrame or FriendsFrame;
-			local ignoreWindow = C_AddOns.IsAddOnLoaded("BetterFriendlist") and BetterFriendsFrame.IgnoreListWindow or FriendsFrame.IgnoreListWindow;
 			if ignoreWindow and mainFrame then
-				ignoreWindow:SetSize(mainFrame:GetWidth() * .75, mainFrame:GetHeight() * .85);
+				if ignoreWindow == (SocialUIFrame and SocialUIFrame.IgnoreListFrame) then
+					ignoreWindow:SetHeight(mainFrame:GetHeight() * 0.85);
+				else
+					ignoreWindow:SetSize(mainFrame:GetWidth() * 0.75, mainFrame:GetHeight() * 0.85);
+				end
 			end
 		else
 			container:Hide();
@@ -335,6 +349,15 @@ local function OnIgnoreWindowHide()
 	end
 end
 
+local function SetupHooks()
+	local ignoreWindow = GetActiveIgnoreWindow();
+	if ignoreWindow and not ignoreWindow.artificerHooked then
+		ignoreWindow:HookScript("OnShow", OnIgnoreWindowShow);
+		ignoreWindow:HookScript("OnHide", OnIgnoreWindowHide);
+		ignoreWindow.artificerHooked = true;
+	end
+end
+
 local eventFrame = CreateFrame("Frame")
 eventFrame:RegisterEvent("ADDON_LOADED")
 eventFrame:RegisterEvent("IGNORELIST_UPDATE")
@@ -342,10 +365,7 @@ eventFrame:RegisterEvent("FRIENDLIST_UPDATE")
 
 eventFrame:SetScript("OnEvent", function(self, event, arg1)
 	if event == "ADDON_LOADED" and arg1 == addonName then
-		if FriendsFrame and FriendsFrame.IgnoreListWindow then
-			FriendsFrame.IgnoreListWindow:HookScript("OnShow", OnIgnoreWindowShow);
-			FriendsFrame.IgnoreListWindow:HookScript("OnHide", OnIgnoreWindowHide);
-		end
+		SetupHooks();
 
 	elseif event == "IGNORELIST_UPDATE" then
 		AccountIgnores:SyncCurrentCharacter()
@@ -361,12 +381,9 @@ eventFrame:SetScript("OnEvent", function(self, event, arg1)
 	end
 end)
 
-local function BFL_Loaded()
-	if BetterFriendsFrame and BetterFriendsFrame.IgnoreListWindow then
-		BetterFriendsFrame.IgnoreListWindow:HookScript("OnShow", OnIgnoreWindowShow);
-		BetterFriendsFrame.IgnoreListWindow:HookScript("OnHide", OnIgnoreWindowHide);
-	end
+local function Dependency_Loaded()
+	SetupHooks();
 end
 
-
-EventUtil.ContinueOnAddOnLoaded("BetterFriendlist", BFL_Loaded);
+EventUtil.ContinueOnAddOnLoaded("BetterFriendlist", Dependency_Loaded);
+EventUtil.ContinueOnAddOnLoaded("Blizzard_SocialUI", Dependency_Loaded);
