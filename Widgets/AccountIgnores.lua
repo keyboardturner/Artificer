@@ -53,21 +53,26 @@ function AccountFriends:SyncCurrentCharacter()
 	local numFriends = C_FriendList.GetNumFriends()
 	if not numFriends then return; end
 
-	local charKey = GetCurrentCharKey()
-	local db = GetFriendsDB()
-	local currentFriends = {};
+	local charKey = GetCurrentCharKey();
+	local db = GetFriendsDB();
+
+	if not db[charKey] then
+		db[charKey] = {};
+	end
+
+	local existing = {};
+	for _, friendName in ipairs(db[charKey]) do
+		existing[friendName] = true;
+	end
 
 	for i = 1, numFriends do
 		local friendInfo = C_FriendList.GetFriendInfoByIndex(i);
 		if friendInfo and friendInfo.name then
-			table.insert(currentFriends, friendInfo.name);
+			if not existing[friendInfo.name] then
+				table.insert(db[charKey], friendInfo.name);
+				existing[friendInfo.name] = true;
+			end
 		end
-	end
-
-	if #currentFriends > 0 then
-		db[charKey] = currentFriends;
-	else
-		db[charKey] = nil;
 	end
 end
 
@@ -265,6 +270,13 @@ local function CreateUI()
 	local tabFriendsBtn = CreateFrame("Button", nil, tabRow);
 	tabFriendsBtn:SetAllPoints(tabFriends);
 	tabFriendsBtn:SetScript("OnClick", function() SwitchMode("friends"); end);
+	
+	tabFriendsBtn:SetScript("OnEnter", function(self)
+		GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+		GameTooltip:SetText(L["FriendListTemporarySuspension"], 1, 0.2, 0.2);
+		GameTooltip:Show();
+	end);
+	tabFriendsBtn:SetScript("OnLeave", GameTooltip_Hide);
 
 	local sep = container:CreateTexture(nil, "ARTWORK");
 	sep:SetColorTexture(0.4, 0.4, 0.4, 0.8);

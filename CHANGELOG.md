@@ -1,5 +1,13 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.2.9
+
+Added Sky Cloud Detail option CVar and Violence Level CVar
+
+Adjusted stuff to accomodate the new Social UI update
+
+12.1.0 toc update
+
 # 0.2.8b
 
 Added the Undercurrent spell to the list of Fishing spells in the flyout (if learned)

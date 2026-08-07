@@ -213,6 +213,7 @@ if LOCALE == "enUS" then
 	L["AccountFriendList"] = "Account Friend List"
 	L["RemoveCharData"] = "Remove Character Data"
 	L["RemoveAllConfirm"] = "Remove all %s entries for |cffffd100%s|r from the account list?"
+	L["FriendListTemporarySuspension"] = "Friend List updates may temporarily be suspended due to new social UI changes."
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "Prey Progress Indicators"
@@ -405,6 +406,8 @@ if LOCALE == "enUS" then
 	L["CVar_minimapTrackingClosestOnlyTT"] = "Show only the closest tracked icon for certain minimap icon types."
 	L["CVar_autoDismount"] = "Auto Dismount (Ground)"
 	L["CVar_autoDismountTT"] = "Automatically dismount from your ground mount when interacting with certain things."
+	L["CVar_violenceLevel"] = "Violence Level"
+	L["CVar_violenceLevelTT"] = "Controls the amount of blood and impact sparks that appear during combat."
 	L["CVar_findYourselfAnywhere"] = SELF_HIGHLIGHT_OPTION
 	L["CVar_findYourselfAnywhereTT"] = OPTION_TOOLTIP_SELF_HIGHLIGHT
 	L["CVar_findYourselfAnywhereCond"] = string.join(" - ", SELF_HIGHLIGHT_OPTION, "Conditions")
@@ -632,6 +635,7 @@ if LOCALE == "esMX" then
 	L["AccountFriendList"] = "Lista de amigos de la cuenta"
 	L["RemoveCharData"] = "Eliminar datos del personaje"
 	L["RemoveAllConfirm"] = "¿Eliminar todas las entradas de %s para |cffffd100%s|r de la lista de la cuenta?"
+	L["FriendListTemporarySuspension"] = "Las actualizaciones de la lista de amigos pueden suspenderse temporalmente debido a los nuevos cambios en la interfaz social."
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "Indicadores de progreso de presa"
@@ -823,6 +827,8 @@ if LOCALE == "esMX" then
 	L["CVar_minimapTrackingClosestOnlyTT"] = "Muestra solo el icono rastreado más cercano para ciertos tipos de iconos del minimapa."
 	L["CVar_autoDismount"] = "Desmontar automáticamente (tierra)"
 	L["CVar_autoDismountTT"] = "Te desmonta automáticamente de tu montura terrestre al interactuar con ciertos objetos."
+	L["CVar_violenceLevel"] = "Nivel de violencia"
+	L["CVar_violenceLevelTT"] = "Controla la cantidad de sangre y chispas de impacto que aparecen durante el combate."
 	L["CVar_findYourselfAnywhere"] = SELF_HIGHLIGHT_OPTION
 	L["CVar_findYourselfAnywhereTT"] = OPTION_TOOLTIP_SELF_HIGHLIGHT
 	L["CVar_findYourselfAnywhereCond"] = string.join(" - ", SELF_HIGHLIGHT_OPTION, "Condiciones")
@@ -1049,6 +1055,7 @@ if LOCALE == "esES" then
 	L["AccountFriendList"] = "Lista de amigos de la cuenta"
 	L["RemoveCharData"] = "Eliminar datos del personaje"
 	L["RemoveAllConfirm"] = "¿Eliminar todas las entradas de %s para |cffffd100%s|r de la lista de la cuenta?"
+	L["FriendListTemporarySuspension"] = "Las actualizaciones de la lista de amigos pueden suspenderse temporalmente debido a los nuevos cambios en la interfaz social."
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "Indicadores de progreso de presa"
@@ -1240,6 +1247,8 @@ if LOCALE == "esES" then
 	L["CVar_minimapTrackingClosestOnlyTT"] = "Muestra solo el icono rastreado más cercano para ciertos tipos de iconos del minimapa."
 	L["CVar_autoDismount"] = "Desmontar automáticamente (tierra)"
 	L["CVar_autoDismountTT"] = "Te desmonta automáticamente de tu montura terrestre al interactuar con ciertos objetos."
+	L["CVar_violenceLevel"] = "Nivel de violencia"
+	L["CVar_violenceLevelTT"] = "Controla la cantidad de sangre y chispas de impacto que aparecen durante el combate."
 	L["CVar_findYourselfAnywhere"] = SELF_HIGHLIGHT_OPTION
 	L["CVar_findYourselfAnywhereTT"] = OPTION_TOOLTIP_SELF_HIGHLIGHT
 	L["CVar_findYourselfAnywhereCond"] = string.join(" - ", SELF_HIGHLIGHT_OPTION, "Condiciones")
@@ -1464,6 +1473,7 @@ if LOCALE == "deDE" then
 	L["AccountFriendList"] = "Kontoweite Freundesliste"
 	L["RemoveCharData"] = "Charakterdaten entfernen"
 	L["RemoveAllConfirm"] = "Alle %s-Einträge für |cffffd100%s|r aus der Kontoliste entfernen?"
+	L["FriendListTemporarySuspension"] = "Aktualisierungen der Freundesliste können aufgrund neuer Änderungen an der sozialen Benutzeroberfläche vorübergehend ausgesetzt werden."
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "Beute-Fortschrittsanzeigen"
@@ -1655,6 +1665,8 @@ if LOCALE == "deDE" then
 	L["CVar_minimapTrackingClosestOnlyTT"] = "Zeigt nur das nächstgelegene verfolgte Symbol für bestimmte Minimap-Symboltypen an."
 	L["CVar_autoDismount"] = "Automatisches Absitzen (Boden)"
 	L["CVar_autoDismountTT"] = "Steigt automatisch von deinem Bodenreittier ab, wenn du mit bestimmten Objekten interagierst."
+	L["CVar_violenceLevel"] = "Gewaltgrad"
+	L["CVar_violenceLevelTT"] = "Steuert die Menge an Blut- und Aufprallfunken, die während des Kampfes angezeigt werden."
 	L["CVar_findYourselfAnywhere"] = SELF_HIGHLIGHT_OPTION
 	L["CVar_findYourselfAnywhereTT"] = OPTION_TOOLTIP_SELF_HIGHLIGHT
 	L["CVar_findYourselfAnywhereCond"] = string.join(" - ", SELF_HIGHLIGHT_OPTION, "Bedingungen")
@@ -1880,6 +1892,7 @@ if LOCALE == "frFR" then
 	L["AccountFriendList"] = "Liste d'amis du compte"
 	L["RemoveCharData"] = "Supprimer les données du personnage"
 	L["RemoveAllConfirm"] = "Supprimer toutes les entrées %s pour |cffffd100%s|r de la liste du compte ?"
+	L["FriendListTemporarySuspension"] = "Les mises à jour de la liste d'amis peuvent être temporairement suspendues en raison des nouvelles modifications de l'interface sociale."
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "Indicateurs de progression de proie"
@@ -2071,6 +2084,8 @@ if LOCALE == "frFR" then
 	L["CVar_minimapTrackingClosestOnlyTT"] = "Affiche uniquement l’icône suivie la plus proche pour certains types d’icônes de la minicarte."
 	L["CVar_autoDismount"] = "Désarçonner automatiquement (sol)"
 	L["CVar_autoDismountTT"] = "Vous fait automatiquement descendre de votre monture terrestre lorsque vous interagissez avec certains objets."
+	L["CVar_violenceLevel"] = "Niveau de violence"
+	L["CVar_violenceLevelTT"] = "Contrôle la quantité de sang et d'étincelles d'impact affichés pendant les combats."
 	L["CVar_findYourselfAnywhere"] = SELF_HIGHLIGHT_OPTION
 	L["CVar_findYourselfAnywhereTT"] = OPTION_TOOLTIP_SELF_HIGHLIGHT
 	L["CVar_findYourselfAnywhereCond"] = string.join(" - ", SELF_HIGHLIGHT_OPTION, "Conditions")
@@ -2296,6 +2311,7 @@ if LOCALE == "itIT" then
 	L["AccountFriendList"] = "Lista amici dell'account"
 	L["RemoveCharData"] = "Rimuovi dati del personaggio"
 	L["RemoveAllConfirm"] = "Rimuovere tutte le voci %s per |cffffd100%s|r dalla lista dell'account?"
+	L["FriendListTemporarySuspension"] = "Gli aggiornamenti della lista amici potrebbero essere temporaneamente sospesi a causa delle nuove modifiche all'interfaccia sociale."
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "Indicatori progresso preda"
@@ -2487,6 +2503,8 @@ if LOCALE == "itIT" then
 	L["CVar_minimapTrackingClosestOnlyTT"] = "Mostra solo l'icona tracciata più vicina per alcuni tipi di icone della minimappa."
 	L["CVar_autoDismount"] = "Smonta automaticamente (terra)"
 	L["CVar_autoDismountTT"] = "Ti fa smontare automaticamente dalla cavalcatura terrestre quando interagisci con determinati oggetti."
+	L["CVar_violenceLevel"] = "Livello di violenza"
+	L["CVar_violenceLevelTT"] = "Controlla la quantità di sangue e scintille d'impatto visualizzati durante il combattimento."
 	L["CVar_findYourselfAnywhere"] = SELF_HIGHLIGHT_OPTION
 	L["CVar_findYourselfAnywhereTT"] = OPTION_TOOLTIP_SELF_HIGHLIGHT
 	L["CVar_findYourselfAnywhereCond"] = string.join(" - ", SELF_HIGHLIGHT_OPTION, "Condizioni")
@@ -2712,6 +2730,7 @@ if LOCALE == "ptBR" then
 	L["AccountFriendList"] = "Lista de amigos da conta"
 	L["RemoveCharData"] = "Remover dados do personagem"
 	L["RemoveAllConfirm"] = "Remover todas as entradas de %s para |cffffd100%s|r da lista da conta?"
+	L["FriendListTemporarySuspension"] = "As atualizações da lista de amigos podem ser temporariamente suspensas devido às novas mudanças na interface social."
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "Indicadores de progresso da presa"
@@ -2903,6 +2922,8 @@ if LOCALE == "ptBR" then
 	L["CVar_minimapTrackingClosestOnlyTT"] = "Mostra apenas o ícone rastreado mais próximo para certos tipos de ícones do minimapa."
 	L["CVar_autoDismount"] = "Desmontar automaticamente (Terrestre)"
 	L["CVar_autoDismountTT"] = "Desmonta automaticamente da sua montaria terrestre ao interagir com certos objetos."
+	L["CVar_violenceLevel"] = "Nível de violência"
+	L["CVar_violenceLevelTT"] = "Controla a quantidade de sangue e faíscas de impacto exibidas durante o combate."
 	L["CVar_findYourselfAnywhere"] = SELF_HIGHLIGHT_OPTION
 	L["CVar_findYourselfAnywhereTT"] = OPTION_TOOLTIP_SELF_HIGHLIGHT
 	L["CVar_findYourselfAnywhereCond"] = string.join(" - ", SELF_HIGHLIGHT_OPTION, "Condições")
@@ -3130,6 +3151,7 @@ if LOCALE == "ruRU" then
 	L["AccountFriendList"] = "Список друзей аккаунта"
 	L["RemoveCharData"] = "Удалить данные персонажа"
 	L["RemoveAllConfirm"] = "Удалить все записи %s для |cffffd100%s|r из списка аккаунта?"
+	L["FriendListTemporarySuspension"] = "Обновления списка друзей могут быть временно приостановлены из-за изменений в новом социальном интерфейсе."
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "Индикаторы прогресса добычи"
@@ -3321,6 +3343,8 @@ if LOCALE == "ruRU" then
 	L["CVar_minimapTrackingClosestOnlyTT"] = "Показывает только ближайший отслеживаемый значок для некоторых типов значков миникарты."
 	L["CVar_autoDismount"] = "Автоматическое спешивание (на земле)"
 	L["CVar_autoDismountTT"] = "Автоматически спешивает вас с наземного средства передвижения при взаимодействии с некоторыми объектами."
+	L["CVar_violenceLevel"] = "Уровень жестокости"
+	L["CVar_violenceLevelTT"] = "Определяет количество крови и искр от ударов, отображаемых во время боя."
 	L["CVar_findYourselfAnywhere"] = SELF_HIGHLIGHT_OPTION
 	L["CVar_findYourselfAnywhereTT"] = OPTION_TOOLTIP_SELF_HIGHLIGHT
 	L["CVar_findYourselfAnywhereCond"] = string.join(" - ", SELF_HIGHLIGHT_OPTION, "Условия")
@@ -3546,6 +3570,7 @@ if LOCALE == "koKR" then
 	L["AccountFriendList"] = "계정 친구 목록"
 	L["RemoveCharData"] = "캐릭터 데이터 제거"
 	L["RemoveAllConfirm"] = "계정 목록에서 |cffffd100%s|r의 모든 %s 항목을 제거하시겠습니까?"
+	L["FriendListTemporarySuspension"] = "새로운 소셜 UI 변경으로 인해 친구 목록 업데이트가 일시적으로 중단될 수 있습니다."
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "먹이 진행 표시기"
@@ -3737,6 +3762,8 @@ if LOCALE == "koKR" then
 	L["CVar_minimapTrackingClosestOnlyTT"] = "일부 미니맵 아이콘 유형에 대해 가장 가까운 추적 아이콘만 표시합니다."
 	L["CVar_autoDismount"] = "자동 탈것 해제 (지상)"
 	L["CVar_autoDismountTT"] = "특정 대상과 상호작용할 때 지상 탈것에서 자동으로 내립니다."
+	L["CVar_violenceLevel"] = "폭력성 수준"
+	L["CVar_violenceLevelTT"] = "전투 중 표시되는 피와 충돌 불꽃 효과의 양을 조절합니다."
 	L["CVar_findYourselfAnywhere"] = SELF_HIGHLIGHT_OPTION
 	L["CVar_findYourselfAnywhereTT"] = OPTION_TOOLTIP_SELF_HIGHLIGHT
 	L["CVar_findYourselfAnywhereCond"] = string.join(" - ", SELF_HIGHLIGHT_OPTION, "조건")
@@ -3962,6 +3989,7 @@ if LOCALE == "zhCN" then
 	L["AccountFriendList"] = "账号好友列表"
 	L["RemoveCharData"] = "移除角色数据"
 	L["RemoveAllConfirm"] = "是否从账号列表中移除 |cffffd100%s|r 的所有 %s 条目？"
+	L["FriendListTemporarySuspension"] = "由于新的社交界面改动，好友列表更新可能会暂时暂停。"
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "猎物进度指示器"
@@ -4153,6 +4181,8 @@ if LOCALE == "zhCN" then
 	L["CVar_minimapTrackingClosestOnlyTT"] = "对于某些小地图图标类型，仅显示最近的追踪图标。"
 	L["CVar_autoDismount"] = "自动下坐骑（地面）"
 	L["CVar_autoDismountTT"] = "与某些对象互动时会自动从地面坐骑上下来。"
+	L["CVar_violenceLevel"] = "暴力效果等级"
+	L["CVar_violenceLevelTT"] = "控制战斗期间显示的血液效果和撞击火花数量。"
 	L["CVar_findYourselfAnywhere"] = SELF_HIGHLIGHT_OPTION
 	L["CVar_findYourselfAnywhereTT"] = OPTION_TOOLTIP_SELF_HIGHLIGHT
 	L["CVar_findYourselfAnywhereCond"] = string.join(" - ", SELF_HIGHLIGHT_OPTION, "条件")
@@ -4378,6 +4408,7 @@ if LOCALE == "zhTW" then
 	L["AccountFriendList"] = "帳號好友清單"
 	L["RemoveCharData"] = "移除角色資料"
 	L["RemoveAllConfirm"] = "是否要從帳號清單中移除 |cffffd100%s|r 的所有 %s 項目？"
+	L["FriendListTemporarySuspension"] = "由於新的社交介面變更，好友名單更新可能會暫時停止。"
 
 	--Widgets - PreyBar
 	L["Widget_PreyBar"] = "獵物進度指示器"
@@ -4569,6 +4600,8 @@ if LOCALE == "zhTW" then
 	L["CVar_minimapTrackingClosestOnlyTT"] = "對於某些小地圖圖示類型，只顯示最近的追蹤圖示。"
 	L["CVar_autoDismount"] = "自動下坐騎（地面）"
 	L["CVar_autoDismountTT"] = "與某些物件互動時會自動從地面坐騎上下來。"
+	L["CVar_violenceLevel"] = "暴力效果等級"
+	L["CVar_violenceLevelTT"] = "控制戰鬥期間顯示的血液效果與撞擊火花數量。"
 	L["CVar_findYourselfAnywhere"] = SELF_HIGHLIGHT_OPTION
 	L["CVar_findYourselfAnywhereTT"] = OPTION_TOOLTIP_SELF_HIGHLIGHT
 	L["CVar_findYourselfAnywhereCond"] = string.join(" - ", SELF_HIGHLIGHT_OPTION, "條件")
