@@ -676,7 +676,7 @@ function Artificer:IsAccountFriendOrIgnored(unitName)
 	if Artificer_DB.AccountFriends then
 		for ownerName, friendList in pairs(Artificer_DB.AccountFriends) do
 			for _, friendName in ipairs(friendList) do
-				if friendName == unitName or string.match(friendName, "^" .. unitName:gsub("([%(%)%.%%%+%-%*%?%[%^%$])", "%%%1") .. "%-") then
+				if friendName == unitName or (string.match(friendName, "^" .. unitName:gsub("([%(%)%.%%%+%-%*%?%[%^%$])", "%%%1") .. "%-") and not issecretvalue(friendName) and not issecretvalue(unitName))  then
 					isFriend = true;
 					if Artificer_DB.debug then
 						print("Friend: ",friendName .. " - " .. ownerName);
@@ -691,7 +691,7 @@ function Artificer:IsAccountFriendOrIgnored(unitName)
 	if Artificer_DB.AccountIgnores then
 		for ownerName, ignoreList in pairs(Artificer_DB.AccountIgnores) do
 			for _, ignoredName in ipairs(ignoreList) do
-				if ignoredName == unitName or string.match(ignoredName, "^" .. unitName:gsub("([%(%)%.%%%+%-%*%?%[%^%$])", "%%%1") .. "%-") then
+				if ignoredName == unitName or (string.match(ignoredName, "^" .. unitName:gsub("([%(%)%.%%%+%-%*%?%[%^%$])", "%%%1") .. "%-") and not issecretvalue(ignoredName) and not issecretvalue(unitName))  then
 					isIgnored = true;
 					if Artificer_DB.debug then
 						print("Ignored: ",ignoredName .. " - " .. ownerName);

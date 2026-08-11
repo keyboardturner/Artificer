@@ -1,5 +1,9 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.2.9a
+
+Maybe fix to a secret taint issue upon logging in relating to nameplate names in silvermoon? Yeah idk why that's happening tbh
+
 # 0.2.9
 
 Added Sky Cloud Detail option CVar and Violence Level CVar
