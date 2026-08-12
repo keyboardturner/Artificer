@@ -1294,27 +1294,7 @@ function Artificer:BuildSettingsData()
 		type = "header",
 		label = L["Header_AccountSettings"],
 	});
-
-	-- Widgets - AutoLoot
-	table.insert(allSettingsData, {
-		type = "dropdown",
-		isWidget = true,
-		key = "AutoLoot",
-		isNew = true,
-		label = L["Widget_AutoLoot"],
-		tooltip = L["Widget_AutoLootTT"],
-		options = {
-			{ text = L["None"], value = 1 },
-			{ text = L["Account_On"], value = 2 },
-			{ text = L["Account_Off"], value = 3 },
-		},
-		callback = function(val)
-			if Artificer.Widgets.ApplyAutoLoot then
-				Artificer.Widgets.ApplyAutoLoot();
-			end
-		end
-	});
-
+	
 	-- Widgets - BlockGuildInvites
 	table.insert(allSettingsData, {
 		type = "dropdown",

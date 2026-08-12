@@ -21,7 +21,6 @@ local Defaults = {
 		ArrowKeyEditbox = true,
 		OutfitIcon = true,
 		ServerNotifications = true,
-		AutoLoot = 1, -- changed from true
 		BlockGuildInvites = 1,
 		PetBattleMapFilter = 1, -- changed from false
 		CooldownManagerEnabled = 1, -- changed from false

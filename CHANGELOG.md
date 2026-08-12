@@ -1,5 +1,9 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.3.0
+
+Auto-loot options have been removed as they are now account-wide in the base game
+
 # 0.2.9a
 
 Maybe fix to a secret taint issue upon logging in relating to nameplate names in silvermoon? Yeah idk why that's happening tbh
