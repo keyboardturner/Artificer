@@ -1,5 +1,9 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.3.1
+
+Add default values in tooltips to most settings
+
 # 0.3.0
 
 Auto-loot options have been removed as they are now account-wide in the base game

@@ -102,6 +102,81 @@ function MeowFrameMixin:Mrow()
 	PlaySoundFile(sound, "SFX");
 end
 
+local function GetDefaultValueString(data)
+	local defaultValue = data.defaultValue;
+
+	if defaultValue == nil and data.key and Artificer.Defaults then
+		if data.isWidget and Artificer.Defaults.Widgets then
+			defaultValue = Artificer.Defaults.Widgets[data.key];
+		elseif not data.isWidget then
+			defaultValue = Artificer.Defaults[data.key];
+		end
+	end
+
+	if data.type == "checkbox" then
+		if defaultValue == true or defaultValue == 1 or defaultValue == "1" then
+			return YES;
+		elseif defaultValue == false or defaultValue == 0 or defaultValue == "0" then
+			return NO;
+		end
+	elseif data.type == "dropdown" and data.options then
+		for _, opt in ipairs(data.options) do
+			if opt.value == defaultValue then
+				return opt.text;
+			end
+		end
+	elseif data.type == "slider" then
+		if data.formatter and defaultValue ~= nil then
+			return data.formatter(defaultValue);
+		end
+		return tostring(defaultValue)
+	elseif data.type == "multicheckbox" and data.options then
+		local defaults = {};
+		local totalCount = 0;
+		local function GatherDefaults(optList)
+			for _, opt in ipairs(optList) do
+				if opt.isGroup then
+					GatherDefaults(opt.children);
+				elseif not opt.isDivider and not opt.isTitle then
+					totalCount = totalCount + 1;
+					if opt.default ~= false then
+						table.insert(defaults, opt.text);
+					end
+				end
+			end
+		end
+		GatherDefaults(data.options);
+		
+		if #defaults == 0 then
+			return L["None"];
+		end
+		if #defaults == totalCount then
+			return L["All"];
+		end
+		return table.concat(defaults, ", ");
+	end
+	
+	return defaultValue and tostring(defaultValue) or nil;
+end
+
+local function ShowSettingTooltip(self, button, data, anchor, xOffset, yOffset)
+	UpdateNewIndicator(button, data);
+	if data.tooltip then
+		GameTooltip:SetOwner(self, anchor, xOffset or 0, yOffset or 0);
+		GameTooltip:SetText(data.label, 1, 1, 1);
+		GameTooltip:AddLine(data.tooltip, nil, nil, nil, true);
+		
+		local defaultStr = GetDefaultValueString(data);
+		if defaultStr then
+			GameTooltip:AddLine(" ");
+			local defaultLabel = L["Default"];
+			GameTooltip:AddLine(defaultLabel .. ": |cFFFFFFFF" .. defaultStr .. "|r", 1, 0.82, 0);
+		end
+		
+		GameTooltip:Show();
+	end
+end
+
 local function InitializeCheckbox(button, data)
 	button:SetHeight(30)
 	
@@ -123,13 +198,7 @@ local function InitializeCheckbox(button, data)
 	button.label:SetText(data.label)
 	
 	button.checkbox:SetScript("OnEnter", function(self)
-		UpdateNewIndicator(button, data);
-		if data.tooltip then
-			GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
-			GameTooltip:SetText(data.label, 1, 1, 1);
-			GameTooltip:AddLine(data.tooltip, nil, nil, nil, true);
-			GameTooltip:Show();
-		end
+		ShowSettingTooltip(self, button, data, "ANCHOR_RIGHT");
 	end)
 	button.checkbox:SetScript("OnLeave", GameTooltip_Hide)
 
@@ -221,26 +290,14 @@ local function InitializeDropdown(button, data)
 	
 	if data.tooltip or data.isNew then
 		button.dropdown:SetScript("OnEnter", function(self)
-			UpdateNewIndicator(button, data);
-			if data.tooltip then
-				GameTooltip:SetOwner(button.dropdownLabel, "ANCHOR_TOPLEFT", -5, 5);
-				GameTooltip:SetText(data.label, 1, 1, 1);
-				GameTooltip:AddLine(data.tooltip, nil, nil, nil, true);
-				GameTooltip:Show();
-			end
+			ShowSettingTooltip(button.dropdownLabel, button, data, "ANCHOR_TOPLEFT", -5, 5);
 		end)
-		button.dropdown:SetScript("OnLeave", GameTooltip_Hide)
+		button.dropdown:SetScript("OnLeave", GameTooltip_Hide);
 
 		button.dropdownLabel:SetScript("OnEnter", function(self)
-			UpdateNewIndicator(button, data);
-			if data.tooltip then
-				GameTooltip:SetOwner(self, "ANCHOR_TOPLEFT", -5, 5);
-				GameTooltip:SetText(data.label, 1, 1, 1);
-				GameTooltip:AddLine(data.tooltip, nil, nil, nil, true);
-				GameTooltip:Show();
-			end
+			ShowSettingTooltip(self, button, data, "ANCHOR_TOPLEFT", -5, 5);
 		end)
-		button.dropdownLabel:SetScript("OnLeave", GameTooltip_Hide)
+		button.dropdownLabel:SetScript("OnLeave", GameTooltip_Hide);
 	end
 end
 
@@ -384,26 +441,14 @@ local function InitializeMultiCheckbox(button, data)
 	
 	if data.tooltip or data.isNew then
 		button.multicheckbox:SetScript("OnEnter", function(self)
-			UpdateNewIndicator(button, data);
-			if data.tooltip then
-				GameTooltip:SetOwner(button.multicheckboxLabel, "ANCHOR_TOPLEFT", -5, 5);
-				GameTooltip:SetText(data.label, 1, 1, 1);
-				GameTooltip:AddLine(data.tooltip, nil, nil, nil, true);
-				GameTooltip:Show();
-			end
+			ShowSettingTooltip(button.multicheckboxLabel, button, data, "ANCHOR_TOPLEFT", -5, 5);
 		end)
-		button.multicheckbox:SetScript("OnLeave", GameTooltip_Hide)
+		button.multicheckbox:SetScript("OnLeave", GameTooltip_Hide);
 
 		button.multicheckboxLabel:SetScript("OnEnter", function(self)
-			UpdateNewIndicator(button, data);
-			if data.tooltip then
-				GameTooltip:SetOwner(self, "ANCHOR_TOPLEFT", -5, 5);
-				GameTooltip:SetText(data.label, 1, 1, 1);
-				GameTooltip:AddLine(data.tooltip, nil, nil, nil, true);
-				GameTooltip:Show();
-			end
+			ShowSettingTooltip(self, button, data, "ANCHOR_TOPLEFT", -5, 5);
 		end)
-		button.multicheckboxLabel:SetScript("OnLeave", GameTooltip_Hide)
+		button.multicheckboxLabel:SetScript("OnLeave", GameTooltip_Hide);
 	end
 end
 
@@ -467,26 +512,14 @@ local function InitializeSlider(button, data)
 
 	if data.tooltip or data.isNew then
 		button.slider.Slider:SetScript("OnEnter", function(self)
-			UpdateNewIndicator(button, data);
-			if data.tooltip then
-				GameTooltip:SetOwner(button.sliderLabel, "ANCHOR_TOPLEFT", -5, 5);
-				GameTooltip:SetText(data.label, 1, 1, 1);
-				GameTooltip:AddLine(data.tooltip, nil, nil, nil, true);
-				GameTooltip:Show();
-			end
+			ShowSettingTooltip(button.sliderLabel, button, data, "ANCHOR_TOPLEFT", -5, 5);
 		end)
-		button.slider.Slider:SetScript("OnLeave", GameTooltip_Hide)
+		button.slider.Slider:SetScript("OnLeave", GameTooltip_Hide);
 
 		button.sliderLabel:SetScript("OnEnter", function(self)
-			UpdateNewIndicator(button, data);
-			if data.tooltip then
-				GameTooltip:SetOwner(self, "ANCHOR_TOPLEFT", -5, 5);
-				GameTooltip:SetText(data.label, 1, 1, 1);
-				GameTooltip:AddLine(data.tooltip, nil, nil, nil, true);
-				GameTooltip:Show();
-			end
+			ShowSettingTooltip(self, button, data, "ANCHOR_TOPLEFT", -5, 5);
 		end)
-		button.sliderLabel:SetScript("OnLeave", GameTooltip_Hide)
+		button.sliderLabel:SetScript("OnLeave", GameTooltip_Hide);
 	end
 end
 
@@ -1495,6 +1528,7 @@ function Artificer:BuildSettingsData()
 				isNew = true,
 				label = data.label,
 				tooltip = data.description,
+				defaultValue = data.settings == "checkbox" and (data.default == "1") or data.default,
 				callback = function(val)
 					if data.settings == "checkbox" then
 						local cvarVal = val and "1" or "0"
