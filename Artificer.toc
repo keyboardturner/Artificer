@@ -101,5 +101,6 @@ Widgets/LFDBackground.lua
 Widgets/ProfessionsBook.lua
 Widgets/BnetToasts.lua
 Widgets/SelectionCircle.lua
+Widgets/BlueprintHider.lua
 
 SettingsUI.lua

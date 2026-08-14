@@ -160,6 +160,10 @@ if LOCALE == "enUS" then
 	L["Widget_HideTutorials"] = "Hide Tutorials"
 	L["Widget_HideTutorialsTT"] = "Enforces hiding tutorials for the entire account."
 
+	--Widgets - BlueprintHider
+	L["HideBlueprintCodes"] = "Hide Blueprint Codes"
+	L["HideBlueprintCodesTT"] = "Hide housing blueprint share codes in export/import."
+
 	--Widgets - NameplateTargetIndicator
 	L["FNP_TargetIndicator"] = "Friendly Nameplate Target Indicator"
 	L["FNP_TargetIndicatorTT"] = "Displays an icon on the nameplate of a friendly player targeting you."
@@ -431,6 +435,7 @@ if LOCALE == "enUS" then
 	L["AdvancedOptions"] = ADVANCED_OPTIONS
 	L["Header_Nameplates"] = NAMEPLATES_LABEL
 	L["Header_Screenshot"] = BINDING_NAME_SCREENSHOT
+	L["Header_Housing"] = HOUSING_SETTINGS_LABEL
 
 
 
@@ -581,6 +586,10 @@ if LOCALE == "esMX" then
 	--Widgets - Hide Tutorials
 	L["Widget_HideTutorials"] = "Ocultar tutoriales"
 	L["Widget_HideTutorialsTT"] = "Fuerza la ocultación de los tutoriales en toda la cuenta."
+
+	--Widgets - BlueprintHider
+	L["HideBlueprintCodes"] = "Ocultar códigos de planos"
+	L["HideBlueprintCodesTT"] = "Oculta los códigos para compartir planos de vivienda al exportar/importar."
 
 	--Widgets - NameplateTargetIndicator
 	L["FNP_TargetIndicator"] = "Indicador de objetivo en placas de nombre amistosas"
@@ -852,6 +861,7 @@ if LOCALE == "esMX" then
 	L["AdvancedOptions"] = ADVANCED_OPTIONS
 	L["Header_Nameplates"] = NAMEPLATES_LABEL
 	L["Header_Screenshot"] = BINDING_NAME_SCREENSHOT
+	L["Header_Housing"] = HOUSING_SETTINGS_LABEL
 
 
 return end
@@ -1001,6 +1011,10 @@ if LOCALE == "esES" then
 	--Widgets - Hide Tutorials
 	L["Widget_HideTutorials"] = "Ocultar tutoriales"
 	L["Widget_HideTutorialsTT"] = "Fuerza la ocultación de los tutoriales en toda la cuenta."
+
+	--Widgets - BlueprintHider
+	L["HideBlueprintCodes"] = "Ocultar códigos de planos"
+	L["HideBlueprintCodesTT"] = "Oculta los códigos para compartir planos de vivienda al exportar/importar."
 
 	--Widgets - NameplateTargetIndicator
 	L["FNP_TargetIndicator"] = "Indicador de objetivo en placas de nombre amistosas"
@@ -1272,6 +1286,7 @@ if LOCALE == "esES" then
 	L["AdvancedOptions"] = ADVANCED_OPTIONS
 	L["Header_Nameplates"] = NAMEPLATES_LABEL
 	L["Header_Screenshot"] = BINDING_NAME_SCREENSHOT
+	L["Header_Housing"] = HOUSING_SETTINGS_LABEL
 
 return end
 
@@ -1419,6 +1434,10 @@ if LOCALE == "deDE" then
 	--Widgets - Hide Tutorials
 	L["Widget_HideTutorials"] = "Tutorials ausblenden"
 	L["Widget_HideTutorialsTT"] = "Blendet Tutorials für den gesamten Account dauerhaft aus."
+
+	--Widgets - BlueprintHider
+	L["HideBlueprintCodes"] = "Bauplancodes ausblenden"
+	L["HideBlueprintCodesTT"] = "Blendet Codes zum Teilen von Wohnungsbauplänen beim Exportieren/Importieren aus."
 
 	--Widgets - NameplateTargetIndicator
 	L["FNP_TargetIndicator"] = "Freundlicher Namensplaketten-Zielindikator"
@@ -1690,6 +1709,7 @@ if LOCALE == "deDE" then
 	L["AdvancedOptions"] = ADVANCED_OPTIONS
 	L["Header_Nameplates"] = NAMEPLATES_LABEL
 	L["Header_Screenshot"] = BINDING_NAME_SCREENSHOT
+	L["Header_Housing"] = HOUSING_SETTINGS_LABEL
 
 return end
 
@@ -1838,6 +1858,10 @@ if LOCALE == "frFR" then
 	--Widgets - Hide Tutorials
 	L["Widget_HideTutorials"] = "Masquer les tutoriels"
 	L["Widget_HideTutorialsTT"] = "Force le masquage des tutoriels pour tout le compte."
+
+	--Widgets - BlueprintHider
+	L["HideBlueprintCodes"] = "Masquer les codes de plans"
+	L["HideBlueprintCodesTT"] = "Masque les codes de partage des plans de logement lors de l’exportation/importation."
 
 	--Widgets - NameplateTargetIndicator
 	L["FNP_TargetIndicator"] = "Indicateur de ciblage des plaques de nom alliées"
@@ -2109,6 +2133,7 @@ if LOCALE == "frFR" then
 	L["AdvancedOptions"] = ADVANCED_OPTIONS
 	L["Header_Nameplates"] = NAMEPLATES_LABEL
 	L["Header_Screenshot"] = BINDING_NAME_SCREENSHOT
+	L["Header_Housing"] = HOUSING_SETTINGS_LABEL
 
 return end
 
@@ -2257,6 +2282,10 @@ if LOCALE == "itIT" then
 	--Widgets - Hide Tutorials
 	L["Widget_HideTutorials"] = "Nascondi tutorial"
 	L["Widget_HideTutorialsTT"] = "Forza la disattivazione dei tutorial per l’intero account."
+
+	--Widgets - BlueprintHider
+	L["HideBlueprintCodes"] = "Nascondi codici dei progetti"
+	L["HideBlueprintCodesTT"] = "Nasconde i codici per condividere i progetti delle abitazioni durante l'esportazione/importazione."
 
 	--Widgets - NameplateTargetIndicator
 	L["FNP_TargetIndicator"] = "Indicatore bersaglio targhe amichevoli"
@@ -2528,6 +2557,7 @@ if LOCALE == "itIT" then
 	L["AdvancedOptions"] = ADVANCED_OPTIONS
 	L["Header_Nameplates"] = NAMEPLATES_LABEL
 	L["Header_Screenshot"] = BINDING_NAME_SCREENSHOT
+	L["Header_Housing"] = HOUSING_SETTINGS_LABEL
 
 return end
 
@@ -2676,6 +2706,10 @@ if LOCALE == "ptBR" then
 	--Widgets - Hide Tutorials
 	L["Widget_HideTutorials"] = "Ocultar tutoriais"
 	L["Widget_HideTutorialsTT"] = "Força a ocultação dos tutoriais para toda a conta."
+
+	--Widgets - BlueprintHider
+	L["HideBlueprintCodes"] = "Ocultar códigos de projetos"
+	L["HideBlueprintCodesTT"] = "Oculta os códigos de compartilhamento de projetos de moradia durante a exportação/importação."
 
 	--Widgets - NameplateTargetIndicator
 	L["FNP_TargetIndicator"] = "Indicador de alvo em placas de nome amigáveis"
@@ -2947,6 +2981,7 @@ if LOCALE == "ptBR" then
 	L["AdvancedOptions"] = ADVANCED_OPTIONS
 	L["Header_Nameplates"] = NAMEPLATES_LABEL
 	L["Header_Screenshot"] = BINDING_NAME_SCREENSHOT
+	L["Header_Housing"] = HOUSING_SETTINGS_LABEL
 
 -- Note that the EU Portuguese WoW client also
 -- uses the Brazilian Portuguese locale code.
@@ -3097,6 +3132,10 @@ if LOCALE == "ruRU" then
 	--Widgets - Hide Tutorials
 	L["Widget_HideTutorials"] = "Скрыть обучение"
 	L["Widget_HideTutorialsTT"] = "Принудительно скрывает обучение для всей учетной записи."
+
+	--Widgets - BlueprintHider
+	L["HideBlueprintCodes"] = "Скрывать коды чертежей"
+	L["HideBlueprintCodesTT"] = "Скрывает коды для обмена чертежами жилья при экспорте и импорте."
 
 	--Widgets - NameplateTargetIndicator
 	L["FNP_TargetIndicator"] = "Индикатор цели на дружественных неймплейтах"
@@ -3368,6 +3407,7 @@ if LOCALE == "ruRU" then
 	L["AdvancedOptions"] = ADVANCED_OPTIONS
 	L["Header_Nameplates"] = NAMEPLATES_LABEL
 	L["Header_Screenshot"] = BINDING_NAME_SCREENSHOT
+	L["Header_Housing"] = HOUSING_SETTINGS_LABEL
 
 return end
 
@@ -3516,6 +3556,10 @@ if LOCALE == "koKR" then
 	--Widgets - Hide Tutorials
 	L["Widget_HideTutorials"] = "튜토리얼 숨기기"
 	L["Widget_HideTutorialsTT"] = "계정 전체에서 튜토리얼을 숨기도록 강제합니다."
+
+	--Widgets - BlueprintHider
+	L["HideBlueprintCodes"] = "설계도 코드 숨기기"
+	L["HideBlueprintCodesTT"] = "내보내기/가져오기에서 주택 설계도 공유 코드를 숨깁니다."
 
 	--Widgets - NameplateTargetIndicator
 	L["FNP_TargetIndicator"] = "아군 이름표 대상 표시기"
@@ -3787,6 +3831,7 @@ if LOCALE == "koKR" then
 	L["AdvancedOptions"] = ADVANCED_OPTIONS
 	L["Header_Nameplates"] = NAMEPLATES_LABEL
 	L["Header_Screenshot"] = BINDING_NAME_SCREENSHOT
+	L["Header_Housing"] = HOUSING_SETTINGS_LABEL
 
 return end
 
@@ -3935,6 +3980,10 @@ if LOCALE == "zhCN" then
 	--Widgets - Hide Tutorials
 	L["Widget_HideTutorials"] = "隐藏教程"
 	L["Widget_HideTutorialsTT"] = "在整个账号范围内强制隐藏教程。"
+
+	--Widgets - BlueprintHider
+	L["HideBlueprintCodes"] = "隐藏蓝图代码"
+	L["HideBlueprintCodesTT"] = "在导出/导入时隐藏住宅蓝图分享代码。"
 
 	--Widgets - NameplateTargetIndicator
 	L["FNP_TargetIndicator"] = "友方姓名板目标指示器"
@@ -4206,6 +4255,7 @@ if LOCALE == "zhCN" then
 	L["AdvancedOptions"] = ADVANCED_OPTIONS
 	L["Header_Nameplates"] = NAMEPLATES_LABEL
 	L["Header_Screenshot"] = BINDING_NAME_SCREENSHOT
+	L["Header_Housing"] = HOUSING_SETTINGS_LABEL
 
 return end
 
@@ -4354,6 +4404,10 @@ if LOCALE == "zhTW" then
 	--Widgets - Hide Tutorials
 	L["Widget_HideTutorials"] = "Ocultar tutoriales"
 	L["Widget_HideTutorialsTT"] = "Fuerza la ocultación de los tutoriales en toda la cuenta."
+
+	--Widgets - BlueprintHider
+	L["HideBlueprintCodes"] = "隱藏藍圖代碼"
+	L["HideBlueprintCodesTT"] = "在匯出／匯入時隱藏住宅藍圖分享代碼。"
 
 	--Widgets - NameplateTargetIndicator
 	L["FNP_TargetIndicator"] = "友方姓名板目標指示器"
@@ -4625,5 +4679,6 @@ if LOCALE == "zhTW" then
 	L["AdvancedOptions"] = ADVANCED_OPTIONS
 	L["Header_Nameplates"] = NAMEPLATES_LABEL
 	L["Header_Screenshot"] = BINDING_NAME_SCREENSHOT
+	L["Header_Housing"] = HOUSING_SETTINGS_LABEL
 
 return end

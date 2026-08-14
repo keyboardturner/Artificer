@@ -41,6 +41,7 @@ local Defaults = {
 		HideScreenshotText = false,
 		ChatTooltipVisibility = 2,
 		DeleteConfirm = false,
+		BlueprintHider = true,
 		AutoCollapseTracker = {
 			rested = false,
 			mythicplus = false,

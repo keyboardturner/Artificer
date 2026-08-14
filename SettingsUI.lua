@@ -758,6 +758,27 @@ function Artificer:BuildSettingsData()
 		end
 	});
 
+	-- Header - Housing
+	table.insert(allSettingsData, {
+		type = "header",
+		label = L["Header_Housing"],
+	});
+
+	-- Widgets - Blueprint Hider
+	table.insert(allSettingsData, {
+		type = "checkbox",
+		isWidget = true,
+		key = "BlueprintHider",
+		isNew = true,
+		label = L["HideBlueprintCodes"],
+		tooltip = L["HideBlueprintCodesTT"],
+		callback = function(val)
+			if Artificer.Widgets.ApplyBlueprintHider then
+				Artificer.Widgets.ApplyBlueprintHider();
+			end
+		end
+	});
+
 	-- Header - Action Bars
 	table.insert(allSettingsData, {
 		type = "header",
