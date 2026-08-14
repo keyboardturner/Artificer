@@ -2,7 +2,9 @@
 
 # 0.3.1
 
-Add default values in tooltips to most settings
+Add default values in tooltips to most settings (WIP)
+
+Added option to hide blueprint codes
 
 # 0.3.0
 
