@@ -592,6 +592,16 @@ local function UpgradeProfessionFrame(frame)
 	frame.isUpgraded = true;
 end
 
+local profSlots = {"Prof0ToolSlot", "Prof0Gear0Slot", "Prof0Gear1Slot"}
+
+local dummyPrefixMap = {
+	["PrimaryProfession1"] = "ArtifPr1_",
+	["PrimaryProfession2"] = "ArtifPr2_",
+	["SecondaryProfession1"] = "ArtifSc1_",
+	["SecondaryProfession2"] = "ArtifSc2_",
+	["SecondaryProfession3"] = "ArtifSc3_",
+};
+
 local function InitializeGearSlots(frame)
 	if frame.gearSlots then return; end
 	frame.gearSlots = {};
@@ -613,8 +623,12 @@ local function InitializeGearSlots(frame)
 		};
 	end
 
+	local prefix = dummyPrefixMap[frameName] or "Artificer";
+
 	for i = 1, maxSlots do
-		local btn = CreateFrame("ItemButton", nil, frame);
+		local btnName = prefix .. (profSlots[i] or "Prof0ToolSlot");
+		local btn = CreateFrame("ItemButton", btnName, frame, "PaperDollItemSlotButtonTemplate");
+		
 		btn:SetSize(36, 36);
 
 		if i == 1 then
@@ -664,6 +678,7 @@ local function InitializeGearSlots(frame)
 end
 
 local function UpdateArtificerProfessionFrame(frame, index)
+	if not frame or not index then return end
 	if not InCombatLockdown() then
 		if frame.SpellButton1 then frame.SpellButton1:Hide(); end
 		if frame.SpellButton2 then frame.SpellButton2:Hide(); end
@@ -723,9 +738,11 @@ local function UpdateArtificerProfessionFrame(frame, index)
 
 			for i, btn in ipairs(frame.gearSlots) do
 				local slotID = activeSlots[i];
+				
+				local mappedSlotName = slotID and slotIDToName[slotID];
 
-				if slotID and hasProfession and not InCombatLockdown() then
-					btn.slotName = slotIDToName[slotID];
+				if mappedSlotName and hasProfession and not InCombatLockdown() then
+					btn.slotName = mappedSlotName;
 					PaperDollItemSlotButton_OnLoad(btn);
 					btn:Show();
 					PaperDollItemSlotButton_Update(btn);

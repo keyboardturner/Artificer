@@ -1,5 +1,9 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.3.1a
+
+Fix to some professions book tool/accessory slots giving errors
+
 # 0.3.1
 
 Add default values in tooltips to most settings (WIP)
