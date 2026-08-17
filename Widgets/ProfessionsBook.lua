@@ -592,7 +592,12 @@ local function UpgradeProfessionFrame(frame)
 	frame.isUpgraded = true;
 end
 
-local profSlots = {"Prof0ToolSlot", "Prof0Gear0Slot", "Prof0Gear1Slot"}
+local frameToSlotNames = {
+	["PrimaryProfession1"] = {"Prof0ToolSlot", "Prof0Gear0Slot", "Prof0Gear1Slot"},
+	["PrimaryProfession2"] = {"Prof1ToolSlot", "Prof1Gear0Slot", "Prof1Gear1Slot"},
+	["SecondaryProfession1"] = {"CookingToolSlot", "CookingGear0Slot"},
+	["SecondaryProfession2"] = {"FishingToolSlot"},
+};
 
 local dummyPrefixMap = {
 	["PrimaryProfession1"] = "ArtifPr1_",
@@ -624,9 +629,10 @@ local function InitializeGearSlots(frame)
 	end
 
 	local prefix = dummyPrefixMap[frameName] or "Artificer";
+	local slotNames = frameToSlotNames[frameName] or {"Prof0ToolSlot", "Prof0Gear0Slot", "Prof0Gear1Slot"};
 
 	for i = 1, maxSlots do
-		local btnName = prefix .. (profSlots[i] or "Prof0ToolSlot");
+		local btnName = prefix .. (slotNames[i] or "Prof0ToolSlot");
 		local btn = CreateFrame("ItemButton", btnName, frame, "PaperDollItemSlotButtonTemplate");
 		
 		btn:SetSize(36, 36);
@@ -698,43 +704,13 @@ local function UpdateArtificerProfessionFrame(frame, index)
 				skillLine = skillLineID;
 			end
 
-			local activeSlots = {};
-			if skillLine and C_TradeSkillUI and C_TradeSkillUI.GetProfessionSlots then
-				local professionEnum = nil;
-
-				if C_TradeSkillUI.GetProfessionInfoBySkillLineID then
-					local profInfo = C_TradeSkillUI.GetProfessionInfoBySkillLineID(skillLine);
-					if profInfo and profInfo.profession then
-						professionEnum = profInfo.profession;
-					end
-				end
-
-				-- API uses Enum.Profession
-				if not professionEnum then
-					local skillLineToEnum = {
-						[129] = 0,	-- First Aid
-						[164] = 1,	-- Blacksmithing
-						[165] = 2,	-- Leatherworking
-						[171] = 3,	-- Alchemy
-						[182] = 4,	-- Herbalism
-						[185] = 5,	-- Cooking
-						[186] = 6,	-- Mining
-						[197] = 7,	-- Tailoring
-						[202] = 8,	-- Engineering
-						[333] = 9,	-- Enchanting
-						[356] = 10,	-- Fishing
-						[393] = 11,	-- Skinning
-						[755] = 12,	-- Jewelcrafting
-						[773] = 13,	-- Inscription
-						[794] = 14,	-- Archaeology
-					};
-					professionEnum = skillLineToEnum[skillLine];
-				end
-
-				if professionEnum then
-					activeSlots = C_TradeSkillUI.GetProfessionSlots(professionEnum) or {};
-				end
-			end
+			local frameToSlots = {
+				["PrimaryProfession1"] = {20, 21, 22},
+				["PrimaryProfession2"] = {23, 24, 25},
+				["SecondaryProfession1"] = {26, 27},
+				["SecondaryProfession2"] = {28},
+			};
+			local activeSlots = frameToSlots[frame:GetName()] or {};
 
 			for i, btn in ipairs(frame.gearSlots) do
 				local slotID = activeSlots[i];
@@ -743,6 +719,7 @@ local function UpdateArtificerProfessionFrame(frame, index)
 
 				if mappedSlotName and hasProfession and not InCombatLockdown() then
 					btn.slotName = mappedSlotName;
+					btn:SetID(slotID);
 					PaperDollItemSlotButton_OnLoad(btn);
 					btn:Show();
 					PaperDollItemSlotButton_Update(btn);
