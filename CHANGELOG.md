@@ -1,6 +1,10 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
-# 0.3.1a
+# 0.3.2a
+
+Fix to the fix to the professions book thing
+
+# 0.3.2
 
 Fix to some professions book tool/accessory slots giving errors
 
