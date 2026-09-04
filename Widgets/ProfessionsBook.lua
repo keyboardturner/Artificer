@@ -607,6 +607,34 @@ local dummyPrefixMap = {
 	["SecondaryProfession3"] = "ArtifSc3_",
 };
 
+local skillLineToEnumProfession = {
+	[171] = Enum.Profession.Alchemy,
+	[164] = Enum.Profession.Blacksmithing,
+	[333] = Enum.Profession.Enchanting,
+	[202] = Enum.Profession.Engineering,
+	[773] = Enum.Profession.Inscription,
+	[755] = Enum.Profession.Jewelcrafting,
+	[165] = Enum.Profession.Leatherworking,
+	[197] = Enum.Profession.Tailoring,
+	[182] = Enum.Profession.Herbalism,
+	[186] = Enum.Profession.Mining,
+	[393] = Enum.Profession.Skinning,
+};
+
+local slotSetsByOffset = {
+	[0] = {20, 21, 22},
+	[1] = {23, 24, 25},
+};
+
+local function GetActualEquipSlotOffset(skillLine)
+	local enumProf = skillLine and skillLineToEnumProfession[skillLine];
+	if not enumProf or not (C_TradeSkillUI and C_TradeSkillUI.GetProfessionSlots) then
+		return nil;
+	end
+	local slots = C_TradeSkillUI.GetProfessionSlots(enumProf);
+	return slots and slots[1];
+end
+
 local function InitializeGearSlots(frame)
 	if frame.gearSlots then return; end
 	frame.gearSlots = {};
@@ -710,7 +738,15 @@ local function UpdateArtificerProfessionFrame(frame, index)
 				["SecondaryProfession1"] = {26, 27},
 				["SecondaryProfession2"] = {28},
 			};
-			local activeSlots = frameToSlots[frame:GetName()] or {};
+			local activeSlots;
+			local frameName = frame:GetName();
+			if (frameName == "PrimaryProfession1" or frameName == "PrimaryProfession2") and hasProfession then
+				local offset = GetActualEquipSlotOffset(skillLine);
+				activeSlots = (offset ~= nil and slotSetsByOffset[offset])
+					or frameToSlots[frameName];
+			else
+				activeSlots = frameToSlots[frameName] or {};
+			end
 
 			for i, btn in ipairs(frame.gearSlots) do
 				local slotID = activeSlots[i];
