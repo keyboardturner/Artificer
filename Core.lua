@@ -5,6 +5,11 @@ local L = Artificer.L;
 local LDB = LibStub("LibDataBroker-1.1")
 local LDBIcon = LibStub("LibDBIcon-1.0")
 
+local build = select(4, GetBuildInfo());
+
+local IsForever = build >= 16000 and build < 20000;
+Artificer.IsForever = IsForever;
+
 Artificer.Widgets = {};
 
 local Defaults = {
