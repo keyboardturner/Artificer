@@ -108,11 +108,13 @@ local function CaptureUIState()
 		end
 	end
 
-	for slotFrame in TransmogFrame.CharacterPreview.CharacterAppearanceSlotFramePool:EnumerateActive() do
-		AddSlotData(slotFrame:GetTransmogLocation(), slotFrame:GetCurrentWeaponOptionInfo(), slotFrame:GetSlotInfo());
-		local illusionFrame = slotFrame:GetIllusionSlotFrame();
-		if illusionFrame then
-			AddSlotData(illusionFrame:GetTransmogLocation(), illusionFrame:GetCurrentWeaponOptionInfo(), illusionFrame:GetSlotInfo());
+	if not Artificer.IsForever then
+		for slotFrame in TransmogFrame.CharacterPreview.CharacterAppearanceSlotFramePool:EnumerateActive() do
+			AddSlotData(slotFrame:GetTransmogLocation(), slotFrame:GetCurrentWeaponOptionInfo(), slotFrame:GetSlotInfo());
+			local illusionFrame = slotFrame:GetIllusionSlotFrame();
+			if illusionFrame then
+				AddSlotData(illusionFrame:GetTransmogLocation(), illusionFrame:GetCurrentWeaponOptionInfo(), illusionFrame:GetSlotInfo());
+			end
 		end
 	end
 	
@@ -334,9 +336,11 @@ local function UpdateSheatheButton(btn)
 		return;
 	end
 
-	local weaponOptionInfo = slotFrame:GetCurrentWeaponOptionInfo()
-	local weaponOption = weaponOptionInfo and weaponOptionInfo.weaponOption or Enum.TransmogOutfitSlotOption.None
-	local outfitSlotInfo = C_TransmogOutfitInfo.GetViewedOutfitSlotInfo(btn.slotID, Enum.TransmogType.Appearance, weaponOption)
+	if not Artificer.IsForever then
+		local weaponOptionInfo = slotFrame:GetCurrentWeaponOptionInfo()
+		local weaponOption = weaponOptionInfo and weaponOptionInfo.weaponOption or Enum.TransmogOutfitSlotOption.None
+		local outfitSlotInfo = C_TransmogOutfitInfo.GetViewedOutfitSlotInfo(btn.slotID, Enum.TransmogType.Appearance, weaponOption)
+	end
 
 	if not outfitSlotInfo then
 		btn:Hide();
@@ -477,9 +481,11 @@ local function TryHookTransmog()
 			UpdateAllSheatheButtons();
 		end)
 
-		EventRegistry:RegisterFrameEventAndCallback("VIEWED_TRANSMOG_OUTFIT_SLOT_WEAPON_OPTION_CHANGED", function()
-			UpdateAllSheatheButtons();
-		end)
+		if not Artificer.IsForever then
+			EventRegistry:RegisterFrameEventAndCallback("VIEWED_TRANSMOG_OUTFIT_SLOT_WEAPON_OPTION_CHANGED", function()
+				UpdateAllSheatheButtons();
+			end)
+		end
 
 		hooksecurefunc(TransmogFrame, "SelectSlot", function()
 			UpdateAllSheatheButtons();

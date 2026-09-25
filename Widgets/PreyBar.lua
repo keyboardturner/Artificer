@@ -98,7 +98,7 @@ end
 local function MakeIcon(parent)
 	local f = CreateFrame("Frame", nil, parent or UIParent);
 	f:SetSize(INDICATOR_SIZE, INDICATOR_SIZE);
-	f:SetFrameStrata("HIGH");
+	f:SetFrameStrata("MEDIUM");
 	local tex = f:CreateTexture(nil, "ARTWORK");
 	tex:SetAllPoints(f);
 	f.texture = tex;
@@ -109,7 +109,7 @@ end
 local function MakeStatusBar(parent)
 	local container = CreateFrame("Frame", nil, parent or UIParent)
 	container:SetSize(BAR_LONG, BAR_SHORT)
-	container:SetFrameStrata("HIGH")
+	container:SetFrameStrata("MEDIUM")
 
 	local bg = container:CreateTexture(nil, "BACKGROUND", nil, 0)
 	bg:SetAtlas("CovenantSanctum-Level-Border-Venthyr", false)

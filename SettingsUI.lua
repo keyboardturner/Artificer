@@ -697,6 +697,7 @@ function Artificer:BuildSettingsData()
 				Artificer.Widgets.HideCraftingResults();
 			end
 		end
+		forever = false,
 	});
 
 	-- Widgets - ProfessionToasts
