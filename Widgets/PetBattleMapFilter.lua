@@ -2,6 +2,8 @@ local addonName, Artificer = ...;
 
 local L = Artificer.L;
 
+if Artificer.IsForever then return; end
+
 function Artificer.Widgets.ApplyPetBattleMapFilter()
 	local val = Artificer_DB.Widgets.PetBattleMapFilter;
 	if val == 2 then

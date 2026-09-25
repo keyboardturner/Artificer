@@ -2,6 +2,8 @@ local addonName, Artificer = ...;
 
 local L = Artificer.L;
 
+if Artificer.IsForever then return; end
+
 --[[
 Enum.PreyHuntProgressState = {
 	0 = Cold – all three indicators empty

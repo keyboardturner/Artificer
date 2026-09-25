@@ -2,6 +2,8 @@ local addonName, Artificer = ...;
 
 local L = Artificer.L;
 
+if Artificer.IsForever then return; end
+
 local MapAmbienceFrame = CreateFrame("Frame")
 MapAmbienceFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 MapAmbienceFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")

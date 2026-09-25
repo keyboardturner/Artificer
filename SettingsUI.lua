@@ -696,7 +696,7 @@ function Artificer:BuildSettingsData()
 			if Artificer.Widgets.HideCraftingResults then
 				Artificer.Widgets.HideCraftingResults();
 			end
-		end
+		end,
 		forever = false,
 	});
 
