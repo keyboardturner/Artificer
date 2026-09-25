@@ -1,0 +1,106 @@
+## Interface: 16000, 16001
+## Author: Keyboardturner
+## Version: @project-version@
+## Title: Artificer
+## Notes: A personal workshop and collection of UI tweaks and adjustments
+## IconTexture: Interface/Addons/Artificer/Textures/ArtificerIcon_Small.blp
+## SavedVariables: Artificer_DB
+## AddonCompartmentFunc: Artificer_OnAddonCompartmentClick
+## AddonCompartmentFuncOnEnter: Artificer_OnAddonCompartmentEnter
+## AddonCompartmentFuncOnLeave: Artificer_OnAddonCompartmentLeave
+## X-Curse-Project-ID: 1449040
+## X-WoWI-ID: 27048
+## X-Wago-ID: O67D8jK3
+
+## Title-enUS: Artificer
+## Notes-enUS: A personal workshop and collection of UI tweaks and adjustments
+## Title-esMX: Artificer
+## Notes-esMX: Un taller personal y colección de ajustes y mejoras de la interfaz
+## Title-esES: Artificer
+## Notes-esES: Un taller personal y colección de ajustes de la interfaz
+## Title-deDE: Artificer
+## Notes-deDE: Eine persönliche Werkstatt und Sammlung von UI-Anpassungen
+## Title-frFR: Artificer
+## Notes-frFR: Un atelier personnel et une collection d’ajustements de l’interface
+## Title-itIT: Artificer
+## Notes-itIT: Un laboratorio personale e una raccolta di modifiche e miglioramenti dell'interfaccia
+## Title-ptBR: Artificer
+## Notes-ptBR: Uma oficina pessoal e coleção de ajustes e melhorias de interface
+## Title-ruRU: ремесленник (Artificer)
+## Notes-ruRU: Личная мастерская и набор улучшений интерфейса
+## Title-koKR: 기술자 (Artificer)
+## Notes-koKR: 개인 작업실과 UI 조정 모음
+## Title-zhCN: 工匠 (Artificer)
+## Notes-zhCN: 个人工作室以及一系列界面调整和优化
+## Title-zhTW: 技師 (Artificer)
+## Notes-zhTW: 個人工作室以及一系列介面調整與優化
+
+## Category: Other
+## Category-enUS: Other
+## Category-deDE: Anderes
+## Category-esES: Otros
+## Category-esMX: Otros
+## Category-frFR: Autre
+## Category-itIT: Altro
+## Category-koKR: 기타
+## Category-ptBR: Outro
+## Category-ruRU: Другое
+## Category-zhCN: 其它
+## Category-zhTW: 其他
+
+Libs\LibDBIcon-1.0\LibStub\LibStub.lua
+Libs\LibDBIcon-1.0\CallbackHandler-1.0\CallbackHandler-1.0.lua
+Libs\Ace3\AceAddon-3.0\AceAddon-3.0.lua
+Libs\Ace3\AceDB-3.0\AceDB-3.0.lua
+Libs\Ace3\AceConsole-3.0\AceConsole-3.0.lua
+Libs\LibDBIcon-1.0\LibDataBroker-1.1\LibDataBroker-1.1.lua
+Libs\LibDBIcon-1.0\LibDBIcon-1.0\lib.xml
+Libs\Krowi_WorldMapButtons\Krowi_WorldMapButtons.lua
+Libs\Krowi_WorldMapButtons\Krowi_WorldMapButtons.xml
+
+Localization.lua
+Core.lua
+
+Widgets/FishReelIn.lua
+Widgets/ChromieTimeIcon.lua
+Widgets/HideMacroText.lua
+Widgets/ArrowKeyEditbox.lua
+Widgets/OutfitIcon.lua
+Widgets/ServerNotifications.lua
+Widgets/PetBattleMapFilter.lua
+Widgets/CooldownManagerEnabled.lua
+Widgets/PartySync.lua
+Widgets/CancelAura.lua
+Widgets/AbandonQuest.lua
+Widgets/OutfitBar.lua
+Widgets/OutfitSwapSounds.lua
+Widgets/HideCraftingResults.lua
+Widgets/MovableCurrencyTransfer.lua
+Widgets/AddonCompartmentMover.lua
+Widgets/CollapseBuffs.lua
+Widgets/AccountIgnores.lua
+Widgets/NameplateRodeo.lua
+Widgets/NameplateTarget.lua
+Widgets/NameplateStatus.lua
+Widgets/LootHistoryVisibility.lua
+Widgets/HideTutorials.lua
+Widgets/PreyBar.lua
+Widgets/BlockTrades.lua
+Widgets/MapAmbience.lua
+Widgets/ProfessionToasts.lua
+Widgets/DamageMeter.lua
+Widgets/Screenshot.lua
+Widgets/BlockGuildInvites.lua
+Widgets/ChatWrapper.lua
+Widgets/DeleteConfirm.lua
+Widgets/ObjectiveTrackerManager.lua
+Widgets/SpellAlerts.lua
+Widgets/TransmogHistory.lua
+Widgets/UnderlightFixer.lua
+Widgets/LFDBackground.lua
+Widgets/ProfessionsBook.lua
+Widgets/BnetToasts.lua
+Widgets/SelectionCircle.lua
+Widgets/BlueprintHider.lua
+
+SettingsUI.lua
