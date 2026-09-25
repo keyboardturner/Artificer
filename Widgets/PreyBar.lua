@@ -97,8 +97,8 @@ local function SuppressBlizzWidget(widgetFrame)
 	end
 end
 
-local function MakeIcon(parent)
-	local f = CreateFrame("Frame", nil, parent or UIParent);
+local function MakeIcon(name, parent)
+	local f = CreateFrame("Frame", name, parent or UIParent);
 	f:SetSize(INDICATOR_SIZE, INDICATOR_SIZE);
 	f:SetFrameStrata("MEDIUM");
 	local tex = f:CreateTexture(nil, "ARTWORK");
@@ -108,37 +108,37 @@ local function MakeIcon(parent)
 	return f;
 end
 
-local function MakeStatusBar(parent)
-	local container = CreateFrame("Frame", nil, parent or UIParent)
-	container:SetSize(BAR_LONG, BAR_SHORT)
-	container:SetFrameStrata("MEDIUM")
+local function MakeStatusBar(name, parent)
+	local container = CreateFrame("Frame", name, parent or UIParent);
+	container:SetSize(BAR_LONG, BAR_SHORT);
+	container:SetFrameStrata("MEDIUM");
 
-	local bg = container:CreateTexture(nil, "BACKGROUND", nil, 0)
-	bg:SetAtlas("CovenantSanctum-Level-Border-Venthyr", false)
-	bg:SetPoint("TOPLEFT", container, "TOPLEFT", -19, 18)
-	bg:SetPoint("BOTTOMRIGHT", container, "BOTTOMRIGHT", 19, -18)
-	container.bg = bg
+	local bg = container:CreateTexture(nil, "BACKGROUND", nil, 0);
+	bg:SetAtlas("CovenantSanctum-Level-Border-Venthyr", false);
+	bg:SetPoint("TOPLEFT", container, "TOPLEFT", -19, 18);
+	bg:SetPoint("BOTTOMRIGHT", container, "BOTTOMRIGHT", 19, -18);
+	container.bg = bg;
 
-	local clip = CreateFrame("Frame", nil, container)
-	clip:SetClipsChildren(true)
-	clip:SetFrameLevel(container:GetFrameLevel() + 1)
-	clip:SetPoint("TOPLEFT", container, "TOPLEFT")
-	clip:SetPoint("BOTTOMLEFT", container, "BOTTOMLEFT")
-	clip:SetWidth(0.001)
-	clip:SetHeight(BAR_SHORT)
-	container.clip = clip
+	local clip = CreateFrame("Frame", nil, container);
+	clip:SetClipsChildren(true);
+	clip:SetFrameLevel(container:GetFrameLevel() + 1);
+	clip:SetPoint("TOPLEFT", container, "TOPLEFT");
+	clip:SetPoint("BOTTOMLEFT", container, "BOTTOMLEFT");
+	clip:SetWidth(0.001);
+	clip:SetHeight(BAR_SHORT);
+	container.clip = clip;
 
-	local fill = clip:CreateTexture(nil, "ARTWORK", nil, 1)
-	fill:SetAtlas("housing-dashboard-fillbar-fill", false)
-	fill:SetSize(BAR_LONG, BAR_SHORT)
-	fill:SetPoint("LEFT", clip, "LEFT")
-	fill:SetDesaturated(true)
-	fill:SetVertexColor(1, 0, 0)
-	container.fill = fill
+	local fill = clip:CreateTexture(nil, "ARTWORK", nil, 1);
+	fill:SetAtlas("housing-dashboard-fillbar-fill", false);
+	fill:SetSize(BAR_LONG, BAR_SHORT);
+	fill:SetPoint("LEFT", clip, "LEFT");
+	fill:SetDesaturated(true);
+	fill:SetVertexColor(1, 0, 0);
+	container.fill = fill;
 
-	local overlay = CreateFrame("Frame", nil, container)
-	overlay:SetAllPoints(container)
-	overlay:SetFrameLevel(clip:GetFrameLevel() + 1)
+	local overlay = CreateFrame("Frame", nil, container);
+	overlay:SetAllPoints(container);
+	overlay:SetFrameLevel(clip:GetFrameLevel() + 1);
 
 	local notches = {}
 	for i = 1, 2 do
@@ -150,11 +150,11 @@ local function MakeStatusBar(parent)
 		
 		notches[i] = n;
 	end
-	notches[1]:SetPoint("CENTER", overlay, "LEFT", BAR_LONG / 3, 0)
-	notches[2]:SetPoint("CENTER", overlay, "LEFT", BAR_LONG * 2 / 3, 0)
-	container.notches = notches
+	notches[1]:SetPoint("CENTER", overlay, "LEFT", BAR_LONG / 3, 0);
+	notches[2]:SetPoint("CENTER", overlay, "LEFT", BAR_LONG * 2 / 3, 0);
+	container.notches = notches;
 
-	container.fillValue = 0
+	container.fillValue = 0;
 
 	function container:SetValue(val)
 		self.fillValue = val;
@@ -169,16 +169,16 @@ local function CreateIndicatorGroup()
 	local grp = {}
 	
 	-- reworking how the icons are made a little bit
-	grp.masterFrame = CreateFrame("Frame", nil, UIParent)
-	grp.masterFrame:SetSize(1, 1)
-	grp.masterFrame:Show()
+	grp.masterFrame = CreateFrame("Frame", "ArtificerPreyBarMasterFrame", UIParent);
+	grp.masterFrame:SetSize(1, 1);
+	grp.masterFrame:Show();
 
-	grp.icons = {}
+	grp.icons = {};
 	for i = 1, 3 do
-		grp.icons[i] = MakeIcon(grp.masterFrame);
+		grp.icons[i] = MakeIcon("ArtificerPreyBarIcon" .. i, grp.masterFrame);
 	end
 
-	grp.sbFrame = MakeStatusBar(grp.masterFrame)
+	grp.sbFrame = MakeStatusBar("ArtificerPreyBarStatusBar", grp.masterFrame);
 
 	function grp:HideAll()
 		SetAlphaAnimated(self.masterFrame, 0);
