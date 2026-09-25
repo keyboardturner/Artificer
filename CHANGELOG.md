@@ -9,6 +9,10 @@ Some known issues:
  - Outfit and swimming sounds currently don't function
  - Account ignores frame doesn't show (this is in part due to retail's social UI changes which will be fixed soon™)
 
+Mainline "fixes":
+ - Possibly changed the prey widget additions to not be so HIGH
+ - maybe fixed a profession item slot order?
+
 # 0.3.2a
 
 Fix to the fix to the professions book thing
