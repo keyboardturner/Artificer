@@ -16,7 +16,7 @@ local function GetFriendsDB()
 end
 
 local function GetCurrentCharKey()
-	return UnitName("player") .. "-" .. GetRealmName();
+	return Artificer.CharKey;
 end
 
 local function FormatIgnoreName(ignoreName, ownerRealm)

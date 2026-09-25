@@ -450,8 +450,13 @@ f:SetScript("OnEvent", function(self, event, ...)
 
 		if not Artificer_DB.Characters then Artificer_DB.Characters = {}; end
 
-		local charKey = UnitName("player") .. " - " .. GetRealmName()
-		Artificer.CharKey = charKey
+		local realmKey = GetRealmName();
+		local name, realm = UnitName("player"); -- 2nd return can be realm or 2nd name
+		if not realm then
+			realm = realmKey;
+		end
+		local charKey = name .. " - " .. realm;
+		Artificer.CharKey = charKey;
 
 		if not Artificer_DB.Characters[charKey] then
 			Artificer_DB.Characters[charKey] = {};
@@ -461,7 +466,7 @@ f:SetScript("OnEvent", function(self, event, ...)
 			return Artificer_DB.Characters[Artificer.CharKey];
 		end
 
-		local charDB = Artificer.GetCharDB()
+		local charDB = Artificer.GetCharDB();
 
 	elseif event == "PLAYER_LOGIN" then
 		SLASH_ARTIFICER1 = L["SLASH_ARTI1"]
