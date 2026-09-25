@@ -1,5 +1,14 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.3.3
+
+WoW Forever testing - This is an in-development testing version. Some things may throw errors or explode.
+
+Some known issues:
+ - Profession toasts will pop up for a lot of skill-ups like weapon skills
+ - Outfit and swimming sounds currently don't function
+ - Account ignores frame doesn't show (this is in part due to retail's social UI changes which will be fixed soon™)
+
 # 0.3.2a
 
 Fix to the fix to the professions book thing
