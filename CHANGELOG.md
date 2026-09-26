@@ -1,5 +1,9 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.3.4a
+
+Sheath buttons should now be functional for Forever
+
 # 0.3.4
 
 Restored old transmog file (and sheath buttons) and split the transmog frame into its own Forever-specific file for now.
