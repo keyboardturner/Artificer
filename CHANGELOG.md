@@ -1,5 +1,9 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.3.4
+
+Restored old transmog file (and sheath buttons) and split the transmog frame into its own Forever-specific file for now.
+
 # 0.3.3
 
 WoW Forever testing - This is an in-development testing version. Some things may throw errors or explode.
