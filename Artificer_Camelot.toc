@@ -95,7 +95,7 @@ Widgets/ChatWrapper.lua
 Widgets/DeleteConfirm.lua
 Widgets/ObjectiveTrackerManager.lua
 Widgets/SpellAlerts.lua
-Widgets/TransmogHistory.lua
+Widgets/TransmogHistory_Forever.lua
 Widgets/UnderlightFixer.lua
 Widgets/LFDBackground.lua
 Widgets/ProfessionsBook.lua
