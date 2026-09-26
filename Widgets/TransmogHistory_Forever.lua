@@ -10,7 +10,7 @@ local pendingCapture = false;
 local UNDO_LIMIT = 100;
 
 local undoBtn, redoBtn, restoreBtn
-local mhSheatheBtn, ohSheatheBtn
+local mhSheatheBtn, ohSheatheBtn, rangedSheatheBtn
 
 local historyFrame = CreateFrame("Frame")
 
@@ -97,24 +97,22 @@ local function CaptureUIState()
 				state.secondaryStates[slotID] = C_TransmogOutfitInfo.GetSecondarySlotState(slotID);
 			end
 			
-			local key = slotID .. "_" .. loc:GetType() .. "_" .. opt.weaponOption;
+			local key = slotID .. "_" .. loc:GetType() .. "_" .. opt.type;
 			state.slots[key] = {
 				slot = slotID,
 				type = loc:GetType(),
-				weaponOption = opt.weaponOption,
+				weaponOption = opt.type,
 				transmogID = info.transmogID,
 				displayType = info.displayType
 			};
 		end
 	end
 
-	if not Artificer.IsForever then
-		for slotFrame in TransmogFrame.CharacterPreview.CharacterAppearanceSlotFramePool:EnumerateActive() do
-			AddSlotData(slotFrame:GetTransmogLocation(), slotFrame:GetCurrentWeaponOptionInfo(), slotFrame:GetSlotInfo());
-			local illusionFrame = slotFrame:GetIllusionSlotFrame();
-			if illusionFrame then
-				AddSlotData(illusionFrame:GetTransmogLocation(), illusionFrame:GetCurrentWeaponOptionInfo(), illusionFrame:GetSlotInfo());
-			end
+	for slotFrame in TransmogFrame.CharacterPreview.CharacterAppearanceSlotFramePool:EnumerateActive() do
+		AddSlotData(slotFrame:GetTransmogLocation(), slotFrame:GetCurrentOptionInfo(), slotFrame:GetSlotInfo());
+		local illusionFrame = slotFrame:GetIllusionSlotFrame();
+		if illusionFrame then
+			AddSlotData(illusionFrame:GetTransmogLocation(), illusionFrame:GetCurrentOptionInfo(), illusionFrame:GetSlotInfo());
 		end
 	end
 	
@@ -274,8 +272,8 @@ local function CreateSheatheButton(name, parent, slotID)
 			local slotFrame = TransmogFrame.CharacterPreview:GetSlotFrame(btn.slotID, Enum.TransmogType.Appearance)
 			if not slotFrame then return end
 
-			local weaponOptionInfo = slotFrame:GetCurrentWeaponOptionInfo()
-			local weaponOption = weaponOptionInfo and weaponOptionInfo.weaponOption or Enum.TransmogOutfitSlotOption.None
+			local optionInfo = slotFrame:GetCurrentOptionInfo()
+			local weaponOption = optionInfo and optionInfo.type or Enum.TransmogOutfitSlotOption.None
 			local outfitSlotInfo = C_TransmogOutfitInfo.GetViewedOutfitSlotInfo(btn.slotID, Enum.TransmogType.Appearance, weaponOption)
 
 			if not outfitSlotInfo or outfitSlotInfo.transmogID == Constants.Transmog.NoTransmogID then return end
@@ -336,11 +334,15 @@ local function UpdateSheatheButton(btn)
 		return;
 	end
 
-	if not Artificer.IsForever then
-		local weaponOptionInfo = slotFrame:GetCurrentWeaponOptionInfo()
-		local weaponOption = weaponOptionInfo and weaponOptionInfo.weaponOption or Enum.TransmogOutfitSlotOption.None
-		local outfitSlotInfo = C_TransmogOutfitInfo.GetViewedOutfitSlotInfo(btn.slotID, Enum.TransmogType.Appearance, weaponOption)
+	if btn.slotID == Enum.TransmogOutfitSlot.WeaponOffHand then
+		btn:ClearAllPoints();
+		btn:SetPoint("TOP", slotFrame, "BOTTOM", 0, -2);
 	end
+
+	local outfitSlotInfo = nil
+	local optionInfo = slotFrame:GetCurrentOptionInfo()
+	local weaponOption = optionInfo and optionInfo.type or Enum.TransmogOutfitSlotOption.None
+	outfitSlotInfo = C_TransmogOutfitInfo.GetViewedOutfitSlotInfo(btn.slotID, Enum.TransmogType.Appearance, weaponOption)
 
 	if not outfitSlotInfo then
 		btn:Hide();
@@ -376,6 +378,7 @@ end
 local function UpdateAllSheatheButtons()
 	UpdateSheatheButton(mhSheatheBtn);
 	UpdateSheatheButton(ohSheatheBtn);
+	UpdateSheatheButton(rangedSheatheBtn);
 end
 
 local function ResetHistory()
@@ -444,10 +447,13 @@ local function TryHookTransmog()
 			mhSheatheBtn:SetPoint("RIGHT", TransmogFrame.CharacterPreview.BottomSlots, "LEFT", 10, 0);
 			
 			ohSheatheBtn = CreateSheatheButton("ArtificerOHSheatheButton", TransmogFrame.CharacterPreview, Enum.TransmogOutfitSlot.WeaponOffHand);
-			ohSheatheBtn:SetPoint("LEFT", TransmogFrame.CharacterPreview.BottomSlots, "RIGHT", -10, 0);
+
+			rangedSheatheBtn = CreateSheatheButton("ArtificerRangedSheatheButton", TransmogFrame.CharacterPreview, Enum.TransmogOutfitSlot.WeaponRanged);
+			rangedSheatheBtn:SetPoint("BOTTOM", mhSheatheBtn, "TOP", 0, 4);
 
 			mhSheatheBtn:SetFrameLevel(15);
 			ohSheatheBtn:SetFrameLevel(15);
+			rangedSheatheBtn:SetFrameLevel(15);
 		end
 
 		UpdateButtonStates();
@@ -481,11 +487,10 @@ local function TryHookTransmog()
 			UpdateAllSheatheButtons();
 		end)
 
-		if not Artificer.IsForever then
-			EventRegistry:RegisterFrameEventAndCallback("VIEWED_TRANSMOG_OUTFIT_SLOT_WEAPON_OPTION_CHANGED", function()
-				UpdateAllSheatheButtons();
-			end)
-		end
+		
+		EventRegistry:RegisterFrameEventAndCallback("VIEWED_TRANSMOG_OUTFIT_SLOT_OPTION_CHANGED", function()
+			UpdateAllSheatheButtons();
+		end)
 
 		hooksecurefunc(TransmogFrame, "SelectSlot", function()
 			UpdateAllSheatheButtons();
