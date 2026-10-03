@@ -455,7 +455,7 @@ function Artificer:OpenNameplateStatusAdvancedSettings()
 			rootDescription:CreateCheckbox(L["FNP_StatusFriend"], function() return IsSelected("friend") end, function() SetSelected("friend") end);
 			rootDescription:CreateCheckbox(L["FNP_StatusIgnored"], function() return IsSelected("ignored") end, function() SetSelected("ignored") end);
 			if muteAPI then
-				rootDescription:CreateCheckbox("[PH]"..L["FNP_StatusMuted"], function() return IsSelected("muteAddon") end, function() SetSelected("muteAddon") end);
+				rootDescription:CreateCheckbox(L["FNP_StatusMuted"], function() return IsSelected("muteAddon") end, function() SetSelected("muteAddon") end);
 			end
 		end
 		dropdown:SetupMenu(GeneratorFunction);
@@ -528,7 +528,7 @@ function Artificer:OpenNameplateStatusAdvancedSettings()
 			{ key = "friend_bnet", name = L["FNP_StatusFriendBNet"] },
 			{ key = "ignored_character", name = L["FNP_StatusIgnoredChar"] },
 			{ key = "ignored_account", name = L["FNP_StatusIgnoredAcc"] },
-			{ key = "muteAddon", name = "[PH]"..L["FNP_StatusMutedPlayer"] },
+			{ key = "muteAddon", name = L["FNP_StatusMutedPlayer"] },
 		};
 
 		local scrollBox = CreateFrame("Frame", nil, f, "WowScrollBoxList");
