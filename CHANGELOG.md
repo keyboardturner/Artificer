@@ -4,6 +4,8 @@
 
 Sheath buttons should now be functional for Forever
 
+Added Mute addon compatibility
+
 # 0.3.4
 
 Restored old transmog file (and sheath buttons) and split the transmog frame into its own Forever-specific file for now.
