@@ -209,6 +209,8 @@ if LOCALE == "enUS" then
 	L["FNP_Center"] = "Center"
 	L["FNP_LeftToRight"] = "Left-to-Right"
 	L["FNP_RightToLeft"] = "Right-to-Left"
+	L["FNP_StatusMuted"] = "Mute (Addon)"
+	L["FNP_StatusMutedPlayer"]= "Mute (Addon)"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Account Ignore List Window"
@@ -636,6 +638,8 @@ if LOCALE == "esMX" then
 	L["FNP_Center"] = "Centro"
 	L["FNP_LeftToRight"] = "Izquierda a derecha"
 	L["FNP_RightToLeft"] = "Derecha a izquierda"
+	L["FNP_StatusMuted"] = "Silenciar (addon)"
+	L["FNP_StatusMutedPlayer"] = "Silenciar (addon)"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Ventana de lista de ignorados de la cuenta"
@@ -1061,6 +1065,8 @@ if LOCALE == "esES" then
 	L["FNP_Center"] = "Centro"
 	L["FNP_LeftToRight"] = "Izquierda a derecha"
 	L["FNP_RightToLeft"] = "Derecha a izquierda"
+	L["FNP_StatusMuted"] = "Silenciar (addon)"
+	L["FNP_StatusMutedPlayer"] = "Silenciar (addon)"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Ventana de lista de ignorados de la cuenta"
@@ -1484,6 +1490,8 @@ if LOCALE == "deDE" then
 	L["FNP_Center"] = "Zentriert"
 	L["FNP_LeftToRight"] = "Links nach rechts"
 	L["FNP_RightToLeft"] = "Rechts nach links"
+	L["FNP_StatusMuted"] = "Stumm (Addon)"
+	L["FNP_StatusMutedPlayer"] = "Stumm (Addon)"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Fenster für kontoweite Ignorierliste"
@@ -1908,6 +1916,8 @@ if LOCALE == "frFR" then
 	L["FNP_Center"] = "Centre"
 	L["FNP_LeftToRight"] = "Gauche à droite"
 	L["FNP_RightToLeft"] = "Droite à gauche"
+	L["FNP_StatusMuted"] = "Muet (addon)"
+	L["FNP_StatusMutedPlayer"] = "Muet (addon)"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Fenêtre de liste d’ignorés du compte"
@@ -2332,6 +2342,8 @@ if LOCALE == "itIT" then
 	L["FNP_Center"] = "Centro"
 	L["FNP_LeftToRight"] = "Da sinistra a destra"
 	L["FNP_RightToLeft"] = "Da destra a sinistra"
+	L["FNP_StatusMuted"] = "Silenzia (addon)"
+	L["FNP_StatusMutedPlayer"] = "Silenzia (addon)"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Finestra lista ignorati account"
@@ -2756,6 +2768,8 @@ if LOCALE == "ptBR" then
 	L["FNP_Center"] = "Centro"
 	L["FNP_LeftToRight"] = "Esquerda para direita"
 	L["FNP_RightToLeft"] = "Direita para esquerda"
+	L["FNP_StatusMuted"] = "Silenciar (addon)"
+	L["FNP_StatusMutedPlayer"] = "Silenciar (addon)"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Janela da lista de ignorados da conta"
@@ -3182,6 +3196,8 @@ if LOCALE == "ruRU" then
 	L["FNP_Center"] = "По центру"
 	L["FNP_LeftToRight"] = "Слева направо"
 	L["FNP_RightToLeft"] = "Справа налево"
+	L["FNP_StatusMuted"] = "Отключить звук (аддон)"
+	L["FNP_StatusMutedPlayer"] = "Отключить звук (аддон)"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Окно списка игнорируемых аккаунта"
@@ -3606,6 +3622,8 @@ if LOCALE == "koKR" then
 	L["FNP_Center"] = "중앙"
 	L["FNP_LeftToRight"] = "왼쪽에서 오른쪽"
 	L["FNP_RightToLeft"] = "오른쪽에서 왼쪽"
+	L["FNP_StatusMuted"] = "무음 (애드온)"
+	L["FNP_StatusMutedPlayer"] = "무음 (애드온)"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "계정 차단 목록 창"
@@ -4030,6 +4048,8 @@ if LOCALE == "zhCN" then
 	L["FNP_Center"] = "居中"
 	L["FNP_LeftToRight"] = "从左到右"
 	L["FNP_RightToLeft"] = "从右到左"
+	L["FNP_StatusMuted"] = "禁音（插件）"
+	L["FNP_StatusMutedPlayer"] = "禁音（插件）"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "账号忽略列表窗口"
@@ -4454,6 +4474,8 @@ if LOCALE == "zhTW" then
 	L["FNP_Center"] = "置中"
 	L["FNP_LeftToRight"] = "由左至右"
 	L["FNP_RightToLeft"] = "由右至左"
+	L["FNP_StatusMuted"] = "消音（插件）"
+	L["FNP_StatusMutedPlayer"] = "消音（插件）"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "帳號忽略清單視窗"
