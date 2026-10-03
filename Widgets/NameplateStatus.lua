@@ -14,16 +14,19 @@ local statusi = {
 	"guild",
 	"friend",
 	"ignored",
+	"muteAddon",
 };
 
 local THROTTLE_DELAY = 1.0;
 local isTimerRunning = false;
 local pendingUpdates = {
 	social = false,
+	muteAddon = false,
 	guild = false,
 	group = false,
 	connectionTokens = {},
 };
+local muteAPI;
 
 local StatusTextures = {
 	connection_away = { tex = "Interface\\AddOns\\Artificer\\Textures\\Status_Away.png" },
@@ -39,6 +42,7 @@ local StatusTextures = {
 	friend_bnet = { tex = "Interface\\AddOns\\Artificer\\Textures\\Friend_BNet.png" },
 	ignored_character = { tex = "Interface\\AddOns\\Artificer\\Textures\\Ignored.png" },
 	ignored_account = { tex = "Interface\\AddOns\\Artificer\\Textures\\Ignored_Warband.png" },
+	muteAddon = { atlas = "voicechat-icon-speaker-mute" },
 };
 
 local function LayoutContainerIcons(container)
@@ -168,6 +172,14 @@ function Artificer.UpdateStatusPreviewVisibility()
 		p.guild:Hide();
 	end
 
+	if options.muteAddon and muteAPI then
+		p.muteAddon.statusKey = "muteAddon";
+		SetIconTexture(p.muteAddon, StatusTextures.muteAddon);
+		p.muteAddon:Show();
+	else
+		p.muteAddon:Hide();
+	end
+
 	p.ignored:Hide(); p.friend:Hide();
 	if options.ignored then
 		p.ignored.statusKey = "ignored_character";
@@ -248,6 +260,7 @@ function Artificer:OpenNameplateStatusAdvancedSettings()
 		previewContainer.guild = CreatePreviewIcon();
 		previewContainer.friend = CreatePreviewIcon();
 		previewContainer.ignored = CreatePreviewIcon();
+		previewContainer.muteAddon = CreatePreviewIcon();
 
 		f.previewContainer = previewContainer;
 
@@ -433,6 +446,7 @@ function Artificer:OpenNameplateStatusAdvancedSettings()
 				Artificer_DB.NameplateStatusTypes[key] = not Artificer_DB.NameplateStatusTypes[key];
 				Artificer.UpdateStatusPreviewVisibility();
 				if Artificer.RefreshNameplateStatusIndicator then Artificer.RefreshNameplateStatusIndicator(); end
+				if key == "muteAddon" and Artificer.RefreshMuteIcons then Artificer.RefreshMuteIcons(); end
 			end
 			rootDescription:CreateCheckbox(L["FNP_StatusConnection"], function() return IsSelected("connection") end, function() SetSelected("connection") end);
 			rootDescription:CreateCheckbox(L["FNP_StatusChromie"], function() return IsSelected("chromie") end, function() SetSelected("chromie") end);
@@ -440,6 +454,9 @@ function Artificer:OpenNameplateStatusAdvancedSettings()
 			rootDescription:CreateCheckbox(L["FNP_StatusGuild"], function() return IsSelected("guild") end, function() SetSelected("guild") end);
 			rootDescription:CreateCheckbox(L["FNP_StatusFriend"], function() return IsSelected("friend") end, function() SetSelected("friend") end);
 			rootDescription:CreateCheckbox(L["FNP_StatusIgnored"], function() return IsSelected("ignored") end, function() SetSelected("ignored") end);
+			if muteAPI then
+				rootDescription:CreateCheckbox("[PH]"..L["FNP_StatusMuted"], function() return IsSelected("muteAddon") end, function() SetSelected("muteAddon") end);
+			end
 		end
 		dropdown:SetupMenu(GeneratorFunction);
 
@@ -511,6 +528,7 @@ function Artificer:OpenNameplateStatusAdvancedSettings()
 			{ key = "friend_bnet", name = L["FNP_StatusFriendBNet"] },
 			{ key = "ignored_character", name = L["FNP_StatusIgnoredChar"] },
 			{ key = "ignored_account", name = L["FNP_StatusIgnoredAcc"] },
+			{ key = "muteAddon", name = "[PH]"..L["FNP_StatusMutedPlayer"] },
 		};
 
 		local scrollBox = CreateFrame("Frame", nil, f, "WowScrollBoxList");
@@ -849,6 +867,7 @@ local function CreateContainer(index)
 	container.guild = CreateIcon();
 	container.friend = CreateIcon();
 	container.ignored = CreateIcon();
+	container.muteAddon = CreateIcon();
 
 	local key = "NamePlateStatus" .. index;
 	StatusContainers[key] = container;
@@ -936,6 +955,35 @@ local function UpdateGuildIcon(unitToken, container)
 	LayoutContainerIcons(container);
 end
 
+local function IsUnitMuted(unitToken)
+	if not muteAPI then return false; end
+
+	local options = Artificer_DB.NameplateStatusTypes;
+	if not options or not options.muteAddon then return false; end
+
+	if issecretvalue(unitToken) or issecretvalue(UnitExists(unitToken)) then return false; end
+	if not UnitExists(unitToken) or not UnitIsPlayer(unitToken) then return false; end
+
+	local name = GetUnitName(unitToken, true);
+	if not name or issecretvalue(name) then return false; end
+
+	return muteAPI.IsMuted(name);
+end
+
+local function UpdateMutedIcon(unitToken, container, isMuted)
+	if isMuted == nil then isMuted = IsUnitMuted(unitToken); end
+
+	if isMuted then
+		container.muteAddon.statusKey = "muteAddon";
+		SetIconTexture(container.muteAddon, StatusTextures.muteAddon);
+		container.muteAddon:Show();
+	else
+		container.muteAddon:Hide();
+	end
+
+	LayoutContainerIcons(container);
+end
+
 local function ProcessStatusUnit(unitToken)
 	local namePlate = C_NamePlate.GetNamePlateForUnit(unitToken);
 	if not namePlate then return; end
@@ -945,8 +993,13 @@ local function ProcessStatusUnit(unitToken)
 	local container = StatusContainers[containerKey];
 	if not container then return; end
 
-	if UnitExists(unitToken) and UnitIsPlayer(unitToken) and scrubsecretvalues(UnitIsFriend("player", unitToken)) then
+	local isPlayer = UnitExists(unitToken) and UnitIsPlayer(unitToken);
+	local isFriend = isPlayer and scrubsecretvalues(UnitIsFriend("player", unitToken));
+	local isMuted = isPlayer and IsUnitMuted(unitToken) or false;
+
+	if isPlayer and (isFriend or isMuted) then
 		SetContainerPosition(container, _G[unitFrame]);
+		UpdateMutedIcon(unitToken, container, isMuted);
 		UpdateGroupIcon(unitToken, container);
 		UpdateConnectionIcon(unitToken, container);
 		UpdateChromieIcon(unitToken, container);
@@ -956,6 +1009,30 @@ local function ProcessStatusUnit(unitToken)
 		container:Show();
 	else
 		container:Hide();
+	end
+end
+
+local function RefreshMutedPlates()
+	if not Artificer_DB.Widgets.NameplateStatusIndicator then return; end
+	for i = 1, MAX_NAMEPLATES do
+		local unitToken = format(STATUS_TOKEN, i);
+		if C_NamePlate.GetNamePlateForUnit(unitToken) then
+			ProcessStatusUnit(unitToken);
+		end
+	end
+end
+Artificer.RefreshMuteIcons = RefreshMutedPlates;
+
+local function ProcessMuteUnit(unitToken)
+	if not Artificer_DB.Widgets.NameplateStatusIndicator then return; end
+	if not muteAPI then return; end
+
+	local container = StatusContainers["NamePlateStatus" .. string.match(unitToken, "%d+")];
+	if not container then return; end
+	if not C_NamePlate.GetNamePlateForUnit(unitToken) then return; end
+
+	if IsUnitMuted(unitToken) ~= container.muteAddon:IsShown() then
+		ProcessStatusUnit(unitToken);
 	end
 end
 
@@ -972,6 +1049,11 @@ local function ProcessPendingUpdates()
 				UpdateSocialIcons(unitToken, container);
 			end
 		end
+	end
+
+	if pendingUpdates.muteAddon then
+		pendingUpdates.muteAddon = false;
+		RefreshMutedPlates();
 	end
 
 	if pendingUpdates.guild then
@@ -1086,6 +1168,20 @@ function Artificer.RefreshNameplateStatusIndicator()
 end
 
 Artificer.NameplateRodeo:RegisterSocial(OnSocialUpdate);
+Artificer.NameplateRodeo:RegisterSlow(ProcessMuteUnit);
+
+EventUtil.ContinueOnAddOnLoaded("Mute", function()
+	muteAPI = _G.MuteAddonAPI;
+	if not muteAPI then return; end
+
+	muteAPI.RegisterCallback(function()
+		pendingUpdates.muteAddon = true;
+		TriggerThrottle();
+	end);
+
+	pendingUpdates.muteAddon = true;
+	TriggerThrottle();
+end);
 
 local loader = CreateFrame("Frame");
 loader:RegisterEvent("PLAYER_LOGIN");
@@ -1096,6 +1192,10 @@ loader:SetScript("OnEvent", function(self, event)
 		end
 		if not Artificer_DB.NameplateStatusSize then
 			Artificer_DB.NameplateStatusSize = Artificer.Defaults.NameplateStatusSize;
+		end
+
+		if Artificer_DB.NameplateStatusTypes.muteAddon == nil then
+			Artificer_DB.NameplateStatusTypes.muteAddon = true;
 		end
 
 		Artificer.UpdateNameplateStatusAppearance();
