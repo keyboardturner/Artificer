@@ -800,9 +800,9 @@ local function UpdateSocialIcons(unitToken, container)
 	-- friends (character > bnet > account)
 	if options.friend then
 		local isBNetFriend = false;
-		if C_BattleNet and C_BattleNet.GetAccountInfoByGUID then
+		if C_BattleNet and C_BattleNet.GetAccountInfoByGUID and guid and not issecretvalue(guid) then
 			local accountInfo = C_BattleNet.GetAccountInfoByGUID(guid);
-			if accountInfo and accountInfo.isFriend then
+			if accountInfo and not issecretvalue(accountInfo) and accountInfo.isFriend then
 				isBNetFriend = true;
 			end
 		end
