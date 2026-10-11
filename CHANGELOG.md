@@ -1,5 +1,9 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.3.4c
+
+Secret value check for bnet GUIDs
+
 # 0.3.4a
 
 Sheath buttons should now be functional for Forever
