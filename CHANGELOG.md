@@ -1,5 +1,9 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.3.5
+
+12.1.5 toc update
+
 # 0.3.4c
 
 Secret value check for bnet GUIDs
