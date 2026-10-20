@@ -700,6 +700,22 @@ function Artificer:BuildSettingsData()
 		forever = false,
 	});
 
+	-- Widgets - Camping
+	table.insert(allSettingsData, {
+		type = "checkbox",
+		isWidget = true,
+		key = "CampfireNearby",
+		isNew = true,
+		label = L["Widget_CampfireNearby"],
+		tooltip = L["Widget_CampfireNearbyTT"],
+		callback = function(val)
+			if Artificer.Widgets.ApplyCampfireNearby then
+				Artificer.Widgets.ApplyCampfireNearby();
+			end
+		end,
+		forever = true,
+	});
+
 	-- Widgets - ProfessionToasts
 	table.insert(allSettingsData, {
 		type = "checkbox",

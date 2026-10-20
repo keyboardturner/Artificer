@@ -1,5 +1,9 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.3.6
+
+Added Camping support feature for Forever, displaying a radial menu and a /sit command when near campfires.
+
 # 0.3.5
 
 12.1.5 toc update

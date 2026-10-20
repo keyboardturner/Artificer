@@ -102,5 +102,6 @@ Widgets/ProfessionsBook.lua
 Widgets/BnetToasts.lua
 Widgets/SelectionCircle.lua
 Widgets/BlueprintHider.lua
+Widgets/Camping.lua
 
 SettingsUI.lua

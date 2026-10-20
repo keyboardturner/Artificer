@@ -47,6 +47,7 @@ local Defaults = {
 		ChatTooltipVisibility = 2,
 		DeleteConfirm = false,
 		BlueprintHider = true,
+		CampfireNearby = true,
 		AutoCollapseTracker = {
 			rested = false,
 			mythicplus = false,
@@ -107,6 +108,7 @@ local Defaults = {
 		guild = true,
 		friend = true,
 		ignored = true,
+		muted = true,
 	},
 	NameplateStatusColors = {
 		connection_away = { r=1, g=1, b=1, a=1, desat = false, },
@@ -127,7 +129,7 @@ local Defaults = {
 
 		ignored_character = { r=1, g=1, b=1, a=1, desat = false, },
 		ignored_account = { r=1, g=1, b=1, a=1, desat = false, },
-		--ignored_muted = { r=1, g=1, b=1, a=1, desat = false, },
+		ignored_muted = { r=1, g=1, b=1, a=1, desat = false, },
 	};
 	NameplateStatusSize = 30,
 
