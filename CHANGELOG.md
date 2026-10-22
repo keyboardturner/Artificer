@@ -1,5 +1,10 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.3.6a
+
+Adjusted/removed some of the outfit sounds for the Forever client (these should remain unchanged in mainline):
+ - Gear - Light, Gear - Heavy, Yak Run, Yak Walk, Grummle Run, Grummle Walk, Brutosaur Mount, Metal Lantern, Arathi Lynx, Fishing Rod
+
 # 0.3.6
 
 Added Camping support feature for Forever, displaying a radial menu and a /sit command when near campfires.
