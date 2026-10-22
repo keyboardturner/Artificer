@@ -7,7 +7,7 @@ local LDBIcon = LibStub("LibDBIcon-1.0")
 
 local build = select(4, GetBuildInfo());
 
-local IsForever = build >= 16000 and build < 20000;
+local IsForever = WOW_PROJECT_ID == WOW_PROJECT_CAMELOT;
 Artificer.IsForever = IsForever;
 
 Artificer.Widgets = {};

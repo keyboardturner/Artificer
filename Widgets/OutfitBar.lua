@@ -157,112 +157,124 @@ local FoleySoundsLibrary = {
 		567578, 567579, 567581, 567582, 567583,
 		567584, 567588, 567589, 567595, 567596,
 	},
-	RidingDragonTurtle_Run = { -- PlaySound(29484)
+	RidingDragonTurtle_Run = { -- soundkit 29484
 		633539, 633541, 633543, 633545, 633547,
 		633549, 633551, 633553, 633555, 633557,
 	},
-	RidingDragonTurtle_Walk = { -- PlaySound(29483)
+	RidingDragonTurtle_Walk = { -- soundkit 29483
 		633559, 633561, 633563, 633565, 633567,
 		633569, 633571, 633573, 633575, 633577,
 	},
-	YakMount_Run = { -- soundkit may have issues with infinite loop
+	YakMount_Run = { -- soundkit may have issues with infinite loop soundkit 29486
 		633579, 633581, 633583, 633585, 633587,
 		633589, 633591, 633593, 633595, 633597,
 	},
-	YakMount_Walk = { --soundkit may have issues with infinite loop
+	YakMount_Walk = { -- soundkit may have issues with infinite loop soundkit 29485
 		633599, 633601, 633603, 633605, 633607,
 		633609, 633611, 633613, 633615, 633617,
 	},
-	Grummle_Run = { -- soundkit may have infinite loop issues
+	Grummle_Run = { -- soundkit may have infinite loop issues soundkit 31093
 		642967, 642969, 642971, 642973, 642975,
 		642977, 642979, 642981, 642983, 642985,
 	},
-	Grummle_Walk = { -- soundkit may have infinite loop issues
+	Grummle_Walk = { -- soundkit may have infinite loop issues soundkit 31094
 		642987, 642989, 642991, 642993, 642995,
 		642997, 642999, 643001, 643003, 643005,
 	},
-	TreasureGoblinPet_Bag = { -- soundkit allows overlap (PlaySound(211065))
+	TreasureGoblinPet_Bag = { -- soundkit allows overlap soundkit 211065
 		943380, 943382, 943384, 943386, 943388,
 		943390, 943392, 943394, 943396, 943398,
 	},
-	Metal_ArmorBuckles_Long = { -- LOUD, allows overlap (PlaySound(217605))
+	Metal_ArmorBuckles_Long = { -- LOUD, allows overlap soundkit 217605
 		4577783, 4577785, 4577787, 4577789, 4577791,
 		4577793, 4577796, 4577798, 4577800, 4577802,
 	},
-	Metal_ArmorBuckles_Short = { -- loud, allows overlap (PlaySound(228470))
+	Metal_ArmorBuckles_Short = { -- loud, allows overlap soundkit 228470
 		4577804, 4577806, 4577808, 4577810, 4577813,
 		4577815, 4577817, 4577819, 4577821, 4577823,
 		4577825, 4577827, 4577829, 4577831,
 	},
-	Metal_Chain_Maw = { -- PlaySound(267379)
+	Metal_Chain_Maw = { -- soundkit 267379
 		3745490, 3745492, 3745494, 3745496, 3745498,
 		3745500, 3745502, 3745504, 3745506, 3745508,
 		3745510, 3745512, 3745514, 3745516, 3745518,
 		3745520,
 	},
-	Wildhammer = { -- PlaySound(259880)
+	Wildhammer = { -- soundkit 259880
 		4611458, 4611460, 4611462, 4611464, 4611466,
 		4611468, 4611470, 4611472, 4611474, 4611476,
 		4611478,
 	},
-	MoleMount = { --PlaySound(270965)
+	MoleMount = { -- soundkit 270965
 		5915938, 5915940, 5915942, 5915944, 5915946,
 	},
-	BrutosaurMount = { -- PlaySound(270964)
+	BrutosaurMount = { -- soundkit 270964
 		6211670, 6211672, 6211674, 6211676, 6211678,
 		6211680, 6211682, 6211684, 6211686, 6211688,
 		6211690, 6211692, 6211694, 6211696, 6211698,
 		6211700,
 	},
-	ChainGauntlet = {
+	ChainGauntlet = { -- soundkit 128965
 		1561730, 1561731, 1561732, 1561733, 1561734,
 		1561735, 1561736, 1561737, 1561738, 1561739,
 	},
-	BoneShuffle = { -- PlaySound(277695)
+	BoneShuffle = { -- soundkit 277695
 		4632216, 4632218, 4632220, 4632222, 4632224,
 		4632226, 4632228, 4632230, 4632232, 4632234,
 	},
-	MetalLantern = { -- PlaySound(265831)
+	MetalLantern = { -- soundkit 265831
 		5846775, 5846777, 5846779, 5846781, 5846783,
 		5846785, 5846787, 5846789, 5846791, 5846793,
 		5846795, 5846797, 5846799, 5846801, 5846803,
 		5846805, 5846807, 5846809, 5846811,
 	},
-	ArathiLynx = { -- PlaySound(286854)
+	ArathiLynx = { -- soundkit 286854
 		5795394, 5795396, 5795398, 5795400, 5795402,
 		5795404,
 	},
-	FishingRod = { -- PlaySound(242755)
+	FishingRod = { -- soundkit 242755
 		4632261, 4632263, 4632265, 4632271, 4632273,
 		4632275, 4632277, 4632279, 4632281, 4632283,
 	},
 };
 
 local SwimSounds = {
-	UnderwaterSplash = {
+	UnderwaterSplash = { -- soundkit 195582, unused atm
 		4531327, 4531329, 4531331, 4531333, 4531335,
 		4531337, 4531339, 4531341, 4531343, 4531345,
 	},
-	UnderwaterDive = {
-		567371, 567305, 567356, 567349,
+	UnderwaterDive = { -- soundkit 22030
+		567371, 567305, 567356, 567349, -- not available to Forever
 	},
 };
 
+local SwimSounds_SK = {
+	UnderwaterSplash = 195582,
+	UnderwaterDive = 195582, -- dive entries unavailable
+};
+
 local SwimMovement = {
-	UnderwaterSmall = {
+	UnderwaterSmall = { -- soundkit 199953
 		4531291, 4531293, 4531295, 4531297, 4531299,
-		4531301, 4531303, 4531305, 3610667, 3610669,
-		3610671, 3610673, 3610675,
+		4531301, 4531303, 4531305,
+		-- soundkit 220831
+		3610667, 3610669, 3610671, 3610673, 3610675,
 	},
-	UnderwaterMedium = {
+	UnderwaterMedium = { -- soundkit 289041
 		6917022, 6917024, 6917026, 6917028, 6917030,
 		6917032, 6917034, 6917036, 6917038, 6917040,
 		6917042, 6917044, 6917046, 6917048, 6917050,
 	},
-	UnderwaterLarge = {
+	UnderwaterLarge = { -- soundkit 289214
 		6922771, 6922773, 6922775, 6922777, 6922779,
 		6922781, 6922783, 6922785, 6922787, 6922789,
 	},
+};
+
+local SwimMovement_SK = {
+	UnderwaterSmall = 195584, -- 199953 unavailable
+	UnderwaterMedium = 289041,
+	UnderwaterLarge = 289214,
 };
 
 local SoundDefinitions = {
@@ -278,6 +290,7 @@ local SoundDefinitions = {
 		icon = "Interface\\Icons\\inv_chest_leather_09",
 		sounds = FoleySoundsLibrary.Leather,
 		volume = 1,
+		soundkit = 1003, -- 1003 doesn't allow duplicates
 	},
 	{
 		key = "Chain",
@@ -285,6 +298,7 @@ local SoundDefinitions = {
 		icon = "Interface\\Icons\\inv_chest_chain_12",
 		sounds = FoleySoundsLibrary.Chain,
 		volume = 1,
+		soundkit = 1005, -- 1005 doesn't allow duplicates
 	},
 	{
 		key = "Plate",
@@ -292,6 +306,7 @@ local SoundDefinitions = {
 		icon = "Interface\\Icons\\inv_chest_plate04",
 		sounds = FoleySoundsLibrary.Plate,
 		volume = 1,
+		soundkit = 1004, -- 1004 doesn't allow duplicates, can't seem to find a good replcaement
 	},
 	{
 		key = "GearLight",
@@ -299,6 +314,8 @@ local SoundDefinitions = {
 		icon = "Interface\\Icons\\inv_cape_armor_explorer_d_01_backpack",
 		sounds = FoleySoundsLibrary.RidingDragonTurtle_Run,
 		volume = .15,
+		soundkit = 29484,
+		forever = false, -- not available
 	},
 	{
 		key = "GearHeavy",
@@ -306,6 +323,8 @@ local SoundDefinitions = {
 		icon = "Interface\\Icons\\inv_backpack_wrathion_c_01",
 		sounds = FoleySoundsLibrary.RidingDragonTurtle_Walk,
 		volume = .15,
+		soundkit = 29483,
+		forever = false, -- not available
 	},
 	{
 		key = "ArmorBucklesLight",
@@ -313,6 +332,7 @@ local SoundDefinitions = {
 		icon = "Interface\\Icons\\inv_belt_47c",
 		sounds = FoleySoundsLibrary.Metal_ArmorBuckles_Long,
 		volume = .1,
+		soundkit = 199323, -- 217605 not available in forever
 	},
 	{
 		key = "ArmorBucklesHeavy",
@@ -320,6 +340,7 @@ local SoundDefinitions = {
 		icon = "Interface\\Icons\\inv_belt_44",
 		sounds = FoleySoundsLibrary.Metal_ArmorBuckles_Short,
 		volume = .1,
+		soundkit = 199321, -- 228470 not available in forever
 	},
 	{
 		key = "YakRun",
@@ -327,6 +348,8 @@ local SoundDefinitions = {
 		icon = "Interface\\Icons\\inv_belt_42b",
 		sounds = FoleySoundsLibrary.YakMount_Run,
 		volume = .1,
+		soundkit = 195429, -- 29486 infinite loop issue, alternative doesn't allow dupes
+		forever = false, -- not available
 	},
 	{
 		key = "YakWalk",
@@ -334,6 +357,8 @@ local SoundDefinitions = {
 		icon = "Interface\\Icons\\inv_belt_robe_panprog_b_01",
 		sounds = FoleySoundsLibrary.YakMount_Walk,
 		volume = .1,
+		soundkit = 82661, -- 29485 infinite loop
+		forever = false, -- not available
 	},
 	{
 		key = "GrummleRun",
@@ -341,6 +366,8 @@ local SoundDefinitions = {
 		icon = "Interface\\Icons\\inv_misc_bag_13",
 		sounds = FoleySoundsLibrary.Grummle_Run,
 		volume = .1,
+		soundkit = 224246, -- 31093 infinite loop, alternative doesn't allow dupes
+		forever = false, -- not available
 	},
 	{
 		key = "GrummleWalk",
@@ -348,6 +375,8 @@ local SoundDefinitions = {
 		icon = "Interface\\Icons\\inv_misc_5potionbag_special",
 		sounds = FoleySoundsLibrary.Grummle_Walk,
 		volume = .1,
+		soundkit = 238605, -- 31094 infinite loop
+		forever = false, -- not available
 	},
 	{
 		key = "TreasureGoblin",
@@ -355,6 +384,7 @@ local SoundDefinitions = {
 		icon = "Interface\\Icons\\inv_misc_coinbag_special",
 		sounds = FoleySoundsLibrary.TreasureGoblinPet_Bag,
 		volume = .1,
+		soundkit = 211065,
 	},
 	{
 		key = "Metal_Chain_Maw",
@@ -362,6 +392,7 @@ local SoundDefinitions = {
 		icon = "Interface\\Icons\\inv_mail_mawraid_d_01_chest",
 		sounds = FoleySoundsLibrary.Metal_Chain_Maw,
 		volume = .04,
+		soundkit = 210482, -- 267379 not available in forever
 	},
 	{
 		key = "Wildhammer",
@@ -369,6 +400,7 @@ local SoundDefinitions = {
 		icon = "Interface\\Icons\\inv_misc_tabard_wildhammerclan",
 		sounds = FoleySoundsLibrary.Wildhammer,
 		volume = .08,
+		soundkit = 199913, -- 259880 not available in forever
 	},
 	{
 		key = "MoleMount",
@@ -376,6 +408,7 @@ local SoundDefinitions = {
 		icon = "Interface\\Icons\\inv_molemount_dark",
 		sounds = FoleySoundsLibrary.MoleMount,
 		volume = .30,
+		soundkit = 362715, -- 270965 not available in forever
 	},
 	{
 		key = "BrutosaurMount",
@@ -383,6 +416,8 @@ local SoundDefinitions = {
 		icon = "Interface\\Icons\\inv_brontsaurusmountspecial",
 		sounds = FoleySoundsLibrary.BrutosaurMount,
 		volume = .08,
+		soundkit = 270964, -- 270964 not available in forever
+		forever = false, -- not available
 	},
 	{
 		key = "ChainGauntlet",
@@ -390,6 +425,7 @@ local SoundDefinitions = {
 		icon = "Interface\\Icons\\inv_misc_desecrated_mailglove",
 		sounds = FoleySoundsLibrary.ChainGauntlet,
 		volume = .15,
+		soundkit = 129453, -- 128965 not available in forever
 	},
 	{
 		key = "BoneShuffle",
@@ -397,6 +433,7 @@ local SoundDefinitions = {
 		icon = "Interface\\Icons\\ability_deathknight_boneshield",
 		sounds = FoleySoundsLibrary.BoneShuffle,
 		volume = .08,
+		soundkit = 277695,
 	},
 	{
 		key = "MetalLantern",
@@ -404,6 +441,8 @@ local SoundDefinitions = {
 		icon = "Interface\\Icons\\inv_misc_lantern_01",
 		sounds = FoleySoundsLibrary.MetalLantern,
 		volume = .15,
+		soundkit = 357533, -- 265831 not available in forever
+		forever = false,
 	},
 	{
 		key = "ArathiLynx",
@@ -411,6 +450,8 @@ local SoundDefinitions = {
 		icon = "Interface\\Icons\\inv_babyeversonglynx_black",
 		sounds = FoleySoundsLibrary.ArathiLynx,
 		volume = .15,
+		soundkit = 286854,
+		forever = false, -- not available
 	},
 	{
 		key = "FishingRod",
@@ -418,12 +459,16 @@ local SoundDefinitions = {
 		icon = "Interface\\Icons\\inv_misc_2h_draenorfishingpole_a_01",
 		sounds = FoleySoundsLibrary.FishingRod,
 		volume = .08,
+		soundkit = 242755,
+		forever = false, -- not available
 	},
 };
 
 local SoundDataLookup = {};
 local SoundIconLookup = {};
 local SoundVolumeLookup = {};
+local SoundUnavailable = {};
+local SoundKitLookup = {}; -- Forever client stuff
 
 local ArtiOFFrame;
 local soundPanel;
@@ -437,6 +482,10 @@ for _, def in ipairs(SoundDefinitions) do
 	SoundDataLookup[def.key] = def.sounds;
 	SoundIconLookup[def.key] = def.icon;
 	SoundVolumeLookup[def.key] = def.volume or 1.0;
+	SoundKitLookup[def.key] = def.soundkit; -- forever client stuff
+	if Artificer.IsForever and def.forever == false then
+		SoundUnavailable[def.key] = true;
+	end
 end
 
 -- foley sound API for addons to add their own
@@ -461,6 +510,7 @@ function Artificer_API.RegisterFoleySound(self, soundDef)
 		icon = soundDef.icon or "Interface\\Icons\\INV_Misc_QuestionMark",
 		sounds = soundDef.sounds,
 		volume = tonumber(soundDef.volume) or 1.0,
+		soundkit = tonumber(soundDef.soundkit), -- Forever client stuff
 	};
 
 	table.insert(SoundDefinitions, cleanedDef);
@@ -468,6 +518,7 @@ function Artificer_API.RegisterFoleySound(self, soundDef)
 	SoundDataLookup[key] = cleanedDef.sounds;
 	SoundIconLookup[key] = cleanedDef.icon;
 	SoundVolumeLookup[key] = cleanedDef.volume;
+	SoundKitLookup[key] = cleanedDef.soundkit; -- forever client stuff
 
 	if soundPanel and soundPanel:IsVisible() then
 		UpdateSoundPanelSelection();
@@ -583,6 +634,7 @@ UpdateSoundPanelSelection = function()
 	local currentSound = (foleyDB and foleyDB[selectedOutfitID]) or "None"
 	
 	for _, def in ipairs(SoundDefinitions) do
+		if not SoundUnavailable[def.key] then
 		table.insert(soundData, {
 			key = def.key,
 			name = def.name,
@@ -590,6 +642,7 @@ UpdateSoundPanelSelection = function()
 			sounds = def.sounds,
 			isSelected = (def.key == currentSound)
 		})
+		end
 	end
 	
 	if soundPanel.scrollBox then
@@ -1348,41 +1401,70 @@ function Artificer:ToggleOutfitSoundUI()
 	end
 end
 
+-- forever client stuff
+local function PlayFoleySound(fileID, soundKitID, volume)
+	if Artificer.IsForever then
+		if soundKitID then
+			C_Sound.PlaySoundWithOptions({
+				soundKitID = soundKitID,
+				forceNoDuplicates = false,
+				--overridePriority = 1,
+				volumeOverride = volume,
+			});
+		elseif fileID then
+			-- no soundkit available (ie from API) can't control volume
+			PlaySoundFile(fileID, "SFX");
+		end
+		return;
+	end
+
+	if not fileID then return; end
+	C_EncounterEvents.SetEventSound(FOLEY_EVENT_ID, FOLEY_TRIGGER_ID, { file = fileID, volume = volume });
+	C_EncounterEvents.PlayEventSound(FOLEY_EVENT_ID, FOLEY_TRIGGER_ID);
+	C_EncounterEvents.SetEventSound(FOLEY_EVENT_ID, FOLEY_TRIGGER_ID, nil);
+end
+
 local function SoundSelector()
 	if GetTime() - lastRaftSpamTime <= 0.5 then return; end -- this will be affected by lag so it's not perfect
-	local foleyDB = GetFoleyDB()
-	local volumeDB = GetVolumeDB()
+	local foleyDB = GetFoleyDB();
+	local volumeDB = GetVolumeDB();
 
-	local activeOutfitID = C_TransmogOutfitInfo.GetActiveOutfitID()
-	if not foleyDB or not activeOutfitID then return end
+	local activeOutfitID = C_TransmogOutfitInfo.GetActiveOutfitID();
+	if not foleyDB or not activeOutfitID then return; end
 
-	local soundKey = foleyDB[activeOutfitID]
-	if not soundKey then return end
+	local soundKey = foleyDB[activeOutfitID];
+	if soundKey and SoundUnavailable[soundKey] then return; end
+	if not soundKey then return; end
 
-	local soundData = SoundDataLookup[soundKey]
-	if not soundData then return end
+	local soundData = SoundDataLookup[soundKey];
+	if not soundData then return; end
 
-	local volume = (volumeDB and volumeDB[activeOutfitID]) or 1.0
+	local volume = (volumeDB and volumeDB[activeOutfitID]) or 1.0;
 	
 	if type(soundData) == "table" then
-		local fileID
+		local fileID;
+
+		local soundKitID = SoundKitLookup[soundKey];
+
+		if Artificer.IsForever and soundKitID then
+			PlayFoleySound(nil, soundKitID, volume);
+			return;
+		end
 		
 		-- don't play the same file twice in a row it hurts my brain
 		if #soundData > 1 then
-			fileID = lastPlayedFileID
+			fileID = lastPlayedFileID;
 	
 			while fileID == lastPlayedFileID do
-				fileID = soundData[math.random(1, #soundData)]
+				fileID = soundData[math.random(1, #soundData)];
 			end
 		else
-			fileID = soundData[1]
+			fileID = soundData[1];
 		end
 		
-		lastPlayedFileID = fileID
+		lastPlayedFileID = fileID;
 		
-		C_EncounterEvents.SetEventSound(FOLEY_EVENT_ID, FOLEY_TRIGGER_ID, { file = fileID, volume = volume })
-		C_EncounterEvents.PlayEventSound(FOLEY_EVENT_ID, FOLEY_TRIGGER_ID)
-		C_EncounterEvents.SetEventSound(FOLEY_EVENT_ID, FOLEY_TRIGGER_ID, nil)
+		PlayFoleySound(fileID, nil, volume);
 	end
 end
 
@@ -1396,9 +1478,7 @@ local function PlayDiveSound()
 	if not soundData then return; end
 
 	local fileID = soundData[math.random(1, #soundData)];
-	C_EncounterEvents.SetEventSound(FOLEY_EVENT_ID, FOLEY_TRIGGER_ID, { file = fileID, volume = swimDB.diveVolume });
-	C_EncounterEvents.PlayEventSound(FOLEY_EVENT_ID, FOLEY_TRIGGER_ID);
-	C_EncounterEvents.SetEventSound(FOLEY_EVENT_ID, FOLEY_TRIGGER_ID, nil);
+	PlayFoleySound(fileID, SwimSounds_SK.UnderwaterDive, swimDB.diveVolume);
 end
 
 local function PlaySwimMovementSound()
@@ -1407,6 +1487,11 @@ local function PlaySwimMovementSound()
 
 	local soundData = SwimMovement[swimDB.movementSoundType];
 	if not soundData then return; end
+
+	if Artificer.IsForever and SwimMovement_SK[swimDB.movementSoundType] then
+		PlayFoleySound(nil, SwimMovement_SK[swimDB.movementSoundType], swimDB.movementVolume);
+		return;
+	end
 
 	local fileID;
 	if #soundData > 1 then
@@ -1419,9 +1504,7 @@ local function PlaySwimMovementSound()
 	end
 	
 	lastSwimSoundID = fileID;
-	C_EncounterEvents.SetEventSound(FOLEY_EVENT_ID, FOLEY_TRIGGER_ID, { file = fileID, volume = swimDB.movementVolume });
-	C_EncounterEvents.PlayEventSound(FOLEY_EVENT_ID, FOLEY_TRIGGER_ID);
-	C_EncounterEvents.SetEventSound(FOLEY_EVENT_ID, FOLEY_TRIGGER_ID, nil);
+	PlayFoleySound(fileID, SwimMovement_SK[swimDB.movementSoundType], swimDB.movementVolume);
 end
 
 local function FallingChecker()
