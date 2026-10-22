@@ -1671,7 +1671,11 @@ function Artificer:CreateSettingsUI()
 	end)
 
 	frame:SetScript("OnShow", function()
-		PlaySound(279415);
+		if Artificer.IsForever then
+			PlaySound(130966);
+		else
+			PlaySound(279415);
+		end
 	end)
 	frame:SetScript("OnHide", function()
 		PlaySound(248166);
