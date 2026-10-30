@@ -36,6 +36,7 @@ local Defaults = {
 		CollapseBuffs = false,
 		NameplateTargetIndicator = false,
 		MinimapRightClick = "outfitsound",
+		MinimapSound = true,
 		HideTutorials = false,
 		PreyBarEnabled = true,
 		BlockTrades = true,
@@ -145,6 +146,7 @@ local Defaults = {
 		PreyBarStyle = "statusbar",
 		PreyBarPosition = "bottom",
 		HideBlizzWidget = true,
+		HideBlizzWidgetAlways = false,
 		HideInCombat = true,
 	},
 
