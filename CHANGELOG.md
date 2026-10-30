@@ -4,6 +4,8 @@
 
 Adjusted the texcoord on the LFD Background frame for timewalking modes to no longer include the premade "title bar"
 
+Prey widget "hide always" checkbox option added
+
 # 0.3.6a
 
 Adjusted/removed some of the outfit sounds for the Forever client (these should remain unchanged in mainline):

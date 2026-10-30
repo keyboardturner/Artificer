@@ -323,9 +323,9 @@ local function UpdateIndicators()
 	
 	local inCombat = InCombatLockdown() or UnitAffectingCombat("player")
 	local hideForCombat = db and db.HideInCombat and inCombat
-	local hideForNotFull = db and db.HideBlizzWidget and info.progressState < 3
+	local hideBlizz = db and db.HideBlizzWidget and (info.progressState < 3 or db.HideBlizzWidgetAlways)
 
-	if hideForCombat or hideForNotFull then
+	if hideForCombat or hideBlizz then
 		SetAlphaAnimated(widgetFrame, 0);
 		widgetFrame:EnableMouse(false);
 	else
@@ -369,7 +369,7 @@ function Artificer:OpenPreyBarAdvancedSettings()
 	if not self.PreyBarAdvancedFrame then
 		local f = CreateFrame("Frame", "ArtificerPreyBarAdvancedFrame", Artificer.SettingsFrame, "DialogBorderTranslucentTemplate")
 		f:ClearAllPoints()
-		f:SetSize(300, 270)
+		f:SetSize(300, 310)
 		f:SetPoint("LEFT", Artificer.SettingsFrame, "RIGHT", 45, 0)
 		f:EnableMouse(true)
 		f:Hide()
@@ -542,8 +542,28 @@ function Artificer:OpenPreyBarAdvancedSettings()
 			end
 		end)
 
+		local alwaysHideCheck = CreateFrame("CheckButton", nil, f, "UICheckButtonTemplate")
+		alwaysHideCheck:SetPoint("TOPLEFT", hideCheck, "BOTTOMLEFT", 0, -14)
+		alwaysHideCheck:SetSize(24, 24)
+
+		local alwaysHideCheckLabel = f:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+		alwaysHideCheckLabel:SetPoint("LEFT", alwaysHideCheck, "RIGHT", 4, 0)
+		alwaysHideCheckLabel:SetText(string.join(" - ", L["PreyBar_HideBlizzWidget"], ALWAYS))
+
+		alwaysHideCheck:SetScript("OnClick", function(self)
+			if Artificer_DB then
+				if not Artificer_DB.PreyBar then
+					Artificer_DB.PreyBar = {};
+				end
+				Artificer_DB.PreyBar.HideBlizzWidgetAlways = self:GetChecked();
+			end
+			if Artificer.Widgets.ApplyPreyBarSettings then
+				Artificer.Widgets.ApplyPreyBarSettings();
+			end
+		end)
+
 		local combatCheck = CreateFrame("CheckButton", nil, f, "UICheckButtonTemplate")
-		combatCheck:SetPoint("TOPLEFT", hideCheck, "BOTTOMLEFT", 0, -18)
+		combatCheck:SetPoint("TOPLEFT", alwaysHideCheck, "BOTTOMLEFT", 0, -14)
 		combatCheck:SetSize(24, 24)
 
 		local combatCheckLabel = f:CreateFontString(nil, "OVERLAY", "GameFontNormal")
@@ -573,6 +593,12 @@ function Artificer:OpenPreyBarAdvancedSettings()
 				hideBlizz = db.HideBlizzWidget;
 			end
 			hideCheck:SetChecked(hideBlizz);
+
+			local hideAlways = Artificer.Defaults.PreyBar.HideBlizzWidgetAlways;
+			if db and db.HideBlizzWidgetAlways ~= nil then
+				hideAlways = db.HideBlizzWidgetAlways;
+			end
+			alwaysHideCheck:SetChecked(hideAlways);
 
 			local hideCombat = Artificer.Defaults.PreyBar.HideInCombat;
 			if db and db.HideInCombat ~= nil then
