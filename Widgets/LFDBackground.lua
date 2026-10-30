@@ -69,7 +69,7 @@ local function SetMaskTexture()
 	--maskTexture:SetTexture(340816, "CLAMPTOBLACKADDITIVE", "CLAMPTOBLACKADDITIVE");
 	--LFDQueueFrameBackground:AddMaskTexture(maskTexture);
 	LFDQueueFrameBackground:SetAllPoints(LFDParentFrameInset);
-	LFDQueueFrameBackground:SetTexCoord(0.05,0.95,0.05,0.95);
+	LFDQueueFrameBackground:SetTexCoord(0.05,0.95,0.096,0.95);
 	frame.inset:SetParent(LFDQueueFrame);
 	frame.inset:SetPoint("TOPLEFT", LFDQueueFrameBackground, "TOPLEFT", -3, 3);
 	frame.inset:SetPoint("BOTTOMRIGHT", LFDQueueFrameBackground, "BOTTOMRIGHT", 0, -3);

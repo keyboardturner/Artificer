@@ -1,5 +1,9 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.3.6b
+
+Adjusted the texcoord on the LFD Background frame for timewalking modes to no longer include the premade "title bar"
+
 # 0.3.6a
 
 Adjusted/removed some of the outfit sounds for the Forever client (these should remain unchanged in mainline):
