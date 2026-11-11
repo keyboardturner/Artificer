@@ -807,7 +807,10 @@ local function UpdateSocialIcons(unitToken, container)
 			end
 		end
 		
-		local isCharFriend = C_FriendList and C_FriendList.IsFriend and C_FriendList.IsFriend(guid);
+		local isCharFriend = false;
+		if C_FriendList and C_FriendList.IsFriend and guid and not issecretvalue(guid) then
+			isCharFriend = C_FriendList.IsFriend(guid);
+		end
 
 		if isCharFriend then
 			container.friend.statusKey = "friend_character";
@@ -827,10 +830,12 @@ local function UpdateSocialIcons(unitToken, container)
 	-- ignored (character > account)
 	if options.ignored then
 		local isCharIgnored = false;
-		if C_FriendList and C_FriendList.IsIgnoredByGUID then
-			isCharIgnored = C_FriendList.IsIgnoredByGUID(guid);
-		elseif C_FriendList and C_FriendList.IsIgnored then
-			isCharIgnored = C_FriendList.IsIgnored(unitName);
+		if C_FriendList then
+			if C_FriendList.IsIgnoredByGUID and guid and not issecretvalue(guid) then
+				isCharIgnored = C_FriendList.IsIgnoredByGUID(guid);
+			elseif C_FriendList.IsIgnored and unitName and not issecretvalue(unitName) then
+				isCharIgnored = C_FriendList.IsIgnored(unitName);
+			end
 		end
 
 		if isCharIgnored then
