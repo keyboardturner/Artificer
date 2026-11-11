@@ -1,5 +1,11 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.3.6c
+
+Possibly fixed a nameplate error from happening
+
+Adjusted some language for the location of the Chromie Time icon location (World Map).
+
 # 0.3.6b
 
 Adjusted the texcoord on the LFD Background frame for timewalking modes to no longer include the premade "title bar"
