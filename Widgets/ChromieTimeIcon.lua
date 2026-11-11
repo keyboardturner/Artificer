@@ -1,6 +1,8 @@
 local addonName, Artificer = ...;
 local L = Artificer.L;
 
+if Artificer.IsForever then return; end
+
 local KrowiLib = LibStub("Krowi_WorldMapButtons-1.4");
 
 ChromieTimeMapButtonMixin = {};

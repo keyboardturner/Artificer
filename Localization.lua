@@ -33,7 +33,7 @@ if LOCALE == "enUS" then
 	L["Widget_FishReelIn"] = "Fish Reel In"
 	L["Widget_FishReelInTT"] = "Plays a reel-in sound when your fishing cast finishes."
 	L["Widget_ChromieTimeIcon"] = "Chromie Time Icon"
-	L["Widget_ChromieTimeIconTT"] = "Displays an icon on the map indicating if you're in Chromie Time (Timewalking Campaigns)."
+	L["Widget_ChromieTimeIconTT"] = "Displays an icon on the top right of the World Map indicating if you're in Chromie Time (Timewalking Campaigns)."
 	L["Widget_ChromieTimeIcon_NoCampaign"] = "No current Timewalking Campaign is active."
 	L["Widget_HideMacroText"] = "Hide Action Button Macro Text"
 	L["Widget_HideMacroTextTT"] = "Hides the macro text on Action Bar buttons."
@@ -77,6 +77,8 @@ if LOCALE == "enUS" then
 	L["Warning_FileSize"] = "Caution: This may cause a large screenshot file size."
 	L["Widget_LFDBackground"] = "Dungeon Finder Tweaks"
 	L["Widget_LFDBackgroundTT"] = "Changes the Dungeon Finder background texture to display a background associated with a selected expansion. Additionally displays tooltips on the queue frames that indicate the currently queued dungeon."
+	L["Widget_CampfireNearby"] = "Campfire Helper"
+	L["Widget_CampfireNearbyTT"] = "Displays a button to sit at a nearby campfire as well as profession items present in your inventory. The highest rank item is shown."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Account Auto Loot Toggle"
@@ -209,6 +211,8 @@ if LOCALE == "enUS" then
 	L["FNP_Center"] = "Center"
 	L["FNP_LeftToRight"] = "Left-to-Right"
 	L["FNP_RightToLeft"] = "Right-to-Left"
+	L["FNP_StatusMuted"] = "Mute (Addon)"
+	L["FNP_StatusMutedPlayer"]= "Mute (Addon)"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Account Ignore List Window"
@@ -460,7 +464,7 @@ if LOCALE == "esMX" then
 	L["Widget_FishReelIn"] = "Recoger la línea de pesca"
 	L["Widget_FishReelInTT"] = "Reproduce un sonido al terminar tu lanzamiento de pesca."
 	L["Widget_ChromieTimeIcon"] = "Icono de Tiempo de Cromi"
-	L["Widget_ChromieTimeIconTT"] = "Muestra un icono en el mapa si estás en Tiempo de Cromi (Campañas de Paseo en el Tiempo)."
+	L["Widget_ChromieTimeIconTT"] = "Muestra un icono en la esquina superior derecha del mapa del mundo que indica si estás en el Tiempo de Cromi (campañas de Paseo en el tiempo)."
 	L["Widget_ChromieTimeIcon_NoCampaign"] = "No hay ninguna campaña de Paseo en el Tiempo activa."
 	L["Widget_HideMacroText"] = "Ocultar texto de macro"
 	L["Widget_HideMacroTextTT"] = "Oculta el texto de macros en los botones de acción."
@@ -506,6 +510,8 @@ if LOCALE == "esMX" then
 	L["Widget_BlockGuildInvitesTT"] = "Configuración global para rechazar automáticamente invitaciones de hermandad en todos los personajes."
 	L["Widget_LFDBackground"] = "Ajustes del Buscador de Mazmorras"
 	L["Widget_LFDBackgroundTT"] = "Cambia la textura de fondo del Buscador de Mazmorras para mostrar un fondo asociado con una expansión seleccionada. Además, muestra información emergente en los marcos de cola indicando la mazmorra actualmente en cola."
+	L["Widget_CampfireNearby"] = "Ayudante de fogatas"
+	L["Widget_CampfireNearbyTT"] = "Muestra un botón para sentarte junto a una fogata cercana, así como los objetos de profesión que tienes en tu inventario. Se muestra el objeto de mayor rango."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Alternar botín automático de la cuenta"
@@ -636,6 +642,8 @@ if LOCALE == "esMX" then
 	L["FNP_Center"] = "Centro"
 	L["FNP_LeftToRight"] = "Izquierda a derecha"
 	L["FNP_RightToLeft"] = "Derecha a izquierda"
+	L["FNP_StatusMuted"] = "Silenciar (addon)"
+	L["FNP_StatusMutedPlayer"] = "Silenciar (addon)"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Ventana de lista de ignorados de la cuenta"
@@ -885,7 +893,7 @@ if LOCALE == "esES" then
 	L["Widget_FishReelIn"] = "Recoger la línea de pesca"
 	L["Widget_FishReelInTT"] = "Reproduce un sonido al terminar tu lanzamiento de pesca."
 	L["Widget_ChromieTimeIcon"] = "Icono de Tiempo de Cromi"
-	L["Widget_ChromieTimeIconTT"] = "Muestra un icono en el mapa si estás en Tiempo de Cromi (Campañas de Paseo en el Tiempo)."
+	L["Widget_ChromieTimeIconTT"] = "Muestra un icono en la esquina superior derecha del mapa del mundo que indica si estás en el Tiempo de Cromi (campañas de Paseo en el tiempo)."
 	L["Widget_ChromieTimeIcon_NoCampaign"] = "No hay ninguna campaña de Paseo en el Tiempo activa."
 	L["Widget_HideMacroText"] = "Ocultar texto de macro"
 	L["Widget_HideMacroTextTT"] = "Oculta el texto de macros en los botones de acción."
@@ -931,6 +939,8 @@ if LOCALE == "esES" then
 	L["Widget_BlockGuildInvitesTT"] = "Configuración global para rechazar automáticamente invitaciones de hermandad en todos los personajes."
 	L["Widget_LFDBackground"] = "Ajustes del Buscador de Mazmorras"
 	L["Widget_LFDBackgroundTT"] = "Cambia la textura de fondo del Buscador de Mazmorras para mostrar un fondo asociado a una expansión seleccionada. Además, muestra información emergente en los marcos de cola indicando la mazmorra actualmente en cola."
+	L["Widget_CampfireNearby"] = "Ayudante de hogueras"
+	L["Widget_CampfireNearbyTT"] = "Muestra un botón para sentarte junto a una hoguera cercana, así como los objetos de profesión que tienes en tu inventario. Se muestra el objeto de mayor rango."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Alternar saqueo automático de la cuenta"
@@ -1061,6 +1071,8 @@ if LOCALE == "esES" then
 	L["FNP_Center"] = "Centro"
 	L["FNP_LeftToRight"] = "Izquierda a derecha"
 	L["FNP_RightToLeft"] = "Derecha a izquierda"
+	L["FNP_StatusMuted"] = "Silenciar (addon)"
+	L["FNP_StatusMutedPlayer"] = "Silenciar (addon)"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Ventana de lista de ignorados de la cuenta"
@@ -1308,7 +1320,7 @@ if LOCALE == "deDE" then
 	L["Widget_FishReelIn"] = "Angel einholen"
 	L["Widget_FishReelInTT"] = "Spielt ein Geräusch ab, wenn dein Angelauswurf endet."
 	L["Widget_ChromieTimeIcon"] = "Chromie-Zeit-Symbol"
-	L["Widget_ChromieTimeIconTT"] = "Zeigt ein Symbol auf der Karte an, wenn du dich in der Chromie-Zeit (Zeitwanderungs-Kampagnen) befindest."
+	L["Widget_ChromieTimeIconTT"] = "Zeigt oben rechts auf der Weltkarte ein Symbol an, das angibt, ob du dich in der Chromie-Zeit (Zeitwanderungskampagnen) befindest."
 	L["Widget_ChromieTimeIcon_NoCampaign"] = "Derzeit ist keine Zeitwanderungs-Kampagne aktiv."
 	L["Widget_HideMacroText"] = "Makrotext auf Aktionsleisten ausblenden"
 	L["Widget_HideMacroTextTT"] = "Blendet den Makrotext auf Aktionsleisten-Buttons aus."
@@ -1354,6 +1366,8 @@ if LOCALE == "deDE" then
 	L["Widget_BlockGuildInvitesTT"] = "Accountweite Einstellung zum automatischen Ablehnen von Gildeneinladungen für alle Charaktere."
 	L["Widget_LFDBackground"] = "Dungeonbrowser-Anpassungen"
 	L["Widget_LFDBackgroundTT"] = "Ändert die Hintergrundtextur des Dungeonbrowsers, um einen Hintergrund der ausgewählten Erweiterung anzuzeigen. Zusätzlich werden Tooltips auf den Warteschlangenfenstern angezeigt, die den aktuell angemeldeten Dungeon angeben."
+	L["Widget_CampfireNearby"] = "Lagerfeuerhelfer"
+	L["Widget_CampfireNearbyTT"] = "Zeigt eine Schaltfläche an, über die du dich an ein nahegelegenes Lagerfeuer setzen kannst, sowie die in deinem Inventar vorhandenen Berufsgegenstände. Der Gegenstand mit dem höchsten Rang wird angezeigt."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Account-Autoplünderung umschalten"
@@ -1484,6 +1498,8 @@ if LOCALE == "deDE" then
 	L["FNP_Center"] = "Zentriert"
 	L["FNP_LeftToRight"] = "Links nach rechts"
 	L["FNP_RightToLeft"] = "Rechts nach links"
+	L["FNP_StatusMuted"] = "Stumm (Addon)"
+	L["FNP_StatusMutedPlayer"] = "Stumm (Addon)"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Fenster für kontoweite Ignorierliste"
@@ -1732,7 +1748,7 @@ if LOCALE == "frFR" then
 	L["Widget_FishReelIn"] = "Remonter la ligne"
 	L["Widget_FishReelInTT"] = "Joue un son lorsque votre lancer de pêche se termine."
 	L["Widget_ChromieTimeIcon"] = "Icône Temps de Chromie"
-	L["Widget_ChromieTimeIconTT"] = "Affiche une icône sur la carte si vous êtes en Temps de Chromie (campagnes Marcheurs du temps)."
+	L["Widget_ChromieTimeIconTT"] = "Affiche une icône en haut à droite de la carte du monde indiquant si vous êtes en mode Chromie (campagnes de marcheurs du temps)."
 	L["Widget_ChromieTimeIcon_NoCampaign"] = "Aucune campagne Marcheurs du temps n’est active."
 	L["Widget_HideMacroText"] = "Masquer le texte des macros des barres d’action"
 	L["Widget_HideMacroTextTT"] = "Masque le texte des macros sur les boutons des barres d’action."
@@ -1778,6 +1794,8 @@ if LOCALE == "frFR" then
 	L["Widget_BlockGuildInvitesTT"] = "Paramètre global pour refuser automatiquement les invitations de guilde sur tous les personnages."
 	L["Widget_LFDBackground"] = "Ajustements de l’Outil Donjons"
 	L["Widget_LFDBackgroundTT"] = "Modifie la texture d’arrière-plan de l’Outil Donjons afin d’afficher un fond associé à l’extension sélectionnée. Affiche également des infobulles sur les fenêtres de file d’attente indiquant le donjon actuellement sélectionné."
+	L["Widget_CampfireNearby"] = "Assistant de feu de camp"
+	L["Widget_CampfireNearbyTT"] = "Affiche un bouton permettant de s’asseoir près d’un feu de camp à proximité, ainsi que les objets de métier présents dans votre inventaire. L’objet de rang le plus élevé est affiché."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Basculer le butin automatique du compte"
@@ -1908,6 +1926,8 @@ if LOCALE == "frFR" then
 	L["FNP_Center"] = "Centre"
 	L["FNP_LeftToRight"] = "Gauche à droite"
 	L["FNP_RightToLeft"] = "Droite à gauche"
+	L["FNP_StatusMuted"] = "Muet (addon)"
+	L["FNP_StatusMutedPlayer"] = "Muet (addon)"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Fenêtre de liste d’ignorés du compte"
@@ -2156,7 +2176,7 @@ if LOCALE == "itIT" then
 	L["Widget_FishReelIn"] = "Recupero lenza"
 	L["Widget_FishReelInTT"] = "Riproduce un suono quando il lancio di pesca termina."
 	L["Widget_ChromieTimeIcon"] = "Icona Tempo di Chromie"
-	L["Widget_ChromieTimeIconTT"] = "Mostra un'icona sulla mappa se sei nel Tempo di Chromie (Campagne Viaggi nel Tempo)."
+	L["Widget_ChromieTimeIconTT"] = "Mostra un'icona nell'angolo in alto a destra della mappa del mondo che indica se ti trovi nel Tempo di Chromie (campagne Viaggi nel Tempo)."
 	L["Widget_ChromieTimeIcon_NoCampaign"] = "Nessuna campagna Viaggi nel Tempo attiva."
 	L["Widget_HideMacroText"] = "Nascondi testo macro delle barre azione"
 	L["Widget_HideMacroTextTT"] = "Nasconde il testo delle macro sui pulsanti delle barre azione."
@@ -2202,6 +2222,8 @@ if LOCALE == "itIT" then
 	L["Widget_BlockGuildInvitesTT"] = "Impostazione account per rifiutare automaticamente gli inviti di gilda su tutti i personaggi."
 	L["Widget_LFDBackground"] = "Modifiche allo Strumento Ricerca Spedizioni"
 	L["Widget_LFDBackgroundTT"] = "Modifica la texture di sfondo dello Strumento Ricerca Spedizioni per mostrare uno sfondo associato all'espansione selezionata. Inoltre mostra suggerimenti sui riquadri di coda che indicano il dungeon attualmente selezionato."
+	L["Widget_CampfireNearby"] = "Assistente del falò"
+	L["Widget_CampfireNearbyTT"] = "Mostra un pulsante per sedersi accanto a un falò nelle vicinanze, oltre agli oggetti professione presenti nell'inventario. Viene mostrato l'oggetto di grado più alto."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Attiva/disattiva raccolta automatica account"
@@ -2332,6 +2354,8 @@ if LOCALE == "itIT" then
 	L["FNP_Center"] = "Centro"
 	L["FNP_LeftToRight"] = "Da sinistra a destra"
 	L["FNP_RightToLeft"] = "Da destra a sinistra"
+	L["FNP_StatusMuted"] = "Silenzia (addon)"
+	L["FNP_StatusMutedPlayer"] = "Silenzia (addon)"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Finestra lista ignorati account"
@@ -2580,7 +2604,7 @@ if LOCALE == "ptBR" then
 	L["Widget_FishReelIn"] = "Recolher linha de pesca"
 	L["Widget_FishReelInTT"] = "Reproduz um som quando o lançamento de pesca termina."
 	L["Widget_ChromieTimeIcon"] = "Ícone Tempo da Chromie"
-	L["Widget_ChromieTimeIconTT"] = "Mostra um ícone no mapa se você estiver no Tempo da Chromie (Campanhas Caminhada Temporal)."
+	L["Widget_ChromieTimeIconTT"] = "Exibe um ícone no canto superior direito do mapa-múndi indicando se você está no Tempo de Crona (Campanhas de Caminhada Temporal)."
 	L["Widget_ChromieTimeIcon_NoCampaign"] = "Nenhuma Campanha de Caminhada Temporal ativa."
 	L["Widget_HideMacroText"] = "Ocultar texto de macro das barras de ação"
 	L["Widget_HideMacroTextTT"] = "Oculta o texto de macros nos botões das barras de ação."
@@ -2626,6 +2650,8 @@ if LOCALE == "ptBR" then
 	L["Widget_BlockGuildInvitesTT"] = "Configuração global para recusar automaticamente convites de guilda em todos os personagens."
 	L["Widget_LFDBackground"] = "Ajustes do Localizador de Masmorras"
 	L["Widget_LFDBackgroundTT"] = "Altera a textura de fundo do Localizador de Masmorras para exibir um fundo associado à expansão selecionada. Também exibe dicas de ferramenta nos quadros de fila indicando a masmorra atualmente na fila."
+	L["Widget_CampfireNearby"] = "Assistente de Fogueira"
+	L["Widget_CampfireNearbyTT"] = "Exibe um botão para sentar perto de uma fogueira próxima, além dos itens de profissão presentes no seu inventário. O item de maior graduação é exibido."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Alternar Saque Automático da Conta"
@@ -2756,6 +2782,8 @@ if LOCALE == "ptBR" then
 	L["FNP_Center"] = "Centro"
 	L["FNP_LeftToRight"] = "Esquerda para direita"
 	L["FNP_RightToLeft"] = "Direita para esquerda"
+	L["FNP_StatusMuted"] = "Silenciar (addon)"
+	L["FNP_StatusMutedPlayer"] = "Silenciar (addon)"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Janela da lista de ignorados da conta"
@@ -3006,7 +3034,7 @@ if LOCALE == "ruRU" then
 	L["Widget_FishReelIn"] = "Подсечка рыбы"
 	L["Widget_FishReelInTT"] = "Проигрывает звук, когда заброс удочки завершается."
 	L["Widget_ChromieTimeIcon"] = "Значок времени Хроми"
-	L["Widget_ChromieTimeIconTT"] = "Показывает значок на карте, если вы находитесь во времени Хроми (кампании путешествий во времени)."
+	L["Widget_ChromieTimeIconTT"] = "Отображает значок в правом верхнем углу карты мира, указывающий, находитесь ли вы во Времени Хроми (кампании «Путешествия во времени»)."
 	L["Widget_ChromieTimeIcon_NoCampaign"] = "Сейчас нет активной кампании путешествий во времени."
 	L["Widget_HideMacroText"] = "Скрыть текст макросов на панелях"
 	L["Widget_HideMacroTextTT"] = "Скрывает текст макросов на кнопках панелей действий."
@@ -3052,6 +3080,8 @@ if LOCALE == "ruRU" then
 	L["Widget_BlockGuildInvitesTT"] = "Глобальная настройка для автоматического отклонения приглашений в гильдию на всех персонажах."
 	L["Widget_LFDBackground"] = "Настройки поиска подземелий"
 	L["Widget_LFDBackgroundTT"] = "Изменяет фоновую текстуру окна поиска подземелий, отображая фон, связанный с выбранным дополнением. Также показывает подсказки на окнах очереди с указанием текущего подземелья в очереди."
+	L["Widget_CampfireNearby"] = "Помощник у костра"
+	L["Widget_CampfireNearbyTT"] = "Отображает кнопку, позволяющую сесть у ближайшего костра, а также предметы для профессий из вашего инвентаря. Показывается предмет наивысшего ранга."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "Переключить автосбор добычи для аккаунта"
@@ -3182,6 +3212,8 @@ if LOCALE == "ruRU" then
 	L["FNP_Center"] = "По центру"
 	L["FNP_LeftToRight"] = "Слева направо"
 	L["FNP_RightToLeft"] = "Справа налево"
+	L["FNP_StatusMuted"] = "Отключить звук (аддон)"
+	L["FNP_StatusMutedPlayer"] = "Отключить звук (аддон)"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "Окно списка игнорируемых аккаунта"
@@ -3430,7 +3462,7 @@ if LOCALE == "koKR" then
 	L["Widget_FishReelIn"] = "낚싯줄 감기"
 	L["Widget_FishReelInTT"] = "낚시 시전이 끝나면 소리를 재생합니다."
 	L["Widget_ChromieTimeIcon"] = "크로미 시간 아이콘"
-	L["Widget_ChromieTimeIconTT"] = "크로미 시간(시간여행 캠페인) 상태일 때 지도에 아이콘을 표시합니다."
+	L["Widget_ChromieTimeIconTT"] = "세계 지도 오른쪽 상단에 아이콘을 표시하여 크로미의 시간(시간여행 캠페인)에 있는지 알려줍니다."
 	L["Widget_ChromieTimeIcon_NoCampaign"] = "현재 활성화된 시간여행 캠페인이 없습니다."
 	L["Widget_HideMacroText"] = "행동 단축바 매크로 텍스트 숨기기"
 	L["Widget_HideMacroTextTT"] = "행동 단축바 버튼의 매크로 텍스트를 숨깁니다."
@@ -3476,6 +3508,8 @@ if LOCALE == "koKR" then
 	L["Widget_BlockGuildInvitesTT"] = "모든 캐릭터에서 길드 초대를 자동 거절하는 계정 설정입니다."
 	L["Widget_LFDBackground"] = "던전 찾기 개선"
 	L["Widget_LFDBackgroundTT"] = "던전 찾기 창의 배경 텍스처를 선택한 확장팩에 맞는 배경으로 변경합니다. 또한 대기열 창에 현재 신청한 던전을 표시하는 툴팁을 추가합니다."
+	L["Widget_CampfireNearby"] = "모닥불 도우미"
+	L["Widget_CampfireNearbyTT"] = "주변 모닥불에 앉을 수 있는 버튼과 가방에 있는 전문 기술 아이템을 표시합니다. 가장 높은 등급의 아이템이 표시됩니다."
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "계정 자동 전리품 전환"
@@ -3606,6 +3640,8 @@ if LOCALE == "koKR" then
 	L["FNP_Center"] = "중앙"
 	L["FNP_LeftToRight"] = "왼쪽에서 오른쪽"
 	L["FNP_RightToLeft"] = "오른쪽에서 왼쪽"
+	L["FNP_StatusMuted"] = "무음 (애드온)"
+	L["FNP_StatusMutedPlayer"] = "무음 (애드온)"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "계정 차단 목록 창"
@@ -3854,7 +3890,7 @@ if LOCALE == "zhCN" then
 	L["Widget_FishReelIn"] = "收线提示"
 	L["Widget_FishReelInTT"] = "当钓鱼投掷完成时播放收线音效。"
 	L["Widget_ChromieTimeIcon"] = "克罗米时间图标"
-	L["Widget_ChromieTimeIconTT"] = "在地图上显示图标，标示你是否处于克罗米时间（时光漫游活动）。"
+	L["Widget_ChromieTimeIconTT"] = "在世界地圖右上角顯示一個圖示，指出你是否處於克羅米時間（時光漫遊戰役）中。"
 	L["Widget_ChromieTimeIcon_NoCampaign"] = "当前没有激活的时光漫游活动。"
 	L["Widget_HideMacroText"] = "隐藏动作条宏文本"
 	L["Widget_HideMacroTextTT"] = "隐藏动作条按钮上的宏文本。"
@@ -3900,6 +3936,8 @@ if LOCALE == "zhCN" then
 	L["Widget_BlockGuildInvitesTT"] = "账号范围设置，自动拒绝所有角色的公会邀请。"
 	L["Widget_LFDBackground"] = "地下城查找器增强"
 	L["Widget_LFDBackgroundTT"] = "将地下城查找器背景纹理更改为所选资料片对应的背景。同时在排队框体上显示提示信息，指示当前排队的地下城。"
+	L["Widget_CampfireNearby"] = "篝火助手"
+	L["Widget_CampfireNearbyTT"] = "显示一个按钮，可让你坐在附近的篝火旁，同时显示背包中的专业技能物品。显示等级最高的物品。"
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "账号自动拾取切换"
@@ -4030,6 +4068,8 @@ if LOCALE == "zhCN" then
 	L["FNP_Center"] = "居中"
 	L["FNP_LeftToRight"] = "从左到右"
 	L["FNP_RightToLeft"] = "从右到左"
+	L["FNP_StatusMuted"] = "禁音（插件）"
+	L["FNP_StatusMutedPlayer"] = "禁音（插件）"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "账号忽略列表窗口"
@@ -4278,7 +4318,7 @@ if LOCALE == "zhTW" then
 	L["Widget_FishReelIn"] = "收線提示"
 	L["Widget_FishReelInTT"] = "當釣魚投擲完成時播放收線音效。"
 	L["Widget_ChromieTimeIcon"] = "克羅米時間圖示"
-	L["Widget_ChromieTimeIconTT"] = "在地圖上顯示圖示，標示你是否處於克羅米時間（時光漫遊活動）。"
+	L["Widget_ChromieTimeIconTT"] = "在世界地圖右上角顯示一個圖示，指出你是否處於克羅米時間（時光漫遊戰役）中。"
 	L["Widget_ChromieTimeIcon_NoCampaign"] = "目前沒有啟動的時光漫遊活動。"
 	L["Widget_HideMacroText"] = "隱藏動作條巨集文字"
 	L["Widget_HideMacroTextTT"] = "隱藏動作條按鈕上的巨集文字。"
@@ -4324,6 +4364,8 @@ if LOCALE == "zhTW" then
 	L["Widget_BlockGuildInvitesTT"] = "帳號設定，自動拒絕所有角色的公會邀請。"
 	L["Widget_LFDBackground"] = "地城搜尋器增強"
 	L["Widget_LFDBackgroundTT"] = "將地城搜尋器背景材質更改為所選資料片對應的背景。同時在排隊框架上顯示提示資訊，指出目前排隊中的地城。"
+	L["Widget_CampfireNearby"] = "營火助手"
+	L["Widget_CampfireNearbyTT"] = "顯示一個按鈕，讓你坐在附近的營火旁，並顯示背包中的專業技能物品。顯示階級最高的物品。"
 
 	--Widgets - Account-wide settings
 	L["Widget_AutoLoot"] = "帳號自動拾取切換"
@@ -4454,6 +4496,8 @@ if LOCALE == "zhTW" then
 	L["FNP_Center"] = "置中"
 	L["FNP_LeftToRight"] = "由左至右"
 	L["FNP_RightToLeft"] = "由右至左"
+	L["FNP_StatusMuted"] = "消音（插件）"
+	L["FNP_StatusMutedPlayer"] = "消音（插件）"
 
 	--Widgets - Account Ignore List
 	L["Widget_AccountIgnoreList"] = "帳號忽略清單視窗"

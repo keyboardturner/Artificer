@@ -1,5 +1,57 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.3.6c
+
+Possibly fixed a nameplate error from happening
+
+Adjusted some language for the location of the Chromie Time icon location (World Map).
+
+# 0.3.6b
+
+Adjusted the texcoord on the LFD Background frame for timewalking modes to no longer include the premade "title bar"
+
+Prey widget "hide always" checkbox option added
+
+# 0.3.6a
+
+Adjusted/removed some of the outfit sounds for the Forever client (these should remain unchanged in mainline):
+ - Gear - Light, Gear - Heavy, Yak Run, Yak Walk, Grummle Run, Grummle Walk, Brutosaur Mount, Metal Lantern, Arathi Lynx, Fishing Rod
+
+# 0.3.6
+
+Added Camping support feature for Forever, displaying a radial menu and a /sit command when near campfires.
+
+# 0.3.5
+
+12.1.5 toc update
+
+# 0.3.4c
+
+Secret value check for bnet GUIDs
+
+# 0.3.4a
+
+Sheath buttons should now be functional for Forever
+
+Added Mute addon compatibility
+
+# 0.3.4
+
+Restored old transmog file (and sheath buttons) and split the transmog frame into its own Forever-specific file for now.
+
+# 0.3.3
+
+WoW Forever testing - This is an in-development testing version. Some things may throw errors or explode.
+
+Some known issues:
+ - Profession toasts will pop up for a lot of skill-ups like weapon skills
+ - Outfit and swimming sounds currently don't function
+ - Account ignores frame doesn't show (this is in part due to retail's social UI changes which will be fixed soon™)
+
+Mainline "fixes":
+ - Possibly changed the prey widget additions to not be so HIGH
+ - maybe fixed a profession item slot order?
+
 # 0.3.2a
 
 Fix to the fix to the professions book thing

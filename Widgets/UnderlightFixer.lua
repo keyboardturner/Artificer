@@ -1,3 +1,7 @@
+local addonName, Artificer = ...;
+
+if Artificer.IsForever then return; end
+
 local UnderlightFix = CreateFrame("Frame");
 UnderlightFix:RegisterEvent("ADDON_LOADED");
 UnderlightFix:SetScript("OnEvent", function(self, event, addonName)

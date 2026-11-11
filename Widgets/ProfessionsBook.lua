@@ -2,6 +2,8 @@ local addonName, Artificer = ...;
 
 local L = Artificer.L;
 
+if Artificer.IsForever then return; end
+
 local function IsModuleEnabled()
 	return Artificer_DB and Artificer_DB.Widgets and Artificer_DB.Widgets.ProfessionsBook;
 end

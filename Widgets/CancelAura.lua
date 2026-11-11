@@ -14,10 +14,17 @@ local presets = {
 	279509,		-- A Witch!
 	58493,		-- Mohawked!
 	61781,		-- Turkey Feathers
+	24740,		-- Wisp Costume
+	24732,		-- Bat Costume
+};
+local foreverpresets = {
+	24740,		-- Wisp Costume
+	24732,		-- Bat Costume
 };
 
 local function InitializePresetHistory()
-	for _, spellID in ipairs(presets) do
+	local activePresets = Artificer.IsForever and foreverpresets or presets;
+	for _, spellID in ipairs(activePresets) do
 		if not HistoryList[spellID] then
 			HistoryList[spellID] = true;
 			table.insert(sessionHistory, spellID);
@@ -114,13 +121,18 @@ local function CreateListRow(parent, data)
 
 	local spell = Spell:CreateFromSpellID(data.spellID)
 	f.Icon:SetTexture(134400)
-	f.Text:SetText(L["Loading"])
 
-	spell:ContinueOnSpellLoad(function()
-		f.Text:SetText(spell:GetSpellName());
-		f.SubText:SetText(data.spellID);
-		f.Icon:SetTexture(spell:GetSpellTexture());
-	end)
+	if not spell:IsSpellEmpty() then
+		f.Text:SetText(L["Loading"])
+		spell:ContinueOnSpellLoad(function()
+			f.Text:SetText(spell:GetSpellName());
+			f.SubText:SetText(data.spellID);
+			f.Icon:SetTexture(spell:GetSpellTexture());
+		end)
+	else
+		f.Text:SetText(UNKNOWN)
+		f.SubText:SetText(data.spellID)
+	end
 
 	if data.isBlocklist then
 		f.ActionBtn.Texture:SetAtlas("Map-MarkedDefeated")

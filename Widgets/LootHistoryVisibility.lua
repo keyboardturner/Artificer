@@ -2,6 +2,8 @@ local addonName, Artificer = ...;
 
 local L = Artificer.L;
 
+if Artificer.IsForever then return; end
+
 local openedBySlash = false;
 
 local function GetGroupSizeInfo()

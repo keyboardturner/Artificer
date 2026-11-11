@@ -1,5 +1,7 @@
 local addonName, Artificer = ...;
 
+if Artificer.IsForever then return; end
+
 Artificer.SpellCategories = {
 	[1] = { -- Warrior
 		5302, 199854, 209697, 224324, 

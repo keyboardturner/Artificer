@@ -5,6 +5,11 @@ local L = Artificer.L;
 local LDB = LibStub("LibDataBroker-1.1")
 local LDBIcon = LibStub("LibDBIcon-1.0")
 
+local build = select(4, GetBuildInfo());
+
+local IsForever = WOW_PROJECT_ID == WOW_PROJECT_CAMELOT;
+Artificer.IsForever = IsForever;
+
 Artificer.Widgets = {};
 
 local Defaults = {
@@ -31,6 +36,7 @@ local Defaults = {
 		CollapseBuffs = false,
 		NameplateTargetIndicator = false,
 		MinimapRightClick = "outfitsound",
+		MinimapSound = true,
 		HideTutorials = false,
 		PreyBarEnabled = true,
 		BlockTrades = true,
@@ -42,6 +48,7 @@ local Defaults = {
 		ChatTooltipVisibility = 2,
 		DeleteConfirm = false,
 		BlueprintHider = true,
+		CampfireNearby = true,
 		AutoCollapseTracker = {
 			rested = false,
 			mythicplus = false,
@@ -102,6 +109,7 @@ local Defaults = {
 		guild = true,
 		friend = true,
 		ignored = true,
+		muted = true,
 	},
 	NameplateStatusColors = {
 		connection_away = { r=1, g=1, b=1, a=1, desat = false, },
@@ -122,7 +130,7 @@ local Defaults = {
 
 		ignored_character = { r=1, g=1, b=1, a=1, desat = false, },
 		ignored_account = { r=1, g=1, b=1, a=1, desat = false, },
-		--ignored_muted = { r=1, g=1, b=1, a=1, desat = false, },
+		ignored_muted = { r=1, g=1, b=1, a=1, desat = false, },
 	};
 	NameplateStatusSize = 30,
 
@@ -138,6 +146,7 @@ local Defaults = {
 		PreyBarStyle = "statusbar",
 		PreyBarPosition = "bottom",
 		HideBlizzWidget = true,
+		HideBlizzWidgetAlways = false,
 		HideInCombat = true,
 	},
 
@@ -445,8 +454,13 @@ f:SetScript("OnEvent", function(self, event, ...)
 
 		if not Artificer_DB.Characters then Artificer_DB.Characters = {}; end
 
-		local charKey = UnitName("player") .. " - " .. GetRealmName()
-		Artificer.CharKey = charKey
+		local realmKey = GetRealmName();
+		local name, realm = UnitName("player"); -- 2nd return can be realm or 2nd name
+		if not realm then
+			realm = realmKey;
+		end
+		local charKey = name .. " - " .. realm;
+		Artificer.CharKey = charKey;
 
 		if not Artificer_DB.Characters[charKey] then
 			Artificer_DB.Characters[charKey] = {};
@@ -456,7 +470,7 @@ f:SetScript("OnEvent", function(self, event, ...)
 			return Artificer_DB.Characters[Artificer.CharKey];
 		end
 
-		local charDB = Artificer.GetCharDB()
+		local charDB = Artificer.GetCharDB();
 
 	elseif event == "PLAYER_LOGIN" then
 		SLASH_ARTIFICER1 = L["SLASH_ARTI1"]

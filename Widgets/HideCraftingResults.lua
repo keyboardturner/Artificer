@@ -2,6 +2,8 @@ local addonName, Artificer = ...;
 
 local L = Artificer.L;
 
+if Artificer.IsForever then return; end
+
 Artificer.Widgets.HideCraftingResults = function()
 	if not C_AddOns.IsAddOnLoaded("Blizzard_Professions") then return end
 

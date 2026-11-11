@@ -696,7 +696,24 @@ function Artificer:BuildSettingsData()
 			if Artificer.Widgets.HideCraftingResults then
 				Artificer.Widgets.HideCraftingResults();
 			end
-		end
+		end,
+		forever = false,
+	});
+
+	-- Widgets - Camping
+	table.insert(allSettingsData, {
+		type = "checkbox",
+		isWidget = true,
+		key = "CampfireNearby",
+		isNew = true,
+		label = L["Widget_CampfireNearby"],
+		tooltip = L["Widget_CampfireNearbyTT"],
+		callback = function(val)
+			if Artificer.Widgets.ApplyCampfireNearby then
+				Artificer.Widgets.ApplyCampfireNearby();
+			end
+		end,
+		forever = true,
 	});
 
 	-- Widgets - ProfessionToasts
@@ -734,13 +751,15 @@ function Artificer:BuildSettingsData()
 		hasAdvancedSettings = true,
 		onAdvancedClick = function()
 			Artificer:OpenProfessionsBookAdvancedSettings();
-		end
+		end,
+		forever = false,
 	});
 
 	-- Header - Maps
 	table.insert(allSettingsData, {
 		type = "header",
 		label = L["Header_Map"],
+		forever = false,
 	});
 
 	-- Widgets - ChromieTimeIcon
@@ -755,13 +774,15 @@ function Artificer:BuildSettingsData()
 			if Artificer.Widgets.UpdateChromieTimeIcon then
 				Artificer.Widgets.UpdateChromieTimeIcon();
 			end
-		end
+		end,
+		forever = false,
 	});
 
 	-- Header - Housing
 	table.insert(allSettingsData, {
 		type = "header",
 		label = L["Header_Housing"],
+		forever = false,
 	});
 
 	-- Widgets - Blueprint Hider
@@ -776,7 +797,8 @@ function Artificer:BuildSettingsData()
 			if Artificer.Widgets.ApplyBlueprintHider then
 				Artificer.Widgets.ApplyBlueprintHider();
 			end
-		end
+		end,
+		forever = false,
 	});
 
 	-- Header - Action Bars
@@ -797,7 +819,7 @@ function Artificer:BuildSettingsData()
 			if Artificer.DetermineMacroText then
 				Artificer.DetermineMacroText();
 			end
-		end
+		end,
 	});
 
 	-- Widgets - OutfitIcon
@@ -812,7 +834,7 @@ function Artificer:BuildSettingsData()
 			if Artificer.UpdateOutfitHighlighter then
 				Artificer.UpdateOutfitHighlighter();
 			end
-		end
+		end,
 	});
 
 	-- Header - Combat
@@ -865,13 +887,15 @@ function Artificer:BuildSettingsData()
 			if SpellActivationOverlayFrame then
 				SpellActivationOverlayFrame:HideAllOverlays();
 			end
-		end
+		end,
+		forever = false,
 	});
 
 	-- Header - Encounter Bar
 	table.insert(allSettingsData, {
 		type = "header",
 		label = L["EncounterBar"],
+		forever = false,
 	});
 
 	-- Widgets - PreyBarEnabled
@@ -890,7 +914,8 @@ function Artificer:BuildSettingsData()
 		hasAdvancedSettings = true,
 		onAdvancedClick = function()
 			Artificer:OpenPreyBarAdvancedSettings();
-		end
+		end,
+		forever = false,
 	});
 
 	-- Header - Chat
@@ -911,7 +936,7 @@ function Artificer:BuildSettingsData()
 			if Artificer.ArrowKeySetting then
 				Artificer.ArrowKeySetting();
 			end
-		end
+		end,
 	});
 
 	-- Widgets - ServerNotifications
@@ -924,7 +949,7 @@ function Artificer:BuildSettingsData()
 		tooltip = L["Widget_ServerNotificationsTT"],
 		callback = function(val)
 			-- print("Server Notifications: " .. tostring(val))
-		end
+		end,
 	});
 
 	-- Widgets - ChatWrapper
@@ -943,7 +968,7 @@ function Artificer:BuildSettingsData()
 		},
 		callback = function(val)
 			-- print(val)
-		end
+		end,
 	});
 
 	--Header - Nameplates
@@ -968,7 +993,7 @@ function Artificer:BuildSettingsData()
 		hasAdvancedSettings = true,
 		onAdvancedClick = function()
 			Artificer:OpenNameplateAdvancedSettings();
-		end
+		end,
 	});
 
 	-- Widgets - NameplateStatus
@@ -989,7 +1014,7 @@ function Artificer:BuildSettingsData()
 		if Artificer.OpenNameplateStatusAdvancedSettings then
 			Artificer:OpenNameplateStatusAdvancedSettings();
 		end
-	end
+	end,
 });
 
 	--Header - Screenshot
@@ -1010,7 +1035,7 @@ function Artificer:BuildSettingsData()
 			if Artificer.Widgets.ApplyHideScreenshotText then
 				Artificer.Widgets.ApplyHideScreenshotText();
 			end
-		end
+		end,
 	});
 
 	-- Widgets - ScreenshotFormat
@@ -1028,7 +1053,7 @@ function Artificer:BuildSettingsData()
 		},
 		callback = function(val)
 			C_CVar.SetCVar("screenshotFormat", val);
-		end
+		end,
 	});
 
 	-- Widgets - ScreenshotQuality
@@ -1045,7 +1070,7 @@ function Artificer:BuildSettingsData()
 		formatter = function(value) return tostring(math.floor(value)) end,
 		callback = function(val)
 			C_CVar.SetCVar("screenshotQuality", val);
-		end
+		end,
 	});
 
 	-- Widgets - ScreenshotSizeMultiplier
@@ -1065,7 +1090,7 @@ function Artificer:BuildSettingsData()
 			if Artificer.Widgets.ApplyScreenshotSizeMultiplier then
 				Artificer.Widgets.ApplyScreenshotSizeMultiplier(val)
 			end
-		end
+		end,
 	});
 
 	-- Header - Objective Tracker
@@ -1098,7 +1123,7 @@ function Artificer:BuildSettingsData()
 			if Artificer.Widgets.UpdateTrackerState then
 				Artificer.Widgets.UpdateTrackerState();
 			end
-		end
+		end,
 	});
 
 	-- Header - Misc.
@@ -1119,7 +1144,7 @@ function Artificer:BuildSettingsData()
 			if Artificer.Widgets.ApplyAddonCompartmentMover then
 				Artificer.Widgets.ApplyAddonCompartmentMover()
 			end
-		end
+		end,
 	});
 
 	-- Widgets - MinimapIcon
@@ -1147,7 +1172,7 @@ function Artificer:BuildSettingsData()
 			else
 				Artificer.MinimapIconLib:Hide("Artificer");
 			end
-		end
+		end,
 	});
 
 	-- Minimap Right Click
@@ -1177,7 +1202,8 @@ function Artificer:BuildSettingsData()
 		tooltip = L["Widget_PartySyncTT"],
 		callback = function(val)
 			-- ...
-		end
+		end,
+		forever = false,
 	});
 
 	-- Widgets - MovableCurrencyTransfer
@@ -1192,7 +1218,8 @@ function Artificer:BuildSettingsData()
 			if Artificer.Widgets.ApplyMovableCurrencyTransfer then
 				Artificer.Widgets.ApplyMovableCurrencyTransfer();
 			end
-		end
+		end,
+		forever = false,
 	});
 
 	-- Multi-checkbox dropdown - OutfitSwapSounds
@@ -1211,7 +1238,7 @@ function Artificer:BuildSettingsData()
 		},
 		callback = function(values)
 			-- ...
-		end
+		end,
 	});
 
 	-- Widgets - CollapseBuffs
@@ -1248,7 +1275,8 @@ function Artificer:BuildSettingsData()
 			if Artificer.Widgets.ApplyLootHistoryVisibility then
 				Artificer.Widgets.ApplyLootHistoryVisibility();
 			end
-		end
+		end,
+		forever = false,
 	});
 
 	-- Widgets - DeleteConfirm
@@ -1261,7 +1289,7 @@ function Artificer:BuildSettingsData()
 		tooltip = L["Widget_DeleteConfirmTT"],
 		callback = function(val)
 			-- ...
-		end
+		end,
 	});
 
 	-- Widgets - BlockTrades
@@ -1274,7 +1302,7 @@ function Artificer:BuildSettingsData()
 		tooltip = L["Widget_BlockTradesTT"],
 		callback = function(val)
 			-- print("block trades enabled for thingy")
-		end
+		end,
 	});
 
 	-- Widgets - OutfitLinkOnClose
@@ -1287,7 +1315,7 @@ function Artificer:BuildSettingsData()
 		tooltip = L["Widget_OutfitLinkOnCloseTT"],
 		callback = function(val)
 			-- ...
-		end
+		end,
 	});
 
 	-- Widgets - MapAmbience
@@ -1307,7 +1335,8 @@ function Artificer:BuildSettingsData()
 			if Artificer.UpdateMapAmbience then
 				Artificer:UpdateMapAmbience(val);
 			end
-		end
+		end,
+		forever = false,
 	});
 
 	-- Widgets - LFDBackground
@@ -1320,7 +1349,8 @@ function Artificer:BuildSettingsData()
 		tooltip = L["Widget_LFDBackgroundTT"],
 		callback = function(val)
 			-- ...
-		end
+		end,
+		forever = false,
 	});
 	
 	-- Widgets - BnetToasts
@@ -1340,7 +1370,7 @@ function Artificer:BuildSettingsData()
 			if Artificer.Widgets.ApplyBnetToasts then
 				Artificer.Widgets.ApplyBnetToasts();
 			end
-		end
+		end,
 	});
 
 	-- Header - Account Settings
@@ -1366,7 +1396,7 @@ function Artificer:BuildSettingsData()
 			if Artificer.Widgets.ApplyBlockGuildInvites then
 				Artificer.Widgets.ApplyBlockGuildInvites();
 			end
-		end
+		end,
 	});
 
 	-- Widgets - PetBattleMapFilter
@@ -1386,7 +1416,8 @@ function Artificer:BuildSettingsData()
 			if Artificer.Widgets.ApplyPetBattleMapFilter then
 				Artificer.Widgets.ApplyPetBattleMapFilter();
 			end
-		end
+		end,
+		forever = false,
 	});
 
 	-- Widgets - CooldownManagerEnabled
@@ -1406,7 +1437,7 @@ function Artificer:BuildSettingsData()
 			if Artificer.Widgets.ApplyCooldownManagerEnabled then
 				Artificer.Widgets.ApplyCooldownManagerEnabled();
 			end
-		end
+		end,
 	});
 
 	-- Widgets - HideTutorials
@@ -1421,7 +1452,7 @@ function Artificer:BuildSettingsData()
 			if Artificer.Widgets.ApplyHideTutorials then
 				Artificer.Widgets.ApplyHideTutorials();
 			end
-		end
+		end,
 	});
 
 	-- Widgets - Damage Meter
@@ -1441,7 +1472,7 @@ function Artificer:BuildSettingsData()
 			if Artificer.Widgets.ApplyDamageMeterSettings then
 				Artificer.Widgets.ApplyDamageMeterSettings();
 			end
-		end
+		end,
 	});
 
 	-- Widgets - Damage Meter Wipe
@@ -1461,7 +1492,7 @@ function Artificer:BuildSettingsData()
 			if Artificer.Widgets.ApplyDamageMeterSettings then
 				Artificer.Widgets.ApplyDamageMeterSettings();
 			end
-		end
+		end,
 	});
 
 	-- Widgets - ShowAccountIgnores
@@ -1476,7 +1507,7 @@ function Artificer:BuildSettingsData()
 			if Artificer.AccountIgnores_ToggleVisibility then
 				Artificer.AccountIgnores_ToggleVisibility(val);
 			end
-		end
+		end,
 	});
 
 
@@ -1509,7 +1540,7 @@ function Artificer:BuildSettingsData()
 			if Artificer.Widgets.ApplySelectionCircle then
 				Artificer.Widgets.ApplySelectionCircle();
 			end
-		end
+		end,
 	});
 
 	-- Widgets - Find Yourself (SelectionCircle)
@@ -1537,7 +1568,7 @@ function Artificer:BuildSettingsData()
 			if Artificer.Widgets.ApplyFindYourself then
 				Artificer.Widgets.ApplyFindYourself();
 			end
-		end
+		end,
 	});
 
 	if Artificer.CVars then
@@ -1557,7 +1588,7 @@ function Artificer:BuildSettingsData()
 					else
 						C_CVar.SetCVar(cvarName, val);
 					end
-				end
+				end,
 			};
 			
 			if data.settings == "slider" then
@@ -1640,7 +1671,11 @@ function Artificer:CreateSettingsUI()
 	end)
 
 	frame:SetScript("OnShow", function()
-		PlaySound(279415);
+		if Artificer.IsForever then
+			PlaySound(130966);
+		else
+			PlaySound(279415);
+		end
 	end)
 	frame:SetScript("OnHide", function()
 		PlaySound(248166);
@@ -1774,16 +1809,26 @@ function Artificer:CreateSettingsUI()
 		local headerMatches = false;
 		
 		for _, data in ipairs(allSettingsData) do
-			if data.type == "header" then
-				currentHeader = data;
-				headerMatches = (query == "" or (data.searchText and data.searchText:find(query, 1, true)));
-			else
-				if headerMatches or query == "" or (data.searchText and data.searchText:find(query, 1, true)) then
-					if currentHeader then
-						table.insert(filtered, currentHeader);
-						currentHeader = nil;
+			local showSetting = true;
+			
+			if data.forever == true and not Artificer.IsForever then
+				showSetting = false;
+			elseif data.forever == false and Artificer.IsForever then
+				showSetting = false;
+			end
+			
+			if showSetting then
+				if data.type == "header" then
+					currentHeader = data;
+					headerMatches = (query == "" or (data.searchText and data.searchText:find(query, 1, true)));
+				else
+					if headerMatches or query == "" or (data.searchText and data.searchText:find(query, 1, true)) then
+						if currentHeader then
+							table.insert(filtered, currentHeader);
+							currentHeader = nil;
+						end
+						table.insert(filtered, data);
 					end
-					table.insert(filtered, data);
 				end
 			end
 		end
