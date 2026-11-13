@@ -351,6 +351,24 @@ function Artificer:MinimapRightClickAction()
 	end
 end
 
+local function AreRestrictionsActive()
+	local CVars = {
+		"ChallengeMode",
+		"Chat",
+		"Combat",
+		"Encounter",
+		"Map",
+		"PvPMatch",
+	};
+	for _, v in ipairs(CVars) do
+		local val = C_CVar.GetCVar("addon" .. v .. "RestrictionsForced");
+		if val == "1" or val == 1 then
+			return true;
+		end
+	end
+	return false;
+end
+
 f:SetScript("OnEvent", function(self, event, ...)
 	if event == "ADDON_LOADED" and ... == addonName then
 		if not Artificer_DB then Artificer_DB = {}; end
@@ -503,6 +521,17 @@ f:SetScript("OnEvent", function(self, event, ...)
 			else
 				Artificer:ToggleSettings();
 			end
+		end
+
+		if AreRestrictionsActive() then
+			local warningText = "Secret Restrictions testing is active!\n\"/artificer secrets 0\" to disable";
+			Print(warningText);
+			RaidNotice_AddMessage(
+				RaidWarningFrame,
+				warningText,
+				ChatTypeInfo["RAID_WARNING"]
+			);
+			PlaySound(SOUNDKIT.RAID_WARNING, "Master");
 		end
 	elseif event == "PLAYER_LOGOUT" then
 		RestoreCVars();

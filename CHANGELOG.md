@@ -6,6 +6,8 @@ Possible secret taint error fix with the Chat Message Preview option (I couldn't
 
 Added a secret restrictions chat command to toggle testing under restrictions with `/arti secrets 1` and `/arti secrets 0`. this is mainly for debug purposes but maybe is a useful shortcut for other devs
 
+Add a warning if secret restrictions are detected upon login/reload
+
 # 0.3.6c
 
 Possibly fixed a nameplate error from happening
