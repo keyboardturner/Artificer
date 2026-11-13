@@ -1,5 +1,11 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.3.6d
+
+Possible secret taint error fix with the Chat Message Preview option (I couldn't reproduce the issue though so i'm just going to defensively blanket-secret value protect it)
+
+Added a secret restrictions chat command to toggle testing under restrictions with `/arti secrets 1` and `/arti secrets 0`. this is mainly for debug purposes but maybe is a useful shortcut for other devs
+
 # 0.3.6c
 
 Possibly fixed a nameplate error from happening
