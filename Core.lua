@@ -478,12 +478,12 @@ f:SetScript("OnEvent", function(self, event, ...)
 		SLASH_ARTIFICER3 = L["SLASH_ARTI3"]
 		SLASH_ARTIFICER4 = L["SLASH_ARTI4"]
 		SlashCmdList["ARTIFICER"] = function(msg)
-			msg = msg and strtrim(msg) or ""
-			local subCmd, valStr = strsplit(" ", msg, 2)
-			subCmd = subCmd and strlower(subCmd) or ""
+			msg = msg and strtrim(msg) or "";
+			local subCmd, valStr = strsplit(" ", msg, 2);
+			subCmd = subCmd and strlower(subCmd) or "";
 
 			if subCmd == "secrets" then
-				local value = tonumber(valStr)
+				local value = tonumber(valStr);
 				if value == 0 or value == 1 then
 					local CVars = {
 						"ChallengeMode",
@@ -492,13 +492,13 @@ f:SetScript("OnEvent", function(self, event, ...)
 						"Encounter",
 						"Map",
 						"PvPMatch",
-					}
+					};
 					for _, v in ipairs(CVars) do
-						C_CVar.SetCVar("addon" .. v .. "RestrictionsForced", value)
+						C_CVar.SetCVar("addon" .. v .. "RestrictionsForced", value);
 					end
-					Print(string.format("Secrets restrictions forced set to %d.", value))
+					Print(string.format("Secrets restrictions forced set to %d.", value));
 				else
-					Print("/artificer secrets 1 or /artificer secrets 0")
+					Print("/artificer secrets 1 or /artificer secrets 0");
 				end
 			else
 				Artificer:ToggleSettings();
