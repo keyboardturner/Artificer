@@ -46,12 +46,28 @@ local function EvaluateTooltipState(editBox)
 		return;
 	end
 
+	local mouseOver = editBox:IsMouseOver();
+	if issecretvalue(mouseOver) then
+		if ChatTooltip:GetOwner() == editBox then
+			ChatTooltip:Hide();
+		end
+		return;
+	end
+
+	local hasFocus = editBox:HasFocus();
+	if issecretvalue(hasFocus) then
+		if ChatTooltip:GetOwner() == editBox then
+			ChatTooltip:Hide();
+		end
+		return;
+	end
+
 	local shouldShow = false
 	
 	if visibility == 2 then
-		shouldShow = editBox:IsMouseOver();
+		shouldShow = mouseOver;
 	elseif visibility == 3 then
-		shouldShow = editBox:IsMouseOver() or editBox:HasFocus();
+		shouldShow = mouseOver or hasFocus;
 	end
 
 	if shouldShow then
