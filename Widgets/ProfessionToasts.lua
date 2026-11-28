@@ -10,22 +10,94 @@ local FADE_OUT_DURATION = 1.2;
 local PREVIEW_SKILL = L["HERBALISM"];
 local PREVIEW_LEVEL = "75";
 
-local ProfessionData = {
+local SkillData = {
+	[40] = { -- Poisons
+		name = L["POISONS"],
+		--spec = nil, -- does not have an equivalent atlas
+		--atlasIcon = nil, -- does not have an equivalent atlas
+		fallbackIcon = 136242 -- interface/icons/trade_brewpoison
+	},
+	[43] = { -- One Handed Swords
+		name = L["SWORDS"],
+		--spec = nil, -- does not have an equivalent atlas
+		--atlasIcon = nil, -- does not have an equivalent atlas
+		fallbackIcon = 135274, -- interface/icons/inv_sword_04
+	},
+	[44] = { -- One Handed Axes
+		name = L["AXES"],
+		--spec = nil, -- does not have an equivalent atlas
+		--atlasIcon = nil, -- does not have an equivalent atlas
+		fallbackIcon = 132397, -- interface/icons/inv_axe_06
+	},
+	[45] = { -- Bows
+		name = L["BOWS"],
+		--spec = nil, -- does not have an equivalent atlas
+		--atlasIcon = nil, -- does not have an equivalent atlas
+		fallbackIcon = 135495, -- interface/icons/inv_weapon_bow_07
+	},
+	[46] = { -- Guns
+		name = L["GUNS"],
+		--spec = nil, -- does not have an equivalent atlas
+		--atlasIcon = nil, -- does not have an equivalent atlas
+		fallbackIcon = 135610, -- interface/icons/inv_weapon_rifle_01
+	},
+	[54] = { -- One Handed Maces
+		name = L["MACES"],
+		--spec = nil, -- does not have an equivalent atlas
+		--atlasIcon = nil, -- does not have an equivalent atlas
+		fallbackIcon = 133042, -- interface/icons/inv_hammer_05
+	},
+	[55] = { -- Two Handed Swords
+		name = L["TWO_HANDED_SWORDS"],
+		--spec = nil, -- does not have an equivalent atlas
+		--atlasIcon = nil, -- does not have an equivalent atlas
+		fallbackIcon = 135275, -- interface/icons/inv_sword_05
+	},
+	[95] = { -- Defense
+		name = L["DEFENSE"],
+		--spec = nil, -- does not have an equivalent atlas
+		--atlasIcon = nil, -- does not have an equivalent atlas
+		fallbackIcon = 134952, -- interface/icons/inv_shield_06
+	},
+	[118] = { -- Dual Wield
+		name = L["DUAL_WIELD"],
+		--spec = nil, -- does not have an equivalent atlas
+		--atlasIcon = nil, -- does not have an equivalent atlas
+		fallbackIcon = 132147, -- interface/icons/ability_dualwield
+	},
 	[129] = { -- First Aid
 		name = L["FIRST_AID"],
 		--spec = nil, -- does not have an equivalent atlas
-		icon = "Mobile-FirstAid",
+		atlasIcon = "Mobile-FirstAid",
+	},
+	[136] = { -- Staves
+		name = L["STAVES"],
+		--spec = nil, -- does not have an equivalent atlas
+		--atlasIcon = nil, -- does not have an equivalent atlas
+		fallbackIcon = 135147, -- interface/icons/inv_staff_10
+	},
+	[160] = { -- Two Handed Maces
+		name = L["TWO_HANDED_MACES"],
+		--spec = nil, -- does not have an equivalent atlas
+		--atlasIcon = nil, -- does not have an equivalent atlas
+		fallbackIcon = 133053, -- interface/icons/inv_hammer_16
+	},
+	[162] = { -- Unarmed
+		name = L["UNARMED"],
+		--spec = nil, -- does not have an equivalent atlas
+		--atlasIcon = nil, -- does not have an equivalent atlas
+		fallbackIcon = 132298, -- interface/icons/ability_rogue_kidneyshot
 	},
 	[164] = { -- Blacksmithing
 		name = L["BLACKSMITHING"],
 		spec = "Professions-Specializations-Preview-Art-Blacksmithing",
-		icon = "Mobile-Blacksmithing",
+		atlasIcon = "Mobile-Blacksmithing",
 		sounds = { 268061, 185037 },
 	},
 	[165] = { -- Leatherworking
 		name = L["LEATHERWORKING"],
 		spec = "Professions-Specializations-Preview-Art-Leatherworking",
-		icon = "Mobile-Leatherworking",
+		atlasIcon = "Mobile-Leatherworking",
 		randomSoundFiles = {
 			{ 4577735, 4577737, 4577739, 4577741, 4577743, 4577745, 4577747, 4577749, 4577751, 4577753 },
 		},
@@ -34,31 +106,49 @@ local ProfessionData = {
 	[171] = { -- Alchemy
 		name = L["ALCHEMY"],
 		spec = "Professions-Specializations-Preview-Art-Alchemy",
-		icon = "Mobile-Alchemy",
+		atlasIcon = "Mobile-Alchemy",
 		sounds = { 119572, 138521 },
+	},
+	[172] = { -- Two Handed Axes
+		name = L["TWO_HANDED_AXES"],
+		--spec = nil, -- does not have an equivalent atlas
+		--atlasIcon = nil, -- does not have an equivalent atlas
+		fallbackIcon = 132395, -- interface/icons/inv_axe_04
+	},
+	[173] = { -- Daggers
+		name = L["DAGGERS"],
+		--spec = nil, -- does not have an equivalent atlas
+		--atlasIcon = nil, -- does not have an equivalent atlas
+		fallbackIcon = 135641, -- interface/icons/inv_weapon_shortblade_05
+	},
+	[176] = { -- Thrown
+		name = L["THROWN"],
+		--spec = nil, -- does not have an equivalent atlas
+		--atlasIcon = nil, -- does not have an equivalent atlas
+		fallbackIcon = 135426, -- interface/icons/inv_throwingknife_02
 	},
 	[182] = { -- Herbalism
 		name = L["HERBALISM"],
 		spec = "Professions-Specializations-Preview-Art-Herbalism",
-		icon = "Mobile-Herbalism",
+		atlasIcon = "Mobile-Herbalism",
 		sounds = { 171203, 187682 },
 	},
 	[185] = { -- Cooking
 		name = L["COOKING"],
 		spec = "Professions-Specializations-Preview-Art-Cooking",
-		icon = "Mobile-Cooking",
+		atlasIcon = "Mobile-Cooking",
 		sounds = { 123061, 123058, 123070, 230317 },
 	},
 	[186] = { -- Mining
 		name = L["MINING"],
 		spec = "Professions-Specializations-Preview-Art-Mining",
-		icon = "Mobile-Mining",
+		atlasIcon = "Mobile-Mining",
 		sounds = { 89092, 98194, 115701 },
 	},
 	[197] = { -- Tailoring
 		name = L["TAILORING"],
 		spec = "Professions-Specializations-Preview-Art-Tailoring",
-		icon = "Mobile-Tailoring",
+		atlasIcon = "Mobile-Tailoring",
 		randomSoundFiles = {
 			{ 4612169, 4612171, 4612173, 4612175, 4612177, 4612179, 4612181, 4612183, 4612185, 4612187 },
 		},
@@ -67,23 +157,41 @@ local ProfessionData = {
 	[202] = { -- Engineering
 		name = L["ENGINEERING"],
 		spec = "Professions-Specializations-Preview-Art-Engineering",
-		icon = "Mobile-Enginnering",
+		atlasIcon = "Mobile-Enginnering",
 		randomSoundFiles = {
 			{ 3088157, 3088158, 3088159, 3088160 },
 			{ 569377, 569268, 569482, 569702, 568720 },
 		},
 		sounds = { 39000 },
 	},
+	[226] = { -- Crossbows
+		name = L["CROSSBOWS"],
+		--spec = nil, -- does not have an equivalent atlas
+		--atlasIcon = nil, -- does not have an equivalent atlas
+		fallbackIcon = 135533, -- interface/icons/inv_weapon_crossbow_04
+	},
+	[228] = { -- Wands
+		name = L["WANDS"],
+		--spec = nil, -- does not have an equivalent atlas
+		--atlasIcon = nil, -- does not have an equivalent atlas
+		fallbackIcon = 135469, -- interface/icons/inv_wand_07
+	},
+	[229] = { -- Polearms
+		name = L["POLEARMS"],
+		--spec = nil, -- does not have an equivalent atlas
+		--atlasIcon = nil, -- does not have an equivalent atlas
+		fallbackIcon = 135129, -- interface/icons/inv_spear_06
+	},
 	[333] = { -- Enchanting
 		name = L["ENCHANTING"],
 		spec = "Professions-Specializations-Preview-Art-Enchanting",
-		icon = "Mobile-Enchanting",
+		atlasIcon = "Mobile-Enchanting",
 		sounds = { 23747, 20561 },
 	},
 	[356] = { -- Fishing
 		name = L["FISHING"],
 		spec = "Professions-Specializations-Preview-Art-Fishing",
-		icon = "Mobile-Fishing",
+		atlasIcon = "Mobile-Fishing",
 		randomSoundFiles = {
 			{ 2066763, 2066764, 2066765, 2066766, 2066767 },
 		},
@@ -92,17 +200,29 @@ local ProfessionData = {
 	[393] = { -- Skinning
 		name = L["SKINNING"],
 		spec = "Professions-Specializations-Preview-Art-Skinning",
-		icon = "Mobile-Skinning",
+		atlasIcon = "Mobile-Skinning",
 		randomSoundFiles = {
 			{ 5905077, 5905079, 5905081, 5905083, 5905085, 5905087, 5905089, 5905091, 5905093, 5905095, 5905097, 5905099, 5905101, 5905103, 5905105, 5905107, 5905109, 5905111 },
 			{ 4577735, 4577737, 4577739, 4577741, 4577743, 4577745, 4577747, 4577749, 4577751, 4577753 },
 		},
 		soundFiles = { 567571 },
 	},
+	[473] = { -- Fist Weapons
+		name = L["FIST_WEAPONS"],
+		--spec = nil, -- does not have an equivalent atlas
+		--atlasIcon = nil, -- does not have an equivalent atlas
+		fallbackIcon = 135592, -- interface/icons/inv_weapon_hand_01
+	},
+	[633] = { -- Lockpicking
+		name = L["LOCKPICKING"],
+		--spec = nil, -- does not have an equivalent atlas
+		--atlasIcon = nil, -- does not have an equivalent atlas
+		fallbackIcon = 136058, -- interface/icons/spell_nature_moonkey
+	},
 	[755] = { -- Jewelcrafting
 		name = L["JEWELCRAFTING"],
 		spec = "Professions-Specializations-Preview-Art-Jewelcrafting",
-		icon = "Mobile-Jewelcrafting",
+		atlasIcon = "Mobile-Jewelcrafting",
 		randomSoundFiles = {
 			{ 4685798, 4685800, 4685802, 4685804 }
 		},
@@ -112,7 +232,7 @@ local ProfessionData = {
 	[773] = { -- Inscription
 		name = L["INSCRIPTION"],
 		spec = "Professions-Specializations-Preview-Art-Inscription",
-		icon = "Mobile-Inscription",
+		atlasIcon = "Mobile-Inscription",
 		randomSoundFiles = {
 			--{ 1668195, 1668196, 1668197, 1668198, 1668199, 1668200 },
 			{ 3092221, 3092222, 3092223, 3092224, 3092225, 3092226 },
@@ -123,7 +243,7 @@ local ProfessionData = {
 	[794] = { -- Archaeology
 		name = L["ARCHAEOLOGY"],
 		--spec = nil, -- does not have an equivalent atlas
-		icon = "Mobile-Archeology",
+		atlasIcon = "Mobile-Archeology",
 		randomSoundFiles = {
 			{ 5927790, 5927792, 5927794, 5927796, 5927798, 5927800 },
 		},
@@ -152,7 +272,7 @@ local BORDER_STYLES = {
 };
 
 local function PlayProfessionSound(profID)
-	local data = ProfessionData[profID]
+	local data = SkillData[profID]
 
 	if data then
 		if data.randomSoundFiles then
@@ -185,12 +305,18 @@ end
 
 local function FindProfessionID(skill)
 	local skillLower = string.lower(skill)
-	for profID, data in pairs(ProfessionData) do
-		if data.name and string.find(skillLower, string.lower(data.name), 1, true) then
-			return profID;
-		end
-	end
-	return nil;
+    local bestMatch
+    for profID, data in pairs(SkillData) do
+        if data.name then
+            local dataNameLower = string.lower(data.name)
+            if skillLower == dataNameLower then
+                return profID
+            elseif not bestMatch and string.find(skillLower, dataNameLower, 1, true) then
+                bestMatch = profID
+            end
+        end
+    end
+    return bestMatch
 end
 
 local function GetDB()
@@ -454,11 +580,13 @@ local function SetProfessionBackground(profID)
 	if not ToastFrame then return end
 	local bgStyle = GetBgStyle()
 	local atlas
+	local fallbackIcon
 	
-	local profData = ProfessionData[profID]
+	local profData = SkillData[profID]
 	if profData then
 		if bgStyle == "mobileicon" then
-			atlas = profData.icon;
+			atlas = profData.atlasIcon;
+			fallbackIcon = profData.fallbackIcon;
 		else
 			atlas = profData.spec;
 		end
@@ -466,6 +594,9 @@ local function SetProfessionBackground(profID)
 
 	if atlas then
 		ToastFrame.BgTex:SetAtlas(atlas);
+	elseif fallbackIcon then
+		ToastFrame.BgTex:SetAtlas(nil);
+		ToastFrame.BgTex:SetTexture(fallbackIcon);
 	else
 		ToastFrame.BgTex:SetAtlas(nil);
 		ToastFrame.BgTex:SetTexture(130660);
