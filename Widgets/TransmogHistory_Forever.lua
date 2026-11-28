@@ -92,16 +92,17 @@ local function CaptureUIState()
 	local function AddSlotData(loc, opt, info)
 		if loc and opt and info then
 			local slotID = loc:GetSlot();
-			
-			if C_TransmogOutfitInfo.SlotHasSecondary(slotID) and state.secondaryStates[slotID] == nil then
-				state.secondaryStates[slotID] = C_TransmogOutfitInfo.GetSecondarySlotState(slotID);
+			local optionType = opt.type;
+
+			if optionType and C_TransmogOutfitInfo.SlotHasSecondary(slotID) and state.secondaryStates[slotID] == nil then
+				state.secondaryStates[slotID] = C_TransmogOutfitInfo.GetSecondarySlotState(slotID, optionType);
 			end
 			
-			local key = slotID .. "_" .. loc:GetType() .. "_" .. opt.type;
+			local key = slotID .. "_" .. loc:GetType() .. "_" .. (optionType or 0);
 			state.slots[key] = {
 				slot = slotID,
 				type = loc:GetType(),
-				weaponOption = opt.type,
+				weaponOption = optionType,
 				transmogID = info.transmogID,
 				displayType = info.displayType
 			};
