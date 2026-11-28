@@ -288,6 +288,27 @@ f:RegisterEvent("ADDON_LOADED")
 f:RegisterEvent("PLAYER_LOGIN")
 f:RegisterEvent("PLAYER_LOGOUT")
 
+function Artificer.GetPlayerKey()
+	local firstName, secondArg = UnitName("player");
+	if not firstName or firstName == "" then
+		return "UnknownPlayer";
+	end
+
+	if IsForever then
+		local fullName = (GetUnitName and GetUnitName("player")) or firstName;
+		if (not GetUnitName or fullName == firstName) and secondArg and secondArg ~= "" then
+			fullName = firstName .. " " .. secondArg;
+		end
+		return fullName;
+	end
+
+	local realm = (secondArg and secondArg ~= "" and secondArg) or GetRealmName() or "";
+	if realm ~= "" then
+		return firstName .. " - " .. realm;
+	end
+	return firstName;
+end
+
 local function StoreCVar(cvarName)
 	if not Artificer_DB.StoredCVars then Artificer_DB.StoredCVars = {} end
 	
@@ -472,12 +493,7 @@ f:SetScript("OnEvent", function(self, event, ...)
 
 		if not Artificer_DB.Characters then Artificer_DB.Characters = {}; end
 
-		local realmKey = GetRealmName();
-		local name, realm = UnitName("player"); -- 2nd return can be realm or 2nd name
-		if not realm then
-			realm = realmKey;
-		end
-		local charKey = name .. " - " .. realm;
+		local charKey = Artificer.GetPlayerKey();
 		Artificer.CharKey = charKey;
 
 		if not Artificer_DB.Characters[charKey] then

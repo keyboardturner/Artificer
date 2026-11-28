@@ -20,11 +20,13 @@ local function GetCurrentCharKey()
 end
 
 local function FormatIgnoreName(ignoreName, ownerRealm)
-	if string.find(ignoreName, "-") then
-		return ignoreName;
-	else
-		return ignoreName .. "-" .. ownerRealm;
+	if not ignoreName or ignoreName == "" then
+		return "";
 	end
+	if string.find(ignoreName, "-") or not ownerRealm or ownerRealm == "" then
+		return ignoreName;
+	end
+	return ignoreName .. "-" .. ownerRealm;
 end
 
 function AccountIgnores:SyncCurrentCharacter()
@@ -92,19 +94,18 @@ local function UpdateScrollList()
 
 	for charKey, entryList in pairs(db) do
 		if charKey ~= currentChar then
-			local _, _, charRealm = string.find(charKey, "-(.+)$");
-			charRealm = charRealm or GetRealmName();
+			local _, _, charRealm = string.find(charKey, "%-%s*(.+)$");
+			if not charRealm or charRealm == "" then
+				charRealm = GetRealmName() or "";
+			end
 
 			dataProvider:Insert({ isHeader = true, text = charKey, charKey = charKey });
 
 			for _, entryName in ipairs(entryList) do
-				local formattedName;
-				if currentMode == "ignores" then
-					formattedName = FormatIgnoreName(entryName, charRealm);
-				else
-					formattedName = FormatIgnoreName(entryName, charRealm);
+				local formattedName = FormatIgnoreName(entryName, charRealm);
+				if formattedName ~= "" then
+					dataProvider:Insert({ isHeader = false, text = "   " .. formattedName });
 				end
-				dataProvider:Insert({ isHeader = false, text = "   " .. formattedName });
 			end
 		end
 	end
