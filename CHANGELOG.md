@@ -1,5 +1,11 @@
 [Full Changelog & Previous Releases](https://github.com/keyboardturner/Artificer/releases)
 
+# 0.3.6e
+
+Fix error issues with Transmog History
+
+Adjusted how some of the player keys are created in SavedVariables to better future-proof with Forever surnames
+
 # 0.3.6d
 
 Possible secret taint error fix with the Chat Message Preview option (I couldn't reproduce the issue though so i'm just going to defensively blanket-secret value protect it)
